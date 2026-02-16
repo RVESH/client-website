@@ -1,14 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import * as pages from './../pages';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
               <Route path="/" element={<pages.Landing />} />
 
      </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
