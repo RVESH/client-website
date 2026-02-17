@@ -1,0 +1,140 @@
+/* ==============================
+   Portfolio Card
+================================ */
+
+.portfolio__card {
+  overflow: hidden;
+
+  border-radius: 1.2rem;
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+
+.portfolio__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+}
+
+/* ==============================
+   Thumbnail
+================================ */
+
+.portfolio__thumb {
+  height: 180px;
+
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine Effect */
+
+.portfolio__thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.portfolio__card:hover .portfolio__thumb::after {
+  transform: translateX(100%);
+}
+
+/* ==============================
+   Body
+================================ */
+
+.portfolio__body {
+  padding: 1.6rem 1.7rem 1.8rem;
+}
+
+/* Tag */
+
+.portfolio__tag {
+  margin: 0 0 0.4rem;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #6b7280;
+}
+
+/* Title */
+
+.portfolio__title {
+  margin: 0 0 0.5rem;
+
+  font-size: 1.15rem;
+  font-weight: 600;
+
+  color: #0f172a;
+}
+
+/* Text */
+
+.portfolio__text {
+  margin: 0 0 1rem;
+
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  color: #4b5563;
+}
+
+/* Link */
+
+.portfolio__link {
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  color: #2563eb;
+  text-decoration: none;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  transition: all 0.25s ease;
+}
+
+.portfolio__link:hover {
+  color: #1e40af;
+  gap: 0.4rem;
+}
+
+/* ==============================
+   Responsive
+================================ */
+
+@media (max-width: 768px) {
+  .portfolio__body {
+    padding: 1.4rem 1.4rem 1.5rem;
+  }
+}

@@ -1,0 +1,27 @@
+.why__card {
+  position: relative;
+  padding-top: 1.4rem;
+}
+
+.why__card::before {
+  content: "";
+  position: absolute;
+  top: 0.7rem;
+  left: 1.8rem;
+  width: 32px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+}
+
+.why__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  color: #0f172a;
+}
+
+.why__text {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}

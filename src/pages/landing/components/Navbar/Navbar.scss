@@ -1,0 +1,169 @@
+/* ==============================
+   Navbar Base
+================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+
+  transition: all 0.3s ease;
+}
+
+/* Shadow on Scroll */
+
+.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+}
+
+/* ==============================
+   Inner Layout
+================================ */
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.9rem 0;
+}
+
+/* ==============================
+   Logo Button
+================================ */
+
+.navbar__logo {
+  background: none;
+  border: none;
+
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+
+  color: #0f172a;
+
+  cursor: pointer;
+
+  transition: color 0.25s ease;
+}
+
+.navbar__logo:hover {
+  color: #2563eb;
+}
+
+/* ==============================
+   Links
+================================ */
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 1.7rem;
+
+  font-size: 0.95rem;
+}
+
+/* Button Reset */
+
+.navbar__links button {
+  background: none;
+  border: none;
+
+  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  color: #475569;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  position: relative;
+
+  transition: all 0.25s ease;
+}
+
+/* Underline Animation */
+
+.navbar__links button::after {
+  content: "";
+  position: absolute;
+
+  left: 0;
+  bottom: -4px;
+
+  width: 0;
+  height: 2px;
+
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+
+  border-radius: 999px;
+
+  transition: width 0.25s ease;
+}
+
+/* Hover Effect */
+
+.navbar__links button:hover {
+  color: #2563eb;
+}
+
+.navbar__links button:hover::after {
+  width: 100%;
+}
+
+/* ==============================
+   CTA Button
+================================ */
+
+.navbar__cta {
+  padding: 0.45rem 1rem !important;
+
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #024ded, #3a358d);
+  color: #44d077 !important;
+
+  font-weight: 600;
+
+  box-shadow: 0 6px 14px rgba(1, 42, 129, 0.3);
+
+  transition: all 0.25s ease;
+}
+
+.navbar__cta::after {
+  display: none !important;
+}
+
+.navbar__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.45);
+}
+
+/* ==============================
+   Mobile
+================================ */
+
+@media (max-width: 768px) {
+  .navbar__inner {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 0.7rem;
+  }
+
+  .navbar__links {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
