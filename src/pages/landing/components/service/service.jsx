@@ -49,7 +49,9 @@ const ServiceCard = ({ service }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="services__icon">{service.icon}</div>
+      <div className="services__icon-wrap">
+        <span className="services__icon">{service.icon}</span>
+      </div>
       <h3 className="services__title">{service.title}</h3>
       <p className="services__text">{service.text}</p>
       <span className="services__badge">{service.highlight}</span>
@@ -64,16 +66,20 @@ const Service = () => {
 
         <header className="section__heading">
           <p className="section__eyebrow">What I Offer</p>
-          <h2 className="section__title">Services That Help You Grow 🚀</h2>
+          <h2 className="section__title">Services That Help You Grow</h2>
           <p className="section__text">
             Simple, affordable and result-focused websites for your business.
           </p>
-          <p className="services__trust">
-            ✔ 10+ Demo Projects &nbsp;•&nbsp; ✔ Fast Delivery &nbsp;•&nbsp; ✔ Affordable Pricing
-          </p>
+          <div className="services__trust">
+            <span>✔ 10+ Demo Projects</span>
+            <span className="services__trust-dot" />
+            <span>✔ Fast Delivery</span>
+            <span className="services__trust-dot" />
+            <span>✔ Affordable Pricing</span>
+          </div>
         </header>
 
-        <div className="cards-grid">
+        <div className="services__grid">
           {SERVICES.map((service, index) => (
             <ServiceCard key={index} service={service} />
           ))}

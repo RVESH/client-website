@@ -1,191 +1,384 @@
-/* ==============================
-   CONTAINER (FIXED PROPER)
-================================ */
+/* ============================================================
+   Hero.scss  —  Works beautifully over any background image
+   Strategy:
+     • Semi-transparent dark overlay  → image stays visible
+     • White text on dark overlay     → readable always
+     • Frosted glass card on right    → modern premium feel
+     • Blue accent stays consistent   → matches site palette
+   Font: Plus Jakarta Sans
+   ============================================================ */
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-/* ==============================
-   HERO SECTION
-================================ */
-
+/* ── Section base ── */
 .hero {
   position: relative;
-  padding: 100px 0 80px;
-  background: url("../../../../images/background1.png") center/cover no-repeat;
   overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem 0 5rem;
+
+  // Background image — path stays same as your original
+  background: url("../../../../images/background1.png") center / cover no-repeat;
 }
 
-/* Overlay */
-.hero::before {
-  content: "";
+/* ── Dark gradient overlay — image visible, text readable ── */
+.hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  // Left side darker (content area), right side lighter (image shows more)
+  background: linear-gradient(
+    110deg,
+    rgba(5, 10, 25, 0.82) 0%,
+    rgba(5, 10, 25, 0.70) 50%,
+    rgba(5, 10, 25, 0.40) 100%
+  );
   z-index: 0;
 }
 
+/* ── Inner layout ── */
 .hero__inner {
   position: relative;
   z-index: 1;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-  min-height: 80vh;
+  gap: 4rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 }
 
-/* ==============================
-   CONTENT
-================================ */
-
+/* ── Content ── */
 .hero__content {
-  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-/* Eyebrow */
-
+/* ── Eyebrow ── */
 .hero__eyebrow {
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #93c5fd;
-  margin-bottom: 12px;
-}
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
 
-/* Title */
-
-.hero__title {
-  font-size: 52px;
-  line-height: 1.2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
   font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  // Frosted glass pill
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px 6px 10px;
+  border-radius: 999px;
+
+  @media (max-width: 900px) { align-self: center; }
+}
+
+.hero__eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  background: #3b82f6;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   transform: scale(1);   }
+  50%       { opacity: 0.4; transform: scale(0.65); }
+}
+
+/* ── Heading ── */
+.hero__title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.16;
   color: #ffffff;
-  margin-bottom: 16px;
+  margin: 0;
+  // Text shadow for readability over any BG
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
 }
 
-/* Subtitle */
+.hero__title-highlight {
+  color: #60a5fa;
+  position: relative;
 
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #818cf8);
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+}
+
+/* ── Subtitle ── */
 .hero__subtitle {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #dbeafe;
-  margin-bottom: 28px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(226, 232, 240, 0.88);
+  line-height: 1.78;
+  margin: 0;
+  max-width: 480px;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 900px) { max-width: 100%; }
 }
 
-/* ==============================
-   BUTTONS
-================================ */
-
+/* ── Buttons ── */
 .hero__actions {
   display: flex;
-  gap: 16px;
+  gap: 0.85rem;
   flex-wrap: wrap;
+
+  @media (max-width: 900px) { justify-content: center; }
 }
 
-.btn {
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-size: 15px;
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
   font-weight: 600;
-  transition: all 0.25s ease;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  border: none;
   cursor: pointer;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &--primary {
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.45);
+
+    svg { transition: transform 0.2s ease; }
+
+    &:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37, 99, 235, 0.55);
+      svg { transform: translateX(3px); }
+    }
+  }
+
+  &--outline {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #ffffff;
+    }
+  }
 }
 
-/* Primary */
-
-.btn--primary {
-  background: linear-gradient(135deg, #2563eb, #4f46e5);
-  color: white;
-}
-
-.btn--primary:hover {
-  transform: translateY(-2px);
-}
-
-/* Ghost */
-
-.btn--ghost {
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #e0e7ff;
-}
-
-.btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Trust */
-
+/* ── Trust strip ── */
 .hero__trust {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #cbd5f5;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 900px) { justify-content: center; }
 }
 
-/* ==============================
-   RESPONSIVE
-================================ */
+.hero__trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(203, 213, 225, 0.9);
+}
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .hero__title {
-    font-size: 42px;
-  }
+.hero__trust-sep {
+  width: 4px;
+  height: 4px;
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 
-  .hero__subtitle {
-    font-size: 16px;
+/* ── RIGHT visual column ── */
+.hero__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 900px) { display: none; }
+}
+
+/* ── Decorative ring behind card ── */
+.hero__ring {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  animation: spinSlow 20s linear infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Main floating card ── */
+.hero__card {
+  width: 290px;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 1.4rem;
+  position: relative;
+  z-index: 1;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  animation: floatCard 5s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Card top bar */
+.hero__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.hero__card-dots {
+  display: flex;
+  gap: 6px;
+
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: block;
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .hero {
-    padding: 80px 0 60px;
-  }
-
-  .hero__inner {
-    min-height: auto;
-    justify-content: center;
-  }
-
-  .hero__content {
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .hero__title {
-    font-size: 32px;
-  }
-
-  .hero__subtitle {
-    font-size: 15px;
-  }
-
-  .hero__actions {
-    justify-content: center;
-  }
-
-  .hero__trust {
-    text-align: center;
-  }
+.hero__card-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.06em;
 }
 
-/* Small Mobile */
-@media (max-width: 480px) {
-  .hero__title {
-    font-size: 26px;
+/* Card content bars */
+.hero__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1.4rem;
+}
+
+.hero__card-bar {
+  height: 9px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+/* Card footer */
+.hero__card-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.9rem;
+}
+
+.hero__card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.hero__card-status-dot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* ── Stat pills ── */
+.hero__pill {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 0.65rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+  strong {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #60a5fa;
+    line-height: 1;
   }
 
-  .btn {
-    width: 100%;
-    justify-content: center;
+  span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: rgba(203, 213, 225, 0.8);
+    white-space: nowrap;
+  }
+
+  &--1 {
+    top: 0px;
+    left: -30px;
+    animation: floatCard 5s ease-in-out 0.8s infinite;
+  }
+
+  &--2 {
+    bottom: 10px;
+    right: -30px;
+    animation: floatCard 5s ease-in-out 1.8s infinite;
   }
 }

@@ -1,229 +1,359 @@
-/* =========================
-   NAVBAR ROOT
-========================= */
+/* ============================================================
+   Navbar.scss  —  Glassmorphism over background image
+   + Light solid when scrolled past hero
+   Font: Plus Jakarta Sans
+   ============================================================ */
 
+$accent:       #3b82f6;
+$accent-dark:  #2563eb;
+$accent-glow:  rgba(59, 130, 246, 0.35);
+$ease:         cubic-bezier(0.4, 0, 0.2, 1);
+$nav-h:        68px;
+
+/* ── Base — transparent glass over hero image ── */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 70px;
-
+  right: 0;
   z-index: 1000;
+  height: $nav-h;
 
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
+  // Default: transparent glass — image shows through
+  background: rgba(5, 10, 25, 0.35);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-  border-bottom: 1px solid #e5e7eb;
+  transition:
+    background 0.35s $ease,
+    box-shadow 0.35s $ease,
+    border-color 0.35s $ease;
 
-  display: flex;
-  align-items: center;
+  // Scrolled: solid professional white
+  &--scrolled {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 0 #e2e8f0, 0 4px 24px rgba(15, 23, 42, 0.06);
 
-  transition: all 0.3s ease;
+    // Nav links turn dark when scrolled
+    .navbar__link {
+      color: #64748b;
+      &:hover    { color: #0f172a; background: #f1f5f9; }
+      &--active  { color: $accent-dark; }
+    }
+
+    // CTA stays blue but adapts
+    .navbar__cta {
+      background: $accent-dark;
+      color: #fff;
+      box-shadow: 0 2px 12px $accent-glow;
+    }
+
+    // Hamburger lines go dark
+    .navbar__hamburger span { background: #334155; }
+
+    // Logo stays normal
+    .navbar__logo img { filter: none; }
+  }
 }
 
-.navbar--scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-}
-
-/* =========================
-   CONTAINER ALIGNMENT
-========================= */
-
+/* ── Inner ── */
 .navbar__inner {
-  width: 100%;
-  max-width: 1200px;
+  max-width: 1180px;
   margin: 0 auto;
-
-  padding: 0 24px;
-
+  height: $nav-h;
+  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
-/* =========================
-   LOGO
-========================= */
-
+/* ── Logo ── */
 .navbar__logo {
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-}
-
-.navbar__logo img {
-  height: 34px;
-  object-fit: contain;
-}
-
-/* =========================
-   LINKS (DESKTOP)
-========================= */
-
-.navbar__links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.navbar__links button {
-  background: none;
-  border: none;
-
-  font-size: 15px;
-  font-weight: 500;
-
-  color: #475569;
-
-  cursor: pointer;
-  position: relative;
-
-  transition: 0.25s;
-}
-
-.navbar__links button:hover {
-  color: #2563eb;
-}
-
-/* underline */
-
-.navbar__links button::after {
-  content: "";
-  position: absolute;
-
-  bottom: -6px;
-  left: 0;
-
-  width: 0;
-  height: 2px;
-
-  background: #2563eb;
-
-  transition: width 0.25s ease;
-}
-
-.navbar__links button:hover::after {
-  width: 100%;
-}
-
-/* =========================
-   CTA BUTTON
-========================= */
-
-.navbar__cta {
-  padding: 8px 16px !important;
-
-  border-radius: 999px;
-
-  background: linear-gradient(135deg, #2563eb, #4f46e5);
-  color: #fff !important;
-
-  font-weight: 600;
-}
-
-/* =========================
-   RIGHT SIDE
-========================= */
-
-.navbar__right {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-/* =========================
-   HAMBURGER
-========================= */
-
-.navbar__toggle {
-  display: none;
-
-  width: 28px;
-  height: 20px;
-
-  flex-direction: column;
-  justify-content: space-between;
-
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+
+  img {
+    height: 34px;
+    width: auto;
+    display: block;
+    // White tint over dark image
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px $accent-glow);
+    transition: filter 0.3s ease, transform 0.25s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
 }
 
-.navbar__toggle span {
-  height: 3px;
-  width: 100%;
-  background: #0f172a;
-  border-radius: 2px;
+/* ── Desktop nav links ── */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0 auto;
+
+  @media (max-width: 768px) { display: none; }
 }
 
-/* =========================
-   MOBILE
-========================= */
+.navbar__link {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9px;
 
-@media (max-width: 768px) {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  // Light text over dark hero image
+  color: rgba(226, 232, 240, 0.75);
+  letter-spacing: 0.01em;
 
+  transition: color 0.2s ease, background 0.2s ease;
 
-    .desktop-only {
-    display: none !important;
+  &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
   }
 
-  .navbar__cta--mobile {
-    display: inline-flex !important;
+  &--active {
+    color: #ffffff;
+
+    .navbar__link-dot {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+  }
+}
+
+.navbar__link-dot {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: $accent;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* ── Right side ── */
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* ── CTA Button ── */
+.navbar__cta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  background: rgba(37, 99, 235, 0.9);
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.845rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+
+  box-shadow: 0 2px 16px rgba(37, 99, 235, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+  svg { transition: transform 0.2s ease; }
+
+  &:hover {
+    background: $accent-dark;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px $accent-glow;
+    svg { transform: translateX(3px); }
   }
 
-  .navbar__toggle {
-    display: flex;
+  @media (max-width: 768px) { display: none; }
+}
+
+/* ── Hamburger ── */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0 10px;
+
+  @media (max-width: 768px) { display: flex; }
+
+  span {
+    display: block;
+    height: 1.5px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 2px;
+    transition: all 0.28s $ease;
+
+    &:nth-child(1) { width: 18px; }
+    &:nth-child(2) { width: 13px; }
+    &:nth-child(3) { width: 18px; }
   }
 
-  .navbar__links {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-
-    background: white;
-
-    flex-direction: column;
-    align-items: flex-start;
-
-    padding: 20px;
-
-    gap: 16px;
-
-    transform: translateY(-20px);
-    opacity: 0;
-    pointer-events: none;
-
-    transition: 0.25s ease;
+  &--open span {
+    &:nth-child(1) { width: 18px; transform: translateY(6.5px) rotate(45deg); }
+    &:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    &:nth-child(3) { width: 18px; transform: translateY(-6.5px) rotate(-45deg); }
   }
+}
 
-  .navbar__links.active {
-    transform: translateY(0);
+/* ── Mobile Drawer ── */
+.navbar__drawer {
+  position: fixed;
+  top: $nav-h;
+  right: 0;
+  bottom: 0;
+  width: min(300px, 85vw);
+
+  background: rgba(8, 12, 28, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.36s $ease, opacity 0.36s $ease, visibility 0.36s;
+
+  &--open {
+    transform: translateX(0);
     opacity: 1;
-    pointer-events: auto;
+    visibility: visible;
   }
 
-  .navbar__links button {
-    width: 100%;
-    text-align: left;
-    font-size: 16px;
-  }
-
+  @media (min-width: 769px) { display: none; }
 }
 
-/* Desktop */
+.navbar__drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 2rem 1.5rem;
+}
 
-@media (min-width: 769px) {
-  .navbar__cta--mobile {
-    display: none !important;
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.navbar__drawer-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.1rem 0;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(203, 213, 225, 0.75);
+
+  transition: color 0.2s ease, padding-left 0.2s ease;
+
+  .navbar__drawer--open & {
+    animation: slideInRight 0.32s $ease both;
   }
 
-  .desktop-only {
-    display: inline-flex !important;
+  &:hover, &.active {
+    color: #ffffff;
+    padding-left: 0.4rem;
+  }
+
+  &.active .navbar__drawer-num { color: $accent; }
+}
+
+.navbar__drawer-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: rgba(148, 163, 184, 0.5);
+  letter-spacing: 0.1em;
+  transition: color 0.2s ease;
+}
+
+.navbar__drawer-cta {
+  margin-top: 2rem;
+  background: $accent-dark;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  cursor: pointer;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+
+  box-shadow: 0 4px 20px $accent-glow;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  .navbar__drawer--open & {
+    animation: slideInRight 0.32s $ease 0.22s both;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px $accent-glow;
+  }
+}
+
+/* ── Overlay ── */
+.navbar__overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+
+  @media (max-width: 768px) { display: block; }
+
+  &--visible {
+    opacity: 1;
+    pointer-events: all;
   }
 }

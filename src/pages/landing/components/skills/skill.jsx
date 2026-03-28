@@ -1,155 +1,130 @@
-// src/pages/landing/components/Skills/Skills.jsx
-import React from "react";
-import "./skill.scss"; // Must match exact filename
+import React, { useState } from "react";
+import "./skill.scss";
 
-// ================================
-// SKILLS DATA
-// ================================
 const SKILLS = [
   {
-    tag: "💻",
+    icon: "💻",
     title: "Frontend Development",
     lines: [
       "Clean and well-structured HTML pages.",
       "Modern CSS styling and UI layout.",
-      "Responsive one-page business websites."
+      "Responsive one-page business websites.",
     ],
-    note: "Professional static websites."
+    note: "Professional static websites.",
   },
-
   {
-    tag: "⚛️",
-    title: "React Development (Basic)",
+    icon: "⚛️",
+    title: "React Development",
     lines: [
       "React project setup and structure.",
       "Reusable components and JSX.",
-      "Single-page landing websites."
+      "Single-page landing websites.",
     ],
-    note: "Ideal for simple web apps."
+    note: "Ideal for simple web apps.",
   },
-
   {
-    tag: "🌐",
+    icon: "🌐",
     title: "Deployment & Hosting",
     lines: [
-      "Deploy on GitHub Pages, Vercel, and Netlify.",
+      "Deploy on GitHub Pages, Vercel, Netlify.",
       "Custom domain connection.",
-      "Stable and secure live website links."
+      "Stable and secure live website links.",
     ],
-    note: "Website ready to go live."
+    note: "Website ready to go live.",
   },
-
   {
-    tag: "🔧",
+    icon: "🔧",
     title: "Project Setup & Management",
     lines: [
       "Clean folder structure.",
       "File organization and maintenance.",
-      "Bug fixing with AI assistance."
+      "Bug fixing with AI assistance.",
     ],
-    note: "Easy-to-manage projects."
+    note: "Easy-to-manage projects.",
   },
-
   {
-    tag: "📱",
+    icon: "📱",
     title: "Business Website Solutions",
     lines: [
       "Small business websites.",
       "WhatsApp and contact integration.",
-      "Personal portfolio websites."
+      "Personal portfolio websites.",
     ],
-    note: "Perfect for local businesses."
+    note: "Perfect for local businesses.",
   },
-
   {
-    tag: "🤖",
+    icon: "🤖",
     title: "AI-Assisted Development",
     lines: [
       "AI-powered research and planning.",
       "Smart code optimization.",
-      "Modern layout and design ideas."
+      "Modern layout and design ideas.",
     ],
-    note: "Fast and efficient delivery."
-  }
+    note: "Fast and efficient delivery.",
+  },
 ];
 
-// ================================
-// LEARNING (NOT OFFERING)
-// ================================
 const LEARNING = [
   "Backend Development (Node.js, Database)",
   "Online Payment Integration",
   "Advanced Admin Dashboards",
-  "Advanced SEO Optimization"
+  "Advanced SEO Optimization",
 ];
 
-// ================================
-// COMPONENT
-// ================================
+const SkillCard = ({ item }) => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <article
+      className={`skills__card${hovered ? " skills__card--hovered" : ""}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className="skills__icon">{item.icon}</div>
+      <h3 className="skills__title">{item.title}</h3>
+      <ul className="skills__list">
+        {item.lines.map((line, i) => (
+          <li key={i}>{line}</li>
+        ))}
+      </ul>
+      <p className="skills__note">{item.note}</p>
+    </article>
+  );
+};
+
 const Skills = () => {
   return (
     <section id="skills" className="section skills">
       <div className="container">
 
-        {/* Header */}
         <header className="section__heading">
           <p className="section__eyebrow">My Skillset</p>
-
-          <h2 className="section__title">
-            What I Can Do For You
-          </h2>
-
+          <h2 className="section__title">What I Can Do For You</h2>
           <p className="section__text">
             Practical and reliable skills that I confidently deliver.
           </p>
         </header>
 
-        {/* Skills Grid */}
         <div className="skills__grid">
           {SKILLS.map((item, index) => (
-            <article
-              key={index}
-              className="card skills__card"
-            >
-              <div className="skills__tag">
-                {item.tag}
-              </div>
-
-              <h3 className="skills__title">
-                {item.title}
-              </h3>
-
-              <ul className="skills__list">
-                {item.lines.map((line, i) => (
-                  <li key={i}>{line}</li>
-                ))}
-              </ul>
-
-              <p className="skills__note">
-                {item.note}
-              </p>
-            </article>
+            <SkillCard key={index} item={item} />
           ))}
         </div>
 
-        {/* Learning Section */}
+        {/* Learning section */}
         <div className="skills__learning">
           <div className="skills__learning-inner">
-
-            <p className="skills__learning-label">
-              Currently Learning
-            </p>
-
-            <h3 className="skills__learning-title">
-              Not Offered Yet
-            </h3>
-
+            <div className="skills__learning-header">
+              <span className="skills__learning-badge">🚧 Currently Learning</span>
+              <h3 className="skills__learning-title">Not Offered Yet</h3>
+            </div>
             <ul className="skills__learning-list">
               {LEARNING.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index}>
+                  <span className="skills__learning-dot" />
+                  {item}
+                </li>
               ))}
             </ul>
-
           </div>
         </div>
 

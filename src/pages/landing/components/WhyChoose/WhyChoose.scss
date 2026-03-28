@@ -1,125 +1,95 @@
-/* ==============================
-   Why Section Background
-================================ */
+/* ============================================================
+   WhyChoose.scss  —  Light Theme
+   ============================================================ */
 
 .why {
   background: #ffffff;
-  padding: 5rem 0 6rem;
+  padding: 6rem 0;
 }
 
-/* ==============================
-   Cards Grid
-================================ */
-
-.why .cards-grid {
+/* ── Grid ── */
+.why__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+
+  @media (max-width: 860px) { grid-template-columns: 1fr; }
 }
 
-/* ==============================
-   Card
-================================ */
-
+/* ── Card ── */
 .why__card {
-  position: relative;
-
   background: #f8fafc;
-  border-radius: 1.2rem;
-
-  padding: 2rem 1.8rem 2.2rem;
-
-  border: 1px solid #e5e7eb;
-
-  transition: all 0.35s ease;
-
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
   overflow: hidden;
+
+  transition: transform 0.26s cubic-bezier(0.4,0,0.2,1),
+              box-shadow 0.26s ease,
+              border-color 0.26s ease,
+              background 0.26s ease;
+
+  // Top accent line
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #6366f1);
+    opacity: 0;
+    transition: opacity 0.26s ease;
+  }
+
+  &--hovered {
+    transform: translateY(-6px);
+    background: #ffffff;
+    border-color: #bfdbfe;
+    box-shadow: 0 12px 36px rgba(37, 99, 235, 0.10);
+
+    &::before { opacity: 1; }
+  }
 }
 
-/* Left Accent Line */
-
-.why__card::before {
-  content: "";
-  position: absolute;
-
-  left: 0;
-  top: 0;
-  bottom: 0;
-
-  width: 4px;
-
-  background: linear-gradient(180deg, #2563eb, #4f46e5);
-}
-
-/* Hover Effect */
-
-.why__card:hover {
-  transform: translateY(-6px);
-  background: #ffffff;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-  border-color: #cbd5f5;
-}
-
-/* ==============================
-   Title
-================================ */
-
-.why__title {
-  margin: 0 0 0.6rem;
-
-  font-size: 1.15rem;
-  font-weight: 600;
-
-  color: #0f172a;
-}
-
-/* ==============================
-   Text
-================================ */
-
-.why__text {
-  margin: 0;
-
-  font-size: 0.95rem;
-  line-height: 1.6;
-
-  color: #475569;
-}
-
-/* ==============================
-   Optional Icon Dot
-================================ */
-
-.why__title::before {
-  content: "✓";
-  display: inline-block;
-
-  margin-right: 0.6rem;
-
-  font-size: 0.85rem;
-  font-weight: 700;
-
+/* ── Icon ── */
+.why__icon {
+  width: 52px;
+  height: 52px;
+  background: #eff6ff;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #2563eb;
+
+  transition: background 0.22s ease, transform 0.22s ease;
+
+  .why__card--hovered & {
+    background: #2563eb;
+    color: #ffffff;
+    transform: scale(1.08);
+  }
 }
 
-/* ==============================
-   Responsive
-================================ */
+/* ── Title ── */
+.why__title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
 
-@media (max-width: 768px) {
-  .why {
-    padding: 4rem 0 5rem;
-  }
-
-  .why__card {
-    padding: 1.7rem 1.5rem 1.9rem;
-  }
-
-  .why__title {
-    font-size: 1.05rem;
-  }
-
-  .why__text {
-    font-size: 0.9rem;
-  }
+/* ── Text ── */
+.why__text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.7;
+  margin: 0;
 }

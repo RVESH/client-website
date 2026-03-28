@@ -1,236 +1,186 @@
-/* ==============================
-   Skills Grid
-================================ */
+/* ============================================================
+   Skills.scss  —  Light Theme
+   ============================================================ */
 
+.skills {
+  background: #f8fafc;
+  padding: 6rem 0;
+}
+
+/* ── Grid ── */
 .skills__grid {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: 960px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 560px) { grid-template-columns: 1fr; }
 }
 
-/* ==============================
-   Skill Cards
-================================ */
-
+/* ── Card ── */
 .skills__card {
   background: #ffffff;
-  border-radius: 1.2rem;
-  padding: 1.6rem 1.5rem 1.8rem;
-
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 1.75rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.65rem;
 
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  transition: transform 0.26s cubic-bezier(0.4,0,0.2,1),
+              box-shadow 0.26s ease,
+              border-color 0.26s ease;
 
-  transition: all 0.25s ease;
-  position: relative;
-  overflow: hidden;
+  &--hovered {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.10);
+    border-color: #bfdbfe;
+  }
 }
 
-/* Hover Effect */
-
-.skills__card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
-  border-color: #93c5fd;
-}
-
-/* Top Accent Line */
-
-.skills__card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto auto 0;
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(90deg, #2563eb, #38bdf8);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.skills__card:hover::before {
-  opacity: 1;
-}
-
-/* ==============================
-   Tag Icon
-================================ */
-
-.skills__tag {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-
-  display: inline-flex;
+/* ── Icon ── */
+.skills__icon {
+  width: 50px;
+  height: 50px;
+  background: #eff6ff;
+  border-radius: 12px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
 
-  font-size: 1.5rem;
+  transition: transform 0.22s ease;
 
-  background: linear-gradient(135deg, #dbeafe, #eff6ff);
-  color: #1d4ed8;
-
-  box-shadow: inset 0 0 0 1px #bfdbfe;
+  .skills__card--hovered & {
+    transform: scale(1.1) rotate(-3deg);
+  }
 }
 
-/* ==============================
-   Title
-================================ */
-
+/* ── Title ── */
 .skills__title {
-  margin: 0;
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
   color: #0f172a;
+  margin: 0;
 }
 
-/* ==============================
-   List
-================================ */
-
+/* ── List ── */
 .skills__list {
-  margin: 0;
-  padding-left: 0;
-
   list-style: none;
-
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.4rem;
 
-  font-size: 0.95rem;
-  line-height: 1.45;
-  color: #4b5563;
+  li {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.83rem;
+    color: #475569;
+    line-height: 1.55;
+    padding-left: 1rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 5px;
+      height: 5px;
+      background: #60a5fa;
+      border-radius: 50%;
+    }
+  }
 }
 
-.skills__list li {
-  display: flex;
-  align-items: flex-start;
-}
-
-/* Check Icon */
-
-.skills__list li::before {
-  content: "✔";
-  margin-right: 0.5rem;
-
-  color: #16a34a;
-  font-size: 0.8rem;
-  line-height: 1.4;
-}
-
-/* ==============================
-   Note
-================================ */
-
+/* ── Note ── */
 .skills__note {
-  margin: 0.5rem 0 0;
-
-  font-size: 0.9rem;
-  font-style: italic;
-
-  color: #6b7280;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  align-self: flex-start;
+  margin: 0;
 }
 
-/* ==============================
-   Learning Section
-================================ */
-
+/* ── Learning section ── */
 .skills__learning {
-  display: flex;
-  justify-content: center;
+  background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+  border: 1px solid #bfdbfe;
+  border-radius: 18px;
+  padding: 2rem 2.5rem;
 }
 
 .skills__learning-inner {
-  max-width: 760px;
-  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  flex-wrap: wrap;
 
-  border-radius: 1.6rem;
-  padding: 2rem 2rem 2.2rem;
-
-  background: linear-gradient(135deg, #020617, #0f172a);
-  color: #e5e7eb;
-
-  border: 1px solid rgba(148, 163, 184, 0.3);
-
-  box-shadow: 0 25px 60px rgba(2, 6, 23, 0.7);
+  @media (max-width: 640px) { flex-direction: column; gap: 1.5rem; }
 }
 
-/* Label */
+.skills__learning-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 160px;
+}
 
-.skills__learning-label {
-  margin: 0 0 0.4rem;
-
-  font-size: 0.75rem;
-  font-weight: 600;
-
+.skills__learning-badge {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-
-  color: #9ca3af;
+  color: #f59e0b;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  padding: 3px 10px;
+  border-radius: 999px;
+  align-self: flex-start;
 }
-
-/* Title */
 
 .skills__learning-title {
-  margin: 0 0 0.9rem;
-
-  font-size: 1.15rem;
-  font-weight: 600;
-
-  color: #f9fafb;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
 }
-
-/* List */
 
 .skills__learning-list {
-  margin: 0 0 1rem;
-  padding-left: 1.2rem;
-
-  font-size: 0.95rem;
-  color: #d1d5db;
-}
-
-.skills__learning-list li {
-  margin-bottom: 0.25rem;
-}
-
-/* Footer */
-
-.skills__learning-footer {
+  list-style: none;
+  padding: 0;
   margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  flex: 1;
 
-  font-size: 0.9rem;
-  color: #9ca3af;
-}
+  @media (max-width: 500px) { grid-template-columns: 1fr; }
 
-/* ==============================
-   Responsive
-================================ */
-
-@media (max-width: 768px) {
-  .skills__grid {
-    gap: 1.5rem;
-  }
-
-  .skills__card {
-    padding: 1.4rem 1.3rem 1.5rem;
-  }
-
-  .skills__learning-inner {
-    padding: 1.6rem 1.5rem 1.8rem;
+  li {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.88rem;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 }
 
-@media (max-width: 480px) {
-  .skills__title {
-    font-size: 1.05rem;
-  }
-
-  .skills__note {
-    font-size: 0.85rem;
-  }
+.skills__learning-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #93c5fd;
+  flex-shrink: 0;
 }
