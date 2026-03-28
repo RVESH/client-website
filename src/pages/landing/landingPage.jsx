@@ -22,7 +22,7 @@ const LandingPage = () => {
       <Service />
 
       {/* Skills */}
-      <Skills />
+      {/* <Skills /> */}
 
       {/* Why Choose Me */}
       <WhyChoose />
@@ -31,8 +31,7 @@ const LandingPage = () => {
       <Process />
 
       {/* Portfolio */}
-      <Portfolio />
-
+       <Portfolio/>
       {/* Contact */}
       <Contact />
     </>

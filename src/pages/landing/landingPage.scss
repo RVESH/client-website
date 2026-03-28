@@ -1,63 +1,8 @@
 .landing {
+  display: flex;
+  
   font-family: Arial, sans-serif;
   text-align: center;
+  align-items: center;
 }
 
-.hero {
-  background: #222;
-  color: white;
-  padding: 60px 20px;
-
-  h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-
-  p {
-    margin-bottom: 20px;
-    font-size: 18px;
-  }
-}
-
-.whatsapp-btn {
-  display: inline-block;
-  background: #25d366;
-  color: white;
-  padding: 12px 25px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: 0.3s ease;
-
-  &:hover {
-    background: #1ebe5d;
-    transform: scale(1.05);
-  }
-}
-
-.section {
-  padding: 40px 20px;
-
-  h2 {
-    margin-bottom: 20px;
-    font-size: 26px;
-  }
-
-  p {
-    margin: 8px 0;
-  }
-}
-
-.contact {
-  background: #222;
-  color: white;
-  padding: 40px 20px;
-
-  h2 {
-    margin-bottom: 15px;
-  }
-
-  p {
-    margin: 5px 0;
-  }
-}

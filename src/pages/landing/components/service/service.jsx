@@ -1,89 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import "./service.scss";
 
-// ================================
-// SERVICES DATA
-// ================================
 const SERVICES = [
   {
     icon: "🌐",
-    title: "Business Website Development",
-    text: "Clean, responsive websites for small businesses with contact and WhatsApp integration.",
+    title: "Business Website",
+    text: "Professional website for your business to attract more customers.",
+    highlight: "Best for shops & startups",
   },
-
   {
     icon: "⚛️",
-    title: "React Landing Pages",
-    text: "Modern one-page landing websites for products, services, and portfolios.",
+    title: "React Landing Page",
+    text: "Modern one-page website with smooth UI and fast performance.",
+    highlight: "High conversion design",
   },
-
   {
     icon: "🚀",
-    title: "Website Hosting & Deployment",
-    text: "Deploy and manage websites on GitHub, Vercel, and Netlify with live links.",
+    title: "Deployment Setup",
+    text: "Get your website live with domain, hosting, and fast loading speed.",
+    highlight: "Live in 24–48 hours",
   },
-
   {
     icon: "🎨",
-    title: "UI Design & Customization",
-    text: "Simple and attractive designs optimized for speed and user experience.",
+    title: "UI Design",
+    text: "Clean and attractive design focused on user experience.",
+    highlight: "Modern look",
   },
-
   {
     icon: "🔧",
-    title: "Website Maintenance",
-    text: "Regular updates, bug fixes, and content changes when needed.",
+    title: "Maintenance",
+    text: "Fix bugs, update content and keep your website running smoothly.",
+    highlight: "Ongoing support",
   },
-
   {
     icon: "📱",
-    title: "WhatsApp & Contact Setup",
-    text: "Easy customer contact setup with call and WhatsApp buttons.",
+    title: "WhatsApp Integration",
+    text: "Direct customer contact with WhatsApp & call buttons.",
+    highlight: "Boost leads",
   },
 ];
 
-// ================================
-// COMPONENT
-// ================================
+const ServiceCard = ({ service }) => {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <article
+      className={`services__card${hovered ? " services__card--hovered" : ""}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className="services__icon">{service.icon}</div>
+      <h3 className="services__title">{service.title}</h3>
+      <p className="services__text">{service.text}</p>
+      <span className="services__badge">{service.highlight}</span>
+    </article>
+  );
+};
+
 const Service = () => {
   return (
     <section id="services" className="section services">
       <div className="container">
 
-        {/* Header */}
         <header className="section__heading">
           <p className="section__eyebrow">What I Offer</p>
-
-          <h2 className="section__title">
-            My Services
-          </h2>
-
+          <h2 className="section__title">Services That Help You Grow 🚀</h2>
           <p className="section__text">
-            Practical and affordable web solutions for small businesses and startups.
+            Simple, affordable and result-focused websites for your business.
+          </p>
+          <p className="services__trust">
+            ✔ 10+ Demo Projects &nbsp;•&nbsp; ✔ Fast Delivery &nbsp;•&nbsp; ✔ Affordable Pricing
           </p>
         </header>
 
-        {/* Services Grid */}
         <div className="cards-grid">
           {SERVICES.map((service, index) => (
-            <article
-              key={index}
-              className="card services__card"
-            >
-
-              <div className="services__icon">
-                {service.icon}
-              </div>
-
-              <h3 className="services__title">
-                {service.title}
-              </h3>
-
-              <p className="services__text">
-                {service.text}
-              </p>
-
-            </article>
+            <ServiceCard key={index} service={service} />
           ))}
         </div>
 
