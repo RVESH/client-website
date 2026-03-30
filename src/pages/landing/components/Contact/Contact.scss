@@ -1,243 +1,87 @@
 /* ============================================================
-   Contact.scss  —  Light Professional Theme
-   Font: Plus Jakarta Sans
+   Contact.scss — Light theme
    ============================================================ */
 
-.contact {
-  background: #ffffff;
-  padding: 6rem 0;
+.contact { background: #fff; padding: 6rem 0; }
+
+.ctc__grid {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 2.5rem; align-items: start;
+  @media (max-width: 860px) { grid-template-columns: 1fr; }
 }
 
-/* ── Shared heading (same as other sections) ── */
-.section__heading {
-  max-width: 640px;
-  margin: 0 auto 3.5rem;
-  text-align: center;
+/* Left info */
+.ctc__info { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.ctc__info-title {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0f172a; margin: 0;
 }
 
-.section__eyebrow {
-  display: inline-block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #2563eb;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  padding: 4px 14px;
-  border-radius: 999px;
-  margin-bottom: 0.85rem;
+.ctc__why { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .75rem; }
+
+.ctc__why-item {
+  display: flex; align-items: center; gap: .75rem;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .9rem; color: #334155; font-weight: 500;
 }
 
-.section__title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
-  font-weight: 800;
-  color: #0f172a;
-  margin: 0 0 0.65rem;
-  line-height: 1.2;
+.ctc__why-icon {
+  width: 36px; height: 36px; background: #eff6ff; border: 1px solid #bfdbfe;
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  font-size: .95rem; flex-shrink: 0;
 }
 
-.section__text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1rem;
-  color: #64748b;
-  line-height: 1.7;
-  margin: 0;
+.ctc__divider { height: 1px; background: #e2e8f0; }
+
+.ctc__label {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .82rem; font-weight: 600; color: #64748b; margin: 0;
 }
 
-/* ── Grid ── */
-.contact__grid {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 2.5rem;
-  align-items: start;
-
-  @media (max-width: 860px) {
-    grid-template-columns: 1fr;
-  }
+.ctc__wa-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .9rem; font-weight: 600;
+  color: #fff; background: #25d366; border: none; border-radius: 999px;
+  padding: .7rem 1.4rem; cursor: pointer; text-decoration: none; align-self: flex-start;
+  box-shadow: 0 4px 16px rgba(37,211,102,.3);
+  transition: background .2s, transform .2s, box-shadow .2s;
+  &:hover { background: #1da851; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.4); }
 }
 
-/* ── LEFT — Info ── */
-.contact__info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+/* Right form card */
+.ctc__card {
+  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px;
+  padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem;
 }
 
-.contact__info-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0;
+.ctc__card-title {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0;
 }
 
-.contact__why-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.ctc__field { display: flex; flex-direction: column; gap: .4rem; }
+
+.ctc__field-label {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .78rem; font-weight: 600;
+  color: #334155; letter-spacing: .02em;
 }
 
-.contact__why-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.9rem;
-  color: #334155;
-  font-weight: 500;
-}
-
-.contact__why-icon {
-  width: 36px;
-  height: 36px;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.contact__divider {
-  height: 1px;
-  background: #e2e8f0;
-  margin: 0.25rem 0;
-}
-
-.contact__cta-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #64748b;
-  margin: 0;
-}
-
-/* ── WhatsApp button ── */
-.contact__whatsapp-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #ffffff;
-  background: #25d366;
-  border: none;
-  border-radius: 999px;
-  padding: 0.7rem 1.4rem;
-  cursor: pointer;
-  text-decoration: none;
-  align-self: flex-start;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-
-  &:hover {
-    background: #1da851;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.38);
-  }
-}
-
-/* ── RIGHT — Form card ── */
-.contact__form-card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 20px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.contact__form-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0;
-}
-
-.contact__field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.contact__label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #334155;
-  letter-spacing: 0.02em;
-}
-
-.contact__input,
-.contact__textarea {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.9rem;
-  color: #0f172a;
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
-  width: 100%;
-  box-sizing: border-box;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-
+.ctc__input,
+.ctc__textarea {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .9rem; color: #0f172a;
+  background: #fff; border: 1.5px solid #e2e8f0; border-radius: 12px;
+  padding: .75rem 1rem; width: 100%; outline: none; box-sizing: border-box;
+  transition: border-color .2s, box-shadow .2s;
   &::placeholder { color: #94a3b8; }
-
-  &:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
-  }
+  &:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.12); }
 }
 
-.contact__textarea {
-  resize: vertical;
-  min-height: 120px;
-}
+.ctc__textarea { resize: vertical; min-height: 120px; }
 
-/* ── Send button ── */
-.contact__send-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #ffffff;
-  background: #2563eb;
-  border: none;
-  border-radius: 12px;
-  padding: 0.85rem 1.5rem;
-  cursor: pointer;
-  width: 100%;
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    background: #1d4ed8;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.32);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  &--sent {
-    background: #16a34a;
-    box-shadow: 0 4px 16px rgba(22, 163, 74, 0.25);
-    pointer-events: none;
-  }
+.ctc__send {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .9rem; font-weight: 600;
+  color: #fff; background: #2563eb; border: none; border-radius: 12px;
+  padding: .9rem 1.5rem; width: 100%; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37,99,235,.25);
+  transition: background .2s, transform .2s, box-shadow .2s;
+  &:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,.32); }
+  &:active { transform: translateY(0); }
+  &--sent { background: #16a34a; pointer-events: none; box-shadow: 0 4px 16px rgba(22,163,74,.25); }
 }

@@ -1,95 +1,46 @@
 /* ============================================================
-   WhyChoose.scss  —  Light Theme
+   WhyChoose.scss — Light theme
    ============================================================ */
 
-.why {
-  background: #ffffff;
-  padding: 6rem 0;
-}
+.why { background: #f8fafc; padding: 6rem 0; }
 
-/* ── Grid ── */
 .why__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
-
-  @media (max-width: 860px) { grid-template-columns: 1fr; }
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
+  @media (max-width: 700px) { grid-template-columns: 1fr; }
 }
 
-/* ── Card ── */
 .why__card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 18px;
-  padding: 2rem 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  position: relative;
-  overflow: hidden;
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 18px;
+  padding: 2rem 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start;
+  position: relative; overflow: hidden;
+  transition: transform .26s cubic-bezier(.4,0,.2,1), box-shadow .26s, border-color .26s;
 
-  transition: transform 0.26s cubic-bezier(0.4,0,0.2,1),
-              box-shadow 0.26s ease,
-              border-color 0.26s ease,
-              background 0.26s ease;
-
-  // Top accent line
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #6366f1);
-    opacity: 0;
-    transition: opacity 0.26s ease;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #818cf8); opacity: 0; transition: opacity .26s;
   }
 
   &--hovered {
-    transform: translateY(-6px);
-    background: #ffffff;
-    border-color: #bfdbfe;
-    box-shadow: 0 12px 36px rgba(37, 99, 235, 0.10);
-
+    transform: translateY(-5px); border-color: #bfdbfe;
+    box-shadow: 0 12px 36px rgba(37,99,235,.10);
     &::before { opacity: 1; }
+    .why__icon { background: #2563eb; color: #fff; transform: scale(1.06); }
   }
 }
 
-/* ── Icon ── */
 .why__icon {
-  width: 52px;
-  height: 52px;
-  background: #eff6ff;
-  border-radius: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #2563eb;
-
-  transition: background 0.22s ease, transform 0.22s ease;
-
-  .why__card--hovered & {
-    background: #2563eb;
-    color: #ffffff;
-    transform: scale(1.08);
-  }
+  width: 50px; height: 50px; background: #eff6ff; border: 1.5px solid #bfdbfe;
+  border-radius: 13px; display: flex; align-items: center; justify-content: center;
+  color: #2563eb; flex-shrink: 0;
+  transition: background .22s, color .22s, transform .22s;
 }
 
-/* ── Title ── */
 .why__title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700;
+  color: #0f172a; margin: 0 0 .35rem;
 }
 
-/* ── Text ── */
 .why__text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.88rem;
-  color: #64748b;
-  line-height: 1.7;
-  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .875rem;
+  color: #64748b; line-height: 1.65; margin: 0;
 }
