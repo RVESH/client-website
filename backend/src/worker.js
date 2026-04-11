@@ -281,18 +281,18 @@ async function handleForgotPassword(request, env) {
   return ok;
 }
 async function sendResetEmail(email, token, env) {
-  const resetLink = `http://localhost:4000/#/reset-password?token=${token}`;
-  await fetch("https://api.resend.com/emails", {
+  const resetLink = `${env.FRONTEND_URL}/#/reset-password?token=${token}`;
+  await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+      "api-key": env.BREVO_API_KEY,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from:    "onboarding@resend.dev",
-      to:      email,
+      sender: { name: "Rishabh Portfolio", email: "rishabh.gaurav.verma@gmail.com" },
+      to: [{ email: email }],
       subject: "Reset your password",
-      html: `<div style="font-family:sans-serif;max-width:400px;margin:0 auto">
+      htmlContent: `<div style="font-family:sans-serif;max-width:400px;margin:0 auto">
         <h2 style="color:#6c63ff">Reset your password</h2>
         <p>Click below to reset. Valid for 1 hour.</p>
         <a href="${resetLink}" style="display:inline-block;background:#6c63ff;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold">
@@ -302,8 +302,7 @@ async function sendResetEmail(email, token, env) {
       </div>`,
     }),
   });
-};
-
+}
 async function handleResetPassword(request, env) {
   const body = await readJson(request);
   if (!body) return res({ error: "Invalid JSON" }, 400, request);

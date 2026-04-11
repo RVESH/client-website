@@ -187,7 +187,7 @@ async function handleForgotPassword(request, env) {
 }
 __name(handleForgotPassword, "handleForgotPassword");
 async function sendResetEmail(email, token, env) {
-  const resetLink = `http://localhost:4000/#/reset-password?token=${token}`;
+  const resetLink = `${env.FRONTEND_URL}/#/reset-password?token=${token}`;
   await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
