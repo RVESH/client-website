@@ -1,0 +1,42 @@
+.post-card {
+  background: var(--bg-card);
+  border: var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  transition: var(--transition);
+
+  &__body {
+    padding: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__time {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  &__btn {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255,255,255,0.2);
+    }
+  }
+}

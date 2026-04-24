@@ -1,0 +1,68 @@
+.sub-page {
+  &__content {
+    padding: 24px 20px;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  &__plans {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .plan-card {
+    background: var(--bg-card);
+    border: 2px solid transparent; // Reserve space
+    border-radius: var(--radius-md);
+    padding: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    &__label { font-size: 1.1rem; font-weight: 700; }
+    &__sub   { color: var(--text-muted); font-size: 0.8rem; grid-row: 2; }
+    &__price { font-size: 1.25rem; font-weight: 800; grid-column: 2; grid-row: 1 / span 2; }
+    &__badge {
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: var(--accent-gradient);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 10px rgba(255, 42, 95, 0.4);
+    }
+
+    &--active {
+      background: rgba(255, 42, 95, 0.05);
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 20px rgba(255, 42, 95, 0.1);
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-glow);
+    cursor: pointer;
+  }
+}

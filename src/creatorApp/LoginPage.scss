@@ -1,0 +1,107 @@
+// LoginPage.scss
+.creator-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: radial-gradient(circle at top left, rgba(255, 42, 95, 0.15), transparent 40%),
+              var(--bg-dark);
+
+  &__card {
+    width: 100%;
+    background: rgba(20, 22, 28, 0.7);
+    backdrop-filter: blur(20px);
+    border: var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 40px 24px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  &__logo {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__sub {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+  }
+
+  &__error {
+    background: rgba(255, 60, 60, 0.1);
+    color: #ff5252;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 60, 60, 0.2);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border: var(--border-glass);
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+
+    &:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px rgba(255, 42, 95, 0.2);
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--accent-gradient);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 8px;
+
+    &:hover {
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__back {
+    margin-top: 24px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--text-main);
+    }
+  }
+}
