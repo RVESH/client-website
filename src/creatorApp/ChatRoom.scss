@@ -1,0 +1,269 @@
+@use './components/theme' as *;
+
+.chat-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-base;
+  position: relative;
+  overflow: hidden; // Prevents background glow from scrolling
+
+  // Sensual ambient glow in the background
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, $pink-glow 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// ── Header ────────────────────────────────────────────────────
+.chat-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $s4;
+  @include glass; // Using your frosted glass mixin
+  border-radius: 0 0 $r-lg $r-lg;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  &__back, &__menu {
+    background: transparent;
+    border: none;
+    color: $text-primary;
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color $dur $ease;
+    &:hover { color: $pink-light; }
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: $s3;
+  }
+
+  &__avatar-wrap {
+    position: relative;
+    width: 44px;
+    height: 44px;
+  }
+
+  &__avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $bg-base;
+    box-shadow: 0 0 15px rgba(255, 77, 166, 0.3);
+  }
+
+  &__status-dot {
+    position: absolute;
+    bottom: 0;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background: #2ed573; // Vibrant green for online status
+    border-radius: 50%;
+    border: 2px solid $bg-base;
+    box-shadow: 0 0 8px rgba(46, 213, 115, 0.5);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 800;
+    color: $white;
+    margin: 0;
+    font-family: $font-display;
+    letter-spacing: 0.02em;
+  }
+
+  &__status {
+    font-size: 11px;
+    color: $text-muted;
+    margin: 0;
+    font-weight: 600;
+  }
+}
+
+// ── Chat Body ─────────────────────────────────────────────────
+.chat-body {
+  flex: 1;
+  padding: $s4;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $s3;
+  z-index: 1;
+
+  // Custom invisible scrollbar for a cleaner look
+  &::-webkit-scrollbar { width: 0; }
+
+  &__timestamp {
+    text-align: center;
+    font-size: 11px;
+    color: $text-muted;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin: $s4 0;
+    text-transform: uppercase;
+  }
+}
+
+// ── Chat Bubbles ──────────────────────────────────────────────
+.chat-bubble {
+  max-width: 75%;
+  padding: 14px $s4;
+  border-radius: $r-xl;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: slideInUp 0.4s $ease forwards;
+  position: relative;
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: $font-body;
+  }
+
+  &__time {
+    font-size: 10px;
+    opacity: 0.7;
+    align-self: flex-end;
+    margin-top: 4px;
+  }
+
+  // Creator's Message (Dark Glass)
+  &--them {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid $border-subtle;
+    color: $text-primary;
+    border-bottom-left-radius: 4px; // Chat tail effect
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  // User's Message (Pink Gradient)
+  &--me {
+    align-self: flex-end;
+    background: $grad-pink;
+    color: $white;
+    border-bottom-right-radius: 4px; // Chat tail effect
+    box-shadow: $shadow-btn;
+  }
+}
+
+// ── Footer / Input Area ───────────────────────────────────────
+.chat-footer {
+  padding: $s3 $s4 $s6; // Extra bottom padding for mobile home bars
+  background: linear-gradient(to top, $bg-base 80%, transparent);
+  z-index: 10;
+}
+
+.chat-form {
+  display: flex;
+  align-items: center;
+  gap: $s2;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid $border-subtle;
+  padding: $s1 $s1 $s1 $s3;
+  border-radius: $r-pill;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color $dur $ease;
+
+  &:focus-within {
+    border-color: $border-pink;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &__attach {
+    background: none;
+    border: none;
+    color: $text-muted;
+    font-size: 24px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color $dur $ease;
+    padding: 0 $s1;
+    &:hover { color: $pink-light; }
+  }
+
+  &__input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: $text-primary;
+    font-size: 14px;
+    font-family: $font-body;
+    outline: none;
+    padding: 10px 0;
+
+    &::placeholder {
+      color: $text-muted;
+      opacity: 0.6;
+    }
+  }
+
+  &__send {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: $text-muted;
+    border: none;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all $dur $ease;
+
+    &--active {
+      background: $grad-pink;
+      color: $white;
+      box-shadow: 0 0 15px $pink-glow;
+      transform: scale(1.05);
+
+      &:active { transform: scale(0.95); }
+    }
+  }
+}
+
+// ── Animations ────────────────────────────────────────────────
+@keyframes slideInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}

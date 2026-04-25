@@ -6,6 +6,7 @@ import LoginPage        from "./Loginpage";
 import Dashboard        from "./Dashboard";
 import SubscriptionPage from "./context/Subscriptionpage";
 import PaymentPage      from "./Paymentpage";
+import ChatRoom         from "./ChatRoom";
 import "./CreatorApp.scss";
 
 // Mobile-only guard
@@ -33,6 +34,7 @@ function CreatorApp() {
               <Route path="/dashboard"   element={<Dashboard />} />
               <Route path="/subscription" element={<SubscriptionPage />} />
               <Route path="/payment"     element={<PaymentPage />} />
+              <Route path="/chat"        element={<ChatRoom />} />    
               <Route path="*"            element={<Navigate to="" replace />} />
             </Routes>
           </div>

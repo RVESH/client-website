@@ -1,85 +1,358 @@
-.pay-page {
-  padding: 24px 20px;
+@use './components/theme' as *;
 
-  &__header {
-    margin-bottom: 32px;
-    
-    h1 { font-size: 1.5rem; margin: 16px 0 4px; }
-    p { color: var(--text-muted); font-size: 0.9rem; }
+.pg-page {
+  min-height: 100vh;
+  background: $bg-base;
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Header ────────────────────────────────────────────────────
+.pg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $s4;
+  background: linear-gradient(135deg, #2d0020, #1a000f);
+  border-bottom: 1px solid $border-pink;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: $s8; right: $s8;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $pink, $gold, $pink, transparent);
+    opacity: 0.5;
   }
 
-  &__back {
-    background: none; border: none; color: var(--text-muted);
-    font-size: 1rem; cursor: pointer; padding: 0;
+  &__back, &__cancel {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid $border-subtle;
+    color: $text-secondary;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all $dur $ease;
+    &:hover { border-color: $border-pink; color: $pink-light; }
   }
 
-  .pay-summary {
-    background: rgba(0,0,0,0.2);
-    border: var(--border-glass);
-    border-radius: var(--radius-md);
-    padding: 20px;
-    margin-bottom: 24px;
-
-    h3 { font-size: 1rem; color: var(--text-muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
-    
-    &__row {
-      display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 600;
-      &--light { color: var(--text-muted); font-weight: 400; font-size: 0.85rem; }
-    }
-    
-    &__divider { height: 1px; background: rgba(255,255,255,0.1); margin: 16px 0; }
-    &__total { font-size: 1.2rem; font-weight: 800; color: var(--accent-primary); margin-bottom: 0; }
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $s2;
+    font-family: $font-display;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    background: linear-gradient(135deg, $pink-light, $gold-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .pay-methods {
-    margin-bottom: 32px;
-    h3 { font-size: 1.1rem; margin-bottom: 16px; }
-  }
-
-  .pay-method {
-    display: flex; align-items: center; gap: 16px;
-    padding: 16px; border: var(--border-glass); border-radius: 12px;
-    margin-bottom: 12px; cursor: pointer; transition: var(--transition);
-
-    &__icon { font-size: 1.5rem; }
-    &__label { font-weight: 600; font-size: 1rem; }
-    &__sub { color: var(--text-muted); font-size: 0.8rem; }
-    &__radio { margin-left: auto; font-size: 1.2rem; }
-
-    &--active {
-      border-color: var(--accent-primary);
-      background: rgba(255, 42, 95, 0.05);
-    }
-  }
-
-  .pay-btn {
-    width: 100%; padding: 16px; background: #fff; color: #000;
-    border: none; border-radius: 16px; font-size: 1.1rem; font-weight: 800;
-    cursor: pointer; margin-bottom: 16px;
-    &:disabled { opacity: 0.7; cursor: not-allowed; }
-  }
-
-  .pay-status {
-    padding: 16px; border-radius: 12px; text-align: center; font-weight: 600; margin-bottom: 16px;
-    &--fail { background: rgba(255, 60, 60, 0.1); color: #ff5252; border: 1px solid rgba(255, 60, 60, 0.2);
-      button { display: block; width: 100%; margin-top: 12px; padding: 10px; background: #ff5252; color: #fff; border: none; border-radius: 8px; cursor: pointer;}
-    }
-    &--success { background: rgba(76, 175, 80, 0.1); color: #4CAF50; border: 1px solid rgba(76, 175, 80, 0.2); }
-  }
-
-  .pay-loading {
-    text-align: center; padding: 24px; color: var(--text-muted);
-    .pay-spinner {
-      width: 40px; height: 40px; margin: 0 auto 16px;
-      border: 4px solid rgba(255, 255, 255, 0.1); border-top-color: var(--accent-primary);
-      border-radius: 50%; animation: spin 1s linear infinite;
-    }
-  }
-
-  .pay-trust {
-    text-align: center; color: var(--text-muted); font-size: 0.8rem;
-    &__badges { display: flex; justify-content: center; gap: 8px; margin-top: 8px; opacity: 0.5; }
+  &__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: $pink;
+    box-shadow: 0 0 8px $pink-glow;
+    animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
   }
 }
 
-@keyframes spin { 100% { transform: rotate(360deg); } }
+// ── Amount pill ───────────────────────────────────────────────
+.pg-amount-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: $s4 $s4 0;
+  background: $grad-card;
+  border: 1px solid $border-pink;
+  border-radius: $r-pill;
+  padding: $s3 $s5;
+
+  &__name {
+    font-size: 13px;
+    font-weight: 600;
+    color: $text-secondary;
+    font-family: $font-display;
+    letter-spacing: 0.04em;
+  }
+
+  &__price {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: $font-display;
+    background: $grad-pink;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// ── Content ───────────────────────────────────────────────────
+.pg-content {
+  flex: 1;
+  padding: $s5 $s4;
+  animation: fadeUp 0.35s $ease both;
+}
+
+.pg-step { display: flex; flex-direction: column; gap: $s4; }
+
+.pg-select-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-muted;
+  font-family: $font-display;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+// ── Method cards ──────────────────────────────────────────────
+.pg-methods { display: flex; flex-direction: column; gap: $s3; }
+
+.pg-method {
+  display: flex;
+  align-items: center;
+  gap: $s3;
+  padding: $s3 $s4;
+  background: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $r-md;
+  cursor: pointer;
+  transition: all $dur $ease;
+
+  &--active { border-color: $pink; background: rgba(255,77,166,0.08); box-shadow: 0 0 0 1px $pink; }
+  &:hover:not(&--active) { background: rgba(255,255,255,0.04); border-color: $border-pink; }
+
+  &__icon { font-size: 22px; }
+  &__label { font-size: 14px; font-weight: 600; color: $text-primary; margin: 0 0 2px; }
+  &__sub   { font-size: 11px; color: $text-muted; margin: 0; font-family: $font-display; }
+  &__radio { margin-left: auto; font-size: 14px; }
+}
+
+// ── UPI apps ──────────────────────────────────────────────────
+.pg-upi-apps {
+  display: flex;
+  gap: $s3;
+}
+
+.pg-upi-app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $s2;
+  padding: $s4 $s2;
+  background: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $r-md;
+  cursor: pointer;
+  transition: all $dur $ease;
+
+  &--active { border-color: $pink; background: rgba(255,77,166,0.1); box-shadow: 0 0 0 1px $pink; }
+  &:hover:not(&--active) { border-color: $border-pink; }
+
+  &__label { font-size: 11px; font-weight: 600; color: $text-secondary; font-family: $font-display; }
+}
+
+.pg-fetching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $s3;
+  padding: $s5;
+
+  p { font-size: 13px; color: $text-muted; font-family: $font-display; letter-spacing: 0.08em; animation: pulse 1.5s infinite; }
+}
+
+// ── Card form ─────────────────────────────────────────────────
+.pg-card-form { display: flex; flex-direction: column; gap: $s3; }
+
+.pg-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: $s3; }
+
+.pg-field {
+  display: flex;
+  flex-direction: column;
+  gap: $s1;
+
+  label { font-size: 11px; font-weight: 700; color: $text-muted; font-family: $font-display; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  input {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid $border-subtle;
+    border-radius: $r-sm;
+    padding: 13px $s4;
+    font-size: 14px;
+    color: $text-primary;
+    font-family: $font-body;
+    outline: none;
+    transition: all $dur $ease;
+    width: 100%;
+
+    &::placeholder { color: $text-muted; font-size: 13px; }
+    &:focus { border-color: $border-pink; background: rgba(255,77,166,0.06); box-shadow: 0 0 0 3px rgba(255,77,166,0.12); }
+  }
+}
+
+.pg-field-err { font-size: 12px; color: #ff6b6b; font-family: $font-display; margin: 0; }
+
+// ── Bank grid ─────────────────────────────────────────────────
+.pg-banks { display: grid; grid-template-columns: 1fr 1fr; gap: $s2; }
+
+.pg-bank {
+  display: flex;
+  align-items: center;
+  gap: $s2;
+  padding: $s3 $s3;
+  background: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $r-sm;
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all $dur $ease;
+
+  &--active { border-color: $pink; color: $text-primary; background: rgba(255,77,166,0.08); }
+  &:hover:not(&--active) { border-color: $border-pink; }
+}
+
+// ── Buttons ───────────────────────────────────────────────────
+.pg-btn {
+  width: 100%;
+  background: $grad-pink;
+  color: white;
+  border: none;
+  border-radius: $r-md;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: $font-body;
+  cursor: pointer;
+  box-shadow: $shadow-btn;
+  transition: all $dur $ease;
+  letter-spacing: 0.02em;
+
+  &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,77,166,0.5); }
+  &:active:not(:disabled) { transform: scale(0.97); }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+.pg-back-btn {
+  width: 100%;
+  background: none;
+  border: 1px solid $border-subtle;
+  border-radius: $r-md;
+  padding: 12px;
+  font-size: 13px;
+  color: $text-muted;
+  font-family: $font-body;
+  cursor: pointer;
+  transition: all $dur $ease;
+
+  &:hover { border-color: $border-pink; color: $text-secondary; }
+}
+
+// ── Spinners ──────────────────────────────────────────────────
+.pg-spinner {
+  width: 28px; height: 28px;
+  border: 3px solid $border-pink;
+  border-top-color: $pink;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  box-shadow: 0 0 12px $pink-glow;
+}
+
+.pg-spinner--lg {
+  width: 56px; height: 56px;
+  border: 4px solid $border-pink;
+  border-top-color: $pink;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  box-shadow: 0 0 24px $pink-glow;
+}
+
+// ── Processing ────────────────────────────────────────────────
+.pg-processing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $s5;
+  padding: $s10 $s4;
+  text-align: center;
+  flex: 1;
+  animation: fadeUp 0.4s $ease;
+
+  h2 { font-size: 20px; font-weight: 800; color: $text-primary; margin: 0; }
+  p  { font-size: 13px; color: $text-muted; margin: 0; font-family: $font-display; letter-spacing: 0.06em; animation: pulse 1.5s infinite; }
+}
+
+// ── Results ───────────────────────────────────────────────────
+.pg-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $s4;
+  padding: $s8 $s4;
+  text-align: center;
+  animation: fadeUp 0.4s $ease;
+
+  &__icon { font-size: 56px; filter: drop-shadow(0 0 16px rgba(255,255,255,0.2)); }
+
+  h2 { font-size: 22px; font-weight: 800; color: $text-primary; margin: 0; }
+  p  { font-size: 14px; color: $text-secondary; margin: 0; line-height: 1.6; }
+
+  &--success { h2 { background: linear-gradient(135deg, #2ed573, #7bed9f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; } }
+  &--fail    { h2 { color: #ff6b6b; } }
+}
+
+// ── Cancel step ───────────────────────────────────────────────
+.pg-cancel-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $s4;
+  padding: $s6 0;
+  text-align: center;
+  animation: fadeUp 0.4s $ease;
+
+  h2 { font-size: 20px; font-weight: 800; color: $text-primary; margin: 0; }
+  p  { font-size: 13px; color: $text-muted; margin: 0; }
+
+  .pg-result__icon { font-size: 48px; }
+}
+
+.pg-reasons { display: flex; flex-direction: column; gap: $s2; width: 100%; }
+
+.pg-reason {
+  padding: $s3 $s4;
+  background: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $r-sm;
+  font-size: 14px;
+  color: $text-secondary;
+  cursor: pointer;
+  text-align: left;
+  transition: all $dur $ease;
+  width: 100%;
+
+  &--active { border-color: $pink; color: $text-primary; background: rgba(255,77,166,0.08); }
+  &:hover:not(&--active) { border-color: $border-pink; }
+}
+
+// ── Trust bar ─────────────────────────────────────────────────
+.pg-trust {
+  text-align: center;
+  font-size: 11px;
+  color: $text-muted;
+  font-family: $font-display;
+  letter-spacing: 0.06em;
+  padding: $s4;
+  border-top: 1px solid $border-subtle;
+}

@@ -1,5 +1,6 @@
-// _theme.scss — Global Design Tokens
-// Pink Luxury · Soft Feminine · Glassmorphism
+// _theme.scss 
+// — Global Design Tokens
+// Dark Luxury Pink · Soft Feminine · Glassmorphism
 
 // ── Colors ─────────────────────────────────────────────────────
 $pink:        #ff4da6;
@@ -10,6 +11,7 @@ $rose:        #ffe4f0;
 $peach:       #ffb3d1;
 
 $gold:        #f5a623;
+$gold-light:  #ffd666; // ADDED: Brighter gold for text gradients
 $lavender:    #e8d5f5;
 
 $white:       #ffffff;
@@ -17,27 +19,45 @@ $off-white:   #fdf8fc;
 $surface:     rgba(255,255,255,0.72);
 $glass:       rgba(255,255,255,0.55);
 
-$text-dark:   #1a0a12;
-$text-mid:    #5a3d4a;
-$text-light:  #b08090;
-$text-muted:  #d4a8bc;
+// Backgrounds (ADDED: For the dark luxury theme)
+$bg-base:     #0d0006; // Deep, rich obsidian-plum for the main page
+$bg-card:     #170510; // Slightly lighter plum/black for cards
+
+// Text Colors (ADDED: primary and secondary for dark mode)
+$text-primary:   #ffffff;
+$text-secondary: #ffb3d1; // Soft peach/pink for readable secondary text
+$text-dark:      #1a0a12;
+$text-mid:       #5a3d4a;
+$text-light:     #b08090;
+$text-muted:     #d4a8bc;
+
+// Glows & Borders (ADDED)
+$pink-glow:      rgba(255, 77, 166, 0.45);
+$border-pink:    rgba(255, 77, 166, 0.3);
+$border-subtle:  rgba(255, 255, 255, 0.08);
+
 
 // ── Gradients ──────────────────────────────────────────────────
 $grad-hero:    linear-gradient(135deg, #ff4da6 0%, #ff8c69 50%, #ffb347 100%);
-$grad-card:    linear-gradient(145deg, #fff0f7 0%, #ffe4f0 100%);
+$grad-card:    linear-gradient(145deg, #1f0715 0%, #12020a 100%); // Adjusted to fit dark theme
 $grad-purple:  linear-gradient(135deg, #c471ed, #f64f59);
 $grad-gold:    linear-gradient(135deg, #f5a623, #f53d7a);
 $grad-soft:    linear-gradient(180deg, #fff0f7 0%, #ffffff 100%);
 $grad-glass:   linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,240,247,0.3));
+$grad-pink:    linear-gradient(135deg, $pink-light, $pink); // ADDED
+
 
 // ── Typography ─────────────────────────────────────────────────
 $font-display: 'Playfair Display', 'Georgia', serif;
 $font-body:    'DM Sans', 'Segoe UI', sans-serif;
 $font-mono:    'DM Mono', monospace;
 
+
 // ── Spacing ────────────────────────────────────────────────────
 $s1: 4px;  $s2: 8px;  $s3: 12px; $s4: 16px;
 $s5: 20px; $s6: 24px; $s7: 32px; $s8: 48px;
+$s10: 64px; // ADDED: Required for pg-processing padding
+
 
 // ── Radius ─────────────────────────────────────────────────────
 $r-sm:   8px;
@@ -45,17 +65,22 @@ $r-md:   14px;
 $r-lg:   20px;
 $r-xl:   28px;
 $r-full: 999px;
+$r-pill: 99px; // ADDED: Standard pill shape for price tags
+
 
 // ── Shadows ────────────────────────────────────────────────────
 $shadow-soft:   0 4px 24px rgba(255, 77, 166, 0.12);
 $shadow-glow:   0 0 32px rgba(255, 77, 166, 0.22);
-$shadow-card:   0 8px 32px rgba(180, 60, 100, 0.10);
+$shadow-card:   0 8px 32px rgba(0, 0, 0, 0.4); // Adjusted for dark theme
 $shadow-heavy:  0 16px 48px rgba(255, 77, 166, 0.20);
+$shadow-btn:    0 6px 20px rgba(255, 77, 166, 0.35); // ADDED: for pg-btn
+
 
 // ── Transitions ────────────────────────────────────────────────
 $ease:    cubic-bezier(0.16, 1, 0.3, 1);
 $dur:     200ms;
 $dur-lg:  400ms;
+
 
 // ── Mixins ─────────────────────────────────────────────────────
 
@@ -63,14 +88,15 @@ $dur-lg:  400ms;
   background: $glass;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @mixin card-base {
-  background: $white;
+  background: $bg-card; // Swapped to use new dark card bg
   border-radius: $r-lg;
   box-shadow: $shadow-card;
   overflow: hidden;
+  border: 1px solid $border-subtle;
 }
 
 @mixin pink-btn {
@@ -93,7 +119,7 @@ $dur-lg:  400ms;
 
 @mixin outline-btn {
   background: transparent;
-  color: $pink;
+  color: $pink-light; // Swapped to light for better dark mode contrast
   border: 1.5px solid $pink;
   border-radius: $r-full;
   padding: 10px 20px;
@@ -103,7 +129,9 @@ $dur-lg:  400ms;
   cursor: pointer;
   transition: all $dur $ease;
 
-  &:hover { background: $pink-pale; }
+  &:hover { 
+    background: rgba(255, 77, 166, 0.1); 
+  }
 }
 
 @mixin fade-up($delay: 0ms) {
