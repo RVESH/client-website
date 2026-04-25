@@ -1,4 +1,4 @@
-// import "./Hero.scss";
+import "./Hero.scss";
 
 const Hero = () => (
   <div className="creator-hero">

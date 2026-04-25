@@ -1,9 +1,50 @@
 // LandingPage.scss
 .landing-page {
-  padding-bottom: 40px;
+  background-color: #08080a; // Deepest, sleekest matte black
+  min-height: 100vh;
+  color: #f1f5f9;
+  font-family: 'Inter', -apple-system, sans-serif;
+  
+  // Crucial: This adds space at the bottom so the floating nav doesn't cover the cards!
+  padding-bottom: 120px; 
+  position: relative;
+
+  &::after {
+    // Elegant bottom fade to blend with the nav
+    content: '';
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(to top, rgba(8, 8, 10, 1), transparent);
+    pointer-events: none;
+    z-index: 10;
+  }
 }
 
 .landing-section {
-  margin-top: 32px;
-}
+  margin-top: 40px;
+  position: relative;
+  z-index: 2;
 
+  .section-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 24px 24px;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    // Trustable, sharp accent line next to the title
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: #e11d48; // Premium crimson
+      border-radius: 4px;
+      box-shadow: 0 0 12px rgba(225, 29, 72, 0.6);
+    }
+  }
+}

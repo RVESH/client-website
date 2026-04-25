@@ -1,0 +1,71 @@
+// BottomNav.scss
+.bottom-nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px); // Margins on mobile
+  max-width: 400px;
+  background: rgba(20, 22, 28, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 126, 179, 0.2); // Blush outline
+  border-radius: 30px; // Sexy pill shape
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 20px;
+  z-index: 1000;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 
+              0 0 15px rgba(255, 126, 179, 0.1); // Inner glow
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    padding: 8px 16px;
+
+    .icon {
+      font-size: 1.4rem;
+      transition: var(--transition);
+    }
+
+    // Inactive hover effect
+    &:hover:not(.active) {
+      color: rgba(255, 255, 255, 0.8);
+      .icon { transform: translateY(-2px); }
+    }
+
+    // Active state - Sexy glowing effect
+    &.active {
+      color: #ff7eb3;
+
+      .icon {
+        transform: translateY(-4px);
+        filter: drop-shadow(0 4px 8px rgba(255, 126, 179, 0.5));
+      }
+
+      // Elegant little dot indicator below active item
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        background: #ff7eb3;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #ff7eb3;
+      }
+    }
+  }
+}

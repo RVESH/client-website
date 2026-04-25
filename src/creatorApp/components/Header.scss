@@ -1,0 +1,78 @@
+// Header.scss
+.creator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(8, 8, 10, 0.85); // Matte glass
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__username {
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-transform: lowercase;
+  }
+
+  &__install {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    font-size: 0.6rem; // Kept small to save space
+    padding: 4px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px; // Tighter gap for mobile
+    align-items: center;
+
+    button {
+      padding: 8px 12px; // Slimmer padding
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.75rem; // Scaled down for mobile fit
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &.btn-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #e2e8f0;
+      }
+
+      &.btn-primary {
+        background: #e11d48;
+        border: none;
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3); // Sexy subtle glow
+      }
+
+      &.btn-ghost {
+        background: transparent;
+        border: none;
+        color: #94a3b8;
+        padding: 8px 4px; // Minimal space for ghost button
+      }
+    }
+  }
+}

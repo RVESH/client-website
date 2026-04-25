@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSubscription } from "./context/Subscriptioncontext";
-// import "./PaymentPage.scss";
+import "./PaymentPage.scss";
 
 const PaymentPage = () => {
   const navigate  = useNavigate();

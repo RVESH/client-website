@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-// import "./SubscriptionPage.scss";
+import "./SubscriptionPage.scss";
 
 const PLANS = [
   { id: "1m",  label: "1 Month",   sub: "Billed once",  price: "₹499",  popular: false },

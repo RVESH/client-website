@@ -1,16 +1,26 @@
-// CreatorApp.scss
+// CreatorApp.scss (Global Styles)
 :root {
-  --bg-dark: #0f1115;
-  --bg-card: rgba(255, 255, 255, 0.03);
-  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  // Deep, luxurious dark plum/slate background
+  --bg-dark: #0e0a12; 
+  
+  // Soft frosted glass for cards
+  --bg-card: rgba(255, 126, 179, 0.04);
+  --bg-card-hover: rgba(255, 126, 179, 0.08);
+  
+  // Typography
   --text-main: #ffffff;
-  --text-muted: #8b92a5;
-  --accent-primary: #ff2a5f;
-  --accent-gradient: linear-gradient(135deg, #ff2a5f 0%, #ff7e40 100%);
-  --border-glass: 1px solid rgba(255, 255, 255, 0.08);
-  --shadow-glow: 0 8px 32px rgba(255, 42, 95, 0.15);
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --text-muted: #a69cb4; // Soft lavender-grey
+  
+  // Rose Gold / Blush Accents
+  --accent-primary: #ff7eb3; 
+  --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+  
+  // Glassmorphism borders and glows
+  --border-glass: 1px solid rgba(255, 126, 179, 0.15);
+  --shadow-glow: 0 10px 30px rgba(255, 126, 179, 0.25);
+  
+  --radius-md: 18px; // Slightly softer, rounder corners
+  --radius-lg: 28px;
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -18,7 +28,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', 'SF Pro Display', sans-serif;
 }
 
 body {
@@ -33,17 +43,19 @@ body {
   max-width: 480px; // Mobile optimized
   margin: 0 auto;
   background-color: var(--bg-dark);
+  background-image: radial-gradient(circle at top right, rgba(255, 126, 179, 0.05), transparent 40%);
   position: relative;
   overflow-x: hidden;
   box-shadow: 0 0 50px rgba(0,0,0,0.5);
 }
 
-// Reusable Utilities
+// Global typography utilities
 .section-title {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 800;
   margin: 0 20px 16px;
-  background: var(--text-main);
+  font-family: 'Playfair Display', serif; // Chic serif touch for titles
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
