@@ -22,6 +22,7 @@ const MobileGuard = ({ children }) => {
   return children;
 };
 
+
 function CreatorApp() {
   return (
     <AuthProvider>
