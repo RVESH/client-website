@@ -1,3 +1,5 @@
+// pages/Landingpage.jsx
+import { useNavigate } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Slider from "./components/Slider";
@@ -5,6 +7,9 @@ import ServiceCard from "./components/Servicecard";
 import SubscriptionCard from "./components/Subscriptioncard";
 import PostCard from "./components/Postcard";
 import BottomNav from "./components/Bottomnav";
+import EventCard from "./components/EventCard";
+import SocialSection from "./components/SocialSection";
+import PushNotificationPopup from "./components/PushNotificationPopup";
 import "./LandingPage.scss";
 
 const SERVICES = [
@@ -14,50 +19,69 @@ const SERVICES = [
 ];
 
 const SUBS = [
-  { title: "The Premium Membership", desc: "Get direct access to my behind-the-scenes, premium tutorials, and private community.", plan: "1 Month", price: "₹499" },
-  { title: "The Premium Membership", desc: "Get direct access to my behind-the-scenes, premium tutorials, and private community.", plan: "3 Months", price: "₹1299" },
+  { title: "The Premium Membership", desc: "Direct access to behind-the-scenes, premium tutorials, and private community.", plan: "1 Month", price: "₹499" },
+  { title: "The VIP Membership", desc: "Direct access to behind-the-scenes, premium tutorials, and private community.", plan: "3 Months", price: "₹1299" },
+];
+
+const EVENTS = [
+  { title: "Live Q&A Masterclass", date: "Oct 25", time: "8:00 PM", price: "₹999", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" },
 ];
 
 const POSTS = [
   { title: "Designing my new workspace",       timestamp: "Posted Recently", image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=300&h=200&fit=crop" },
   { title: "My updated morning routine",        timestamp: "2 days ago",     image: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=300&h=200&fit=crop" },
   { title: "Behind the scenes: Photo shoot",    timestamp: "1 week ago",     image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=300&h=200&fit=crop" },
-  { title: "How I organize my ideas",           timestamp: "2 weeks ago",    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=300&h=200&fit=crop" },
-  { title: "Q&A: Answering your top questions", timestamp: "3 weeks ago",    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop" },
-  { title: "Exclusive sneak peek at new merch", timestamp: "1 month ago",    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop" },
 ];
 
-const LandingPage = () => (
-  <div className="landing-page">
-    <Header />
-    <Hero />
+const LandingPage = () => {
+  const navigate = useNavigate();
 
-    <section className="landing-section">
-      <Slider
-        title="1-on-1 Services"
-        items={SERVICES}
-        renderItem={(s) => <ServiceCard {...s} />}
-      />
-    </section>
+  return (
+    <div className="landing-page">
+      <PushNotificationPopup />
+      <Header />
+      <Hero />
 
-    <section className="landing-section">
-      <Slider
-        title="Premium Access"
-        items={SUBS}
-        renderItem={(s) => <SubscriptionCard {...s} />}
-      />
-    </section>
+      <section className="landing-section">
+        <Slider title="1-on-1 Services" items={SERVICES} renderItem={(s) => <ServiceCard {...s} />} />
+      </section>
 
-    <section className="landing-section">
-      <h2 className="section-title">Exclusive Posts</h2>
-      <div className="posts-grid">
-        {POSTS.map((p, i) => <PostCard key={i} {...p} />)}
-      </div>
-    </section>
+      <section className="landing-section">
+        <Slider title="Premium Access" items={SUBS} renderItem={(s) => <SubscriptionCard {...s} />} />
+      </section>
 
-    <div style={{ height: 80 }} />
-    <BottomNav />
-  </div>
-);
+      <section className="landing-section">
+        <h2 className="section-title">Upcoming Events</h2>
+        <div className="posts-grid">
+          {EVENTS.map((e, i) => <EventCard key={i} {...e} />)}
+        </div>
+      </section>
+
+      <section className="landing-section">
+        <h2 className="section-title">Exclusive Posts</h2>
+        <div className="posts-grid">
+          {POSTS.map((p, i) => <PostCard key={i} {...p} />)}
+        </div>
+      </section>
+
+      <SocialSection />
+
+      {/* NEW: Legal Footer */}
+      <footer className="landing-footer">
+        <div className="landing-footer__links" onClick={() => navigate("/terms")}>
+          <span>Terms of Service</span>
+          <span className="dot">•</span>
+          <span>Privacy Policy</span>
+          <span className="dot">•</span>
+          <span>Refunds</span>
+        </div>
+        <p className="landing-footer__copy">© {new Date().getFullYear()} Sarahaf. All rights reserved.</p>
+      </footer>
+
+      <div style={{ height: 100 }} /> {/* Padding for BottomNav */}
+      <BottomNav />
+    </div>
+  );
+};
 
 export default LandingPage;

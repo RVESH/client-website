@@ -5,6 +5,7 @@
   background: $bg-base;
   display: flex;
   flex-direction: column;
+  color: $text-primary;
 }
 
 // ── Header ────────────────────────────────────────────────────
@@ -13,18 +14,9 @@
   align-items: center;
   justify-content: space-between;
   padding: $s4;
-  background: linear-gradient(135deg, #2d0020, #1a000f);
-  border-bottom: 1px solid $border-pink;
+  background: $bg-card;
+  border-bottom: 1px solid $border-subtle;
   position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: $s8; right: $s8;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, $pink, $gold, $pink, transparent);
-    opacity: 0.5;
-  }
 
   &__back, &__cancel {
     background: rgba(255,255,255,0.06);
@@ -45,7 +37,7 @@
     gap: $s2;
     font-family: $font-display;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 0.08em;
     background: linear-gradient(135deg, $pink-light, $gold-light);
     -webkit-background-clip: text;
@@ -56,10 +48,9 @@
   &__dot {
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: $pink;
-    box-shadow: 0 0 8px $pink-glow;
+    background: #2ed573; // Green secure dot
+    box-shadow: 0 0 8px rgba(46, 213, 115, 0.6);
     animation: pulse 2s ease-in-out infinite;
-    flex-shrink: 0;
   }
 }
 
@@ -73,13 +64,13 @@
   border: 1px solid $border-pink;
   border-radius: $r-pill;
   padding: $s3 $s5;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 
   &__name {
     font-size: 13px;
     font-weight: 600;
     color: $text-secondary;
     font-family: $font-display;
-    letter-spacing: 0.04em;
   }
 
   &__price {
@@ -93,7 +84,7 @@
   }
 }
 
-// ── Content ───────────────────────────────────────────────────
+// ── Content Layout ────────────────────────────────────────────
 .pg-content {
   flex: 1;
   padding: $s5 $s4;
@@ -112,66 +103,10 @@
   margin: 0;
 }
 
-// ── Method cards ──────────────────────────────────────────────
-.pg-methods { display: flex; flex-direction: column; gap: $s3; }
-
-.pg-method {
-  display: flex;
-  align-items: center;
-  gap: $s3;
-  padding: $s3 $s4;
-  background: $bg-card;
-  border: 1px solid $border-subtle;
-  border-radius: $r-md;
-  cursor: pointer;
-  transition: all $dur $ease;
-
-  &--active { border-color: $pink; background: rgba(255,77,166,0.08); box-shadow: 0 0 0 1px $pink; }
-  &:hover:not(&--active) { background: rgba(255,255,255,0.04); border-color: $border-pink; }
-
-  &__icon { font-size: 22px; }
-  &__label { font-size: 14px; font-weight: 600; color: $text-primary; margin: 0 0 2px; }
-  &__sub   { font-size: 11px; color: $text-muted; margin: 0; font-family: $font-display; }
-  &__radio { margin-left: auto; font-size: 14px; }
+// ── Form Inputs (Booking & Card) ──────────────────────────────
+.pg-booking-form, .pg-card-form { 
+  display: flex; flex-direction: column; gap: $s3; 
 }
-
-// ── UPI apps ──────────────────────────────────────────────────
-.pg-upi-apps {
-  display: flex;
-  gap: $s3;
-}
-
-.pg-upi-app {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $s2;
-  padding: $s4 $s2;
-  background: $bg-card;
-  border: 1px solid $border-subtle;
-  border-radius: $r-md;
-  cursor: pointer;
-  transition: all $dur $ease;
-
-  &--active { border-color: $pink; background: rgba(255,77,166,0.1); box-shadow: 0 0 0 1px $pink; }
-  &:hover:not(&--active) { border-color: $border-pink; }
-
-  &__label { font-size: 11px; font-weight: 600; color: $text-secondary; font-family: $font-display; }
-}
-
-.pg-fetching {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $s3;
-  padding: $s5;
-
-  p { font-size: 13px; color: $text-muted; font-family: $font-display; letter-spacing: 0.08em; animation: pulse 1.5s infinite; }
-}
-
-// ── Card form ─────────────────────────────────────────────────
-.pg-card-form { display: flex; flex-direction: column; gap: $s3; }
 
 .pg-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: $s3; }
 
@@ -180,44 +115,68 @@
   flex-direction: column;
   gap: $s1;
 
-  label { font-size: 11px; font-weight: 700; color: $text-muted; font-family: $font-display; letter-spacing: 0.08em; text-transform: uppercase; }
+  label { 
+    font-size: 11px; font-weight: 700; color: $text-muted; 
+    font-family: $font-display; letter-spacing: 0.08em; text-transform: uppercase; 
+  }
 
   input {
-    background: rgba(255,255,255,0.04);
+    background: rgba(0,0,0,0.3);
     border: 1px solid $border-subtle;
     border-radius: $r-sm;
-    padding: 13px $s4;
-    font-size: 14px;
+    padding: 14px $s4;
+    font-size: 15px;
     color: $text-primary;
     font-family: $font-body;
     outline: none;
     transition: all $dur $ease;
     width: 100%;
 
-    &::placeholder { color: $text-muted; font-size: 13px; }
-    &:focus { border-color: $border-pink; background: rgba(255,77,166,0.06); box-shadow: 0 0 0 3px rgba(255,77,166,0.12); }
+    &::placeholder { color: $text-muted; font-size: 14px; opacity: 0.5; }
+    
+    &:focus { 
+      border-color: $border-pink; 
+      background: rgba(255,77,166,0.05); 
+      box-shadow: 0 0 0 3px rgba(255,77,166,0.15); 
+    }
   }
 }
 
-.pg-field-err { font-size: 12px; color: #ff6b6b; font-family: $font-display; margin: 0; }
+// ── Payment Methods & Banks ───────────────────────────────────
+.pg-methods { display: flex; flex-direction: column; gap: $s3; }
 
-// ── Bank grid ─────────────────────────────────────────────────
+.pg-method {
+  display: flex; align-items: center; gap: $s3;
+  padding: $s3 $s4;
+  background: $bg-card; border: 1px solid $border-subtle; border-radius: $r-md;
+  cursor: pointer; transition: all $dur $ease;
+
+  &--active { border-color: $pink; background: rgba(255,77,166,0.08); box-shadow: 0 0 0 1px $pink; }
+  &:hover:not(&--active) { background: rgba(255,255,255,0.04); border-color: $border-pink; }
+
+  &__icon { font-size: 22px; }
+  &__label { font-size: 15px; font-weight: 600; color: $text-primary; margin: 0 0 4px; }
+  &__sub   { font-size: 12px; color: $text-muted; margin: 0; font-family: $font-display; }
+  &__radio { margin-left: auto; font-size: 14px; }
+}
+
+.pg-upi-apps { display: flex; gap: $s3; }
+.pg-upi-app {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: $s2;
+  padding: $s4 $s2; background: $bg-card; border: 1px solid $border-subtle; border-radius: $r-md;
+  cursor: pointer; transition: all $dur $ease;
+
+  &--active { border-color: $pink; background: rgba(255,77,166,0.1); box-shadow: 0 0 0 1px $pink; }
+  &:hover:not(&--active) { border-color: $border-pink; }
+
+  &__label { font-size: 12px; font-weight: 600; color: $text-secondary; font-family: $font-display; text-align: center; }
+}
+
 .pg-banks { display: grid; grid-template-columns: 1fr 1fr; gap: $s2; }
-
 .pg-bank {
-  display: flex;
-  align-items: center;
-  gap: $s2;
-  padding: $s3 $s3;
-  background: $bg-card;
-  border: 1px solid $border-subtle;
-  border-radius: $r-sm;
-  font-size: 13px;
-  font-weight: 600;
-  color: $text-secondary;
-  cursor: pointer;
-  transition: all $dur $ease;
-
+  display: flex; align-items: center; gap: $s2; padding: $s3;
+  background: $bg-card; border: 1px solid $border-subtle; border-radius: $r-sm;
+  font-size: 13px; font-weight: 600; color: $text-secondary; cursor: pointer; transition: all $dur $ease;
   &--active { border-color: $pink; color: $text-primary; background: rgba(255,77,166,0.08); }
   &:hover:not(&--active) { border-color: $border-pink; }
 }
@@ -225,134 +184,79 @@
 // ── Buttons ───────────────────────────────────────────────────
 .pg-btn {
   width: 100%;
-  background: $grad-pink;
-  color: white;
-  border: none;
-  border-radius: $r-md;
-  padding: 16px;
-  font-size: 16px;
-  font-weight: 700;
-  font-family: $font-body;
-  cursor: pointer;
-  box-shadow: $shadow-btn;
-  transition: all $dur $ease;
-  letter-spacing: 0.02em;
+  background: $grad-pink; color: white; border: none; border-radius: $r-md;
+  padding: 16px; font-size: 16px; font-weight: 700; font-family: $font-body;
+  cursor: pointer; box-shadow: $shadow-btn; transition: all $dur $ease;
+  letter-spacing: 0.02em; margin-top: $s2;
 
   &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,77,166,0.5); }
   &:active:not(:disabled) { transform: scale(0.97); }
-  &:disabled { opacity: 0.4; cursor: not-allowed; }
+  &:disabled { opacity: 0.4; cursor: not-allowed; background: $bg-card; border: 1px solid $border-subtle; color: $text-muted; box-shadow: none; }
 }
 
 .pg-back-btn {
-  width: 100%;
-  background: none;
-  border: 1px solid $border-subtle;
-  border-radius: $r-md;
-  padding: 12px;
-  font-size: 13px;
-  color: $text-muted;
-  font-family: $font-body;
-  cursor: pointer;
-  transition: all $dur $ease;
+  width: 100%; background: none; border: 1px solid transparent; border-radius: $r-md;
+  padding: 12px; font-size: 13px; font-weight: 600; color: $text-muted;
+  cursor: pointer; transition: all $dur $ease;
 
-  &:hover { border-color: $border-pink; color: $text-secondary; }
+  &:hover { color: $text-secondary; background: rgba(255,255,255,0.03); border-color: $border-subtle; }
 }
 
-// ── Spinners ──────────────────────────────────────────────────
-.pg-spinner {
-  width: 28px; height: 28px;
-  border: 3px solid $border-pink;
-  border-top-color: $pink;
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-  box-shadow: 0 0 12px $pink-glow;
+// ── Spinners & Status ─────────────────────────────────────────
+.pg-fetching, .pg-processing {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: $s4; padding: $s6 $s4; text-align: center; animation: fadeUp 0.4s $ease;
 }
 
-.pg-spinner--lg {
-  width: 56px; height: 56px;
-  border: 4px solid $border-pink;
-  border-top-color: $pink;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  box-shadow: 0 0 24px $pink-glow;
-}
-
-// ── Processing ────────────────────────────────────────────────
 .pg-processing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: $s5;
-  padding: $s10 $s4;
-  text-align: center;
-  flex: 1;
-  animation: fadeUp 0.4s $ease;
-
-  h2 { font-size: 20px; font-weight: 800; color: $text-primary; margin: 0; }
-  p  { font-size: 13px; color: $text-muted; margin: 0; font-family: $font-display; letter-spacing: 0.06em; animation: pulse 1.5s infinite; }
-}
-
-// ── Results ───────────────────────────────────────────────────
-.pg-result {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $s4;
-  padding: $s8 $s4;
-  text-align: center;
-  animation: fadeUp 0.4s $ease;
-
-  &__icon { font-size: 56px; filter: drop-shadow(0 0 16px rgba(255,255,255,0.2)); }
-
+  flex: 1; padding: $s10 $s4;
   h2 { font-size: 22px; font-weight: 800; color: $text-primary; margin: 0; }
-  p  { font-size: 14px; color: $text-secondary; margin: 0; line-height: 1.6; }
-
-  &--success { h2 { background: linear-gradient(135deg, #2ed573, #7bed9f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; } }
-  &--fail    { h2 { color: #ff6b6b; } }
+  p  { font-size: 14px; color: $text-muted; margin: 0; animation: pulse 1.5s infinite; }
 }
 
-// ── Cancel step ───────────────────────────────────────────────
-.pg-cancel-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $s4;
-  padding: $s6 0;
-  text-align: center;
-  animation: fadeUp 0.4s $ease;
+.pg-spinner, .pg-spinner--lg {
+  border: 3px solid $border-pink; border-top-color: $pink; border-radius: 50%;
+  animation: spin 0.8s linear infinite; box-shadow: 0 0 15px $pink-glow;
+}
+.pg-spinner { width: 30px; height: 30px; }
+.pg-spinner--lg { width: 60px; height: 60px; border-width: 4px; box-shadow: 0 0 30px $pink-glow; }
 
-  h2 { font-size: 20px; font-weight: 800; color: $text-primary; margin: 0; }
-  p  { font-size: 13px; color: $text-muted; margin: 0; }
+// ── Success / Failed Results ──────────────────────────────────
+.pg-result {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: $s4; padding: $s10 $s4; text-align: center; animation: fadeUp 0.5s $ease; flex: 1;
 
-  .pg-result__icon { font-size: 48px; }
+  &__icon-wrap {
+    width: 90px; height: 90px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: $s2; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  &__icon { font-size: 48px; font-weight: 900; }
+
+  h2 { font-size: 26px; font-weight: 900; margin: 0; font-family: $font-display; }
+  p  { font-size: 15px; color: $text-muted; margin: 0; line-height: 1.6; max-width: 300px; }
+
+  &--success { 
+    .pg-result__icon-wrap { background: rgba(46, 213, 115, 0.15); box-shadow: 0 0 40px rgba(46, 213, 115, 0.3); border: 2px solid #2ed573; }
+    .pg-result__icon { color: #2ed573; filter: drop-shadow(0 0 10px rgba(46, 213, 115, 0.8)); }
+    h2 { background: linear-gradient(135deg, #2ed573, #7bed9f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; } 
+  }
+  
+  &--fail { 
+    .pg-result__icon-wrap { background: rgba(255, 107, 107, 0.15); box-shadow: 0 0 40px rgba(255, 107, 107, 0.3); border: 2px solid #ff6b6b; }
+    .pg-result__icon { color: #ff6b6b; filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.8)); }
+    h2 { color: #ff6b6b; } 
+  }
 }
 
-.pg-reasons { display: flex; flex-direction: column; gap: $s2; width: 100%; }
-
-.pg-reason {
-  padding: $s3 $s4;
-  background: $bg-card;
-  border: 1px solid $border-subtle;
-  border-radius: $r-sm;
-  font-size: 14px;
-  color: $text-secondary;
-  cursor: pointer;
-  text-align: left;
-  transition: all $dur $ease;
-  width: 100%;
-
-  &--active { border-color: $pink; color: $text-primary; background: rgba(255,77,166,0.08); }
-  &:hover:not(&--active) { border-color: $border-pink; }
-}
-
-// ── Trust bar ─────────────────────────────────────────────────
 .pg-trust {
-  text-align: center;
-  font-size: 11px;
-  color: $text-muted;
-  font-family: $font-display;
-  letter-spacing: 0.06em;
-  padding: $s4;
-  border-top: 1px solid $border-subtle;
+  text-align: center; font-size: 11px; color: $text-muted; font-family: $font-display;
+  letter-spacing: 0.08em; padding: $s4; border-top: 1px solid $border-subtle;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  80% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }

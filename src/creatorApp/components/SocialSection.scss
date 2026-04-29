@@ -1,0 +1,46 @@
+// components/SocialSection.scss
+@use '../components/theme' as *;
+
+.social-section {
+  padding: 0 $s5;
+  margin-bottom: $s6;
+
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-bottom: $s4;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $s3;
+  }
+}
+
+.social-card {
+  @include glass;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $s2;
+  padding: $s3;
+  border-radius: $r-md;
+  text-decoration: none;
+  transition: all $dur $ease;
+
+  &__icon { font-size: 18px; }
+  &__name { font-size: 13px; font-weight: 600; color: $text-secondary; }
+
+  &:hover {
+    background: rgba(255, 77, 166, 0.08);
+    border-color: $border-pink;
+    transform: translateY(-2px);
+    .social-card__name { color: $white; }
+  }
+}

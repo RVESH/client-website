@@ -1,0 +1,80 @@
+// components/EventCard.scss
+@use '../components/theme' as *;
+
+.event-card {
+  @include card-base;
+  border-color: $border-pink;
+  position: relative;
+  transition: all $dur $ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(255, 77, 166, 0.15);
+    border-color: $pink-light;
+  }
+
+  &__img-wrap {
+    position: relative;
+    height: 160px;
+    width: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 77, 166, 0.4);
+    color: $white;
+    padding: 6px 12px;
+    border-radius: $r-full;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    background: #ff4d4d;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff4d4d;
+    animation: pulse 1.5s infinite;
+  }
+
+  &__body {
+    padding: $s4;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 800;
+    color: $white;
+    margin-bottom: $s2;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: $text-muted;
+    font-weight: 600;
+    margin-bottom: $s4;
+  }
+
+  &__btn {
+    @include pink-btn;
+    width: 100%;
+    border-radius: $r-md;
+  }
+}
