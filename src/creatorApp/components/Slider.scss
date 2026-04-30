@@ -1,63 +1,116 @@
+// components/Slider.scss
+
+@import './theme';
+
 .creator-slider {
-  padding: 0 20px;
-  margin-bottom: 32px;
+  padding: 0 0 $s5;
+  width: 100%;
 
   &__title {
-    font-size: 1.25rem;
-    margin-bottom: 16px;
+    font-size: 20px; 
     font-weight: 700;
+    color: $pink; 
+    text-align: center;
+    margin: 0 0 $s4; 
+    font-family: $font-heading;
+    letter-spacing: 0.02em;
   }
 
-  &__track {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  &__track { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    gap: $s2; 
+    padding: 0 $s2; 
+  }
+
+  &__item { 
+    flex: 1; 
+    min-width: 0; // Prevents the flex child from overflowing
+    animation: sliderFade 0.3s $ease; // Smooth transition when item changes
   }
 
   &__arrow {
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: white;
-    width: 40px;
-    height: 40px;
+    background: $white; 
+    border: 2px solid $pink-light;
+    color: $pink; 
     border-radius: 50%;
-    font-size: 1.5rem;
-    display: flex;
+    width: 38px; 
+    height: 38px; 
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer; 
+    flex-shrink: 0;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(233, 30, 140, 0.1);
+    transition: all $dur $ease;
+    padding-bottom: 2px; // Optical alignment for standard text arrows (‹ ›)
+
+    // Disabled state (when at the start or end)
+    &:disabled { 
+      opacity: 0.3; 
+      cursor: not-allowed; 
+      border-color: $border-light;
+      color: $text-muted;
+      box-shadow: none;
+    }
+
+    // Hover state
+    &:not(:disabled):hover { 
+      background: $pink; 
+      border-color: $pink;
+      color: $white; 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(233, 30, 140, 0.25);
+    }
+
+    // Click effect
+    &:not(:disabled):active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__dots { 
+    display: flex; 
+    justify-content: center; 
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    backdrop-filter: blur(5px);
-    
-    &:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
+    gap: 8px; 
+    margin-top: $s4; 
+  }
+}
+
+// ── Pagination Dots ───────────────────────────────────────────
+.dot {
+  width: 8px; 
+  height: 8px; 
+  border-radius: 50%;
+  background: $border-light; 
+  cursor: pointer; 
+  transition: all $dur $ease;
+  
+  &:hover:not(&--active) {
+    background: $pink-light;
+    transform: scale(1.1);
   }
 
-  &__item {
-    flex-grow: 1;
-    min-width: 0; // Fixes flex child overflow
+  // Active state becomes a sleek pill shape
+  &--active { 
+    background: $pink; 
+    width: 22px; 
+    border-radius: $r-pill; 
   }
+}
 
-  &__dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 16px;
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      cursor: pointer;
-      transition: var(--transition);
-
-      &--active {
-        background: var(--accent-primary);
-        transform: scale(1.3);
-        box-shadow: 0 0 10px var(--accent-primary);
-      }
-    }
+// ── Item Transition Animation ─────────────────────────────────
+@keyframes sliderFade {
+  from {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

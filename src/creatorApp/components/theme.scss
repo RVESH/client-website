@@ -1,14 +1,14 @@
 // _theme.scss 
 // — Global Design Tokens
 // Dark Luxury Pink · Soft Feminine · Glassmorphism
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 // ── Colors ─────────────────────────────────────────────────────
 $pink:        #ff4da6;
-$pink-light:  #ff80c2;
+$pink-light:  #f4dbe8;
 $pink-pale:   #fff0f7;
 $pink-deep:   #d63384;
 $rose:        #ffe4f0;
-$peach:       #ffb3d1;
+$peach:       #ffd8e8;
 
 $gold:        #f5a623;
 $gold-light:  #ffd666; // ADDED: Brighter gold for text gradients
@@ -18,7 +18,18 @@ $white:       #ffffff;
 $off-white:   #fdf8fc;
 $surface:     rgba(255,255,255,0.72);
 $glass:       rgba(255,255,255,0.55);
+$pink:         #e91e8c;
+$pink-light:   #ffc4e2;
+$pink-bg:      #fce4ec;       // page background
+$white:        #ffffff;        // card backgrounds
 
+$text-dark:    #1a1a1a;
+$text-gray:    #888888;
+$text-muted:   #bbbbbb;
+
+$border-light: #f0d4e8;
+$shadow-card:  0 2px 12px rgba(233, 30, 140, 0.08);
+$shadow-btn:   0 4px 16px rgba(233, 30, 140, 0.35);
 // Backgrounds (ADDED: For the dark luxury theme)
 $bg-base:     #0d0006; // Deep, rich obsidian-plum for the main page
 $bg-card:     #170510; // Slightly lighter plum/black for cards
@@ -49,23 +60,25 @@ $grad-pink:    linear-gradient(135deg, $pink-light, $pink); // ADDED
 
 // ── Typography ─────────────────────────────────────────────────
 $font-display: 'Playfair Display', 'Georgia', serif;
-$font-body:    'DM Sans', 'Segoe UI', sans-serif;
+// $font-body:    'DM Sans', 'Segoe UI', sans-serif;
 $font-mono:    'DM Mono', monospace;
-
+$font-body:    'Poppins', sans-serif;
+$font-heading: 'Poppins', sans-serif;
 
 // ── Spacing ────────────────────────────────────────────────────
 $s1: 4px;  $s2: 8px;  $s3: 12px; $s4: 16px;
-$s5: 20px; $s6: 24px; $s7: 32px; $s8: 48px;
+$s5: 20px; $s6: 24px; $s8: 32px; $s10: 40px;
 $s10: 64px; // ADDED: Required for pg-processing padding
 
 
 // ── Radius ─────────────────────────────────────────────────────
-$r-sm:   8px;
-$r-md:   14px;
-$r-lg:   20px;
-$r-xl:   28px;
+$r-sm:  8px;
+$r-md:  12px;
+$r-lg:  16px;
+$r-xl:  20px;
+$r-pill: 999px;
 $r-full: 999px;
-$r-pill: 99px; // ADDED: Standard pill shape for price tags
+// $r-pill: 99px; // ADDED: Standard pill shape for price tags
 
 
 // ── Shadows ────────────────────────────────────────────────────
@@ -77,8 +90,8 @@ $shadow-btn:    0 6px 20px rgba(255, 77, 166, 0.35); // ADDED: for pg-btn
 
 
 // ── Transitions ────────────────────────────────────────────────
-$ease:    cubic-bezier(0.16, 1, 0.3, 1);
-$dur:     200ms;
+$ease: cubic-bezier(0.16, 1, 0.3, 1);
+$dur:  200ms;
 $dur-lg:  400ms;
 
 

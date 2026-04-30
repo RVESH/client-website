@@ -2,9 +2,18 @@
 @use '../components/theme' as *;
 
 .social-section {
-  padding: 0 $s5;
-  margin-bottom: $s6;
+ padding: $s4 $s4 $s6; text-align: center; background: $pink-bg;
 
+  &__btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white; border-radius: $r-sm;
+    padding: 13px $s8; font-size: 14px; font-weight: 700;
+    text-decoration: none; box-shadow: 0 4px 16px rgba(220,39,67,0.3);
+    transition: all $dur $ease;
+    &:hover  { transform: translateY(-2px); opacity: 0.92; }
+    &:active { transform: scale(0.97); }
+  }
   &__title {
     font-size: 14px;
     font-weight: 700;

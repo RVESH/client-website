@@ -1,68 +1,105 @@
-// CreatorApp.scss (Global Styles)
-:root {
-  // Deep, luxurious dark plum/slate background
-  --bg-dark: #0e0a12; 
-  
-  // Soft frosted glass for cards
-  --bg-card: rgba(255, 126, 179, 0.04);
-  --bg-card-hover: rgba(255, 126, 179, 0.08);
-  
-  // Typography
-  --text-main: #ffffff;
-  --text-muted: #a69cb4; // Soft lavender-grey
-  
-  // Rose Gold / Blush Accents
-  --accent-primary: #ff7eb3; 
-  --accent-gradient: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
-  
-  // Glassmorphism borders and glows
-  --border-glass: 1px solid rgba(255, 126, 179, 0.15);
-  --shadow-glow: 0 10px 30px rgba(255, 126, 179, 0.25);
-  
-  --radius-md: 18px; // Slightly softer, rounder corners
-  --radius-lg: 28px;
-  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
+// pages/CreatorApp.scss
 
+// Ensure this points to your exact variables file location
+@import './components/theme'; // Ensure this points to your new _variables.scss
+
+// ── Global Resets ─────────────────────────────────────────────
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Inter', 'SF Pro Display', sans-serif;
+  font-family: $font-body; // Enforces the Poppins font globally
 }
 
+// ── Body Base ─────────────────────────────────────────────────
+// Ensures the entire browser window matches the app theme, 
+// preventing white borders on larger screens.
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
+  background-color: $pink-bg;
+  color: $text-dark;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+// ── Main App Container ────────────────────────────────────────
 .creator-app {
-  min-height: 100vh;
   width: 100%;
-  max-width: 480px; // Mobile optimized
-  margin: 0 auto;
-  background-color: var(--bg-dark);
-  background-image: radial-gradient(circle at top right, rgba(255, 126, 179, 0.05), transparent 40%);
+  max-width: 420px; // Restricts width to simulate a mobile app layout
+  margin: 0 auto;   // Centers the app on desktop screens
+  min-height: 100vh;
+  background: $pink-bg;
   position: relative;
   overflow-x: hidden;
-  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  
+  // A very soft pink shadow to give it depth when viewed on desktop
+  box-shadow: 0 0 40px rgba(233, 30, 140, 0.05); 
+  
+  // Smooth scroll behavior for the entire app
+  scroll-behavior: smooth;
 }
 
-// Global typography utilities
+// ── Global Typography & Utilities ─────────────────────────────
 .section-title {
-  font-size: 1.3rem;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 700;
   margin: 0 20px 16px;
-  font-family: 'Playfair Display', serif; // Chic serif touch for titles
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: $pink;
+  font-family: $font-heading;
+  letter-spacing: 0.02em;
+
+  &--center {
+    text-align: center;
+  }
 }
 
+// Global grid for mapping posts/events
 .posts-grid {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 0 20px;
+}
+
+// Hide scrollbars for a cleaner app-like feel
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $border-light;
+  border-radius: $r-pill;
+}
+
+// ── Global Animations ─────────────────────────────────────────
+@keyframes fadeUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(15px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes spin {
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
