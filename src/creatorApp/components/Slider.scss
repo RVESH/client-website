@@ -1,116 +1,316 @@
-// components/Slider.scss
-
 @import './theme';
 
+// ─────────────────────────────────────────────────────────────
+// PREMIUM LUXURY SLIDER
+// Sexy • Soft • Glassmorphism • Creator Style
+// ─────────────────────────────────────────────────────────────
+
 .creator-slider {
-  padding: 0 0 $s5;
   width: 100%;
+  padding: $s6 0 $s8;
+  position: relative;
 
+  // Soft glow background
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at top, rgba(255, 79, 163, 0.12), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  // ── Title ─────────────────────────────
   &__title {
-    font-size: 20px; 
-    font-weight: 700;
-    color: $pink; 
+    position: relative;
+    z-index: 1;
+
+    font-size: 28px;
+    font-weight: 800;
     text-align: center;
-    margin: 0 0 $s4; 
+    margin-bottom: $s6;
+
+    background: linear-gradient(
+      135deg,
+      #ff4fa3 0%,
+      #ff8dc7 35%,
+      #ffffff 50%,
+      #ffb6d9 65%,
+      #ff4fa3 100%
+    );
+
+    background-size: 200% auto;
+    animation: shimmerText 5s linear infinite;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    letter-spacing: -0.02em;
     font-family: $font-heading;
-    letter-spacing: 0.02em;
-  }
+    text-shadow: 0 4px 20px rgba(255, 79, 163, 0.18);
 
-  &__track { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-    gap: $s2; 
-    padding: 0 $s2; 
-  }
+    &::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 5px;
+      margin: 12px auto 0;
+      border-radius: 999px;
 
-  &__item { 
-    flex: 1; 
-    min-width: 0; // Prevents the flex child from overflowing
-    animation: sliderFade 0.3s $ease; // Smooth transition when item changes
-  }
+      background: linear-gradient(
+        90deg,
+        #ff4fa3,
+        #ff8dc7,
+        #ffffff,
+        #ff8dc7,
+        #ff4fa3
+      );
 
-  &__arrow {
-    background: $white; 
-    border: 2px solid $pink-light;
-    color: $pink; 
-    border-radius: 50%;
-    width: 38px; 
-    height: 38px; 
-    font-size: 22px;
-    line-height: 1;
-    cursor: pointer; 
-    flex-shrink: 0;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(233, 30, 140, 0.1);
-    transition: all $dur $ease;
-    padding-bottom: 2px; // Optical alignment for standard text arrows (‹ ›)
-
-    // Disabled state (when at the start or end)
-    &:disabled { 
-      opacity: 0.3; 
-      cursor: not-allowed; 
-      border-color: $border-light;
-      color: $text-muted;
-      box-shadow: none;
-    }
-
-    // Hover state
-    &:not(:disabled):hover { 
-      background: $pink; 
-      border-color: $pink;
-      color: $white; 
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(233, 30, 140, 0.25);
-    }
-
-    // Click effect
-    &:not(:disabled):active {
-      transform: scale(0.95);
+      box-shadow: 0 0 16px rgba(255, 79, 163, 0.4);
     }
   }
 
-  &__dots { 
-    display: flex; 
-    justify-content: center; 
+  // ── Track ─────────────────────────────
+  &__track {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
     align-items: center;
-    gap: 8px; 
-    margin-top: $s4; 
+    justify-content: center;
+    gap: $s3;
+
+    padding: 0 $s3;
+  }
+
+  // ── Slider Item ──────────────────────
+  &__item {
+    flex: 1;
+    min-width: 0;
+
+    animation: sliderCardEnter 0.45s $ease;
+
+    border-radius: $r-xl;
+    overflow: hidden;
+
+    transition: transform  $ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  // ── Arrow Buttons ────────────────────
+  &__arrow {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+      0 8px 25px rgba(255, 79, 163, 0.20),
+      inset 0 1px 1px rgba(255,255,255,0.15);
+
+    transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    position: relative;
+    overflow: hidden;
+
+    // Shine Effect
+    &::before {
+      content: "";
+      position: absolute;
+      top: -120%;
+      left: -120%;
+      width: 220%;
+      height: 220%;
+
+      background: linear-gradient(
+        135deg,
+        transparent 35%,
+        rgba(255,255,255,0.22) 50%,
+        transparent 65%
+      );
+
+      transform: rotate(25deg);
+      transition: all 0.7s ease;
+    }
+
+    &:hover::before {
+      top: -40%;
+      left: -40%;
+    }
+
+    &:hover {
+      transform: translateY(-3px) scale(1.06);
+
+      background: linear-gradient(
+        135deg,
+        #ff4fa3,
+        #ff85c0
+      );
+
+      color: white;
+
+      box-shadow:
+        0 14px 34px rgba(255, 79, 163, 0.45),
+        0 0 22px rgba(255, 79, 163, 0.28);
+    }
+
+    &:active {
+      transform: scale(0.92);
+    }
+
+    &:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+      background: rgba(255,255,255,0.06);
+    }
+  }
+
+  // ── Dots ─────────────────────────────
+  &__dots {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: $s5;
   }
 }
 
-// ── Pagination Dots ───────────────────────────────────────────
+// ─────────────────────────────────────
+// Premium Pagination Dots
+// ─────────────────────────────────────
+
 .dot {
-  width: 8px; 
-  height: 8px; 
-  border-radius: 50%;
-  background: $border-light; 
-  cursor: pointer; 
-  transition: all $dur $ease;
-  
-  &:hover:not(&--active) {
-    background: $pink-light;
-    transform: scale(1.1);
+  width: 10px;
+  height: 10px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.22);
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    background: #ff9bcf;
+    transform: scale(1.2);
   }
 
-  // Active state becomes a sleek pill shape
-  &--active { 
-    background: $pink; 
-    width: 22px; 
-    border-radius: $r-pill; 
+  &--active {
+    width: 34px;
+    height: 10px;
+
+    background: linear-gradient(
+      90deg,
+      #ff4fa3,
+      #ff8dc7,
+      #ffffff,
+      #ff8dc7,
+      #ff4fa3
+    );
+
+    background-size: 200% auto;
+
+    animation:
+      activeDotGlow 2s linear infinite,
+      shimmerText 4s linear infinite;
+
+    box-shadow:
+      0 0 16px rgba(255, 79, 163, 0.5);
+
+    transform: scale(1.05);
   }
 }
 
-// ── Item Transition Animation ─────────────────────────────────
-@keyframes sliderFade {
+// ─────────────────────────────────────
+// Animations
+// ─────────────────────────────────────
+
+@keyframes sliderCardEnter {
   from {
-    opacity: 0.5;
-    transform: scale(0.98);
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+    filter: blur(6px);
   }
+
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes activeDotGlow {
+  0%,100% {
+    box-shadow:
+      0 0 12px rgba(255, 79, 163, 0.45);
+  }
+
+  50% {
+    box-shadow:
+      0 0 26px rgba(255, 79, 163, 0.75);
+  }
+}
+
+// ─────────────────────────────────────
+// Mobile Optimization
+// ─────────────────────────────────────
+
+@media (max-width: 480px) {
+
+  .creator-slider {
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__arrow {
+      width: 42px;
+      height: 42px;
+      font-size: 22px;
+    }
+
+    &__track {
+      gap: 10px;
+      padding: 0 6px;
+    }
   }
 }

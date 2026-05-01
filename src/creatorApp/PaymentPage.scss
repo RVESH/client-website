@@ -1,262 +1,623 @@
-@use './components/theme' as *;
+@import './components/theme'; // Adjust path if necessary
+
+// ─────────────────────────────────────────────
+// PREMIUM PAYMENT GATEWAY
+// Secure • Holographic • High-Trust • Luxury
+// ─────────────────────────────────────────────
 
 .pg-page {
+  position: relative;
   min-height: 100vh;
-  background: $bg-base;
+  background-color: #fdfafb;
+  color: #1a0a12;
   display: flex;
   flex-direction: column;
-  color: $text-primary;
+  overflow-x: hidden;
+  z-index: 1;
+
+  // ─────────────────────────
+  // AMBIENT SECURE GLOW
+  // ─────────────────────────
+  &::before,
+  &::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+    animation: floatOrb 8s ease-in-out infinite alternate;
+  }
+
+  &::before {
+    top: -15%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 79, 163, 0.15) 0%, transparent 70%);
+  }
+
+  &::after {
+    bottom: -10%;
+    left: -15%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(245, 166, 35, 0.1) 0%, transparent 70%);
+    animation-delay: -4s;
+  }
 }
 
-// ── Header ────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// HEADER (FROSTED GLASS)
+// ─────────────────────────────────────────────
 .pg-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $s4;
-  background: $bg-card;
-  border-bottom: 1px solid $border-subtle;
-  position: relative;
+  padding: 16px 20px;
+  
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 79, 163, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 
   &__back, &__cancel {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid $border-subtle;
-    color: $text-secondary;
-    width: 36px; height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    font-size: 16px;
+    background: rgba(255, 79, 163, 0.05);
+    border: 1px solid rgba(255, 79, 163, 0.15);
+    color: #8f4f73;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all $dur $ease;
-    &:hover { border-color: $border-pink; color: $pink-light; }
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #ff4fa3;
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(255, 79, 163, 0.25);
+    }
   }
 
   &__brand {
     display: flex;
     align-items: center;
-    gap: $s2;
-    font-family: $font-display;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    background: linear-gradient(135deg, $pink-light, $gold-light);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 800;
+    font-family: $font-heading;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #24111d;
   }
 
   &__dot {
-    width: 8px; height: 8px;
+    width: 8px;
+    height: 8px;
+    background: #00e676; // Secure Green
     border-radius: 50%;
-    background: #2ed573; // Green secure dot
-    box-shadow: 0 0 8px rgba(46, 213, 115, 0.6);
-    animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 10px #00e676, 0 0 20px #00e676;
+    animation: pulseSecure 2s infinite;
   }
 }
 
-// ── Amount pill ───────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// AMOUNT PILL (HOLOGRAPHIC)
+// ─────────────────────────────────────────────
 .pg-amount-pill {
+  margin: 24px 20px 0;
+  padding: 20px 24px;
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: $s4 $s4 0;
-  background: $grad-card;
-  border: 1px solid $border-pink;
-  border-radius: $r-pill;
-  padding: $s3 $s5;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+
+  background: linear-gradient(135deg, #1a0a12 0%, #3a1022 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 15px 35px rgba(26, 10, 18, 0.15),
+    0 5px 15px rgba(255, 79, 163, 0.2);
+
+  position: relative;
+  overflow: hidden;
+  animation: scaleUpIn 0.5s ease forwards;
+
+  // Glossy diagonal shine
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 60%
+    );
+    transform: rotate(45deg);
+    animation: shineSweep 4s infinite;
+  }
 
   &__name {
-    font-size: 13px;
+    position: relative;
+    font-size: 14px;
     font-weight: 600;
-    color: $text-secondary;
-    font-family: $font-display;
+    color: #ffb3d1;
+    letter-spacing: 0.02em;
+    z-index: 1;
   }
 
   &__price {
-    font-size: 20px;
-    font-weight: 800;
-    font-family: $font-display;
-    background: $grad-pink;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    position: relative;
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+    font-family: $font-heading;
+    z-index: 1;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
   }
 }
 
-// ── Content Layout ────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// MAIN CONTENT WRAPPER
+// ─────────────────────────────────────────────
 .pg-content {
   flex: 1;
-  padding: $s5 $s4;
-  animation: fadeUp 0.35s $ease both;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.pg-step { display: flex; flex-direction: column; gap: $s4; }
+.pg-step {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
 .pg-select-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: $text-muted;
-  font-family: $font-display;
-  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 800;
   text-transform: uppercase;
-  margin: 0;
+  letter-spacing: 0.1em;
+  color: #8f4f73;
+  margin: 0 0 4px;
 }
 
-// ── Form Inputs (Booking & Card) ──────────────────────────────
-.pg-booking-form, .pg-card-form { 
-  display: flex; flex-direction: column; gap: $s3; 
+// ─────────────────────────────────────────────
+// FORMS & INPUTS (GLASSMORPHISM)
+// ─────────────────────────────────────────────
+.pg-booking-form, .pg-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.pg-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: $s3; }
+.pg-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
 
 .pg-field {
   display: flex;
   flex-direction: column;
-  gap: $s1;
+  gap: 8px;
 
-  label { 
-    font-size: 11px; font-weight: 700; color: $text-muted; 
-    font-family: $font-display; letter-spacing: 0.08em; text-transform: uppercase; 
+  label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #5a3d4a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   input {
-    background: rgba(0,0,0,0.3);
-    border: 1px solid $border-subtle;
-    border-radius: $r-sm;
-    padding: 14px $s4;
-    font-size: 15px;
-    color: $text-primary;
-    font-family: $font-body;
-    outline: none;
-    transition: all $dur $ease;
     width: 100%;
-
-    &::placeholder { color: $text-muted; font-size: 14px; opacity: 0.5; }
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255, 79, 163, 0.15);
     
-    &:focus { 
-      border-color: $border-pink; 
-      background: rgba(255,77,166,0.05); 
-      box-shadow: 0 0 0 3px rgba(255,77,166,0.15); 
+    font-size: 15px;
+    font-family: $font-body;
+    font-weight: 600;
+    color: #1a0a12;
+    
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
+
+    &::placeholder {
+      color: #b08090;
+      font-weight: 500;
+    }
+
+    &:focus {
+      outline: none;
+      background: white;
+      border-color: #ff4fa3;
+      transform: translateY(-2px);
+      box-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.01),
+        0 8px 20px rgba(255, 79, 163, 0.15);
     }
   }
 }
 
-// ── Payment Methods & Banks ───────────────────────────────────
-.pg-methods { display: flex; flex-direction: column; gap: $s3; }
+.pg-field-err {
+  font-size: 12px;
+  color: #ff3366;
+  font-weight: 700;
+  margin-top: -8px;
+  animation: errorShake 0.4s ease;
+}
 
+// ─────────────────────────────────────────────
+// SELECTION CARDS (METHODS, UPI, BANKS)
+// ─────────────────────────────────────────────
+.pg-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pg-method, .pg-upi-app, .pg-bank {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 79, 163, 0.1);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+
+  &:hover:not(&--active) {
+    transform: translateY(-3px);
+    border-color: rgba(255, 79, 163, 0.3);
+    box-shadow: 0 10px 25px rgba(255, 79, 163, 0.1);
+  }
+
+  &--active {
+    background: rgba(255, 79, 163, 0.08);
+    border-color: #ff4fa3;
+    box-shadow: 0 10px 30px rgba(255, 79, 163, 0.2);
+    transform: scale(1.02);
+  }
+}
+
+// Specific layouts for selections
 .pg-method {
-  display: flex; align-items: center; gap: $s3;
-  padding: $s3 $s4;
-  background: $bg-card; border: 1px solid $border-subtle; border-radius: $r-md;
-  cursor: pointer; transition: all $dur $ease;
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
+  gap: 16px;
 
-  &--active { border-color: $pink; background: rgba(255,77,166,0.08); box-shadow: 0 0 0 1px $pink; }
-  &:hover:not(&--active) { background: rgba(255,255,255,0.04); border-color: $border-pink; }
-
-  &__icon { font-size: 22px; }
-  &__label { font-size: 15px; font-weight: 600; color: $text-primary; margin: 0 0 4px; }
-  &__sub   { font-size: 12px; color: $text-muted; margin: 0; font-family: $font-display; }
-  &__radio { margin-left: auto; font-size: 14px; }
+  &__icon {
+    font-size: 28px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+  }
+  
+  &__label {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1a0a12;
+    margin: 0 0 4px;
+  }
+  
+  &__sub {
+    font-size: 12px;
+    font-weight: 500;
+    color: #8f4f73;
+    margin: 0;
+  }
+  
+  &__radio {
+    margin-left: auto;
+    font-size: 18px;
+  }
 }
 
-.pg-upi-apps { display: flex; gap: $s3; }
+.pg-upi-apps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
 .pg-upi-app {
-  flex: 1; display: flex; flex-direction: column; align-items: center; gap: $s2;
-  padding: $s4 $s2; background: $bg-card; border: 1px solid $border-subtle; border-radius: $r-md;
-  cursor: pointer; transition: all $dur $ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  gap: 12px;
 
-  &--active { border-color: $pink; background: rgba(255,77,166,0.1); box-shadow: 0 0 0 1px $pink; }
-  &:hover:not(&--active) { border-color: $border-pink; }
-
-  &__label { font-size: 12px; font-weight: 600; color: $text-secondary; font-family: $font-display; text-align: center; }
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #3a1022;
+    text-align: center;
+  }
 }
 
-.pg-banks { display: grid; grid-template-columns: 1fr 1fr; gap: $s2; }
+.pg-banks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
 .pg-bank {
-  display: flex; align-items: center; gap: $s2; padding: $s3;
-  background: $bg-card; border: 1px solid $border-subtle; border-radius: $r-sm;
-  font-size: 13px; font-weight: 600; color: $text-secondary; cursor: pointer; transition: all $dur $ease;
-  &--active { border-color: $pink; color: $text-primary; background: rgba(255,77,166,0.08); }
-  &:hover:not(&--active) { border-color: $border-pink; }
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #3a1022;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-// ── Buttons ───────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// BUTTONS
+// ─────────────────────────────────────────────
 .pg-btn {
+  position: relative;
   width: 100%;
-  background: $grad-pink; color: white; border: none; border-radius: $r-md;
-  padding: 16px; font-size: 16px; font-weight: 700; font-family: $font-body;
-  cursor: pointer; box-shadow: $shadow-btn; transition: all $dur $ease;
-  letter-spacing: 0.02em; margin-top: $s2;
+  padding: 18px 24px;
+  margin-top: 12px;
+  
+  border: none;
+  border-radius: 22px;
+  
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: white;
+  
+  background: linear-gradient(135deg, #f5a623 0%, #ff4fa3 50%, #d63384 100%);
+  background-size: 200% auto;
+  box-shadow: 0 12px 25px rgba(255, 79, 163, 0.3);
+  
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  animation: gradientShift 4s linear infinite;
 
-  &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,77,166,0.5); }
-  &:active:not(:disabled) { transform: scale(0.97); }
-  &:disabled { opacity: 0.4; cursor: not-allowed; background: $bg-card; border: 1px solid $border-subtle; color: $text-muted; box-shadow: none; }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-25deg);
+    transition: 0.7s;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 35px rgba(255, 79, 163, 0.4);
+    &::after { left: 200%; }
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  &:disabled {
+    background: #e2d5dc;
+    color: #a68c98;
+    box-shadow: none;
+    cursor: not-allowed;
+    animation: none;
+  }
 }
 
 .pg-back-btn {
-  width: 100%; background: none; border: 1px solid transparent; border-radius: $r-md;
-  padding: 12px; font-size: 13px; font-weight: 600; color: $text-muted;
-  cursor: pointer; transition: all $dur $ease;
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #8f4f73;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 16px;
 
-  &:hover { color: $text-secondary; background: rgba(255,255,255,0.03); border-color: $border-subtle; }
+  &:hover {
+    background: rgba(255, 79, 163, 0.08);
+    color: #ff4fa3;
+  }
 }
 
-// ── Spinners & Status ─────────────────────────────────────────
-.pg-fetching, .pg-processing {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: $s4; padding: $s6 $s4; text-align: center; animation: fadeUp 0.4s $ease;
+// ─────────────────────────────────────────────
+// PROCESSING & SPINNERS
+// ─────────────────────────────────────────────
+.pg-processing, .pg-fetching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: scaleUpIn 0.5s ease;
+  padding: 40px 20px;
 }
 
 .pg-processing {
-  flex: 1; padding: $s10 $s4;
-  h2 { font-size: 22px; font-weight: 800; color: $text-primary; margin: 0; }
-  p  { font-size: 14px; color: $text-muted; margin: 0; animation: pulse 1.5s infinite; }
+  flex: 1;
+  h2 {
+    font-size: 24px;
+    font-weight: 900;
+    color: #1a0a12;
+    margin: 24px 0 8px;
+  }
+  p {
+    font-size: 14px;
+    color: #8f4f73;
+    font-weight: 500;
+    animation: pulseText 2s infinite;
+  }
 }
 
 .pg-spinner, .pg-spinner--lg {
-  border: 3px solid $border-pink; border-top-color: $pink; border-radius: 50%;
-  animation: spin 0.8s linear infinite; box-shadow: 0 0 15px $pink-glow;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 79, 163, 0.2);
+  border-top-color: #ff4fa3;
+  animation: spin 0.8s linear infinite;
 }
-.pg-spinner { width: 30px; height: 30px; }
-.pg-spinner--lg { width: 60px; height: 60px; border-width: 4px; box-shadow: 0 0 30px $pink-glow; }
 
-// ── Success / Failed Results ──────────────────────────────────
+.pg-spinner {
+  width: 30px; height: 30px;
+}
+
+.pg-spinner--lg {
+  width: 70px; height: 70px;
+  border-width: 5px;
+  box-shadow: 0 0 30px rgba(255, 79, 163, 0.2);
+}
+
+// ─────────────────────────────────────────────
+// SUCCESS & FAIL STATES
+// ─────────────────────────────────────────────
 .pg-result {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: $s4; padding: $s10 $s4; text-align: center; animation: fadeUp 0.5s $ease; flex: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  animation: scaleUpIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &__icon-wrap {
-    width: 90px; height: 90px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: $s2; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    box-shadow: inset 0 0 0 6px white;
   }
 
-  &__icon { font-size: 48px; font-weight: 900; }
-
-  h2 { font-size: 26px; font-weight: 900; margin: 0; font-family: $font-display; }
-  p  { font-size: 15px; color: $text-muted; margin: 0; line-height: 1.6; max-width: 300px; }
-
-  &--success { 
-    .pg-result__icon-wrap { background: rgba(46, 213, 115, 0.15); box-shadow: 0 0 40px rgba(46, 213, 115, 0.3); border: 2px solid #2ed573; }
-    .pg-result__icon { color: #2ed573; filter: drop-shadow(0 0 10px rgba(46, 213, 115, 0.8)); }
-    h2 { background: linear-gradient(135deg, #2ed573, #7bed9f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; } 
+  &__icon {
+    font-size: 50px;
+    font-weight: 900;
+    color: white;
   }
-  
-  &--fail { 
-    .pg-result__icon-wrap { background: rgba(255, 107, 107, 0.15); box-shadow: 0 0 40px rgba(255, 107, 107, 0.3); border: 2px solid #ff6b6b; }
-    .pg-result__icon { color: #ff6b6b; filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.8)); }
-    h2 { color: #ff6b6b; } 
+
+  h2 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: 15px;
+    color: #5a3d4a;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 300px;
+  }
+
+  // Emerald Success
+  &--success {
+    .pg-result__icon-wrap {
+      background: #00e676;
+      box-shadow: 0 20px 50px rgba(0, 230, 118, 0.4), inset 0 0 0 6px white;
+      animation: bouncePulse 2s infinite;
+    }
+    h2 { color: #00c853; }
+  }
+
+  // Crimson Fail
+  &--fail {
+    .pg-result__icon-wrap {
+      background: #ff3366;
+      box-shadow: 0 20px 50px rgba(255, 51, 102, 0.4), inset 0 0 0 6px white;
+      animation: errorShake 0.5s ease;
+    }
+    h2 { color: #ff3366; }
   }
 }
 
+// ─────────────────────────────────────────────
+// TRUST BADGE FOOTER
+// ─────────────────────────────────────────────
 .pg-trust {
-  text-align: center; font-size: 11px; color: $text-muted; font-family: $font-display;
-  letter-spacing: 0.08em; padding: $s4; border-top: 1px solid $border-subtle;
+  text-align: center;
+  padding: 24px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #a68c98;
+  border-top: 1px solid rgba(255, 79, 163, 0.1);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
 }
 
-@keyframes popIn {
-  0% { transform: scale(0.5); opacity: 0; }
-  80% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
+// ─────────────────────────────────────────────
+// KEYFRAMES
+// ─────────────────────────────────────────────
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+@keyframes pulseSecure {
+  0% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 230, 118, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+}
+
+@keyframes shineSweep {
+  0% { left: -100%; top: -100%; }
+  20% { left: 200%; top: 200%; }
+  100% { left: 200%; top: 200%; }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleUpIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+@keyframes bouncePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); box-shadow: 0 25px 60px rgba(0, 230, 118, 0.5), inset 0 0 0 6px white; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

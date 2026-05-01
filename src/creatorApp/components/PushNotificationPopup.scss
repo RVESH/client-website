@@ -1,78 +1,184 @@
-// components/PushNotificationPopup.scss
-@use '../components/theme' as *;
+@use './THEME' as *; // Adjust path if necessary
+
+// ─────────────────────────────────────────────
+// PREMIUM PUSH NOTIFICATION POPUP
+// Floating Glass • Spring Animation • Neon Bell
+// ─────────────────────────────────────────────
 
 .push-popup {
   position: fixed;
-  top: 20px;
+  top: 24px;
   left: 50%;
   transform: translateX(-50%);
+  
   width: calc(100% - 32px);
-  max-width: 400px;
-  background: rgba(23, 5, 16, 0.85); // Dark plum glass
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid $border-pink;
-  border-radius: $r-lg;
-  padding: 12px 16px;
+  max-width: 380px;
+  
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  padding: 16px 20px;
   z-index: 9999;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 77, 166, 0.15);
-  animation: slideDown 0.5s $ease forwards;
+  
+  // High-End Glassmorphism
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 28px;
+  
+  box-shadow: 
+    0 25px 50px rgba(255, 79, 163, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.05),
+    inset 0 2px 15px rgba(255, 255, 255, 0.8);
 
+  // Bouncy Spring Entrance Animation
+  animation: slideDownSpring 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+
+  // ─────────────────────────
+  // GLOWING BELL ICON
+  // ─────────────────────────
   &__icon {
-    font-size: 24px;
-    animation: bellRing 2s infinite;
+    font-size: 28px;
+    line-height: 1;
+    filter: drop-shadow(0 4px 10px rgba(255, 79, 163, 0.4));
     transform-origin: top center;
+    animation: premiumBellRing 3s infinite ease-in-out;
   }
 
+  // ─────────────────────────
+  // TEXT CONTENT
+  // ─────────────────────────
   &__content {
     flex: 1;
-    h4 { font-size: 13px; font-weight: 800; color: $white; margin: 0 0 2px; }
-    p { font-size: 11px; color: $text-muted; margin: 0; }
+    
+    h4 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1a0a12;
+      margin: 0 0 4px;
+      letter-spacing: -0.01em;
+    }
+    
+    p {
+      font-size: 12px;
+      font-weight: 600;
+      color: #8f4f73;
+      margin: 0;
+      line-height: 1.4;
+    }
   }
 
+  // ─────────────────────────
+  // ACTIONS CONTAINER
+  // ─────────────────────────
   &__actions {
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
+  // ─────────────────────────
+  // BUTTONS
+  // ─────────────────────────
   &__btn {
     background: transparent;
     border: none;
     cursor: pointer;
-    font-weight: 700;
     font-family: $font-body;
-    transition: all $dur $ease;
-
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    // Glossy Allow Button
     &--allow {
-      color: $pink-light;
-      background: rgba(255, 77, 166, 0.1);
-      padding: 6px 12px;
-      border-radius: $r-sm;
-      font-size: 12px;
-      &:hover { background: $pink; color: $white; }
+      padding: 10px 18px;
+      border-radius: 16px;
+      
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: white;
+      
+      background: linear-gradient(135deg, #f5a623 0%, #ff4fa3 50%, #d63384 100%);
+      background-size: 200% auto;
+      
+      box-shadow: 
+        0 8px 20px rgba(245, 166, 35, 0.25),
+        0 4px 10px rgba(255, 79, 163, 0.2);
+        
+      overflow: hidden;
+      position: relative;
+      animation: gradientShift 4s linear infinite;
+
+      // Glossy light sweep
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 50%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transform: skewX(-25deg);
+        transition: 0.7s;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+          0 12px 25px rgba(245, 166, 35, 0.35),
+          0 6px 15px rgba(255, 79, 163, 0.3);
+        &::after { left: 200%; }
+      }
+      
+      &:active { transform: scale(0.95); }
     }
 
+    // Elegant Deny/Close Button
     &--deny {
-      color: $text-muted;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      
+      color: #a68c98;
       font-size: 14px;
-      padding: 4px;
-      &:hover { color: $white; }
+      font-weight: 700;
+      
+      &:hover {
+        background: rgba(255, 79, 163, 0.1);
+        color: #ff4fa3;
+        transform: rotate(90deg);
+      }
     }
   }
 }
 
-@keyframes slideDown {
-  from { top: -50px; opacity: 0; }
-  to { top: 20px; opacity: 1; }
+// ─────────────────────────────────────────────
+// ANIMATIONS
+// ─────────────────────────────────────────────
+
+@keyframes slideDownSpring {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -40px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
 }
 
-@keyframes bellRing {
+@keyframes premiumBellRing {
   0%, 100% { transform: rotate(0); }
-  10%, 30%, 50% { transform: rotate(10deg); }
-  20%, 40% { transform: rotate(-10deg); }
-  60% { transform: rotate(0); }
+  5%, 15% { transform: rotate(15deg) scale(1.1); }
+  10%, 20% { transform: rotate(-15deg) scale(1.1); }
+  25% { transform: rotate(0) scale(1); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

@@ -1,96 +1,153 @@
-// BottomNav.scss
-@use './theme' as *;
+@use './theme' as *; // Adjust path if necessary
+
+// ─────────────────────────────────────────────
+// PREMIUM BOTTOM NAVIGATION
+// Floating iOS Dock • Glassmorphism • Neon Indicator
+// ─────────────────────────────────────────────
 
 .bottom-nav {
-  // Floating pill positioning
   position: fixed;
-  bottom: $s6; // Hovers comfortably above the bottom edge
+  bottom: 24px; // Floats above the screen edge
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - #{$s8}); // Margin on the sides for mobile
-  max-width: 400px;
-  z-index: 1000;
-
-  // Frosted Matte Glass Effect
-  background: rgba(13, 0, 6, 0.85); // Matches your $bg-base but translucent
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid $border-subtle;
-  border-radius: $r-pill;
   
-  // Layout
+  width: calc(100% - 48px); // Responsive width with margins
+  max-width: 360px; // Keeps it pill-shaped on larger screens
+  
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  padding: $s2 $s4;
+  justify-content: space-around;
   
-  // Premium deep shadow so it lifts off the page
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 
-              0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  padding: 12px 16px;
+  z-index: 9999;
+  
+  // High-End Frosted Glass
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 36px;
+  
+  box-shadow: 
+    0 25px 50px rgba(255, 79, 163, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.05),
+    inset 0 2px 10px rgba(255, 255, 255, 0.8);
+    
+  // Smooth entrance animation when app loads
+  animation: slideUpNav 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
+  // ─────────────────────────
+  // NAVIGATION TABS
+  // ─────────────────────────
   &__tab {
-    background: transparent;
-    border: none;
-    outline: none;
+    position: relative;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: $s1;
-    padding: $s2 $s4;
+    
+    padding: 10px 0;
+    background: transparent;
+    border: none;
     cursor: pointer;
-    color: $text-muted;
-    position: relative;
-    transition: all $dur $ease;
-    border-radius: $r-lg;
+    
+    color: #a68c98; // Muted luxury grey for inactive state
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    // Remove tap highlight on mobile
+    -webkit-tap-highlight-color: transparent;
 
-    // Hover state for non-touch devices
+    // ── Magnetic Hover Effect (Non-touch devices) ──
     &:hover:not(&--active) {
-      color: $text-secondary;
-      transform: translateY(-2px);
+      color: #ff7dbd;
+      transform: translateY(-4px);
+      
+      .bottom-nav__icon {
+        transform: scale(1.1);
+      }
     }
 
+    // ── Active State ──
     &--active {
-      color: $pink-light;
+      color: #ff4fa3; // Signature vibrant pink
 
       .bottom-nav__icon {
-        transform: translateY(-3px);
-        filter: drop-shadow(0 4px 8px $pink-glow);
+        transform: translateY(-6px) scale(1.15);
+        filter: drop-shadow(0 6px 12px rgba(255, 79, 163, 0.4));
       }
 
       .bottom-nav__label {
-        color: $white;
+        opacity: 1;
+        transform: translateY(2px);
+        color: #1a0a12; // Dark text for the active label for high contrast
       }
 
-      // Sexy glowing indicator dot below the active tab
+      // Neon glowing active dot indicator
       &::after {
         content: '';
         position: absolute;
-        bottom: 0px;
+        bottom: 2px;
         left: 50%;
         transform: translateX(-50%);
-        width: 4px;
-        height: 4px;
-        background: $pink;
+        width: 6px;
+        height: 6px;
+        background: #ff4fa3;
         border-radius: 50%;
-        box-shadow: 0 0 10px $pink-glow, 0 0 4px $pink;
-        animation: fadeUp 0.3s $ease forwards;
+        box-shadow: 0 0 10px #ff4fa3, 0 0 20px #ff4fa3;
+        animation: premiumDotPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       }
     }
   }
 
+  // ─────────────────────────
+  // ICON & LABEL
+  // ─────────────────────────
   &__icon {
-    font-size: 22px; // Sized perfectly for mobile touch targets
-    transition: transform $dur $ease, filter $dur $ease;
-    margin-bottom: 2px;
+    font-size: 24px;
+    line-height: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
   }
 
   &__label {
     font-size: 10px;
+    font-weight: 800;
     font-family: $font-body;
-    font-weight: 700;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    transition: color $dur $ease;
+    margin-top: 4px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+}
+
+// ─────────────────────────────────────────────
+// ANIMATIONS
+// ─────────────────────────────────────────────
+
+@keyframes slideUpNav {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 60px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes premiumDotPop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px) scale(0);
+  }
+  50% {
+    transform: translate(-50%, 0) scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
   }
 }

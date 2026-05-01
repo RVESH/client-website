@@ -11,7 +11,7 @@ const SocialSection = () => {
 
   return (
     <div className="social-section">
-      <h2 className="social-section__title">Follow My Journey</h2>
+      <h2 className="social-section__title">GET YOUR COSTOMIZED WEBSITE</h2>
       <div className="social-section__grid">
         {SOCIALS.map((s, i) => (
           <a key={i} href={s.link} className="social-card">

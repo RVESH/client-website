@@ -1,78 +1,191 @@
-// Header.scss
-.creator-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-  background: rgba(8, 8, 10, 0.85); // Matte glass
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+@use './theme' as *; // Adjust path if necessary
 
+// ─────────────────────────────────────────────
+// PREMIUM HEADER
+// Frosted Glass • Sticky Navigation • Glossy Buttons
+// ─────────────────────────────────────────────
+
+.creator-header {
+  position: absolute; // Or 'sticky' if you want it to follow the user
+  top: 0; 
+  left: 0; 
+  right: 0;
+  z-index: 1000;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  
+  // High-End Frosted Glass Effect
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 30px rgba(255, 79, 163, 0.05);
+  
+  animation: slideDownHeader 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  // ─────────────────────────
+  // LEFT SIDE (BRANDING)
+  // ─────────────────────────
   &__top {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
   }
 
   &__username {
+    font-size: 20px;
     font-weight: 900;
-    font-size: 1.2rem;
-    letter-spacing: -0.5px;
-    color: #ffffff;
-    text-transform: lowercase;
-  }
-
-  &__install {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #94a3b8;
-    font-size: 0.6rem; // Kept small to save space
-    padding: 4px 6px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
+    font-family: $font-heading;
+    letter-spacing: -0.03em;
+    
+    // Premium Dark Gradient
+    background: linear-gradient(135deg, #1a0a12 0%, #5a3d4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.04));
     cursor: pointer;
   }
 
+  // ─────────────────────────
+  // INSTALL BUTTON (PILL)
+  // ─────────────────────────
+  &__install {
+    background: rgba(255, 79, 163, 0.08);
+    color: #ff4fa3;
+    border: 1px solid rgba(255, 79, 163, 0.2);
+    border-radius: 99px;
+    padding: 4px 10px;
+    
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: $font-body;
+    
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255, 79, 163, 0.05);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+      background: linear-gradient(135deg, #f5a623 0%, #ff4fa3 100%);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 79, 163, 0.3);
+    }
+  }
+
+  // ─────────────────────────
+  // RIGHT SIDE (ACTIONS)
+  // ─────────────────────────
   &__actions {
     display: flex;
-    gap: 8px; // Tighter gap for mobile
+    gap: 8px;
     align-items: center;
 
     button {
-      padding: 8px 12px; // Slimmer padding
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.75rem; // Scaled down for mobile fit
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 13px;
+      font-family: $font-body;
+      letter-spacing: 0.02em;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-      &.btn-outline {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        color: #e2e8f0;
+    // ── Glassmorphic Outline Button (Login / Logout) ──
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1.5px solid rgba(255, 79, 163, 0.2);
+      color: #8f4f73;
+      padding: 8px 16px;
+      
+      &:hover {
+        background: white;
+        border-color: #ff4fa3;
+        color: #ff4fa3;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(255, 79, 163, 0.15);
+      }
+      
+      &:active { transform: scale(0.95); }
+    }
+
+    // ── Glossy Primary Button (Subscribe) ──
+    .btn-primary {
+      position: relative;
+      background: linear-gradient(135deg, #f5a623 0%, #ff4fa3 50%, #d63384 100%);
+      background-size: 200% auto;
+      border: none;
+      color: white;
+      padding: 8px 18px;
+      overflow: hidden;
+      
+      box-shadow: 
+        0 6px 15px rgba(245, 166, 35, 0.2),
+        0 4px 10px rgba(255, 79, 163, 0.2);
+        
+      animation: gradientShift 4s linear infinite;
+
+      // Glossy light sweep
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 50%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+        transform: skewX(-25deg);
+        transition: 0.7s;
       }
 
-      &.btn-primary {
-        background: #e11d48;
-        border: none;
-        color: #ffffff;
-        box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3); // Sexy subtle glow
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+          0 10px 20px rgba(245, 166, 35, 0.3),
+          0 6px 15px rgba(255, 79, 163, 0.3);
+        &::after { left: 200%; }
       }
+      
+      &:active { transform: scale(0.95); }
+    }
 
-      &.btn-ghost {
-        background: transparent;
-        border: none;
-        color: #94a3b8;
-        padding: 8px 4px; // Minimal space for ghost button
+    // ── Ghost Text Button (Follow) ──
+    .btn-ghost {
+      background: transparent;
+      border: none;
+      color: #a68c98;
+      padding: 8px 10px;
+      
+      &:hover {
+        color: #ff4fa3;
+        background: rgba(255, 79, 163, 0.08);
+        transform: translateY(-1px);
       }
     }
   }
+}
+
+// ─────────────────────────────────────────────
+// ANIMATIONS
+// ─────────────────────────────────────────────
+
+@keyframes slideDownHeader {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

@@ -1,80 +1,232 @@
-// components/EventCard.scss
-@use '../components/theme' as *;
+@use './theme' as *; // Adjust path if necessary
+
+// ─────────────────────────────────────────────
+// PREMIUM EVENT CARD
+// VIP Aesthetic • Live Pulsing Badge • Glossy UI
+// ─────────────────────────────────────────────
 
 .event-card {
-  @include card-base;
-  border-color: $border-pink;
   position: relative;
-  transition: all $dur $ease;
+  background: #ffffff;
+  border-radius: 32px;
+  overflow: hidden;
+  
+  border: 1px solid rgba(255, 79, 163, 0.08);
+  box-shadow: 
+    0 12px 35px rgba(255, 79, 163, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.02);
+    
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
+  // ── Hover Lift Effect ──
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(255, 77, 166, 0.15);
-    border-color: $pink-light;
+    transform: translateY(-6px);
+    box-shadow: 
+      0 20px 45px rgba(255, 79, 163, 0.12),
+      0 8px 20px rgba(0, 0, 0, 0.04);
   }
 
+  // ─────────────────────────
+  // IMAGE WRAPPER
+  // ─────────────────────────
   &__img-wrap {
     position: relative;
-    height: 160px;
     width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #1a0a12;
+    
+    // Bottom inner shadow for a seamless blend into the card body
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
   }
 
   &__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.8s ease;
   }
 
+  // Zoom effect on hover
+  &:hover &__img {
+    transform: scale(1.08);
+  }
+
+  // ─────────────────────────
+  // LIVE EVENT BADGE
+  // ─────────────────────────
   &__badge {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 77, 166, 0.4);
-    color: $white;
-    padding: 6px 12px;
-    border-radius: $r-full;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    
     display: flex;
     align-items: center;
     gap: 6px;
+    
+    background: rgba(26, 10, 18, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 99px;
+    padding: 6px 14px;
+    
+    font-size: 10px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
 
+  // Pulsing recording dot
   &__dot {
-    width: 6px;
-    height: 6px;
-    background: #ff4d4d;
+    width: 8px;
+    height: 8px;
+    background: #ff3366;
     border-radius: 50%;
-    box-shadow: 0 0 8px #ff4d4d;
-    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 8px #ff3366;
+    animation: pulseLiveDot 1.5s infinite;
   }
 
+  // ─────────────────────────
+  // CARD BODY & TYPOGRAPHY
+  // ─────────────────────────
   &__body {
-    padding: $s4;
+    position: relative;
+    padding: 24px;
+    background: #ffffff;
+    z-index: 3;
+    
+    // Overlaps the image slightly for a layered, premium feel
+    margin-top: -20px;
+    border-radius: 24px 24px 0 0;
   }
 
   &__title {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 800;
-    color: $white;
-    margin-bottom: $s2;
+    color: #1a0a12;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
   }
 
   &__info {
     display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: $text-muted;
-    font-weight: 600;
-    margin-bottom: $s4;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    
+    span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #8f4f73;
+      
+      background: rgba(255, 79, 163, 0.05);
+      border: 1px solid rgba(255, 79, 163, 0.1);
+      padding: 6px 12px;
+      border-radius: 12px;
+    }
   }
 
+  // ─────────────────────────
+  // GLOSSY RESERVATION BUTTON
+  // ─────────────────────────
   &__btn {
-    @include pink-btn;
+    position: relative;
     width: 100%;
-    border-radius: $r-md;
+    border: none;
+    border-radius: 18px;
+    padding: 16px 20px;
+    
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: white;
+    
+    background: linear-gradient(135deg, #f5a623 0%, #ff4fa3 50%, #d63384 100%);
+    background-size: 200% auto;
+    
+    box-shadow: 
+      0 10px 25px rgba(245, 166, 35, 0.2),
+      0 6px 15px rgba(255, 79, 163, 0.25);
+      
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+
+    animation: gradientShift 4s linear infinite;
+
+    // Glossy light sweep effect
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: skewX(-25deg);
+      transition: 0.7s;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 14px 30px rgba(245, 166, 35, 0.3),
+        0 8px 20px rgba(255, 79, 163, 0.35);
+        
+      &::after {
+        left: 200%;
+      }
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
   }
+}
+
+// ─────────────────────────────────────────────
+// ANIMATIONS
+// ─────────────────────────────────────────────
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseLiveDot {
+  0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(255, 51, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
