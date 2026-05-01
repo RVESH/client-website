@@ -16,6 +16,7 @@ const ServiceCard = ({ icon, title, desc, price }) => {
     });
   };
 
+  
   return (
     <div className="service-card">
       <div className="service-card__icon">{icon}</div>
