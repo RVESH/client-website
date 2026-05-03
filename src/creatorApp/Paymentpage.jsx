@@ -3,6 +3,16 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useSubscription } from "./context/Subscriptioncontext";
 import "./PaymentPage.scss";
 
+// ── Importing Bank Icons ──────────────────────────────────────
+import axisImg from "./bank_icon/Axis.png";
+import bobImg from "./bank_icon/BOB.png";
+import boiImg from "./bank_icon/BOI.png";
+import caneraImg from "./bank_icon/Canera.png";
+import hdfcImg from "./bank_icon/HDFC.png";
+import iciciImg from "./bank_icon/ICICI.png";
+import pnbImg from "./bank_icon/PNB.png";
+import sbiImg from "./bank_icon/SBI.png";
+
 // ── Part 1.1: Booking Form (The "Modal" Data Collection) ──────
 const BookingStep = ({ product, onContinue }) => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
@@ -52,9 +62,9 @@ const BookingStep = ({ product, onContinue }) => {
 const MethodSelect = ({ onSelect }) => {
   const [active, setActive] = useState("upi");
   const METHODS = [
-    { id: "upi",  icon: "📱", label: "UPI",                 sub: "Google Pay, PhonePe, Paytm" },
+    { id: "upi",  icon: "📱", label: "UPI",                sub: "Google Pay, PhonePe, Paytm" },
     { id: "card", icon: "💳", label: "Credit / Debit Card", sub: "Visa, Mastercard, RuPay" },
-    { id: "nb",   icon: "🏦", label: "Net Banking",         sub: "All major Indian banks" },
+    { id: "nb",   icon: "🏦", label: "Net Banking",        sub: "All major Indian banks" },
   ];
   return (
     <div className="pg-step">
@@ -146,14 +156,32 @@ const CardStep = ({ price, onPay, onBack }) => {
 
 const NetBankingStep = ({ price, onPay, onBack }) => {
   const [bank, setBank] = useState(null);
-  const BANKS = ["SBI","HDFC","ICICI","Axis","Kotak","PNB","BOB","Canara"];
+  
+  // Array updated to include imported icons
+  const BANKS = [
+    { id: "SBI",    name: "SBI",    icon: sbiImg },
+    { id: "HDFC",   name: "HDFC",   icon: hdfcImg },
+    { id: "ICICI",  name: "ICICI",  icon: iciciImg },
+    { id: "Axis",   name: "Axis",   icon: axisImg },
+    { id: "PNB",    name: "PNB",    icon: pnbImg },
+    { id: "BOB",    name: "BOB",    icon: bobImg },
+    { id: "BOI",    name: "BOI",    icon: boiImg },
+    { id: "Canara", name: "Canara", icon: caneraImg }
+  ];
+
   return (
     <div className="pg-step">
       <p className="pg-select-label">Select Your Bank</p>
       <div className="pg-banks">
         {BANKS.map(b => (
-          <div key={b} className={`pg-bank${bank===b?" pg-bank--active":""}`} onClick={() => setBank(b)}>
-            🏛 {b}
+          <div key={b.id} className={`pg-bank${bank===b.id?" pg-bank--active":""}`} onClick={() => setBank(b.id)}>
+            <img 
+              src={b.icon} 
+              alt={b.name} 
+              className="pg-bank__icon" 
+              style={{ width: "24px", height: "24px", objectFit: "contain" }} 
+            />
+            {b.name}
           </div>
         ))}
       </div>
@@ -200,26 +228,19 @@ const FailStep = ({ onRetry, onCancel }) => (
 // =============================================================================
 // MAIN PaymentPage orchestrator
 // =============================================================================
-// =============================================================================
-// MAIN PaymentPage orchestrator
-// =============================================================================
 const PaymentPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { activateSubscription } = useSubscription();
 
-  // 🐛 THE FIX: Handle data from BOTH Subscriptions ('plan') and Services ('service'/'product')
   const incomingData = location.state?.plan || location.state?.service || location.state?.product;
 
-  // Format the data dynamically based on where the user came from
   const product = incomingData ? {
     name: incomingData.label || incomingData.title || "Premium Plan",
-    // Remove '₹' if it already exists so we don't accidentally show ₹₹499
     price: incomingData.price ? incomingData.price.replace('₹', '').trim() : "499",
-    type: incomingData.label ? "subscription" : "service" // Differentiates for booking form
+    type: incomingData.label ? "subscription" : "service"
   } : { name: "Premium Plan", price: "499", type: "subscription" };
 
-  // Start at booking form if it's a 1-on-1 service, otherwise go straight to method selection
   const initialStep = product.type === "service" ? "booking" : "method";
   const [step, setStep] = useState(initialStep);
   const [userData, setUserData] = useState(null);
@@ -227,7 +248,7 @@ const PaymentPage = () => {
   const startProcessing = () => {
     setStep("processing");
     setTimeout(() => {
-      const fail = Math.random() < 0.1; // 10% chance of failure for realistic feel
+      const fail = Math.random() < 0.1;
       if (fail) { setStep("fail"); }
       else { 
         if(product.type === "subscription") activateSubscription(product);

@@ -8,11 +8,18 @@ const PostCard = ({ title, timestamp, image }) => {
   const { isLoggedIn } = useAuth();
   const { isSubscribed } = useSubscription();
 
-  const handleClick = () => {
-    if (!isLoggedIn) { navigate("/creator/login"); return; }
-  };
-
+  // Agar user logged in nahi hai YA subscribed nahi hai, toh post lock rahegi
   const locked = !isLoggedIn || !isSubscribed;
+
+  const handleUnlockClick = () => {
+    if (!isLoggedIn) {
+      // Step 1: User logged in nahi hai -> Send to Login
+      navigate("/creator/login");
+    } else if (!isSubscribed) {
+      // Step 2: User logged in hai but premium nahi hai -> Send to Subscription
+      navigate("/creator/subscription");
+    }
+  };
 
   return (
     <div className="post-card">
@@ -25,16 +32,19 @@ const PostCard = ({ title, timestamp, image }) => {
         {locked && (
           <div className="post-card__lock">
             <span>🔒</span>
-            <span>Login to View</span>
+            {/* "Login to view" hata kar ek premium badge text laga diya hai */}
+            <span>Premium Content</span> 
           </div>
         )}
       </div>
+      
       <div className="post-card__body">
         <p className="post-card__title">{title}</p>
         <p className="post-card__time">{timestamp}</p>
+        
         {locked && (
-          <button className="post-card__btn" onClick={handleClick}>
-            {!isLoggedIn ? "Login to View" : "Subscribe to View"}
+          <button className="post-card__btn" onClick={handleUnlockClick}>
+            Subscribe to View
           </button>
         )}
       </div>

@@ -1,12 +1,14 @@
 // components/SocialSection.jsx
 import "./SocialSection.scss";
+import insta from "../bank_icon/instagram.png"; // Aapka import
 
 const SocialSection = () => {
   const SOCIALS = [
-    { icon: "📸", name: "Instagram", link: "#" },
-    { icon: "🐦", name: "Twitter", link: "#" },
-    { icon: "▶️", name: "YouTube", link: "#" },
-    { icon: "🎵", name: "TikTok", link: "#" },
+    // 📸 Emoji ko hata kar <img> tag laga diya
+    { icon: <img src={insta} alt="Instagram" style={{ width: "40px", height: "40px", objectFit: "contain" }} />, name: "Instagram", link: "#" },
+    // { icon: "🐦", name: "Twitter", link: "#" },
+    // { icon: "▶️", name: "YouTube", link: "#" },
+    // { icon: "🎵", name: "TikTok", link: "#" },
   ];
 
   return (

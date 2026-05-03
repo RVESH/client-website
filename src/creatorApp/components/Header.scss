@@ -15,7 +15,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  
+  // FIXED: Reduced padding to give elements more breathing room on mobile
+  padding: 12px 14px; 
   
   // High-End Frosted Glass Effect
   background: rgba(255, 255, 255, 0.75);
@@ -33,11 +35,13 @@
   &__top {
     display: flex;
     align-items: center;
-    gap: 12px;
+    // FIXED: Tightened gap to prevent squishing
+    gap: 8px; 
   }
 
   &__username {
-    font-size: 20px;
+    // FIXED: Slightly smaller font size
+    font-size: 18px; 
     font-weight: 900;
     font-family: $font-heading;
     letter-spacing: -0.03em;
@@ -58,9 +62,11 @@
     color: #ff4fa3;
     border: 1px solid rgba(255, 79, 163, 0.2);
     border-radius: 99px;
-    padding: 4px 10px;
     
-    font-size: 10px;
+    // FIXED: Reduced padding and font size for the pill
+    padding: 4px 8px; 
+    font-size: 9px; 
+    
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -84,13 +90,15 @@
   // ─────────────────────────
   &__actions {
     display: flex;
-    gap: 8px;
+    // FIXED: Tightened gap between action buttons
+    gap: 6px; 
     align-items: center;
 
     button {
-      border-radius: 14px;
+      border-radius: 12px; // Slightly smaller border-radius to match smaller buttons
       font-weight: 800;
-      font-size: 13px;
+      // FIXED: Reduced button font size
+      font-size: 12px; 
       font-family: $font-body;
       letter-spacing: 0.02em;
       cursor: pointer;
@@ -102,7 +110,9 @@
       background: rgba(255, 255, 255, 0.5);
       border: 1.5px solid rgba(255, 79, 163, 0.2);
       color: #8f4f73;
-      padding: 8px 16px;
+      
+      // FIXED: Reduced padding
+      padding: 6px 12px; 
       
       &:hover {
         background: white;
@@ -122,7 +132,9 @@
       background-size: 200% auto;
       border: none;
       color: white;
-      padding: 8px 18px;
+      
+      // FIXED: Reduced padding
+      padding: 6px 12px; 
       overflow: hidden;
       
       box-shadow: 
@@ -158,12 +170,19 @@
       background: transparent;
       border: none;
       color: #a68c98;
-      padding: 8px 10px;
+      
+      // FIXED: Reduced padding
+      padding: 6px 8px; 
       
       &:hover {
         color: #ff4fa3;
         background: rgba(255, 79, 163, 0.08);
         transform: translateY(-1px);
+      }
+      
+      // FIXED: Hide the follow button on very small screens to prevent overflow
+      @media (max-width: 380px) {
+        display: none; 
       }
     }
   }
