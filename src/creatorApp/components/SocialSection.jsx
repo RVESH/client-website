@@ -12,7 +12,7 @@ const SocialSection = () => {
   ];
 
   
-  
+   
   
   return (
     <div className="social-section">
