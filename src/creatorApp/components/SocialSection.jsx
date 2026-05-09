@@ -14,6 +14,7 @@ const SocialSection = () => {
   
    
   
+  
   return (
     <div className="social-section">
       <h2 className="social-section__title">GET YOUR COSTOMIZED WEBSITE</h2>
