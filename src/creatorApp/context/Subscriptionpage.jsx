@@ -16,6 +16,7 @@ const SubscriptionPage = () => {
 
   const plan = PLANS.find(p => p.id === selected);
 
+  
   return (
     <div className="sub-page">
       <Header />
