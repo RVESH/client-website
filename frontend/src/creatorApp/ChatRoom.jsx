@@ -22,6 +22,7 @@ const ChatRoom = () => {
     scrollToBottom();
   }, [messages]);
 
+  
   const handleSend = (e) => {
     e.preventDefault();
     if (!input.trim()) return;
