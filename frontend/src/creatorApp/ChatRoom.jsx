@@ -7,6 +7,9 @@ const INITIAL_MESSAGES = [
   { id: 2, text: "I've got some exclusive behind-the-scenes content coming. What do you want to see first?", sender: "them", time: "10:01 AM" },
 ];
 
+
+
+
 const ChatRoom = () => {
   const navigate = useNavigate();
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
