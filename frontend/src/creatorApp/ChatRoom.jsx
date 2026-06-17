@@ -12,6 +12,8 @@ const INITIAL_MESSAGES = [
 
 
 
+
+
 const ChatRoom = () => {
   const navigate = useNavigate();
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
