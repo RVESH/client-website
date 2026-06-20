@@ -34,6 +34,7 @@ const ChatRoom = () => {
   
   
   
+  
   const handleSend = (e) => {
     e.preventDefault();
     if (!input.trim()) return;
