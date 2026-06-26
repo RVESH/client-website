@@ -413,6 +413,7 @@ async function requireAdmin(request, env) {
   return payload;
 }
 
+
 function getToken(request) {
   // Try Authorization header first
   const auth = request.headers.get("Authorization") || "";
