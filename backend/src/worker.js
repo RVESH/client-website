@@ -523,6 +523,7 @@ function randomHex(n) { return toHex(crypto.getRandomValues(new Uint8Array(n)));
 
 function now() { return Math.floor(Date.now() / 1000); }
 
+
 const te       = (s)   => new TextEncoder().encode(s);
 const toHex    = (buf) => Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,"0")).join("");
 const fromHex  = (s)   => { const b = new Uint8Array(s.length/2); for(let i=0;i<b.length;i++) b[i]=parseInt(s.slice(i*2,i*2+2),16); return b; };
