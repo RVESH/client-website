@@ -1,3 +1,4 @@
+
 export const OTP_PURPOSE = {
   SIGNUP: 'signup',
   LOGIN: 'login',
