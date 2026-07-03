@@ -1,5 +1,6 @@
 import { Hono } from "hono";
-
+import authRoutes from "./routes/auth.routes";
+import { handleError } from "./middleware/error.middleware";
 const app = new Hono();
 
 app.get("/", (c) => {
@@ -9,4 +10,6 @@ app.get("/", (c) => {
   });
 });
 
+app.route("/auth", authRoutes);
+app.onError(handleError);
 export default app;

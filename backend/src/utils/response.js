@@ -1,7 +1,22 @@
-export const sendSuccess = (res, data = {}, message = 'Success', status = 200) => {
-  return res.status(status).json({ success: true, message, data });
-};
 
-export const sendError = (res, message = 'Something went wrong', status = 400) => {
-  return res.status(status).json({ success: false, message });
-};
+export function success(c, message = "Success", data = null, status = 200) {
+  return c.json(
+    {
+      success: true,
+      message,
+      data,
+    },
+    status
+  );
+}
+
+export function error(c, message = "Something went wrong", status = 500, details = null) {
+  return c.json(
+    {
+      success: false,
+      message,
+      error: details,
+    },
+    status
+  );
+}

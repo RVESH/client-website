@@ -1,11 +1,25 @@
-import { Router } from 'express';
-import { register, verifySignup, resendOTP } from '../controllers/auth.controller.js';
-import { otpRateLimit } from '../middleware/rateLimit.middleware.js';
+// import { Router } from 'express';
+import { Hono } from "hono";
+import authController from "../controllers/auth.controller";
 
-const router = Router();
+const auth = new Hono();
 
-router.post('/register', otpRateLimit, register);
-router.post('/verify-otp', otpRateLimit, verifySignup);
-router.post('/resend-otp', otpRateLimit, resendOTP);
+auth.post("/send-otp", (c) => authController.sendOtp(c));
 
-export default router;
+auth.post("/verify-otp", (c) => authController.verifyOtp(c));
+
+auth.post("/register", (c) => authController.register(c));
+
+auth.post("/login", (c) => authController.login(c));
+
+auth.post("/logout", (c) => authController.logout(c));
+
+auth.post("/forgot-password", (c) => authController.forgotPassword(c));
+
+auth.post("/reset-password", (c) => authController.resetPassword(c));
+
+auth.get("/me", (c) => authController.me(c));
+
+auth.post("/resend-otp", (c) => authController.resendOtp(c));
+
+export default auth;

@@ -1,0 +1,44 @@
+import { getDatabase } from "../providers/mongodb.provider";
+
+const COLLECTION_NAME = "users";
+
+export async function findUserByEmail(env, email) {
+    const db = await getDatabase(env);
+
+    return db.collection(COLLECTION_NAME).findOne({
+        email: email.toLowerCase(),
+    });
+}
+
+export async function findUserById(env, userId) {
+    const db = await getDatabase(env);
+
+    return db.collection(COLLECTION_NAME).findOne({
+        _id: userId,
+    });
+}
+
+export async function createUser(env, userData) {
+    const db = await getDatabase(env);
+
+    const result = await db.collection(COLLECTION_NAME).insertOne(userData);
+
+    return {
+        _id: result.insertedId,
+        ...userData,
+    };
+}
+
+export async function updateUser(env, filter, update) {
+    const db = await getDatabase(env);
+
+    return db.collection(COLLECTION_NAME).updateOne(filter, {
+        $set: update,
+    });
+}
+
+export async function deleteUser(env, filter) {
+    const db = await getDatabase(env);
+
+    return db.collection(COLLECTION_NAME).deleteOne(filter);
+}
