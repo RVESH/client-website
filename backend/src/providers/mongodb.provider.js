@@ -4,6 +4,12 @@ let client = null;
 let database = null;
 
 export async function getDatabase(env) {
+    console.log("MongoDB ENV:", {
+        hasEnv: !!env,
+        hasUri: !!env?.MONGODB_URI,
+        hasDatabase: !!env?.MONGODB_DATABASE,
+    });
+
     if (database) {
         return database;
     }

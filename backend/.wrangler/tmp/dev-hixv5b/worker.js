@@ -34951,6 +34951,11 @@ var import_mongodb = __toESM(require_lib2());
 var client = null;
 var database = null;
 async function getDatabase(env2) {
+  console.log("MongoDB ENV:", {
+    hasEnv: !!env2,
+    hasUri: !!env2?.MONGODB_URI,
+    hasDatabase: !!env2?.MONGODB_DATABASE
+  });
   if (database) {
     return database;
   }
