@@ -1,7 +1,7 @@
-import AppError from "../errors/AppError";
-import { error } from "../utils/response";
+import AppError from "../errors/AppError.js";
+import { error } from "../utils/response.js";
 
-export function handleError(c, err) {
+export function handleError(err, c) {
   if (err instanceof AppError) {
     return error(
       c,

@@ -1,6 +1,8 @@
 import { findUserByEmail, createUser } from "../../repositories/user.repository";
 import { generateAndStoreOtp } from "../otp/otp.service";
 import { sendOtpEmail } from "../email/email.service";
+import ConflictError from "../../errors/ConflictError"; 
+
 
 const PASSWORD_ITERATIONS = 100000;
 const PASSWORD_HASH = "SHA-256";
@@ -55,7 +57,7 @@ export async function registerService(env, payload) {
     const existingUser = await findUserByEmail(env, normalizedEmail);
 
     if (existingUser) {
-        throw new Error("Email already registered.");
+        throw new ConflictError("Email already registered.");
     }
 
     const { hash, salt } = await hashPassword(password);
