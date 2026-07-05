@@ -15,4 +15,95 @@ uLcOFj6FoHIfempG
 
 
 
+ I need to know one thing before writing it
 
+Which MongoDB approach do you want to use?
+
+Option A (Recommended for Cloudflare Workers)
+
+Use MongoDB Atlas Data API (HTTPS).
+
+✅ Works natively in Workers
+✅ Uses fetch()
+✅ No Node networking issues
+✅ No MongoClient
+✅ Production-friendly for Workers
+Option B
+
+Keep trying to use the Node.js MongoDB driver.
+
+This is possible in some environments, but based on the issues you've already hit, I don't think it's the fastest route for your project.
+
+My recommendation
+
+Choose Option A.
+
+It lets us keep your architecture exactly as-is and finally move on to:
+
+Register ✅
+OTP Generate ✅
+OTP Verify ✅
+Login ✅
+JWT ✅
+
+instead of spending more time debugging runtime compatibility.
+
+I recommend we switch only the provider and continue building features.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ This is the roadmap now
+Step 1 ✅
+
+Remove:
+
+import { MongoClient } from "mongodb";
+Step 2 ✅
+
+Delete the mongodb package:
+
+npm uninstall mongodb
+Step 3 ✅
+
+Enable the Atlas Data API in MongoDB Atlas (a one-time setup).
+
+Step 4 ✅
+
+Create a Data API key.
+
+Step 5 ✅
+
+Store two new secrets:
+
+MONGODB_DATA_API_KEY
+MONGODB_DATA_API_URL
+Step 6 ✅
+
+Rewrite only mongodb.provider.js so it exposes methods like:
+
+findOne()
+insertOne()
+updateOne()
+deleteOne()
+findMany()
+
+using fetch().
+
+Why this is better for your project
+
+Your long-term goal is:
+
+npm install @rishabh/auth
+
+A reusable authentication package.

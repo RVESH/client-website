@@ -1,4 +1,3 @@
-import { MongoClient } from "mongodb";
 
 let client = null;
 let database = null;
