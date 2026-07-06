@@ -3,9 +3,13 @@ import { getDatabase } from "../providers/mongodb.provider";
 const COLLECTION_NAME = "users";
 
 export async function findUserByEmail(env, email) {
+    console.log("Repository: findUserByEmail");
+
     const db = await getDatabase(env);
 
-    return db.collection(COLLECTION_NAME).findOne({
+    console.log("Database connected");
+
+    return db.collection("users").findOne({
         email: email.toLowerCase(),
     });
 }

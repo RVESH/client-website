@@ -45,22 +45,30 @@ async function hashPassword(password) {
     };
 }
 
+
+
 export async function registerService(env, payload) {
-    const {
-        name,
-        email,
-        password,
-    } = payload;
+    console.log("1. registerService started");
+
+    const { name, email, password } = payload;
 
     const normalizedEmail = email.toLowerCase();
 
+    console.log("2. Finding user...");
+
     const existingUser = await findUserByEmail(env, normalizedEmail);
+
+    console.log("3. User lookup complete");
 
     if (existingUser) {
         throw new ConflictError("Email already registered.");
     }
 
+    console.log("4. Hashing password...");
+
     const { hash, salt } = await hashPassword(password);
+
+    console.log("5. Creating user...");
 
     const user = await createUser(env, {
         name,
@@ -72,17 +80,19 @@ export async function registerService(env, payload) {
         updatedAt: new Date(),
     });
 
+    console.log("6. User created");
+
     const { otp } = await generateAndStoreOtp(
         env,
         normalizedEmail,
         "REGISTER"
     );
 
-    await sendOtpEmail(
-        env,
-        normalizedEmail,
-        otp
-    );
+    console.log("7. OTP generated");
+
+    await sendOtpEmail(env, normalizedEmail, otp);
+
+    console.log("8. Email sent");
 
     return {
         message: "Registration successful. Please verify your email.",
@@ -90,8 +100,6 @@ export async function registerService(env, payload) {
         email: normalizedEmail,
     };
 }
-
-
 
 
 
@@ -118,3 +126,4 @@ export async function registerService(env, payload) {
 //       │
 //       ▼
 // Return Success
+
