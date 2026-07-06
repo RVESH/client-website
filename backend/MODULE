@@ -52,9 +52,50 @@ I recommend we switch only the provider and continue building features.
  
 
 
+New roadmap (fast)
 
+We'll implement in this order:
 
+Here's our roadmap now
+❌ Remove the current MongoClient provider.
+✅ Replace it with a Cloudflare Workers–compatible MongoDB provider (using the current supported approach).
+✅ Keep user.repository.js almost unchanged.
+✅ Finish Registration.
+✅ OTP generation.
+✅ OTP verification.
+✅ Login.
+✅ JWT.
+✅ Protected routes.
+About your requirement
 
+You said:
+
+"Cloudflare se free wala OTP structure banao jo mere PC off hone pe bhi chale."
+
+Yes, that's exactly how we'll build it.
+
+The flow will be:
+
+React
+   ↓
+Cloudflare Worker (always online)
+   ↓
+MongoDB Atlas (stores users + OTP)
+   ↓
+Brevo (sends email)
+
+User enters OTP
+   ↓
+Cloudflare verifies OTP
+
+Your PC only needs to be on while developing. After you deploy:
+
+✅ Worker runs on Cloudflare 24/7.
+✅ MongoDB Atlas Free Tier stores the data.
+✅ Brevo Free Tier sends emails.
+✅ Your laptop can be completely turned off.
+
+That's exactly the architecture we want.
 
 
 
