@@ -1,12 +1,10 @@
 import { MongoClient } from "mongodb";
 
-let clientPromise = null;
-let database = null;
+let clientPromise;
+let database;
 
 export async function getDatabase(env) {
-  if (database) {
-    return database;
-  }
+  if (database) return database;
 
   if (!env?.MONGODB_URI) {
     throw new Error("MONGODB_URI is missing.");
@@ -17,7 +15,9 @@ export async function getDatabase(env) {
   }
 
   if (!clientPromise) {
-    const client = new MongoClient(env.MONGODB_URI);
+    const client = new MongoClient(env.MONGODB_URI, {
+      maxPoolSize: 10,
+    });
 
     clientPromise = client.connect();
   }
@@ -28,3 +28,4 @@ export async function getDatabase(env) {
 
   return database;
 }
+

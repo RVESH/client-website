@@ -3,16 +3,26 @@ import { getDatabase } from "../providers/mongodb.provider";
 const COLLECTION_NAME = "users";
 
 export async function findUserByEmail(env, email) {
-    console.log("Repository: findUserByEmail");
+    // console.log("Repository: findUserByEmail");
 
     const db = await getDatabase(env);
 
-    console.log("Database connected");
+    // console.log("Database connected");
 
-    return db.collection("users").findOne({
-        email: email.toLowerCase(),
-    });
+
+    
+
+
+    const user = await db.collection(COLLECTION_NAME).findOne({
+  email: email.toLowerCase(),
+});
+
+// console.log("findOne result:", user);
+
+return user;
+
 }
+
 
 export async function findUserById(env, userId) {
     const db = await getDatabase(env);

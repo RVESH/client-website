@@ -5,6 +5,3 @@ compatibility_flags = ["nodejs_compat"]
 
 [vars]
 COOKIE_NAME = "auth_token"
-JWT_SECRET = "apage-auth-secret-2024-rishabh-xyz-abc-123"
-MONGODB_DATABASE = "universal_auth"
-BREVO_SENDER_NAME = "Universal Auth"

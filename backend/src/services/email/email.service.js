@@ -45,7 +45,13 @@ export async function sendOtpEmail(env, email, otp) {
 
         throw new Error(`Brevo Error: ${error}`);
     }
+if (!env.BREVO_API_KEY) {
+    throw new Error("BREVO_API_KEY is missing.");
+}
 
+if (!env.BREVO_SENDER_EMAIL) {
+    throw new Error("BREVO_SENDER_EMAIL is missing.");
+}
     return true;
 }
 
