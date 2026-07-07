@@ -14,15 +14,18 @@ export async function getDatabase(env) {
     throw new Error("MONGODB_DATABASE is missing.");
   }
 
-  if (!clientPromise) {
-    const client = new MongoClient(env.MONGODB_URI, {
-      maxPoolSize: 10,
-    });
+if (!clientPromise) {
+  const client = new MongoClient(env.MONGODB_URI, {
+    maxPoolSize: 10,
+  });
 
-    clientPromise = client.connect();
-  }
+  clientPromise = client.connect().catch((error) => {
+    clientPromise = undefined;
+    throw error;
+  });
+}
 
-  const client = await clientPromise;
+const client = await clientPromise;
 
   database = client.db(env.MONGODB_DATABASE);
 

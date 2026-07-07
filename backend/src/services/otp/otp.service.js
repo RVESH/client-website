@@ -1,7 +1,12 @@
 import {
     createOtp,
     deleteOtps,
+    findOtp,
+    deleteOtp,
 } from "../../repositories/otp.repository";
+import { findUserByEmail, updateUser } from "../../repositories/user.repository";
+import ValidationError from "../../errors/ValidationError";
+import NotFoundError from "../../errors/NotFoundError";
 
 const OTP_LENGTH = 6;
 const OTP_EXPIRY_MINUTES = 10;
@@ -41,4 +46,54 @@ export async function generateAndStoreOtp(env, email, purpose) {
         otp,
         expiresAt,
     };
+};
+
+
+export async function verifyOtpService(env, email, otp, purpose) {
+    const normalizedEmail = email.toLowerCase();
+
+const otpRecord = await findOtp(env, {
+    email: normalizedEmail,
+    purpose,
+});
+
+if (!otpRecord) {
+    throw new NotFoundError("OTP not found.");
+}
+
+if (otpRecord.expiresAt < new Date()) {
+    await deleteOtp(env, {
+        _id: otpRecord._id,
+    });
+
+    throw new ValidationError("OTP has expired.");
+}
+
+if (otpRecord.otp !== otp) {
+    throw new ValidationError("Invalid OTP.");
+}
+
+const user = await findUserByEmail(env, normalizedEmail);
+
+if (!user) {
+    throw new NotFoundError("User not found.");
+}
+
+await updateUser(
+    env,
+    { _id: user._id },
+    {
+        emailVerified: true,
+        updatedAt: new Date(),
+    }
+);
+
+await deleteOtp(env, {
+    _id: otpRecord._id,
+});
+
+return {
+    message: "Email verified successfully.",
+};
+   
 }

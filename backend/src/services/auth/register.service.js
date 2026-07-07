@@ -60,9 +60,37 @@ export async function registerService(env, payload) {
 
     console.log("3. User lookup complete");
 
-    if (existingUser) {
+
+
+if (existingUser) {
+    console.log("Existing user found");
+
+    if (existingUser.emailVerified) {
+        console.log("User already verified");
         throw new ConflictError("Email already registered.");
     }
+
+    console.log("Generating new OTP");
+
+    const { otp } = await generateAndStoreOtp(
+        env,
+        normalizedEmail,
+        "REGISTER"
+    );
+
+    console.log("Sending OTP");
+
+    await sendOtpEmail(env, normalizedEmail, otp);
+
+    console.log("Returning success");
+
+    return {
+        message: "Verification OTP sent successfully.",
+        userId: existingUser._id,
+        email: normalizedEmail,
+    };
+}
+
 
     console.log("4. Hashing password...");
 
