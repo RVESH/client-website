@@ -148,3 +148,44 @@ Your long-term goal is:
 npm install @rishabh/auth
 
 A reusable authentication package.
+
+
+
+
+
+
+
+
+Infrastructure
+========================
+✅ Cloudflare Workers
+✅ Hono
+✅ MongoDB Atlas
+✅ MongoDB Provider
+✅ Repositories
+✅ Registration
+✅ Password Hashing
+✅ OTP Generation
+✅ OTP Email
+
+Authentication
+========================
+🟡 Improve Registration (existing unverified user)
+
+⬜ Verify OTP
+⬜ Resend OTP
+⬜ Login
+⬜ JWT
+⬜ Auth Middleware
+⬜ /me
+⬜ Forgot Password
+⬜ Reset Password
+⬜ Logout
+
+Polish
+========================
+⬜ Rate Limiting
+⬜ Input Validation
+⬜ Unit Tests
+⬜ Documentation
+⬜ npm Package
