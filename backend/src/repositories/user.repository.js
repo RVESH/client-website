@@ -1,58 +1,99 @@
-import { getDatabase } from "../providers/mongodb.provider";
-
-const COLLECTION_NAME = "users";
+import { randomUUID } from "node:crypto";
+import { getDatabase } from "../providers/database.provider";
 
 export async function findUserByEmail(env, email) {
-    // console.log("Repository: findUserByEmail");
+    const db = getDatabase(env);
 
-    const db = await getDatabase(env);
+    const { results } = await db
+        .prepare(
+            `SELECT * FROM users
+             WHERE email = ?
+             LIMIT 1`
+        )
+        .bind(email.toLowerCase())
+        .all();
 
-    // console.log("Database connected");
-
-
-    
-
-
-    const user = await db.collection(COLLECTION_NAME).findOne({
-  email: email.toLowerCase(),
-});
-
-// console.log("findOne result:", user);
-
-return user;
-
+    return results[0] ?? null;
 }
 
+export async function findUserById(env, id) {
+    const db = getDatabase(env);
 
-export async function findUserById(env, userId) {
-    const db = await getDatabase(env);
-
-    return db.collection(COLLECTION_NAME).findOne({
-        _id: userId,
-    });
+    return await db
+        .prepare(
+            `SELECT * FROM users
+             WHERE id = ?
+             LIMIT 1`
+        )
+        .bind(id)
+        .first();
 }
 
 export async function createUser(env, userData) {
-    const db = await getDatabase(env);
+    const db = getDatabase(env);
 
-    const result = await db.collection(COLLECTION_NAME).insertOne(userData);
+    const id = randomUUID();
+
+    await db.prepare(
+        `INSERT INTO users (
+            id,
+            name,
+            email,
+            password,
+            password_salt,
+            email_verified,
+            created_at,
+            updated_at
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+    )
+    .bind(
+        id,
+        userData.name,
+        userData.email,
+        userData.password,
+        userData.passwordSalt,
+        0,
+        userData.createdAt.toISOString(),
+        userData.updatedAt.toISOString()
+    )
+    .run();
 
     return {
-        _id: result.insertedId,
+        id,
         ...userData,
     };
 }
 
-export async function updateUser(env, filter, update) {
-    const db = await getDatabase(env);
+export async function updateUser(env, id, updates) {
+    const db = getDatabase(env);
 
-    return db.collection(COLLECTION_NAME).updateOne(filter, {
-        $set: update,
-    });
+    const fields = Object.keys(updates);
+
+    const values = Object.values(updates);
+
+    const setClause = fields
+        .map(field => `${field} = ?`)
+        .join(", ");
+
+    await db
+        .prepare(
+            `UPDATE users
+             SET ${setClause}
+             WHERE id = ?`
+        )
+        .bind(...values, id)
+        .run();
 }
 
-export async function deleteUser(env, filter) {
-    const db = await getDatabase(env);
+export async function deleteUser(env, id) {
+    const db = getDatabase(env);
 
-    return db.collection(COLLECTION_NAME).deleteOne(filter);
+    await db
+        .prepare(
+            `DELETE FROM users
+             WHERE id = ?`
+        )
+        .bind(id)
+        .run();
 }

@@ -61,9 +61,9 @@ if (!otpRecord) {
     throw new NotFoundError("OTP not found.");
 }
 
-if (new Date(otpRecord.expires_at) < new Date()) {
+if (otpRecord.expiresAt < new Date()) {
     await deleteOtp(env, {
-        id: otpRecord.id,
+        _id: otpRecord._id,
     });
 
     throw new ValidationError("OTP has expired.");
@@ -81,15 +81,15 @@ if (!user) {
 
 await updateUser(
     env,
-    user.id,
+    { _id: user._id },
     {
-        email_verified: 1,
-        updated_at: new Date().toISOString(),
+        emailVerified: true,
+        updatedAt: new Date(),
     }
 );
 
 await deleteOtp(env, {
-    id: otpRecord.id,
+    _id: otpRecord._id,
 });
 
 return {

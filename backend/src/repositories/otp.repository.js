@@ -1,40 +1,98 @@
-import { getDatabase } from "../providers/mongodb.provider";
-
-const COLLECTION_NAME = "otps";
+import { randomUUID } from "node:crypto";
+import { getDatabase } from "../providers/database.provider";
 
 export async function createOtp(env, otpData) {
-    const db = await getDatabase(env);
+    const db = getDatabase(env);
 
-    const result = await db.collection(COLLECTION_NAME).insertOne(otpData);
+    const id = randomUUID();
+
+    await db.prepare(`
+        INSERT INTO otps (
+            id,
+            email,
+            otp,
+            purpose,
+            verified,
+            created_at,
+            expires_at
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    `)
+    .bind(
+        id,
+        otpData.email,
+        otpData.otp,
+        otpData.purpose,
+        otpData.verified ? 1 : 0,
+        otpData.createdAt.toISOString(),
+        otpData.expiresAt.toISOString()
+    )
+    .run();
 
     return {
-        _id: result.insertedId,
+        id,
         ...otpData,
     };
 }
 
 export async function findOtp(env, filter) {
-    const db = await getDatabase(env);
+    const db = getDatabase(env);
 
-    return db.collection(COLLECTION_NAME).findOne(filter);
+    return await db.prepare(`
+        SELECT *
+        FROM otps
+        WHERE email = ?
+          AND purpose = ?
+        LIMIT 1
+    `)
+    .bind(
+        filter.email,
+        filter.purpose
+    )
+    .first();
 }
 
-export async function updateOtp(env, filter, update) {
-    const db = await getDatabase(env);
+export async function updateOtp(env, id, updates) {
+    const db = getDatabase(env);
 
-    return db.collection(COLLECTION_NAME).updateOne(filter, {
-        $set: update,
-    });
+    const fields = Object.keys(updates);
+    const values = Object.values(updates);
+
+    const setClause = fields
+        .map(field => `${field} = ?`)
+        .join(", ");
+
+    await db.prepare(`
+        UPDATE otps
+        SET ${setClause}
+        WHERE id = ?
+    `)
+    .bind(...values, id)
+    .run();
 }
 
 export async function deleteOtp(env, filter) {
-    const db = await getDatabase(env);
+    const db = getDatabase(env);
 
-    return db.collection(COLLECTION_NAME).deleteOne(filter);
+    await db.prepare(`
+        DELETE FROM otps
+        WHERE id = ?
+    `)
+    .bind(filter.id)
+    .run();
 }
 
 export async function deleteOtps(env, filter) {
-    const db = await getDatabase(env);
+    const db = getDatabase(env);
 
-    return db.collection(COLLECTION_NAME).deleteMany(filter);
+    await db.prepare(`
+        DELETE FROM otps
+        WHERE email = ?
+          AND purpose = ?
+    `)
+    .bind(
+        filter.email,
+        filter.purpose
+    )
+    .run();
 }

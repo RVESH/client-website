@@ -86,7 +86,7 @@ if (existingUser) {
 
     return {
         message: "Verification OTP sent successfully.",
-        userId: existingUser.id,
+        userId: existingUser._id,
         email: normalizedEmail,
     };
 }
@@ -124,7 +124,7 @@ if (existingUser) {
 
     return {
         message: "Registration successful. Please verify your email.",
-        userId: user.id,
+        userId: user._id,
         email: normalizedEmail,
     };
 }

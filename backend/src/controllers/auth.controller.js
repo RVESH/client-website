@@ -26,8 +26,8 @@
 
 
 import { success } from "../utils/response.js";
-import { registerService } from "../services/auth/register.service.js";
-import { verifyOtpService } from "../services/otp/otp.service.js";
+import { registerService } from "../services/auth/......ifMONGODBregister.service.js";
+import { verifyOtpService } from "../services/otp/.....ifMONGODBotp.service.js";
 class AuthController {
 
 async register(c) {
