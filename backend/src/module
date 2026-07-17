@@ -1,0 +1,549 @@
+# Universal Authentication Backend — Migration Notes
+
+## Project Goal
+
+Build a **production-grade, reusable Universal Authentication Backend**.
+
+### Final Stack
+
+* Cloudflare Workers
+* Hono
+* Cloudflare D1
+* Brevo
+* JWT
+* Web Crypto API
+
+---
+
+# Final Architecture
+
+```text
+Frontend
+    │
+    ▼
+Cloudflare Worker
+    │
+Controller
+    │
+Service
+    │
+Repository
+    │
+Database Provider
+    │
+Cloudflare D1
+```
+
+This architecture should remain unchanged.
+
+---
+
+# Why We Migrated
+
+## Before
+
+```text
+Cloudflare Workers
+        ↓
+MongoDB Node Driver
+        ↓
+MongoDB Atlas
+```
+
+Problem:
+
+* MongoDB driver caused Worker runtime issues.
+* "Too many subrequests by single Worker invocation"
+* Unstable for Cloudflare Workers.
+
+---
+
+## After
+
+```text
+Cloudflare Workers
+        ↓
+Cloudflare D1
+```
+
+Benefits:
+
+* Native Cloudflare database
+* No MongoDB connection management
+* Runs 24×7
+* Completely free
+* Better production fit for Workers
+
+---
+
+# Files Changed
+
+## 1. Database Provider
+
+Old
+
+```text
+src/providers/mongodb.provider.js
+```
+
+New
+
+```text
+src/providers/database.provider.js
+```
+
+Purpose
+
+Returns:
+
+```javascript
+getDatabase(env)
+```
+
+using
+
+```javascript
+env.universal_auth
+```
+
+instead of MongoClient.
+
+---
+
+## 2. user.repository.js
+
+Changed from
+
+MongoDB
+
+↓
+
+Cloudflare D1 SQL
+
+Function names remain the same:
+
+* findUserByEmail()
+* findUserById()
+* createUser()
+* updateUser()
+* deleteUser()
+
+Only implementation changed.
+
+---
+
+## 3. otp.repository.js
+
+Changed from
+
+MongoDB
+
+↓
+
+Cloudflare D1 SQL
+
+Function names remain the same:
+
+* createOtp()
+* findOtp()
+* updateOtp()
+* deleteOtp()
+* deleteOtps()
+
+Only implementation changed.
+
+---
+
+## 4. register.service.js
+
+Only small changes.
+
+Changed
+
+```javascript
+user._id
+```
+
+↓
+
+```javascript
+user.id
+```
+
+and
+
+```javascript
+existingUser._id
+```
+
+↓
+
+```javascript
+existingUser.id
+```
+
+Business logic did NOT change.
+
+---
+
+## 5. otp.service.js
+
+Only adjusted for D1.
+
+Examples
+
+Old
+
+```javascript
+otpRecord.expiresAt
+```
+
+↓
+
+New
+
+```javascript
+otpRecord.expires_at
+```
+
+Old
+
+```javascript
+_id
+```
+
+↓
+
+New
+
+```javascript
+id
+```
+
+Business logic stayed the same.
+
+---
+
+# Files That Did NOT Change
+
+These should almost never require changes during database migration.
+
+Controllers
+
+```text
+src/controllers/
+```
+
+Routes
+
+```text
+src/routes/
+```
+
+Response Helpers
+
+```text
+src/utils/response.js
+```
+
+Error Classes
+
+```text
+src/errors/
+```
+
+Brevo Email
+
+```text
+src/services/email/
+```
+
+Password Hashing
+
+Web Crypto API remained exactly the same.
+
+JWT
+
+No changes.
+
+Middleware
+
+No changes.
+
+Validation
+
+No changes.
+
+Architecture
+
+No changes.
+
+---
+
+# Database Schema
+
+Tables
+
+```text
+users
+otps
+```
+
+---
+
+# Future Database Migration
+
+Suppose someday you want
+
+Cloudflare D1
+
+↓
+
+PostgreSQL
+
+or
+
+↓
+
+Supabase
+
+or
+
+↓
+
+Neon
+
+or
+
+↓
+
+Turso
+
+or
+
+↓
+
+MySQL
+
+You should only modify
+
+```text
+database.provider.js
+
+user.repository.js
+
+otp.repository.js
+```
+
+Everything else should continue working.
+
+This is exactly why Repository Pattern exists.
+
+---
+
+# How To Use This Backend In Any Project
+
+Any frontend
+
+↓
+
+Call
+
+```http
+POST /auth/register
+```
+
+↓
+
+OTP sent
+
+↓
+
+Call
+
+```http
+POST /auth/verify-otp
+```
+
+↓
+
+User verified
+
+↓
+
+Call
+
+```http
+POST /auth/login
+```
+
+↓
+
+Receive JWT
+
+↓
+
+Store JWT
+
+↓
+
+Call
+
+```http
+GET /auth/me
+Authorization: Bearer <token>
+```
+
+Works with
+
+* React
+* Next.js
+* Vue
+* Angular
+* Flutter
+* Android
+* iOS
+* Node
+* Any backend
+* Any frontend
+
+because everything communicates over HTTP.
+
+---
+
+# Frontend Integration
+
+Frontend only needs to call your API.
+
+Example
+
+```text
+React
+      │
+fetch()
+      │
+Cloudflare Worker
+```
+
+Example endpoint
+
+```javascript
+fetch("https://your-worker.workers.dev/auth/register")
+```
+
+No frontend imports backend files directly.
+
+Only API calls.
+
+---
+
+# Reusing In Future Projects
+
+For a new project:
+
+1. Deploy this backend.
+2. Configure:
+
+   * D1
+   * Brevo
+   * JWT Secret
+3. Point the frontend to the backend URL.
+4. Use the authentication endpoints.
+
+You do NOT copy business logic into every project.
+
+Every project shares the same authentication backend.
+
+---
+
+# Long-Term Vision
+
+This backend should eventually become:
+
+```text
+@your-name/universal-auth
+```
+
+or
+
+```text
+@pixelrise/auth
+```
+
+An npm package or reusable service that can power authentication for all your future applications.
+
+The only things that should vary between projects are configuration values (database binding, secrets, email provider settings), not the authentication logic itself.
+
+
+
+
+
+
+
+
+
+             Universal Auth Backend
+
+Register
+Verify OTP
+Resend OTP
+Login
+Logout
+Forgot Password
+Reset Password
+JWT
+Refresh Token
+Rate Limiting
+Validation
+2FA (future)
+OAuth (future)
+
+          ▲
+          │
+
+Every future project
+
+Portfolio
+Ecommerce
+SaaS
+CRM
+NFT
+AI
+Mobile
+
+
+Infrastructure
+──────────────────────
+✅ Cloudflare Workers
+✅ Hono
+✅ Cloudflare D1
+✅ Brevo
+✅ Web Crypto API
+
+Authentication
+──────────────────────
+🟡 Register (in progress)
+⬜ Verify OTP
+⬜ Resend OTP
+⬜ Login
+⬜ Logout
+⬜ Forgot Password
+⬜ Reset Password
+⬜ JWT
+⬜ Refresh Token
+⬜ Auth Middleware
+⬜ /me
+
+Security
+──────────────────────
+⬜ Rate Limiting
+⬜ Validation
+⬜ Logging
+⬜ Tests
+⬜ Documentation
+
+Packaging
+──────────────────────
+⬜ Convert to reusable package
+⬜ Publish to GitHub
+⬜ Publish to npm (optional)

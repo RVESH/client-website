@@ -1,4 +1,3 @@
-import { randomUUID } from "node:crypto";
 import { getDatabase } from "../providers/database.provider";
 
 export async function findUserByEmail(env, email) {
@@ -32,7 +31,7 @@ export async function findUserById(env, id) {
 export async function createUser(env, userData) {
     const db = getDatabase(env);
 
-    const id = randomUUID();
+    const id = crypto.randomUUID();
 
     await db.prepare(
         `INSERT INTO users (

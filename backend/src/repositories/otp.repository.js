@@ -1,10 +1,9 @@
-import { randomUUID } from "node:crypto";
 import { getDatabase } from "../providers/database.provider";
 
 export async function createOtp(env, otpData) {
     const db = getDatabase(env);
 
-    const id = randomUUID();
+    const id = crypto.randomUUID();
 
     await db.prepare(`
         INSERT INTO otps (
