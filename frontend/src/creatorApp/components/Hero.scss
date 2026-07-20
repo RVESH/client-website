@@ -1,0 +1,225 @@
+@import './theme'; // Adjust path if necessary
+
+// ─────────────────────────────────────────────
+// PREMIUM HERO SECTION
+// Radiant Avatar • Gradient Typography • Glossy UI
+// ─────────────────────────────────────────────
+
+.creator-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  // Padding accounts for the floating header at the top
+  padding: 120px 24px 40px;
+  text-align: center;
+  z-index: 2;
+  
+  // Entrance animation for the entire hero section
+  animation: fadeUpHero 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  // ─────────────────────────
+  // RADIANT AVATAR WRAPPER
+  // ─────────────────────────
+  &__avatar {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 24px;
+    
+    // Gradient Ring
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, #ff4fa3, #f5a623, #d63384);
+    background-size: 200% 200%;
+    animation: gradientSpin 4s ease infinite;
+    
+    box-shadow: 
+      0 15px 35px rgba(255, 79, 163, 0.25),
+      inset 0 0 0 4px rgba(255, 255, 255, 0.5);
+
+    // Pulsing Holographic Back-Glow
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140%;
+      height: 140%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 79, 163, 0.3) 0%, transparent 60%);
+      filter: blur(15px);
+      z-index: -1;
+      animation: pulseGlowAvatar 3s ease-in-out infinite alternate;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center; // Kept center instead of face for better framing
+      border: 4px solid #ffffff; // High contrast crisp border
+      box-shadow: inset 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    &:hover img {
+      transform: scale(1.08);
+    }
+  }
+
+  // ─────────────────────────
+  // TYPOGRAPHY
+  // ─────────────────────────
+  &__title {
+    font-size: 32px;
+    font-weight: 900;
+    font-family: $font-heading;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    
+    // Premium Dark Text Gradient
+    background: linear-gradient(135deg, #1a0a12 0%, #5a3d4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.04));
+  }
+
+  &__desc {
+    font-size: 15px;
+    font-weight: 600;
+    color: #8f4f73;
+    letter-spacing: 0.02em;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    
+    // Soft glowing text shadow
+    text-shadow: 0 2px 10px rgba(255, 79, 163, 0.2);
+  }
+
+  // ─────────────────────────
+  // BUTTONS CONTAINER
+  // ─────────────────────────
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+// ─────────────────────────────────────────────
+// HERO BUTTONS
+// ─────────────────────────────────────────────
+.hero-btn {
+  flex: 1;
+  position: relative;
+  border: none;
+  border-radius: 20px;
+  padding: 16px 20px;
+  
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  font-family: $font-body;
+  
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  // ── Glassmorphic Outline Button ──
+  &--outline {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    color: #ff4fa3;
+    border: 2px solid rgba(255, 79, 163, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+
+    &:hover {
+      background: #ffffff;
+      border-color: #ff4fa3;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(255, 79, 163, 0.15);
+    }
+    
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+
+  // ── Glossy Signature Pink Button ──
+  &--pink {
+    color: white;
+    background: linear-gradient(135deg, #f5a623 0%, #ff4fa3 50%, #d63384 100%);
+    background-size: 200% auto;
+    
+    box-shadow: 
+      0 12px 25px rgba(245, 166, 35, 0.25),
+      0 6px 15px rgba(255, 79, 163, 0.2);
+      
+    animation: gradientSpin 4s linear infinite;
+
+    // Glossy sweep
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: skewX(-25deg);
+      transition: 0.7s;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 16px 35px rgba(245, 166, 35, 0.35),
+        0 8px 20px rgba(255, 79, 163, 0.3);
+      &::after { left: 200%; }
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// ANIMATIONS
+// ─────────────────────────────────────────────
+
+@keyframes fadeUpHero {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulseGlowAvatar {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes gradientSpin {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

@@ -1,0 +1,225 @@
+@use '../components/theme' as *; // Adjust path if necessary
+
+// ─────────────────────────────────────────────
+// PREMIUM POST CARD
+// Deep Blur • Frosted Lock Screen • Glossy UI
+// ─────────────────────────────────────────────
+
+.post-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 32px;
+  overflow: hidden;
+  
+  border: 1px solid rgba(255, 79, 163, 0.08);
+  box-shadow: 
+    0 12px 35px rgba(255, 79, 163, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.02);
+    
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  // Hover lift effect
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 
+      0 20px 45px rgba(255, 79, 163, 0.12),
+      0 8px 20px rgba(0, 0, 0, 0.04);
+  }
+
+  // ─────────────────────────
+  // IMAGE WRAPPER & BLUR
+  // ─────────────────────────
+  &__img-wrap {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: #1a0a12; // Dark base prevents white bleeding on blur
+    
+    // Bottom inner shadow for a seamless blend into the card body
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+
+      // The active blurred state applied via JSX
+      &.post-card__img--blur {
+        filter: blur(18px) saturate(1.4);
+        transform: scale(1.15); // Scales up to hide harsh blurred edges
+      }
+    }
+  }
+
+  // Slight zoom on hover if the image is NOT locked
+  &:hover &__img-wrap img:not(.post-card__img--blur) {
+    transform: scale(1.05);
+  }
+
+  // ─────────────────────────
+  // FROSTED LOCK OVERLAY
+  // ─────────────────────────
+  &__lock {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    
+    // Dark Frosted Glass
+    background: rgba(26, 10, 18, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    span:first-child {
+      font-size: 42px;
+      filter: drop-shadow(0 8px 16px rgba(255, 79, 163, 0.6));
+      animation: floatLock 3s ease-in-out infinite;
+    }
+
+    span:last-child {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: white;
+      
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 10px 20px;
+      border-radius: 99px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  // ─────────────────────────
+  // CARD BODY & TYPOGRAPHY
+  // ─────────────────────────
+  &__body {
+    position: relative;
+    padding: 24px;
+    background: #ffffff;
+    z-index: 3;
+    
+    // Overlaps the image slightly for a layered, premium feel
+    margin-top: -16px;
+    border-radius: 24px 24px 0 0;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a0a12;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  &__time {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8f4f73;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+
+  // ─────────────────────────
+  // GLOSSY UNLOCK BUTTON
+  // ─────────────────────────
+  &__btn {
+    position: relative;
+    width: 100%;
+    border: none;
+    border-radius: 18px;
+    padding: 16px 20px;
+    
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: white;
+    
+    background: linear-gradient(135deg, #f5a623 0%, #ff4fa3 50%, #d63384 100%);
+    background-size: 200% auto;
+    
+    box-shadow: 
+      0 10px 25px rgba(245, 166, 35, 0.2),
+      0 6px 15px rgba(255, 79, 163, 0.25);
+      
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+
+    animation: gradientShift 4s linear infinite;
+
+    // Glossy light sweep effect
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: skewX(-25deg);
+      transition: 0.7s;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 14px 30px rgba(245, 166, 35, 0.3),
+        0 8px 20px rgba(255, 79, 163, 0.35);
+        
+      &::after {
+        left: 200%;
+      }
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// ANIMATIONS
+// ─────────────────────────────────────────────
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatLock {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.05); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

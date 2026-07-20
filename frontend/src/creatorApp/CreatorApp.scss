@@ -1,0 +1,157 @@
+@use './components/theme' as *; // Adjust path if necessary
+
+// ─────────────────────────────────────────────
+// GLOBAL APP ARCHITECTURE
+// Mobile Simulator • Base Resets • Core Utilities
+// ─────────────────────────────────────────────
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+  // Removes the ugly default blue tap highlight on mobile browsers
+  -webkit-tap-highlight-color: transparent; 
+}
+
+body {
+  // A very subtle, slightly deeper blush for the outer browser background 
+  // This makes the actual app container pop out beautifully on desktop.
+  background-color: #f2ebef; 
+  color: #1a0a12;
+  font-family: $font-body;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  // Outer ambient glows (Only really visible if viewed on a wide desktop screen)
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(255, 79, 163, 0.04), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(245, 166, 35, 0.04), transparent 25%);
+  background-attachment: fixed;
+}
+
+// ─────────────────────────
+// MAIN MOBILE CONTAINER
+// ─────────────────────────
+.creator-app {
+  position: relative;
+  width: 100%;
+  max-width: 420px; // The perfect modern mobile width constraint
+  margin: 0 auto;
+  min-height: 100vh;
+  
+  background-color: #fdfafb; // The pure, clean canvas for your app
+  overflow-x: hidden;
+  
+  // ── Desktop "Device" Simulation ──
+  // When viewed on a screen larger than 420px, it transforms into a floating glass device
+  @media (min-width: 421px) {
+    border-radius: 44px; // iPhone-style curves
+    margin: 20px auto;
+    min-height: calc(100vh - 40px);
+    
+    // Simulates a sleek, glossy white device bezel
+    border: 8px solid rgba(255, 255, 255, 0.9);
+    
+    box-shadow: 
+      0 0 0 1px rgba(255, 79, 163, 0.1), // Subtle pink rim
+      0 30px 60px rgba(26, 10, 18, 0.12), // Deep ambient shadow
+      0 12px 24px rgba(255, 79, 163, 0.08); // Colored glow
+      
+    // Fixes border-radius clipping for inner elements
+    overflow: hidden; 
+  }
+}
+
+// ─────────────────────────
+// GLOBAL CUSTOM SCROLLBAR
+// iOS-style thin scrollbar
+// ─────────────────────────
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 79, 163, 0.2);
+  border-radius: 10px;
+  
+  &:hover {
+    background: rgba(255, 79, 163, 0.4);
+  }
+}
+
+// ─────────────────────────
+// GLOBAL TYPOGRAPHY UTILITIES
+// ─────────────────────────
+.section-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a0a12;
+  margin: 0 0 20px;
+  font-family: $font-heading;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.02em;
+
+  // Premium Pink Accent Pill
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 22px;
+    background: linear-gradient(to bottom, #ff4fa3, #f5a623);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(255, 79, 163, 0.3);
+  }
+
+  &--center {
+    text-align: center;
+    justify-content: center;
+    &::before { display: none; } // Remove pill for centered titles
+  }
+}
+
+.posts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+// ─────────────────────────
+// GLOBAL HARDWARE ACCELERATED ANIMATIONS
+// ─────────────────────────
+
+// Universal buttery smooth fade up
+@keyframes fadeUp {
+  from { 
+    opacity: 0; 
+    transform: translate3d(0, 15px, 0); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translate3d(0, 0, 0); 
+  }
+}
+
+// For loaders and spinners
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Premium page load fade
+@keyframes premiumFade {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

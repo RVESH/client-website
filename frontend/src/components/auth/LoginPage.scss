@@ -1,0 +1,324 @@
+// =============================================================================
+// LoginPage.scss
+// =============================================================================
+@import './variables';
+
+// @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap');
+
+// ── Page shell ────────────────────────────────────────────────────────────────
+.login-page {
+  min-height: 100vh;
+  background: $bg-base;
+  @include flex-center(column);
+  padding: $space-6 $space-4;
+  position: relative;
+  overflow: hidden;
+
+  // Ambient top-right glow
+  &::before {
+    content: '';
+    position: fixed;
+    top: -180px;
+    right: -180px;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(108,99,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  // Ambient bottom-left warm glow
+  &::after {
+    content: '';
+    position: fixed;
+    bottom: -120px;
+    left: -120px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(255, 165, 2, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+.login-card {
+  width: 100%;
+  max-width: $card-max-w;
+  background: $bg-card;
+  border-radius: $card-radius;
+  box-shadow: $shadow-card;
+  padding: $space-10 $space-8;
+  position: relative;
+  @include slide-up-fade(0ms);
+
+  @include mobile-only {
+    padding: $space-8 $space-6;
+  }
+
+  // Subtle top-right corner accent
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at 100% 0%, rgba(108,99,255,0.15), transparent 70%);
+    border-radius: 0 $card-radius 0 0;
+    pointer-events: none;
+  }
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+.login-header {
+  margin-bottom: $space-8;
+  @include slide-up-fade(60ms);
+}
+
+.login-wordmark {
+  font-family: $font-display;
+  font-size: $text-xs;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $text-muted;
+  margin-bottom: $space-5;
+  display: block;
+
+  span {
+    color: $primary-light;
+    font-weight: $weight-medium;
+  }
+}
+
+.login-title {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $text-primary;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 $space-2;
+
+  @include tablet-up { font-size: $text-3xl; }
+}
+
+.login-subtitle {
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $text-secondary;
+  margin: 0;
+}
+
+// ── Form ──────────────────────────────────────────────────────────────────────
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+// ── Field Group ───────────────────────────────────────────────────────────────
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  @include slide-up-fade(120ms);
+
+  &:nth-child(2) { animation-delay: 160ms; }
+}
+
+.field-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.field-label {
+  font-family: $font-display;
+  font-size: $text-xs;
+  font-weight: $weight-medium;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+.forgot-link {
+  font-family: $font-body;
+  font-size: $text-xs;
+  color: $text-link;
+  text-decoration: none;
+  transition: color $duration $ease-out;
+
+  &:hover {
+    color: $primary-light;
+    text-decoration: underline;
+  }
+}
+
+// ── Input wrapper ─────────────────────────────────────────────────────────────
+.input-wrapper {
+  position: relative;
+
+  .field-input {
+    @include input-base;
+    padding-right: $space-10;
+  }
+
+  .toggle-btn {
+    position: absolute;
+    right: $space-4;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: $text-muted;
+    cursor: pointer;
+    padding: $space-1;
+    display: flex;
+    align-items: center;
+    transition: color $duration $ease-out;
+    border-radius: 4px;
+
+    &:hover       { color: $text-secondary; }
+    &:focus-visible { @include focus-ring($primary-glow); }
+  }
+}
+
+.field-input {
+  @include input-base;
+}
+
+// ── Validation message ────────────────────────────────────────────────────────
+.field-message {
+  font-family: $font-body;
+  font-size: $text-xs;
+  min-height: 16px;
+
+  &.error-msg { color: $error; }
+}
+
+// ── Remember Me row ───────────────────────────────────────────────────────────
+.remember-row {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  @include slide-up-fade(200ms);
+
+  // Custom checkbox
+  input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border: 1px solid $border-default;
+    border-radius: 5px;
+    background: $bg-input;
+    cursor: pointer;
+    position: relative;
+    transition: background $duration $ease-out, border-color $duration $ease-out;
+
+    &:checked {
+      background: $primary;
+      border-color: $primary;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        top: 1px;
+        width: 8px;
+        height: 5px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(-45deg) translateY(1px);
+      }
+    }
+
+    &:focus-visible { @include focus-ring($primary-glow); }
+  }
+
+  label {
+    font-family: $font-body;
+    font-size: $text-sm;
+    color: $text-secondary;
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+// ── Submit button ─────────────────────────────────────────────────────────────
+.login-submit {
+  @include btn-primary;
+  @include flex-center;
+  gap: $space-2;
+  min-height: 52px;
+  @include slide-up-fade(240ms);
+}
+
+// ── Spinner ───────────────────────────────────────────────────────────────────
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// ── Error banner ──────────────────────────────────────────────────────────────
+.login-error {
+  background: $error-light;
+  border: 1px solid rgba(255, 71, 87, 0.25);
+  border-radius: 8px;
+  padding: $space-3 $space-4;
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $error;
+  animation: fadeIn 0.2s $ease-out;
+  @include flex-center;
+  gap: $space-2;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ── Divider ───────────────────────────────────────────────────────────────────
+.divider {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  color: $text-muted;
+  font-family: $font-display;
+  font-size: $text-xs;
+  letter-spacing: 0.08em;
+
+  &::before, &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: $border-subtle;
+  }
+}
+
+// ── Footer ────────────────────────────────────────────────────────────────────
+.login-footer {
+  margin-top: $space-6;
+  text-align: center;
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $text-muted;
+  @include slide-up-fade(280ms);
+
+  a {
+    color: $text-link;
+    text-decoration: none;
+    font-weight: $weight-medium;
+    transition: color $duration $ease-out;
+
+    &:hover { color: $primary-light; text-decoration: underline; }
+  }
+}

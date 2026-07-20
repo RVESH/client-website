@@ -1,0 +1,188 @@
+/* ============================================================
+   Hero.scss — Dark hero, works with or without background image
+   Font: Plus Jakarta Sans
+   ============================================================ */
+
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 8rem 0 5rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 65% 50%, rgba(37,99,235,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 10% 80%, rgba(99,102,241,.14) 0%, transparent 55%),
+    linear-gradient(145deg, #060c1e 0%, #0d1733 50%, #060c1e 100%);
+
+  // Swap to background-image if using an image:
+  // background: url("../../../../images/background1.png") center/cover no-repeat;
+  // Then the .hero__overlay handles readability
+}
+
+/* Grid pattern */
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Dark overlay (for background image mode) */
+.hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg, rgba(5,10,25,.82) 0%, rgba(5,10,25,.68) 50%, rgba(5,10,25,.38) 100%);
+  z-index: 0;
+  // Set to display:none if using gradient-only background
+  display: none;
+}
+
+/* ── Layout ── */
+.hero__inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  align-items: center; gap: 4rem;
+  @media (max-width: 900px) { grid-template-columns: 1fr; text-align: center; }
+}
+
+/* ── Content ── */
+.hero__content { display: flex; flex-direction: column; gap: 1.6rem; }
+
+/* ── Eyebrow pill ── */
+.hero__pill {
+  display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+  color: #93c5fd;
+  background: rgba(59,130,246,.12); border: 1px solid rgba(147,197,253,.25);
+  padding: 6px 14px 6px 10px; border-radius: 999px;
+  backdrop-filter: blur(8px);
+  @media (max-width: 900px) { align-self: center; }
+}
+
+.hero__pill-dot {
+  width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;
+  animation: blink 2s ease-in-out infinite; flex-shrink: 0;
+}
+
+@keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.6)} }
+
+/* ── Title ── */
+.hero__title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.1rem, 4.5vw, 3.3rem);
+  font-weight: 800; line-height: 1.15; color: #fff;
+  margin: 0; text-shadow: 0 2px 20px rgba(0,0,0,.4);
+}
+
+.hero__title-hl {
+  background: linear-gradient(100deg, #60a5fa, #818cf8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── Subtitle ── */
+.hero__sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem; color: rgba(203,213,225,.85); line-height: 1.78;
+  margin: 0; max-width: 460px;
+  @media (max-width: 900px) { max-width: 100%; }
+}
+
+/* ── Buttons ── */
+.hero__actions {
+  display: flex; gap: .85rem; flex-wrap: wrap;
+  @media (max-width: 900px) { justify-content: center; }
+}
+
+.hero__btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .9rem; font-weight: 600; border-radius: 999px;
+  padding: .78rem 1.5rem; border: none; cursor: pointer;
+  transition: all .22s cubic-bezier(.4,0,.2,1);
+
+  &--primary {
+    background: #2563eb; color: #fff;
+    box-shadow: 0 4px 20px rgba(37,99,235,.45);
+    svg { transition: transform .2s; }
+    &:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,99,235,.55); svg { transform: translateX(3px); } }
+  }
+
+  &--glass {
+    background: rgba(255,255,255,.08); color: rgba(226,232,240,.9);
+    border: 1.5px solid rgba(255,255,255,.18); backdrop-filter: blur(8px);
+    &:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); color: #fff; }
+  }
+}
+
+/* ── Trust bar ── */
+.hero__trust {
+  display: flex; align-items: center; gap: .75rem; flex-wrap: wrap;
+  @media (max-width: 900px) { justify-content: center; }
+}
+
+.hero__trust-item {
+  display: flex; align-items: center; gap: 5px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .82rem; font-weight: 500; color: rgba(148,163,184,.9);
+}
+
+.hero__trust-sep { width: 4px; height: 4px; background: rgba(148,163,184,.4); border-radius: 50%; flex-shrink: 0; }
+
+/* ── Visual (right) ── */
+.hero__visual {
+  position: relative; display: flex; justify-content: center; align-items: center;
+  @media (max-width: 900px) { display: none; }
+}
+
+.hero__ring {
+  position: absolute; width: 360px; height: 360px; border-radius: 50%;
+  border: 1px solid rgba(96,165,250,.1); animation: spin 22s linear infinite;
+  &--2 { width: 280px; height: 280px; border-style: dashed; border-color: rgba(96,165,250,.07); animation: spin 16s linear infinite reverse; }
+}
+
+@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+/* ── Floating card ── */
+.hero__card {
+  width: 285px; position: relative; z-index: 1;
+  background: rgba(255,255,255,.07); backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255,255,255,.14); border-radius: 20px; padding: 1.4rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12);
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+.hero__card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.15rem; }
+.hero__card-dots { display: flex; gap: 5px; span { width: 9px; height: 9px; border-radius: 50%; display: block; } }
+.hero__card-url { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .68rem; font-weight: 600; color: rgba(255,255,255,.28); letter-spacing: .06em; }
+.hero__card-bars { display: flex; flex-direction: column; gap: 9px; margin-bottom: 1.3rem; }
+.hero__card-bar {
+  height: 8px; border-radius: 5px; background: rgba(255,255,255,.1);
+  &--blue   { background: rgba(96,165,250,.35); }
+  &--indigo { background: rgba(129,140,248,.28); }
+}
+.hero__card-foot { border-top: 1px solid rgba(255,255,255,.07); padding-top: .9rem; }
+.hero__card-status {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .73rem; font-weight: 600;
+  color: #4ade80; background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.22);
+  padding: 4px 12px; border-radius: 999px;
+}
+.hero__card-status-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; animation: blink 1.8s ease-in-out infinite; flex-shrink: 0; }
+
+/* ── Stat pills ── */
+.hero__stat {
+  position: absolute; z-index: 2;
+  background: rgba(255,255,255,.09); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.15); border-radius: 13px;
+  padding: .65rem 1rem; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+
+  strong { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; font-weight: 800; color: #60a5fa; line-height: 1; }
+  span   { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .67rem; font-weight: 500; color: rgba(148,163,184,.8); white-space: nowrap; }
+
+  &--1 { top: -10px; left: -35px; animation: float 5s ease-in-out .8s infinite; }
+  &--2 { bottom: 0; right: -35px; animation: float 5s ease-in-out 1.8s infinite; }
+}

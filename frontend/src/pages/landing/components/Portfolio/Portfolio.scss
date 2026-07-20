@@ -1,0 +1,60 @@
+/* ============================================================
+   Portfolio.scss — Light theme
+   ============================================================ */
+
+.portfolio { background: #f8fafc; padding: 6rem 0; }
+
+.port__grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+  @media (max-width: 960px) { grid-template-columns: repeat(2,1fr); }
+  @media (max-width: 560px) { grid-template-columns: 1fr; }
+}
+
+.port__card {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 18px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: transform .26s cubic-bezier(.4,0,.2,1), box-shadow .26s, border-color .26s;
+
+  &--hovered {
+    transform: translateY(-6px); border-color: #bfdbfe;
+    box-shadow: 0 12px 36px rgba(37,99,235,.12);
+    .port__thumb-icon { opacity: 1; transform: scale(1.1); }
+    .port__link { gap: 10px; color: #1d4ed8; }
+  }
+}
+
+.port__thumb {
+  height: 158px; display: flex; align-items: center; justify-content: center;
+}
+
+.port__thumb-icon {
+  opacity: .65; transition: opacity .22s, transform .22s;
+}
+
+.port__body {
+  padding: 1.4rem; display: flex; flex-direction: column; gap: .6rem; flex: 1;
+}
+
+.port__tag {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .68rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: #2563eb; background: #eff6ff; border: 1px solid #bfdbfe;
+  padding: 3px 10px; border-radius: 999px; align-self: flex-start;
+}
+
+.port__title {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700;
+  color: #0f172a; margin: 0; line-height: 1.28;
+}
+
+.port__text {
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .86rem;
+  color: #64748b; line-height: 1.65; flex: 1; margin: 0;
+}
+
+.port__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .84rem; font-weight: 600;
+  color: #2563eb; text-decoration: none; margin-top: .3rem;
+  transition: gap .2s, color .2s;
+}

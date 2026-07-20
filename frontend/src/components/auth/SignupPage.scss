@@ -1,0 +1,344 @@
+// =============================================================================
+// SignupPage.scss
+// =============================================================================
+// CRA (Create React App) compatible — uses @import instead of @use
+// _variables.scss lives at: src/components/auth/_variables.scss
+// (copy it there, or adjust the path below to match your project)
+@import './variables';
+
+// Google Fonts import — DM Mono (display) + DM Sans (body)
+// @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap');
+
+// ── Page shell ────────────────────────────────────────────────────────────────
+.signup-page {
+  min-height: 100vh;
+  background: $bg-base;
+  @include flex-center(column);
+  padding: $space-6 $space-4;
+  position: relative;
+  overflow: hidden;
+
+  // Ambient glow top-left
+  &::before {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  // Ambient glow bottom-right
+  &::after {
+    content: '';
+    position: fixed;
+    bottom: -150px;
+    right: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(46,213,115,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+.signup-card {
+  width: 100%;
+  max-width: $card-max-w;
+  background: $bg-card;
+  border-radius: $card-radius;
+  box-shadow: $shadow-card;
+  padding: $space-10 $space-8;
+  position: relative;
+  @include slide-up-fade(0ms);
+
+  @include mobile-only {
+    padding: $space-8 $space-6;
+    border-radius: 12px;
+  }
+
+  // Top accent bar
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: $space-8;
+    right: $space-8;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $primary, transparent);
+    opacity: 0.5;
+  }
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+.signup-header {
+  margin-bottom: $space-8;
+  @include slide-up-fade(60ms);
+}
+
+.signup-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-display;
+  font-size: $text-xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $primary-light;
+  margin-bottom: $space-5;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $success;
+    box-shadow: 0 0 6px $success;
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.signup-title {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $weight-bold;
+  color: $text-primary;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 $space-2;
+
+  @include tablet-up {
+    font-size: $text-3xl;
+  }
+}
+
+.signup-subtitle {
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $text-secondary;
+  margin: 0;
+}
+
+// ── Form ──────────────────────────────────────────────────────────────────────
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+// ── Field Group ───────────────────────────────────────────────────────────────
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  @include slide-up-fade(120ms);
+
+  &:nth-child(2) { animation-delay: 160ms; }
+  &:nth-child(3) { animation-delay: 200ms; }
+  &:nth-child(4) { animation-delay: 240ms; }
+}
+
+.field-label {
+  font-family: $font-display;
+  font-size: $text-xs;
+  font-weight: $weight-medium;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+// ── Input wrapper (for icon / toggle buttons inside) ──────────────────────────
+.input-wrapper {
+  position: relative;
+
+  .field-input {
+    @include input-base;
+    padding-right: $space-10; // reserve space for eye icon
+  }
+
+  // Password toggle button
+  .toggle-btn {
+    position: absolute;
+    right: $space-4;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: $text-muted;
+    cursor: pointer;
+    padding: $space-1;
+    display: flex;
+    align-items: center;
+    transition: color $duration $ease-out;
+    border-radius: 4px;
+
+    &:hover { color: $text-secondary; }
+    &:focus-visible { @include focus-ring($primary-glow); }
+
+    svg { display: block; }
+  }
+}
+
+// Standalone input (no icon)
+.field-input {
+  @include input-base;
+}
+
+// ── Validation message ────────────────────────────────────────────────────────
+.field-message {
+  font-family: $font-body;
+  font-size: $text-xs;
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  min-height: 16px;
+
+  &.error-msg {
+    color: $error;
+    animation: shake 0.35s $ease-out;
+  }
+
+  &.success-msg {
+    color: $success;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-4px); }
+  75%       { transform: translateX(4px); }
+}
+
+// ── Password strength bar ─────────────────────────────────────────────────────
+.strength-bar {
+  display: flex;
+  gap: $space-1;
+  margin-top: $space-1;
+
+  span {
+    flex: 1;
+    height: 3px;
+    border-radius: 99px;
+    background: $border-subtle;
+    transition: background $duration-lg $ease-out;
+
+    &.filled-weak   { background: $error; }
+    &.filled-fair   { background: $warning; }
+    &.filled-strong { background: $success; }
+  }
+}
+
+// ── Submit button ─────────────────────────────────────────────────────────────
+.signup-submit {
+  @include btn-primary;
+  margin-top: $space-3;
+  @include slide-up-fade(280ms);
+  @include flex-center;
+  gap: $space-2;
+  min-height: 52px;
+}
+
+// ── Spinner ───────────────────────────────────────────────────────────────────
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// ── Success state ─────────────────────────────────────────────────────────────
+.signup-success {
+  @include flex-center(column);
+  gap: $space-4;
+  padding: $space-8 0;
+  text-align: center;
+  animation: successPop 0.5s $ease-out both;
+
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: $success-light;
+    border: 1px solid $border-success;
+    @include flex-center;
+    color: $success;
+
+    svg { animation: checkDraw 0.4s $ease-out 0.1s both; }
+  }
+
+  h3 {
+    font-family: $font-display;
+    font-size: $text-xl;
+    color: $text-primary;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-family: $font-body;
+    color: $text-secondary;
+    font-size: $text-sm;
+    margin: 0;
+    max-width: 280px;
+  }
+}
+
+@keyframes successPop {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes checkDraw {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+// ── Global error banner ───────────────────────────────────────────────────────
+.global-error {
+  background: $error-light;
+  border: 1px solid rgba(255, 71, 87, 0.25);
+  border-radius: 8px;
+  padding: $space-3 $space-4;
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $error;
+  animation: fadeIn 0.2s $ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ── Footer link ───────────────────────────────────────────────────────────────
+.signup-footer {
+  margin-top: $space-6;
+  text-align: center;
+  font-family: $font-body;
+  font-size: $text-sm;
+  color: $text-muted;
+  @include slide-up-fade(320ms);
+
+  a {
+    color: $text-link;
+    text-decoration: none;
+    font-weight: $weight-medium;
+    transition: color $duration $ease-out;
+
+    &:hover { color: $primary-light; text-decoration: underline; }
+  }
+}

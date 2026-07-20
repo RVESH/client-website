@@ -1,0 +1,417 @@
+// =============================================================================
+// AdminPanel.scss
+// src/components/dashboard/AdminPanel.scss
+// =============================================================================
+@import '../auth/variables';
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap');
+
+// ── Page ──────────────────────────────────────────────────────────────────────
+.admin-page {
+  min-height: 100vh;
+  background: $bg-base;
+  font-family: $font-body;
+  padding: $space-8 $space-4;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: -150px; right: -150px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,165,2,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @include desktop-up { padding: $space-12 $space-8; }
+}
+
+.admin-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+// ── Top bar ───────────────────────────────────────────────────────────────────
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-4;
+  @include slide-up-fade(0ms);
+}
+
+.admin-brand {
+  font-family: $font-display;
+  font-size: $text-xs;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $text-muted;
+
+  span { color: $warning; }
+}
+
+.back-link {
+  font-family: $font-display;
+  font-size: $text-xs;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-muted;
+  text-decoration: none;
+  border: 1px solid $border-subtle;
+  border-radius: 8px;
+  padding: $space-2 $space-4;
+  transition: color $duration $ease-out, border-color $duration $ease-out;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+
+  &:hover { color: $primary-light; border-color: rgba(108,99,255,0.4); }
+}
+
+// ── Stats row ─────────────────────────────────────────────────────────────────
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-4;
+  @include slide-up-fade(60ms);
+
+  @include tablet-up { grid-template-columns: repeat(4, 1fr); }
+}
+
+.stat-card {
+  background: $bg-card;
+  border-radius: 12px;
+  box-shadow: $shadow-card;
+  padding: $space-5 $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+
+  .stat-label {
+    font-family: $font-display;
+    font-size: $text-xs;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $text-muted;
+  }
+
+  .stat-value {
+    font-family: $font-display;
+    font-size: $text-2xl;
+    font-weight: $weight-bold;
+    color: $text-primary;
+    letter-spacing: -0.02em;
+  }
+
+  &.stat-primary  .stat-value { color: $primary-light; }
+  &.stat-success  .stat-value { color: $success; }
+  &.stat-error    .stat-value { color: $error; }
+  &.stat-warning  .stat-value { color: $warning; }
+}
+
+// ── Panel card ────────────────────────────────────────────────────────────────
+.admin-card {
+  background: $bg-card;
+  border-radius: $card-radius;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  @include slide-up-fade(100ms);
+
+  &::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $warning, transparent);
+    opacity: 0.3;
+  }
+}
+
+.admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-4;
+  padding: $space-6 $space-8;
+  border-bottom: 1px solid $border-subtle;
+
+  @include mobile-only { padding: $space-5; }
+}
+
+.admin-card-title {
+  font-family: $font-display;
+  font-size: $text-xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $warning;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 4px; height: 14px;
+    background: $warning;
+    border-radius: 2px;
+  }
+}
+
+// ── Search / filter ───────────────────────────────────────────────────────────
+.search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+
+  svg {
+    position: absolute;
+    left: $space-4; top: 50%;
+    transform: translateY(-50%);
+    color: $text-muted;
+    pointer-events: none;
+  }
+}
+
+.search-input {
+  @include input-base;
+  padding-left: $space-10;
+  font-size: $text-sm;
+  height: 40px;
+}
+
+// ── Table ─────────────────────────────────────────────────────────────────────
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+
+  thead tr {
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid $border-subtle;
+  }
+
+  th {
+    font-family: $font-display;
+    font-size: $text-xs;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $text-muted;
+    padding: $space-4 $space-5;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $border-subtle;
+    transition: background $duration $ease-out;
+
+    &:last-child { border-bottom: none; }
+    &:hover { background: rgba(255,255,255,0.02); }
+  }
+
+  td {
+    padding: $space-4 $space-5;
+    font-size: $text-sm;
+    color: $text-secondary;
+    white-space: nowrap;
+  }
+
+  .user-name-cell {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  .table-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $primary, $primary-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-family: $font-display;
+    font-size: $text-xs;
+    font-weight: $weight-bold;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .user-name {
+    color: $text-primary;
+    font-weight: $weight-medium;
+  }
+
+  .user-email {
+    color: $text-muted;
+    font-size: $text-xs;
+    margin-top: 2px;
+  }
+}
+
+// ── Status badge ──────────────────────────────────────────────────────────────
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: $font-display;
+  font-size: $text-xs;
+  letter-spacing: 0.06em;
+  padding: 3px $space-3;
+  border-radius: 99px;
+
+  &::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+  }
+
+  &.active {
+    color: $success;
+    background: $success-light;
+    &::before { background: $success; }
+  }
+
+  &.blocked {
+    color: $error;
+    background: $error-light;
+    &::before { background: $error; }
+  }
+
+  &.admin {
+    color: $warning;
+    background: rgba(255,165,2,0.1);
+    &::before { background: $warning; }
+  }
+}
+
+// ── Action buttons inside table ───────────────────────────────────────────────
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.action-btn {
+  font-family: $font-display;
+  font-size: $text-xs;
+  letter-spacing: 0.06em;
+  padding: $space-1 $space-3;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all $duration $ease-out;
+  white-space: nowrap;
+
+  &.block-btn {
+    color: $warning;
+    border-color: rgba(255,165,2,0.3);
+    background: transparent;
+    &:hover { background: rgba(255,165,2,0.1); }
+  }
+
+  &.unblock-btn {
+    color: $success;
+    border-color: rgba(46,213,115,0.3);
+    background: transparent;
+    &:hover { background: $success-light; }
+  }
+
+  &.delete-btn {
+    color: $error;
+    border-color: rgba(255,71,87,0.3);
+    background: transparent;
+    &:hover { background: $error-light; }
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+// ── Empty / loading state ─────────────────────────────────────────────────────
+.table-empty {
+  padding: $space-12;
+  text-align: center;
+  font-family: $font-display;
+  font-size: $text-sm;
+  color: $text-muted;
+  letter-spacing: 0.06em;
+}
+
+.table-loading {
+  padding: $space-10;
+  text-align: center;
+  color: $primary-light;
+  font-family: $font-display;
+  font-size: $text-sm;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-3;
+}
+
+.spinner-sm {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(108,99,255,0.25);
+  border-top-color: $primary;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// ── Modal ─────────────────────────────────────────────────────────────────────
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000; padding: $space-4;
+  animation: fadeIn 0.15s $ease-out;
+}
+
+.modal {
+  background: $bg-card;
+  border-radius: $card-radius;
+  box-shadow: $shadow-card;
+  padding: $space-8;
+  width: 100%; max-width: 380px;
+  animation: modalPop 0.25s $ease-out;
+
+  h3 { font-family: $font-display; font-size: $text-lg; color: $text-primary; margin-bottom: $space-3; }
+  p  { font-size: $text-sm; color: $text-secondary; line-height: 1.6; margin-bottom: $space-6; }
+}
+
+.modal-actions { display: flex; gap: $space-3; justify-content: flex-end; }
+
+.btn-ghost {
+  background: transparent; border: 1px solid $border-default;
+  color: $text-secondary; font-family: $font-display;
+  font-size: $text-xs; letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: $btn-radius; padding: $space-3 $space-5;
+  cursor: pointer; transition: color $duration $ease-out;
+  &:hover { color: $text-primary; }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+.btn-danger-solid {
+  background: $error; color: #fff;
+  font-family: $font-display; font-size: $text-xs;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border: none; border-radius: $btn-radius;
+  padding: $space-3 $space-5; cursor: pointer;
+  transition: opacity $duration $ease-out;
+  &:hover    { opacity: 0.85; }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+@keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalPop { from { opacity: 0; transform: scale(0.94) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
