@@ -88,15 +88,20 @@ async verifyOtp(c) {
     );
   }
 
-  async forgotPassword(c) {
+async forgotPassword(c) {
     const body = await c.req.json();
 
-    return success(
-      c,
-      "Forgot Password endpoint reached.",
-      body
+    const result = await forgotPasswordService(
+        c.env,
+        body.email
     );
-  }
+
+    return success(
+        c,
+        result.message,
+        result
+    );
+}
 
   async resetPassword(c) {
     const body = await c.req.json();

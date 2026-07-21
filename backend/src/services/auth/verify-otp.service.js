@@ -11,6 +11,8 @@ import {
 import ValidationError from "../../errors/ValidationError";
 import NotFoundError from "../../errors/NotFoundError";
 
+import { verifyPassword } from "../../utils/password.js";
+
 export async function verifyOtpService(env, email, otp, purpose) {
   const normalizedEmail = email.toLowerCase();
 
@@ -31,9 +33,15 @@ export async function verifyOtpService(env, email, otp, purpose) {
     throw new ValidationError("OTP has expired.");
   }
 
-  if (otpRecord.otp !== otp) {
-    throw new ValidationError("Invalid OTP.");
-  }
+const isValid = await verifyPassword(
+  otp,
+  otpRecord.otp_hash,
+  otpRecord.otp_salt
+);
+
+if (!isValid) {
+  throw new ValidationError("Invalid OTP.");
+}
 
   const user = await findUserByEmail(env, normalizedEmail);
 
@@ -41,11 +49,12 @@ export async function verifyOtpService(env, email, otp, purpose) {
     throw new NotFoundError("User not found.");
   }
 
-  await updateUser(env, user.id, {
-    email_verified: 1,
-    updated_at: new Date().toISOString(),
-  });
-
+if (purpose === "EMAIL_VERIFICATION") {
+    await updateUser(env, user.id, {
+        email_verified: 1,
+        updated_at: new Date().toISOString(),
+    });
+}
   await deleteOtp(env, {
     id: otpRecord.id,
   });
@@ -54,3 +63,21 @@ export async function verifyOtpService(env, email, otp, purpose) {
     message: "Email verified successfully.",
   };
 }
+
+// in otp.repository.js it must be
+// const { hash, salt } = await hashPassword(otp);
+
+// await createOtp(env, {
+//     email: email.toLowerCase(),
+//     otpHash: hash,
+//     otpSalt: salt,
+//     purpose,
+//     verified: false,
+//     createdAt: new Date(),
+//     expiresAt,
+// });
+// Otherwise verifyPassword() will always fail.
+// ⚠️ 3. Fix otp.repository.js
+// Earlier I noticed this SQL bug:
+// Your query currently has:
+// VALUES (?, ?, ?, ?, ?, ?, ?, ?)

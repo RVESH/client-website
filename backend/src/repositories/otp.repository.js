@@ -1,3 +1,20 @@
+//  All OTP flows (register, verify, resend, forgot password, reset password) depend on it.
+                        // Generate OTP
+                        //     ↓
+
+                        //     Hash OTP
+
+                        //     ↓
+
+                        //     Store Hash + Salt
+
+                        //     ↓
+
+                        //     Return Plain OTP
+
+                        //     ↓
+
+                        //     Email Plain OTP
 import { getDatabase } from "../providers/database.provider";
 
 export async function createOtp(env, otpData) {
@@ -9,18 +26,20 @@ export async function createOtp(env, otpData) {
         INSERT INTO otps (
             id,
             email,
-            otp,
+            otp_hash,
+            otp_salt,
             purpose,
             verified,
             created_at,
             expires_at
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `)
     .bind(
         id,
         otpData.email,
-        otpData.otp,
+        otpData.otpHash,
+        otpData.otpSalt,
         otpData.purpose,
         otpData.verified ? 1 : 0,
         otpData.createdAt.toISOString(),

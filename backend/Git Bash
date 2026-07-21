@@ -1,0 +1,34 @@
+Ye command chalao:
+git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sort -k3 -n | tail -20
+Ye tumhare repository ke 20 sabse bade files dikhayega.
+
+check karo ki push kis wajah se fail ho raha hai:
+git status
+
+
+
+
+
+
+
+
+
+
+First, inspect your local database
+
+Your binding is:
+
+binding = "universal_auth"
+database_name = "universal-auth"
+
+So run:
+
+npx wrangler d1 execute universal_auth --local --command "SELECT * FROM users;"
+
+If that doesn't work, use the database name instead:
+
+npx wrangler d1 execute universal-auth --local --command "SELECT * FROM users;"
+
+Do the same for OTPs:
+
+npx wrangler d1 execute universal-auth --local --command "SELECT * FROM otps;"

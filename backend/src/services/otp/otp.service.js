@@ -7,6 +7,7 @@ import {
 import { findUserByEmail, updateUser } from "../../repositories/user.repository";
 import ValidationError from "../../errors/ValidationError";
 import NotFoundError from "../../errors/NotFoundError";
+import { hashPassword } from "../../utils/password.js";
 
 const OTP_LENGTH = 6;
 const OTP_EXPIRY_MINUTES = 10;
@@ -33,14 +34,17 @@ export async function generateAndStoreOtp(env, email, purpose) {
         Date.now() + OTP_EXPIRY_MINUTES * 60 * 1000
     );
 
-    await createOtp(env, {
-        email: email.toLowerCase(),
-        otp,
-        purpose,
-        verified: false,
-        createdAt: new Date(),
-        expiresAt,
-    });
+const { hash, salt } = await hashPassword(otp);
+
+await createOtp(env, {
+  email: email.toLowerCase(),
+  otpHash: hash,
+  otpSalt: salt,
+  purpose,
+  verified: false,
+  createdAt: new Date(),
+  expiresAt,
+});
 
     return {
         otp,

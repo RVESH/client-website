@@ -26,12 +26,17 @@
 
 
 import { success } from "../utils/response.js";
-import { registerService } from "../services/auth/......ifMONGODBregister.service.js";
- // import { verifyOtpService } from "../services/otp/.....ifMONGODBotp.service.js";
+// import { registerService } from "../services/auth/......ifMONGODBregister.service.js";
+ import { registerService } from "../services/auth/register.service.js";
+// import { verifyOtpService } from "../services/otp/.....ifMONGODBotp.service.js";
 import { verifyOtpService } from "../services/auth/verify-otp.service.js";
  import { resendOtpService } from "../services/auth/resend-otp.service.js";
  import { refreshTokenService } from "../services/auth/refresh-token.service.js";
-class AuthController {
+import { logoutService } from "../services/auth/logout.service.js";
+import { login } from "../services/auth/login.service.js";
+import { forgotPasswordService } from "../services/auth/forgot-password.service.js";
+
+ class AuthController {
 
 async refreshToken(c) {
   const body = await c.req.json();
@@ -47,6 +52,7 @@ async refreshToken(c) {
     result
   );
 }
+
 
 
 async register(c) {
@@ -96,31 +102,71 @@ async resendOtp(c) {
 }
 
   async login(c) {
-    const body = await c.req.json();
+  const body = await c.req.json();
 
-    return success(
-      c,
-      "Login endpoint reached.",
-      body
-    );
-  }
+  const result = await login(
+    c.env,
+    body.email,
+    body.password,
+    {
+      userAgent: c.req.header("User-Agent"),
+      ipAddress: c.req.header("CF-Connecting-IP"),
+    }
+  );
+
+  return success(
+    c,
+    "Login successful.",
+    result
+  );
+}
+                                // Client
+                                //   │
+                                //   ▼
+                                // Refresh Token
+                                //   │
+                                //   ▼
+                                // Hash Token
+                                //   │
+                                //   ▼
+                                // Find Session (D1)
+                                //   │
+                                //   ▼
+                                // Revoke Session
+                                //   │
+                                //   ▼
+                                // Return Success
+
 
   async logout(c) {
-    return success(
-      c,
-      "Logout endpoint reached."
-    );
-  }
+  const body = await c.req.json();
 
-  async forgotPassword(c) {
-    const body = await c.req.json();
+  const result = await logoutService(
+    c.env,
+    body.refreshToken
+  );
 
-    return success(
-      c,
-      "Forgot Password endpoint reached.",
-      body
-    );
-  }
+  return success(
+    c,
+    result.message,
+    result
+  );
+}
+
+async forgotPassword(c) {
+  const body = await c.req.json();
+
+  const result = await forgotPasswordService(
+    c.env,
+    body.email
+  );
+
+  return success(
+    c,
+    result.message,
+    result
+  );
+}
 
   async resetPassword(c) {
     const body = await c.req.json();
@@ -139,7 +185,20 @@ async resendOtp(c) {
     );
   }
 }
+export async function forgotPassword(c) {
+    try {
+        const { email } = await c.req.json();
 
+        const result = await forgotPasswordService(
+            c.env,
+            email
+        );
+
+        return c.json(result, 200);
+    } catch (error) {
+        throw error;
+    }
+}
 export default new AuthController();
 
 

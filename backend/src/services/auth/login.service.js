@@ -18,12 +18,12 @@
 
 import { findUserByEmail } from "../../repositories/user.repository";
 import { createSession } from "../../repositories/session.repository";
-import { verifyPassword } from "../../utils/password";
+import { verifyPassword } from "../../utils/password.js";
 import { hashToken } from "../../utils/token.js";
 import {
   generateAccessToken,
   generateRefreshToken,
-} from "../../utils/jwt";
+} from "../../utils/jwt.js";
 import UnauthorizedError from "../../errors/UnauthorizedError";
 
 export async function login(env, email, password, metadata = {}) {

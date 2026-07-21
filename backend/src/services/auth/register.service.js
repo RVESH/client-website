@@ -1,5 +1,5 @@
 import { findUserByEmail, createUser } from "../../repositories/user.repository";
-import { generateAndStoreOtp } from "../otp/.....ifMONGODBotp.service";
+import { generateAndStoreOtp } from "../otp/otp.service.js";
 import { sendOtpEmail } from "../email/email.service";
 import ConflictError from "../../errors/ConflictError"; 
 import { hashPassword } from "../../utils/password.js";
@@ -128,6 +128,8 @@ if (existingUser) {
 //         salt: saltHex,
 //     };
 // }
+
+
 
 
 
