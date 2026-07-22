@@ -31,4 +31,23 @@ npx wrangler d1 execute universal-auth --local --command "SELECT * FROM users;"
 
 Do the same for OTPs:
 
-npx wrangler d1 execute universal-auth --local --command "SELECT * FROM otps;"
+npx wrangler d1 execute universal-auth --local --command "SELECT * FROM otps;
+
+
+Current status
+
+Infrastructure:
+
+✅ Cloudflare Workers
+✅ Hono
+✅ D1 configured
+✅ Brevo HTTP API
+✅ Web Crypto password hashing
+✅ JWT utilities
+✅ Repository layer
+✅ OTP hashing (otp_hash + otp_salt)
+✅ D1 schema synchronized (aaj fix kiya)
+
+Roadmap ke hisaab se ab hum yahan hain:
+
+Register → Verify OTP → Resend OTP → Login → JWT → Auth Middleware → /me → Refresh Token → Forgot Password → Reset Password → Logout"
