@@ -27,7 +27,7 @@ import {
 } from "../../utils/jwt.js";
 import UnauthorizedError from "../../errors/UnauthorizedError";
 
-export async function login(env, email, password, metadata = {}) {
+export async function loginService(env, email, password, metadata = {}) {
 const normalizedEmail = email.trim().toLowerCase();
 
 const user = await findUserByEmail(env, normalizedEmail);
@@ -46,11 +46,16 @@ const user = await findUserByEmail(env, normalizedEmail);
     throw new UnauthorizedError("Invalid email or password.");
   }
 
-  if (!user.email_verified || user.status !== "active") {
+  if (!user.email_verified) {
     throw new UnauthorizedError(
       "Please verify your email before logging in."
     );
   }
+  if (user.status !== "active") {
+    throw new UnauthorizedError(
+        "Your account is not active."
+    );
+}
 
   const payload = {
     sub: user.id,

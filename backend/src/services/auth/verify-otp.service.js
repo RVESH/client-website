@@ -52,9 +52,11 @@ if (!isValid) {
 if (purpose === "REGISTER") {
     await updateUser(env, user.id, {
         email_verified: 1,
+        status: "active",
         updated_at: new Date().toISOString(),
     });
 }
+
   await deleteOtp(env, {
     id: otpRecord.id,
   });

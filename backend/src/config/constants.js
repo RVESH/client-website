@@ -2,7 +2,7 @@
 export const OTP_PURPOSE = {
   SIGNUP: 'signup',
   LOGIN: 'login',
-  PASSWORD_RESET: 'password_reset',
+  FORGOT_PASSWORD: 'forgot_password',
   EMAIL_CHANGE: 'email_change',
   DELETE_ACCOUNT: 'delete_account',
 };

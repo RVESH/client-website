@@ -1,4 +1,4 @@
-import { verifyOtpService } from "../otp/verify-otp.service";
+import { verifyOtpService } from "./verify-otp.service";
 import { findUserByEmail, updateUser } from "../../repositories/user.repository";
 import { revokeAllUserSessions } from "../../repositories/session.repository";
 import { hashPassword } from "../../utils/password.js";
@@ -10,15 +10,15 @@ export async function resetPasswordService(
     otp,
     newPassword
 ) {
-    const normalizedEmail = email.toLowerCase();
+const normalizedEmail = email.trim().toLowerCase();
 
     // Verify OTP (this also deletes the OTP on success)
-    await verifyOtpService(
-        env,
-        normalizedEmail,
-        otp,
-        "PASSWORD_RESET"
-    );
+await verifyOtpService(
+    env,
+    normalizedEmail,
+    otp,
+    "FORGOT_PASSWORD"
+);
 
     const user = await findUserByEmail(
         env,

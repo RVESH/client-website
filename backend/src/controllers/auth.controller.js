@@ -30,12 +30,11 @@ import { success } from "../utils/response.js";
  import { registerService } from "../services/auth/register.service.js";
 // import { verifyOtpService } from "../services/otp/.....ifMONGODBotp.service.js";
 import { verifyOtpService } from "../services/auth/verify-otp.service.js";
- import { resendOtpService } from "../services/auth/resend-otp.service.js";
- import { refreshTokenService } from "../services/auth/refresh-token.service.js";
+import { refreshTokenService } from "../services/auth/refresh-token.service.js";
 import { logoutService } from "../services/auth/logout.service.js";
-import { login } from "../services/auth/login.service.js";
+import { loginService } from "../services/auth/login.service.js";
 import { forgotPasswordService } from "../services/auth/forgot-password.service.js";
-
+import { resetPasswordService } from "../services/auth/reset-password.service.js";
  class AuthController {
 
 async refreshToken(c) {
@@ -75,8 +74,8 @@ async verifyOtp(c) {
     c.env,
     body.email,
     body.otp,
-    "REGISTER"
-  );
+    body.purpose
+);
 
   return success(
     c,
@@ -91,7 +90,7 @@ async resendOtp(c) {
     const result = await resendOtpService(
         c.env,
         body.email,
-        "REGISTER"
+        body.purpose
     );
 
     return success(
@@ -104,7 +103,7 @@ async resendOtp(c) {
   async login(c) {
   const body = await c.req.json();
 
-  const result = await login(
+  const result = await loginService(
     c.env,
     body.email,
     body.password,
@@ -168,15 +167,22 @@ async forgotPassword(c) {
   );
 }
 
-  async resetPassword(c) {
+async resetPassword(c) {
     const body = await c.req.json();
 
-    return success(
-      c,
-      "Reset Password endpoint reached.",
-      body
+    const result = await resetPasswordService(
+        c.env,
+        body.email,
+        body.otp,
+        body.newPassword
     );
-  }
+
+    return success(
+        c,
+        result.message,
+        result
+    );
+}
 
 async me(c) {
   const user = c.get("user");
@@ -198,20 +204,7 @@ async me(c) {
 
 
 }
-export async function forgotPassword(c) {
-    try {
-        const { email } = await c.req.json();
 
-        const result = await forgotPasswordService(
-            c.env,
-            email
-        );
-
-        return c.json(result, 200);
-    } catch (error) {
-        throw error;
-    }
-}
 export default new AuthController();
 
 
