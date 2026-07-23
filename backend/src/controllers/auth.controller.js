@@ -178,12 +178,25 @@ async forgotPassword(c) {
     );
   }
 
-  async me(c) {
-    return success(
-      c,
-      "Current user endpoint reached."
-    );
-  }
+async me(c) {
+  const user = c.get("user");
+
+  
+  return success(
+    c,
+    "Current user fetched successfully.",
+    {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      emailVerified: Boolean(user.email_verified),
+      status: user.status,
+      createdAt: user.created_at,
+    }
+  );
+}
+
+
 }
 export async function forgotPassword(c) {
     try {

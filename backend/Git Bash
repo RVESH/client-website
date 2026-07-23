@@ -51,3 +51,106 @@ Infrastructure:
 Roadmap ke hisaab se ab hum yahan hain:
 
 Register → Verify OTP → Resend OTP → Login → JWT → Auth Middleware → /me → Refresh Token → Forgot Password → Reset Password → Logout"
+
+
+
+
+--------------------------Check the user- in bash-----------------------------
+npx wrangler d1 execute universal-auth --local --command="SELECT email,email_verified FROM users;"
+
+--------------------------Check the OTP table---------------------------------
+npx wrangler d1 execute universal-auth --local --command="SELECT * FROM otps;"
+
+
+------------------postman place of frontend-----------------------------
+
+# http://127.0.0.1:8787/auth/register
+
+# in raw
+
+# {
+#   "name": "Rishabh",
+#   "email": "rishabh@test.com",
+#   "password": "Password@123"
+# }
+
+
+--------------makesure this is on working-------------------
+Make sure your Worker is still running:
+
+npx wrangler dev
+
+and showing:
+
+Ready on http://127.0.0.1:8787
+
+Now click Send.
+
+
+# then
+
+
+
+Now let's verify the OTP  
+Request
+
+# POST
+
+# http://127.0.0.1:8787/auth/verify-otp
+
+# Body:
+
+# {
+#   "email": "pixelrise42@gmail.com",
+#   "otp": "YOUR_6_DIGIT_OTP"
+# }
+
+Replace YOUR_6_DIGIT_OTP with the code you received.
+
+
+----------------
+                                                        ✅ Phase 1 Complete
+                                                        ✅ Register
+                                                        ✅ Password Hashing
+                                                        ✅ User Creation
+                                                        ✅ OTP Generation
+                                                        ✅ OTP Hashing
+                                                        ✅ D1 Storage
+                                                        ✅ Brevo Email
+                                                        ✅ Verify OTP
+                                                        ✅ Email Verification
+                                                        ✅ OTP Deletion
+
+                                                        Phase 2: Authentication
+
+We'll implement it in this order:
+
+Login
+   │
+   ▼
+Generate Access Token
+   │
+   ▼
+Generate Refresh Token
+   │
+   ▼
+Hash Refresh Token
+   │
+   ▼
+Store Session
+   │
+   ▼
+Return Tokens
+
+Then:
+
+Auth Middleware
+      │
+      ▼
+/me
+      │
+      ▼
+Refresh Token
+      │
+      ▼
+Logout

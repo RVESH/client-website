@@ -49,7 +49,7 @@ if (!isValid) {
     throw new NotFoundError("User not found.");
   }
 
-if (purpose === "EMAIL_VERIFICATION") {
+if (purpose === "REGISTER") {
     await updateUser(env, user.id, {
         email_verified: 1,
         updated_at: new Date().toISOString(),
@@ -60,6 +60,7 @@ if (purpose === "EMAIL_VERIFICATION") {
   });
 
   return {
+    verified: true,
     message: "Email verified successfully.",
   };
 }

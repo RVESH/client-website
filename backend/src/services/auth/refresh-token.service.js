@@ -12,20 +12,26 @@
 import {
   findSessionByRefreshHash,
   updateSession,
-} from "../../repositories/session.repository";
+} from "../../repositories/session.repository.js";
 
 import {
   verifyRefreshToken,
   generateAccessToken,
   generateRefreshToken,
-} from "../../utils/jwt";
-
+} from "../../utils/jwt.js";
+import { getRefreshTokenExpiry } from "../../utils/date.js";
 import { hashToken } from "../../utils/token.js";
 
 import UnauthorizedError from "../../errors/UnauthorizedError";
 
 export async function refreshTokenService(env, refreshToken) {
-  const payload = await verifyRefreshToken(env, refreshToken);
+
+let payload;
+try {
+  payload = await verifyRefreshToken(env, refreshToken);
+} catch {
+  throw new UnauthorizedError("Invalid or expired refresh token.");
+}
 
   const currentHash = await hashToken(refreshToken);
 
@@ -61,13 +67,12 @@ export async function refreshTokenService(env, refreshToken) {
     newPayload
   );
 
-  await updateSession(env, session.id, {
-    refresh_token_hash: await hashToken(
-      newRefreshToken
-    ),
-    updated_at: new Date().toISOString(),
-    last_used_at: new Date().toISOString(),
-  });
+await updateSession(env, session.id, {
+  refresh_token_hash: await hashToken(newRefreshToken),
+  expires_at: getRefreshTokenExpiry(env),
+  updated_at: new Date().toISOString(),
+  last_used_at: new Date().toISOString(),
+});
 
   return {
     accessToken,

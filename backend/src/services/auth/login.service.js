@@ -20,6 +20,7 @@ import { findUserByEmail } from "../../repositories/user.repository";
 import { createSession } from "../../repositories/session.repository";
 import { verifyPassword } from "../../utils/password.js";
 import { hashToken } from "../../utils/token.js";
+import { getRefreshTokenExpiry } from "../../utils/date.js";
 import {
   generateAccessToken,
   generateRefreshToken,
@@ -27,7 +28,9 @@ import {
 import UnauthorizedError from "../../errors/UnauthorizedError";
 
 export async function login(env, email, password, metadata = {}) {
-  const user = await findUserByEmail(env, email);
+const normalizedEmail = email.trim().toLowerCase();
+
+const user = await findUserByEmail(env, normalizedEmail);
 
   if (!user) {
     throw new UnauthorizedError("Invalid email or password.");
@@ -60,9 +63,7 @@ export async function login(env, email, password, metadata = {}) {
   await createSession(env, {
     userId: user.id,
     refreshTokenHash: await hashToken(refreshToken),
-    expiresAt: new Date(
-      Date.now() + 30 * 24 * 60 * 60 * 1000
-    ).toISOString(),
+expiresAt: getRefreshTokenExpiry(env),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     lastUsedAt: new Date().toISOString(),

@@ -1,6 +1,8 @@
 // import { Router } from 'express';
 import { Hono } from "hono";
 import authController from "../controllers/auth.controller";
+import { authMiddleware } from "../middleware/auth.middleware.js"; 
+
 
 const auth = new Hono();
 
@@ -20,8 +22,11 @@ auth.post("/reset-password", (c) => authController.resetPassword(c));
 
 auth.post("/refresh-token", (c) => authController.refreshToken(c));
 
-auth.get("/me", (c) => authController.me(c));
-
+auth.get(
+  "/me",
+  authMiddleware,
+  (c) => authController.me(c)
+);
 auth.post("/resend-otp", (c) => authController.resendOtp(c));
 
 export default auth;

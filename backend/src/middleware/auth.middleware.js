@@ -1,5 +1,6 @@
-import { verifyAccessToken } from "../utils/jwt";
-import UnauthorizedError from "../errors/UnauthorizedError";
+import { verifyAccessToken } from "../utils/jwt.js";
+import { findUserById } from "../repositories/user.repository.js";
+import UnauthorizedError from "../errors/UnauthorizedError.js";
 
 export async function authMiddleware(c, next) {
   const authorization = c.req.header("Authorization");
@@ -8,22 +9,31 @@ export async function authMiddleware(c, next) {
     throw new UnauthorizedError("Authentication required.");
   }
 
-  const token = authorization.slice(7).trim();
+  const token = authorization.substring(7);
 
-  if (!token) {
-    throw new UnauthorizedError("Authentication required.");
-  }
+  let payload;
 
   try {
-    const payload = await verifyAccessToken(c.env, token);
-
-    c.set("user", {
-      id: payload.sub,
-      email: payload.email,
-    });
-
-    await next();
+    payload = await verifyAccessToken(c.env, token);
   } catch {
     throw new UnauthorizedError("Invalid or expired access token.");
   }
+
+  const user = await findUserById(c.env, payload.sub);
+
+  if (!user) {
+    throw new UnauthorizedError("User not found.");
+  }
+
+  if (!user.email_verified) {
+    throw new UnauthorizedError("Email not verified.");
+  }
+
+  if (user.status !== "active") {
+    throw new UnauthorizedError("Account is inactive.");
+  }
+
+  c.set("user", user);
+
+  await next();
 }

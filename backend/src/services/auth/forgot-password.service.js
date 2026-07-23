@@ -26,27 +26,29 @@
 // Email Service
 // (send reset OTP)
 
-import { findUserByEmail } from "../../repositories/user.repository";
-import { generateAndStoreOtp } from "../otp/otp.service";
-import { sendOtpEmail } from "../email/email.service";
+import { findUserByEmail } from "../../repositories/user.repository.js";
+import { generateAndStoreOtp } from "../otp/otp.service.js";
+import { sendOtpEmail } from "../email/email.service.js";
 
 export async function forgotPasswordService(env, email) {
-  const normalizedEmail = email.toLowerCase();
+const normalizedEmail = email.trim().toLowerCase();
+
 
   const user = await findUserByEmail(env, normalizedEmail);
 
   // Prevent email enumeration
-  if (!user) {
-    return {
-      message:
-        "If an account exists, a password reset OTP has been sent.",
-    };
-  }
+if (user && !user.email_verified) {
+  return {
+    success: true,
+    message:
+      "If an account exists, a password reset OTP has been sent.",
+  };
+}
 
   const { otp } = await generateAndStoreOtp(
     env,
     normalizedEmail,
-    "PASSWORD_RESET"
+"FORGOT_PASSWORD"
   );
 
   await sendOtpEmail(
