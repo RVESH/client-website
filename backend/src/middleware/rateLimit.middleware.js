@@ -1,4 +1,12 @@
-import rateLimit from 'express-rate-limit';
+import rateLimit from 'express-rate-limit';  
+//   express-rate-limit is only for Express.js
+// Ye baad me replace karenge.
+
+// Options hain:
+
+// Hono official middleware
+// Cloudflare KV based
+// Durable Objects based
 
 export const globalRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000,

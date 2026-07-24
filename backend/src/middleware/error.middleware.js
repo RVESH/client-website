@@ -34,8 +34,9 @@ import { error } from "../utils/response";
 export function handleError(err, c) {
   console.error("========== ERROR ==========");
   console.error(err);
-  console.error(err?.stack);
-  console.error("===========================");
+if (env?.ENVIRONMENT !== "production") {
+    console.error(err.stack);
+}  console.error("===========================");
 
   if (err instanceof AppError) {
     return error(c, err.message, err.statusCode, {
