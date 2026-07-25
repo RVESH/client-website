@@ -1,32 +1,93 @@
-// import { Router } from 'express';
 import { Hono } from "hono";
-import authController from "../controllers/auth.controller";
-import { authMiddleware } from "../middleware/auth.middleware.js"; 
 
+import authController from "../controllers/auth.controller.js";
+
+import { authMiddleware } from "../middleware/auth.middleware.js";
+import { validate } from "../middleware/validation.middleware.js";
+
+import {
+  validateRegister,
+  validateLogin,
+  validateVerifyOtp,
+  validateForgotPassword,
+  validateResetPassword,
+  validateRefreshToken,
+  validateLogout,
+  validateResendOtp,
+} from "../validators/auth.validator.js";
 
 const auth = new Hono();
 
-auth.post("/send-otp", (c) => authController.sendOtp(c));
+/*
+|--------------------------------------------------------------------------
+| Authentication
+|--------------------------------------------------------------------------
+*/
 
-auth.post("/verify-otp", (c) => authController.verifyOtp(c));
+auth.post(
+  "/register",
+  validate(validateRegister),
+  (c) => authController.register(c)
+);
 
-auth.post("/register", (c) => authController.register(c));
+auth.post(
+  "/login",
+  validate(validateLogin),
+  (c) => authController.login(c)
+);
 
-auth.post("/login", (c) => authController.login(c));
+auth.post(
+  "/logout",
+  validate(validateLogout),
+  (c) => authController.logout(c)
+);
 
-auth.post("/logout", (c) => authController.logout(c));
+auth.post(
+  "/refresh-token",
+  validate(validateRefreshToken),
+  (c) => authController.refreshToken(c)
+);
 
-auth.post("/forgot-password", (c) => authController.forgotPassword(c));
+/*
+|--------------------------------------------------------------------------
+| OTP
+|--------------------------------------------------------------------------
+*/
 
-auth.post("/reset-password", (c) => authController.resetPassword(c));
+auth.post(
+  "/verify-otp",
+  validate(validateVerifyOtp),
+  (c) => authController.verifyOtp(c)
+);
 
-auth.post("/refresh-token", (c) => authController.refreshToken(c));
+auth.post(
+  "/resend-otp",
+  validate(validateResendOtp),
+  (c) => authController.resendOtp(c)
+);
+
+auth.post(
+  "/forgot-password",
+  validate(validateForgotPassword),
+  (c) => authController.forgotPassword(c)
+);
+
+auth.post(
+  "/reset-password",
+  validate(validateResetPassword),
+  (c) => authController.resetPassword(c)
+);
+
+/*
+|--------------------------------------------------------------------------
+| Protected Routes
+|--------------------------------------------------------------------------
+*/
 
 auth.get(
   "/me",
   authMiddleware,
   (c) => authController.me(c)
 );
-auth.post("/resend-otp", (c) => authController.resendOtp(c));
 
 export default auth;

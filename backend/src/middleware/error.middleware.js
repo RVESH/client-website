@@ -28,14 +28,16 @@
 
 
 
-import AppError from "../errors/AppError";
-import { error } from "../utils/response";
+import AppError from "../errors/AppError.js";
+import { error } from "../utils/response.js";
 
 export function handleError(err, c) {
   console.error("========== ERROR ==========");
   console.error(err);
-if (env?.ENVIRONMENT !== "production") {
+  
+if (c.env?.ENVIRONMENT !== "production") {
     console.error(err.stack);
+
 }  console.error("===========================");
 
   if (err instanceof AppError) {
