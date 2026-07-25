@@ -116,6 +116,7 @@ export function validateOtp(otp) {
   return normalizedOtp;
 }
 
+
 export function validatePurpose(purpose) {
   if (typeof purpose !== "string") {
     throw new ValidationError("Purpose is required.");
