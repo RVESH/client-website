@@ -45,13 +45,15 @@ async register(c) {
 }
 
 async verifyOtp(c) {
-  const body = await c.req.json();
+  // const body = await c.req.json();
+    const body = c.get("body");
 
   const result = await verifyOtpService(
     c.env,
     body.email,
     body.otp,
-    "REGISTER"
+    body.purpose
+    
   );
 
   return success(
