@@ -100,7 +100,16 @@ That's exactly the architecture we want.
 
 
 
+GET /auth/me
+Authorization: Bearer <access_token>
 
+the server simply:
+
+Reads the access token.
+Finds the current user.
+Returns the user's information.
+
+It doesn't update or create anything, so GET is the correct HTTP method.
 
 
 

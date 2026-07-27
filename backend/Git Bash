@@ -154,3 +154,13 @@ Refresh Token
       │
       ▼
 Logout
+
+GET /auth/me
+GET /users
+GET /users/1
+GET /products   
+
+POST /auth/register
+POST /auth/login
+POST /auth/verify-otp
+POST /auth/forgot-password
