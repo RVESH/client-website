@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import "./LoginPage.scss";
-
+import { login as loginApi } from "./api/auth.api";
 const LoginPage = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -10,13 +10,40 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError]     = useState("");
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (!email || !password) { setError("Please fill all fields"); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError("Invalid email"); return; }
-    login(email);
-    navigate("/creator");
-  };
+const handleLogin = async (e) => {
+  e.preventDefault();
+
+  setError("");
+
+  if (!email || !password) {
+    setError("Please fill all fields");
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    setError("Invalid email");
+    return;
+  }
+
+  try {
+  const response = await loginApi({
+  email,
+  password,
+});
+
+const { user, accessToken, refreshToken } = response.data;
+
+localStorage.setItem("accessToken", accessToken);
+localStorage.setItem("refreshToken", refreshToken);
+
+login(user);
+
+navigate("/creator");
+
+  } catch (error) {
+    setError(error.message);
+  }
+};
 
   return (
     <div className="creator-login">
