@@ -1,17 +1,34 @@
-/* ============================================================
-   LandingPage.scss  —  Global Layout & Base
-   Font: Plus Jakarta Sans
-   Add to index.html:
-   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-   ============================================================ */
+// ============================================
+// Landing Page – PixelRise
+// ============================================
 
-/* ── Reset / Base ── */
+// --------------------------------------------
+// Variables
+// --------------------------------------------
+:root {
+  --color-bg: #0a0a0f;
+  --color-surface: #12121a;
+  --color-primary: #6366f1;
+  --color-primary-light: #818cf8;
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --radius: 12px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --container-max: 1280px;
+  --container-pad: clamp(1rem, 5vw, 3rem);
+}
+
+// --------------------------------------------
+// Base
+// --------------------------------------------
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -19,87 +36,123 @@ html {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background: #ffffff;
-  color: #0f172a;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Container ── */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+// --------------------------------------------
+// Container
+// --------------------------------------------
 .container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* ── Section base ── */
-.section {
   width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
 }
 
-/* ── Main offset for fixed Navbar (68px height) ── */
+// --------------------------------------------
+// Main
+// --------------------------------------------
 .landing__main {
-  padding-top: 68px;
+  display: flex;
+  flex-direction: column;
+  gap: 0; // sections handle their own spacing internally
 }
 
-/* ── Alternating section backgrounds ── */
-/* Hero = white, Service = #f8fafc, WhyChoose = white,
-   Process = white, Portfolio = #f8fafc, Contact = white
-   (each component sets its own background) */
-
-/* ── Footer ── */
+// --------------------------------------------
+// Footer
+// --------------------------------------------
 .landing__footer {
-  background: #0f172a;
-  padding: 2.5rem 0;
-  border-top: 1px solid #1e293b;
+  position: relative;
+  margin-top: auto;
+  padding-block: 3rem;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+
+  // subtle top glow
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px 0 auto 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-primary),
+      transparent
+    );
+    opacity: 0.4;
+  }
 }
 
 .landing__footer-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.25rem;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
 }
 
 .landing__footer-brand {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.03em;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+
+  span {
+    color: var(--color-primary);
+  }
 }
 
 .landing__footer-copy {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.82rem;
-  color: #64748b;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
 }
 
 .landing__footer-links {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
 
   a {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.85rem;
+    position: relative;
+    font-size: 0.875rem;
     font-weight: 500;
-    color: #94a3b8;
-    text-decoration: none;
-    transition: color 0.2s ease;
+    color: var(--color-text-muted);
 
-    &:hover { color: #60a5fa; }
-  }
-}
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
 
-@media (max-width: 640px) {
-  .landing__footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
+    &:hover {
+      color: var(--color-text);
 
-  .landing__footer-links {
-    justify-content: center;
+      &::after {
+        width: 100%;
+      }
+    }
   }
 }

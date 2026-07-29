@@ -1,3 +1,41 @@
+// Register
+//      │
+//      ▼
+// POST /auth/register
+//      │
+//      ▼
+// Backend sends OTP
+//      │
+//      ▼
+// sessionStorage.setItem("verify_email")
+//      │
+//      ▼
+// navigate("/creator/verify-otp")
+//      │
+//      ▼
+// VerifyOtp.jsx
+//      │
+//      ▼
+// POST /auth/verify-otp
+//      │
+//      ▼
+// Success Message
+//      │
+//      ▼
+// 2 second delay
+//      │
+//      ▼
+// /creator/login
+
+// Register
+  //  ↓
+// Backend sends OTP
+//    ↓
+// sessionStorage.setItem("verify_email")
+//    ↓
+// navigate("/creator/verify-otp")
+//    ↓
+// Verify OTP page
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Register.scss";
@@ -116,7 +154,13 @@ const handleSubmit = async (e) => {
       password: formData.password,
     });
 
-    navigate("verify-otp", {
+sessionStorage.setItem(
+  "verify_email",
+  formData.email.trim().toLowerCase(),
+
+);
+
+    navigate("/creator/verify-otp", {
       state: {
         email: formData.email.trim().toLowerCase(),
         purpose: "REGISTER",

@@ -5,7 +5,6 @@ import { SubscriptionProvider } from "./context/Subscriptioncontext";
 
 // Import the dynamic guard we created
 import MobileGuard from "./components/MobileGuard"; 
-
 // Importing all pages
 import LandingPage      from "./Landingpage";
 import LoginPage        from "./Loginpage";
@@ -14,7 +13,9 @@ import SubscriptionPage from "./context/Subscriptionpage";
 import PaymentPage      from "./Paymentpage";
 import ChatRoom         from "./ChatRoom";     
 import TermsPage        from "./pages/TermsPage";    // NEW
-import Register     from "./pages/RegisterPage";  // NEW
+import Register         from "./pages/RegisterPage";  // NEW
+import VerifyOtp        from "./pages/OtpVerificationPage";  // NEW  
+
 import "./CreatorApp.scss";
 
 function CreatorApp() {
@@ -33,6 +34,7 @@ function CreatorApp() {
               <Route path="/chat"         element={<ChatRoom />} />
               <Route path="/terms"        element={<TermsPage />} />
               <Route path="/register"      element={<Register />} />
+              <Route path="/verify-otp"    element={<VerifyOtp />} />  {/* NEW */}
               <Route path="*"             element={<Navigate to="/" replace />} />
             </Routes>
           </div>

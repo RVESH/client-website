@@ -44,5 +44,3 @@ export const resetPassword = (data) =>
 
 export const getCurrentUser = () =>
   api("/me");
-
-
