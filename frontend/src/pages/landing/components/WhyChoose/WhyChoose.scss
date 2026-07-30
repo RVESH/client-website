@@ -1,46 +1,66 @@
-/* ============================================================
-   WhyChoose.scss — Light theme
-   ============================================================ */
+@import "../../styles/style.scss";
 
-.why { background: #f8fafc; padding: 6rem 0; }
+// ============================================
+// WHY CHOOSE
+// ============================================
 
-.why__grid {
-  display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
-  @media (max-width: 700px) { grid-template-columns: 1fr; }
-}
-
-.why__card {
-  background: #fff; border: 1px solid #e2e8f0; border-radius: 18px;
-  padding: 2rem 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start;
-  position: relative; overflow: hidden;
-  transition: transform .26s cubic-bezier(.4,0,.2,1), box-shadow .26s, border-color .26s;
-
-  &::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #818cf8); opacity: 0; transition: opacity .26s;
+.why {
+  .sh {
+    @include section-header;
   }
 
-  &--hovered {
-    transform: translateY(-5px); border-color: #bfdbfe;
-    box-shadow: 0 12px 36px rgba(37,99,235,.10);
-    &::before { opacity: 1; }
-    .why__icon { background: #2563eb; color: #fff; transform: scale(1.06); }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-6;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
   }
-}
 
-.why__icon {
-  width: 50px; height: 50px; background: #eff6ff; border: 1.5px solid #bfdbfe;
-  border-radius: 13px; display: flex; align-items: center; justify-content: center;
-  color: #2563eb; flex-shrink: 0;
-  transition: background .22s, color .22s, transform .22s;
-}
+  &__card {
+    @include card-surface;
+    padding: $space-8;
+    display: flex;
+    gap: $space-6;
+    align-items: flex-start;
 
-.why__title {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700;
-  color: #0f172a; margin: 0 0 .35rem;
-}
+    &--hovered {
+      .why__icon {
+        background: rgba($sb-gold, 0.15);
+        color: $sb-gold;
+        transform: scale(1.05);
+      }
+    }
+  }
 
-.why__text {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .875rem;
-  color: #64748b; line-height: 1.65; margin: 0;
+  &__icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    @include flex-center;
+    background: $sb-ink-lift;
+    border-radius: 14px;
+    color: $sb-cream-dim;
+    transition: all $duration-base $ease-out-expo;
+  }
+
+  &__body {
+    flex: 1;
+  }
+
+  &__title {
+    font-family: $font-body;
+    font-size: $text-lg;
+    font-weight: 600;
+    color: $sb-cream;
+    margin-bottom: $space-2;
+  }
+
+  &__text {
+    font-size: $text-sm;
+    color: $sb-cream-dim;
+    line-height: 1.7;
+  }
 }

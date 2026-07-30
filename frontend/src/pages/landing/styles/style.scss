@@ -1,0 +1,372 @@
+// ─── TOKENS ─────────────────────────────────
+
+// Colors
+$sb-ink:        #0a0a0f;   // Deepest background
+$sb-ink-soft:   #12121a;   // Card backgrounds
+$sb-ink-lift:   #1a1a24;   // Elevated surfaces
+$sb-ink-border: #252530;   // Subtle borders
+
+$sb-gold:       #c9a96e;   // Primary accent — trust, premium
+$sb-gold-dim:   #a88b52;   // Hover state
+$sb-gold-glow:  rgba(201, 169, 110, 0.15);
+
+$sb-cream:      #f5f0e8;   // Primary text
+$sb-cream-dim:  #b8b4aa;   // Secondary text
+$sb-cream-fade: #6b6860;   // Tertiary/muted
+
+$sb-success:    #4ade80;
+$sb-error:      #f87171;
+
+// Typography
+$font-display:  'Playfair Display', 'Georgia', serif;   // Headlines — editorial
+$font-body:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif; // Body
+$font-mono:     'JetBrains Mono', 'Fira Code', monospace; // Labels, numbers
+
+// Scale
+$text-xs:   0.75rem;   // 12px
+$text-sm:   0.875rem;  // 14px
+$text-base: 1rem;      // 16px
+$text-lg:   1.125rem;  // 18px
+$text-xl:   1.25rem;   // 20px
+$text-2xl:  1.5rem;    // 24px
+$text-3xl:  1.875rem;  // 30px
+$text-4xl:  2.25rem;   // 36px
+$text-5xl:  3rem;      // 48px
+$text-6xl:  3.75rem;   // 60px
+
+// Spacing
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+$space-20: 5rem;
+$space-24: 6rem;
+
+// Layout
+$container-max: 1280px;
+$container-pad: clamp(1.5rem, 5vw, 4rem);
+
+// Motion
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+$ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
+$duration-fast: 200ms;
+$duration-base: 400ms;
+$duration-slow: 700ms;
+$duration-slower: 1000ms;
+
+// Z-index
+$z-base: 1;
+$z-sticky: 10;
+$z-drawer: 50;
+$z-overlay: 40;
+$z-modal: 60;
+
+// ─── MIXINS ─────────────────────────────────
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-pad;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin text-gradient-gold {
+  background: linear-gradient(135deg, $sb-gold 0%, #e8d5b0 50%, $sb-gold 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin card-surface {
+  background: $sb-ink-soft;
+  border: 1px solid $sb-ink-border;
+  border-radius: 16px;
+  transition: all $duration-base $ease-out-expo;
+  
+  &:hover {
+    border-color: rgba($sb-gold, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba($sb-gold, 0.1);
+  }
+}
+
+@mixin pill {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: rgba($sb-gold, 0.08);
+  border: 1px solid rgba($sb-gold, 0.2);
+  border-radius: 999px;
+  color: $sb-gold;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@mixin section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto $space-16;
+  
+  .sh__pill {
+    @include pill;
+    margin-bottom: $space-6;
+  }
+  
+  .sh__title {
+    font-family: $font-display;
+    font-size: clamp($text-3xl, 5vw, $text-5xl);
+    font-weight: 600;
+    line-height: 1.15;
+    color: $sb-cream;
+    margin-bottom: $space-4;
+    
+    span {
+      @include text-gradient-gold;
+    }
+  }
+  
+  .sh__sub {
+    font-size: $text-lg;
+    color: $sb-cream-dim;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+@mixin btn-primary {
+  @include flex-center;
+  gap: $space-3;
+  padding: $space-4 $space-8;
+  background: linear-gradient(135deg, $sb-gold, #d4b87a);
+  color: $sb-ink;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all $duration-base $ease-out-expo;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%);
+    opacity: 0;
+    transition: opacity $duration-base;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -8px rgba($sb-gold, 0.4);
+    
+    &::before { opacity: 1; }
+    
+    svg { transform: translateX(3px); }
+  }
+  
+  svg {
+    transition: transform $duration-base $ease-out-expo;
+  }
+}
+
+@mixin btn-ghost {
+  @include flex-center;
+  gap: $space-3;
+  padding: $space-4 $space-8;
+  background: transparent;
+  color: $sb-cream;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: 500;
+  border: 1px solid $sb-ink-border;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all $duration-base $ease-out-expo;
+  
+  &:hover {
+    border-color: rgba($sb-gold, 0.4);
+    color: $sb-gold;
+    background: rgba($sb-gold, 0.05);
+  }
+}
+
+@mixin input-field {
+  width: 100%;
+  padding: $space-4 $space-5;
+  background: $sb-ink-lift;
+  border: 1px solid $sb-ink-border;
+  border-radius: 12px;
+  color: $sb-cream;
+  font-family: $font-body;
+  font-size: $text-base;
+  transition: all $duration-base $ease-out-expo;
+  
+  &::placeholder {
+    color: $sb-cream-fade;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: rgba($sb-gold, 0.5);
+    box-shadow: 0 0 0 3px $sb-gold-glow;
+  }
+}
+
+// ─── KEYFRAMES ──────────────────────────────
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba($sb-gold, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba($sb-gold, 0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+// ─── GLOBAL RESET & BASE ────────────────────
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: 1.6;
+  color: $sb-cream-dim;
+  background: $sb-ink;
+  overflow-x: hidden;
+  
+  // Subtle noise texture overlay
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+}
+
+// Selection
+::selection {
+  background: rgba($sb-gold, 0.3);
+  color: $sb-cream;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: $sb-ink;
+}
+::-webkit-scrollbar-thumb {
+  background: $sb-ink-border;
+  border-radius: 4px;
+  
+  &:hover {
+    background: rgba($sb-gold, 0.4);
+  }
+}
+
+// Container utility
+.container {
+  @include container;
+}
+
+// Section spacing
+.section {
+  padding: $space-24 0;
+  position: relative;
+}

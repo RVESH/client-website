@@ -1,59 +1,91 @@
-/* ============================================================
-   Process.scss — Light theme
-   ============================================================ */
+@import "../../styles/style.scss";
 
-.process { background: #fff; padding: 6rem 0; }
+// ============================================
+// PROCESS
+// ============================================
 
-.proc__grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; position: relative;
-  @media (max-width: 768px) { grid-template-columns: 1fr; }
-}
+.process {
+  background: $sb-ink-soft;
 
-.proc__card {
-  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 18px;
-  padding: 2rem 1.6rem; display: flex; flex-direction: column;
-  align-items: center; gap: .75rem; text-align: center; position: relative;
-  transition: transform .26s cubic-bezier(.4,0,.2,1), box-shadow .26s, border-color .26s, background .26s;
-
-  &--hovered {
-    transform: translateY(-6px); background: #fff; border-color: #bfdbfe;
-    box-shadow: 0 12px 36px rgba(37,99,235,.10);
-    .proc__icon-wrap { background: #2563eb; color: #fff; transform: scale(1.06); }
+  .sh {
+    @include section-header;
   }
-}
 
-/* Horizontal connector (desktop) */
-.proc__connector {
-  position: absolute; top: 3.4rem; right: -1.05rem;
-  width: 2.1rem; height: 2px;
-  background: linear-gradient(90deg, #bfdbfe, #93c5fd);
-  &::after {
-    content: ''; position: absolute; right: -5px; top: -4px;
-    width: 9px; height: 9px;
-    border-top: 2px solid #60a5fa; border-right: 2px solid #60a5fa;
-    transform: rotate(45deg); border-radius: 1px;
+  &__grid {
+    display: flex;
+    justify-content: center;
+    gap: $space-6;
+    position: relative;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
-  @media (max-width: 768px) { display: none; }
-}
 
-.proc__icon-wrap {
-  width: 58px; height: 58px; background: #eff6ff; border: 1.5px solid #bfdbfe;
-  border-radius: 16px; display: flex; align-items: center; justify-content: center;
-  color: #2563eb; transition: background .22s, color .22s, transform .22s;
-}
+  &__card {
+    @include card-surface;
+    padding: $space-8;
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+    position: relative;
 
-.proc__num {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .67rem; font-weight: 700;
-  letter-spacing: .1em; color: #2563eb; background: #dbeafe;
-  border: 1px solid #bfdbfe; padding: 3px 10px; border-radius: 999px;
-}
+    &--hovered {
+      .proc__icon-wrap {
+        background: rgba($sb-gold, 0.15);
+        color: $sb-gold;
+        transform: scale(1.05);
+      }
+    }
+  }
 
-.proc__title {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700;
-  color: #0f172a; margin: 0;
-}
+  &__icon-wrap {
+    width: 64px;
+    height: 64px;
+    @include flex-center;
+    background: $sb-ink-lift;
+    border-radius: 50%;
+    margin: 0 auto $space-6;
+    color: $sb-cream-dim;
+    transition: all $duration-base $ease-out-expo;
+  }
 
-.proc__text {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .875rem;
-  color: #64748b; line-height: 1.65; margin: 0;
+  &__connector {
+    position: absolute;
+    top: 48px;
+    right: -$space-6;
+    width: $space-6;
+    height: 2px;
+    background: linear-gradient(90deg, $sb-ink-border, $sb-gold-dim);
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__num {
+    display: inline-block;
+    padding: $space-1 $space-3;
+    background: $sb-ink-lift;
+    border-radius: 6px;
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: $sb-gold;
+    margin-bottom: $space-4;
+  }
+
+  &__title {
+    font-family: $font-body;
+    font-size: $text-xl;
+    font-weight: 600;
+    color: $sb-cream;
+    margin-bottom: $space-3;
+  }
+
+  &__text {
+    font-size: $text-sm;
+    color: $sb-cream-dim;
+    line-height: 1.7;
+  }
 }
