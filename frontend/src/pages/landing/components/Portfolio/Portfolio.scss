@@ -1,60 +1,214 @@
-/* ============================================================
-   Portfolio.scss — Light theme
-   ============================================================ */
+// ─── Tokens ────────────────────────────────────────────────────────────────
+$accent        : #7c5cfc;
+$accent-2      : #5eead4;
+$accent-glow   : rgba(124, 92, 252, 0.35);
+$text          : #f0f0f5;
+$text-muted    : rgba(240, 240, 245, 0.55);
+$bg            : #08080c;
+$surface       : rgba(18, 18, 28, 0.7);
+$border        : rgba(255, 255, 255, 0.08);
+$transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-.portfolio { background: #f8fafc; padding: 6rem 0; }
+// ─── Section shell ─────────────────────────────────────────────────────────
+.portfolio {
+  position  : relative;
+  background: $bg;
+  overflow  : hidden;
 
-.port__grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
-  @media (max-width: 960px) { grid-template-columns: repeat(2,1fr); }
-  @media (max-width: 560px) { grid-template-columns: 1fr; }
-}
-
-.port__card {
-  background: #fff; border: 1px solid #e2e8f0; border-radius: 18px;
-  overflow: hidden; display: flex; flex-direction: column;
-  transition: transform .26s cubic-bezier(.4,0,.2,1), box-shadow .26s, border-color .26s;
-
-  &--hovered {
-    transform: translateY(-6px); border-color: #bfdbfe;
-    box-shadow: 0 12px 36px rgba(37,99,235,.12);
-    .port__thumb-icon { opacity: 1; transform: scale(1.1); }
-    .port__link { gap: 10px; color: #1d4ed8; }
+  &::before {
+    content  : "";
+    position : absolute;
+    inset    : 0;
+    background:
+      radial-gradient(ellipse 55% 45% at 15% 25%, rgba(124, 92, 252, 0.09) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 35% at 85% 75%, rgba(94, 234, 212, 0.06) 0%, transparent 60%);
+    pointer-events: none;
   }
 }
 
+// ─── Section header (shared .sh) ───────────────────────────────────────────
+// Already defined in Contact.scss — include only once in a shared partial.
+// Kept here for standalone use.
+.sh__title span {
+  background            : linear-gradient(120deg, $accent 0%, $accent-2 100%);
+  -webkit-background-clip: text;
+  background-clip       : text;
+  color                 : transparent;
+}
+
+// ─── Card grid ─────────────────────────────────────────────────────────────
+.port__grid {
+  display              : grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap                  : 28px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin   : 0 auto;
+  }
+}
+
+// ─── Card ──────────────────────────────────────────────────────────────────
+.port__card {
+  position      : relative;
+  display       : flex;
+  flex-direction: column;
+  background    : $surface;
+  border        : 1px solid $border;
+  border-radius : 20px;
+  overflow      : hidden;
+  backdrop-filter: blur(16px);
+  transition    : transform    $transition,
+                  border-color $transition,
+                  box-shadow   $transition;
+
+  &--hovered {
+    transform   : translateY(-6px);
+    border-color: rgba(124, 92, 252, 0.35);
+    box-shadow  : 0 20px 50px rgba(0, 0, 0, 0.45),
+                  0 0 0 1px rgba(124, 92, 252, 0.15) inset;
+
+    .port__thumb-icon {
+      transform: scale(1.1) translateY(-3px);
+    }
+
+    .port__link svg {
+      transform: translateX(4px);
+    }
+  }
+}
+
+// ─── Thumbnail ─────────────────────────────────────────────────────────────
 .port__thumb {
-  height: 158px; display: flex; align-items: center; justify-content: center;
+  position       : relative;
+  height         : 160px;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  overflow       : hidden;
+  flex-shrink    : 0;
+
+  // Soft bottom fade into the card body
+  &::after {
+    content  : "";
+    position : absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    height   : 40px;
+    background: linear-gradient(to top, rgba(18, 18, 28, 0.55), transparent);
+    pointer-events: none;
+  }
 }
 
 .port__thumb-icon {
-  opacity: .65; transition: opacity .22s, transform .22s;
+  color      : rgba(60, 50, 80, 0.65);
+  transition : transform $transition;
+  position   : relative;
+  z-index    : 1;
+
+  svg {
+    display: block;
+    filter : drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+  }
 }
 
+// ─── Card body ─────────────────────────────────────────────────────────────
 .port__body {
-  padding: 1.4rem; display: flex; flex-direction: column; gap: .6rem; flex: 1;
+  display       : flex;
+  flex-direction: column;
+  gap           : 10px;
+  padding       : 22px 24px 26px;
+  flex          : 1;
 }
 
+// ─── Tag ───────────────────────────────────────────────────────────────────
 .port__tag {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .68rem; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
-  color: #2563eb; background: #eff6ff; border: 1px solid #bfdbfe;
-  padding: 3px 10px; border-radius: 999px; align-self: flex-start;
+  display      : inline-flex;
+  align-items  : center;
+  padding      : 4px 12px;
+  background   : rgba(124, 92, 252, 0.1);
+  border       : 1px solid rgba(124, 92, 252, 0.22);
+  border-radius: 100px;
+  font-size    : 0.72rem;
+  font-weight  : 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color        : rgba(200, 180, 255, 0.85);
+  width        : fit-content;
 }
 
+// ─── Title ─────────────────────────────────────────────────────────────────
 .port__title {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700;
-  color: #0f172a; margin: 0; line-height: 1.28;
+  margin     : 0;
+  font-size  : 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color      : $text;
 }
 
+// ─── Description ───────────────────────────────────────────────────────────
 .port__text {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .86rem;
-  color: #64748b; line-height: 1.65; flex: 1; margin: 0;
+  margin     : 0;
+  font-size  : 0.875rem;
+  line-height: 1.65;
+  color      : $text-muted;
+  flex       : 1;
 }
 
+// ─── View link ─────────────────────────────────────────────────────────────
 .port__link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .84rem; font-weight: 600;
-  color: #2563eb; text-decoration: none; margin-top: .3rem;
-  transition: gap .2s, color .2s;
+  display        : inline-flex;
+  align-items    : center;
+  gap            : 7px;
+  margin-top     : 6px;
+  padding        : 9px 18px;
+  background     : rgba(124, 92, 252, 0.1);
+  border         : 1px solid rgba(124, 92, 252, 0.25);
+  border-radius  : 10px;
+  font-size      : 0.82rem;
+  font-weight    : 700;
+  color          : rgba(200, 180, 255, 0.9);
+  text-decoration: none;
+  width          : fit-content;
+  transition     : background $transition,
+                   border-color $transition,
+                   color        $transition,
+                   box-shadow   $transition;
+
+  svg {
+    flex-shrink: 0;
+    transition : transform $transition;
+  }
+
+  &:hover {
+    background  : rgba(124, 92, 252, 0.2);
+    border-color: rgba(124, 92, 252, 0.5);
+    color       : #fff;
+    box-shadow  : 0 4px 16px $accent-glow;
+  }
+}
+
+// ─── Staggered entrance (optional, no JS needed) ───────────────────────────
+@media (prefers-reduced-motion: no-preference) {
+  .port__card {
+    opacity  : 0;
+    transform: translateY(24px);
+    animation: cardIn 0.5s $transition forwards;
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) { animation-delay: #{($i - 1) * 0.1}s; }
+    }
+  }
+}
+
+@keyframes cardIn {
+  to {
+    opacity  : 1;
+    transform: translateY(0);
+  }
 }

@@ -1,66 +1,200 @@
-@import "../../styles/style.scss";
+// ─── Tokens ────────────────────────────────────────────────────────────────
+$accent        : #7c5cfc;
+$accent-2      : #5eead4;
+$accent-glow   : rgba(124, 92, 252, 0.35);
+$text          : #f0f0f5;
+$text-muted    : rgba(240, 240, 245, 0.55);
+$bg            : #08080c;
+$surface       : rgba(18, 18, 28, 0.7);
+$border        : rgba(255, 255, 255, 0.08);
+$transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-// ============================================
-// WHY CHOOSE
-// ============================================
+// Per-card accent palette
+$why-colors: (
+  1: #7c5cfc,   // purple  — On-Time Delivery
+  2: #5eead4,   // teal    — Direct Communication
+  3: #34d399,   // green   — Affordable Pricing
+  4: #fbbf24,   // amber   — Developer + Designer
+);
 
+// ─── Section shell ─────────────────────────────────────────────────────────
 .why {
-  .sh {
-    @include section-header;
+  position  : relative;
+  background: $bg;
+  overflow  : hidden;
+
+  &::before {
+    content  : "";
+    position : absolute;
+    inset    : 0;
+    background:
+      radial-gradient(ellipse 55% 45% at 85% 20%, rgba(124, 92, 252, 0.09) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 35% at 10% 75%, rgba(94, 234, 212, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+}
+
+// ─── Two-column grid ───────────────────────────────────────────────────────
+.why__grid {
+  display              : grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap                  : 24px;
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin   : 0 auto;
+  }
+}
+
+// ─── Card ──────────────────────────────────────────────────────────────────
+.why__card {
+  position   : relative;
+  display    : flex;
+  align-items: flex-start;
+  gap        : 20px;
+  padding    : 32px 28px;
+  background : $surface;
+  border     : 1px solid $border;
+  border-radius: 20px;
+  overflow   : hidden;
+  backdrop-filter: blur(16px);
+  transition : transform    $transition,
+               border-color $transition,
+               box-shadow   $transition;
+
+  // Corner ambient blob
+  &::before {
+    content      : "";
+    position     : absolute;
+    top          : -50px;
+    left         : -50px;
+    width        : 170px;
+    height       : 170px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity      : 0;
+    transition   : opacity $transition;
   }
 
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: $space-6;
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
+  // Bottom accent line
+  &::after {
+    content   : "";
+    position  : absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    height    : 2px;
+    opacity   : 0;
+    transition: opacity $transition;
   }
 
-  &__card {
-    @include card-surface;
-    padding: $space-8;
-    display: flex;
-    gap: $space-6;
-    align-items: flex-start;
+  // Per-card colours
+  @for $i from 1 through 4 {
+    $color: map-get($why-colors, $i);
 
-    &--hovered {
+    &:nth-child(#{$i}) {
       .why__icon {
-        background: rgba($sb-gold, 0.15);
-        color: $sb-gold;
-        transform: scale(1.05);
+        background  : rgba($color, 0.1);
+        border-color: rgba($color, 0.25);
+        color       : $color;
+      }
+
+      &::before {
+        background: radial-gradient(circle, rgba($color, 0.13) 0%, transparent 70%);
+      }
+
+      &::after {
+        background: linear-gradient(90deg, transparent, rgba($color, 0.5), transparent);
+      }
+
+      &.why__card--hovered {
+        border-color: rgba($color, 0.38);
+        box-shadow  : 0 20px 50px rgba(0, 0, 0, 0.4),
+                      0 0 0 1px rgba($color, 0.1) inset;
+
+        .why__icon {
+          background  : rgba($color, 0.18);
+          border-color: rgba($color, 0.45);
+          box-shadow  : 0 0 18px rgba($color, 0.25);
+        }
       }
     }
   }
 
-  &__icon {
-    flex-shrink: 0;
-    width: 52px;
-    height: 52px;
-    @include flex-center;
-    background: $sb-ink-lift;
-    border-radius: 14px;
-    color: $sb-cream-dim;
-    transition: all $duration-base $ease-out-expo;
+  &--hovered {
+    transform: translateY(-5px);
+
+    &::before { opacity: 1; }
+    &::after  { opacity: 1; }
+
+    .why__icon svg { transform: scale(1.12) rotate(-6deg); }
   }
 
-  &__body {
-    flex: 1;
+  @media (max-width: 500px) {
+    padding: 26px 20px;
+    gap    : 16px;
   }
+}
 
-  &__title {
-    font-family: $font-body;
-    font-size: $text-lg;
-    font-weight: 600;
-    color: $sb-cream;
-    margin-bottom: $space-2;
+// ─── Icon ──────────────────────────────────────────────────────────────────
+.why__icon {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  width          : 50px;
+  height         : 50px;
+  border-radius  : 14px;
+  border         : 1px solid $border;
+  flex-shrink    : 0;
+  transition     : background    $transition,
+                   border-color  $transition,
+                   box-shadow    $transition;
+
+  svg {
+    display   : block;
+    transition: transform $transition;
   }
+}
 
-  &__text {
-    font-size: $text-sm;
-    color: $sb-cream-dim;
-    line-height: 1.7;
+// ─── Body ──────────────────────────────────────────────────────────────────
+.why__body {
+  display       : flex;
+  flex-direction: column;
+  gap           : 8px;
+  padding-top   : 2px;   // optical alignment with icon top
+}
+
+.why__title {
+  margin     : 0;
+  font-size  : 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color      : $text;
+}
+
+.why__text {
+  margin     : 0;
+  font-size  : 0.875rem;
+  line-height: 1.7;
+  color      : $text-muted;
+}
+
+// ─── Staggered entrance ────────────────────────────────────────────────────
+@media (prefers-reduced-motion: no-preference) {
+  .why__card {
+    opacity  : 0;
+    transform: translateY(24px);
+    animation: whyCardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) { animation-delay: #{($i - 1) * 0.1}s; }
+    }
+  }
+}
+
+@keyframes whyCardIn {
+  to {
+    opacity  : 1;
+    transform: translateY(0);
   }
 }

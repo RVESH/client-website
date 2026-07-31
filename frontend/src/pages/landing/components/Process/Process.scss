@@ -1,91 +1,230 @@
-@import "../../styles/style.scss";
+// ─── Tokens ────────────────────────────────────────────────────────────────
+$accent        : #7c5cfc;
+$accent-2      : #5eead4;
+$accent-glow   : rgba(124, 92, 252, 0.35);
+$text          : #f0f0f5;
+$text-muted    : rgba(240, 240, 245, 0.55);
+$bg            : #08080c;
+$surface       : rgba(18, 18, 28, 0.7);
+$border        : rgba(255, 255, 255, 0.08);
+$transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-// ============================================
-// PROCESS
-// ============================================
+// Step accent palette — one colour per card
+$step-colors: (
+  1: #7c5cfc,   // purple
+  2: #5eead4,   // teal
+  3: #f472b6,   // pink
+);
 
+// ─── Section shell ─────────────────────────────────────────────────────────
 .process {
-  background: $sb-ink-soft;
+  position  : relative;
+  background: $bg;
+  overflow  : hidden;
 
-  .sh {
-    @include section-header;
+  &::before {
+    content  : "";
+    position : absolute;
+    inset    : 0;
+    background:
+      radial-gradient(ellipse 50% 60% at 50% 0%,   rgba(124, 92, 252, 0.08) 0%, transparent 65%),
+      radial-gradient(ellipse 35% 40% at 90% 100%,  rgba(94, 234, 212, 0.06) 0%, transparent 60%);
+    pointer-events: none;
   }
+}
 
-  &__grid {
-    display: flex;
-    justify-content: center;
-    gap: $space-6;
-    position: relative;
+// ─── Three-column grid ─────────────────────────────────────────────────────
+.proc__grid {
+  display              : grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap                  : 28px;
+  position             : relative;
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: center;
-    }
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin   : 0 auto;
   }
+}
 
-  &__card {
-    @include card-surface;
-    padding: $space-8;
-    width: 100%;
-    max-width: 340px;
-    text-align: center;
-    position: relative;
+// ─── Card ──────────────────────────────────────────────────────────────────
+.proc__card {
+  position      : relative;
+  display       : flex;
+  flex-direction: column;
+  gap           : 16px;
+  padding       : 36px 30px 32px;
+  background    : $surface;
+  border        : 1px solid $border;
+  border-radius : 22px;
+  overflow      : hidden;
+  backdrop-filter: blur(16px);
+  transition    : transform    $transition,
+                  border-color $transition,
+                  box-shadow   $transition;
 
-    &--hovered {
+  // Per-step accent colour applied via nth-child
+  @for $i from 1 through 3 {
+    $color: map-get($step-colors, $i);
+
+    &:nth-child(#{$i}) {
       .proc__icon-wrap {
-        background: rgba($sb-gold, 0.15);
-        color: $sb-gold;
-        transform: scale(1.05);
+        background: rgba($color, 0.12);
+        border-color: rgba($color, 0.28);
+        color: $color;
+      }
+
+      .proc__num {
+        color: $color;
+      }
+
+      // Corner glow blob
+      &::before {
+        background: radial-gradient(circle, rgba($color, 0.12) 0%, transparent 70%);
       }
     }
   }
 
-  &__icon-wrap {
-    width: 64px;
-    height: 64px;
-    @include flex-center;
-    background: $sb-ink-lift;
+  // Corner ambient glow
+  &::before {
+    content  : "";
+    position : absolute;
+    top      : -40px;
+    left     : -40px;
+    width    : 180px;
+    height   : 180px;
     border-radius: 50%;
-    margin: 0 auto $space-6;
-    color: $sb-cream-dim;
-    transition: all $duration-base $ease-out-expo;
+    pointer-events: none;
+    transition: opacity $transition;
+    opacity  : 0;
   }
 
-  &__connector {
-    position: absolute;
-    top: 48px;
-    right: -$space-6;
-    width: $space-6;
-    height: 2px;
-    background: linear-gradient(90deg, $sb-ink-border, $sb-gold-dim);
+  &--hovered {
+    transform: translateY(-7px);
 
-    @media (max-width: 768px) {
-      display: none;
+    &::before { opacity: 1; }
+
+    @for $i from 1 through 3 {
+      $color: map-get($step-colors, $i);
+
+      &:nth-child(#{$i}) {
+        border-color: rgba($color, 0.4);
+        box-shadow  : 0 20px 50px rgba(0, 0, 0, 0.4),
+                      0 0 0 1px rgba($color, 0.12) inset;
+      }
+    }
+
+    .proc__icon-wrap {
+      transform: scale(1.08) rotate(-4deg);
     }
   }
 
-  &__num {
-    display: inline-block;
-    padding: $space-1 $space-3;
-    background: $sb-ink-lift;
-    border-radius: 6px;
-    font-family: $font-mono;
-    font-size: $text-xs;
-    color: $sb-gold;
-    margin-bottom: $space-4;
+  @media (max-width: 500px) {
+    padding: 28px 22px 26px;
+  }
+}
+
+// ─── Icon wrapper ──────────────────────────────────────────────────────────
+.proc__icon-wrap {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  width          : 52px;
+  height         : 52px;
+  border-radius  : 14px;
+  border         : 1px solid $border;
+  flex-shrink    : 0;
+  transition     : transform $transition, background $transition;
+
+  svg { display: block; }
+}
+
+// ─── Horizontal connector (desktop only) ───────────────────────────────────
+.proc__connector {
+  position : absolute;
+  top      : 62px;          // vertically centred with the icon
+  right    : -16px;         // bleeds into the gap
+  width    : 32px;
+  height   : 2px;
+  z-index  : 2;
+  background: linear-gradient(90deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+
+  // Arrow tip
+  &::after {
+    content      : "";
+    position     : absolute;
+    right        : 0;
+    top          : 50%;
+    transform    : translateY(-50%);
+    border-top   : 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left  : 6px solid rgba(255, 255, 255, 0.15);
   }
 
-  &__title {
-    font-family: $font-body;
-    font-size: $text-xl;
-    font-weight: 600;
-    color: $sb-cream;
-    margin-bottom: $space-3;
-  }
+  @media (max-width: 860px) {
+    // Vertical connector on mobile
+    top    : auto;
+    bottom : -16px;
+    right  : auto;
+    left   : 62px;          // aligns under the icon
+    width  : 2px;
+    height : 32px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
 
-  &__text {
-    font-size: $text-sm;
-    color: $sb-cream-dim;
-    line-height: 1.7;
+    &::after {
+      top         : auto;
+      bottom      : 0;
+      right       : 50%;
+      transform   : translateX(50%);
+      border-left  : 5px solid transparent;
+      border-right : 5px solid transparent;
+      border-top   : 6px solid rgba(255, 255, 255, 0.15);
+      border-bottom: none;
+    }
+  }
+}
+
+// ─── Step number ───────────────────────────────────────────────────────────
+.proc__num {
+  font-size    : 0.72rem;
+  font-weight  : 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+// ─── Title ─────────────────────────────────────────────────────────────────
+.proc__title {
+  margin     : 0;
+  font-size  : 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color      : $text;
+}
+
+// ─── Body text ─────────────────────────────────────────────────────────────
+.proc__text {
+  margin     : 0;
+  font-size  : 0.88rem;
+  line-height: 1.7;
+  color      : $text-muted;
+}
+
+// ─── Staggered entrance ────────────────────────────────────────────────────
+@media (prefers-reduced-motion: no-preference) {
+  .proc__card {
+    opacity  : 0;
+    transform: translateY(28px);
+    animation: procCardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) { animation-delay: #{($i - 1) * 0.12}s; }
+    }
+  }
+}
+
+@keyframes procCardIn {
+  to {
+    opacity  : 1;
+    transform: translateY(0);
   }
 }

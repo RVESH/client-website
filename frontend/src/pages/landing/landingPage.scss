@@ -1,155 +1,222 @@
-// ============================================
-// LANDING PAGE — imports master design system
-// ============================================
-@import "./styles/style.scss";
-:root {
-  --color-bg: #0a0a0f;
-  --color-surface: #12121a;
-  --color-primary: #6366f1;
-  --color-primary-light: #818cf8;
-  --color-text: #e2e8f0;
-  --color-text-muted: #94a3b8;
-  --color-border: rgba(255, 255, 255, 0.06);
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --radius: 12px;
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --container-max: 1280px;
-  --container-pad: clamp(1rem, 5vw, 3rem);
-}
+// ─── Tokens ────────────────────────────────────────────────────────────────
+$accent        : #7c5cfc;
+$accent-2      : #5eead4;
+$text          : #f0f0f5;
+$text-muted    : rgba(240, 240, 245, 0.55);
+$bg            : #08080c;
+$surface       : rgba(18, 18, 28, 0.7);
+$border        : rgba(255, 255, 255, 0.08);
+$nav-height    : 68px;
+$transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-// --------------------------------------------
-// Base
-// --------------------------------------------
+// ─── Global reset & base ───────────────────────────────────────────────────
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  margin    : 0;
+  padding   : 0;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size      : 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background : $bg;
+  color      : $text;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x : hidden;
+}
+
+img, svg {
+  display   : block;
+  max-width : 100%;
+}
+
+button {
+  font-family: inherit;
 }
 
 a {
-  color: inherit;
+  color          : inherit;
   text-decoration: none;
-  transition: color var(--transition);
 }
 
-// --------------------------------------------
-// Container
-// --------------------------------------------
+// ─── Shared utility: .container ────────────────────────────────────────────
 .container {
-  width: 100%;
-  max-width: var(--container-max);
-  margin-inline: auto;
-  padding-inline: var(--container-pad);
+  width    : 100%;
+  max-width: 1200px;
+  margin   : 0 auto;
+  padding  : 0 24px;
+
+  @media (max-width: 500px) {
+    padding: 0 16px;
+  }
 }
 
-// --------------------------------------------
-// Main
-// --------------------------------------------
+// ─── Shared utility: .section ──────────────────────────────────────────────
+.section {
+  padding-block: 96px;
+
+  @media (max-width: 768px) {
+    padding-block: 72px;
+  }
+
+  @media (max-width: 500px) {
+    padding-block: 56px;
+  }
+}
+
+// ─── Shared section header: .sh ────────────────────────────────────────────
+.sh {
+  text-align   : center;
+  margin-bottom: 64px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 48px;
+  }
+}
+
+.sh__pill {
+  display       : inline-flex;
+  align-items   : center;
+  padding       : 6px 16px;
+  background    : rgba(124, 92, 252, 0.1);
+  border        : 1px solid rgba(124, 92, 252, 0.3);
+  border-radius : 100px;
+  font-size     : 0.78rem;
+  font-weight   : 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color         : rgba(200, 180, 255, 0.9);
+  margin-bottom : 20px;
+}
+
+.sh__title {
+  margin        : 0 0 14px;
+  font-size     : clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight   : 800;
+  letter-spacing: -0.025em;
+  line-height   : 1.15;
+  color         : $text;
+}
+
+.sh__sub {
+  margin     : 0 auto;
+  max-width  : 480px;
+  font-size  : 1rem;
+  line-height: 1.7;
+  color      : $text-muted;
+}
+
+// ─── Main wrapper ──────────────────────────────────────────────────────────
 .landing__main {
-  display: flex;
-  flex-direction: column;
-  gap: 0; // sections handle their own spacing internally
+  // Sections butt up directly — no extra spacing needed
+  // Individual sections own their padding-block via .section
 }
 
-// --------------------------------------------
-// Footer
-// --------------------------------------------
-.landing__footer {
-  position: relative;
-  margin-top: auto;
-  padding-block: 3rem;
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
+// ─── Alternating section backgrounds ──────────────────────────────────────
+// Gives a subtle depth rhythm without colour variation
+.landing__main > section:nth-child(even) {
+  background: rgba(255, 255, 255, 0.015);
+}
 
-  // subtle top glow
+// ─── Footer ────────────────────────────────────────────────────────────────
+.landing__footer {
+  position    : relative;
+  background  : rgba(8, 8, 14, 0.95);
+  border-top  : 1px solid $border;
+  padding-block: 36px;
+  overflow    : hidden;
+
+  // Subtle top glow
   &::before {
-    content: "";
-    position: absolute;
-    inset: -1px 0 auto 0;
-    height: 1px;
+    content  : "";
+    position : absolute;
+    top      : 0;
+    left     : 50%;
+    transform: translateX(-50%);
+    width    : 600px;
+    height   : 1px;
     background: linear-gradient(
       90deg,
       transparent,
-      var(--color-primary),
+      rgba(124, 92, 252, 0.45),
+      rgba(94, 234, 212, 0.25),
       transparent
     );
-    opacity: 0.4;
+    pointer-events: none;
   }
 }
 
 .landing__footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-  text-align: center;
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  gap            : 20px;
+  flex-wrap      : wrap;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
+  @media (max-width: 640px) {
+    flex-direction: column;
+    text-align    : center;
+    gap           : 16px;
   }
 }
 
+// ─── Brand wordmark ────────────────────────────────────────────────────────
 .landing__footer-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size     : 1.15rem;
+  font-weight   : 800;
   letter-spacing: -0.02em;
-  color: var(--color-text);
+  color         : $text;
 
   span {
-    color: var(--color-primary);
+    background            : linear-gradient(120deg, $accent 0%, $accent-2 100%);
+    -webkit-background-clip: text;
+    background-clip       : text;
+    color                 : transparent;
   }
 }
 
+// ─── Copyright ─────────────────────────────────────────────────────────────
 .landing__footer-copy {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
+  font-size : 0.8rem;
+  color     : $text-muted;
+  order     : 1;           // centred on all layouts
+
+  @media (max-width: 640px) {
+    order: 2;
+  }
 }
 
+// ─── Footer nav ────────────────────────────────────────────────────────────
 .landing__footer-links {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  gap    : 24px;
+
+  @media (max-width: 640px) {
+    order: 3;
+  }
 
   a {
-    position: relative;
-    font-size: 0.875rem;
+    font-size  : 0.82rem;
     font-weight: 500;
-    color: var(--color-text-muted);
+    color      : $text-muted;
+    transition : color $transition;
+    white-space: nowrap;
 
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background: var(--color-primary);
-      border-radius: 2px;
-      transition: width var(--transition);
-    }
-
-    &:hover {
-      color: var(--color-text);
-
-      &::after {
-        width: 100%;
-      }
-    }
+    &:hover { color: $text; }
   }
+}
+
+// ─── Scroll-to-top anchor offset fix ───────────────────────────────────────
+// Compensates for the fixed navbar across all section targets
+[id] {
+  scroll-margin-top: $nav-height;
 }

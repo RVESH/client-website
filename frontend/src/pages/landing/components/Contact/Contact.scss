@@ -1,141 +1,330 @@
-@import "../../styles/style.scss";
+// ─── Tokens ────────────────────────────────────────────────────────────────
+$accent        : #7c5cfc;
+$accent-2      : #5eead4;
+$accent-glow   : rgba(124, 92, 252, 0.35);
+$green         : #22c55e;
+$green-glow    : rgba(34, 197, 94, 0.35);
+$wa            : #25d366;
+$wa-glow       : rgba(37, 211, 102, 0.35);
+$text          : #f0f0f5;
+$text-muted    : rgba(240, 240, 245, 0.55);
+$bg            : #08080c;
+$surface       : rgba(18, 18, 28, 0.7);
+$border        : rgba(255, 255, 255, 0.08);
+$input-bg      : rgba(255, 255, 255, 0.04);
+$input-focus   : rgba(124, 92, 252, 0.25);
+$transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-// ============================================
-// CONTACT
-// ============================================
+// ─── Section shell ─────────────────────────────────────────────────────────
+.section {
+  padding-block: 96px;
+}
 
 .contact {
-  background: $sb-ink-soft;
+  position  : relative;
+  background: $bg;
+  overflow  : hidden;
 
-  .sh {
-    @include section-header;
+  &::before {
+    content  : "";
+    position : absolute;
+    inset    : 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(124, 92, 252, 0.1) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 35% at 10% 80%, rgba(94, 234, 212, 0.06) 0%, transparent 60%);
+    pointer-events: none;
   }
 }
 
-.ctc {
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: $space-12;
-    max-width: 1000px;
-    margin: 0 auto;
+// ─── Section header (.sh) ──────────────────────────────────────────────────
+.sh {
+  text-align : center;
+  margin-bottom: 64px;
+}
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
+.sh__pill {
+  display      : inline-flex;
+  align-items  : center;
+  padding      : 6px 16px;
+  background   : rgba(124, 92, 252, 0.1);
+  border       : 1px solid rgba(124, 92, 252, 0.3);
+  border-radius: 100px;
+  font-size    : 0.78rem;
+  font-weight  : 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color        : rgba(200, 180, 255, 0.9);
+  margin-bottom: 20px;
+}
+
+.sh__title {
+  margin      : 0 0 14px;
+  font-size   : clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight : 800;
+  letter-spacing: -0.025em;
+  line-height : 1.15;
+  color       : $text;
+}
+
+.sh__sub {
+  margin    : 0 auto;
+  max-width : 480px;
+  font-size : 1rem;
+  line-height: 1.7;
+  color     : $text-muted;
+}
+
+// ─── Two-column grid ───────────────────────────────────────────────────────
+.ctc__grid {
+  display              : grid;
+  grid-template-columns: 1fr 1fr;
+  gap                  : 40px;
+  align-items          : start;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin   : 0 auto;
+  }
+}
+
+// ─── Left info panel ───────────────────────────────────────────────────────
+.ctc__info {
+  display       : flex;
+  flex-direction: column;
+  gap           : 24px;
+  padding       : 40px;
+  background    : $surface;
+  border        : 1px solid $border;
+  border-radius : 20px;
+  backdrop-filter: blur(16px);
+
+  @media (max-width: 500px) {
+    padding: 28px 22px;
+  }
+}
+
+.ctc__info-title {
+  margin     : 0;
+  font-size  : 1.15rem;
+  font-weight: 700;
+  color      : $text;
+}
+
+// ─── Why list ──────────────────────────────────────────────────────────────
+.ctc__why {
+  list-style: none;
+  margin    : 0;
+  padding   : 0;
+  display   : flex;
+  flex-direction: column;
+  gap       : 14px;
+}
+
+.ctc__why-item {
+  display    : flex;
+  align-items: center;
+  gap        : 14px;
+  font-size  : 0.92rem;
+  font-weight: 500;
+  color      : $text-muted;
+  transition : color $transition;
+
+  &:hover {
+    color: $text;
+
+    .ctc__why-icon { transform: scale(1.2); }
+  }
+}
+
+.ctc__why-icon {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  width          : 38px;
+  height         : 38px;
+  flex-shrink    : 0;
+  background     : rgba(255, 255, 255, 0.05);
+  border         : 1px solid $border;
+  border-radius  : 10px;
+  font-size      : 1rem;
+  transition     : transform $transition;
+}
+
+// ─── Divider ───────────────────────────────────────────────────────────────
+.ctc__divider {
+  height    : 1px;
+  background: linear-gradient(90deg, transparent, $border, transparent);
+}
+
+// ─── WhatsApp direct link ──────────────────────────────────────────────────
+.ctc__label {
+  margin    : 0;
+  font-size : 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color     : $text-muted;
+}
+
+.ctc__wa-btn {
+  display        : inline-flex;
+  align-items    : center;
+  justify-content: center;
+  gap            : 10px;
+  padding        : 13px 22px;
+  background     : rgba(37, 211, 102, 0.12);
+  border         : 1px solid rgba(37, 211, 102, 0.3);
+  border-radius  : 12px;
+  font-size      : 0.92rem;
+  font-weight    : 700;
+  color          : $wa;
+  text-decoration: none;
+  transition     : background $transition,
+                   border-color $transition,
+                   transform    $transition,
+                   box-shadow   $transition;
+
+  svg { flex-shrink: 0; transition: transform $transition; }
+
+  &:hover {
+    background  : rgba(37, 211, 102, 0.2);
+    border-color: rgba(37, 211, 102, 0.55);
+    transform   : translateY(-2px);
+    box-shadow  : 0 8px 24px $wa-glow;
+
+    svg { transform: scale(1.15); }
   }
 
-  &__info {
-    &-title {
-      font-family: $font-body;
-      font-size: $text-xl;
-      font-weight: 600;
-      color: $sb-cream;
-      margin-bottom: $space-6;
-    }
+  &:active { transform: translateY(0); }
+}
+
+// ─── Right form card ───────────────────────────────────────────────────────
+.ctc__card {
+  display       : flex;
+  flex-direction: column;
+  gap           : 22px;
+  padding       : 40px;
+  background    : $surface;
+  border        : 1px solid $border;
+  border-radius : 20px;
+  backdrop-filter: blur(16px);
+
+  @media (max-width: 500px) {
+    padding: 28px 22px;
+  }
+}
+
+.ctc__card-title {
+  margin    : 0;
+  font-size : 1.15rem;
+  font-weight: 700;
+  color     : $text;
+}
+
+// ─── Form fields ───────────────────────────────────────────────────────────
+.ctc__field {
+  display       : flex;
+  flex-direction: column;
+  gap           : 8px;
+}
+
+.ctc__field-label {
+  font-size  : 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color      : $text-muted;
+}
+
+%input-base {
+  width         : 100%;
+  box-sizing    : border-box;
+  padding       : 12px 16px;
+  background    : $input-bg;
+  border        : 1px solid $border;
+  border-radius : 12px;
+  font-size     : 0.92rem;
+  font-family   : inherit;
+  color         : $text;
+  outline       : none;
+  transition    : border-color $transition, background $transition, box-shadow $transition;
+
+  &::placeholder { color: rgba(240, 240, 245, 0.28); }
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+    background  : rgba(255, 255, 255, 0.06);
   }
 
-  &__why {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: $space-4;
-    margin-bottom: $space-8;
+  &:focus {
+    border-color: rgba(124, 92, 252, 0.6);
+    background  : rgba(124, 92, 252, 0.06);
+    box-shadow  : 0 0 0 3px $input-focus;
+  }
+}
+
+.ctc__input   { @extend %input-base; }
+.ctc__textarea {
+  @extend %input-base;
+  resize     : vertical;
+  min-height : 130px;
+  line-height: 1.65;
+}
+
+// ─── Send button ───────────────────────────────────────────────────────────
+.ctc__send {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  gap            : 9px;
+  padding        : 14px 24px;
+  background     : linear-gradient(135deg, $accent 0%, darken($accent, 10%) 100%);
+  border         : none;
+  border-radius  : 12px;
+  font-size      : 0.95rem;
+  font-weight    : 700;
+  font-family    : inherit;
+  color          : #fff;
+  cursor         : pointer;
+  box-shadow     : 0 4px 18px $accent-glow;
+  transition     : background $transition,
+                   transform  $transition,
+                   box-shadow $transition;
+
+  svg { flex-shrink: 0; transition: transform $transition; }
+
+  &:hover:not(.ctc__send--sent) {
+    background: linear-gradient(135deg, lighten($accent, 6%) 0%, $accent 100%);
+    transform : translateY(-2px);
+    box-shadow: 0 8px 28px $accent-glow;
+
+    svg { transform: translateX(3px); }
   }
 
-  &__why-item {
-    display: flex;
-    align-items: center;
-    gap: $space-4;
-    font-size: $text-sm;
-    color: $sb-cream-dim;
+  &:active:not(.ctc__send--sent) {
+    transform : translateY(0);
+    box-shadow: 0 2px 8px $accent-glow;
   }
 
-  &__why-icon {
-    width: 36px;
-    height: 36px;
-    @include flex-center;
-    background: $sb-ink-lift;
-    border-radius: 10px;
-    font-size: $text-lg;
+  // ── Sent state ───────────────────────────────────────────────────────────
+  &--sent {
+    background: linear-gradient(135deg, darken($green, 5%) 0%, $green 100%);
+    box-shadow: 0 4px 18px $green-glow;
+    cursor    : default;
+    animation : sentPop 0.4s $transition;
+
+    svg { animation: checkDraw 0.5s ease forwards; }
   }
+}
 
-  &__divider {
-    height: 1px;
-    background: $sb-ink-border;
-    margin-bottom: $space-8;
-  }
+@keyframes sentPop {
+  0%   { transform: scale(0.96); }
+  55%  { transform: scale(1.03); }
+  100% { transform: scale(1);    }
+}
 
-  &__label {
-    font-size: $text-sm;
-    color: $sb-cream-fade;
-    margin-bottom: $space-4;
-  }
-
-  &__wa-btn {
-    @include flex-center;
-    gap: $space-3;
-    padding: $space-4 $space-6;
-    background: #25d366;
-    color: $sb-ink;
-    font-size: $text-sm;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 12px;
-    transition: all $duration-base $ease-out-expo;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px -8px rgba(37, 211, 102, 0.4);
-    }
-  }
-
-  &__card {
-    @include card-surface;
-    padding: $space-8;
-
-    &-title {
-      font-family: $font-body;
-      font-size: $text-xl;
-      font-weight: 600;
-      color: $sb-cream;
-      margin-bottom: $space-6;
-    }
-  }
-
-  &__field {
-    margin-bottom: $space-5;
-
-    &-label {
-      display: block;
-      font-size: $text-sm;
-      font-weight: 500;
-      color: $sb-cream-dim;
-      margin-bottom: $space-2;
-    }
-  }
-
-  &__input {
-    @include input-field;
-  }
-
-  &__textarea {
-    @include input-field;
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  &__send {
-    @include btn-primary;
-    width: 100%;
-    justify-content: center;
-
-    &--sent {
-      background: $sb-success;
-
-      &:hover {
-        box-shadow: 0 12px 32px -8px rgba(74, 222, 128, 0.4);
-      }
-    }
-  }
+@keyframes checkDraw {
+  from { stroke-dashoffset: 30; opacity: 0; }
+  to   { stroke-dashoffset: 0;  opacity: 1; }
 }

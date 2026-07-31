@@ -1,0 +1,63 @@
+// ============================================
+// SOUTHBRIDGE — GLOBAL STYLES
+// Import this ONCE in index.js only!
+// ============================================
+@import "_tokens";
+@import "_keyframes";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: 1.6;
+  color: $sb-ink-soft;
+  background: $sb-bg;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba($sb-gold, 0.2);
+  color: $sb-ink;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: $sb-bg;
+}
+::-webkit-scrollbar-thumb {
+  background: $sb-border;
+  border-radius: 4px;
+  
+  &:hover {
+    background: $sb-gold;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.section {
+  padding: $space-24 0;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    padding: $space-16 0;
+  }
+}

@@ -1,218 +1,381 @@
-@import "../../styles/style.scss";
+// ─── Tokens ────────────────────────────────────────────────────────────────
+$accent          : #7c5cfc;
+$accent-2        : #5eead4;
+$accent-glow     : rgba(124, 92, 252, 0.4);
+$text            : #f0f0f5;
+$text-muted      : rgba(240, 240, 245, 0.5);
+$bg              : #08080c;
+$nav-height      : 68px;
+$drawer-width    : 300px;
+$transition      : 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
-// ============================================
-// NAVBAR
-// ============================================
+// Z-index scale — drawer MUST beat overlay MUST beat everything else
+$z-overlay       : 200;
+$z-drawer        : 300;
+$z-nav           : 400;
 
+// ─── Navbar shell ──────────────────────────────────────────────────────────
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: $z-sticky;
-  padding: $space-4 0;
-  transition: all $duration-base $ease-out-expo;
-
-  &__inner {
-    @include container;
-    @include flex-between;
-    height: 56px;
-  }
+  position        : fixed;
+  inset-block-start: 0;
+  inset-inline    : 0;
+  z-index         : $z-nav;
+  height          : $nav-height;
+  background      : transparent;
+  border-bottom   : 1px solid transparent;
+  backdrop-filter : blur(0px);
+  transition      : background $transition,
+                    border-color $transition,
+                    backdrop-filter $transition;
 
   &--scrolled {
-    background: rgba($sb-ink, 0.85);
-    backdrop-filter: blur(20px) saturate(1.2);
-    border-bottom: 1px solid rgba($sb-ink-border, 0.5);
-    padding: $space-3 0;
+    background   : rgba(8, 8, 14, 0.92);
+    border-color : rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px) saturate(160%);
+  }
+}
 
-    .navbar__inner {
-      height: 52px;
-    }
+// ─── Inner layout ──────────────────────────────────────────────────────────
+.navbar__inner {
+  max-width      : 1200px;
+  margin         : 0 auto;
+  height         : 100%;
+  padding        : 0 24px;
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  gap            : 24px;
+}
+
+// ─── Logo ──────────────────────────────────────────────────────────────────
+.navbar__logo {
+  display    : flex;
+  align-items: center;
+  background : none;
+  border     : none;
+  padding    : 0;
+  cursor     : pointer;
+  flex-shrink: 0;
+  z-index    : 1; // stays above drawer when open
+
+  img {
+    height    : 32px;
+    width     : auto;
+    display   : block;
+    transition: opacity $transition, transform $transition;
   }
 
-  &__logo {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
+  &:hover img {
+    opacity  : 0.8;
+    transform: scale(1.05);
+  }
+}
 
-    img {
-      height: 32px;
-      width: auto;
-      filter: brightness(1.2);
-    }
+// ─── Desktop nav links ─────────────────────────────────────────────────────
+.navbar__links {
+  display    : flex;
+  align-items: center;
+  gap        : 4px;
+
+  @media (max-width: 767px) { display: none; }
+}
+
+.navbar__link {
+  position     : relative;
+  display      : flex;
+  align-items  : center;
+  gap          : 6px;
+  padding      : 8px 14px;
+  background   : none;
+  border       : none;
+  font-size    : 0.875rem;
+  font-weight  : 500;
+  color        : $text-muted;
+  cursor       : pointer;
+  border-radius: 8px;
+  white-space  : nowrap;
+  transition   : color $transition, background $transition;
+
+  &:hover {
+    color     : $text;
+    background: rgba(255, 255, 255, 0.05);
   }
 
-  &__links {
-    display: flex;
-    align-items: center;
-    gap: $space-1;
+  &--active {
+    color: $text;
 
-    @media (max-width: 768px) {
-      display: none;
+    .navbar__link-dot {
+      opacity  : 1;
+      transform: scale(1);
     }
   }
+}
 
-  &__link {
-    position: relative;
-    padding: $space-3 $space-5;
-    background: none;
-    border: none;
-    color: $sb-cream-dim;
-    font-family: $font-body;
-    font-size: $text-sm;
-    font-weight: 500;
-    cursor: pointer;
-    transition: color $duration-fast;
+.navbar__link-dot {
+  width        : 5px;
+  height       : 5px;
+  border-radius: 50%;
+  background   : $accent;
+  box-shadow   : 0 0 7px $accent;
+  opacity      : 0;
+  transform    : scale(0.3);
+  transition   : opacity $transition, transform $transition;
+}
 
-    &:hover {
-      color: $sb-cream;
-    }
+// ─── Right cluster ─────────────────────────────────────────────────────────
+.navbar__right {
+  display    : flex;
+  align-items: center;
+  gap        : 10px;
+  flex-shrink: 0;
+}
 
-    &--active {
-      color: $sb-gold;
+// ─── CTA ───────────────────────────────────────────────────────────────────
+.navbar__cta {
+  display    : flex;
+  align-items: center;
+  gap        : 7px;
+  padding    : 9px 20px;
+  background : $accent;
+  border     : none;
+  border-radius: 10px;
+  font-size  : 0.84rem;
+  font-weight: 600;
+  color      : #fff;
+  cursor     : pointer;
+  font-family: inherit;
+  transition : background $transition, transform $transition, box-shadow $transition;
 
-      .navbar__link-dot {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
+  svg { transition: transform $transition; flex-shrink: 0; }
+
+  &:hover {
+    background: lighten($accent, 7%);
+    transform : translateY(-1px);
+    box-shadow: 0 6px 22px $accent-glow;
+    svg { transform: translateX(3px); }
   }
 
-  &__link-dot {
-    position: absolute;
-    bottom: 2px;
-    left: 50%;
-    transform: translateX(-50%) scale(0);
-    width: 4px;
-    height: 4px;
-    background: $sb-gold;
-    border-radius: 50%;
-    opacity: 0;
-    transition: all $duration-base $ease-out-expo;
+  &:active { transform: translateY(0); }
+
+  @media (max-width: 399px) { display: none; }
+}
+
+// ─── Hamburger ─────────────────────────────────────────────────────────────
+.navbar__ham {
+  display        : none;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+  gap            : 5px;
+  width          : 42px;
+  height         : 42px;
+  padding        : 9px;
+  background     : rgba(255, 255, 255, 0.06);
+  border         : 1px solid rgba(255, 255, 255, 0.1);
+  border-radius  : 10px;
+  cursor         : pointer;
+  transition     : background $transition, border-color $transition;
+
+  @media (max-width: 767px) { display: flex; }
+
+  span {
+    display         : block;
+    height          : 2px;
+    border-radius   : 2px;
+    background      : $text;
+    transform-origin: center;
+    transition      : width $transition, transform $transition, opacity $transition;
+
+    &:nth-child(1) { width: 20px; }
+    &:nth-child(2) { width: 13px; }
+    &:nth-child(3) { width: 20px; }
   }
 
-  &__right {
-    display: flex;
-    align-items: center;
-    gap: $space-4;
+  &:hover {
+    background  : rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.18);
+    span:nth-child(2) { width: 20px; }
   }
 
-  &__cta {
-    @include btn-primary;
-
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-
-  &__ham {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 32px;
-    height: 32px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-
-    @media (max-width: 768px) {
-      display: flex;
-    }
+  &--open {
+    background  : rgba(124, 92, 252, 0.18);
+    border-color: rgba(124, 92, 252, 0.5);
 
     span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: $sb-cream;
-      border-radius: 2px;
-      transition: all $duration-base $ease-out-expo;
-      transform-origin: center;
-    }
-
-    &--open {
-      span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-      span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-      span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+      &:nth-child(1) { width: 20px; transform: translateY(7px)  rotate(45deg);  }
+      &:nth-child(2) { width: 20px; opacity: 0; transform: scaleX(0); }
+      &:nth-child(3) { width: 20px; transform: translateY(-7px) rotate(-45deg); }
     }
   }
+}
 
-  &__drawer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: min(380px, 85vw);
-    height: 100vh;
-    background: $sb-ink-soft;
-    border-left: 1px solid $sb-ink-border;
-    padding: $space-20 $space-8 $space-8;
-    transform: translateX(100%);
-    transition: transform $duration-slow $ease-out-expo;
-    z-index: $z-drawer;
+// ─── Overlay ───────────────────────────────────────────────────────────────
+// Renders BELOW the drawer, ABOVE everything else
+.navbar__overlay {
+  position      : fixed;
+  inset         : 0;
+  z-index       : $z-overlay;
+  background    : rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(3px);
+  opacity       : 0;
+  pointer-events: none;
+  transition    : opacity $transition;
 
-    &--open {
-      transform: translateX(0);
-    }
-
-    &-links {
-      display: flex;
-      flex-direction: column;
-      gap: $space-2;
-    }
-
-    &-link {
-      @include flex-between;
-      padding: $space-4 $space-5;
-      background: none;
-      border: none;
-      color: $sb-cream-dim;
-      font-family: $font-body;
-      font-size: $text-lg;
-      font-weight: 500;
-      cursor: pointer;
-      border-radius: 12px;
-      transition: all $duration-fast;
-      opacity: 0;
-      transform: translateX(20px);
-      animation: slideInRight $duration-base $ease-out-expo forwards;
-
-      &:hover, &.active {
-        background: rgba($sb-gold, 0.08);
-        color: $sb-gold;
-      }
-    }
-
-    &-num {
-      font-family: $font-mono;
-      font-size: $text-xs;
-      color: $sb-cream-fade;
-    }
-
-    &-cta {
-      margin-top: $space-6;
-      @include btn-primary;
-      width: 100%;
-      justify-content: center;
-      opacity: 0;
-      animation: fadeInUp $duration-base $ease-out-expo forwards;
-    }
+  &--visible {
+    opacity       : 1;
+    pointer-events: auto;
   }
 
-  &__overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba($sb-ink, 0.8);
-    backdrop-filter: blur(4px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all $duration-base;
-    z-index: $z-overlay;
+  @media (min-width: 768px) { display: none; }
+}
 
-    &--visible {
-      opacity: 1;
-      visibility: visible;
-    }
+// ─── Mobile drawer ─────────────────────────────────────────────────────────
+.navbar__drawer {
+  // Positioning — full height, fixed, right side
+  position    : fixed;
+  top         : 0;             // starts at very top (not below navbar)
+  right       : 0;
+  bottom      : 0;
+  width       : $drawer-width;
+  z-index     : $z-drawer;    // highest of all three layers
+
+  // Appearance
+  background  : #0f0f1a;      // solid — not transparent, not blurred enough to hide
+  border-left : 1px solid rgba(124, 92, 252, 0.25);
+  box-shadow  : -12px 0 50px rgba(0, 0, 0, 0.7),
+                -1px  0  0   rgba(124, 92, 252, 0.15);
+
+  // Slide-in from right
+  transform   : translateX(110%);  // 110% ensures no pixel peeks at edge
+  transition  : transform $transition;
+  overflow-y  : auto;
+  overscroll-behavior: contain;
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  @media (min-width: 768px) { display: none; }
+}
+
+// ─── Drawer top bar ────────────────────────────────────────────────────────
+// Gives the drawer a branded header matching nav height
+.navbar__drawer::before {
+  content    : "";
+  display    : block;
+  height     : $nav-height;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background : rgba(124, 92, 252, 0.05);
+  flex-shrink: 0;
+}
+
+// ─── Drawer links list ─────────────────────────────────────────────────────
+.navbar__drawer-links {
+  display       : flex;
+  flex-direction: column;
+  padding       : 20px 16px 32px;
+  gap           : 4px;
+}
+
+.navbar__drawer-link {
+  display    : flex;
+  align-items: center;
+  gap        : 14px;
+  padding    : 15px 18px;
+  width      : 100%;
+  background : none;
+  border     : none;
+  border-radius: 12px;
+  font-size  : 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  color      : rgba(240, 240, 245, 0.7);
+  cursor     : pointer;
+  text-align : left;
+
+  // Entrance animation — triggered when drawer opens
+  opacity   : 0;
+  transform : translateX(20px);
+  animation : none;
+
+  .navbar__drawer--open & {
+    animation: drawerLinkIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  transition: background $transition, color $transition;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color     : $text;
+  }
+
+  &.active {
+    background: rgba(124, 92, 252, 0.14);
+    color     : $text;
+    border    : 1px solid rgba(124, 92, 252, 0.25);
+
+    .navbar__drawer-num { color: $accent; }
+  }
+}
+
+.navbar__drawer-num {
+  font-size    : 0.68rem;
+  font-weight  : 800;
+  letter-spacing: 0.08em;
+  color        : rgba(240, 240, 245, 0.3);
+  min-width    : 22px;
+  transition   : color $transition;
+}
+
+// ─── Drawer divider ────────────────────────────────────────────────────────
+.navbar__drawer-links::after {
+  content     : "";
+  display     : block;
+  height      : 1px;
+  background  : rgba(255, 255, 255, 0.06);
+  margin-block: 8px;
+}
+
+// ─── Drawer CTA ────────────────────────────────────────────────────────────
+.navbar__drawer-cta {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  gap            : 8px;
+  margin         : 8px 16px 0;
+  padding        : 15px 24px;
+  width          : calc(100% - 32px);
+  background     : linear-gradient(135deg, $accent 0%, darken($accent, 10%) 100%);
+  border         : none;
+  border-radius  : 14px;
+  font-size      : 1rem;
+  font-weight    : 700;
+  font-family    : inherit;
+  color          : #fff;
+  cursor         : pointer;
+  box-shadow     : 0 8px 28px $accent-glow;
+
+  opacity  : 0;
+  transform: translateX(20px);
+  animation: none;
+
+  .navbar__drawer--open & {
+    animation: drawerLinkIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  transition: background $transition, transform $transition, box-shadow $transition;
+
+  &:hover {
+    background: linear-gradient(135deg, lighten($accent, 7%) 0%, $accent 100%);
+    transform : translateY(-2px);
+    box-shadow: 0 12px 32px $accent-glow;
+  }
+}
+
+// ─── Link entrance keyframe ────────────────────────────────────────────────
+@keyframes drawerLinkIn {
+  to {
+    opacity  : 1;
+    transform: translateX(0);
   }
 }

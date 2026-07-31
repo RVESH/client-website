@@ -1,83 +1,347 @@
-/* ============================================================
-   Skills.scss — Light theme
-   ============================================================ */
+// ─── Tokens ────────────────────────────────────────────────────────────────
+$accent        : #7c5cfc;
+$accent-2      : #5eead4;
+$accent-glow   : rgba(124, 92, 252, 0.35);
+$text          : #f0f0f5;
+$text-muted    : rgba(240, 240, 245, 0.55);
+$bg            : #08080c;
+$surface       : rgba(18, 18, 28, 0.7);
+$border        : rgba(255, 255, 255, 0.08);
+$transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-.skills { background: #fff; padding: 6rem 0; }
+// Per-card accent palette
+$skill-colors: (
+  1: #7c5cfc,   // purple  — Frontend
+  2: #5eead4,   // teal    — React
+  3: #60a5fa,   // blue    — Deployment
+  4: #f472b6,   // pink    — Project Setup
+  5: #34d399,   // green   — Business Solutions
+  6: #fbbf24,   // amber   — AI-Assisted
+);
 
-.skill__grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 2.5rem;
-  @media (max-width: 960px) { grid-template-columns: repeat(2,1fr); }
-  @media (max-width: 560px) { grid-template-columns: 1fr; }
+// ─── Section shell ─────────────────────────────────────────────────────────
+.skills {
+  position  : relative;
+  background: $bg;
+  overflow  : hidden;
+
+  &::before {
+    content  : "";
+    position : absolute;
+    inset    : 0;
+    background:
+      radial-gradient(ellipse 55% 45% at 10% 20%, rgba(124, 92, 252, 0.09) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 35% at 90% 80%, rgba(94, 234, 212, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
 }
 
+// ─── Six-card grid ─────────────────────────────────────────────────────────
+.skill__grid {
+  display              : grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap                  : 24px;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin   : 0 auto;
+  }
+}
+
+// ─── Card ──────────────────────────────────────────────────────────────────
 .skill__card {
-  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 18px;
-  padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: .65rem;
-  transition: transform .26s cubic-bezier(.4,0,.2,1), box-shadow .26s, border-color .26s;
+  position      : relative;
+  display       : flex;
+  flex-direction: column;
+  gap           : 14px;
+  padding       : 30px 26px;
+  background    : $surface;
+  border        : 1px solid $border;
+  border-radius : 20px;
+  overflow      : hidden;
+  backdrop-filter: blur(16px);
+  transition    : transform    $transition,
+                  border-color $transition,
+                  box-shadow   $transition;
+
+  // Corner ambient blob
+  &::before {
+    content      : "";
+    position     : absolute;
+    top          : -50px;
+    right        : -50px;
+    width        : 160px;
+    height       : 160px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity      : 0;
+    transition   : opacity $transition;
+  }
+
+  // Bottom accent bar
+  &::after {
+    content  : "";
+    position : absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    height   : 2px;
+    opacity  : 0;
+    transition: opacity $transition;
+  }
+
+  // Per-card colours
+  @for $i from 1 through 6 {
+    $color: map-get($skill-colors, $i);
+
+    &:nth-child(#{$i}) {
+      .skill__icon {
+        background  : rgba($color, 0.1);
+        border-color: rgba($color, 0.25);
+      }
+
+      .skill__note {
+        color: mix(#fff, $color, 35%);
+        background  : rgba($color, 0.08);
+        border-color: rgba($color, 0.2);
+      }
+
+      &::before {
+        background: radial-gradient(circle, rgba($color, 0.13) 0%, transparent 70%);
+      }
+
+      &::after {
+        background: linear-gradient(90deg, transparent, rgba($color, 0.5), transparent);
+      }
+
+      &.skill__card--hovered {
+        border-color: rgba($color, 0.38);
+        box-shadow  : 0 20px 50px rgba(0, 0, 0, 0.4),
+                      0 0 0 1px rgba($color, 0.1) inset;
+
+        .skill__icon {
+          background  : rgba($color, 0.18);
+          border-color: rgba($color, 0.4);
+          box-shadow  : 0 0 18px rgba($color, 0.2);
+        }
+      }
+    }
+  }
 
   &--hovered {
-    transform: translateY(-5px); border-color: #bfdbfe;
-    box-shadow: 0 10px 30px rgba(37,99,235,.10);
-    .skill__icon { transform: scale(1.1) rotate(-3deg); }
+    transform: translateY(-6px);
+
+    &::before { opacity: 1; }
+    &::after  { opacity: 1; }
+
+    .skill__icon span { transform: scale(1.15) rotate(-5deg); }
+  }
+
+  @media (max-width: 500px) {
+    padding: 26px 20px;
   }
 }
 
+// ─── Icon ──────────────────────────────────────────────────────────────────
 .skill__icon {
-  width: 50px; height: 50px; background: #eff6ff; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
-  transition: transform .22s ease;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  width          : 50px;
+  height         : 50px;
+  border-radius  : 14px;
+  border         : 1px solid $border;
+  flex-shrink    : 0;
+  font-size      : 1.3rem;
+  transition     : background   $transition,
+                   border-color $transition,
+                   box-shadow   $transition;
+
+  span { display: block; transition: transform $transition; }
 }
 
+// ─── Title ─────────────────────────────────────────────────────────────────
 .skill__title {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .98rem; font-weight: 700;
-  color: #0f172a; margin: 0;
+  margin     : 0;
+  font-size  : 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color      : $text;
 }
 
+// ─── Bullet list ───────────────────────────────────────────────────────────
 .skill__list {
-  list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .4rem;
+  list-style: none;
+  padding   : 0;
+  margin    : 0;
+  display   : flex;
+  flex-direction: column;
+  gap       : 8px;
+  flex      : 1;
+
   li {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-size: .84rem;
-    color: #475569; line-height: 1.55; padding-left: 1rem; position: relative;
-    &::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; background: #60a5fa; border-radius: 50%; }
+    display    : flex;
+    align-items: flex-start;
+    gap        : 8px;
+    font-size  : 0.845rem;
+    line-height: 1.55;
+    color      : $text-muted;
+
+    // Dot bullet
+    &::before {
+      content      : "";
+      display      : block;
+      width        : 5px;
+      height       : 5px;
+      border-radius: 50%;
+      background   : rgba(255, 255, 255, 0.2);
+      flex-shrink  : 0;
+      margin-top   : 6px;
+    }
   }
 }
 
+// ─── Note badge ────────────────────────────────────────────────────────────
 .skill__note {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .7rem; font-weight: 700;
-  color: #2563eb; background: #eff6ff; border: 1px solid #bfdbfe;
-  padding: 3px 10px; border-radius: 999px; align-self: flex-start; margin: 0;
+  margin       : 0;
+  margin-top   : auto;
+  padding      : 6px 13px;
+  border       : 1px solid $border;
+  border-radius: 100px;
+  font-size    : 0.72rem;
+  font-weight  : 700;
+  letter-spacing: 0.03em;
+  width        : fit-content;
+  transition   : color $transition, background $transition, border-color $transition;
 }
 
-/* Learning section */
+// ─── "Currently Learning" block ────────────────────────────────────────────
 .skill__learning {
-  background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
-  border: 1px solid #bfdbfe; border-radius: 18px; padding: 2rem 2.5rem;
-  display: flex; align-items: flex-start; gap: 3rem; flex-wrap: wrap;
-  @media (max-width: 640px) { flex-direction: column; gap: 1.5rem; }
+  margin-top   : 48px;
+  padding      : 36px 40px;
+  background   : $surface;
+  border       : 1px solid $border;
+  border-radius: 22px;
+  backdrop-filter: blur(16px);
+  position     : relative;
+  overflow     : hidden;
+
+  // Dashed top border accent
+  &::before {
+    content   : "";
+    position  : absolute;
+    inset-block-start: 0;
+    inset-inline: 10%;
+    height    : 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(251, 191, 36, 0.5),
+      transparent
+    );
+  }
+
+  @media (max-width: 600px) {
+    padding: 28px 22px;
+  }
 }
 
-.skill__learning-header { display: flex; flex-direction: column; gap: .5rem; min-width: 160px; }
+.skill__learning-header {
+  display    : flex;
+  align-items: center;
+  gap        : 14px;
+  margin-bottom: 24px;
+  flex-wrap  : wrap;
+}
 
 .skill__learning-badge {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .7rem; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase;
-  color: #b45309; background: #fef3c7; border: 1px solid #fde68a;
-  padding: 3px 10px; border-radius: 999px; align-self: flex-start;
+  display      : inline-flex;
+  align-items  : center;
+  gap          : 6px;
+  padding      : 5px 14px;
+  background   : rgba(251, 191, 36, 0.1);
+  border       : 1px solid rgba(251, 191, 36, 0.28);
+  border-radius: 100px;
+  font-size    : 0.75rem;
+  font-weight  : 700;
+  letter-spacing: 0.04em;
+  color        : rgba(251, 191, 36, 0.9);
 }
 
 .skill__learning-title {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800;
-  color: #0f172a; margin: 0;
+  margin     : 0;
+  font-size  : 1rem;
+  font-weight: 700;
+  color      : $text-muted;
 }
 
 .skill__learning-list {
-  list-style: none; padding: 0; margin: 0; flex: 1;
-  display: grid; grid-template-columns: repeat(2,1fr); gap: .6rem;
-  @media (max-width: 500px) { grid-template-columns: 1fr; }
+  list-style: none;
+  padding   : 0;
+  margin    : 0;
+  display   : grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap       : 12px 32px;
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+
   li {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-size: .88rem;
-    color: #475569; display: flex; align-items: center; gap: .5rem;
+    display    : flex;
+    align-items: center;
+    gap        : 10px;
+    font-size  : 0.875rem;
+    font-weight: 500;
+    color      : $text-muted;
   }
 }
 
-.skill__learning-dot { width: 7px; height: 7px; border-radius: 50%; background: #93c5fd; flex-shrink: 0; }
+.skill__learning-dot {
+  width        : 7px;
+  height       : 7px;
+  border-radius: 50%;
+  background   : rgba(251, 191, 36, 0.5);
+  border       : 1px solid rgba(251, 191, 36, 0.4);
+  flex-shrink  : 0;
+  animation    : learningPulse 2.4s ease-in-out infinite;
+
+  @for $i from 1 through 4 {
+    li:nth-child(#{$i}) & { animation-delay: #{($i - 1) * 0.3}s; }
+  }
+}
+
+@keyframes learningPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1);    }
+  50%       { opacity: 1;   transform: scale(1.35); }
+}
+
+// ─── Staggered entrance ────────────────────────────────────────────────────
+@media (prefers-reduced-motion: no-preference) {
+  .skill__card {
+    opacity  : 0;
+    transform: translateY(26px);
+    animation: skillCardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) { animation-delay: #{($i - 1) * 0.08}s; }
+    }
+  }
+
+  .skill__learning {
+    opacity  : 0;
+    transform: translateY(20px);
+    animation: skillCardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.55s forwards;
+  }
+}
+
+@keyframes skillCardIn {
+  to {
+    opacity  : 1;
+    transform: translateY(0);
+  }
+}

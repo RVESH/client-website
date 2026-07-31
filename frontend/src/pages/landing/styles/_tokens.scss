@@ -1,27 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+// ============================================
+// SOUTHBRIDGE — DESIGN TOKENS ONLY
+// No CSS rules here — just variables & mixins
+// ============================================
 
-// ─── VARIABLES ──────────────────────────────
+// ─── COLORS ─────────────────────────────────
+// Light theme — warm, readable, human-made
 
-$sb-bg:         #f5f2ed;
-$sb-bg-soft:    #ede8e0;
-$sb-bg-card:    #ffffff;
-$sb-ink:        #1a1814;
-$sb-ink-soft:   #3d3830;
-$sb-ink-muted:  #6b655c;
-$sb-ink-fade:   #9a948a;
-$sb-gold:       #b8860b;
-$sb-gold-bright:#d4a843;
-$sb-success:    #2d7a46;
-$sb-wa:         #128c7e;
-$sb-border:     #ddd5c8;
-$sb-cream:     #f5f2ed;
-$sb-cream-dim: #ede8e0;
+$sb-bg:         #f5f2ed;     // Warm off-white background
+$sb-bg-soft:    #ede8e0;     // Slightly darker section bg
+$sb-bg-card:    #ffffff;     // Pure white cards
+$sb-bg-dark:    #1a1814;     // Dark accent sections
 
+$sb-ink:        #1a1814;     // Primary text — deep warm black
+$sb-ink-soft:   #3d3830;     // Secondary text
+$sb-ink-muted:  #6b655c;     // Muted text
+$sb-ink-fade:   #9a948a;     // Very muted
 
+$sb-gold:       #b8860b;     // Warm gold accent
+$sb-gold-bright:#d4a843;     // Brighter gold for hover
+$sb-gold-soft:  #e8d5a8;     // Light gold background
+
+$sb-border:     #ddd5c8;     // Warm borders
+$sb-border-light:#e8e2d8;
+
+$sb-success:    #2d7a46;     // Muted green
+$sb-wa:         #128c7e;     // WhatsApp green
+
+// ─── TYPOGRAPHY ─────────────────────────────
 $font-display:  'Playfair Display', 'Georgia', serif;
 $font-body:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 $font-mono:     'JetBrains Mono', monospace;
 
+// ─── SCALE ──────────────────────────────────
 $text-xs:   0.75rem;
 $text-sm:   0.875rem;
 $text-base: 1rem;
@@ -33,6 +43,7 @@ $text-4xl:  2.25rem;
 $text-5xl:  3rem;
 $text-6xl:  3.75rem;
 
+// ─── SPACING ────────────────────────────────
 $space-1: 0.25rem;
 $space-2: 0.5rem;
 $space-3: 0.75rem;
@@ -46,12 +57,17 @@ $space-16: 4rem;
 $space-20: 5rem;
 $space-24: 6rem;
 
+// ─── LAYOUT ─────────────────────────────────
 $container-max: 1280px;
 $container-pad: clamp(1.5rem, 5vw, 4rem);
+
+// ─── MOTION ─────────────────────────────────
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 $duration-fast: 200ms;
 $duration-base: 400ms;
 $duration-slow: 700ms;
+
+// ─── Z-INDEX ────────────────────────────────
 $z-sticky: 10;
 $z-overlay: 40;
 $z-drawer: 50;
@@ -82,6 +98,7 @@ $z-drawer: 50;
   border: 1px solid $sb-border;
   border-radius: 16px;
   transition: all $duration-base $ease-out-expo;
+  
   &:hover {
     border-color: $sb-gold;
     transform: translateY(-4px);
@@ -118,13 +135,18 @@ $z-drawer: 50;
   border-radius: 12px;
   cursor: pointer;
   transition: all $duration-base $ease-out-expo;
+  
   &:hover {
     background: $sb-gold-bright;
     transform: translateY(-2px);
     box-shadow: 0 12px 28px -6px rgba($sb-gold, 0.35);
+    
     svg { transform: translateX(3px); }
   }
-  svg { transition: transform $duration-base $ease-out-expo; }
+  
+  svg {
+    transition: transform $duration-base $ease-out-expo;
+  }
 }
 
 @mixin btn-ghost {
@@ -140,6 +162,7 @@ $z-drawer: 50;
   border-radius: 12px;
   cursor: pointer;
   transition: all $duration-base $ease-out-expo;
+  
   &:hover {
     border-color: $sb-gold;
     color: $sb-gold;
@@ -157,7 +180,11 @@ $z-drawer: 50;
   font-family: $font-body;
   font-size: $text-base;
   transition: all $duration-base $ease-out-expo;
-  &::placeholder { color: $sb-ink-fade; }
+  
+  &::placeholder {
+    color: $sb-ink-fade;
+  }
+  
   &:focus {
     outline: none;
     border-color: $sb-gold;
@@ -169,7 +196,12 @@ $z-drawer: 50;
   text-align: center;
   max-width: 600px;
   margin: 0 auto $space-16;
-  .sh__pill { @include pill; margin-bottom: $space-5; }
+  
+  .sh__pill {
+    @include pill;
+    margin-bottom: $space-5;
+  }
+  
   .sh__title {
     font-family: $font-display;
     font-size: clamp($text-3xl, 5vw, $text-5xl);
@@ -177,62 +209,16 @@ $z-drawer: 50;
     line-height: 1.2;
     color: $sb-ink;
     margin-bottom: $space-4;
-    span { color: $sb-gold; font-style: italic; }
+    
+    span {
+      color: $sb-gold;
+      font-style: italic;
+    }
   }
+  
   .sh__sub {
     font-size: $text-lg;
     color: $sb-ink-muted;
     line-height: 1.7;
   }
 }
-
-// ─── KEYFRAMES ──────────────────────────────
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(184, 134, 11, 0); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes fillBar {
-  from { width: 0; }
-}
-
-// ─── GLOBAL RESET ───────────────────────────
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body {
-  font-family: $font-body;
-  font-size: $text-base;
-  line-height: 1.6;
-  color: $sb-ink-soft;
-  background: $sb-bg;
-  overflow-x: hidden;
-}
-::selection { background: rgba($sb-gold, 0.2); color: $sb-ink; }
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: $sb-bg; }
-::-webkit-scrollbar-thumb { background: $sb-border; border-radius: 4px; &:hover { background: $sb-gold; } }
-
-.container { @include container; }
-.section { padding: $space-24 0; position: relative; @media (max-width: 768px) { padding: $space-16 0; } }

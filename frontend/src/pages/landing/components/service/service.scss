@@ -1,126 +1,236 @@
-@import "../../styles/style.scss";
+// ─── Tokens ────────────────────────────────────────────────────────────────
+$accent        : #7c5cfc;
+$accent-2      : #5eead4;
+$accent-glow   : rgba(124, 92, 252, 0.35);
+$text          : #f0f0f5;
+$text-muted    : rgba(240, 240, 245, 0.55);
+$bg            : #08080c;
+$surface       : rgba(18, 18, 28, 0.7);
+$border        : rgba(255, 255, 255, 0.08);
+$transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-// ============================================
-// SERVICES
-// ============================================
+// Per-card glow palette (cycles across 6 cards)
+$card-glows: (
+  1: #7c5cfc,
+  2: #5eead4,
+  3: #f472b6,
+  4: #fb923c,
+  5: #34d399,
+  6: #60a5fa,
+);
 
+// ─── Section shell ─────────────────────────────────────────────────────────
 .services {
-  background: $sb-ink-soft;
+  position  : relative;
+  background: $bg;
+  overflow  : hidden;
 
-  .sh {
-    @include section-header;
+  &::before {
+    content  : "";
+    position : absolute;
+    inset    : 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 30%, rgba(124, 92, 252, 0.09) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 40% at 80% 75%, rgba(94, 234, 212, 0.06) 0%, transparent 60%);
+    pointer-events: none;
   }
 }
 
-.svc {
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: $space-6;
+// ─── Six-column grid ───────────────────────────────────────────────────────
+.svc__grid {
+  display              : grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap                  : 24px;
 
-    @media (max-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 640px) {
-      grid-template-columns: 1fr;
-    }
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  &__card {
-    @include card-surface;
-    padding: $space-8;
-    position: relative;
-    overflow: hidden;
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin   : 0 auto;
+  }
+}
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, $sb-gold, transparent);
-      opacity: 0;
-      transition: opacity $duration-base;
-    }
+// ─── Card ──────────────────────────────────────────────────────────────────
+.svc__card {
+  position      : relative;
+  display       : flex;
+  flex-direction: column;
+  gap           : 14px;
+  padding       : 32px 28px;
+  background    : $surface;
+  border        : 1px solid $border;
+  border-radius : 20px;
+  overflow      : hidden;
+  backdrop-filter: blur(16px);
+  transition    : transform    $transition,
+                  border-color $transition,
+                  box-shadow   $transition;
 
-    &:hover::before {
-      opacity: 1;
-    }
+  // Ambient corner blob
+  &::before {
+    content      : "";
+    position     : absolute;
+    top          : -48px;
+    right        : -48px;
+    width        : 160px;
+    height       : 160px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity      : 0;
+    transition   : opacity $transition;
+  }
 
-    &--hovered {
+  // Per-card accent colour
+  @for $i from 1 through 6 {
+    $color: map-get($card-glows, $i);
+
+    &:nth-child(#{$i}) {
       .svc__icon-wrap {
-        background: rgba($sb-gold, 0.15);
-        transform: scale(1.05) rotate(-5deg);
+        background  : rgba($color, 0.1);
+        border-color: rgba($color, 0.25);
+      }
+
+      .svc__badge {
+        background  : rgba($color, 0.1);
+        border-color: rgba($color, 0.25);
+        color       : mix(#fff, $color, 30%);
+      }
+
+      &::before {
+        background: radial-gradient(circle, rgba($color, 0.14) 0%, transparent 70%);
+      }
+
+      &.svc__card--hovered {
+        border-color: rgba($color, 0.4);
+        box-shadow  : 0 20px 50px rgba(0, 0, 0, 0.4),
+                      0 0 0 1px rgba($color, 0.1) inset;
+
+        .svc__icon-wrap {
+          background  : rgba($color, 0.18);
+          border-color: rgba($color, 0.4);
+        }
       }
     }
   }
 
-  &__icon-wrap {
-    width: 56px;
-    height: 56px;
-    @include flex-center;
-    background: $sb-ink-lift;
-    border-radius: 14px;
-    margin-bottom: $space-6;
-    transition: all $duration-base $ease-out-expo;
+  &--hovered {
+    transform: translateY(-6px);
+
+    &::before { opacity: 1; }
+
+    .svc__icon { transform: scale(1.15) rotate(-5deg); }
   }
 
-  &__icon {
-    font-size: $text-2xl;
+  @media (max-width: 500px) {
+    padding: 26px 22px;
   }
+}
 
-  &__title {
-    font-family: $font-body;
-    font-size: $text-xl;
+// ─── Icon wrapper ──────────────────────────────────────────────────────────
+.svc__icon-wrap {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  width          : 52px;
+  height         : 52px;
+  border-radius  : 14px;
+  border         : 1px solid $border;
+  flex-shrink    : 0;
+  transition     : background $transition, border-color $transition;
+}
+
+.svc__icon {
+  font-size : 1.35rem;
+  line-height: 1;
+  display   : block;
+  transition: transform $transition;
+}
+
+// ─── Title ─────────────────────────────────────────────────────────────────
+.svc__title {
+  margin     : 0;
+  font-size  : 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color      : $text;
+}
+
+// ─── Body text ─────────────────────────────────────────────────────────────
+.svc__text {
+  margin    : 0;
+  font-size : 0.875rem;
+  line-height: 1.7;
+  color     : $text-muted;
+  flex      : 1;
+}
+
+// ─── Highlight badge ───────────────────────────────────────────────────────
+.svc__badge {
+  display      : inline-flex;
+  align-items  : center;
+  width        : fit-content;
+  padding      : 5px 13px;
+  border       : 1px solid $border;
+  border-radius: 100px;
+  font-size    : 0.72rem;
+  font-weight  : 700;
+  letter-spacing: 0.03em;
+  margin-top   : auto;
+  transition   : background $transition, border-color $transition, color $transition;
+}
+
+// ─── Trust bar ─────────────────────────────────────────────────────────────
+.svc__trust {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  flex-wrap      : wrap;
+  gap            : 14px;
+  margin-top     : 56px;
+  padding        : 20px 32px;
+  background     : rgba(255, 255, 255, 0.03);
+  border         : 1px solid $border;
+  border-radius  : 16px;
+
+  span:not(.svc__trust-dot) {
+    font-size  : 0.82rem;
     font-weight: 600;
-    color: $sb-cream;
-    margin-bottom: $space-3;
+    color      : $text-muted;
+    transition : color $transition;
+
+    &:hover { color: $text; }
   }
+}
 
-  &__text {
-    font-size: $text-sm;
-    color: $sb-cream-dim;
-    line-height: 1.7;
-    margin-bottom: $space-5;
-  }
+.svc__trust-dot {
+  width        : 4px;
+  height       : 4px;
+  border-radius: 50%;
+  background   : rgba(255, 255, 255, 0.2);
+  flex-shrink  : 0;
 
-  &__badge {
-    display: inline-block;
-    padding: $space-1 $space-3;
-    background: rgba($sb-gold, 0.1);
-    border: 1px solid rgba($sb-gold, 0.2);
-    border-radius: 6px;
-    font-size: $text-xs;
-    font-family: $font-mono;
-    color: $sb-gold;
-  }
+  @media (max-width: 400px) { display: none; }
+}
 
-  &__trust {
-    @include flex-center;
-    gap: $space-6;
-    margin-top: $space-12;
-    padding-top: $space-8;
-    border-top: 1px solid $sb-ink-border;
-    flex-wrap: wrap;
+// ─── Staggered entrance ────────────────────────────────────────────────────
+@media (prefers-reduced-motion: no-preference) {
+  .svc__card {
+    opacity  : 0;
+    transform: translateY(28px);
+    animation: svcCardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
-    span {
-      font-size: $text-sm;
-      color: $sb-cream-fade;
-
-      &:not(.svc__trust-dot) {
-        display: flex;
-        align-items: center;
-        gap: $space-2;
-      }
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) { animation-delay: #{($i - 1) * 0.08}s; }
     }
+  }
+}
 
-    &-dot {
-      width: 4px;
-      height: 4px;
-      background: $sb-ink-border;
-      border-radius: 50%;
-    }
+@keyframes svcCardIn {
+  to {
+    opacity  : 1;
+    transform: translateY(0);
   }
 }
