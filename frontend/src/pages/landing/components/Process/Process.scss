@@ -1,12 +1,14 @@
+   @use "sass:map";   // ← Add this line at the very top
+
 // ─── Tokens ────────────────────────────────────────────────────────────────
 $accent        : #7c5cfc;
 $accent-2      : #5eead4;
 $accent-glow   : rgba(124, 92, 252, 0.35);
 $text          : #f0f0f5;
-$text-muted    : rgba(240, 240, 245, 0.55);
+$text-muted    : rgba(240, 240, 245, 0.72);   // ← WAS 0.55, NOW 0.72
 $bg            : #08080c;
-$surface       : rgba(18, 18, 28, 0.7);
-$border        : rgba(255, 255, 255, 0.08);
+$surface       : rgba(18, 18, 28, 0.95);     // ← WAS 0.7, NOW 0.95
+$border        : rgba(255, 255, 255, 0.10);   // ← slightly stronger border
 $transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 // Step accent palette — one colour per card
@@ -27,9 +29,10 @@ $step-colors: (
     position : absolute;
     inset    : 0;
     background:
-      radial-gradient(ellipse 50% 60% at 50% 0%,   rgba(124, 92, 252, 0.08) 0%, transparent 65%),
-      radial-gradient(ellipse 35% 40% at 90% 100%,  rgba(94, 234, 212, 0.06) 0%, transparent 60%);
+      radial-gradient(ellipse 50% 60% at 50% 0%,   rgba(124, 92, 252, 0.06) 0%, transparent 65%),
+      radial-gradient(ellipse 35% 40% at 90% 100%,  rgba(94, 234, 212, 0.04) 0%, transparent 60%);
     pointer-events: none;
+    z-index: 0;
   }
 }
 
@@ -39,6 +42,7 @@ $step-colors: (
   grid-template-columns: repeat(3, 1fr);
   gap                  : 28px;
   position             : relative;
+  z-index              : 1;   // ← ensure cards are above gradient
 
   @media (max-width: 860px) {
     grid-template-columns: 1fr;
@@ -65,7 +69,7 @@ $step-colors: (
 
   // Per-step accent colour applied via nth-child
   @for $i from 1 through 3 {
-    $color: map-get($step-colors, $i);
+    $color: map.get($step-colors, $i);
 
     &:nth-child(#{$i}) {
       .proc__icon-wrap {
@@ -105,7 +109,7 @@ $step-colors: (
     &::before { opacity: 1; }
 
     @for $i from 1 through 3 {
-      $color: map-get($step-colors, $i);
+      $color: map.get($step-colors, $i);
 
       &:nth-child(#{$i}) {
         border-color: rgba($color, 0.4);
@@ -186,10 +190,10 @@ $step-colors: (
 
 // ─── Step number ───────────────────────────────────────────────────────────
 .proc__num {
-  font-size    : 0.72rem;
-  font-weight  : 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size      : 0.72rem;
+  font-weight    : 800;
+  letter-spacing : 0.1em;
+  text-transform : uppercase;
 }
 
 // ─── Title ─────────────────────────────────────────────────────────────────
