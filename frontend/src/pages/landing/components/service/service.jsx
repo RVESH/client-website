@@ -29,6 +29,8 @@ const ServiceCard = ({ service }) => {
 };
 
 const Service = () => {
+  const duplicated = [...SERVICES, ...SERVICES];
+
   return (
     <section id="services" className="section services">
       <div className="container">
@@ -38,10 +40,16 @@ const Service = () => {
           <p className="sh__sub">Simple, affordable and result-focused websites for your business.</p>
         </header>
 
-        <div className="svc__grid">
-          {SERVICES.map((s, i) => <ServiceCard key={i} service={s} />)}
-        </div>
-
+<div className="svc__track-wrap">
+  <div className="svc__grid">
+    {duplicated.map((service, index) => (
+      <ServiceCard
+        key={index}
+        service={service}
+      />
+    ))}
+  </div>
+</div>
         <div className="svc__trust">
           <span>✔ 10+ Demo Projects</span>
           <span className="svc__trust-dot" />

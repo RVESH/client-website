@@ -1,236 +1,617 @@
-// ─── Tokens ────────────────────────────────────────────────────────────────
-$accent        : #7c5cfc;
-$accent-2      : #5eead4;
-$accent-glow   : rgba(124, 92, 252, 0.35);
-$text          : #f0f0f5;
-$text-muted    : rgba(240, 240, 245, 0.55);
-$bg            : #08080c;
-$surface       : rgba(18, 18, 28, 0.7);
-$border        : rgba(255, 255, 255, 0.08);
-$transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+//========================================
+// COLORS
+//========================================
 
-// Per-card glow palette (cycles across 6 cards)
-$card-glows: (
-  1: #7c5cfc,
-  2: #5eead4,
-  3: #f472b6,
-  4: #fb923c,
-  5: #34d399,
-  6: #60a5fa,
-);
+$bg:#e4e5e4f5;
+$card:#111625;
 
-// ─── Section shell ─────────────────────────────────────────────────────────
-.services {
-  position  : relative;
-  background: $bg;
-  overflow  : hidden;
+$primary:#7758ff;
+$secondary:#4db8ff;
 
-  &::before {
-    content  : "";
-    position : absolute;
-    inset    : 0;
+$text:#fff;
+$text2:#b5bfd2;
+
+$border:rgba(255,255,255,.08);
+
+$radius:22px;
+
+$tr:.35s ease;
+
+//========================================
+// SECTION
+//========================================
+
+.services{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:110px 0;
+
+    background:$bg;
+
+}
+
+.container{
+
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+//========================================
+// BACKGROUND
+//========================================
+
+.services::before,
+.services::after{
+
+    content:"";
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(80px);
+
+    pointer-events:none;
+
+}
+
+.services::before{
+
+    width:420px;
+
+    height:420px;
+
+    right:-120px;
+
+    top:-120px;
+
+    background:rgba(119,88,255,.16);
+
+}
+
+.services::after{
+
+    width:350px;
+
+    height:350px;
+
+    left:-80px;
+
+    bottom:-80px;
+
+    background:rgba(77,184,255,.10);
+
+}
+
+//========================================
+// SERVICES SLIDER
+//========================================
+
+.svc__track-wrap{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 12px 0;
+}
+
+.svc__track-wrap::before,
+.svc__track-wrap::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.svc__track-wrap::before{
+    left: 0;
+    background: linear-gradient(
+        to right,
+        $bg 0%,
+        rgba($bg,.95) 30%,
+        transparent 100%
+    );
+}
+
+.svc__track-wrap::after{
+    right: 0;
+    background: linear-gradient(
+        to left,
+        $bg 0%,
+        rgba($bg,.95) 30%,
+        transparent 100%
+    );
+}
+
+.svc__grid{
+
+    display:flex;
+    align-items:stretch;
+
+    gap:34px;
+
+    width:max-content;
+
+    will-change:transform;
+    transform:translate3d(0,0,0);
+
+    animation:svcScroll 38s linear infinite;
+
+}
+
+.svc__grid:hover{
+    animation-play-state:paused;
+}
+
+@keyframes svcScroll{
+
+    from{
+        transform:translate3d(0,0,0);
+    }
+
+    to{
+        transform:translate3d(-50%,0,0);
+    }
+
+}
+
+.svc__card{
+
+    flex:0 0 360px;
+
+    min-height:100%;
+
+}
+@media (max-width:991px){
+
+    .svc__grid{
+
+        gap:26px;
+
+        animation-duration:32s;
+
+    }
+
+    .svc__card{
+
+        flex:0 0 320px;
+
+    }
+
+    .svc__track-wrap::before,
+    .svc__track-wrap::after{
+
+        width:70px;
+
+    }
+
+}
+@media (max-width:768px){
+
+    .svc__grid{
+
+        gap:18px;
+
+        animation-duration:26s;
+
+    }
+
+    .svc__card{
+
+        flex:0 0 270px;
+
+    }
+
+    .svc__track-wrap::before,
+    .svc__track-wrap::after{
+
+        width:40px;
+
+    }
+
+}
+@media (max-width:480px){
+
+    .svc__card{
+
+        flex:0 0 240px;
+
+    }
+
+    .svc__grid{
+
+        gap:16px;
+
+        animation-duration:22s;
+
+    }
+
+}
+//========================================
+// HEADER
+//========================================
+
+.sh{
+
+    position:relative;
+
+    z-index:10;
+
+    text-align:center;
+
+    margin-bottom:80px;
+
+}
+
+.sh__pill{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    background:rgba(119,88,255,.18);
+
+    border:1px solid rgba(119,88,255,.35);
+
+    border-radius:999px;
+
+    color:#736895;
+
+    font-size:.85rem;
+
+    font-weight:700;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+
+}
+
+.sh__title{
+
+    margin:25px 0 18px;
+
+    font-size:clamp(3rem,6vw,4.8rem);
+
+    line-height:1.05;
+
+    font-weight:900;
+
+    color:#fff;
+
+    letter-spacing:-2px;
+
+    text-shadow:
+        0 4px 30px rgba(0,0,0,.55);
+
+}
+
+.sh__title span{
+
+    color:#6fb8ff;
+
+}
+
+.sh__sub{
+
+    width:min(650px,90%);
+
+    margin:auto;
+
+    color:#1a1e26;
+
+    font-size:1.15rem;
+
+    line-height:1.8;
+
+    font-weight:500;
+
+    text-shadow:
+        6px 0px 0px rgba(0,0,0,2);
+
+}
+.sh__line{
+
+    width:70px;
+
+    height:4px;
+
+    margin:26px auto 0;
+
+    border-radius:30px;
+
+    background:linear-gradient(90deg,$primary,$secondary);
+
+}
+//========================================
+// CARD
+//========================================
+
+.svc__card{
+
+    position:relative;
+
+    padding:34px;
+
+    border-radius:$radius;
+
+    background:$card;
+
+    border:1px solid $border;
+
+    transition:$tr;
+
+    overflow:hidden;
+
+}
+
+.svc__card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
     background:
-      radial-gradient(ellipse 60% 50% at 20% 30%, rgba(124, 92, 252, 0.09) 0%, transparent 65%),
-      radial-gradient(ellipse 45% 40% at 80% 75%, rgba(94, 234, 212, 0.06) 0%, transparent 60%);
-    pointer-events: none;
-  }
+
+    radial-gradient(circle at top right,
+
+    rgba(119,88,255,.18),
+
+    transparent 55%);
+
+    opacity:0;
+
+    transition:$tr;
+
 }
 
-// ─── Six-column grid ───────────────────────────────────────────────────────
-.svc__grid {
-  display              : grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap                  : 24px;
+.svc__card:hover{
 
-  @media (max-width: 960px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    transform:translateY(-8px);
 
-  @media (max-width: 560px) {
-    grid-template-columns: 1fr;
-    max-width: 440px;
-    margin   : 0 auto;
-  }
+    border-color:rgba(119,88,255,.35);
+
+    box-shadow:
+
+    0 18px 45px rgba(0,0,0,.35);
+
 }
 
-// ─── Card ──────────────────────────────────────────────────────────────────
-.svc__card {
-  position      : relative;
-  display       : flex;
-  flex-direction: column;
-  gap           : 14px;
-  padding       : 32px 28px;
-  background    : $surface;
-  border        : 1px solid $border;
-  border-radius : 20px;
-  overflow      : hidden;
-  backdrop-filter: blur(16px);
-  transition    : transform    $transition,
-                  border-color $transition,
-                  box-shadow   $transition;
+.svc__card:hover::before{
 
-  // Ambient corner blob
-  &::before {
-    content      : "";
-    position     : absolute;
-    top          : -48px;
-    right        : -48px;
-    width        : 160px;
-    height       : 160px;
-    border-radius: 50%;
-    pointer-events: none;
-    opacity      : 0;
-    transition   : opacity $transition;
-  }
+    opacity:1;
 
-  // Per-card accent colour
-  @for $i from 1 through 6 {
-    $color: map-get($card-glows, $i);
+}
 
-    &:nth-child(#{$i}) {
-      .svc__icon-wrap {
-        background  : rgba($color, 0.1);
-        border-color: rgba($color, 0.25);
-      }
+//========================================
+// ICON
+//========================================
 
-      .svc__badge {
-        background  : rgba($color, 0.1);
-        border-color: rgba($color, 0.25);
-        color       : mix(#fff, $color, 30%);
-      }
+.svc__icon-wrap{
 
-      &::before {
-        background: radial-gradient(circle, rgba($color, 0.14) 0%, transparent 70%);
-      }
+    width:64px;
 
-      &.svc__card--hovered {
-        border-color: rgba($color, 0.4);
-        box-shadow  : 0 20px 50px rgba(0, 0, 0, 0.4),
-                      0 0 0 1px rgba($color, 0.1) inset;
+    height:64px;
 
-        .svc__icon-wrap {
-          background  : rgba($color, 0.18);
-          border-color: rgba($color, 0.4);
-        }
-      }
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    margin-bottom:24px;
+
+    background:
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(119,88,255,.18),
+
+    rgba(77,184,255,.12)
+
+    );
+
+    border:1px solid rgba(119,88,255,.25);
+
+}
+
+.svc__icon{
+
+    font-size:30px;
+
+    color:white;
+
+}
+
+//========================================
+// TEXT
+//========================================
+
+.svc__title{
+
+    margin:0 0 14px;
+
+    color:white;
+
+    font-size:1.35rem;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+}
+
+.svc__text{
+
+    color:$text2;
+
+    line-height:1.8;
+
+    font-size:.97rem;
+
+    margin:0;
+
+}
+
+//========================================
+// BADGE
+//========================================
+
+.svc__badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:24px;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    background:rgba(119,88,255,.12);
+
+    border:1px solid rgba(119,88,255,.25);
+
+    color:#fff;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+    transition:$tr;
+
+}
+
+.svc__badge::before{
+
+    content:"●";
+
+    color:$secondary;
+
+    font-size:.7rem;
+
+}
+
+.svc__card:hover .svc__badge{
+
+    background:linear-gradient(135deg,$primary,$secondary);
+
+    border-color:transparent;
+
+}
+
+//========================================
+// TRUST BAR
+//========================================
+
+.svc__trust{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin-top:70px;
+
+    padding:22px 28px;
+
+    border-radius:$radius;
+
+    background:$card;
+
+    border:1px solid $border;
+
+}
+
+.svc__trust span{
+
+    color:$text;
+
+    font-weight:600;
+
+}
+
+.svc__trust-dot{
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:$secondary;
+
+}
+
+//========================================
+// MOBILE
+//========================================
+
+@media(max-width:700px){
+
+    .services{
+
+        padding:80px 0;
+
     }
-  }
 
-  &--hovered {
-    transform: translateY(-6px);
+    .sh{
 
-    &::before { opacity: 1; }
+        margin-bottom:50px;
 
-    .svc__icon { transform: scale(1.15) rotate(-5deg); }
-  }
-
-  @media (max-width: 500px) {
-    padding: 26px 22px;
-  }
-}
-
-// ─── Icon wrapper ──────────────────────────────────────────────────────────
-.svc__icon-wrap {
-  display        : flex;
-  align-items    : center;
-  justify-content: center;
-  width          : 52px;
-  height         : 52px;
-  border-radius  : 14px;
-  border         : 1px solid $border;
-  flex-shrink    : 0;
-  transition     : background $transition, border-color $transition;
-}
-
-.svc__icon {
-  font-size : 1.35rem;
-  line-height: 1;
-  display   : block;
-  transition: transform $transition;
-}
-
-// ─── Title ─────────────────────────────────────────────────────────────────
-.svc__title {
-  margin     : 0;
-  font-size  : 1.05rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color      : $text;
-}
-
-// ─── Body text ─────────────────────────────────────────────────────────────
-.svc__text {
-  margin    : 0;
-  font-size : 0.875rem;
-  line-height: 1.7;
-  color     : $text-muted;
-  flex      : 1;
-}
-
-// ─── Highlight badge ───────────────────────────────────────────────────────
-.svc__badge {
-  display      : inline-flex;
-  align-items  : center;
-  width        : fit-content;
-  padding      : 5px 13px;
-  border       : 1px solid $border;
-  border-radius: 100px;
-  font-size    : 0.72rem;
-  font-weight  : 700;
-  letter-spacing: 0.03em;
-  margin-top   : auto;
-  transition   : background $transition, border-color $transition, color $transition;
-}
-
-// ─── Trust bar ─────────────────────────────────────────────────────────────
-.svc__trust {
-  display        : flex;
-  align-items    : center;
-  justify-content: center;
-  flex-wrap      : wrap;
-  gap            : 14px;
-  margin-top     : 56px;
-  padding        : 20px 32px;
-  background     : rgba(255, 255, 255, 0.03);
-  border         : 1px solid $border;
-  border-radius  : 16px;
-
-  span:not(.svc__trust-dot) {
-    font-size  : 0.82rem;
-    font-weight: 600;
-    color      : $text-muted;
-    transition : color $transition;
-
-    &:hover { color: $text; }
-  }
-}
-
-.svc__trust-dot {
-  width        : 4px;
-  height       : 4px;
-  border-radius: 50%;
-  background   : rgba(255, 255, 255, 0.2);
-  flex-shrink  : 0;
-
-  @media (max-width: 400px) { display: none; }
-}
-
-// ─── Staggered entrance ────────────────────────────────────────────────────
-@media (prefers-reduced-motion: no-preference) {
-  .svc__card {
-    opacity  : 0;
-    transform: translateY(28px);
-    animation: svcCardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-
-    @for $i from 1 through 6 {
-      &:nth-child(#{$i}) { animation-delay: #{($i - 1) * 0.08}s; }
     }
-  }
+
+    .sh__title{
+
+        font-size:2.3rem;
+
+    }
+
+    .svc__card{
+
+        padding:28px;
+
+    }
+
+    .svc__trust{
+
+        flex-direction:column;
+
+        gap:12px;
+
+    }
+
+    .svc__trust-dot{
+
+        display:none;
+
+    }
+
 }
 
-@keyframes svcCardIn {
-  to {
-    opacity  : 1;
-    transform: translateY(0);
-  }
-}
+

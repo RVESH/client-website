@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import "./Navbar.scss";
-import logo from "../../../../images/pixelrise.png";
+import logo from "../../../../images/sbra.png";
 
 const NAV_LINKS = [
   { label: "Services",  id: "services"  },
@@ -92,7 +92,7 @@ const Navbar = () => {
             onClick={() => scrollTo("hero")}
             aria-label="Go to top"
           >
-            <img src={logo} alt="PixelRise" width="120" height="32" />
+            <img src={logo} alt="sbra" width="80px" height="122px" />
           </button>
 
           {/* Desktop Nav */}

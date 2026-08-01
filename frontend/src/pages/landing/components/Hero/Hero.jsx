@@ -73,7 +73,7 @@ const Hero = () => {
                 <span style={{ background: "#fbbf24" }} />
                 <span style={{ background: "#34d399" }} />
               </div>
-              <span className="hero__card-url">pixelrise.dev</span>
+              <span className="hero__card-url">SouthBridge Research Analytics</span>
             </div>
             <div className="hero__card-bars">
               <div className="hero__card-bar hero__card-bar--blue" style={{ width: "75%" }} />

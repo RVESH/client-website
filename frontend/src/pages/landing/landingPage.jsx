@@ -28,10 +28,10 @@ const LandingPage = () => {
       <footer className="landing__footer">
         <div className="container landing__footer-inner">
           <p className="landing__footer-brand">
-            Pixel<span>Rise</span>
+            SouthBridge <span>Research Analytics</span>
           </p>
           <p className="landing__footer-copy">
-            © {new Date().getFullYear()} PixelRise. Crafted with care.
+            © {new Date().getFullYear()} SouthBridge Research Analytics. Crafted with care.
           </p>
           <nav className="landing__footer-links">
             <a href="#services">Services</a>

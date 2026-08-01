@@ -55,10 +55,11 @@ $z-overlay        : 99;    // ← below drawer, covers page content
   padding     : 0;
   cursor      : pointer;
   flex-shrink : 0;
+  margin-right: 24px;
 
   img {
-    height     : 32px;
-    width      : auto;
+    width      : 200px;
+    height     : 152px;
     display    : block;
     transition : opacity $transition, transform $transition;
   }
