@@ -28,12 +28,12 @@ const Hero = () => {
           <p className="hero__sub">
             I build fast, responsive and professional websites for small
             businesses, startups and personal brands — ready to go live
-            in 48 hours.
+            immediately.
           </p>
 
           <div className="hero__actions">
             <button className="hero__btn hero__btn--primary" onClick={() => handleScrollTo("contact")}>
-              Get Your Website in 48 Hours
+              Get Your Own Website
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>

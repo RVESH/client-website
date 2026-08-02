@@ -8,15 +8,16 @@ const PROJECTS = [
     text: "Clean and fast website for small businesses with contact form and WhatsApp integration.",
     link: "#",
     bg: "linear-gradient(145deg, #f0ebe3 0%, #e5ddd2 100%)",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18M9 21V9"/></svg>,
+    // icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18M9 21V9"/></svg>,
   },
   {
+    
     title: "Personal Portfolio Website",
     tag: "React / GitHub Pages",
     text: "One-page portfolio with animated sections, project showcase and contact form.",
     link: "#",
     bg: "linear-gradient(145deg, #e8e2d8 0%, #ddd5c8 100%)",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>,
+    // icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>,
   },
   {
     title: "Landing Page Design",
@@ -24,7 +25,7 @@ const PROJECTS = [
     text: "Modern landing page with optimized layout, hero section and CTA designed to convert visitors.",
     link: "#",
     bg: "linear-gradient(145deg, #e5ddd2 0%, #d9d0c2 100%)",
-    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="3"/><path d="M8 21h8M12 17v4"/></svg>,
+    // icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="3"/><path d="M8 21h8M12 17v4"/></svg>,
   },
 ];
 

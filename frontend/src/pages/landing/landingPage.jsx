@@ -12,7 +12,7 @@ import Contact   from "./components/Contact/Contact";
 
 const LandingPage = () => {
   return (
-    <>
+    <body className="landing__body">
       <Navbar />
 
       <main className="landing__main">
@@ -40,7 +40,7 @@ const LandingPage = () => {
           </nav>
         </div>
       </footer>
-    </>
+    </body>
   );
 };
 
