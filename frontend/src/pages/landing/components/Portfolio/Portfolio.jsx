@@ -1,73 +1,239 @@
 import React, { useState } from "react";
 import "./Portfolio.scss";
 
+import business1 from "../../../../images/web1/one.png";
+import business2 from "../../../../images/web1/two.png";
+import business3 from "../../../../images/web1/three.png";
+import business4 from "../../../../images/web1/four.png";
+
+import restaurant1 from "../../../../images/web1/five.png";
+
 const PROJECTS = [
   {
-    title: "Business Website Demo",
-    tag: "HTML / CSS / Responsive",
-    text: "Clean and fast website for small businesses with contact form and WhatsApp integration.",
+    id: 1,
+    title: "Business Website",
+    tag: "React Website",
+    text: "Modern responsive business website with premium UI.",
     link: "#",
-    bg: "linear-gradient(145deg, #f0ebe3 0%, #e5ddd2 100%)",
-    // icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18M9 21V9"/></svg>,
+    images: [
+      business1,
+      business2,
+      business3,
+      business4,
+    ],
   },
+
   {
-    
-    title: "Personal Portfolio Website",
-    tag: "React / GitHub Pages",
-    text: "One-page portfolio with animated sections, project showcase and contact form.",
+    id: 2,
+    title: "Restaurant Website",
+    tag: "Restaurant",
+    text: "Beautiful restaurant landing page.",
     link: "#",
-    bg: "linear-gradient(145deg, #e8e2d8 0%, #ddd5c8 100%)",
-    // icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>,
-  },
-  {
-    title: "Landing Page Design",
-    tag: "React / UI Design",
-    text: "Modern landing page with optimized layout, hero section and CTA designed to convert visitors.",
-    link: "#",
-    bg: "linear-gradient(145deg, #e5ddd2 0%, #d9d0c2 100%)",
-    // icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="3"/><path d="M8 21h8M12 17v4"/></svg>,
+    images: [
+      restaurant1,
+    ],
   },
 ];
 
-const PortCard = ({ project }) => {
-  const [hovered, setHovered] = useState(false);
+function PortCard({ project, openImage }) {
   return (
-    <article
-      className={`port__card${hovered ? " port__card--hovered" : ""}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div className="port__thumb" style={{ background: project.bg }}>
-        <div className="port__thumb-icon">{project.icon}</div>
+    <article className="port__card">
+
+      <div
+        className="port__thumb"
+        onClick={() => openImage(0)}
+      >
+        <img
+          src={project.images[0]}
+          alt={project.title}
+        />
       </div>
+
       <div className="port__body">
-        <span className="port__tag">{project.tag}</span>
-        <h3 className="port__title">{project.title}</h3>
-        <p className="port__text">{project.text}</p>
-        <a href={project.link} className="port__link" target="_blank" rel="noopener noreferrer">
-          View Project
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+
+        <span className="port__tag">
+          {project.tag}
+        </span>
+
+        <h3 className="port__title">
+          {project.title}
+        </h3>
+
+        <p className="port__text">
+          {project.text}
+        </p>
+
+        <a
+          href={project.link}
+          className="port__link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View Project →
         </a>
+
       </div>
+
     </article>
   );
-};
+}             
 
 const Portfolio = () => {
+
+  const [current, setCurrent] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const prevProject = () => {
+    setCurrent((prev) =>
+      prev === 0 ? PROJECTS.length - 1 : prev - 1
+    );
+    setCurrentImage(0);
+  };
+
+  const nextProject = () => {
+    setCurrent((prev) =>
+      prev === PROJECTS.length - 1 ? 0 : prev + 1
+    );
+    setCurrentImage(0);
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) =>
+      prev === 0
+        ? PROJECTS[current].images.length - 1
+        : prev - 1
+    );
+  };
+
+  const nextImage = () => {
+    setCurrentImage((prev) =>
+      prev === PROJECTS[current].images.length - 1
+        ? 0
+        : prev + 1
+    );
+  };
+
   return (
-    <section id="portfolio" className="section portfolio">
+    <section
+      id="portfolio"
+      className="section portfolio"
+    >
       <div className="container">
+
         <header className="sh">
-          <p className="sh__pill">Our Work</p>
-          <h2 className="sh__title">Websites That <span>Sell</span></h2>
-          <p className="sh__sub">Hand-crafted demos and live projects built for real businesses.</p>
+          <p className="sh__pill">
+            Our Work
+          </p>
+
+          <h2 className="sh__title">
+            Websites That <span>Sell</span>
+          </h2>
+
+          <p className="sh__sub">
+            Hand-crafted demos and live
+            projects built for real businesses.
+          </p>
         </header>
-        <div className="port__grid">
-          {PROJECTS.map((p, i) => <PortCard key={i} project={p} />)}
+
+        <div className="port__slider">
+
+          <button
+            className="arrow left"
+            onClick={prevProject}
+          >
+            ❮
+          </button>
+
+<div className="port__track">
+
+    {PROJECTS.map((project,index)=>(
+
+          <PortCard
+              key={project.id}
+            project={project}
+            openImage={(imageIndex)=>{
+                setCurrent(index);
+                setCurrentImage(imageIndex);
+                setShowModal(true);
+            }}
+          />
+
+      ))}
+          </div>
+          <button
+            className="arrow right"
+            onClick={nextProject}
+          >
+            ❯
+          </button>
+
         </div>
+
       </div>
+
+      {showModal && (
+
+        <div
+          className="portfolio-modal"
+          onClick={() => setShowModal(false)}
+        >
+
+          <div
+            className="portfolio-modal__content"
+            onClick={(e) => e.stopPropagation()}
+          >
+
+            <button
+              className="portfolio-modal__arrow"
+              onClick={prevImage}
+            >
+              ❮
+            </button>
+
+            <div className="portfolio-modal__image">
+
+              <img
+                src={
+                  PROJECTS[current].images[currentImage]
+                }
+                alt={
+                  PROJECTS[current].title
+                }
+              />
+
+              <p className="portfolio-modal__counter">
+                {currentImage + 1} /
+                {" "}
+                {
+                  PROJECTS[current].images.length
+                }
+              </p>
+
+            </div>
+
+            <button
+              className="portfolio-modal__arrow"
+              onClick={nextImage}
+            >
+              ❯
+            </button>
+
+            <button
+              className="portfolio-modal__close"
+              onClick={() =>
+                setShowModal(false)
+              }
+            >
+              ✕
+            </button>
+
+          </div>
+
+        </div>
+
+      )}
+
     </section>
   );
 };
