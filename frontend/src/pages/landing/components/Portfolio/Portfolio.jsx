@@ -147,12 +147,12 @@ const Portfolio = () => {
 
 <div className="port__track">
 
-    {PROJECTS.map((project,index)=>(
+    {PROJECTS.map((project, index) => (
 
           <PortCard
               key={project.id}
             project={project}
-            openImage={(imageIndex)=>{
+            openImage={(imageIndex) => {
                 setCurrent(index);
                 setCurrentImage(imageIndex);
                 setShowModal(true);
