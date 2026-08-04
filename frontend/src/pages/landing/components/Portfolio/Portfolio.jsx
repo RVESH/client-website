@@ -136,39 +136,39 @@ const Portfolio = () => {
           </p>
         </header>
 
-        <div className="port__slider">
+<div className="port__slider">
 
-          <button
-            className="arrow left"
-            onClick={prevProject}
-          >
-            ❮
-          </button>
+  <div className="slider-controls">
+    <button
+      className="arrow"
+      onClick={prevProject}
+    >
+      ❮
+    </button>
 
-<div className="port__track">
+    <button
+      className="arrow"
+      onClick={nextProject}
+    >
+      ❯
+    </button>
+  </div>
 
+  <div className="port__track">
     {PROJECTS.map((project, index) => (
+      <PortCard
+        key={project.id}
+        project={project}
+        openImage={(imageIndex) => {
+          setCurrent(index);
+          setCurrentImage(imageIndex);
+          setShowModal(true);
+        }}
+      />
+    ))}
+  </div>
 
-          <PortCard
-              key={project.id}
-            project={project}
-            openImage={(imageIndex) => {
-                setCurrent(index);
-                setCurrentImage(imageIndex);
-                setShowModal(true);
-            }}
-          />
-
-      ))}
-          </div>
-          <button
-            className="arrow right"
-            onClick={nextProject}
-          >
-            ❯
-          </button>
-
-        </div>
+</div>
 
       </div>
 
