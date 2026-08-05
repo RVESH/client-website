@@ -219,17 +219,16 @@ $transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   justify-content: center;
   gap: 30px;
   margin-top: 60px;
+ width:100%;
+
 }
 .slider-controls{
-
   display: flex;
-  align-items: center;
+  position: absolute;
   justify-content: space-between;
-    position: relative;
-    right: 10px;
+    right: 70px;
 flex-direction: row;
-
-    gap: 90px;   // 20px → 30px → 40px → 50px
+top:100%;gap: 70px;   // 20px → 30px → 40px → 50px
 
 }
 .port__track {
@@ -271,9 +270,6 @@ flex-direction: row;
 }
 .arrow{
     position: relative;
-    top: 50%;
-    justify-content: space-between;
-    transform: translatex(70%);
     width: 55px;
     height: 55px;
     border: none;
@@ -283,8 +279,8 @@ flex-direction: row;
     font-size: 26px;
     cursor: pointer;
     z-index: 100;
-    transition: .3s;
-    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    // transition: .3s;
+    // box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
 .arrow:hover{

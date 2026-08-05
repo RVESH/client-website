@@ -33,6 +33,16 @@ const PROJECTS = [
       restaurant1,
     ],
   },
+    {
+    id: 3,
+    title: "Restaurant Website",
+    tag: "Restaurant",
+    text: "Beautiful restaurant landing page.",
+    link: "#",
+    images: [
+      restaurant1,
+    ],
+  },
 ];
 
 function PortCard({ project, openImage }) {
@@ -110,7 +120,7 @@ const Portfolio = () => {
     setCurrentImage((prev) =>
       prev === PROJECTS[current].images.length - 1
         ? 0
-        : prev + 1
+        :  prev + 1
     );
   };
 
