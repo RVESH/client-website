@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Portfolio.scss";
 
 import business1 from "../../../../images/web1/one.png";
@@ -7,7 +7,6 @@ import business3 from "../../../../images/web1/three.png";
 import business4 from "../../../../images/web1/four.png";
 
 import restaurant1 from "../../../../images/web1/five.png";
-
 const PROJECTS = [
   {
     id: 1,
@@ -43,9 +42,21 @@ const PROJECTS = [
       restaurant1,
     ],
   },
+      {
+    id: 4,
+    title: "Restaurant Website",
+    tag: "Restaurant",
+    text: "Beautiful restaurant landing page.",
+    link: "#",
+    images: [
+      restaurant1,
+    ],
+  },
 ];
 
 function PortCard({ project, openImage }) {
+      const [expanded, setExpanded] = useState(false);
+
   return (
     <article className="port__card">
 
@@ -69,9 +80,24 @@ function PortCard({ project, openImage }) {
           {project.title}
         </h3>
 
-        <p className="port__text">
+        <p className={`port__text ${
+        expanded ? "expanded" : ""
+        }`}>
+
           {project.text}
+
         </p>
+
+<button
+    className="port__more"
+    onClick={() => setExpanded(!expanded)}
+>
+
+    {expanded ? "Less" : "More"}
+
+</button>
+
+
 
         <a
           href={project.link}
@@ -124,6 +150,37 @@ const Portfolio = () => {
     );
   };
 
+const [cardsToShow, setCardsToShow] = useState(3);
+
+  useEffect(() => {
+  const updateCards = () => {
+    const width = window.innerWidth;
+
+    if (width >= 1200) {
+      setCardsToShow(3);
+    } else if (width >= 768) {
+      setCardsToShow(2);
+    } else {
+      setCardsToShow(1);
+    }
+  };
+
+  updateCards();
+
+  window.addEventListener("resize", updateCards);
+
+  return () => {
+    window.removeEventListener("resize", updateCards);
+  };
+}, []);
+
+
+const visibleProjects = Array.from(
+  { length: cardsToShow },
+  (_, i) => PROJECTS[(current + i) % PROJECTS.length]
+);
+
+
   return (
     <section
       id="portfolio"
@@ -164,19 +221,26 @@ const Portfolio = () => {
     </button>
   </div>
 
-  <div className="port__track">
-    {PROJECTS.map((project, index) => (
-      <PortCard
-        key={project.id}
-        project={project}
-        openImage={(imageIndex) => {
-          setCurrent(index);
-          setCurrentImage(imageIndex);
-          setShowModal(true);
-        }}
-      />
+<div className="port__track">
+
+    {visibleProjects.map((project,index)=>(
+
+        <PortCard
+            key={project.id}
+            project={project}
+            openImage={(imageIndex) => {
+              const selectedProject =
+                (current + index) % PROJECTS.length;
+
+              setCurrent(selectedProject);
+              setCurrentImage(imageIndex);
+              setShowModal(true);
+            }}
+        />
+
     ))}
-  </div>
+
+</div>
 
 </div>
 
