@@ -212,7 +212,9 @@ const visibleProjects = Array.from(
     >
       ❮
     </button>
-
+  <p className="doted">
+<h4>............</h4>
+ </p>
     <button
       className="arrow"
       onClick={nextProject}
