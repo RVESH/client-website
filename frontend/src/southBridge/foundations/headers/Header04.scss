@@ -1,0 +1,142 @@
+.sb-header-04 {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  color: #151515;
+  border-bottom: 1px solid #e7e7e7;
+
+  &__topbar {
+    min-height: 30px;
+    display: grid;
+    place-items: center;
+    background: #151515;
+    color: #fff;
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  &__main {
+    width: min(1400px, calc(100% - 40px));
+    min-height: 80px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 36px;
+  }
+
+  &__brand {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.45rem;
+    font-weight: 900;
+    letter-spacing: -0.07em;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    gap: 27px;
+
+    a {
+      color: #424242;
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 600;
+      transition: color 180ms ease;
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    button,
+    a {
+      position: relative;
+      display: grid;
+      place-items: center;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+    }
+  }
+
+  &__cart-count {
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    font-size: 0.58rem;
+    font-weight: 700;
+  }
+
+  &__mobile {
+    display: none;
+    border: 0;
+    background: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 900px) {
+    &__main {
+      grid-template-columns: auto 1fr auto;
+      width: min(100% - 28px, 1400px);
+    }
+
+    &__mobile {
+      display: block;
+    }
+
+    &__nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      padding: 14px 20px 20px;
+      background: #fff;
+      border-bottom: 1px solid #e7e7e7;
+      flex-direction: column;
+      gap: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-5px);
+      transition: 180ms ease;
+
+      &--open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      a {
+        padding: 14px 0;
+      }
+    }
+  }
+}
