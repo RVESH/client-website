@@ -1,15 +1,15 @@
 import { useState } from "react";
 import "./Header03.scss";
 
-const DEFAULT_LINKS = [
+const defaultLinks = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
 ];
 
 function Header03({
-  brand = "NORTH",
-  links = DEFAULT_LINKS,
+  brand = "NORTH /",
+  links = defaultLinks,
   ctaLabel = "Start a Project",
   ctaHref = "#contact",
 }) {
@@ -19,22 +19,28 @@ function Header03({
     <header className="sb-header-03">
       <div className="sb-header-03__container">
         <a href="#home" className="sb-header-03__brand">
-          <span className="sb-header-03__brand-mark">N</span>
+          <span className="sb-header-03__mark">N</span>
           <span>{brand}</span>
         </a>
 
+        <div className="sb-header-03__center">
+          <span className="sb-header-03__status">
+            <i /> Available for select projects
+          </span>
+        </div>
+
         <button
           type="button"
-          className="sb-header-03__menu"
+          className={`sb-header-03__toggle ${
+            open ? "sb-header-03__toggle--active" : ""
+          }`}
           onClick={() => setOpen((prev) => !prev)}
-          aria-label="Toggle navigation"
           aria-expanded={open}
+          aria-label="Toggle navigation"
         >
           <span>Menu</span>
-          <span className="sb-header-03__menu-icon">
-            <i />
-            <i />
-          </span>
+          <i />
+          <i />
         </button>
 
         <nav
@@ -50,12 +56,8 @@ function Header03({
             </a>
           ))}
 
-          <a
-            href={ctaHref}
-            className="sb-header-03__cta"
-            onClick={() => setOpen(false)}
-          >
-            {ctaLabel}
+          <a href={ctaHref} className="sb-header-03__cta">
+            {ctaLabel} ↗
           </a>
         </nav>
       </div>

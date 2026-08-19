@@ -1,15 +1,15 @@
 import { useState } from "react";
 import "./Header08.scss";
 
-const DEFAULT_LINKS = [
+const defaultLinks = [
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
   { label: "Selected Work", href: "#work" },
+  { label: "Capabilities", href: "#capabilities" },
 ];
 
 function Header08({
-  brand = "ARC",
-  links = DEFAULT_LINKS,
+  brand = "ARC.",
+  links = defaultLinks,
   ctaLabel = "Let's Build",
   ctaHref = "#contact",
 }) {
@@ -38,12 +38,12 @@ function Header08({
 
         <a href={ctaHref} className="sb-header-08__cta">
           <span>{ctaLabel}</span>
-          <strong>↗</strong>
+          <b>↗</b>
         </a>
 
         <button
           type="button"
-          className="sb-header-08__toggle"
+          className="sb-header-08__menu"
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-label="Toggle navigation"

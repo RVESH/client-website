@@ -1,0 +1,122 @@
+.sb-hero-11 {
+  overflow: hidden;
+  padding: 95px 0;
+  background: #e8ece3;
+  color: #1f2a20;
+
+  &__container {
+    width: min(1240px, calc(100% - 40px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 70px;
+  }
+
+  &__copy {
+    > span {
+      color: #657161;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+    }
+
+    h1 {
+      max-width: 620px;
+      margin: 16px 0 21px;
+      font-size: clamp(3.4rem, 6vw, 6rem);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+    }
+
+    p {
+      max-width: 470px;
+      color: #60705f;
+      font-size: 0.97rem;
+      line-height: 1.8;
+    }
+
+    > a {
+      display: inline-flex;
+      align-items: center;
+      gap: 17px;
+      margin-top: 31px;
+      min-height: 49px;
+      padding: 0 8px 0 17px;
+      background: #1f2a20;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+
+      b {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__stats {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(31, 42, 32, 0.15);
+    display: flex;
+    gap: 55px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    strong {
+      font-size: 1.4rem;
+    }
+
+    span {
+      margin-top: 4px;
+      color: #768173;
+      font-size: 0.63rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  &__visual {
+    position: relative;
+  }
+
+  &__visual img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 0.95;
+    object-fit: cover;
+  }
+
+  &__quote {
+    position: absolute;
+    left: -28px;
+    bottom: 28px;
+    max-width: 210px;
+    padding: 20px;
+    background: #f4f3ed;
+    color: #1f2a20;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    box-shadow: 0 18px 50px rgba(31, 42, 32, 0.1);
+  }
+
+  @media (max-width: 850px) {
+    &__container {
+      grid-template-columns: 1fr;
+    }
+
+    &__quote {
+      left: 16px;
+    }
+  }
+}

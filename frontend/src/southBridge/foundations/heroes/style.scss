@@ -1,0 +1,10 @@
+.hero_foundation {
+  width: 100%;
+  overflow-x: hidden;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+  > * {
+    width: 100%;
+  }
+}

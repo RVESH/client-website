@@ -1,0 +1,105 @@
+.sb-footer-01 {
+  background: #111827;
+  color: #fff;
+  padding: 76px 0 28px;
+
+  &__container {
+    width: min(1200px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    padding-bottom: 65px;
+  }
+
+  &__brand {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 850;
+    letter-spacing: -0.05em;
+  }
+
+  &__intro p {
+    max-width: 330px;
+    margin: 22px 0 0;
+    color: #9ca3af;
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  &__column h3 {
+    margin: 0 0 20px;
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  &__column nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__column a,
+  &__legal a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.86rem;
+    transition: color 180ms ease;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &__bottom {
+    min-height: 58px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    span {
+      color: #6b7280;
+      font-size: 0.77rem;
+    }
+  }
+
+  &__legal {
+    display: flex;
+    gap: 20px;
+  }
+
+  @media (max-width: 800px) {
+    &__top {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    padding-top: 55px;
+
+    &__columns {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+}

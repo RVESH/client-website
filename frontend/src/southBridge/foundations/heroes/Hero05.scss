@@ -1,0 +1,126 @@
+.sb-hero-05 {
+  overflow: hidden;
+  background: #181818;
+  color: #f5f2eb;
+  padding: 35px 0 30px;
+
+  &__container {
+    width: min(1440px, calc(100% - 44px));
+    min-height: 790px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__topline,
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    span {
+      color: rgba(245, 242, 235, 0.45);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    gap: 60px;
+    align-items: end;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(4rem, 9vw, 9.3rem);
+    line-height: 0.82;
+    letter-spacing: -0.085em;
+    font-weight: 760;
+
+    em {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+  }
+
+  &__side {
+    padding-bottom: 10px;
+
+    p {
+      max-width: 350px;
+      color: rgba(245, 242, 235, 0.6);
+      font-size: 0.94rem;
+      line-height: 1.8;
+    }
+  }
+
+  &__actions {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      &:hover {
+        opacity: 0.55;
+      }
+    }
+  }
+
+  &__footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(245, 242, 235, 0.12);
+    align-items: center;
+
+    > div {
+      display: flex;
+      gap: 38px;
+      color: rgba(245, 242, 235, 0.5);
+
+      b {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  @media (max-width: 850px) {
+    &__container {
+      min-height: 700px;
+    }
+
+    &__main {
+      grid-template-columns: 1fr;
+    }
+
+    &__side {
+      max-width: 500px;
+    }
+
+    &__footer > div {
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 560px) {
+    h1 {
+      font-size: clamp(3.2rem, 15vw, 6rem);
+    }
+
+    &__topline span:last-child {
+      display: none;
+    }
+  }
+}

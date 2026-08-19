@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Header05.scss";
 
-const DEFAULT_LINKS = [
+const defaultLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Studio", href: "#studio" },
   { label: "Capabilities", href: "#capabilities" },
@@ -9,7 +9,7 @@ const DEFAULT_LINKS = [
 
 function Header05({
   brand = "MONO.",
-  links = DEFAULT_LINKS,
+  links = defaultLinks,
   ctaLabel = "Let's Talk",
   ctaHref = "#contact",
 }) {
@@ -37,12 +37,12 @@ function Header05({
 
         <a href={ctaHref} className="sb-header-05__cta">
           <span>{ctaLabel}</span>
-          <span aria-hidden="true">↗</span>
+          <b>↗</b>
         </a>
 
         <button
           type="button"
-          className="sb-header-05__toggle"
+          className="sb-header-05__menu"
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-label="Toggle navigation"

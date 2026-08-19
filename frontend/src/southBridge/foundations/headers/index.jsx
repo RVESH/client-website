@@ -6,6 +6,10 @@ import Header05 from "./Header05";
 import Header06 from "./Header06";
 import Header07 from "./Header07";
 import Header08 from "./Header08";
+import Header09 from "./Header09";
+import Header10 from "./Header10";
+
+
 import "./style.scss";
 
 function Header() {
@@ -19,6 +23,8 @@ function Header() {
       <Header06 />
       <Header07 />
       <Header08 />
+      <Header09/>
+      <Header10/>
     </div>
   );
 }
@@ -32,6 +38,8 @@ export {
   Header06,
   Header07,
   Header08,
+
+  Header10,
 };
 
 export default Header;

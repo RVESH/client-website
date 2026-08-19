@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Header01.scss";
 
-const DEFAULT_LINKS = [
+const defaultLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
@@ -9,27 +9,35 @@ const DEFAULT_LINKS = [
 ];
 
 function Header01({
-  brand = "SouthBridge",
-  links = DEFAULT_LINKS,
+  brand = "NORTH",
+  links = defaultLinks,
   ctaLabel = "Get Started",
   ctaHref = "#contact",
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header className="sb-header-01">
       <div className="sb-header-01__container">
-        <a className="sb-header-01__brand" href="#home" aria-label={`${brand} home`}>
+        <a href="#home" className="sb-header-01__brand">
           {brand}
         </a>
+
+        <button
+          type="button"
+          className={`sb-header-01__menu ${
+            menuOpen ? "sb-header-01__menu--active" : ""
+          }`}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
 
         <nav
           className={`sb-header-01__nav ${
@@ -38,38 +46,15 @@ function Header01({
           aria-label="Primary navigation"
         >
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="sb-header-01__link"
-              onClick={closeMenu}
-            >
+            <a key={link.href} href={link.href} onClick={closeMenu}>
               {link.label}
             </a>
           ))}
 
-          <a
-            href={ctaHref}
-            className="sb-header-01__cta"
-            onClick={closeMenu}
-          >
+          <a href={ctaHref} className="sb-header-01__cta" onClick={closeMenu}>
             {ctaLabel}
           </a>
         </nav>
-
-        <button
-          type="button"
-          className={`sb-header-01__menu ${
-            menuOpen ? "sb-header-01__menu--active" : ""
-          }`}
-          onClick={toggleMenu}
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={menuOpen}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
       </div>
     </header>
   );

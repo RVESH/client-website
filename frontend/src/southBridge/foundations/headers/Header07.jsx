@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Header07.scss";
 
-const DEFAULT_LINKS = [
+const defaultLinks = [
   { label: "Menu", href: "#menu" },
   { label: "Our Story", href: "#story" },
   { label: "Gallery", href: "#gallery" },
@@ -10,7 +10,8 @@ const DEFAULT_LINKS = [
 
 function Header07({
   brand = "MORNING TABLE",
-  links = DEFAULT_LINKS,
+  subtitle = "RESTAURANT & WINE",
+  links = defaultLinks,
   reservationLabel = "Reserve a Table",
   reservationHref = "#reservation",
 }) {
@@ -23,8 +24,8 @@ function Header07({
           type="button"
           className="sb-header-07__menu"
           onClick={() => setOpen((prev) => !prev)}
-          aria-label="Toggle navigation"
           aria-expanded={open}
+          aria-label="Toggle navigation"
         >
           <span />
           <span />
@@ -33,7 +34,7 @@ function Header07({
 
         <a href="#home" className="sb-header-07__brand">
           <span>{brand}</span>
-          <small>RESTAURANT & BAR</small>
+          <small>{subtitle}</small>
         </a>
 
         <nav
@@ -49,10 +50,7 @@ function Header07({
           ))}
         </nav>
 
-        <a
-          href={reservationHref}
-          className="sb-header-07__reservation"
-        >
+        <a href={reservationHref} className="sb-header-07__reservation">
           {reservationLabel}
         </a>
       </div>

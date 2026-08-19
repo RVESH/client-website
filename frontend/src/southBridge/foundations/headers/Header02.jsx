@@ -1,38 +1,36 @@
 import { useState } from "react";
 import "./Header02.scss";
 
-const DEFAULT_LINKS = [
+const defaultLinks = [
   { label: "Collection", href: "#collection" },
-  { label: "Story", href: "#story" },
+  { label: "Our Story", href: "#story" },
   { label: "Journal", href: "#journal" },
+  { label: "Contact", href: "#contact" },
 ];
 
 function Header02({
   brand = "ATELIER",
-  subtitle = "EST. 1998",
-  links = DEFAULT_LINKS,
+  edition = "EST. 1998",
+  links = defaultLinks,
   actionLabel = "Visit Us",
   actionHref = "#contact",
 }) {
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="sb-header-02">
-      <div className="sb-header-02__top">
-        <span>{subtitle}</span>
-
-        <a href={actionHref} className="sb-header-02__top-link">
-          {actionLabel}
-        </a>
+      <div className="sb-header-02__utility">
+        <span>{edition}</span>
+        <a href={actionHref}>{actionLabel}</a>
       </div>
 
       <div className="sb-header-02__main">
         <button
           type="button"
-          className="sb-header-02__toggle"
-          onClick={() => setOpen((prev) => !prev)}
-          aria-label="Toggle navigation"
-          aria-expanded={open}
+          className="sb-header-02__menu"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
         >
           <span />
           <span />
@@ -44,7 +42,7 @@ function Header02({
 
         <nav
           className={`sb-header-02__nav ${
-            open ? "sb-header-02__nav--open" : ""
+            menuOpen ? "sb-header-02__nav--open" : ""
           }`}
           aria-label="Primary navigation"
         >
@@ -52,7 +50,7 @@ function Header02({
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setOpen(false)}
+              onClick={() => setMenuOpen(false)}
             >
               {link.label}
             </a>
