@@ -1,0 +1,101 @@
+.sb-gallery-12 {
+  padding: 112px 0;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(151, 58, 78, 0.13), transparent 25%),
+    #f3ebe7;
+  color: #3d232b;
+
+  &__container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__heading {
+    max-width: 790px;
+    margin-bottom: 62px;
+
+    span {
+      color: #9b6672;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      margin: 14px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(3rem, 5.5vw, 5.8rem);
+      line-height: .9;
+      letter-spacing: -.055em;
+    }
+  }
+
+  &__list {
+    border-top: 1px solid rgba(61,35,43,.18);
+  }
+
+  article {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 70px;
+    align-items: center;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(61,35,43,.18);
+  }
+
+  &__image {
+    overflow: hidden;
+    border-radius: 7px;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1.25;
+      display: block;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+  }
+
+  article:hover img {
+    transform: scale(1.03);
+  }
+
+  &__text {
+    max-width: 410px;
+
+    > span {
+      color: #a67883;
+      font-size: .59rem;
+      letter-spacing: .1em;
+    }
+
+    h3 {
+      margin: 11px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 3.5vw, 3.4rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    p {
+      margin: 0;
+      color: #745963;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: .91rem;
+      line-height: 1.75;
+    }
+  }
+
+  @media (max-width: 780px) {
+    article {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    &__text {
+      max-width: 620px;
+    }
+  }
+}

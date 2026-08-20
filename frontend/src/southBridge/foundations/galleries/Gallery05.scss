@@ -1,0 +1,89 @@
+.sb-gallery-05 {
+  padding: 95px 0;
+  background:
+    radial-gradient(circle at 75% 15%, rgba(46, 214, 226, 0.12), transparent 25%),
+    #0a1220;
+  color: #eefbff;
+
+  &__heading {
+    width: min(1200px, calc(100% - 40px));
+    margin: 0 auto 45px;
+
+    span {
+      color: #66bfc8;
+      font-size: 0.61rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+    }
+
+    h2 {
+      max-width: 800px;
+      margin: 13px 0 0;
+      font-size: clamp(2.7rem, 5vw, 5.1rem);
+      line-height: 0.93;
+      letter-spacing: -0.07em;
+    }
+  }
+
+  &__stage {
+    position: relative;
+    width: min(1380px, calc(100% - 24px));
+    min-height: 610px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid rgba(83, 228, 239, 0.18);
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.35);
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5, 10, 20, 0.2),
+        transparent 40%,
+        rgba(5, 10, 20, 0.76)
+      );
+
+    span {
+      width: fit-content;
+      padding: 6px 10px;
+      border: 1px solid rgba(111, 232, 240, 0.35);
+      border-radius: 999px;
+      color: #8de8ee;
+      background: rgba(8, 18, 32, 0.45);
+      font-size: 0.57rem;
+      letter-spacing: 0.12em;
+    }
+
+    strong {
+      max-width: 570px;
+      color: #f3ffff;
+      font-size: clamp(1.4rem, 2.8vw, 2.7rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+  }
+
+  @media (max-width: 700px) {
+    &__stage {
+      min-height: 420px;
+      border-radius: 18px;
+    }
+  }
+}
