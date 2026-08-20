@@ -4,3 +4,7 @@ export { default as Hero } from "./heroes";
 export { default as Buttons } from "./buttons";
 export { default as Sections } from "./sections";
 export { default as About }  from "./about"
+export { default as Services }  from "./services"
+
+
+

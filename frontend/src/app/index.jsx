@@ -8,7 +8,7 @@ import SignupPage        from "../components/auth/SignupPage";
 import ForgotPassword    from "../components/auth/ForgotPassword";
 import CreatorApp        from "../creatorApp/CreatorApp";
 import { Header, Footer, Hero, About } from "../southBridge";
-import {Buttons, Sections} from "../southBridge/foundations";
+import {Buttons, Sections,   Services} from "../southBridge/foundations";
 function App() {
   return (
     <AuthProvider>
@@ -28,7 +28,9 @@ function App() {
           <Route path="hero"             element={<Hero />}/>
           <Route path="buttons"          element={<Buttons />} />
           <Route path="sections"         element={<Sections/>} />
-          <Route path="about"           element={<About/>} />
+          <Route path="about"            element={<About/>} />
+          <Route path="services"         element={<Services/>} />
+
         </Routes>
       </HashRouter>
     </AuthProvider>

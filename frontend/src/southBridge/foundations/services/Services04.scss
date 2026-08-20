@@ -1,0 +1,65 @@
+.sb-services-04 {
+  padding: 95px 0;
+  background: #fff;
+  color: #171717;
+
+  &__container {
+    width: min(1250px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__top {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    color: #898983;
+    font-size: .62rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+
+    p {
+      margin: 0;
+      font-size: .75rem;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+  }
+
+  &__rows {
+    border-top: 1px solid #dcdcd8;
+
+    a {
+      display: grid;
+      grid-template-columns: 55px 1fr 35px;
+      align-items: center;
+      min-height: 115px;
+      border-bottom: 1px solid #dcdcd8;
+      color: inherit;
+      text-decoration: none;
+      transition: padding 180ms ease, background 180ms ease;
+
+      &:hover {
+        padding-inline: 15px;
+        background: #f7f7f4;
+      }
+
+      > span {
+        color: #9a9a94;
+        font-size: .61rem;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: clamp(1.35rem, 2.5vw, 2.2rem);
+        letter-spacing: -.045em;
+      }
+
+      i {
+        justify-self: end;
+        font-style: normal;
+        font-size: 1rem;
+      }
+    }
+  }
+}
