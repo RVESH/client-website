@@ -1,0 +1,75 @@
+.sb-about-08 {
+  padding: 120px 0;
+  background: #1b251e;
+  color: #f1eadf;
+
+  &__container {
+    width: min(1220px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__heading {
+    max-width: 890px;
+
+    span {
+      color: rgba(241,234,223,.5);
+      font-size: .61rem;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 14px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      line-height: .88;
+      font-weight: 400;
+      letter-spacing: -.065em;
+    }
+  }
+
+  &__body {
+    margin-top: 75px;
+    display: grid;
+    grid-template-columns: 1.12fr .88fr;
+    gap: 70px;
+    align-items: end;
+  }
+
+  &__image img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1.2;
+    object-fit: cover;
+  }
+
+  &__copy {
+    padding-bottom: 5px;
+
+    p {
+      max-width: 400px;
+      color: rgba(241,234,223,.64);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+  }
+
+  &__signature {
+    display: inline-block;
+    margin-top: 35px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(241,234,223,.18);
+    color: rgba(241,234,223,.45);
+    font-size: .61rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 820px) {
+    &__body {
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+  }
+}
