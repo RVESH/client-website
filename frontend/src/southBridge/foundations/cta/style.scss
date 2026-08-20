@@ -1,0 +1,47 @@
+.cta_foundation {
+  --cta-gutter: 20px;
+
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  > * {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 600px) {
+    --cta-gutter: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}

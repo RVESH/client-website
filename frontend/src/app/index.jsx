@@ -8,7 +8,7 @@ import SignupPage        from "../components/auth/SignupPage";
 import ForgotPassword    from "../components/auth/ForgotPassword";
 import CreatorApp        from "../creatorApp/CreatorApp";
 
-import { Header, Footer, Hero, About,Gallery } from "../southBridge";
+import { Header, Footer, Hero, About, CTA, Gallery } from "../southBridge";
 import {Buttons, Sections,   Services,Cards} from "../southBridge/foundations";
 function App() {
   return (
@@ -32,6 +32,7 @@ function App() {
           <Route path="about"            element={<About/>} />
           <Route path="services"         element={<Services/>} />
           <Route path="cards"            element={<Cards />} />
+          <Route path="cta"              element={<CTA />} />
           <Route path="gallery"          element={<Gallery />} />
         </Routes>
       </HashRouter>

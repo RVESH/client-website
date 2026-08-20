@@ -1,0 +1,68 @@
+.sb-cta-10 {
+  padding: 55px 0;
+  background: #f6f6f3;
+
+  &__shell {
+    width: min(1050px, calc(100% - 28px));
+    min-height: 96px;
+    margin: 0 auto;
+    padding: 10px 10px 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    border: 1px solid #dcdcd7;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 16px 45px rgba(25,25,22,.07);
+
+    > span {
+      color: #5f605b;
+      font-size: .89rem;
+      font-weight: 600;
+    }
+
+    a {
+      min-height: 74px;
+      padding: 0 9px 0 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      border-radius: 999px;
+      background: #1b1b1a;
+      color: #fff;
+      text-decoration: none;
+      font-size: .72rem;
+      font-weight: 700;
+
+      b {
+        width: 56px;
+        height: 56px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #e0e0dc;
+        color: #1b1b1a;
+        font-weight: 400;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    &__shell {
+      min-height: auto;
+      padding: 10px;
+      border-radius: 25px;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__shell > span {
+      padding: 12px 14px;
+    }
+
+    &__shell a {
+      justify-content: space-between;
+    }
+  }
+}
