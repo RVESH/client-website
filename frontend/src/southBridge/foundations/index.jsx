@@ -10,3 +10,8 @@ export { default as CTA }        from "./cta";
 export { default as Gallery }    from "./galleries";
 export { default as Testimonial} from "./testimonials";
 export { default as Contact }    from "./contact";
+export { default as FAQ }        from "./faq";
+export { default as Newsletter } from "./newsletter";
+export { default as Stats }      from "./stats";
+export { default as Features }   from "./features";
+export {default as Process }     from "./process";

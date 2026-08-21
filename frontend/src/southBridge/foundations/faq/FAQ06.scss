@@ -1,0 +1,88 @@
+.sb-faq-06 {
+  padding: 120px 0;
+  background: #f2e9dc;
+  color: #3a2c20;
+
+  &__container {
+    width: min(980px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__heading {
+    text-align: center;
+    margin-bottom: 60px;
+
+    span {
+      color: #aa8558;
+      font-size: .6rem;
+      letter-spacing: .19em;
+    }
+
+    h2 {
+      margin: 14px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 5.5vw, 5.8rem);
+      font-weight: 400;
+      line-height: .9;
+      letter-spacing: -.055em;
+    }
+  }
+
+  &__list {
+    border-top: 1px solid rgba(58,44,32,.18);
+  }
+
+  article {
+    border-bottom: 1px solid rgba(58,44,32,.18);
+  }
+
+  button {
+    width: 100%;
+    min-height: 86px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+
+    span {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+    }
+
+    i {
+      font-style: normal;
+      color: #a5825b;
+    }
+  }
+
+  article > div {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 240ms ease;
+
+    p {
+      min-height: 0;
+      overflow: hidden;
+      max-width: 650px;
+      margin: 0;
+      color: #76685a;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.8;
+      font-size: .86rem;
+    }
+  }
+
+  article.is-open > div {
+    grid-template-rows: 1fr;
+
+    p {
+      padding-bottom: 25px;
+    }
+  }
+}

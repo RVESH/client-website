@@ -8,8 +8,10 @@ import SignupPage        from "../components/auth/SignupPage";
 import ForgotPassword    from "../components/auth/ForgotPassword";
 import CreatorApp        from "../creatorApp/CreatorApp";
 
-import { Header, Footer, Hero, About, CTA, Gallery, Testimonial, Contact } from "../southBridge";
-import {Buttons, Sections,   Services,Cards} from "../southBridge/foundations";
+import { Header, Footer, Hero, About, CTA, Gallery, Testimonial, Contact,
+   FAQ, Newsletter } from "../southBridge";
+import {Buttons, Sections,Services,Cards,Stats,
+  Features,Process } from "../southBridge/foundations";
 function App() {
   return (
     <AuthProvider>
@@ -36,6 +38,11 @@ function App() {
           <Route path="gallery"          element={<Gallery />} />
           <Route path="testimonial"      element={<Testimonial/>} />
           <Route path="contact"          element={<Contact />} />
+          <Route path="faq"              element={<FAQ/>} />
+          <Route path="newsletter"       element={<Newsletter />} />
+          <Route path="stats"            element={<Stats />} />
+          <Route path="features"         element={<Features />} />   
+          <Route path="process"          element={<Process />} />     
         </Routes>
       </HashRouter>
     </AuthProvider>

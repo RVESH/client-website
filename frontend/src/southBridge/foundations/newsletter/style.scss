@@ -1,0 +1,41 @@
+.newsletter_foundation {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  > * {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  form {
+    margin: 0;
+  }
+
+  input,
+  button {
+    font: inherit;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input:focus-visible,
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}

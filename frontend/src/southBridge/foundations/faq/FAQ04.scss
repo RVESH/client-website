@@ -1,0 +1,97 @@
+.sb-faq-04 {
+  padding: 105px 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(61, 224, 208, .12), transparent 28%),
+    #091116;
+  color: #eaf9f7;
+
+  &__container {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__intro {
+    margin-bottom: 55px;
+
+    span {
+      color: #58c8bd;
+      font-size: .6rem;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      max-width: 750px;
+      margin: 13px 0 0;
+      font-size: clamp(3rem, 5.5vw, 5.7rem);
+      line-height: .9;
+      letter-spacing: -.075em;
+    }
+  }
+
+  &__list {
+    border-top: 1px solid rgba(255,255,255,.1);
+  }
+
+  article {
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+
+  button {
+    width: 100%;
+    min-height: 92px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 45px 1fr 35px;
+    gap: 20px;
+    align-items: center;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    span {
+      color: #587179;
+      font-size: .59rem;
+    }
+
+    strong {
+      font-size: .94rem;
+    }
+
+    i {
+      width: 33px;
+      height: 33px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%;
+      font-style: normal;
+    }
+  }
+
+  article > div {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 250ms ease;
+
+    p {
+      min-height: 0;
+      overflow: hidden;
+      max-width: 660px;
+      margin: 0 0 0 65px;
+      color: #7f9298;
+      font-size: .84rem;
+      line-height: 1.8;
+    }
+  }
+
+  article.is-open > div {
+    grid-template-rows: 1fr;
+
+    p {
+      padding-bottom: 27px;
+    }
+  }
+}

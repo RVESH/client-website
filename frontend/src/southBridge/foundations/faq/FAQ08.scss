@@ -1,0 +1,100 @@
+.sb-faq-08 {
+  padding: 100px 0;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(124, 103, 242, .13), transparent 25%),
+    #f0edff;
+  color: #28234a;
+
+  &__container {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__intro {
+    max-width: 720px;
+    margin-bottom: 55px;
+
+    span {
+      color: #7b6dc0;
+      font-size: .6rem;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      margin: 13px 0 0;
+      font-size: clamp(2.8rem, 5vw, 5.2rem);
+      line-height: .92;
+      letter-spacing: -.075em;
+    }
+  }
+
+  &__timeline {
+    border-top: 1px solid rgba(40,35,74,.14);
+  }
+
+  article {
+    display: grid;
+    grid-template-columns: 65px 1fr;
+    gap: 20px;
+    padding: 25px 0;
+    border-bottom: 1px solid rgba(40,35,74,.14);
+  }
+
+  &__number {
+    color: #9992bd;
+    font-size: .6rem;
+    padding-top: 4px;
+  }
+
+  button {
+    width: 100%;
+    min-height: 45px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: .9rem;
+    text-align: left;
+    cursor: pointer;
+
+    i {
+      font-style: normal;
+    }
+  }
+
+  &__body > div {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 250ms ease;
+
+    p {
+      min-height: 0;
+      overflow: hidden;
+      max-width: 620px;
+      margin: 0;
+      color: #746f91;
+      font-size: .8rem;
+      line-height: 1.8;
+    }
+  }
+
+  article.is-open &__body > div {
+    grid-template-rows: 1fr;
+
+    p {
+      padding-top: 14px;
+    }
+  }
+
+  @media (max-width: 540px) {
+    article {
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+    }
+  }
+}

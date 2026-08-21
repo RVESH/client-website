@@ -1,0 +1,93 @@
+.sb-newsletter-03 {
+  padding: 75px 0;
+  background: #edf1ff;
+  color: #1a2345;
+
+  &__container {
+    width: min(1050px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 35px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px 55px;
+    align-items: end;
+    border: 1px solid #d6ddef;
+    border-radius: 22px;
+    background: #fff;
+  }
+
+  span {
+    color: #6574c5;
+    font-size: 0.59rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+
+  h2 {
+    margin: 12px 0 0;
+    font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+    line-height: 0.93;
+    letter-spacing: -0.07em;
+  }
+
+  form {
+    display: flex;
+    gap: 8px;
+  }
+
+  input {
+    min-width: 0;
+    flex: 1;
+    padding: 13px 15px;
+    border: 1px solid #d9ddea;
+    border-radius: 9px;
+    outline: 0;
+    font: inherit;
+    font-size: 0.82rem;
+
+    &:focus {
+      border-color: #7482ce;
+    }
+  }
+
+  button {
+    min-width: 120px;
+    border: 0;
+    border-radius: 9px;
+    background: #1b2340;
+    color: #fff;
+    font: inherit;
+    font-size: 0.69rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    i {
+      margin-left: 7px;
+      font-style: normal;
+    }
+  }
+
+  small {
+    grid-column: span 2;
+    color: #8b93a8;
+    font-size: 0.57rem;
+  }
+
+  @media (max-width: 700px) {
+    &__container {
+      grid-template-columns: 1fr;
+    }
+
+    small {
+      grid-column: auto;
+    }
+
+    form {
+      flex-direction: column;
+    }
+
+    button {
+      min-height: 46px;
+    }
+  }
+}

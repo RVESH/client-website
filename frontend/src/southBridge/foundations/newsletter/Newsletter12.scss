@@ -1,0 +1,115 @@
+.sb-newsletter-12 {
+  padding: 55px 0;
+  background: #f7f1ee;
+
+  &__shell {
+    width: min(1080px, calc(100% - 28px));
+    margin: 0 auto;
+    padding: 11px 11px 11px 28px;
+    display: grid;
+    grid-template-columns: 1fr .95fr;
+    gap: 25px;
+    align-items: center;
+    border: 1px solid #dfcfcb;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 16px 50px rgba(70, 44, 37, .07);
+  }
+
+  span {
+    color: #a06e64;
+    font-size: .59rem;
+    letter-spacing: .16em;
+    font-weight: 700;
+  }
+
+  h2 {
+    margin: 8px 0 0;
+    font-size: clamp(2rem, 3.8vw, 3.7rem);
+    line-height: .92;
+    letter-spacing: -.065em;
+    color: #3d2926;
+  }
+
+  form {
+    min-width: 0;
+    display: flex;
+    padding: 5px 5px 5px 14px;
+    border: 1px solid #e3d8d4;
+    border-radius: 999px;
+  }
+
+  input {
+    min-width: 0;
+    flex: 1;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font: inherit;
+    font-size: .77rem;
+  }
+
+  button {
+    min-height: 42px;
+    padding: 0 6px 0 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 999px;
+    background: #3d2926;
+    color: #fff;
+    font: inherit;
+    font-size: .65rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    b {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      font-weight: 400;
+    }
+  }
+
+  small {
+    grid-column: span 2;
+    padding-left: 2px;
+    color: #938680;
+    font-size: .55rem;
+  }
+
+  @media (max-width: 700px) {
+    &__shell {
+      grid-template-columns: 1fr;
+      padding: 22px;
+      border-radius: 20px;
+    }
+
+    small {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 500px) {
+    form {
+      flex-direction: column;
+      padding: 6px;
+      border-radius: 15px;
+    }
+
+    input {
+      min-height: 42px;
+      padding: 0 9px;
+    }
+
+    button {
+      width: 100%;
+      justify-content: space-between;
+      border-radius: 10px;
+    }
+  }
+}

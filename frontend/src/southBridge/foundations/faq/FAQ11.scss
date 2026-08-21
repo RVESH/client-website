@@ -1,0 +1,114 @@
+.sb-faq-11 {
+  padding: 100px 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(240, 125, 99, .13), transparent 26%),
+    #fff0eb;
+  color: #3c2925;
+
+  &__container {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__heading {
+    max-width: 720px;
+    margin-bottom: 52px;
+
+    span {
+      color: #ae7165;
+      font-size: .6rem;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      margin: 13px 0 0;
+      font-size: clamp(2.8rem, 5vw, 5.1rem);
+      line-height: .92;
+      letter-spacing: -.075em;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
+  }
+
+  article {
+    min-height: 290px;
+    padding: 24px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid #eed8cf;
+    display: flex;
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 30px 1fr 28px;
+      gap: 15px;
+      align-items: start;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+
+      span {
+        color: #b37b6f;
+        font-size: .58rem;
+      }
+
+      strong {
+        font-size: 1.05rem;
+        line-height: 1.1;
+        letter-spacing: -.025em;
+      }
+
+      i {
+        justify-self: end;
+        font-style: normal;
+        color: #9f6f65;
+      }
+    }
+
+    > div {
+      margin-top: auto;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 230ms ease;
+
+      p {
+        min-height: 0;
+        overflow: hidden;
+        margin: 0;
+        color: #786a65;
+        font-size: .78rem;
+        line-height: 1.75;
+      }
+    }
+
+    &.is-open > div {
+      grid-template-rows: 1fr;
+
+      p {
+        padding-top: 25px;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    &__cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 540px) {
+    &__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+}

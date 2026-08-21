@@ -1,0 +1,122 @@
+.sb-newsletter-01 {
+  padding: 90px 0;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(87, 104, 255, 0.15),
+      transparent 28%
+    ),
+    #eef2ff;
+  color: #182241;
+
+  &__container {
+    width: min(1150px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 42px;
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 70px;
+    align-items: end;
+    border: 1px solid #d6dcef;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 24px 70px rgba(57, 72, 141, 0.08);
+  }
+
+  &__copy {
+    span {
+      color: #6474c8;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 14px 0;
+      max-width: 680px;
+      font-size: clamp(2.6rem, 5vw, 5.2rem);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
+    }
+
+    p {
+      max-width: 520px;
+      margin: 0;
+      color: #687393;
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+  }
+
+  &__form {
+    label {
+      display: block;
+      color: #596480;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px 0;
+      border: 0;
+      border-bottom: 1px solid #d7dcec;
+      background: transparent;
+      color: #182241;
+      outline: none;
+      font: inherit;
+      font-size: 0.86rem;
+
+      &:focus {
+        border-bottom-color: #6e7dd0;
+      }
+    }
+
+    button {
+      width: 100%;
+      min-height: 50px;
+      margin-top: 18px;
+      padding: 0 7px 0 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      border: 0;
+      border-radius: 10px;
+      background: #1a2340;
+      color: #fff;
+      font: inherit;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+
+      span {
+        width: 35px;
+        height: 35px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    small {
+      display: block;
+      margin-top: 10px;
+      color: #8b93aa;
+      font-size: 0.57rem;
+      line-height: 1.5;
+    }
+  }
+
+  @media (max-width: 760px) {
+    &__container {
+      grid-template-columns: 1fr;
+      padding: 28px;
+    }
+  }
+}
