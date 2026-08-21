@@ -1,0 +1,47 @@
+.sb-testimonial-02 {
+  padding: 120px 0;
+  background: #f3eadc;
+  color: #30271f;
+  text-align: center;
+
+  &__container {
+    width: min(950px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__eyebrow {
+    color: #a1815b;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+  }
+
+  blockquote {
+    margin: 28px auto 42px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.6rem, 5vw, 5.5rem);
+    line-height: .93;
+    letter-spacing: -.055em;
+    font-weight: 400;
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+
+    span,
+    strong {
+      font-size: .63rem;
+    }
+
+    strong {
+      color: #48382b;
+    }
+
+    span {
+      color: #897868;
+    }
+  }
+}

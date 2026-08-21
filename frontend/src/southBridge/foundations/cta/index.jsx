@@ -11,6 +11,7 @@ import CTA09 from "./CTA09";
 import CTA10 from "./CTA10";
 import CTA11 from "./CTA11";
 import CTA12 from "./CTA12";
+import CTA13 from "./CTA13";
 import "./style.scss";
 
 function CTA() {
@@ -28,6 +29,7 @@ function CTA() {
       <CTA10 />
       <CTA11 />
       <CTA12 />
+      <CTA13/>
     </div>
   );
 }
@@ -45,6 +47,7 @@ export {
   CTA10,
   CTA11,
   CTA12,
+  CTA13
 };
 
 export default CTA;

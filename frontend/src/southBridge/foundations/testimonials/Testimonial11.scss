@@ -1,0 +1,75 @@
+.sb-testimonial-11 {
+  padding: 105px 0;
+  background:
+    linear-gradient(135deg, #fff, #f7f6f2);
+  color: #181818;
+
+  &__container {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__heading {
+    max-width: 720px;
+    margin-bottom: 55px;
+
+    span {
+      color: #8c8c86;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      margin: 13px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 5vw, 5.2rem);
+      line-height: .92;
+      font-weight: 400;
+      letter-spacing: -.055em;
+    }
+  }
+
+  &__list {
+    border-top: 1px solid #deded9;
+  }
+
+  article {
+    min-height: 145px;
+    padding: 22px 0;
+    display: grid;
+    grid-template-columns: 55px 1fr 100px;
+    align-items: center;
+    gap: 25px;
+    border-bottom: 1px solid #deded9;
+
+    > span {
+      color: #999991;
+      font-size: .59rem;
+    }
+
+    blockquote {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.25rem;
+      line-height: 1.25;
+    }
+
+    strong {
+      color: #73736d;
+      font-size: .65rem;
+      font-weight: 500;
+    }
+  }
+
+  @media (max-width: 620px) {
+    article {
+      grid-template-columns: 35px 1fr;
+      gap: 15px;
+
+      strong {
+        grid-column: 2;
+      }
+    }
+  }
+}

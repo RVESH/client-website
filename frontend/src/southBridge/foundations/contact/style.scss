@@ -1,0 +1,54 @@
+.contact_foundation {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  > * {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  form,
+  fieldset {
+    min-width: 0;
+  }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}

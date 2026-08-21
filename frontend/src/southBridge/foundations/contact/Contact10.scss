@@ -1,0 +1,153 @@
+.sb-contact-10 {
+  padding: 100px 0;
+  background:
+    linear-gradient(140deg, #ecf4ef, #dceae2);
+  color: #203128;
+
+  &__container {
+    width: min(1150px, calc(100% - 40px));
+    min-height: 520px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: .78fr 1.22fr;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 24px 70px rgba(45,73,57,.1);
+  }
+
+  &__card {
+    padding: 40px;
+    background: #fff;
+
+    > span {
+      color: #6c8678;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      margin: 13px 0 40px;
+      font-size: clamp(2.7rem, 5vw, 5.1rem);
+      line-height: .91;
+      letter-spacing: -.075em;
+    }
+
+    address,
+    > a {
+      display: block;
+      color: #59685f;
+      font-style: normal;
+      text-decoration: none;
+      font-size: .78rem;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+    }
+  }
+
+  &__hours {
+    margin-top: 34px;
+    padding-top: 17px;
+    border-top: 1px solid #e0e6e2;
+
+    span,
+    strong {
+      display: block;
+    }
+
+    span {
+      color: #8c9991;
+      font-size: .57rem;
+      letter-spacing: .12em;
+    }
+
+    strong {
+      margin-top: 7px;
+      color: #31443a;
+      font-size: .78rem;
+    }
+  }
+
+  &__direction {
+    display: inline-block !important;
+    margin-top: 28px;
+    color: #21382b !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: .65rem !important;
+  }
+
+  &__visual {
+    position: relative;
+    background:
+      linear-gradient(125deg, rgba(67, 113, 88, .12), transparent),
+      #d7e5dc;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background: rgba(39, 74, 57, .12);
+    }
+
+    &::before {
+      width: 1px;
+      top: 0;
+      bottom: 0;
+      left: 42%;
+    }
+
+    &::after {
+      height: 1px;
+      left: 0;
+      right: 0;
+      top: 52%;
+    }
+
+    > span {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #294435;
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 700;
+
+      &:nth-of-type(1) {
+        left: 22%;
+        top: 32%;
+      }
+
+      &:nth-of-type(2) {
+        right: 18%;
+        bottom: 25%;
+        background: #d37b5f;
+      }
+    }
+
+    small {
+      position: absolute;
+      left: 22%;
+      top: calc(32% + 45px);
+      color: #60736a;
+      font-size: .58rem;
+    }
+  }
+
+  @media (max-width: 780px) {
+    &__container {
+      grid-template-columns: 1fr;
+    }
+
+    &__visual {
+      min-height: 350px;
+    }
+  }
+}

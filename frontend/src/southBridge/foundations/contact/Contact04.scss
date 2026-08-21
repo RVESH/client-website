@@ -1,0 +1,127 @@
+.sb-contact-04 {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(68, 215, 207, 0.14), transparent 26%),
+    #091016;
+  color: #eefcfb;
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background-image:
+      linear-gradient(rgba(91, 220, 211, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91, 220, 211, 0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    width: min(1150px, calc(100% - 40px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 65px;
+    align-items: start;
+  }
+
+  &__copy > span {
+    color: #5ec9bf;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+  }
+
+  h2 {
+    max-width: 650px;
+    margin: 16px 0 28px;
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 0.88;
+    letter-spacing: -0.08em;
+  }
+
+  &__copy > a {
+    color: #8be4dc;
+    text-decoration: none;
+    font-size: 0.74rem;
+  }
+
+  &__form {
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 22px;
+    background: rgba(255,255,255,.035);
+    backdrop-filter: blur(14px);
+  }
+
+  label {
+    display: block;
+    margin-bottom: 17px;
+    color: #87949b;
+    font-size: 0.61rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    margin-top: 7px;
+    padding: 14px 0;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+    background: transparent;
+    color: #fff;
+    outline: none;
+    font: inherit;
+    font-size: 0.86rem;
+
+    &:focus {
+      border-bottom-color: #68d6cc;
+    }
+
+    &::placeholder {
+      color: #536169;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  button {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7px 0 17px;
+    border: 0;
+    border-radius: 10px;
+    background: #effffc;
+    color: #091016;
+    font: inherit;
+    font-size: 0.71rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    span {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #d2f4ef;
+    }
+  }
+
+  @media (max-width: 800px) {
+    &__container {
+      grid-template-columns: 1fr;
+    }
+  }
+}

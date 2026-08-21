@@ -1,0 +1,144 @@
+.sb-contact-01 {
+  padding: 100px 0;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(87, 105, 255, 0.15), transparent 28%),
+    #eef2ff;
+  color: #1b2443;
+
+  &__container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 70px;
+    align-items: start;
+  }
+
+  &__copy {
+    > span {
+      color: #6373c9;
+      font-size: 0.61rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 14px 0 18px;
+      font-size: clamp(2.7rem, 5vw, 5.2rem);
+      line-height: 0.93;
+      letter-spacing: -0.075em;
+    }
+
+    > p {
+      max-width: 500px;
+      margin: 0;
+      color: #677398;
+      line-height: 1.8;
+      font-size: 0.93rem;
+    }
+  }
+
+  &__details {
+    margin-top: 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a,
+    address {
+      color: #45506e;
+      text-decoration: none;
+      font-style: normal;
+      font-size: 0.76rem;
+    }
+  }
+
+  &__form {
+    padding: 30px;
+    border: 1px solid #d6dcef;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 25px 70px rgba(55, 70, 140, 0.08);
+  }
+
+  label {
+    display: block;
+    margin-bottom: 18px;
+    color: #4c587d;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px 15px;
+    border: 1px solid #d7dce9;
+    border-radius: 10px;
+    background: #fff;
+    color: #18203b;
+    font: inherit;
+    font-size: 0.85rem;
+    outline: none;
+
+    &:focus {
+      border-color: #7180d8;
+      box-shadow: 0 0 0 3px rgba(113, 128, 216, 0.12);
+    }
+
+    &::placeholder {
+      color: #a3a8b7;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  button {
+    width: 100%;
+    min-height: 50px;
+    padding: 0 7px 0 17px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border: 0;
+    border-radius: 10px;
+    background: #19213d;
+    color: #fff;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    span {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      font-weight: 400;
+    }
+  }
+
+  @media (max-width: 800px) {
+    &__container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    padding: 75px 0;
+
+    &__form {
+      padding: 22px;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.sb-contact-03 {
+  padding: 120px 0;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(200, 151, 95, 0.12), transparent 28%),
+    #eee8de;
+  color: #34291f;
+
+  &__container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  > div > span {
+    color: #a17d56;
+    font-size: 0.6rem;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    max-width: 950px;
+    margin: 20px 0 90px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3.2rem, 7vw, 7rem);
+    line-height: 0.87;
+    font-weight: 400;
+    letter-spacing: -0.06em;
+  }
+
+  &__bottom {
+    padding-top: 20px;
+    border-top: 1px solid rgba(52, 41, 31, 0.16);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  &__bottom small {
+    display: block;
+    margin-bottom: 8px;
+    color: #9b8978;
+    font-size: 0.58rem;
+    letter-spacing: 0.13em;
+  }
+
+  &__bottom a,
+  &__bottom address {
+    color: #524439;
+    font-style: normal;
+    text-decoration: none;
+    font-size: 0.76rem;
+  }
+
+  @media (max-width: 700px) {
+    h2 {
+      margin-bottom: 55px;
+    }
+
+    &__bottom {
+      grid-template-columns: 1fr;
+    }
+  }
+}

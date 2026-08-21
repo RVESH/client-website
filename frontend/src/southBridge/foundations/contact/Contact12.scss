@@ -1,0 +1,151 @@
+.sb-contact-12 {
+  padding: 95px 0;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(155, 60, 84, .12), transparent 27%),
+    #f2e9e5;
+  color: #40272f;
+
+  &__container {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    grid-template-rows: 230px 190px;
+    gap: 13px;
+  }
+
+  article {
+    border-radius: 20px;
+  }
+
+  &__main {
+    grid-row: 1 / 3;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fffaf8;
+    border: 1px solid #e2d1d0;
+
+    > span {
+      color: #9e6876;
+      font-size: .59rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      max-width: 560px;
+      margin: auto 0 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 5vw, 5.1rem);
+      line-height: .9;
+      font-weight: 400;
+      letter-spacing: -.055em;
+    }
+
+    > a {
+      width: fit-content;
+      min-height: 45px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 6px 0 15px;
+      color: #40272f;
+      text-decoration: none;
+      border: 1px solid #cdaab3;
+      font-size: .67rem;
+      font-weight: 700;
+
+      b {
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        background: #40272f;
+        color: #fff8f7;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__item {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ddd3cf;
+    background: #eee5df;
+
+    > span {
+      color: #957d78;
+      font-size: .58rem;
+      letter-spacing: .13em;
+    }
+
+    a,
+    address,
+    strong,
+    small {
+      display: block;
+    }
+
+    a,
+    address {
+      color: #513a3f;
+      font-style: normal;
+      text-decoration: none;
+      font-size: .79rem;
+    }
+
+    &--accent {
+      background: #dceae3;
+      color: #20352d;
+      border-color: #cfdfd8;
+
+      > span {
+        color: #71877d;
+      }
+
+      address {
+        color: #536b60;
+      }
+    }
+
+    &--dark {
+      background: #2e2528;
+      color: #f8eeec;
+      border-color: #2e2528;
+
+      > span,
+      small {
+        color: #9c898e;
+      }
+
+      strong {
+        font-size: 1rem;
+      }
+
+      small {
+        margin-top: 4px;
+        font-size: .62rem;
+      }
+    }
+  }
+
+  @media (max-width: 760px) {
+    &__container {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+
+    &__main {
+      grid-row: auto;
+      min-height: 330px;
+    }
+
+    &__item {
+      min-height: 180px;
+    }
+  }
+}
