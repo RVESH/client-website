@@ -114,6 +114,10 @@ scss ke liye
 then check is sass installed?
 
 
+<!-- Standalone restaurant ko proper pages chahiye:
+
+npm install react-router-dom -->
+
 ## Available Scripts
 
 In the project directory, you can run:

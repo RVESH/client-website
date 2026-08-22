@@ -1,0 +1,113 @@
+.sb-faq-07 {
+  padding: 105px 0;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(210, 120, 77, .12), transparent 28%),
+    #243127;
+  color: #f3eadf;
+
+  &__container {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__intro {
+    max-width: 700px;
+    margin-bottom: 55px;
+
+    span {
+      color: #d08b67;
+      font-size: .6rem;
+      letter-spacing: .18em;
+    }
+
+    h2 {
+      margin: 13px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 5vw, 5.6rem);
+      line-height: .9;
+      font-weight: 400;
+      letter-spacing: -.055em;
+    }
+  }
+
+  &__list {
+    border-top: 1px solid rgba(243,234,223,.16);
+  }
+
+  article {
+    border-bottom: 1px solid rgba(243,234,223,.16);
+  }
+
+  button {
+    width: 100%;
+    min-height: 92px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 40px 1fr 35px;
+    align-items: center;
+    gap: 20px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    > span {
+      color: #9b806e;
+      font-size: .59rem;
+    }
+
+    strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    i {
+      font-style: normal;
+    }
+  }
+
+  article > div {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 250ms ease;
+
+    p {
+      min-height: 0;
+      overflow: hidden;
+      max-width: 630px;
+      margin: 0 0 0 60px;
+      color: rgba(243,234,223,.58);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.8;
+      font-size: .84rem;
+    }
+  }
+
+  article.is-open > div {
+    grid-template-rows: 1fr;
+
+    p {
+      padding-bottom: 25px;
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    margin-top: 35px;
+    color: #f3eadf;
+    text-decoration: none;
+    font-size: .67rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 520px) {
+    article > div p {
+      margin-left: 60px;
+    }
+  }
+}

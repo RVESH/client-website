@@ -1,0 +1,105 @@
+.sb-stats {
+  width: 100%;
+
+  &__container {
+    width: min(1180px, calc(100% - 40px));
+    margin-inline: auto;
+  }
+}
+.sb-stats--09 {
+  padding: 110px 0;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(209,119,74,.13), transparent 28%),
+    #243127;
+  color: #f3eadf;
+
+  &__heading {
+    max-width: 750px;
+    margin-bottom: 55px;
+
+    span {
+      color: #d08b67;
+      font-size: .59rem;
+      letter-spacing: .17em;
+    }
+
+    h2 {
+      margin: 13px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 5.5vw, 5.7rem);
+      font-weight: 400;
+      line-height: .9;
+      letter-spacing: -.055em;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(243,234,223,.16);
+  }
+
+  article {
+    padding: 30px 20px;
+    border-right: 1px solid rgba(243,234,223,.16);
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -.055em;
+    }
+
+    span {
+      display: block;
+      margin-top: 10px;
+      color: #a08b78;
+      font-size: .59rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+  }
+
+  @media (max-width: 720px) {
+    &__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    article:nth-child(2) {
+      border-right: 0;
+    }
+
+    article:nth-child(-n + 2) {
+      border-bottom: 1px solid rgba(243,234,223,.16);
+    }
+  }
+
+  @media (max-width: 450px) {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+
+    article {
+      border-right: 0 !important;
+      border-bottom: 1px solid rgba(243,234,223,.16) !important;
+    }
+
+    article:last-child {
+      border-bottom: 0 !important;
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sb-stats *,
+  .sb-stats *::before,
+  .sb-stats *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

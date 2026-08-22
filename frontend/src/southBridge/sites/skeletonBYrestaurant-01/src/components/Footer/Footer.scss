@@ -1,0 +1,151 @@
+.sb-footer-04 {
+  background: #0b1220;
+  color: #fff;
+  padding: 70px 0 25px;
+
+  &__container {
+    width: min(1200px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  &__newsletter {
+    padding: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.035);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+
+  &__newsletter span {
+    color: #94a3b8;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  h2 {
+    max-width: 430px;
+    margin: 10px 0 0;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+  }
+
+  form {
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #94a3b8;
+      font-size: 0.72rem;
+    }
+
+    > div {
+      display: flex;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      border: 0;
+      outline: none;
+      padding: 13px 0;
+      background: transparent;
+      color: #fff;
+      font: inherit;
+
+      &::placeholder {
+        color: #64748b;
+      }
+    }
+
+    button {
+      width: 45px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  }
+
+  &__main {
+    padding: 65px 0;
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    gap: 80px;
+  }
+
+  &__brand {
+    strong {
+      font-size: 1.5rem;
+    }
+
+    p {
+      max-width: 250px;
+      color: #64748b;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    h3 {
+      margin: 0 0 7px;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: #94a3b8;
+    }
+
+    a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.83rem;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  &__bottom {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    display: flex;
+    justify-content: space-between;
+    color: #64748b;
+    font-size: 0.73rem;
+  }
+
+  @media (max-width: 760px) {
+    &__newsletter,
+    &__main {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 540px) {
+    &__columns {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__bottom {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}

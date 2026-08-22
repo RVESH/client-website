@@ -1,0 +1,53 @@
+.restaurant-button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &--primary {
+    background: #243127;
+    color: #f3ebdf;
+
+    &:hover {
+      background: #303e34;
+    }
+  }
+
+  &--light {
+    background: #f3ebdf;
+    color: #243127;
+
+    &:hover {
+      background: #fff;
+    }
+  }
+
+  &--outline {
+    border-color: rgba(36, 49, 39, 0.25);
+    background: transparent;
+    color: #243127;
+
+    &:hover {
+      background: #243127;
+      color: #fff;
+    }
+  }
+}
