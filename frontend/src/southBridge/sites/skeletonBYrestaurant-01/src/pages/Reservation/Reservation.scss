@@ -1,10 +1,9 @@
-.page-reservation {
-  min-height: 100vh;
-  background: #f3e8dc;
-  color: #31251e;
+.restaurant-page--reservation {
+  background: #f2e8dd;
+  color: #30251f;
 
-  &__hero {
-    width: min(950px, calc(100% - 40px));
+  .reservation-page__intro {
+    width: min(1000px, calc(100% - 40px));
     margin: 0 auto;
     padding: 110px 0 65px;
 
@@ -17,57 +16,70 @@
     h1 {
       margin: 14px 0;
       font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
       font-size: clamp(3.2rem, 6vw, 6rem);
       line-height: 0.88;
-      font-weight: 400;
       letter-spacing: -0.055em;
     }
 
     p {
-      max-width: 530px;
-      color: #75675a;
+      max-width: 520px;
+      margin: 0;
+      color: #78695b;
       line-height: 1.8;
     }
   }
 
-  &__card {
-    width: min(950px, calc(100% - 40px));
-    margin: 0 auto 110px;
-    padding: 42px;
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    align-items: end;
-    border: 1px solid #d9c9b9;
-    background: rgba(255, 255, 255, 0.35);
+  .reservation-page__options {
+    width: min(1000px, calc(100% - 40px));
+    margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid rgba(48, 37, 31, 0.16);
+  }
 
-    span {
-      color: #9d7758;
-      font-size: 0.59rem;
-      letter-spacing: 0.15em;
+  article {
+    min-height: 300px;
+    padding: 26px 24px;
+    border-right: 1px solid rgba(48, 37, 31, 0.16);
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    > span {
+      color: #9c836e;
+      font-size: 0.58rem;
     }
 
     h2 {
-      max-width: 450px;
-      margin: 13px 0 0;
+      margin: 70px 0 10px;
       font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.7rem;
       font-weight: 400;
-      font-size: clamp(2rem, 4vw, 4rem);
-      line-height: 0.95;
+    }
+
+    p {
+      max-width: 350px;
+      margin: 0 0 20px;
+      color: #77695c;
+      font-size: 0.76rem;
+      line-height: 1.7;
     }
   }
 
-  &__actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-width: 220px;
-  }
+  @media (max-width: 650px) {
+    .reservation-page__options {
+      grid-template-columns: 1fr;
+    }
 
-  @media (max-width: 700px) {
-    &__card {
-      flex-direction: column;
-      align-items: stretch;
+    article {
+      border-right: 0;
+      border-bottom: 1px solid rgba(48, 37, 31, 0.16);
+    }
+
+    article:last-child {
+      border-bottom: 0;
     }
   }
 }

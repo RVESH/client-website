@@ -1,31 +1,44 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+
 import "./Header.scss";
 
 const defaultLinks = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
+  { label: "Home", path: "/" },
+  { label: "Menu", path: "/menu" },
+  { label: "About", path: "/about" },
+  { label: "Contact", path: "/contact" },
 ];
 
 function Header({
-  brand = "NORTH /",
+  brand = "LUMA",
   links = defaultLinks,
-  ctaLabel = "Start a Project",
-  ctaHref = "#contact",
+  ctaLabel = "Reserve a Table",
+  ctaPath = "/reservation",
 }) {
   const [open, setOpen] = useState(false);
+
+  const closeMenu = () => {
+    setOpen(false);
+  };
 
   return (
     <header className="sb-header-03">
       <div className="sb-header-03__container">
-        <a href="#home" className="sb-header-03__brand">
-          <span className="sb-header-03__mark">N</span>
+
+        <Link
+          to="/"
+          className="sb-header-03__brand"
+          onClick={closeMenu}
+        >
+          <span className="sb-header-03__mark">L</span>
           <span>{brand}</span>
-        </a>
+        </Link>
 
         <div className="sb-header-03__center">
           <span className="sb-header-03__status">
-            <i /> Available for select projects
+            <i />
+            Open Tuesday — Sunday
           </span>
         </div>
 
@@ -34,8 +47,9 @@ function Header({
           className={`sb-header-03__toggle ${
             open ? "sb-header-03__toggle--active" : ""
           }`}
-          onClick={() => setOpen((prev) => !prev)}
+          onClick={() => setOpen((previous) => !previous)}
           aria-expanded={open}
+          aria-controls="restaurant-navigation"
           aria-label="Toggle navigation"
         >
           <span>Menu</span>
@@ -44,22 +58,33 @@ function Header({
         </button>
 
         <nav
+          id="restaurant-navigation"
           className={`sb-header-03__nav ${
             open ? "sb-header-03__nav--open" : ""
           }`}
           aria-label="Primary navigation"
         >
           {links.map((link, index) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <NavLink
+              key={link.path}
+              to={link.path}
+              end={link.path === "/"}
+              onClick={closeMenu}
+            >
               <small>0{index + 1}</small>
               {link.label}
-            </a>
+            </NavLink>
           ))}
 
-          <a href={ctaHref} className="sb-header-03__cta">
+          <Link
+            to={ctaPath}
+            className="sb-header-03__cta"
+            onClick={closeMenu}
+          >
             {ctaLabel} ↗
-          </a>
+          </Link>
         </nav>
+
       </div>
     </header>
   );

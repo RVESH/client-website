@@ -1,35 +1,50 @@
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Button from "../../components/Button/Button";
+
 import { menu } from "../../data/menu";
 
 import "./Menu.scss";
 
-function MenuPage() {
+function Menu() {
   return (
-    <div className="page-menu">
+    <div className="restaurant-page restaurant-page--menu">
       <Header />
 
       <main>
-        <section className="page-menu__hero">
+        <section className="menu-page__intro">
           <span>OUR MENU</span>
-          <h1>Food made for long evenings.</h1>
+
+          <h1>
+            Seasonal food,
+            <br />
+            simply done.
+          </h1>
+
           <p>
-            Seasonal ingredients, simple techniques and dishes designed to
-            share.
+            A menu shaped by the season, the market and the pleasure of
+            sharing a table.
           </p>
         </section>
 
-        <section className="page-menu__content">
-          {menu.map((group) => (
-            <div className="page-menu__group" key={group.category}>
-              <h2>{group.category}</h2>
+        <section className="menu-page__content">
+          {menu.map((category) => (
+            <div
+              className="menu-page__category"
+              key={category.category}
+            >
+              <div className="menu-page__category-heading">
+                <span>{category.category}</span>
+              </div>
 
-              <div className="page-menu__items">
-                {group.items.map((item) => (
-                  <article key={item.name}>
+              <div className="menu-page__items">
+                {category.items.map((item) => (
+                  <article
+                    className="menu-page__item"
+                    key={item.name}
+                  >
                     <div>
-                      <h3>{item.name}</h3>
+                      <h2>{item.name}</h2>
                       <p>{item.description}</p>
                     </div>
 
@@ -41,9 +56,10 @@ function MenuPage() {
           ))}
         </section>
 
-        <section className="page-menu__cta">
-          <h2>Ready for a table?</h2>
-          <Button href="/#/reservation" variant="primary">
+        <section className="menu-page__cta">
+          <h2>Save a seat for the evening.</h2>
+
+          <Button href="/#/reservation">
             Reserve a Table
           </Button>
         </section>
@@ -54,4 +70,4 @@ function MenuPage() {
   );
 }
 
-export default MenuPage;
+export default Menu;

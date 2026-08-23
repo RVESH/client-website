@@ -1,0 +1,41 @@
+.restaurant-page--contact {
+  width: 100%;
+  overflow-x: clip;
+
+  &__location {
+    padding: 100px 20px;
+    background: #f4eadf;
+    color: #2b221c;
+    text-align: center;
+
+    span {
+      color: #a87955;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 14px auto;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 400;
+      line-height: 0.92;
+      letter-spacing: -0.055em;
+    }
+
+    p {
+      color: #76675a;
+      font-size: 0.8rem;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 18px;
+      color: inherit;
+      font-size: 0.68rem;
+      text-decoration: none;
+    }
+  }
+}

@@ -4,10 +4,9 @@ import Footer from "../../components/Footer/Footer";
 import Hero from "../../sections/Hero/Hero";
 import About from "../../sections/About/About";
 import Services from "../../sections/Services/Services";
-import Gallery from "../../sections/Gallery/Gallery";
 import Stats from "../../sections/Stats/Stats";
-import Process from "../../sections/Process/Process";
-import FAQ from "../../sections/FAQ/FAQ";
+import Gallery from "../../sections/Gallery/Gallery";
+import Testimonial from "../../sections/Testimonial/Testimonials";
 import CTA from "../../sections/CTA/CTA";
 import Contact from "../../sections/Contact/Contact";
 
@@ -15,45 +14,25 @@ import "./Home.scss";
 
 function Home() {
   return (
-    <div className="page-home">
+    <div className="restaurant-page restaurant-page--home">
       <Header />
 
       <main>
-        <section id="home">
-          <Hero />
-        </section>
+        <Hero />
 
-        <section id="about">
-          <About />
-        </section>
+        <About />
 
-        <section id="services">
-          <Services />
-        </section>
+        <Services />
 
-        <section id="stats">
-          <Stats />
-        </section>
+        <Stats />
 
-        <section id="process">
-          <Process />
-        </section>
+        <Gallery />
 
-        <section id="gallery">
-          <Gallery />
-        </section>
+        <Testimonial />
 
-        <section id="faq">
-          <FAQ />
-        </section>
+        <CTA />
 
-        <section id="reservation">
-          <CTA />
-        </section>
-
-        <section id="contact">
-          <Contact />
-        </section>
+        <Contact />
       </main>
 
       <Footer />

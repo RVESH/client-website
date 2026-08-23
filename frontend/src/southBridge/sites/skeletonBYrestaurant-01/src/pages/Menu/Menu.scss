@@ -1,10 +1,9 @@
-.page-menu {
-  min-height: 100vh;
-  background: #f5eee4;
-  color: #2b221b;
+.restaurant-page--menu {
+  background: #f4eadf;
+  color: #2c231d;
 
-  &__hero {
-    width: min(950px, calc(100% - 40px));
+  .menu-page__intro {
+    width: min(1000px, calc(100% - 40px));
     margin: 0 auto;
     padding: 110px 0 80px;
 
@@ -15,79 +14,94 @@
     }
 
     h1 {
-      max-width: 760px;
+      max-width: 850px;
       margin: 14px 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3rem, 6vw, 6rem);
-      line-height: 0.9;
+      font-size: clamp(3.2rem, 6vw, 6rem);
       font-weight: 400;
+      line-height: 0.88;
       letter-spacing: -0.055em;
     }
 
     p {
-      max-width: 520px;
+      max-width: 500px;
+      margin: 0;
       color: #77685b;
+      font-size: 0.85rem;
       line-height: 1.8;
     }
   }
 
-  &__content {
-    width: min(950px, calc(100% - 40px));
+  .menu-page__content {
+    width: min(1000px, calc(100% - 40px));
     margin: 0 auto;
   }
 
-  &__group {
+  .menu-page__category {
     margin-bottom: 70px;
+  }
 
-    h2 {
-      margin: 0 0 25px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
-      font-size: 2rem;
+  .menu-page__category-heading {
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(44, 35, 29, 0.18);
+
+    span {
+      font-size: 0.66rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
     }
   }
 
-  &__items {
-    border-top: 1px solid rgba(43, 34, 27, 0.16);
+  .menu-page__items {
+    border-bottom: 1px solid rgba(44, 35, 29, 0.18);
   }
 
-  article {
+  .menu-page__item {
+    min-height: 110px;
     padding: 22px 0;
     display: flex;
     justify-content: space-between;
-    gap: 30px;
-    border-bottom: 1px solid rgba(43, 34, 27, 0.16);
+    gap: 25px;
+    border-bottom: 1px solid rgba(44, 35, 29, 0.12);
 
-    h3 {
-      margin: 0 0 6px;
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    h2 {
+      margin: 0 0 7px;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      font-size: 1.15rem;
+      font-size: 1.35rem;
     }
 
     p {
+      max-width: 550px;
       margin: 0;
-      color: #796b5f;
-      font-size: 0.78rem;
+      color: #77695c;
+      font-size: 0.72rem;
+      line-height: 1.65;
     }
 
     strong {
       white-space: nowrap;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
+      font-size: 1rem;
     }
   }
 
-  &__cta {
-    width: min(950px, calc(100% - 40px));
+  .menu-page__cta {
+    width: min(1000px, calc(100% - 40px));
     margin: 0 auto;
-    padding: 80px 0 110px;
+    padding: 40px 0 110px;
 
     h2 {
-      margin: 0 0 25px;
+      margin: 0 0 22px;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 0.95;
     }
   }
 }

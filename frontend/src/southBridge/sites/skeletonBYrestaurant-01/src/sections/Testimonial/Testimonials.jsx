@@ -1,4 +1,4 @@
-import "./Testimonial.scss";
+import "./Testimonials.scss";
 
 function Testimonial({
   quote =
