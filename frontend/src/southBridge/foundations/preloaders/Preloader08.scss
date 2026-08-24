@@ -1,0 +1,53 @@
+.sb-preloader-08 {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: #101010;
+  color: #fff;
+
+  &__image {
+    position: absolute;
+    inset: -2%;
+    background-position: center;
+    background-size: cover;
+    transition: transform 600ms ease;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,.12),
+      rgba(0,0,0,.72)
+    );
+  }
+
+  &__copy {
+    position: absolute;
+    left: 34px;
+    right: 34px;
+    bottom: 34px;
+
+    span {
+      font-size: .58rem;
+      letter-spacing: .16em;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 12px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7vw, 7rem);
+      font-weight: 400;
+      line-height: .86;
+      letter-spacing: -.055em;
+    }
+
+    small {
+      color: rgba(255,255,255,.62);
+      font-size: .65rem;
+    }
+  }
+}

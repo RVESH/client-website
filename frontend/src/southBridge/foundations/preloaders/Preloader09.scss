@@ -1,0 +1,47 @@
+.sb-preloader-09 {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: #e8dfd2;
+  color: #2d251f;
+  text-align: center;
+
+  &__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+
+    span {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 400;
+      letter-spacing: -.055em;
+    }
+
+    small {
+      color: #997b5e;
+      font-size: .62rem;
+    }
+  }
+
+  &__rule {
+    width: 100px;
+    height: 1px;
+    margin: 25px 0;
+    background: #b7a896;
+  }
+
+  p {
+    max-width: 340px;
+    margin: 0;
+    color: #796d60;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: .8rem;
+    line-height: 1.8;
+  }
+}

@@ -1,0 +1,59 @@
+.sb-preloader-04 {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #111;
+  color: #fff;
+
+  &__side {
+    display: flex;
+    align-items: flex-end;
+    padding: 28px;
+  }
+
+  &__side--left {
+    background: #1b1b1b;
+  }
+
+  &__side--right {
+    justify-content: flex-end;
+    background: #ece8df;
+    color: #1c1b19;
+
+    strong {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      letter-spacing: .1em;
+    }
+  }
+
+  &__side span {
+    color: rgba(255,255,255,.52);
+    font-size: .59rem;
+    letter-spacing: .14em;
+  }
+
+  &__center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.24);
+    border-radius: 50%;
+    background: #111;
+    font-size: .64rem;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+
+    &__side--right {
+      display: none;
+    }
+  }
+}

@@ -1,3 +1,59 @@
+restaurant-01/
+│
+├── public/
+│   └── images/
+│
+├── src/
+│
+│   ├── components/
+│   │   ├── Header/
+│   │   ├── Footer/
+│   │   ├── Button/
+│   │   ├── Modal/
+│   │   ├── Preloader/
+│   │   ├── Slider/
+│   │   └── Pagination/
+│   │
+│   ├── sections/
+│   │   ├── Hero/
+│   │   ├── About/
+│   │   ├── Services/
+│   │   ├── Gallery/
+│   │   ├── Testimonials/
+│   │   ├── Stats/
+│   │   ├── Process/
+│   │   ├── FAQ/
+│   │   ├── CTA/
+│   │   └── Contact/
+│   │
+│   ├── pages/
+│   │   ├── Home/
+│   │   ├── Menu/
+│   │   ├── About/
+│   │   ├── Reservation/
+│   │   └── Contact/
+│   │
+│   ├── data/
+│   │   ├── site.js
+│   │   ├── menu.js
+│   │   └── testimonials.js
+│   │
+│   ├── App.js
+│   ├── index.js
+│   └── index.scss
+│
+├── package.json
+├── package-lock.json
+├── README.md
+└── .gitignore
+
+
+
+
+
+
+
+
 Foundation se sirf visual section copy kar dene se next page navigation ya popup automatically nahi banega. Uske liye interaction/routing code bhi skeleton mein predefined hona chahiye.
 
 Tumhare current copied Header mein links abhi simple anchors the, jaise href="#work", href="#services", href="#about"; ye same-page anchors hain, next React page navigation nahi.

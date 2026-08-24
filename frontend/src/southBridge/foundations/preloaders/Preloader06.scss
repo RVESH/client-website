@@ -1,0 +1,52 @@
+.sb-preloader-06 {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: grid;
+  place-items: center;
+  background: #10151b;
+
+  &__ring {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background:
+      conic-gradient(
+        #cce56e var(--progress-angle),
+        rgba(255,255,255,.08) var(--progress-angle)
+      );
+  }
+
+  &__ring::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: #10151b;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    strong {
+      font-size: 2.7rem;
+      line-height: 1;
+      letter-spacing: -.06em;
+      color: #fff;
+    }
+
+    span {
+      margin-top: 9px;
+      color: #77808c;
+      font-size: .58rem;
+      letter-spacing: .15em;
+    }
+  }
+}

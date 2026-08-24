@@ -1,0 +1,98 @@
+.sb-modal-12 {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(16, 18, 22, .64);
+
+  &__panel {
+    width: min(730px, 100%);
+    padding: 28px;
+    border-radius: 20px;
+    background: #f4f5f1;
+    color: #20251f;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > span {
+      color: #8a9287;
+      font-size: .58rem;
+      letter-spacing: .14em;
+    }
+
+    button {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #d8ddd4;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+
+  h2 {
+    margin: 60px 0 35px;
+    font-size: clamp(2.7rem, 5vw, 5.2rem);
+    line-height: .9;
+    letter-spacing: -.075em;
+  }
+
+  &__list {
+    border-top: 1px solid #d9ded5;
+  }
+
+  article {
+    min-height: 75px;
+    padding: 15px 0;
+    display: grid;
+    grid-template-columns: 42px 180px 1fr;
+    gap: 18px;
+    align-items: center;
+    border-bottom: 1px solid #d9ded5;
+
+    > span {
+      color: #8d958a;
+      font-size: .58rem;
+    }
+
+    strong {
+      font-size: .75rem;
+    }
+
+    p {
+      margin: 0;
+      color: #70796e;
+      font-size: .72rem;
+      line-height: 1.6;
+    }
+  }
+
+  &__primary {
+    margin-top: 27px;
+    min-height: 46px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 8px;
+    background: #20251f;
+    color: #fff;
+    cursor: pointer;
+    font-size: .66rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 600px) {
+    article {
+      grid-template-columns: 35px 1fr;
+
+      p {
+        grid-column: 2;
+      }
+    }
+  }
+}

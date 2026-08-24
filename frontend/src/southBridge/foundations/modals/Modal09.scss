@@ -1,0 +1,63 @@
+.sb-modal-09 {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: #dfe5ec;
+
+  &__shadow {
+    position: absolute;
+    width: min(650px, 92%);
+    height: min(440px, 70%);
+    transform: translate(22px, 22px);
+    border-radius: 28px;
+    background: #9ca8b7;
+    opacity: .35;
+  }
+
+  &__panel {
+    position: relative;
+    width: min(650px, 92%);
+    min-height: 400px;
+    padding: 34px;
+    border-radius: 28px;
+    background: #fbfcfd;
+    color: #1c2530;
+    box-shadow: 0 30px 70px rgba(38,48,61,.18);
+
+    > button {
+      position: absolute;
+      top: 19px;
+      right: 19px;
+      width: 37px;
+      height: 37px;
+      border: 1px solid #dde2e8;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    > span {
+      color: #7b8797;
+      font-size: .6rem;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      max-width: 470px;
+      margin: 13px 0;
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      line-height: .9;
+      letter-spacing: -.075em;
+    }
+
+    p {
+      max-width: 460px;
+      color: #6d7786;
+      font-size: .82rem;
+      line-height: 1.8;
+    }
+  }
+}

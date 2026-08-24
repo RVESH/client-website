@@ -1,0 +1,61 @@
+.sb-modal-04 {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(8, 8, 8, .94);
+
+  &__close {
+    position: fixed;
+    top: 20px;
+    right: 22px;
+    z-index: 3;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255,255,255,.23);
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  &__figure {
+    width: min(1200px, 100%);
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+    max-height: 76vh;
+    object-fit: contain;
+  }
+
+  figcaption {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    color: #fff;
+
+    strong {
+      font-size: .85rem;
+    }
+
+    span {
+      max-width: 520px;
+      color: rgba(255,255,255,.55);
+      font-size: .72rem;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 650px) {
+    figcaption {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}

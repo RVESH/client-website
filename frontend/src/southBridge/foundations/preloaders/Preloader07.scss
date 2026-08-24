@@ -1,0 +1,49 @@
+.sb-preloader-07 {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #090d12;
+  color: #fff;
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  &__center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    span {
+      color: #748091;
+      font-size: .58rem;
+      letter-spacing: .14em;
+    }
+
+    strong {
+      color: #9fd2ff;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: .8;
+      letter-spacing: -.08em;
+    }
+  }
+
+  &__corners {
+    position: absolute;
+    inset: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #596371;
+    font-size: .55rem;
+  }
+}

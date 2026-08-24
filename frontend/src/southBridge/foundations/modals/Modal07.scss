@@ -1,0 +1,70 @@
+.sb-modal-07 {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #0b0d0c;
+  color: #f3efe6;
+
+  &__grid {
+    position: relative;
+    min-height: 100dvh;
+    padding: 28px;
+    display: grid;
+    align-items: end;
+    background:
+      radial-gradient(circle at 65% 25%, rgba(195, 153, 83, .14), transparent 25%),
+      #0b0d0c;
+  }
+
+  &__index,
+  &__corner {
+    position: absolute;
+    color: rgba(243,239,230,.45);
+    font-size: .58rem;
+    letter-spacing: .15em;
+  }
+
+  &__index {
+    top: 28px;
+    left: 28px;
+  }
+
+  &__corner {
+    bottom: 28px;
+    right: 28px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    border: 0;
+    background: transparent;
+    color: rgba(243,239,230,.75);
+    cursor: pointer;
+    font-size: .65rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  &__copy {
+    width: min(900px, 100%);
+    margin: 0 auto 80px;
+
+    > span {
+      color: #c89b62;
+      font-size: .59rem;
+      letter-spacing: .18em;
+    }
+
+    h2 {
+      max-width: 900px;
+      margin: 15px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(4rem, 9vw, 9rem);
+      line-height: .84;
+      font-weight: 400;
+      letter-spacing: -.065em;
+    }
+  }
+}

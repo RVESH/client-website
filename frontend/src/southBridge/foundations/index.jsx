@@ -15,3 +15,5 @@ export { default as Newsletter } from "./newsletter";
 export { default as Stats }      from "./stats";
 export { default as Features }   from "./features";
 export {default as Process }     from "./process";
+export {default as Modal }       from "./modals";
+export { default as Preloader }  from "./preloaders";

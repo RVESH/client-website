@@ -1,0 +1,54 @@
+.sb-preloader-10 {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    #060a0f;
+  background-size: 100% 40px;
+  color: #d8e3ed;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  &__top,
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #5e7282;
+    font-size: .58rem;
+    letter-spacing: .12em;
+  }
+
+  &__middle {
+    align-self: center;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+
+    strong {
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: .8;
+      font-weight: 400;
+      color: #d8f4ff;
+      letter-spacing: -.08em;
+    }
+
+    > span:last-child {
+      color: #64808d;
+      font-size: .58rem;
+      letter-spacing: .15em;
+    }
+  }
+
+  &__pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #62e5c0;
+    box-shadow: 0 0 20px #62e5c0;
+  }
+}

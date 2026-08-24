@@ -1,0 +1,78 @@
+.sb-preloader-11 {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: #edf1ff;
+  color: #202746;
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+  }
+
+  &__orb--one {
+    width: 45vw;
+    height: 45vw;
+    left: -10%;
+    top: -15%;
+    background: rgba(126, 110, 255, .23);
+  }
+
+  &__orb--two {
+    width: 40vw;
+    height: 40vw;
+    right: -10%;
+    bottom: -15%;
+    background: rgba(75, 219, 186, .22);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    width: min(620px, calc(100% - 40px));
+
+    > span {
+      color: #7280b4;
+      font-size: .59rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    h1 {
+      margin: 13px 0 30px;
+      font-size: clamp(3rem, 7vw, 7rem);
+      line-height: .86;
+      letter-spacing: -.08em;
+    }
+  }
+
+  &__progress {
+    height: 5px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(42,51,92,.1);
+
+    span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: #5969cf;
+    }
+  }
+
+  &__content > div:last-child {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+
+    small {
+      color: #7c86a4;
+      font-size: .58rem;
+      letter-spacing: .12em;
+    }
+  }
+}

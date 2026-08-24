@@ -12,22 +12,30 @@ function Gallery() {
           </p>
         </div>
 
-        <div className="sb-gallery-07__grid">
-          {[
-            ["01", "/images/gallery-07-01.webp", "Fresh pasta"],
-            ["02", "/images/gallery-07-02.webp", "Open kitchen"],
-            ["03", "/images/gallery-07-03.webp", "Seasonal menu"],
-            ["04", "/images/gallery-07-04.webp", "Late evening"],
-          ].map(([number, src, label]) => (
-            <figure key={number}>
-              <img src={src} alt={label} loading="lazy" />
-              <figcaption>
-                <span>{number}</span>
-                <strong>{label}</strong>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+       <div className="sb-gallery-07__grid">
+  {[
+    ["01", "/images/gallery-01.webp", "Fresh pasta"],
+    ["02", "/images/gallery-02.webp", "Open kitchen"],
+    ["03", "/images/gallery-03.webp", "Seasonal menu"],
+    ["04", "/images/gallery-04.webp", "Late evening"],
+  ].map(([number, src, label]) => (
+    <figure key={number}>
+      <img
+        src={src}
+        alt={label}
+        loading={number === "01" ? "eager" : "lazy"}
+        fetchPriority={
+          number === "01" ? "high" : undefined
+        }
+      />
+
+      <figcaption>
+        <span>{number}</span>
+        <strong>{label}</strong>
+      </figcaption>
+    </figure>
+  ))}
+</div>
       </div>
     </section>
   );

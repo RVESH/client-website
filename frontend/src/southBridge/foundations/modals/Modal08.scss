@@ -1,0 +1,57 @@
+.sb-modal-08 {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(18, 23, 31, .5);
+  backdrop-filter: blur(7px);
+
+  &__panel {
+    width: min(430px, 100%);
+    padding: 34px;
+    border-radius: 20px;
+    background: #fff;
+    text-align: center;
+    color: #19202c;
+    box-shadow: 0 35px 80px rgba(0,0,0,.2);
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #dff6e9;
+    color: #177b48;
+    font-weight: 800;
+  }
+
+  h2 {
+    margin: 0 0 9px;
+    font-size: 1.35rem;
+  }
+
+  p {
+    margin: 0;
+    color: #6b7483;
+    font-size: .8rem;
+    line-height: 1.7;
+  }
+
+  button {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 24px;
+    border: 0;
+    border-radius: 9px;
+    background: #19202c;
+    color: #fff;
+    cursor: pointer;
+    font-size: .68rem;
+    font-weight: 700;
+  }
+}

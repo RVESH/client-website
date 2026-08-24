@@ -1,0 +1,42 @@
+.sb-preloader-03 {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: grid;
+  place-items: center;
+  background: #f5f0e8;
+  color: #2c241d;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    strong {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      letter-spacing: .13em;
+    }
+  }
+
+  &__mark {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #2c241d;
+    font-size: 1rem;
+  }
+
+  &__meta {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    bottom: 26px;
+    display: flex;
+    justify-content: space-between;
+    color: #8c7f70;
+    font-size: .59rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+}

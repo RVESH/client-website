@@ -9,7 +9,7 @@ import ForgotPassword    from "../components/auth/ForgotPassword";
 import CreatorApp        from "../creatorApp/CreatorApp";
 
 import { Header, Footer, Hero, About, CTA, Gallery, Testimonial, Contact,
-   FAQ, Newsletter } from "../southBridge";
+   FAQ, Newsletter, Modal, Preloader } from "../southBridge";
 import {Buttons, Sections,Services,Cards,Stats,
   Features,Process } from "../southBridge/foundations";
 function App() {
@@ -42,7 +42,10 @@ function App() {
           <Route path="newsletter"       element={<Newsletter />} />
           <Route path="stats"            element={<Stats />} />
           <Route path="features"         element={<Features />} />   
-          <Route path="process"          element={<Process />} />     
+          <Route path="process"          element={<Process />} />
+          <Route path="modals"           element={<Modal />} />     
+          <Route path="preloders"        element={<Preloader />} />     
+
         </Routes>
       </HashRouter>
     </AuthProvider>
