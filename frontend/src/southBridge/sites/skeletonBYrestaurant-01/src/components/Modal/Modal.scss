@@ -1,0 +1,79 @@
+.sb-modal-03 {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(93, 92, 255, .14), transparent 30%),
+    rgba(8, 10, 18, .68);
+  backdrop-filter: blur(16px);
+
+  &__panel {
+    position: relative;
+    width: min(650px, 100%);
+    min-height: 390px;
+    overflow: hidden;
+    padding: 32px;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 30px;
+    background: rgba(255,255,255,.09);
+    color: #fff;
+    box-shadow: 0 45px 120px rgba(0,0,0,.3);
+  }
+
+  &__close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  > div > span {
+    position: relative;
+    z-index: 2;
+    color: rgba(255,255,255,.54);
+    font-size: .59rem;
+    letter-spacing: .16em;
+  }
+
+  &__orb {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    right: -70px;
+    top: -80px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 35%, rgba(166,160,255,.8), rgba(93,92,255,.18) 45%, transparent 70%);
+    filter: blur(2px);
+  }
+
+  &__copy {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    margin-top: 95px;
+
+    h2 {
+      margin: 0 0 13px;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      line-height: .9;
+      letter-spacing: -.075em;
+    }
+
+    p {
+      color: rgba(255,255,255,.63);
+      font-size: .82rem;
+      line-height: 1.8;
+    }
+  }
+}

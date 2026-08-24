@@ -178,3 +178,50 @@ export {
 };
 
 export default Modal;
+
+
+
+
+
+// // Website mein usage same रहेगा:---------------------------------
+// import { useState } from "react";
+// import Modal01 from "../../components/Modal/Modal01";
+
+// function Example() {
+//   const [isOpen, setIsOpen] = useState(false);
+
+//   return (
+//     <>
+//       <button onClick={() => setIsOpen(true)}>
+//         View Details
+//       </button>
+
+//       <Modal01
+//         open={isOpen}
+//         onClose={() => setIsOpen(false)}
+//         title="Restaurant Details"
+//         description="Seasonal menu and dining information."
+//       />
+//     </>
+//   );
+// }
+
+// export default Example;
+
+
+
+
+
+// // if alag custom chahiye toh___________________________
+// <Modal01
+//   open={isOpen}
+//   onClose={() => setIsOpen(false)}
+//   title="Restaurant Details"
+// >
+//   <h3>Our Story</h3>
+//   <p>
+//     Seasonal ingredients and carefully prepared dishes.
+//   </p>
+// </Modal01>
+
+

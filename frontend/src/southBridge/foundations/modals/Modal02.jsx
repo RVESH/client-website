@@ -2,27 +2,33 @@ import { useEffect } from "react";
 import "./Modal02.scss";
 
 function Modal02({
-  open = true,
+  open = false,
   onClose = () => {},
   title = "Your selection",
-  description = "A side-panel pattern useful for carts, booking details, filters and quick actions.",
+  description =
+    "A side-panel pattern useful for carts, booking details, filters and quick actions.",
+  actionLabel = "Continue",
+  onAction = () => {},
   children,
 }) {
   useEffect(() => {
-    if (!open) return;
+    if (!open) return undefined;
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+      }
     };
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
 
     document.addEventListener("keydown", handleKeyDown);
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [open, onClose]);
 
@@ -33,28 +39,47 @@ function Modal02({
       className="sb-modal-02"
       role="dialog"
       aria-modal="true"
+      aria-labelledby="sb-modal-02-title"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
+        if (event.target === event.currentTarget) {
+          onClose();
+        }
       }}
     >
       <aside className="sb-modal-02__panel">
         <div className="sb-modal-02__top">
           <span>01 / DETAILS</span>
 
-          <button type="button" onClick={onClose} aria-label="Close">
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close dialog"
+          >
             Close
           </button>
         </div>
 
         <div className="sb-modal-02__body">
-          <h2>{title}</h2>
+          <h2 id="sb-modal-02-title">
+            {title}
+          </h2>
+
           <p>{description}</p>
 
-          {children}
+          {children && (
+            <div className="sb-modal-02__content">
+              {children}
+            </div>
+          )}
         </div>
 
         <div className="sb-modal-02__bottom">
-          <button type="button">Continue</button>
+          <button
+            type="button"
+            onClick={onAction}
+          >
+            {actionLabel}
+          </button>
         </div>
       </aside>
     </div>

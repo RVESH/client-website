@@ -2,25 +2,23 @@ import "./Button.scss";
 
 function Button({
   children,
-  href,
-  variant = "primary",
   type = "button",
+  variant = "primary",
+  onClick,
   className = "",
-  ...props
+  disabled = false,
 }) {
-  const classes = `restaurant-button restaurant-button--${variant} ${className}`.trim();
-
-  if (href) {
-    return (
-      <a className={classes} href={href} {...props}>
-        {children}
-      </a>
-    );
-  }
-
   return (
-    <button className={classes} type={type} {...props}>
-      {children}
+    <button
+      type={type}
+      className={`sb-button sb-button--${variant} ${className}`.trim()}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      <span>{children}</span>
+      <span className="sb-button__arrow" aria-hidden="true">
+        ↗
+      </span>
     </button>
   );
 }

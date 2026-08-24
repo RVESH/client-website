@@ -2,23 +2,40 @@ import { useEffect } from "react";
 import "./Modal08.scss";
 
 function Modal08({
-  open = true,
+  open = false,
   onClose = () => {},
   title = "Reservation received",
-  message = "Your request has been noted. We will get back to you shortly.",
+  message =
+    "Your request has been noted. We will get back to you shortly.",
   confirmLabel = "Done",
 }) {
   useEffect(() => {
-    if (!open) return;
+    if (!open) return undefined;
 
-    const handler = (event) => {
-      if (event.key === "Escape") onClose();
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
     };
 
-    document.addEventListener("keydown", handler);
+    const previousOverflow =
+      document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    document.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
 
     return () => {
-      document.removeEventListener("keydown", handler);
+      document.body.style.overflow =
+        previousOverflow;
+
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
     };
   }, [open, onClose]);
 
@@ -29,15 +46,26 @@ function Modal08({
       className="sb-modal-08"
       role="dialog"
       aria-modal="true"
+      aria-labelledby="sb-modal-08-title"
     >
       <div className="sb-modal-08__panel">
-        <div className="sb-modal-08__icon">✓</div>
+        <div
+          className="sb-modal-08__icon"
+          aria-hidden="true"
+        >
+          ✓
+        </div>
 
-        <h2>{title}</h2>
+        <h2 id="sb-modal-08-title">
+          {title}
+        </h2>
 
         <p>{message}</p>
 
-        <button type="button" onClick={onClose}>
+        <button
+          type="button"
+          onClick={onClose}
+        >
           {confirmLabel}
         </button>
       </div>

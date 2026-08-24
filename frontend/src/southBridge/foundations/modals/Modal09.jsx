@@ -2,22 +2,41 @@ import { useEffect } from "react";
 import "./Modal09.scss";
 
 function Modal09({
-  open = true,
+  open = false,
   onClose = () => {},
   title = "A considered detail.",
-  description = "Layered cards work well for premium product information and selected content.",
+  description =
+    "Layered cards work well for premium product information and selected content.",
   children,
 }) {
   useEffect(() => {
-    if (!open) return;
+    if (!open) return undefined;
 
-    const handler = (event) => {
-      if (event.key === "Escape") onClose();
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
     };
 
-    document.addEventListener("keydown", handler);
+    const previousOverflow =
+      document.body.style.overflow;
 
-    return () => document.removeEventListener("keydown", handler);
+    document.body.style.overflow = "hidden";
+
+    document.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
+
+    return () => {
+      document.body.style.overflow =
+        previousOverflow;
+
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
+    };
   }, [open, onClose]);
 
   if (!open) return null;
@@ -27,20 +46,34 @@ function Modal09({
       className="sb-modal-09"
       role="dialog"
       aria-modal="true"
+      aria-labelledby="sb-modal-09-title"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
+        if (
+          event.target === event.currentTarget
+        ) {
+          onClose();
+        }
       }}
     >
-      <div className="sb-modal-09__shadow" />
+      <div
+        className="sb-modal-09__shadow"
+        aria-hidden="true"
+      />
 
       <div className="sb-modal-09__panel">
-        <button type="button" onClick={onClose}>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close dialog"
+        >
           ×
         </button>
 
         <span>SELECTED</span>
 
-        <h2>{title}</h2>
+        <h2 id="sb-modal-09-title">
+          {title}
+        </h2>
 
         <p>{description}</p>
 

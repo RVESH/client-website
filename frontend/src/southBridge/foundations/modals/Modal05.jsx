@@ -2,28 +2,43 @@ import { useEffect } from "react";
 import "./Modal05.scss";
 
 function Modal05({
-  open = true,
+  open = false,
   onClose = () => {},
   title = "Made with intention.",
   label = "THE STORY",
-  image = "/images/about-main.webp",
+  image = "",
+  imageAlt = "",
   children,
+  linkLabel = "Explore story ↗",
+  linkHref = "#",
 }) {
   useEffect(() => {
-    if (!open) return;
+    if (!open) return undefined;
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+      }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    const previousOverflow =
+      document.body.style.overflow;
 
-    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
+    document.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
+
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow =
+        previousOverflow;
+
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
     };
   }, [open, onClose]);
 
@@ -34,23 +49,51 @@ function Modal05({
       className="sb-modal-05"
       role="dialog"
       aria-modal="true"
+      aria-labelledby="sb-modal-05-title"
+      onMouseDown={(event) => {
+        if (
+          event.target === event.currentTarget
+        ) {
+          onClose();
+        }
+      }}
     >
       <div className="sb-modal-05__panel">
         <div className="sb-modal-05__image">
-          <img src={image} alt="" />
+          {image && (
+            <img
+              src={image}
+              alt={imageAlt || title}
+            />
+          )}
         </div>
 
         <div className="sb-modal-05__content">
-          <button type="button" onClick={onClose}>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close dialog"
+          >
             Close ×
           </button>
 
           <span>{label}</span>
-          <h2>{title}</h2>
 
-          {children}
+          <h2 id="sb-modal-05-title">
+            {title}
+          </h2>
 
-          <a href="#explore">Explore story ↗</a>
+          {children && (
+            <div className="sb-modal-05__body">
+              {children}
+            </div>
+          )}
+
+          {linkHref && (
+            <a href={linkHref}>
+              {linkLabel}
+            </a>
+          )}
         </div>
       </div>
     </div>

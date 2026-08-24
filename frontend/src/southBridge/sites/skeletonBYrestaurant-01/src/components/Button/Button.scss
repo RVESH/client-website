@@ -1,53 +1,113 @@
-.restaurant-button {
-  min-height: 48px;
+.sb-button {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  min-height: 52px;
   padding: 0 18px;
-  border: 1px solid transparent;
+
+  border: 1px solid rgba(15, 15, 15, 0.22);
   border-radius: 0;
-  font-size: 0.68rem;
-  font-weight: 700;
+
+  background: #111;
+  color: #f5f2ea;
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  text-decoration: none;
-  transition:
-    background-color 180ms ease,
-    color 180ms ease,
-    border-color 180ms ease,
-    transform 180ms ease;
+
   cursor: pointer;
+  overflow: hidden;
 
-  &:hover {
-    transform: translateY(-1px);
-  }
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
+}
 
-  &--primary {
-    background: #243127;
-    color: #f3ebdf;
+.sb-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-    &:hover {
-      background: #303e34;
-    }
-  }
+  background: #f5f2ea;
 
-  &--light {
-    background: #f3ebdf;
-    color: #243127;
+  transform: translateY(101%);
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
 
-    &:hover {
-      background: #fff;
-    }
-  }
+.sb-button span {
+  position: relative;
+  z-index: 1;
+}
 
-  &--outline {
-    border-color: rgba(36, 49, 39, 0.25);
-    background: transparent;
-    color: #243127;
+.sb-button__arrow {
+  font-size: 14px;
+  transition: transform 0.35s ease;
+}
 
-    &:hover {
-      background: #243127;
-      color: #fff;
-    }
-  }
+.sb-button:hover {
+  color: #111;
+  border-color: #f5f2ea;
+}
+
+.sb-button:hover::before {
+  transform: translateY(0);
+}
+
+.sb-button:hover .sb-button__arrow {
+  transform: translate(3px, -3px);
+}
+
+.sb-button:active {
+  transform: translateY(1px);
+}
+
+.sb-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.sb-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Secondary */
+
+.sb-button--secondary {
+  background: transparent;
+  color: #111;
+  border-color: rgba(15, 15, 15, 0.25);
+}
+
+.sb-button--secondary::before {
+  background: #111;
+}
+
+.sb-button--secondary:hover {
+  color: #f5f2ea;
+  border-color: #111;
+}
+
+/* Light */
+
+.sb-button--light {
+  background: #f5f2ea;
+  color: #111;
+  border-color: #f5f2ea;
+}
+
+.sb-button--light::before {
+  background: #111;
+}
+
+.sb-button--light:hover {
+  color: #f5f2ea;
+  border-color: #111;
 }

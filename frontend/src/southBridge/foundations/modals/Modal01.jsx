@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./Modal01.scss";
 
 function Modal01({
-  open = true,
+  open = false,
   onClose = () => {},
   eyebrow = "DETAILS",
   title = "A quiet, focused moment.",
@@ -13,20 +13,23 @@ function Modal01({
   children,
 }) {
   useEffect(() => {
-    if (!open) return;
+    if (!open) return undefined;
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+      }
     };
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
 
     document.addEventListener("keydown", handleKeyDown);
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [open, onClose]);
 
@@ -39,7 +42,9 @@ function Modal01({
       aria-modal="true"
       aria-labelledby="sb-modal-01-title"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
+        if (event.target === event.currentTarget) {
+          onClose();
+        }
       }}
     >
       <div className="sb-modal-01__panel">
@@ -52,9 +57,13 @@ function Modal01({
           ×
         </button>
 
-        <span className="sb-modal-01__eyebrow">{eyebrow}</span>
+        <span className="sb-modal-01__eyebrow">
+          {eyebrow}
+        </span>
 
-        <h2 id="sb-modal-01-title">{title}</h2>
+        <h2 id="sb-modal-01-title">
+          {title}
+        </h2>
 
         <p>{description}</p>
 
@@ -65,11 +74,17 @@ function Modal01({
         )}
 
         <div className="sb-modal-01__actions">
-          <button type="button" onClick={onAction}>
+          <button
+            type="button"
+            onClick={onAction}
+          >
             {actionLabel}
           </button>
 
-          <button type="button" onClick={onClose}>
+          <button
+            type="button"
+            onClick={onClose}
+          >
             Close
           </button>
         </div>

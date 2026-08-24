@@ -2,26 +2,38 @@ import { useEffect } from "react";
 import "./Modal06.scss";
 
 function Modal06({
-  open = true,
+  open = false,
   onClose = () => {},
   title = "Choose your preference",
   children,
 }) {
   useEffect(() => {
-    if (!open) return;
+    if (!open) return undefined;
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        onClose();
+      }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    const previousOverflow =
+      document.body.style.overflow;
 
-    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
+    document.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
+
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow =
+        previousOverflow;
+
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
     };
   }, [open, onClose]);
 
@@ -32,17 +44,31 @@ function Modal06({
       className="sb-modal-06"
       role="dialog"
       aria-modal="true"
+      aria-labelledby="sb-modal-06-title"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
+        if (
+          event.target === event.currentTarget
+        ) {
+          onClose();
+        }
       }}
     >
       <div className="sb-modal-06__sheet">
-        <div className="sb-modal-06__grabber" />
+        <div
+          className="sb-modal-06__grabber"
+          aria-hidden="true"
+        />
 
         <div className="sb-modal-06__header">
-          <h2>{title}</h2>
+          <h2 id="sb-modal-06-title">
+            {title}
+          </h2>
 
-          <button type="button" onClick={onClose}>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close dialog"
+          >
             ×
           </button>
         </div>
@@ -50,8 +76,9 @@ function Modal06({
         <div className="sb-modal-06__body">
           {children || (
             <p>
-              This bottom-sheet pattern is ideal for filters, mobile menus,
-              booking choices and compact actions.
+              This bottom-sheet pattern is ideal
+              for filters, mobile menus, booking
+              choices and compact actions.
             </p>
           )}
         </div>
