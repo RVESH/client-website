@@ -1,0 +1,80 @@
+.sb-slider-10 {
+  min-height: 700px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: #0d1015;
+  color: #fff;
+  perspective: 1400px;
+
+  &__stage {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    transform-style: preserve-3d;
+  }
+
+  &__stage article {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(370px, 72vw);
+    overflow: hidden;
+    border-radius: 18px;
+    background: #191e25;
+    box-shadow: 0 30px 70px rgba(0,0,0,.35);
+    transform:
+      translate(-50%, -50%)
+      translateX(calc(var(--difference) * 240px))
+      rotateY(calc(var(--difference) * -28deg))
+      scale(calc(1 - min(abs(var(--difference)), 3) * .1));
+    opacity: calc(1 - min(abs(var(--difference)), 3) * .28);
+    transition: 550ms ease;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 16px;
+    font-size: .9rem;
+    font-weight: 500;
+  }
+
+  &__controls {
+    position: absolute;
+    bottom: 28px;
+    display: flex;
+    gap: 8px;
+
+    button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 650px) {
+    min-height: 580px;
+
+    &__stage {
+      height: 420px;
+    }
+
+    &__stage article {
+      transform:
+        translate(-50%, -50%)
+        translateX(calc(var(--difference) * 155px))
+        rotateY(calc(var(--difference) * -20deg))
+        scale(calc(1 - min(abs(var(--difference)), 3) * .1));
+    }
+  }
+}

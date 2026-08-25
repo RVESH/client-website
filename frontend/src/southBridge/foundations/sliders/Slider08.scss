@@ -1,0 +1,81 @@
+.sb-slider-08 {
+  position: relative;
+  min-height: 680px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: #dfe5ff;
+
+  &__glow {
+    position: absolute;
+    width: 35vw;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(87,96,255,.22);
+    filter: blur(40px);
+  }
+
+  &__cards {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+  }
+
+  &__card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(340px, 74vw);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.48);
+    border-radius: 24px;
+    background: rgba(255,255,255,.16);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 30px 70px rgba(47,54,100,.17);
+    transform:
+      translate(-50%, -50%)
+      translateX(calc(var(--offset) * 95px))
+      scale(calc(1 - var(--offset) * .07));
+    opacity: calc(1 - var(--offset) * .16);
+    transition: 500ms ease;
+  }
+
+  &__card img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  &__card > div {
+    padding: 18px;
+
+    span {
+      color: #68718a;
+      font-size: .6rem;
+    }
+
+    h3 {
+      margin: 7px 0 0;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    left: 50%;
+    bottom: 28px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+
+    button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(22,28,44,.25);
+      border-radius: 50%;
+      background: rgba(255,255,255,.22);
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+  }
+}

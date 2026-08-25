@@ -1,0 +1,76 @@
+.sb-slider-11 {
+  padding: 20px 0 40px;
+  overflow: hidden;
+  background: #111317;
+  color: #fff;
+
+  &__viewport {
+    overflow-x: auto;
+    cursor: grab;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.is-dragging {
+      cursor: grabbing;
+    }
+  }
+
+  &__track {
+    width: max-content;
+    padding: 30px 20px;
+    display: flex;
+    gap: 18px;
+  }
+
+  article {
+    flex: 0 0 clamp(250px, 31vw, 410px);
+    scroll-snap-align: start;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  article > div {
+    padding-top: 14px;
+
+    span {
+      color: #6f7883;
+      font-size: .6rem;
+    }
+
+    h3 {
+      margin: 7px 0 0;
+      font-size: 1rem;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 0 20px;
+
+    button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 520px) {
+    &__track {
+      padding-inline: 14px;
+    }
+  }
+}

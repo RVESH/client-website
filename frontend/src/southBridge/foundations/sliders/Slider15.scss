@@ -1,0 +1,141 @@
+.sb-slider-15 {
+  position: relative;
+  min-height: min(820px, 88vh);
+  overflow: hidden;
+  background: #0b0b0b;
+  color: #fff;
+
+  &__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    &.is-active {
+      opacity: 1;
+      pointer-events: auto;
+
+      .sb-slider-15__image {
+        transform: scale(1);
+      }
+
+      .sb-slider-15__copy {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    inset: -3%;
+    transform: scale(1.08);
+    transition: transform 1600ms cubic-bezier(.2,.7,.2,1);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.65),
+          rgba(0,0,0,.1) 65%
+        ),
+        linear-gradient(
+          180deg,
+          transparent 55%,
+          rgba(0,0,0,.62)
+        );
+    }
+  }
+
+  &__copy {
+    position: absolute;
+    z-index: 2;
+    left: clamp(20px, 6vw, 85px);
+    bottom: 100px;
+    max-width: 900px;
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+      opacity 700ms ease 180ms,
+      transform 900ms ease 180ms;
+
+    span {
+      color: rgba(255,255,255,.65);
+      font-size: .6rem;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      margin: 12px 0 0;
+      max-width: 850px;
+      font-size: clamp(3.5rem, 8vw, 9rem);
+      line-height: .82;
+      letter-spacing: -.075em;
+      font-weight: 500;
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    z-index: 3;
+    right: 28px;
+    bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      min-width: 70px;
+      text-align: center;
+      font-size: .6rem;
+      letter-spacing: .12em;
+    }
+
+    button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      background: rgba(255,255,255,.07);
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+  }
+
+  @media (max-width: 650px) {
+    min-height: 650px;
+
+    &__image {
+      inset: 0;
+    }
+
+    &__copy {
+      left: 20px;
+      right: 20px;
+      bottom: 100px;
+    }
+
+    &__controls {
+      left: 20px;
+      right: auto;
+      bottom: 24px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__image,
+    &__copy {
+      transition: none !important;
+    }
+  }
+}

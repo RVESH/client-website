@@ -1,0 +1,106 @@
+.sb-slider-07 {
+  display: grid;
+  grid-template-columns: minmax(220px, .65fr) minmax(0, 1.35fr);
+  min-height: 650px;
+  background: #161815;
+  color: #f1f0ea;
+
+  &__side {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__side button {
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    gap: 14px;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    background: transparent;
+    color: rgba(255,255,255,.4);
+    text-align: left;
+    cursor: pointer;
+
+    &.is-active {
+      color: #fff;
+    }
+
+    span {
+      font-size: .6rem;
+    }
+
+    strong {
+      font-size: .9rem;
+      font-weight: 500;
+    }
+  }
+
+  &__visual {
+    position: relative;
+    min-height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.7)
+      );
+    }
+
+    > div {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      z-index: 1;
+
+      span {
+        font-size: .6rem;
+        letter-spacing: .14em;
+      }
+
+      h2 {
+        margin: 8px 0 0;
+        font-family: Georgia, serif;
+        font-size: clamp(2.5rem, 6vw, 6rem);
+        font-weight: 400;
+        line-height: .88;
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+
+    &__side {
+      padding: 20px 18px 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__side button {
+      grid-template-columns: 1fr;
+      padding: 14px 8px;
+      border-bottom: 0;
+    }
+
+    &__side strong {
+      font-size: .68rem;
+    }
+
+    &__visual {
+      min-height: 520px;
+    }
+  }
+}

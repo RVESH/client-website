@@ -1,0 +1,38 @@
+.slider_foundation {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: clip;
+
+  background: #f4f5f7;
+  color: #15181d;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  > * {
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}

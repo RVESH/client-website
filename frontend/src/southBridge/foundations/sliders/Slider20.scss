@@ -1,0 +1,115 @@
+.sb-slider-20 {
+  position: relative;
+  min-height: 720px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: #d9d5ff;
+  color: #18152b;
+
+  &__orbit {
+    position: relative;
+    width: min(650px, 90vw);
+    aspect-ratio: 1;
+    border: 1px solid rgba(24,21,43,.12);
+    border-radius: 50%;
+  }
+
+  &__orbit::before,
+  &__orbit::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(24,21,43,.08);
+    border-radius: 50%;
+    inset: 12%;
+  }
+
+  &__orbit::after {
+    inset: 26%;
+  }
+
+  &__orbit button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(90px, 15vw, 145px);
+    aspect-ratio: 1;
+    padding: 0;
+    overflow: hidden;
+    border: 4px solid rgba(255,255,255,.65);
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--angle))
+      translateY(-255px)
+      rotate(calc(var(--angle) * -1));
+    transition:
+      transform .7s cubic-bezier(.2,.75,.2,1),
+      scale .5s ease;
+
+    &.is-active {
+      scale: 1.14;
+      border-color: #fff;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__center {
+    position: absolute;
+    z-index: 2;
+    width: min(320px, 72vw);
+    padding: 30px;
+    border-radius: 28px;
+    background: rgba(255,255,255,.3);
+    backdrop-filter: blur(18px);
+    text-align: center;
+
+    span {
+      color: #6d6890;
+      font-size: .58rem;
+      letter-spacing: .15em;
+    }
+
+    h2 {
+      margin: 10px 0 22px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: .9;
+      letter-spacing: -.06em;
+    }
+
+    button {
+      min-height: 42px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: 999px;
+      background: #18152b;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 620px) {
+    min-height: 610px;
+
+    &__orbit button {
+      transform:
+        translate(-50%, -50%)
+        rotate(var(--angle))
+        translateY(-205px)
+        rotate(calc(var(--angle) * -1));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__orbit button {
+      transition: none;
+    }
+  }
+}

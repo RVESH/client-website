@@ -1,0 +1,81 @@
+.sb-slider-16 {
+  padding: clamp(30px, 6vw, 80px) 20px;
+  background: #0f1115;
+  color: #fff;
+
+  &__intro {
+    width: min(1100px, 100%);
+    margin: 0 auto 35px;
+
+    span {
+      color: #7e8794;
+      font-size: .58rem;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      margin: 12px 0 0;
+      font-size: clamp(3rem, 7vw, 7rem);
+      line-height: .88;
+      letter-spacing: -.07em;
+    }
+  }
+
+  &__rail {
+    width: min(1100px, 100%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  button {
+    position: relative;
+    min-height: clamp(300px, 40vw, 540px);
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: #1a1d22;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .5;
+    transform: scale(1);
+    transition: transform .7s ease, opacity .5s ease;
+  }
+
+  button:hover img,
+  button:focus-visible img,
+  button.is-active img {
+    transform: scale(1.07);
+    opacity: 1;
+  }
+
+  button > span {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    color: #fff;
+    font-size: .6rem;
+  }
+
+  @media (max-width: 700px) {
+    &__rail {
+      grid-template-columns: 1fr;
+    }
+
+    button {
+      min-height: 60vw;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    img {
+      transition: none;
+    }
+  }
+}

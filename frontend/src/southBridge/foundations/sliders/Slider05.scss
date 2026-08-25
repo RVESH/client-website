@@ -1,0 +1,83 @@
+.sb-slider-05 {
+  padding: clamp(30px, 6vw, 80px) 20px;
+  overflow: hidden;
+  background: #f2f3f0;
+  color: #1b211d;
+
+  &__track {
+    width: min(1180px, 100%);
+    margin: auto;
+    min-height: 520px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__card {
+    position: absolute;
+    width: min(340px, 78vw);
+    overflow: hidden;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+    transform: translateX(70px) scale(.82);
+    opacity: .45;
+    pointer-events: none;
+    transition:
+      transform 500ms ease,
+      opacity 500ms ease;
+
+    &:nth-child(1) {
+      transform: translateX(-120px) scale(.86);
+    }
+
+    &.is-active {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+      z-index: 2;
+      pointer-events: auto;
+    }
+
+    img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    > div {
+      padding: 18px;
+
+      span {
+        color: #7f8a81;
+        font-size: .6rem;
+      }
+
+      h3 {
+        margin: 8px 0 6px;
+        font-size: 1.2rem;
+      }
+
+      p {
+        margin: 0;
+        color: #788177;
+        font-size: .75rem;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid #1b211d;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+}

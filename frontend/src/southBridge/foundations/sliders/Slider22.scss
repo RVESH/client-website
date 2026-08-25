@@ -1,0 +1,55 @@
+.sb-slider-22 {
+  overflow: hidden;
+  padding: 26px 0;
+  background: #f1f0ed;
+  color: #222;
+
+  &__track {
+    width: max-content;
+    display: flex;
+    animation: sbSlider22Move 24s linear infinite;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+
+    > div {
+      min-width: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      span {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        font-size: .7rem;
+      }
+
+      strong {
+        font-size: .72rem;
+        letter-spacing: .12em;
+      }
+    }
+  }
+}
+
+@keyframes sbSlider22Move {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-slider-22__track {
+    animation: none;
+  }
+}

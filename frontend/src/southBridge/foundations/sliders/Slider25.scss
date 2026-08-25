@@ -1,0 +1,109 @@
+.sb-slider-25 {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  min-height: 700px;
+  overflow: hidden;
+  background: #ebe9e3;
+  color: #191a19;
+
+  &__copy {
+    padding: clamp(30px, 7vw, 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    > span {
+      color: #8a8277;
+      font-size: .58rem;
+      letter-spacing: .15em;
+    }
+
+    h2 {
+      margin: 15px 0 12px;
+      font-size: clamp(3.2rem, 6vw, 6.8rem);
+      line-height: .85;
+      letter-spacing: -.075em;
+    }
+
+    p {
+      max-width: 380px;
+      color: #737067;
+      font-size: .8rem;
+      line-height: 1.75;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 28px;
+
+    button {
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(25,26,25,.2);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      transition: transform .2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &__product {
+    position: relative;
+    padding: clamp(20px, 6vw, 80px);
+    display: grid;
+    place-items: center;
+    background: #dedbd4;
+  }
+
+  &__product-image {
+    width: min(540px, 100%);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #d0ccc4;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 900ms ease;
+    }
+
+    &:hover img {
+      transform: scale(1.045);
+    }
+  }
+
+  &__index {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    color: #716d65;
+    font-size: .62rem;
+  }
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+
+    &__copy {
+      min-height: 390px;
+      padding: 30px 20px;
+    }
+
+    &__product {
+      min-height: 500px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__product-image img,
+    &__actions button {
+      transition: none;
+    }
+  }
+}

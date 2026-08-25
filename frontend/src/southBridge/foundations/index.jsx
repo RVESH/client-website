@@ -17,3 +17,6 @@ export { default as Features }   from "./features";
 export {default as Process }     from "./process";
 export {default as Modal }       from "./modals";
 export { default as Preloader }  from "./preloaders";
+export { default as Slider }     from "./sliders";
+
+

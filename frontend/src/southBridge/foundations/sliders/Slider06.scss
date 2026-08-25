@@ -1,0 +1,62 @@
+.sb-slider-06 {
+  padding: 20px 0;
+
+  &__rail {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 0 20px 18px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    article {
+      flex: 0 0 clamp(230px, 29vw, 390px);
+      scroll-snap-align: start;
+    }
+  }
+
+  &__image {
+    aspect-ratio: 1 / 1.08;
+    overflow: hidden;
+    background: #eee;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__meta {
+    padding: 14px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    h3 {
+      margin: 0;
+      font-size: .9rem;
+    }
+
+    span {
+      color: #737373;
+      font-size: .72rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    &__rail {
+      padding-inline: 14px;
+    }
+
+    &__rail article {
+      flex-basis: 78vw;
+    }
+  }
+}
