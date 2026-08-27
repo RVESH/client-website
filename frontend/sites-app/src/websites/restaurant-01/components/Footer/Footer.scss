@@ -1,0 +1,122 @@
+.sb-footer-restaurant {
+  width: 100%;
+  background: #171717;
+  color: #f3f0e9;
+}
+
+.sb-footer-restaurant__inner {
+  width: 94%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 75px 0 25px;
+}
+
+.sb-footer-restaurant__brand {
+  margin-bottom: 40px;
+}
+
+.sb-footer-restaurant__brand a {
+  display: inline-block;
+  color: #f3f0e9;
+  text-decoration: none;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.sb-footer-restaurant__brand p {
+  max-width: 290px;
+  margin: 20px 0 0;
+  color: rgba(243, 240, 233, 0.55);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.sb-footer-restaurant__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-bottom: 45px;
+}
+
+.sb-footer-restaurant__nav a {
+  color: rgba(243, 240, 233, 0.8);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.sb-footer-restaurant__nav a:hover {
+  opacity: 0.55;
+}
+
+.sb-footer-restaurant__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 28px;
+  padding-bottom: 50px;
+  border-top: 1px solid rgba(243, 240, 233, 0.12);
+}
+
+.sb-footer-restaurant__contact > span {
+  margin-bottom: 5px;
+  color: rgba(243, 240, 233, 0.38);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sb-footer-restaurant__contact address {
+  margin: 0;
+  color: rgba(243, 240, 233, 0.8);
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.sb-footer-restaurant__contact a {
+  width: max-content;
+  color: rgba(243, 240, 233, 0.8);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.sb-footer-restaurant__bottom {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(243, 240, 233, 0.12);
+  color: rgba(243, 240, 233, 0.4);
+  font-size: 9px;
+}
+
+@media (max-width: 760px) {
+  .sb-footer-restaurant__inner {
+    width: 94%;
+    padding-top: 55px;
+  }
+
+  .sb-footer-restaurant__brand a {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sb-footer-restaurant__inner {
+    width: 92%;
+  }
+
+  .sb-footer-restaurant__nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sb-footer-restaurant__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

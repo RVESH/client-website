@@ -1,0 +1,35 @@
+/*
+ * RESTAURANT-01 GLOBAL SHELL
+ */
+
+.restaurant-site {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow-x: clip;
+
+  background: #f7f5ef;
+  color: #171717;
+}
+
+.restaurant-site__main {
+  width: 100%;
+  min-height: 1px;
+}
+
+/* Prevent accidental horizontal overflow
+   from individual foundations */
+
+.restaurant-site img {
+  display: block;
+  max-width: 100%;
+}
+
+.restaurant-site button,
+.restaurant-site input,
+.restaurant-site select,
+.restaurant-site textarea {
+  font: inherit;
+}
