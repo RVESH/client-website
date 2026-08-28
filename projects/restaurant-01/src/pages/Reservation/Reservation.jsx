@@ -10,36 +10,42 @@ const MENU_ITEMS = [
     name: "Smoked Tomato",
     description: "Olive, basil, sourdough",
     price: 420,
+    image: "/images/food-01.jpg",
   },
   {
     id: "charred-vegetables",
     name: "Charred Vegetables",
     description: "Sesame, lemon, herbs",
     price: 460,
+    image: "/images/food-02.jpg",
   },
   {
     id: "handmade-pasta",
     name: "Handmade Pasta",
     description: "Seasonal sauce, aged cheese",
     price: 680,
+    image: "/images/food-03.jpg",
   },
   {
     id: "open-fire-fish",
     name: "Open-Fire Fish",
     description: "Greens, brown butter",
     price: 950,
+    image: "/images/food-04.jpg",
   },
   {
     id: "dark-chocolate",
     name: "Dark Chocolate",
     description: "Sea salt, olive oil",
     price: 380,
+    image: "/images/food-05.jpg",
   },
 ];
 
+
 const INITIAL_QUANTITIES = MENU_ITEMS.reduce(
   (result, item) => {
-    result[item.id] = 1;
+    result[item.id] = 0;
     return result;
   },
   {}
@@ -189,6 +195,24 @@ function Reservation() {
 
       <section className="reservation section">
         <div className="page-shell">
+
+    {/* Reservation image */}
+    <div className="reservation__visual">
+      <img
+        src="/images/reservation.jpg"
+        alt="LUMA restaurant table"
+      />
+
+      <div className="reservation__visual-overlay">
+        <span>YOUR TABLE AWAITS</span>
+        <strong>LUMA</strong>
+      </div>
+    </div>
+
+ 
+
+
+
 
           <form
             className="reservation__form"
@@ -449,7 +473,13 @@ function Reservation() {
                           : "reservation__menu-item"
                       }
                     >
-
+<div className="reservation__menu-image">
+  <img
+    src={item.image}
+    alt={item.name}
+    loading="lazy"
+  />
+</div>
                       <div className="reservation__menu-info">
 
                         <h3>

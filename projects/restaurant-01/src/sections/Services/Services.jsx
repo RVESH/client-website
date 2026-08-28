@@ -239,6 +239,7 @@ function Services() {
                       dish.id === selectedDish
                   );
 
+                  
                 if (!item) return;
 
                 handleDishOrder(item);

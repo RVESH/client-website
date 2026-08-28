@@ -1,36 +1,29 @@
+import { NavLink } from "react-router-dom";
+
 import "./CTA.scss";
 
-function CTA({
-  eyebrow = "READY WHEN YOU ARE",
-  title = "Let's build something worth remembering.",
-  description =
-    "Tell us what you are working on and we will help turn the idea into a clear next step.",
-  primaryLabel = "Start a Conversation",
-  primaryHref = "#contact",
-  secondaryLabel = "View Our Work",
-  secondaryHref = "#work",
-}) {
+function CTA() {
   return (
-    <section className="sb-cta-01" aria-labelledby="cta-01-title">
-      <div className="sb-cta-01__container">
-        <div className="sb-cta-01__copy">
-          <span>{eyebrow}</span>
+    <section className="cta section">
+      <div className="page-shell cta__inner">
+        <span className="eyebrow">
+          YOUR TABLE AWAITS
+        </span>
 
-          <h2 id="cta-01-title">{title}</h2>
+        <h2>
+          Make an evening
+          <br />
+          of it.
+        </h2>
 
-          <p>{description}</p>
-        </div>
+        <p>
+          Seasonal food, warm service and a table
+          worth staying at a little longer.
+        </p>
 
-        <div className="sb-cta-01__actions">
-          <a href={primaryHref} className="sb-cta-01__primary">
-            {primaryLabel}
-            <b>↗</b>
-          </a>
-
-          <a href={secondaryHref} className="sb-cta-01__secondary">
-            {secondaryLabel}
-          </a>
-        </div>
+        <NavLink to="/reservation">
+          Reserve a Table ↗
+        </NavLink>
       </div>
     </section>
   );

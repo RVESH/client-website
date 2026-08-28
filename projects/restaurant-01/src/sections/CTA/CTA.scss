@@ -7,7 +7,8 @@
 }
 
 .cta h2 {
-  margin: 0;
+  max-width: 900px;
+  margin: 0 auto;
 
   font-family:
     Georgia,
@@ -20,9 +21,19 @@
   letter-spacing: -0.075em;
 }
 
+.cta p {
+  max-width: 520px;
+  margin: 28px auto 0;
+
+  color: rgba(25, 25, 23, 0.62);
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
 .cta a {
   display: inline-flex;
-  margin-top: 40px;
+  margin-top: 35px;
   padding: 17px 23px;
 
   background: var(--dark);

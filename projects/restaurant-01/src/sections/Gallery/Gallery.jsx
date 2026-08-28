@@ -1,45 +1,8 @@
 import { useMemo, useState } from "react";
 
-import "./Gallery.scss";
+import { restaurantImages } from "../../data/images";
 
-const galleryItems = [
-  {
-    src: "/images/gallery-01.webp",
-    alt: "LUMA dining room",
-  },
-  {
-    src: "/images/gallery-02.webp",
-    alt: "LUMA restaurant table",
-  },
-  {
-    src: "/images/gallery-03.webp",
-    alt: "Seasonal dish at LUMA",
-  },
-  {
-    src: "/images/gallery-04.webp",
-    alt: "LUMA evening dining",
-  },
-  {
-    src: "/images/gallery-05.webp",
-    alt: "LUMA signature dish",
-  },
-  {
-    src: "/images/gallery-06.webp",
-    alt: "LUMA interior",
-  },
-  {
-    src: "/images/gallery-07.webp",
-    alt: "LUMA kitchen",
-  },
-  {
-    src: "/images/gallery-08.webp",
-    alt: "LUMA dessert",
-  },
-  {
-    src: "/images/gallery-09.webp",
-    alt: "LUMA private dining",
-  },
-];
+import "./Gallery.scss";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -47,7 +10,8 @@ function Gallery() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(
-    galleryItems.length / ITEMS_PER_PAGE
+    restaurantImages.gallery.length /
+      ITEMS_PER_PAGE
   );
 
   const currentItems = useMemo(() => {
@@ -55,27 +19,27 @@ function Gallery() {
       (currentPage - 1) *
       ITEMS_PER_PAGE;
 
-    return galleryItems.slice(
+    return restaurantImages.gallery.slice(
       start,
       start + ITEMS_PER_PAGE
     );
   }, [currentPage]);
 
-  const goToPage = (page) => {
-    const safePage = Math.min(
+  const changePage = (page) => {
+    const nextPage = Math.min(
       Math.max(page, 1),
       totalPages
     );
 
-    setCurrentPage(safePage);
+    setCurrentPage(nextPage);
 
-    window.requestAnimationFrame(() => {
-      document
-        .querySelector(".gallery")
-        ?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+    window.scrollTo({
+      top:
+        document.querySelector(".gallery")
+          ?.getBoundingClientRect().top +
+        window.scrollY -
+        80,
+      behavior: "smooth",
     });
   };
 
@@ -93,9 +57,8 @@ function Gallery() {
           </h2>
 
           <p className="section-copy">
-            A changing collection of the room,
-            the kitchen and the dishes that define
-            the LUMA experience.
+            A visual collection of our food,
+            atmosphere and dining experience.
           </p>
         </div>
 
@@ -112,24 +75,23 @@ function Gallery() {
         </div>
 
         {totalPages > 1 && (
-          <div
-            className="gallery__pagination"
-            aria-label="Gallery pagination"
-          >
+          <div className="gallery__pagination">
+
             <button
               type="button"
               onClick={() =>
-                goToPage(currentPage - 1)
+                changePage(currentPage - 1)
               }
               disabled={currentPage === 1}
-              aria-label="Previous gallery page"
             >
               ←
             </button>
 
             <div className="gallery__pages">
               {Array.from(
-                { length: totalPages },
+                {
+                  length: totalPages,
+                },
                 (_, index) => {
                   const page = index + 1;
 
@@ -143,15 +105,13 @@ function Gallery() {
                           : "gallery__page"
                       }
                       onClick={() =>
-                        goToPage(page)
-                      }
-                      aria-current={
-                        page === currentPage
-                          ? "page"
-                          : undefined
+                        changePage(page)
                       }
                     >
-                      {String(page).padStart(2, "0")}
+                      {String(page).padStart(
+                        2,
+                        "0"
+                      )}
                     </button>
                   );
                 }
@@ -161,15 +121,15 @@ function Gallery() {
             <button
               type="button"
               onClick={() =>
-                goToPage(currentPage + 1)
+                changePage(currentPage + 1)
               }
               disabled={
                 currentPage === totalPages
               }
-              aria-label="Next gallery page"
             >
               →
             </button>
+
           </div>
         )}
 

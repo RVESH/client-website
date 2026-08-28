@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 
+import { restaurantImages } from "../../data/images";
+
 import "./Hero.scss";
 
 function Hero() {
@@ -7,15 +9,17 @@ function Hero() {
     <section className="hero">
       <div className="hero__image">
         <img
-          src="/images/restaurant-hero.webp"
-          alt="LUMA restaurant dining room"
+          src={restaurantImages.hero}
+          alt="LUMA fine dining"
         />
       </div>
 
       <div className="hero__overlay" />
 
       <div className="hero__content page-shell">
-        <span className="eyebrow">NEW DELHI / EST. 2026</span>
+        <span className="eyebrow">
+          NEW DELHI / EST. 2026
+        </span>
 
         <h1>
           Come for
@@ -24,8 +28,9 @@ function Hero() {
         </h1>
 
         <p>
-          Seasonal ingredients, open-fire cooking and a room
-          designed for lingering a little longer.
+          Seasonal ingredients, open-fire cooking
+          and a room designed for lingering a
+          little longer.
         </p>
 
         <div className="hero__actions">
