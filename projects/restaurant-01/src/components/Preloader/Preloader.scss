@@ -1,0 +1,53 @@
+.restaurant-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 22px;
+
+  background: #191917;
+  color: #f5f1e8;
+}
+
+.restaurant-preloader__top,
+.restaurant-preloader__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+
+.restaurant-preloader__top span:first-child {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-size: 26px;
+  letter-spacing: -0.04em;
+}
+
+.restaurant-preloader__line {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.restaurant-preloader__line span {
+  display: block;
+  height: 100%;
+  background: #f5f1e8;
+  transition: width 220ms ease;
+}
+
+@media (max-width: 560px) {
+  .restaurant-preloader__bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

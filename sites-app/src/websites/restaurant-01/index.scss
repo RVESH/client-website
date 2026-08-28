@@ -1,0 +1,26 @@
+.restaurant-site {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: clip;
+  background: #f7f5ef;
+  color: #171717;
+}
+
+.restaurant-site__main {
+  width: 100%;
+  min-height: 1px;
+}
+
+.restaurant-page-loading {
+  min-height: 60vh;
+
+  display: grid;
+  place-items: center;
+
+  background: #f7f5ef;
+  color: #171717;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

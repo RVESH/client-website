@@ -1,0 +1,79 @@
+/* =========================================================
+   09 — AGENCY
+========================================================= */
+
+.sb-process--09 {
+  padding: 100px 0;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(120,97,247,.14), transparent 28%),
+    #efedff;
+  color: #29234c;
+
+  &__intro {
+    max-width: 760px;
+    margin-bottom: 55px;
+
+    span {
+      color: #7d6fc0;
+      font-size: .59rem;
+      letter-spacing: .16em;
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 13px 0 0;
+      font-size: clamp(3rem, 5vw, 5.2rem);
+      line-height: .92;
+      letter-spacing: -.075em;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 13px;
+  }
+
+  article {
+    min-height: 300px;
+    padding: 25px;
+    border: 1px solid #dad4ef;
+    border-radius: 18px;
+    background: rgba(255,255,255,.72);
+
+    > span {
+      color: #9790b0;
+      font-size: .58rem;
+    }
+
+    h3 {
+      margin-top: 75px;
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+    }
+
+    p {
+      margin: 0;
+      color: #756e90;
+      font-size: .74rem;
+      line-height: 1.7;
+    }
+  }
+
+  &__arrow {
+    margin-top: 28px;
+    color: #7567c1;
+  }
+
+  @media (max-width: 850px) {
+    &__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 500px) {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

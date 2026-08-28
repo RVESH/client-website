@@ -1,0 +1,154 @@
+.gallery {
+  background: var(--bg);
+}
+
+.gallery__heading {
+  max-width: 850px;
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 60px;
+}
+
+.gallery__grid figure {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+
+  overflow: hidden;
+
+  background: #ddd8cc;
+}
+
+.gallery__grid figure:nth-child(1) {
+  grid-column: span 2;
+  aspect-ratio: 2 / 1;
+}
+
+.gallery__grid img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 500ms ease,
+    opacity 250ms ease;
+}
+
+.gallery__grid figure:hover img {
+  transform: scale(1.035);
+}
+
+.gallery__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+
+  margin-top: 35px;
+  padding-top: 20px;
+
+  border-top: 1px solid var(--line);
+}
+
+.gallery__pagination > button {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+
+  cursor: pointer;
+  font-size: 15px;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.gallery__pagination > button:hover:not(:disabled) {
+  background: var(--dark);
+  color: var(--light);
+}
+
+.gallery__pagination > button:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.gallery__pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.gallery__page {
+  min-width: 42px;
+  height: 34px;
+
+  border: 0;
+  background: transparent;
+
+  color: var(--muted);
+
+  cursor: pointer;
+
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.gallery__page:hover {
+  color: var(--text);
+}
+
+.gallery__page--active {
+  background: var(--dark);
+  color: var(--light);
+}
+
+@media (max-width: 760px) {
+  .gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery__grid figure:nth-child(1) {
+    grid-column: span 2;
+    aspect-ratio: 2 / 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery__grid figure:nth-child(1) {
+    grid-column: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .gallery__pagination {
+    gap: 12px;
+  }
+
+  .gallery__pages {
+    overflow-x: auto;
+    justify-content: flex-start;
+    max-width: calc(100% - 110px);
+    scrollbar-width: none;
+  }
+
+  .gallery__pages::-webkit-scrollbar {
+    display: none;
+  }
+}

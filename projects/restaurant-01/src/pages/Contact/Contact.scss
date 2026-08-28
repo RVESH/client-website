@@ -1,0 +1,43 @@
+.contact-page {
+  background: var(--surface);
+}
+
+.contact-page__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.contact-page address {
+  margin: 0;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-size: clamp(30px, 4vw, 52px);
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.contact-page__grid > div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-page__grid a {
+  margin-bottom: 12px;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-size: 28px;
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  .contact-page__grid {
+    grid-template-columns: 1fr;
+  }
+}
