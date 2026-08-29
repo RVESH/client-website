@@ -1,0 +1,24 @@
+.about-store {
+  background: var(--color-surface);
+}
+
+.about-store__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(45px, 8vw, 110px);
+}
+
+.about-store__content {
+  align-self: end;
+}
+
+.about-store__content .section-copy + .section-copy {
+  margin-top: 20px;
+}
+
+@media (max-width: 760px) {
+  .about-store__grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
