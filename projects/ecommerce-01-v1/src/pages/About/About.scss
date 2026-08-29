@@ -1,0 +1,34 @@
+.about-page {
+  background: var(--color-bg);
+}
+
+.about-intro {
+  background: var(--color-surface);
+}
+
+.about-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-intro__image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #d7d1c5;
+}
+
+.about-intro__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 760px) {
+  .about-intro__grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}

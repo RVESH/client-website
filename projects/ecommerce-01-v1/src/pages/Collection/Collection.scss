@@ -1,0 +1,142 @@
+.shop-page__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.shop-page__heading .store-search {
+  width: min(370px, 100%);
+  flex: 0 0 370px;
+}
+
+.shop-page__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin-top: 55px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.shop-page__filters {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.shop-page__filters::-webkit-scrollbar {
+  display: none;
+}
+
+.shop-page__filters button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: inherit;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.shop-page__filters button.active {
+  background: var(--color-dark);
+  color: var(--color-light);
+}
+
+.shop-page__sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.shop-page__sort span {
+  color: var(--color-muted);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+}
+
+.shop-page__sort select {
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  outline: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 10px;
+}
+
+.shop-page__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 55px;
+  color: var(--color-muted);
+  font-size: 10px;
+}
+
+.shop-page__meta button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-decoration: underline;
+  font-size: 10px;
+}
+
+.shop-page__grid {
+  margin-top: 10px;
+}
+
+.shop-page__empty {
+  min-height: 40vh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.shop-page__empty h2 {
+  margin: 0;
+  font: 400 clamp(40px, 5vw, 64px)/.95 Georgia, "Times New Roman", serif;
+  letter-spacing: -0.05em;
+}
+
+.shop-page__empty p {
+  margin: 15px 0 0;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.shop-page__empty button {
+  min-height: 48px;
+  margin-top: 25px;
+  padding: 0 18px;
+  border: 0;
+  background: var(--color-dark);
+  color: var(--color-light);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+@media (max-width: 780px) {
+  .shop-page__heading {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .shop-page__heading .store-search {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .shop-page__toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .shop-page__sort {
+    padding-bottom: 12px;
+  }
+}
