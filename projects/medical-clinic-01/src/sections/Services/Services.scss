@@ -1,0 +1,35 @@
+.clinic-services {
+  background: var(--blue-soft);
+}
+
+.clinic-services__heading {
+  max-width: 700px;
+}
+
+.clinic-services__heading h2 {
+  margin-top: 10px;
+}
+
+.clinic-services__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 34px;
+}
+
+@media (max-width: 800px) {
+  .clinic-services__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .clinic-services__grid {
+    grid-template-columns: 1fr;
+  }
+}

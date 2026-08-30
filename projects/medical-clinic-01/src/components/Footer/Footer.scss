@@ -1,0 +1,97 @@
+.clinic-footer {
+  padding: 48px 0 18px;
+
+  background: var(--ink);
+  color: var(--white);
+}
+
+.clinic-footer__top {
+  display: grid;
+
+  grid-template-columns:
+    1.4fr .7fr .9fr;
+
+  gap: 40px;
+
+  padding-bottom: 38px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.13);
+}
+
+.clinic-footer__brand {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 31px;
+
+  text-decoration: none;
+}
+
+.clinic-footer__top p {
+  max-width: 250px;
+
+  margin: 10px 0 0;
+
+  color: rgba(255,255,255,.53);
+
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.clinic-footer__top > div > span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: rgba(255,255,255,.35);
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: .14em;
+}
+
+.clinic-footer nav {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.clinic-footer nav a,
+.clinic-footer__top > div:last-child a {
+  color: rgba(255,255,255,.78);
+
+  font-size: 9px;
+
+  text-decoration: none;
+}
+
+.clinic-footer__bottom {
+  padding-top: 15px;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: rgba(255,255,255,.35);
+
+  font-size: 7px;
+}
+
+@media (max-width: 700px) {
+  .clinic-footer__top {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .clinic-footer__top > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .clinic-footer__bottom {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

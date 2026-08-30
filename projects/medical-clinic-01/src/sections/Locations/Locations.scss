@@ -1,0 +1,69 @@
+.clinic-locations {
+  background: var(--paper);
+}
+
+.clinic-locations__heading {
+  margin-bottom: 30px;
+}
+
+.clinic-locations__heading h2 {
+  margin-top: 10px;
+}
+
+.clinic-locations__layout {
+  display: grid;
+
+  grid-template-columns:
+    1.35fr .65fr;
+
+  gap: 14px;
+}
+
+.clinic-locations__cards {
+  display: grid;
+  gap: 10px;
+
+  align-content: start;
+}
+
+.clinic-locations__empty {
+  padding: 25px;
+
+  border: 1px dashed var(--line);
+
+  background: var(--sand);
+}
+
+.clinic-locations__empty strong {
+  display: block;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.clinic-locations__empty p {
+  margin: 7px 0 0;
+
+  color: var(--muted);
+
+  font-size: 10px;
+}
+
+@media (max-width: 800px) {
+  .clinic-locations__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .clinic-locations__map {
+    order: 1;
+  }
+
+  .clinic-locations__cards {
+    order: 2;
+  }
+}

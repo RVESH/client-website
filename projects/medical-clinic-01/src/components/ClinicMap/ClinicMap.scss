@@ -1,0 +1,72 @@
+.clinic-map {
+  width: 100%;
+  min-height: 400px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+
+  background: var(--paper);
+}
+
+.clinic-map__canvas {
+  width: 100%;
+  min-height: 400px;
+}
+
+@media (max-width: 700px) {
+  .clinic-map,
+  .clinic-map__canvas {
+    min-height: 320px;
+  }
+}
+.clinic-map--empty {
+  display: grid;
+  place-items: center;
+
+  padding: 30px;
+
+  background: var(--sand);
+}
+
+.clinic-map--empty div {
+  max-width: 420px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  text-align: center;
+}
+
+.clinic-map--empty strong {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.clinic-map--empty span {
+  color: var(--muted);
+
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.leaflet-popup-content {
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.leaflet-popup-content strong {
+  font-size: 12px;
+}

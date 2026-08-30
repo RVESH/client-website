@@ -1,0 +1,100 @@
+.clinic-contact {
+  background: var(--white);
+}
+
+.clinic-contact__image {
+  width: 100%;
+  height: 360px;
+
+  overflow: hidden;
+
+  background: var(--blue-soft);
+}
+
+.clinic-contact__image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.clinic-contact__intro {
+  max-width: 760px;
+
+  padding: 48px 0 34px;
+}
+
+.clinic-contact__intro h1 {
+  margin: 10px 0 0;
+}
+
+.clinic-contact__details {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 1px;
+
+  margin-bottom: 20px;
+
+  background: var(--line);
+}
+
+.clinic-contact__details > div {
+  min-height: 145px;
+
+  padding: 20px;
+
+  background: var(--white);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.clinic-contact__details svg {
+  margin-bottom: 24px;
+
+  color: var(--teal);
+}
+
+.clinic-contact__details span {
+  margin-bottom: 7px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: .13em;
+}
+
+.clinic-contact__details p,
+.clinic-contact__details a {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 22px;
+  line-height: 1.18;
+
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  .clinic-contact__image {
+    height: 280px;
+  }
+
+  .clinic-contact__intro {
+    padding: 38px 0 28px;
+  }
+
+  .clinic-contact__details {
+    grid-template-columns: 1fr;
+  }
+}

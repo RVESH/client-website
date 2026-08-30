@@ -1,0 +1,73 @@
+.clinic-cta {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.clinic-cta .eyebrow {
+  color: rgba(255,255,255,.62);
+}
+
+.clinic-cta__inner {
+  display: grid;
+
+  grid-template-columns:
+    1fr 230px;
+
+  gap: 50px;
+
+  align-items: end;
+}
+
+.clinic-cta h2 {
+  margin-top: 10px;
+}
+
+.clinic-cta p {
+  max-width: 390px;
+
+  margin: 16px 0 0;
+
+  color: rgba(255,255,255,.68);
+
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.clinic-cta__actions {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.clinic-cta__actions a {
+  min-height: 45px;
+
+  padding: 0 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 1px solid
+    rgba(255,255,255,.4);
+
+  color: var(--white);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.clinic-cta__actions a:first-child {
+  background: var(--white);
+  color: var(--teal);
+}
+
+@media (max-width: 700px) {
+  .clinic-cta__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

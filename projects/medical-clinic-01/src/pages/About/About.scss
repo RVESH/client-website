@@ -1,0 +1,59 @@
+.clinic-about {
+  background: var(--white);
+}
+
+.clinic-about__intro {
+  max-width: 780px;
+
+  padding-bottom: 38px;
+}
+
+.clinic-about__intro h1 {
+  margin: 10px 0 0;
+}
+
+.clinic-about__grid {
+  display: grid;
+
+  grid-template-columns:
+    1.15fr .85fr;
+
+  gap: 42px;
+
+  align-items: center;
+}
+
+.clinic-about__image {
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+
+  background: var(--blue-soft);
+}
+
+.clinic-about__image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.clinic-about__copy {
+  max-width: 430px;
+}
+
+.clinic-about__copy p {
+  margin: 0 0 18px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+@media (max-width: 760px) {
+  .clinic-about__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

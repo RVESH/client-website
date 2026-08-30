@@ -1,24 +1,24 @@
 export const services = [
   {
-    id: "general-care",
+    id: "general",
     name: "General Medicine",
     short:
-      "Everyday healthcare, diagnosis and preventive guidance.",
+      "Everyday diagnosis, treatment and ongoing medical care.",
   },
   {
-    id: "family-care",
+    id: "family",
     name: "Family Health",
     short:
-      "Continuous care for individuals and families.",
+      "Consistent care for children, adults and families.",
   },
   {
-    id: "preventive-care",
+    id: "preventive",
     name: "Preventive Care",
     short:
-      "Screenings, health checks and early risk detection.",
+      "Health checks, screening and early risk assessment.",
   },
   {
-    id: "specialist-care",
+    id: "specialist",
     name: "Specialist Care",
     short:
       "Coordinated access to experienced medical specialists.",
@@ -27,7 +27,7 @@ export const services = [
     id: "diagnostics",
     name: "Diagnostics",
     short:
-      "Essential tests and reports to support informed decisions.",
+      "Essential investigations to support informed care.",
   },
   {
     id: "wellness",

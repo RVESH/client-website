@@ -1,0 +1,853 @@
+Medical Clinic 01 — V1 Production & Client Guide
+
+V1 scope
+
+This is a static showcase website with exactly five pages:
+
+Home
+
+Services
+
+Doctors
+
+About
+
+Contact
+
+It does not include admin, database, patient login, payments, checkout, online booking, or inventory.
+
+Client-editable content
+
+Normally the client/developer only needs these areas:
+
+src/data/site.js
+src/data/locations.js
+src/data/services.js
+src/data/doctors.js
+src/data/testimonials.js
+src/data/images.js
+public/images/
+
+Business details
+
+Edit src/data/site.js for:
+
+clinic/brand name
+
+phone
+
+WhatsApp
+
+email
+
+main address
+
+opening hours
+
+emergency number
+
+social links
+
+Clinic locations
+
+Edit src/data/locations.js.
+
+The same code supports:
+
+export const locations = [];
+
+0 clinics → clean empty-state map section.
+
+export const locations = [clinic1];
+
+1 clinic → one marker and one clinic card.
+
+export const locations = [clinic1, clinic2, clinic3];
+
+Multiple clinics → all markers/cards are rendered automatically.
+
+Each location should contain:
+
+{
+  id: "central",
+  name: "Clinic Name",
+  address: "Full address",
+  phone: "+91 ...",
+  hours: "Mon – Sat · 8:00 AM – 8:00 PM",
+  latitude: 28.6139,
+  longitude: 77.2090,
+  mapUrl: "https://www.google.com/maps/..."
+}
+
+Use the clinic's real latitude/longitude. The map uses the coordinates for markers; mapUrl is used for directions.
+
+Images
+
+Physical images belong only in:
+
+public/images/
+
+The registry is:
+
+src/data/images.js
+
+Do not save the same photo twice under different filenames.
+
+One physical image can be reused in:
+
+Hero
+
+About
+
+Contact
+
+Doctor/clinic sections
+
+Other sections where appropriate
+
+Example:
+
+about: "/images/clinic01.jpg"
+
+and reuse that same file elsewhere instead of creating about01.jpg.
+
+WhatsApp
+
+Use international format without:
+
++
+
+spaces
+
+hyphens
+
+Example:
+
+whatsapp: "919876543210"
+
+Local setup on another computer
+
+Install Node.js first.
+
+Then from the project root:
+
+npm install
+
+Start development:
+
+npm run dev
+
+Build production files:
+
+npm run build
+
+Preview the production build:
+
+npm run preview
+
+vite preview is only for local preview, not as the production server.
+
+Final production workflow
+
+Use:
+
+Edit content
+    ↓
+npm run dev
+    ↓
+Check desktop + mobile
+    ↓
+npm run lint
+    ↓
+npm run build
+    ↓
+Deploy fresh dist/
+
+Vite's production build outputs the deployable static site in dist/. Use a real production host/CDN for the live domain.
+
+HTTPS
+
+Local HTTPS
+
+The project can use a manually created local certificate.
+
+Recommended files:
+
+.cert/
+  localhost-key.pem
+  localhost.pem
+
+The certificate files are local development secrets and should not be committed.
+
+Add .cert/ to .gitignore.
+
+A local self-signed certificate can still produce a browser warning. That is normal for an untrusted local certificate.
+
+Production HTTPS
+
+Production HTTPS is provided by the hosting/CDN/domain setup. Do not deploy the local self-signed certificate.
+
+Recommended production setup:
+
+Domain
+  ↓
+HTTPS/TLS
+  ↓
+CDN / WAF
+  ↓
+Static hosting
+  ↓
+dist/
+
+Error checks
+
+Build
+
+npm run build
+
+A clean build should finish with:
+
+✓ built in ...
+
+Lint
+
+npm run lint
+
+Browser errors
+
+Open:
+
+F12 → Console
+
+Ignore browser-extension errors that clearly come from extension files such as:
+
+contentscript.js
+ObjectMultiplex
+app-init-liveness
+background-liveness
+
+Those are not evidence of an application error unless the same issue appears in the site's own source/runtime stack.
+
+Image check
+
+find public/images -maxdepth 1 -type f | sort
+
+Then compare every physical image filename with src/data/images.js.
+
+A successful Vite build does not guarantee that a referenced public image actually exists, so runtime image checking is still required.
+
+Production safety
+
+The frontend is static, so do not expose the Vite development server as production.
+
+For production use:
+
+HTTPS/TLS
+
+CDN
+
+caching
+
+WAF/DDoS protection offered by the hosting provider
+
+appropriate hosting limits/rate controls
+
+These are deployment-layer protections, not React code protections.
+
+Client should not normally edit
+
+Do not casually edit:
+
+src/app/
+src/components/
+src/sections/
+src/styles/
+src/main.jsx
+src/index.scss
+vite.config.js
+package.json
+package-lock.json
+index.html
+
+These are implementation files.
+
+Final handover checklist
+
+[ ] npm install works
+[ ] npm run lint passes
+[ ] npm run build passes
+[ ] npm run preview checked
+[ ] Home checked
+[ ] Services checked
+[ ] Doctors checked
+[ ] About checked
+[ ] Contact checked
+[ ] Mobile checked
+[ ] Desktop checked
+[ ] Phone tested
+[ ] WhatsApp tested
+[ ] Email tested
+[ ] Google Maps tested
+[ ] 0-location state tested
+[ ] 1-location marker tested
+[ ] Multiple-location markers tested
+[ ] All images load
+[ ] No duplicate physical image files
+[ ] Fresh dist/ generated
+[ ] Production HTTPS configured by hosting/CDN
+
+Freeze rule
+
+After the final content and visual QA:
+
+git add .
+git commit -m "Finalize medical-clinic-01 V1"
+git push origin main
+
+Then verify:
+
+git status
+
+Expected:
+
+nothing to commit, working tree clean
+
+V1 should remain a simple static clinic showcase. Future admin/database/patient/booking/payment features belong to a separate V2.
+
+22. Recommended image sizes and formats
+
+Clients do not have to use one exact pixel size, but keeping consistent image proportions makes the website look correct.
+
+Recommended formats
+
+Preferred:
+
+.webp for most website images
+
+.jpg for photographs when WebP is not available
+
+.png only when transparency is required
+
+Avoid very large original camera files.
+
+Recommended image dimensions
+
+Hero / large clinic image
+
+Recommended:
+
+1800 × 1200 px
+
+Minimum:
+
+1400 × 900 px
+
+Doctor portraits
+
+Recommended:
+
+900 × 1100 px
+
+A portrait-oriented image works best.
+
+Clinic / interior images
+
+Recommended:
+
+1400 × 1000 px
+
+General content images
+
+Recommended:
+
+1200 × 900 px
+
+The website CSS controls the displayed size. The source image should therefore be reasonably large enough for desktop screens but not unnecessarily huge.
+
+Image composition guidance
+
+For hero images:
+
+keep the important subject away from extreme edges
+
+avoid text embedded inside the photo
+
+use good lighting
+
+prefer sharp, high-quality images
+
+For doctor photos:
+
+face should be clearly visible
+
+use consistent portrait style for all doctors
+
+avoid mixing very different crops
+
+For clinic photos:
+
+use clear, well-lit photographs
+
+show reception, consultation area, exterior or key facilities
+
+avoid confidential patient information in the frame
+
+Important
+
+Image dimensions do NOT replace responsive CSS.
+
+Do not change CSS just because a client uploads a different image ratio. First choose a suitable image and let the existing image container/object-fit rules handle presentation.
+
+23. Exact image folder structure
+
+All physical images should stay here:
+
+public/
+└── images/
+    ├── hero01.jpg
+    ├── doctor01.jpg
+    ├── doctor02.jpg
+    ├── doctor03.jpg
+    ├── clinic01.jpg
+    └── clinic02.jpg
+
+The central image registry is:
+
+src/data/images.js
+
+Example:
+
+export const images = {
+  hero: "/images/hero01.jpg",
+
+  doctors: {
+    arjun: "/images/doctor01.jpg",
+    isha: "/images/doctor02.jpg",
+    neel: "/images/doctor03.jpg",
+  },
+
+  clinic: {
+    exterior: "/images/clinic01.jpg",
+    interior: "/images/clinic02.jpg",
+  },
+
+  about: "/images/clinic01.jpg",
+  contact: "/images/clinic02.jpg",
+};
+
+24. Complete project structure
+
+The expected project structure is:
+
+medical-clinic-01/
+├── public/
+│   └── images/
+│       ├── hero01.jpg
+│       ├── doctor01.jpg
+│       ├── doctor02.jpg
+│       ├── doctor03.jpg
+│       ├── clinic01.jpg
+│       └── clinic02.jpg
+│
+├── src/
+│   ├── app/
+│   │   └── index.jsx
+│   │
+│   ├── components/
+│   │   ├── Button/
+│   │   │   ├── Button.jsx
+│   │   │   └── Button.scss
+│   │   ├── ClinicMap/
+│   │   │   ├── ClinicMap.jsx
+│   │   │   └── ClinicMap.scss
+│   │   ├── DoctorCard/
+│   │   │   ├── DoctorCard.jsx
+│   │   │   └── DoctorCard.scss
+│   │   ├── Footer/
+│   │   │   ├── Footer.jsx
+│   │   │   └── Footer.scss
+│   │   ├── Header/
+│   │   │   ├── Header.jsx
+│   │   │   └── Header.scss
+│   │   ├── LocationCard/
+│   │   │   ├── LocationCard.jsx
+│   │   │   └── LocationCard.scss
+│   │   └── ServiceCard/
+│   │       ├── ServiceCard.jsx
+│   │       └── ServiceCard.scss
+│   │
+│   ├── data/
+│   │   ├── doctors.js
+│   │   ├── images.js
+│   │   ├── locations.js
+│   │   ├── services.js
+│   │   ├── site.js
+│   │   └── testimonials.js
+│   │
+│   ├── pages/
+│   │   ├── About/
+│   │   │   ├── About.jsx
+│   │   │   └── About.scss
+│   │   ├── Contact/
+│   │   │   ├── Contact.jsx
+│   │   │   └── Contact.scss
+│   │   ├── Doctors/
+│   │   │   └── Doctors.jsx
+│   │   ├── Home/
+│   │   │   ├── Home.jsx
+│   │   │   └── Home.scss
+│   │   └── Services/
+│   │       └── Services.jsx
+│   │
+│   ├── sections/
+│   │   ├── CTA/
+│   │   │   ├── CTA.jsx
+│   │   │   └── CTA.scss
+│   │   ├── Doctors/
+│   │   │   ├── Doctors.jsx
+│   │   │   └── Doctors.scss
+│   │   ├── Hero/
+│   │   │   ├── Hero.jsx
+│   │   │   └── Hero.scss
+│   │   ├── Locations/
+│   │   │   ├── Locations.jsx
+│   │   │   └── Locations.scss
+│   │   ├── Services/
+│   │   │   ├── Services.jsx
+│   │   │   └── Services.scss
+│   │   ├── Stats/
+│   │   │   ├── Stats.jsx
+│   │   │   └── Stats.scss
+│   │   ├── Testimonials/
+│   │   │   ├── Testimonials.jsx
+│   │   │   └── Testimonials.scss
+│   │   └── WhyChooseUs/
+│   │       ├── WhyChooseUs.jsx
+│   │       └── WhyChooseUs.scss
+│   │
+│   ├── styles/
+│   │   ├── global.scss
+│   │   ├── mixins.scss
+│   │   ├── reset.scss
+│   │   └── variables.scss
+│   │
+│   ├── index.scss
+│   └── main.jsx
+│
+├── .gitignore
+├── index.html
+├── package.json
+├── package-lock.json
+└── vite.config.js
+
+25. Files the client should change for normal content updates
+
+Business
+
+src/data/site.js
+
+Clinics / map markers
+
+src/data/locations.js
+
+Doctors
+
+src/data/doctors.js
+
+Services
+
+src/data/services.js
+
+Testimonials
+
+src/data/testimonials.js
+
+Images
+
+public/images/
+src/data/images.js
+
+Everything else is normally developer-maintained.
+
+26. Adding a doctor
+
+Put the portrait in:
+
+public/images/
+
+Add the image reference to:
+
+src/data/images.js
+
+Add the doctor to:
+
+src/data/doctors.js
+
+Example:
+
+{
+  id: "dr-new-doctor",
+  name: "Dr. New Doctor",
+  specialty: "Cardiology",
+  experience: "12 years experience",
+  education: "MD, Cardiology",
+  image: images.doctors.newDoctor,
+}
+
+Do not create an additional copy of an existing image.
+
+27. Adding a clinic
+
+Add another object to:
+
+src/data/locations.js
+
+Required fields:
+
+id
+name
+address
+phone
+hours
+latitude
+longitude
+mapUrl
+
+The map will automatically receive another marker.
+
+No component rewrite is required for normal location additions.
+
+28. How to get latitude and longitude
+
+A practical method:
+
+Open Google Maps.
+
+Find the clinic.
+
+Right-click the exact location.
+
+Copy the displayed coordinates.
+
+Put them into latitude and longitude.
+
+Example:
+
+latitude: 28.6139,
+longitude: 77.2090,
+
+Use decimal coordinates.
+
+29. If the client has no clinic yet
+
+Keep:
+
+export const locations = [];
+
+The website should continue to work.
+
+The locations section shows an empty state rather than crashing.
+
+When the first clinic is ready, add one location object.
+
+30. If the client has multiple clinics
+
+Add multiple location objects.
+
+Example:
+
+export const locations = [
+  clinic1,
+  clinic2,
+  clinic3,
+];
+
+The UI should automatically render:
+
+all clinic cards
+
+all map markers
+
+directions links for each location
+
+31. Before replacing images
+
+Do not simply overwrite a file with a different photo while assuming it is the same asset.
+
+For a new photo:
+
+add one new physical file
+
+add one registry entry
+
+update the relevant data reference
+
+This keeps image management predictable.
+
+32. Naming convention
+
+Use descriptive, stable filenames.
+
+Recommended:
+
+hero01.jpg
+doctor01.jpg
+doctor02.jpg
+doctor03.jpg
+clinic01.jpg
+clinic02.jpg
+
+For future images:
+
+doctor04.jpg
+clinic03.jpg
+clinic04.jpg
+
+Avoid:
+
+IMG_8492.jpg
+final-final.jpg
+newnew.jpg
+image-copy.jpg
+
+33. Never duplicate an image
+
+Bad:
+
+clinic01.jpg
+about01.jpg
+contact01.jpg
+
+when all three are the same image.
+
+Good:
+
+clinic01.jpg
+
+and:
+
+about: "/images/clinic01.jpg",
+contact: "/images/clinic01.jpg",
+
+34. Commands reference
+
+Install dependencies
+
+npm install
+
+Development
+
+npm run dev
+
+Lint
+
+npm run lint
+
+Production build
+
+npm run build
+
+Local production preview
+
+npm run preview
+
+Check image files
+
+find public/images -maxdepth 1 -type f | sort
+
+Check project files
+
+find src -type f | sort
+
+35. Development vs production
+
+Development
+
+npm run dev
+
+Used while editing/testing.
+
+Production build
+
+npm run build
+
+Creates:
+
+dist/
+
+Deploy the fresh dist/ output to the production static host.
+
+Preview
+
+npm run preview
+
+Used to inspect the production build locally.
+
+Do not use the Vite development server as the live production server.
+
+36. HTTPS
+
+Do not keep a local .pem certificate as part of the normal V1 delivery architecture.
+
+Production HTTPS is configured at the hosting/CDN layer after the client's domain is connected.
+
+The source project does not need to contain a production SSL certificate.
+
+37. Final QA after a content update
+
+[ ] npm run dev
+[ ] Check Home
+[ ] Check Services
+[ ] Check Doctors
+[ ] Check About
+[ ] Check Contact
+[ ] Check map
+[ ] Check all clinic markers
+[ ] Check phone
+[ ] Check WhatsApp
+[ ] Check email
+[ ] Check mobile
+[ ] Check desktop
+[ ] npm run lint
+[ ] npm run build
+[ ] npm run preview
+
+38. Delivery
+
+For source-code handover:
+
+Full project
++
+package.json
++
+package-lock.json
++
+public/images/
+
+The client/developer can run:
+
+npm install
+npm run dev
+
+For production:
+
+npm run build
+
+Then deploy:
+
+dist/
+
+39. Freeze
+
+After final QA:
+
+git add .
+git commit -m "Finalize medical-clinic-01 V1"
+git push origin main
+git status
+
+Expected final Git state:
+
+nothing to commit, working tree clean
+
+Medical-Clinic-01 V1 remains a simple static showcase. Future admin, database, patient accounts, booking, payment, CRM, or advanced clinic management features belong to V2.

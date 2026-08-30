@@ -9,7 +9,6 @@ export const doctors = [
     education: "MD, Internal Medicine",
     image: images.doctors.arjun,
   },
-
   {
     id: "dr-isha-kapoor",
     name: "Dr. Isha Kapoor",
@@ -18,7 +17,6 @@ export const doctors = [
     education: "MD, Family Medicine",
     image: images.doctors.isha,
   },
-
   {
     id: "dr-neel-shah",
     name: "Dr. Neel Shah",
