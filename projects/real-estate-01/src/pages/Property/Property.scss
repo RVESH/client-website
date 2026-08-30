@@ -1,0 +1,168 @@
+.north-property-detail {
+  background: var(--sand);
+}
+
+.north-property-detail__back {
+  display: inline-flex;
+
+  margin-bottom: 22px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.north-property-detail__hero {
+  aspect-ratio: 16 / 8.5;
+
+  overflow: hidden;
+
+  background: var(--forest-dark);
+}
+
+.north-property-detail__hero img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.north-property-detail__grid {
+  display: grid;
+
+  grid-template-columns:
+    1.1fr .9fr;
+
+  gap: 75px;
+
+  padding: 55px 0;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.north-property-detail__grid h1 {
+  margin: 12px 0 13px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(52px, 6vw, 86px);
+
+  font-weight: 400;
+  line-height: .88;
+
+  letter-spacing: -.06em;
+}
+
+.north-property-detail__location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+}
+
+.north-property-detail__price {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 43px;
+  font-weight: 400;
+
+  letter-spacing: -.045em;
+}
+
+.north-property-detail__description {
+  max-width: 480px;
+
+  margin: 0 0 24px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.north-property-detail__facts {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 1px;
+
+  background: var(--line);
+}
+
+.north-property-detail__facts > div {
+  min-height: 145px;
+
+  padding: 22px;
+
+  background: var(--sand);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.north-property-detail__facts span {
+  color: var(--muted);
+
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+}
+
+.north-property-detail__facts strong {
+  font-size: 13px;
+}
+
+.north-property-detail__features {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  padding-top: 25px;
+}
+
+.north-property-detail__features span {
+  padding: 8px 10px;
+
+  border: 1px solid var(--line);
+
+  color: var(--muted);
+
+  font-size: 9px;
+}
+
+@media (max-width: 800px) {
+  .north-property-detail__grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .north-property-detail__facts {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .north-property-detail__hero {
+    aspect-ratio: 4 / 3;
+  }
+}

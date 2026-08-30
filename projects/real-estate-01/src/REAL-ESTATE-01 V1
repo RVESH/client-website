@@ -1,0 +1,560 @@
+CLIENT & DELIVERY GUIDE
+
+1. Project scope
+
+Real-Estate-01 V1 is a static real-estate showcase/catalogue website.
+
+Pages:
+
+Home
+
+Properties
+
+Property Detail
+
+About
+
+Contact
+
+Main actions:
+
+Call
+
+WhatsApp
+
+Get Directions
+
+Share
+
+Enquire / Visit
+
+V1 intentionally has no:
+
+Admin panel
+
+Database
+
+Login
+
+Payment
+
+Checkout
+
+Cart
+
+Order management
+
+Inventory management
+
+Online booking engine
+
+2. Client-editable files
+
+Business information
+
+File:
+
+src/data/site.js
+
+Client can update:
+
+Brand/business name
+
+Tagline
+
+Phone
+
+WhatsApp number
+
+Email
+
+Address
+
+Google Maps URL
+
+Opening hours
+
+Instagram
+
+LinkedIn
+
+YouTube
+
+Example:
+
+export const site = {
+  name: "NORTHLINE",
+  tagline: "Property, with a point of view.",
+  phone: "+91 98765 43210",
+  whatsapp: "919876543210",
+  email: "hello@company.com",
+  address: "12 Golf Course Road, New Delhi",
+  mapUrl: "CLIENT_GOOGLE_MAPS_SHARE_URL",
+  hours: "Monday – Saturday · 9:00 AM – 7:00 PM",
+  social: {
+    instagram: "https://instagram.com/CLIENT",
+    linkedin: "https://linkedin.com/CLIENT",
+    youtube: "https://youtube.com/@CLIENT",
+  },
+};
+
+Property catalogue
+
+File:
+
+src/data/properties.js
+
+Client/developer can update:
+
+Property name
+
+Location
+
+Type
+
+Price
+
+Status
+
+Bedrooms
+
+Bathrooms
+
+Area
+
+Description
+
+Features
+
+Image reference
+
+Example:
+
+{
+  id: "new-villa-01",
+  name: "Palm Grove Villa",
+  location: "Gurgaon, Haryana",
+  type: "Villa",
+  status: "New",
+  price: "₹3.25 Cr",
+  bedrooms: 4,
+  bathrooms: 4,
+  area: "3,200 sq ft",
+  image: images.properties.villa01,
+  description: "A contemporary private residence with generous living spaces.",
+  features: [
+    "4 Bedrooms",
+    "4 Bathrooms",
+    "Garden",
+    "Parking",
+  ],
+},
+
+Every property needs a unique id because the property-detail route uses it.
+
+Images
+
+Physical images live here:
+
+public/images/
+
+Image references are centralized here:
+
+src/data/images.js
+
+IMAGE RULE — IMPORTANT
+
+ONE PHYSICAL IMAGE = ONE FILE NAME.
+
+A photo can be reused in Hero, Property cards, Property detail, About, Contact, Gallery, etc. by referencing the same path.
+
+Do NOT save the same photo as:
+
+villa01.jpg
+about01.jpg
+contact01.jpg
+
+if all three are the same photo.
+
+3. Adding a new image
+
+Put the new photo in:
+
+public/images/
+
+Give it one clear filename, for example:
+
+modern-villa-02.jpg
+
+Add the reference in:
+
+src/data/images.js
+
+Example:
+
+modernVilla02: "/images/modern-villa-02.jpg",
+
+Use that reference wherever required.
+
+Do not put public website images inside src/.
+
+4. Google Maps / client location
+
+Edit:
+
+src/data/site.js
+
+Set:
+
+mapUrl: "CLIENT_GOOGLE_MAPS_SHARE_URL",
+
+How to get the URL:
+
+Open Google Maps.
+
+Search for the client's business/location.
+
+Click Share.
+
+Copy the link.
+
+Paste it into mapUrl.
+
+The existing directions links will use that URL.
+
+No Google Maps API key is required for this V1 directions-link approach.
+
+5. Phone and WhatsApp
+
+Phone:
+
+phone: "+91 98765 43210",
+
+WhatsApp must use international digits without +, spaces, or hyphens:
+
+whatsapp: "919876543210",
+
+The website generates the WhatsApp enquiry URL automatically.
+
+6. Email
+
+Edit:
+
+email: "hello@company.com",
+
+The Contact page uses this value automatically.
+
+7. Files the client should normally NOT touch
+
+Unless a developer is intentionally changing design or functionality, do not edit:
+
+src/app/index.jsx
+src/main.jsx
+src/index.scss
+src/styles/
+src/components/
+src/sections/
+vite.config.js
+package.json
+package-lock.json
+index.html
+
+Do not randomly change imports, routes, component structure, or package configuration.
+
+8. Normal update workflow
+
+For a normal client update:
+
+1. Edit src/data/site.js OR src/data/properties.js
+2. Add new images only to public/images/
+3. Update src/data/images.js when a new image is added
+4. npm run dev
+5. Check all pages and buttons
+6. npm run lint
+7. npm run build
+8. Deploy the fresh dist/
+
+9. Commands and when to use them
+
+First setup on a new machine
+
+npm install
+
+Run once after receiving the project, or after dependency changes.
+
+Local development
+
+npm run dev
+
+Open the URL printed by Vite.
+
+This project is configured for local HTTPS. Typical URL:
+
+https://localhost:5173/
+
+A local certificate warning can be normal because the local certificate is not a public production certificate.
+
+Lint
+
+npm run lint
+
+Use this to catch code-quality issues before delivery.
+
+Production build
+
+npm run build
+
+Run after content, image, route, design, code, or dependency changes and always before deployment.
+
+A successful build must finish without an error.
+
+Preview production build locally
+
+npm run preview
+
+Use this to inspect the generated dist/ before publishing it.
+
+10. HTTPS clarification
+
+Local
+
+The Vite development server can run over HTTPS:
+
+npm run dev
+
+Then use the HTTPS URL printed by Vite.
+
+Production
+
+Production HTTPS is provided by the hosting/domain/CDN layer.
+
+The real production site should be accessed through something like:
+
+https://www.clientdomain.com
+
+Do not use the Vite development server or its local certificate as the production server/certificate.
+
+11. Production deployment
+
+The intended flow is:
+
+Source project
+    ↓
+npm install
+    ↓
+npm run lint
+    ↓
+npm run build
+    ↓
+dist/
+    ↓
+Static hosting / CDN
+    ↓
+HTTPS domain
+
+Deploy the generated dist/ directory.
+
+Do not expose the Vite development server as production.
+
+12. New-machine/client installation
+
+The client/developer machine needs Node.js and npm.
+
+Then:
+
+cd path/to/real-estate-01
+npm install
+npm run dev
+
+For final deployment:
+
+npm run build
+
+Then deploy:
+
+dist/
+
+13. Property editing safety
+
+A property normally contains:
+
+id
+name
+location
+type
+status
+price
+bedrooms
+bathrooms
+area
+image
+description
+features
+
+Keep each id unique.
+
+Do not remove an existing id without checking its detail-page links.
+
+14. Troubleshooting
+
+White page
+
+Open:
+
+F12 → Console
+
+Look at the first red error.
+
+Also run:
+
+npm run build
+
+Image not showing
+
+Check the file exists in:
+
+public/images/
+
+Then check the exact path in:
+
+src/data/images.js
+
+Example:
+
+"/images/villa01.jpg"
+
+Filename and extension must match exactly.
+
+Property detail not opening
+
+Check src/data/properties.js and confirm:
+
+The property has a unique id.
+
+The property object exists.
+
+Its image reference exists.
+
+Phone not working
+
+Check site.phone in src/data/site.js.
+
+WhatsApp not working
+
+Check site.whatsapp and remove +, spaces, and hyphens.
+
+Directions not working
+
+Check site.mapUrl and paste the client's current Google Maps Share URL.
+
+15. Duplicate-image check
+
+From the project root:
+
+find public/images -type f -print0 | xargs -0 sha256sum | sort
+
+If two different filenames have the same hash, they are likely duplicate copies of the same file.
+
+The intended approach is:
+
+ONE PHOTO
+   ↓
+ONE PHYSICAL FILE
+   ↓
+ONE CENTRAL IMAGE REFERENCE
+   ↓
+MANY SECTIONS CAN REUSE IT
+
+16. What the client can safely customize
+
+Content
+
+src/data/site.js
+src/data/properties.js
+
+Images
+
+public/images/
+src/data/images.js
+
+These are the primary content-editing locations.
+
+Design and application code should normally be maintained by the developer.
+
+17. Final V1 boundaries
+
+This is a static showcase/catalogue website.
+
+Future features such as:
+
+Admin panel
+
+Database
+
+Property management dashboard
+
+Agent accounts
+
+CRM
+
+Lead management
+
+Online booking
+
+Payments
+
+Saved properties
+
+User login
+
+should be treated as V2 rather than added casually to this V1.
+
+18. Final delivery checklist
+
+[ ] npm install works
+[ ] npm run lint checked
+[ ] npm run build passes
+[ ] npm run preview checked
+[ ] Home checked
+[ ] Properties checked
+[ ] Property Detail checked
+[ ] About checked
+[ ] Contact checked
+[ ] Phone tested
+[ ] WhatsApp tested
+[ ] Google Maps tested
+[ ] Email tested
+[ ] Mobile checked
+[ ] Desktop checked
+[ ] All images load
+[ ] No duplicate physical images
+[ ] Fresh dist/ generated
+
+19. Quick reference
+
+Client content:
+
+src/data/site.js
+src/data/properties.js
+src/data/images.js
+public/images/
+
+Development:
+
+npm install
+npm run dev
+
+Quality check:
+
+npm run lint
+npm run build
+
+Production preview:
+
+npm run preview
+
+Production deploy:
+
+dist/
+
+Keep V1 static, simple, and content-driven. One image file can be reused anywhere without creating duplicate copies.

@@ -1,0 +1,90 @@
+.north-neighborhoods {
+  background: var(--sand);
+}
+
+.north-neighborhoods__header {
+  max-width: 800px;
+}
+
+.north-neighborhoods__header h2 {
+  margin-top: 13px;
+}
+
+.north-neighborhoods__grid {
+  display: grid;
+
+  grid-template-columns:
+    1.15fr .9fr .9fr;
+
+  gap: 14px;
+
+  margin-top: 52px;
+}
+
+.north-neighborhood {
+  background: var(--paper);
+}
+
+.north-neighborhood__image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.north-neighborhood__image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 600ms var(--ease);
+}
+
+.north-neighborhood:hover
+.north-neighborhood__image img {
+  transform: scale(1.035);
+}
+
+.north-neighborhood__body {
+  padding: 18px;
+}
+
+.north-neighborhood__body h3 {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.north-neighborhood__body p {
+  max-width: 280px;
+
+  margin: 9px 0 15px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.north-neighborhood__body a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .north-neighborhoods__grid {
+    grid-template-columns: 1fr;
+  }
+}

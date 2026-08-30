@@ -1,0 +1,125 @@
+.contact-page {
+  background: var(--color-surface);
+}
+
+.contact-page__image {
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+  background: #ddd8cc;
+  margin-bottom: 55px;
+}
+
+.contact-page__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.contact-page__intro {
+  max-width: 800px;
+  margin-bottom: 50px;
+}
+
+.contact-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--color-border);
+}
+
+.contact-page__item {
+  min-height: 220px;
+  padding: 25px;
+  background: var(--color-surface);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-page__item svg {
+  margin-bottom: auto;
+}
+
+.contact-page__item span {
+  margin-bottom: 10px;
+  color: var(--color-muted);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.contact-page__item p,
+.contact-page__item a {
+  max-width: 360px;
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 24px;
+  line-height: 1.15;
+  text-decoration: none;
+}
+
+.contact-page__item a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 720px) {
+  .contact-page__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.north-contact__intro {
+  padding: 45px 0 35px;
+}
+
+.north-contact__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 1px;
+
+  background: var(--line);
+}
+
+.north-contact__grid > div {
+  min-height: 170px;
+
+  padding: 20px;
+
+  background: var(--paper);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.north-contact__grid p,
+.north-contact__grid a {
+  font-size: 18px;
+}
+
+@media (max-width: 700px) {
+  .north-contact__intro {
+    padding: 35px 0 28px;
+  }
+
+  .north-contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .north-contact__grid > div {
+    min-height: 145px;
+  }
+}

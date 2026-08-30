@@ -1,0 +1,198 @@
+.north-hero {
+  padding: 24px 0 70px;
+
+  background: var(--sand);
+}
+
+.north-hero__grid {
+  min-height: 610px;
+
+  display: grid;
+
+  grid-template-columns:
+    .78fr 1.22fr;
+
+  gap: 28px;
+
+  align-items: stretch;
+}
+
+.north-hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-right: 18px;
+}
+
+.north-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 28px;
+
+  color: var(--muted);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+
+.north-hero__eyebrow span {
+  width: 25px;
+  height: 25px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--line);
+
+  color: var(--clay);
+
+  letter-spacing: 0;
+}
+
+.north-hero h1 {
+  margin: 0;
+
+  max-width: 620px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(50px, 6.2vw, 84px);
+
+  font-weight: 400;
+
+  line-height: .88;
+
+  letter-spacing: -.065em;
+}
+
+.north-hero h1 em {
+  color: var(--forest);
+  font-style: normal;
+}
+
+.north-hero__copy > p {
+  max-width: 380px;
+
+  margin: 20px 0 0;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.north-hero__actions {
+  margin-top: 21px;
+}
+
+.north-hero__actions a {
+  min-height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 0 13px;
+
+  background: var(--ink);
+  color: var(--white);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.north-hero__visual {
+  position: relative;
+
+  min-height: 610px;
+
+  overflow: hidden;
+
+  background: var(--forest-dark);
+}
+
+.north-hero__visual img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.north-hero__caption {
+  position: absolute;
+
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+
+  min-height: 68px;
+
+  padding: 13px 14px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  background:
+    rgba(29,48,38,.86);
+
+  color: var(--white);
+}
+
+.north-hero__caption div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.north-hero__caption span {
+  font-size: 7px;
+  letter-spacing: .14em;
+}
+
+.north-hero__caption strong {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 16px;
+  font-weight: 400;
+}
+
+@media (max-width: 800px) {
+  .north-hero {
+    padding: 16px 0 45px;
+  }
+
+  .north-hero__grid {
+    min-height: 0;
+
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
+
+  .north-hero__copy {
+    padding: 24px 0 0;
+  }
+
+  .north-hero h1 {
+    font-size:
+      clamp(46px, 13vw, 66px);
+  }
+
+  .north-hero__visual {
+    min-height: 420px;
+  }
+}

@@ -1,0 +1,151 @@
+.north-footer {
+  margin-top: 0;
+
+  padding: 52px 0 20px;
+
+  background: var(--ink);
+  color: var(--white);
+}
+
+.north-footer__top {
+  display: grid;
+
+  grid-template-columns:
+    1.45fr
+    .75fr
+    .75fr
+    1fr;
+
+  gap: 32px;
+
+  padding-bottom: 42px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.13);
+}
+
+.north-footer__brand {
+  display: inline-block;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 34px;
+
+  line-height: 1;
+
+  text-decoration: none;
+}
+
+.north-footer__top p {
+  max-width: 230px;
+
+  margin: 11px 0 0;
+
+  color: rgba(255,255,255,.5);
+
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.north-footer__top > div > span {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: rgba(255,255,255,.4);
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: .15em;
+}
+
+.north-footer__top nav {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 8px;
+}
+
+.north-footer__top nav a,
+.north-footer__top > div:last-child a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  width: max-content;
+  max-width: 100%;
+
+  color: rgba(255,255,255,.78);
+
+  font-size: 9px;
+
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  overflow-wrap: anywhere;
+}
+
+.north-footer__top nav a:hover,
+.north-footer__top > div:last-child a:hover {
+  color: var(--white);
+}
+
+.north-footer__bottom {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 16px;
+
+  color: rgba(255,255,255,.36);
+
+  font-size: 8px;
+}
+
+@media (max-width: 850px) {
+  .north-footer__top {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .north-footer {
+    padding-top: 42px;
+  }
+
+  .north-footer__top {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+
+    padding-bottom: 30px;
+  }
+
+  .north-footer__top > div {
+    min-width: 0;
+  }
+
+  .north-footer__brand {
+    font-size: 31px;
+  }
+
+  .north-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 7px;
+  }
+}

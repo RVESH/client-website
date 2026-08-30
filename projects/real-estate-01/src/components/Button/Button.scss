@@ -1,0 +1,40 @@
+.north-button {
+  min-height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 16px;
+
+  border: 1px solid transparent;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.north-button:hover {
+  transform: translateY(-1px);
+}
+
+.north-button--dark {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.north-button--clay {
+  background: var(--clay);
+  color: var(--white);
+}
+
+.north-button--outline {
+  border-color: var(--line);
+  background: transparent;
+  color: var(--ink);
+}

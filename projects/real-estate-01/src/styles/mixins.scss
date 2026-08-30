@@ -1,0 +1,20 @@
+@mixin small-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@mixin display-serif {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-weight: 400;
+}
+
+@mixin mobile {
+  @media (max-width: 760px) {
+    @content;
+  }
+}
