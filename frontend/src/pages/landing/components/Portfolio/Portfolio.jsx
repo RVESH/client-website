@@ -5,8 +5,17 @@ import business1 from "../../../../images/web1/one.png";
 import business2 from "../../../../images/web1/two.png";
 import business3 from "../../../../images/web1/three.png";
 import business4 from "../../../../images/web1/four.png";
-
 import restaurant1 from "../../../../images/web1/five.png";
+
+import clinic1 from "../../../../images/clinic/clinic_01.png";
+import clinic2 from "../../../../images/clinic/clinic_02.png";
+import clinic3 from "../../../../images/clinic/clinic_03.png";
+import clinic4 from "../../../../images/clinic/clinic_04.png";
+import clinic5 from "../../../../images/clinic/clinic_05.png";
+import clinic6 from "../../../../images/clinic/clinic_06.png";
+import clinic7 from "../../../../images/clinic/clinic_07.png";
+
+
 const PROJECTS = [
   {
     id: 1,
@@ -24,12 +33,18 @@ const PROJECTS = [
 
   {
     id: 2,
-    title: "Restaurant Website",
-    tag: "Restaurant",
-    text: "Beautiful restaurant landing page.",
+    title: "Modern Medical Clinic ",
+    tag: "vite based HEALTHCARE WEBSITE",
+    text: "Modern responsive healthcare website for clinics and medical practices.",
     link: "#",
     images: [
-      restaurant1,
+      clinic1,
+      clinic2,
+      clinic3,
+      clinic4,
+      clinic5,
+      clinic6,
+      clinic7,
     ],
   },
     {
@@ -213,7 +228,7 @@ const visibleProjects = Array.from(
       ❮
     </button>
   <p className="doted">
-<h4>............</h4>
+<h4>              </h4>
  </p>
     <button
       className="arrow"

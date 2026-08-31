@@ -18,8 +18,31 @@ const PROJECTS = [
     ]
   },
 
-  {
+{
     id:2,
+
+    title:"Modern Medical Clinic",
+
+    tag:"React-vite",
+
+    text:"HEALTHCARE WEBSITE",
+
+    link:"#",
+
+     images: [
+      clinic1,
+      clinic2,
+      clinic3,
+      clinic4,
+      clinic5,
+      clinic6,
+      clinic7,
+    ],
+  },
+
+
+  {
+    id:3,
 
     title:"Restaurant",
 
