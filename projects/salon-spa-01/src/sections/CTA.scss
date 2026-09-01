@@ -1,0 +1,33 @@
+@use "../styles/variables" as v;
+@use "../styles/mixins" as m;
+
+.cta-block {
+  background: v.$color-champagne-soft;
+  border-top: v.$border-thin;
+  border-bottom: v.$border-thin;
+}
+
+.cta-block__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: flex-start;
+
+  h2 {
+    margin-bottom: 8px;
+  }
+
+  @include m.bp-md-up {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+}
+
+.cta-block__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex-shrink: 0;
+}

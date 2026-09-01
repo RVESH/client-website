@@ -1,0 +1,63 @@
+@use "../styles/variables" as v;
+@use "../styles/mixins" as m;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: v.$font-body;
+  font-weight: 600;
+  font-size: 0.86rem;
+  letter-spacing: 0.01em;
+  padding: 13px 24px;
+  border-radius: v.$radius-sm;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background v.$speed-fast v.$ease, color v.$speed-fast v.$ease,
+    border-color v.$speed-fast v.$ease, transform v.$speed-fast v.$ease;
+  white-space: nowrap;
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.btn--sm {
+  padding: 9px 16px;
+  font-size: 0.78rem;
+}
+
+.btn--primary {
+  background: v.$color-plum;
+  color: v.$color-ivory;
+  border-color: v.$color-plum;
+
+  &:hover {
+    background: v.$color-plum-deep;
+    border-color: v.$color-plum-deep;
+  }
+}
+
+.btn--secondary {
+  background: transparent;
+  color: v.$color-plum;
+  border-color: v.$color-line-strong;
+
+  &:hover {
+    background: v.$color-plum;
+    color: v.$color-ivory;
+    border-color: v.$color-plum;
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: inherit;
+  border-color: transparent;
+  padding-inline: 4px;
+
+  &:hover {
+    color: v.$color-rose;
+  }
+}

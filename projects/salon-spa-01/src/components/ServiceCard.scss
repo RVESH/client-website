@@ -1,0 +1,61 @@
+@use "../styles/variables" as v;
+@use "../styles/mixins" as m;
+
+.service-card {
+  border: v.$border-thin;
+  border-radius: v.$radius-md;
+  background: v.$color-white;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: border-color v.$speed-med v.$ease, transform v.$speed-med v.$ease,
+    box-shadow v.$speed-med v.$ease;
+
+  &:hover {
+    border-color: v.$color-rose;
+    box-shadow: v.$shadow-card;
+    transform: translateY(-3px);
+  }
+}
+
+.service-card__category {
+  @include m.eyebrow;
+  margin-bottom: 10px;
+}
+
+.service-card__name {
+  font-size: 1.24rem;
+  margin-bottom: 8px;
+}
+
+.service-card__text {
+  color: v.$color-plum-soft;
+  font-size: 0.92rem;
+  flex-grow: 1;
+}
+
+.service-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: v.$color-ink;
+  font-weight: 600;
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: v.$border-thin;
+}
+
+.service-card__dot {
+  color: v.$color-rose;
+}
+
+.service-card__cta {
+  margin-top: 14px;
+  align-self: flex-start;
+}
+
+.service-card--compact {
+  padding: 22px 20px;
+}

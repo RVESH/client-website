@@ -1,0 +1,51 @@
+// ---- Color palette ----
+// warm ivory, deep plum, muted rose, soft champagne
+$color-ivory: #f7f3ec;
+$color-ivory-deep: #efe8dc;
+$color-plum: #3b1f2b;
+$color-plum-deep: #241017;
+$color-plum-soft: #5a2e3f;
+$color-rose: #b98089;
+$color-rose-soft: #d9a9ae;
+$color-champagne: #e7d5b9;
+$color-champagne-soft: #f0e5d0;
+$color-ink: #2a1f22;
+$color-white: #fffdfa;
+
+$color-line: rgba(59, 31, 43, 0.14);
+$color-line-strong: rgba(59, 31, 43, 0.28);
+$color-line-light: rgba(255, 253, 250, 0.22);
+
+// ---- Typography ----
+$font-display: "Cormorant Garamond", "Times New Roman", serif;
+$font-body: "Manrope", -apple-system, "Segoe UI", sans-serif;
+
+// ---- Spacing (compact) ----
+$section-pad-desktop: 72px;
+$section-pad-tablet: 58px;
+$section-pad-mobile: 48px;
+
+$content-max: 1180px;
+$content-narrow: 760px;
+
+// ---- Radius / borders ----
+$radius-sm: 2px;
+$radius-md: 4px;
+$border-thin: 1px solid $color-line;
+
+// ---- Shadow ----
+$shadow-card: 0 10px 30px -18px rgba(36, 16, 23, 0.35);
+$shadow-lift: 0 18px 40px -20px rgba(36, 16, 23, 0.45);
+
+// ---- Motion ----
+$ease: cubic-bezier(0.4, 0, 0.2, 1);
+$speed-fast: 160ms;
+$speed-med: 320ms;
+$speed-slow: 600ms;
+
+// ---- Breakpoints ----
+$bp-xs: 380px; // small phones
+$bp-sm: 560px;
+$bp-md: 768px; // tablets
+$bp-lg: 1024px;
+$bp-xl: 1280px;

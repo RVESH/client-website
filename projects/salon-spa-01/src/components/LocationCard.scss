@@ -1,0 +1,36 @@
+@use "../styles/variables" as v;
+@use "../styles/mixins" as m;
+
+.location-card {
+  border: v.$border-thin;
+  border-radius: v.$radius-md;
+  background: v.$color-white;
+  padding: 24px;
+}
+
+.location-card__name {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.location-card__address {
+  color: v.$color-plum-soft;
+  font-size: 0.92rem;
+  margin-bottom: 8px;
+}
+
+.location-card__hours,
+.location-card__phone {
+  font-size: 0.86rem;
+  color: v.$color-ink;
+  margin-bottom: 4px;
+}
+
+.location-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: v.$border-thin;
+}

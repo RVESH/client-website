@@ -1,0 +1,26 @@
+@use "../styles/mixins" as m;
+
+.team-preview__head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: none;
+
+  @include m.bp-md-up {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.team-preview__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include m.bp-md-up {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+}

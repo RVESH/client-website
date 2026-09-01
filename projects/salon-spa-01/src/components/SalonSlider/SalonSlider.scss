@@ -1,0 +1,146 @@
+.salon-slider {
+  width: min(100%, 900px);
+  margin: 0 auto;
+}
+
+.salon-slider__viewport {
+  position: relative;
+  overflow: hidden;
+
+  aspect-ratio: 16 / 8;
+
+  border-radius: 3px;
+}
+
+.salon-slider__track {
+  height: 100%;
+
+  display: flex;
+
+  transition:
+    transform 650ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.salon-slider__slide {
+  position: relative;
+
+  min-width: 100%;
+  height: 100%;
+}
+
+.salon-slider__slide img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.salon-slider__caption {
+  position: absolute;
+
+  left: 18px;
+  bottom: 18px;
+
+  max-width: 420px;
+
+  padding: 14px 16px;
+
+  background:
+    rgba(51, 27, 40, .88);
+
+  color: #fffaf5;
+}
+
+.salon-slider__caption span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+
+  color: #ddb0bd;
+}
+
+.salon-slider__caption h3 {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(20px, 2.3vw, 30px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.salon-slider__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 10px;
+}
+
+.salon-slider__controls > button {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(54, 28, 43, .16);
+
+  background: #fffaf5;
+  color: #321c28;
+}
+
+.salon-slider__dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.salon-slider__dots button {
+  width: 6px;
+  height: 6px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #cdbfc2;
+}
+
+.salon-slider__dots button.is-active {
+  width: 20px;
+  border-radius: 10px;
+  background: #8f5369;
+}
+
+@media (max-width: 700px) {
+  .salon-slider__viewport {
+    aspect-ratio: 4 / 3;
+  }
+
+  .salon-slider__caption {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    padding: 11px 12px;
+  }
+
+  .salon-slider__caption h3 {
+    font-size: 20px;
+  }
+
+  .salon-slider__controls > button {
+    width: 34px;
+    height: 34px;
+  }
+}

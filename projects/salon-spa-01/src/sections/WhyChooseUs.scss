@@ -1,0 +1,49 @@
+@use "../styles/variables" as v;
+@use "../styles/mixins" as m;
+
+.why {
+  background: v.$color-ivory-deep;
+}
+
+.why__grid {
+  display: grid;
+  gap: 26px 24px;
+  grid-template-columns: 1fr;
+
+  @include m.bp-sm-down {
+    gap: 22px;
+  }
+
+  @include m.bp-md-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.bp-lg-up {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.why__item {
+  padding-top: 16px;
+  border-top: v.$border-thin;
+}
+
+.why__mark {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: v.$color-rose;
+  margin-bottom: 14px;
+}
+
+.why__title {
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+}
+
+.why__text {
+  color: v.$color-plum-soft;
+  font-size: 0.9rem;
+  margin: 0;
+}

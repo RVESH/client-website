@@ -1,0 +1,97 @@
+@use "../styles/variables" as v;
+@use "../styles/mixins" as m;
+
+.footer {
+  background: v.$color-plum-deep;
+  color: rgba(247, 243, 236, 0.82);
+  padding-top: 44px;
+}
+
+.footer__grid {
+  display: grid;
+  gap: 32px;
+  padding-bottom: 34px;
+
+  @include m.bp-md-up {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+.footer__logo {
+  font-family: v.$font-display;
+  font-size: 1.4rem;
+  color: v.$color-champagne;
+  margin-bottom: 6px;
+}
+
+.footer__tagline {
+  color: rgba(247, 243, 236, 0.6);
+  font-size: 0.9rem;
+  max-width: 32ch;
+  margin-bottom: 20px;
+}
+
+.footer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  .btn--secondary {
+    color: v.$color-champagne;
+    border-color: v.$color-line-light;
+
+    &:hover {
+      background: v.$color-champagne;
+      color: v.$color-plum-deep;
+      border-color: v.$color-champagne;
+    }
+  }
+
+  .btn--ghost {
+    color: v.$color-champagne;
+  }
+}
+
+.footer__heading {
+  @include m.eyebrow;
+  color: v.$color-rose-soft;
+  margin-bottom: 14px;
+}
+
+.footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.footer__col a {
+  transition: color v.$speed-fast v.$ease;
+  &:hover {
+    color: v.$color-champagne;
+  }
+}
+
+.footer__bottom {
+  .hairline {
+    border-top-color: v.$color-line-light;
+  }
+}
+
+.footer__bottom-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 0 28px;
+  font-size: 0.78rem;
+  color: rgba(247, 243, 236, 0.5);
+
+  @include m.bp-md-up {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

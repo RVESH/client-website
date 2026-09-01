@@ -1,0 +1,63 @@
+@use "../styles/variables" as v;
+@use "../styles/mixins" as m;
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+
+  @include m.bp-md-up {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 130px;
+    gap: 14px;
+  }
+}
+
+.gallery__item {
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  border: v.$border-thin;
+  aspect-ratio: 4 / 5;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform v.$speed-slow v.$ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  @include m.bp-md-up {
+    aspect-ratio: auto;
+  }
+}
+
+@include m.bp-md-up {
+  .gallery__item--0 {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  .gallery__item--1 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .gallery__item--2 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .gallery__item--3 {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  .gallery__item--4 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .gallery__item--5 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}

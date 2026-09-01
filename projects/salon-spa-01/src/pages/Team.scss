@@ -1,0 +1,12 @@
+@use "../styles/mixins" as m;
+
+.team-grid-section__grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include m.bp-md-up {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+  }
+}

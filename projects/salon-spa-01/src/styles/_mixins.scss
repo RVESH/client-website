@@ -1,0 +1,83 @@
+@use "variables" as v;
+
+@mixin bp-xs {
+  @media (max-width: #{v.$bp-xs}) {
+    @content;
+  }
+}
+@mixin bp-sm-down {
+  @media (max-width: #{v.$bp-sm}) {
+    @content;
+  }
+}
+@mixin bp-md-down {
+  @media (max-width: #{v.$bp-md - 1px}) {
+    @content;
+  }
+}
+@mixin bp-md-up {
+  @media (min-width: #{v.$bp-md}) {
+    @content;
+  }
+}
+@mixin bp-lg-up {
+  @media (min-width: #{v.$bp-lg}) {
+    @content;
+  }
+}
+@mixin bp-xl-up {
+  @media (min-width: #{v.$bp-xl}) {
+    @content;
+  }
+}
+
+@mixin section-padding {
+  padding-top: v.$section-pad-mobile;
+  padding-bottom: v.$section-pad-mobile;
+
+  @include bp-md-up {
+    padding-top: v.$section-pad-tablet;
+    padding-bottom: v.$section-pad-tablet;
+  }
+
+  @include bp-lg-up {
+    padding-top: v.$section-pad-desktop;
+    padding-bottom: v.$section-pad-desktop;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: v.$content-max;
+  margin-inline: auto;
+  padding-inline: 20px;
+
+  @include bp-md-up {
+    padding-inline: 32px;
+  }
+
+  @include bp-lg-up {
+    padding-inline: 40px;
+  }
+}
+
+@mixin eyebrow {
+  font-family: v.$font-body;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: v.$color-rose;
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid v.$color-plum;
+    outline-offset: 3px;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

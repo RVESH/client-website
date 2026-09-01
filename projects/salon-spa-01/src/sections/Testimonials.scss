@@ -1,0 +1,56 @@
+@use "../styles/variables" as v;
+@use "../styles/mixins" as m;
+
+.testimonials {
+  background: v.$color-plum-deep;
+  color: rgba(247, 243, 236, 0.9);
+}
+
+.testimonials .eyebrow {
+  color: v.$color-rose-soft;
+}
+
+.testimonials h2 {
+  color: v.$color-champagne;
+}
+
+.testimonials__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+
+  @include m.bp-md-up {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+  }
+}
+
+.testimonials__item {
+  margin: 0;
+  padding: 22px 0 0;
+  border-top: 1px solid v.$color-line-light;
+}
+
+.testimonials__item blockquote {
+  margin: 0 0 16px;
+  font-family: v.$font-display;
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: v.$color-ivory;
+}
+
+.testimonials__item figcaption {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.84rem;
+}
+
+.testimonials__name {
+  font-weight: 700;
+  color: v.$color-champagne;
+}
+
+.testimonials__context {
+  color: rgba(247, 243, 236, 0.55);
+}
