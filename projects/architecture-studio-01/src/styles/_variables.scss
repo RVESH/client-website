@@ -1,0 +1,64 @@
+// ---------------------------------------------------------------------------
+// Marrow Studio — design tokens
+// Palette: stone / concrete / muted clay, high-contrast ink for structure.
+// ---------------------------------------------------------------------------
+
+// Colour ---------------------------------------------------------------
+$stone:       #E7E2D6; // primary background — warm limestone
+$paper:       #F5F2EA; // raised panels, cards, alternating sections
+$ink:         #17140F; // near-black charcoal — dark sections, primary text
+$ink-soft:    #423D33; // secondary text on light backgrounds
+$concrete:    #8D8672; // tertiary text, captions, muted labels
+$clay:        #7C4A30; // the one accent — links, active states, small marks
+$clay-soft:   #B98A6C; // clay accent on dark backgrounds
+$line:        #C9C2AF; // hairline borders on light backgrounds
+$line-dark:   rgba(#F5F2EA, 0.18); // hairline borders on dark backgrounds
+$overlay:     rgba(23, 20, 15, 0.55); // image overlays / scrims
+
+// Type -------------------------------------------------------------------
+$font-display: 'Newsreader', 'Iowan Old Style', serif;
+$font-sans:    'Archivo', 'Helvetica Neue', Arial, sans-serif;
+
+// Fluid type scale (clamp: min, preferred, max) --------------------------
+$size-caption:  clamp(0.75rem, 0.72rem + 0.15vw, 0.83rem);
+$size-body:     clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+$size-lead:     clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+$size-h3:       clamp(1.5rem, 1.3rem + 1vw, 2rem);
+$size-h2:       clamp(2.1rem, 1.7rem + 2vw, 3.1rem);
+$size-h1:       clamp(2.6rem, 1.9rem + 3.5vw, 5rem);
+$size-display:  clamp(3.4rem, 2.2rem + 6vw, 7.5rem);
+
+// Spacing scale ------------------------------------------------------------
+$space-3xs: 0.25rem;
+$space-2xs: 0.5rem;
+$space-xs:  0.75rem;
+$space-sm:  1.25rem;
+$space-md:  2rem;
+$space-lg:  3.5rem;
+$space-xl:  5.5rem;
+$space-2xl: 8.5rem;
+
+// Layout ---------------------------------------------------------------
+$container-max: 1440px;
+$gutter: clamp(1.25rem, 4vw, 4rem);
+$grid-columns: 12;
+$radius: 2px; // near-zero — architectural, not soft-app
+
+// Breakpoints (min-width) -------------------------------------------------
+$bp-xs:  360px;
+$bp-sm:  414px;
+$bp-md:  600px;  // tablet
+$bp-lg:  900px;  // laptop
+$bp-xl:  1200px; // desktop
+$bp-2xl: 1440px; // large desktop
+
+// Motion -------------------------------------------------------------------
+$ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+$duration-fast: 180ms;
+$duration-base: 320ms;
+$duration-slow: 640ms;
+
+// z-index scale --------------------------------------------------------
+$z-header: 100;
+$z-menu: 200;
+$z-overlay: 300;

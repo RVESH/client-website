@@ -1,0 +1,68 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.slider {
+  outline: none;
+}
+
+.slider__viewport {
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.slider__track {
+  display: flex;
+  transition: transform v.$duration-slow v.$ease-standard;
+
+  @include m.reduced-motion {
+    transition: none;
+  }
+}
+
+.slider__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.slider__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-md;
+  margin-top: v.$space-md;
+}
+
+.slider__arrow {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid v.$line;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: border-color v.$duration-fast v.$ease-standard, transform v.$duration-fast v.$ease-standard;
+
+  &:hover {
+    border-color: v.$ink;
+    transform: translateX(0);
+  }
+}
+
+.slider__dots {
+  display: flex;
+  gap: v.$space-2xs;
+}
+
+.slider__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: v.$line;
+  transition: background v.$duration-fast v.$ease-standard, transform v.$duration-fast v.$ease-standard;
+
+  &.is-active {
+    background: v.$ink;
+    transform: scale(1.2);
+  }
+}

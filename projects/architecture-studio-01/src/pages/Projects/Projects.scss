@@ -1,0 +1,87 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.projectsIntro h1 {
+  max-width: 18ch;
+  margin-block: v.$space-sm;
+}
+
+.projectsFilter__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-sm;
+  border-top: 1px solid v.$line;
+  border-bottom: 1px solid v.$line;
+  padding-block: v.$space-sm;
+}
+
+.projectsFilter__tab {
+  font-size: 0.9rem;
+  padding: 0.4em 0.9em;
+  border: 1px solid transparent;
+  color: v.$ink-soft;
+  transition: color v.$duration-fast v.$ease-standard, border-color v.$duration-fast v.$ease-standard;
+
+  &:hover {
+    color: v.$ink;
+  }
+
+  &.is-active {
+    color: v.$ink;
+    border-color: v.$line;
+  }
+}
+
+.projectsGallery__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: v.$space-md;
+
+  @include m.from(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include m.from(xl) {
+    gap: v.$space-lg v.$space-md;
+  }
+}
+
+.projectsDetail > .container:first-child h2 {
+  margin-top: v.$space-2xs;
+  margin-bottom: v.$space-lg;
+}
+
+.projectsDetail__slider {
+  max-width: 52rem;
+}
+
+.projectsDetail__image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: v.$stone;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.projectsDetail__caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: v.$space-sm;
+  padding-top: v.$space-xs;
+  border-top: 1px solid v.$line;
+  margin-top: v.$space-xs;
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    @include m.caption;
+    margin: 0;
+  }
+}

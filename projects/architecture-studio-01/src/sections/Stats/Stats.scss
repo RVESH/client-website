@@ -1,0 +1,71 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.stats__grid {
+  display: grid;
+  gap: v.$space-lg;
+  padding-bottom: v.$space-lg;
+  border-bottom: 1px solid v.$line-dark;
+
+  @include m.from(lg) {
+    grid-template-columns: 5fr 7fr;
+    gap: v.$space-2xl;
+  }
+}
+
+.stats__numbers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: v.$space-md;
+
+  dt {
+    font-family: v.$font-display;
+    font-size: v.$size-h2;
+    font-style: italic;
+    color: v.$paper;
+  }
+
+  dd {
+    @include m.caption;
+    color: v.$clay-soft;
+    margin: 0;
+  }
+}
+
+.stats__quote {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+  justify-content: center;
+
+  blockquote {
+    font-family: v.$font-display;
+    font-style: italic;
+    font-size: v.$size-lead;
+    color: v.$paper;
+    max-width: 42ch;
+  }
+
+  figcaption {
+    @include m.caption;
+    color: v.$clay-soft;
+  }
+}
+
+.stats__clients {
+  padding-top: v.$space-lg;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: v.$space-md v.$space-lg;
+    margin-top: v.$space-sm;
+  }
+
+  li {
+    font-family: v.$font-display;
+    font-style: italic;
+    color: v.$clay-soft;
+    font-size: 1.05rem;
+  }
+}

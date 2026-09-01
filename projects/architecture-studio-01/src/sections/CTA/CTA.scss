@@ -1,0 +1,28 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.cta__inner {
+  max-width: 46rem;
+}
+
+.cta__inner .lede {
+  margin-block: v.$space-sm v.$space-md;
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: v.$space-md;
+}
+
+.cta__phone {
+  font-family: v.$font-display;
+  font-style: italic;
+  font-size: 1.1rem;
+  border-bottom: 1px solid v.$line;
+
+  &:hover {
+    border-color: v.$ink;
+  }
+}

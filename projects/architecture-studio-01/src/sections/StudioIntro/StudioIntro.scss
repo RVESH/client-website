@@ -1,0 +1,55 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.studioIntro__grid {
+  display: grid;
+  gap: v.$space-lg;
+
+  @include m.from(lg) {
+    grid-template-columns: 5fr 6fr;
+    gap: v.$space-2xl;
+  }
+}
+
+.studioIntro__statement h2 {
+  margin-block: v.$space-sm;
+  max-width: 20ch;
+}
+
+.studioIntro__statement .lede {
+  margin-bottom: v.$space-md;
+}
+
+.studioIntro__capabilities ul {
+  display: grid;
+  gap: 0;
+  margin-top: v.$space-sm;
+}
+
+.studioIntro__capabilities li {
+  padding-block: v.$space-sm;
+  border-top: 1px solid v.$line;
+  display: grid;
+  gap: v.$space-2xs;
+
+  @include m.from(md) {
+    grid-template-columns: 1fr 1.8fr;
+    gap: v.$space-md;
+  }
+
+  span {
+    font-family: v.$font-display;
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+
+  p {
+    color: v.$ink-soft;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid v.$line;
+  }
+}

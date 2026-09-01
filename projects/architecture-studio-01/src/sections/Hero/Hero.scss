@@ -1,0 +1,59 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.hero {
+  position: relative;
+  background: v.$stone;
+}
+
+.hero__image {
+  height: 52vh;
+  min-height: 20rem;
+  max-height: 36rem;
+  overflow: hidden;
+  background: v.$concrete;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include m.from(lg) {
+    height: 62vh;
+  }
+}
+
+.hero__content {
+  position: relative;
+  width: min(100% - 2rem, 72rem);
+  margin: -3rem auto 0;
+  background-color: v.$stone;
+  padding: v.$space-md;
+  z-index: 2;
+
+  @include m.from(lg) {
+    margin-top: -4rem;
+    padding: v.$space-lg;
+  }
+}
+
+.hero__title {
+  max-width: 16ch;
+}
+
+.hero__foot {
+  margin-top: v.$space-md;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-md;
+  align-items: flex-start;
+
+  @include m.from(lg) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: v.$space-lg;
+  }
+}

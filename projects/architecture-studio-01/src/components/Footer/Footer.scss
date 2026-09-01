@@ -1,0 +1,77 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.footer {
+  background-color: v.$ink;
+  color: v.$paper;
+  padding-block: v.$space-xl v.$space-md;
+}
+
+.footer__top {
+  display: grid;
+  gap: v.$space-lg;
+  padding-bottom: v.$space-lg;
+  border-bottom: 1px solid v.$line-dark;
+
+  @include m.from(md) {
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+  }
+}
+
+.footer__mark {
+  font-family: v.$font-display;
+  font-style: italic;
+  font-size: 1.6rem;
+  margin-bottom: v.$space-2xs;
+}
+
+.footer__intro .lede {
+  color: v.$clay-soft;
+  font-size: v.$size-body;
+}
+
+.footer__nav ul,
+.footer__social ul {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2xs;
+}
+
+.footer__nav a,
+.footer__social a {
+  color: v.$paper;
+  opacity: 0.8;
+  transition: opacity v.$duration-fast v.$ease-standard;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.footer__contact address {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2xs;
+  font-style: normal;
+
+  a {
+    color: v.$paper;
+    opacity: 0.8;
+
+    &:hover { opacity: 1; }
+  }
+
+  span {
+    color: v.$clay-soft;
+  }
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: v.$space-2xs;
+  padding-top: v.$space-md;
+  font-size: v.$size-caption;
+  color: v.$clay-soft;
+}

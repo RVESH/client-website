@@ -1,0 +1,61 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.serviceCard {
+  display: grid;
+  gap: v.$space-sm;
+  padding-block: v.$space-lg;
+  border-top: 1px solid v.$line;
+
+  @include m.from(md) {
+    grid-template-columns: 1fr 1.4fr;
+    align-items: start;
+    gap: v.$space-lg;
+  }
+}
+
+.serviceCard__frame {
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  background-color: v.$paper;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.serviceCard__index {
+  @include m.caption;
+  color: v.$clay;
+  display: block;
+  margin-bottom: v.$space-2xs;
+}
+
+.serviceCard__body h3 {
+  margin-bottom: v.$space-xs;
+}
+
+.serviceCard__points {
+  margin-top: v.$space-sm;
+  display: grid;
+  gap: v.$space-2xs;
+
+  li {
+    position: relative;
+    padding-left: v.$space-sm;
+    color: v.$ink-soft;
+    font-size: 0.95rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 0.5rem;
+      height: 1px;
+      background: v.$concrete;
+    }
+  }
+}

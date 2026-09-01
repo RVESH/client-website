@@ -1,0 +1,44 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.selectedWork__head {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+  align-items: flex-start;
+  margin-bottom: v.$space-lg;
+
+  @include m.from(md) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  h2 {
+    max-width: 18ch;
+  }
+}
+
+.selectedWork__grid {
+  display: grid;
+  gap: v.$space-md;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include m.from(lg) {
+    grid-template-columns: repeat(6, 1fr);
+    gap: v.$space-lg v.$space-md;
+  }
+}
+
+.selectedWork__item {
+  grid-column: span 2;
+}
+
+// Asymmetric placement on larger screens: first item runs wide, the
+// remaining three share the row beneath it.
+@include m.from(lg) {
+  .item-0 { grid-column: span 3; }
+  .item-1 { grid-column: span 3; }
+  .item-2 { grid-column: span 3; }
+  .item-3 { grid-column: span 3; }
+}
