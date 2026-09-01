@@ -1,0 +1,78 @@
+// ============================================================
+// FORMA — design tokens
+// Blueprint-precision aesthetic for a premium home-services brand
+// ============================================================
+
+// ---- Color ---------------------------------------------------
+// Ink: primary dark surface + text
+$ink:          #171B1F;
+$ink-soft:     #262C32;
+// Paper: primary light surface (cool putty, not cream)
+$paper:        #EDEEE7;
+$paper-raised: #F8F8F3;
+// Brass: primary accent — precision hardware / fittings
+$brass:        #C68A3E;
+$brass-deep:   #9C6A28;
+$brass-pale:   #E9C48C;
+// Slate: secondary accent — steel, pipe, tool
+$slate:        #3E5A67;
+$slate-deep:   #26383F;
+// Moss: tertiary — used sparingly (trust / guarantee marks)
+$moss:         #5C7A5E;
+// Signal
+$rust:         #A6432E;
+
+// Lines & borders
+$line-on-paper: #D7D5C9;
+$line-on-ink:   rgba(237, 238, 231, 0.14);
+
+// Text
+$text-on-paper:      $ink;
+$text-on-paper-mute: #565A52;
+$text-on-ink:        #EDEEE7;
+$text-on-ink-mute:   #9BA09B;
+
+// ---- Type ------------------------------------------------------
+// No external font loading is available in this environment, so the
+// type system relies on strong system stacks with heavy weights +
+// tight tracking on display, rather than a downloaded webfont.
+$font-display: 'Archivo Black', 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', Helvetica, Arial, sans-serif;
+$font-mono:    'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+// Type scale (fluid via clamp, defined in mixins)
+$fs-display-xl: clamp(2.6rem, 4.6vw + 1rem, 5.6rem);
+$fs-display-lg: clamp(2.1rem, 3.2vw + 1rem, 3.6rem);
+$fs-display-md: clamp(1.6rem, 1.8vw + 1rem, 2.4rem);
+$fs-display-sm: clamp(1.25rem, 1vw + 1rem, 1.6rem);
+$fs-body-lg:    clamp(1.05rem, 0.3vw + 1rem, 1.2rem);
+$fs-body:       1rem;
+$fs-body-sm:    0.875rem;
+$fs-label:      0.78rem;
+
+// ---- Layout ------------------------------------------------------
+$container-max: 1280px;
+$container-pad: clamp(1.25rem, 4vw, 3rem);
+
+$radius-sm: 3px;
+$radius-md: 6px;
+
+// ---- Breakpoints ---------------------------------------------------
+$bp-xs:  360px;
+$bp-sm:  480px;
+$bp-md:  700px;
+$bp-lg:  980px;
+$bp-xl:  1200px;
+$bp-xxl: 1440px;
+
+// ---- Motion ---------------------------------------------------
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+$dur-fast: 160ms;
+$dur-med: 320ms;
+$dur-slow: 640ms;
+
+// ---- z-index ---------------------------------------------------
+$z-header: 100;
+$z-menu: 200;
+$z-toast: 300;

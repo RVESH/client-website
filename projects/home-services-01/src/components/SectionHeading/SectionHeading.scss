@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section-heading {
+  max-width: 46rem;
+  margin-bottom: clamp(1.75rem, 3vw, 2.75rem);
+
+  .index-label { margin: 0 0 0.85rem; }
+
+  &__title {
+    font-size: $fs-display-lg;
+  }
+
+  &__lead {
+    margin-top: 0.9rem;
+    font-size: $fs-body-lg;
+    color: $text-on-paper-mute;
+
+    .section--ink & { color: $text-on-ink-mute; }
+  }
+
+  &--center {
+    margin-inline: auto;
+    text-align: center;
+
+    .index-label { justify-content: center; }
+  }
+}

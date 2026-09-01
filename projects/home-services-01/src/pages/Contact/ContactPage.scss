@@ -1,0 +1,101 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.contact-hero { padding-bottom: clamp(1.5rem, 3vw, 2rem); }
+
+.contact-body__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+
+  @include mq(lg) { grid-template-columns: 1.3fr 0.9fr; }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid $line-on-paper;
+  border-radius: $radius-md;
+  background: $paper-raised;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+
+    @include mq(sm) { grid-template-columns: 1fr 1fr; }
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $ink;
+  }
+
+  input, select, textarea {
+    border: 1.5px solid $line-on-paper;
+    border-radius: $radius-sm;
+    padding: 0.75rem 0.85rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: $ink;
+    background: $paper;
+    resize: vertical;
+
+    &:focus-visible { @include focus-ring; }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  &__note {
+    font-size: 0.85rem;
+    color: $slate;
+    margin-top: 0.25rem;
+  }
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.15rem;
+  border: 1px solid $line-on-paper;
+  border-radius: $radius-md;
+  background: $paper-raised;
+  color: $brass-deep;
+  transition: border-color $dur-fast $ease-out;
+
+  &:hover { border-color: $brass; }
+
+  &--static { color: $slate; }
+
+  &__label {
+    display: block;
+    font-size: 0.75rem;
+    color: $text-on-paper-mute;
+    margin-bottom: 0.2rem;
+  }
+
+  &__value {
+    display: block;
+    font-weight: 700;
+    color: $ink;
+    font-size: 0.95rem;
+  }
+}

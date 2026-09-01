@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.projects-section {
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+
+    @include mq(md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .section-heading { margin-bottom: 0; }
+  }
+
+  &__grid {
+    margin-top: clamp(1.75rem, 3vw, 2.5rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+
+    @include mq(sm) { grid-template-columns: repeat(2, 1fr); }
+    @include mq(lg) { grid-template-columns: repeat(3, 1fr); }
+  }
+}

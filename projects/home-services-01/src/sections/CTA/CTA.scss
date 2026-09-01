@@ -1,0 +1,34 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.cta-section {
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    align-items: flex-start;
+
+    @include mq(lg) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    h2 { font-size: $fs-display-md; }
+    p { margin-top: 0.5rem; color: rgba(23,27,31,0.75); max-width: 40ch; }
+  }
+
+  &__btn-dark {
+    background: $ink;
+    border-color: $ink;
+    color: $paper;
+    &:hover { background: $ink-soft; border-color: $ink-soft; }
+  }
+
+  &__btn-outline {
+    border-color: $ink;
+    &:hover { background: rgba(23,27,31,0.08); border-color: $ink; color: $ink; }
+  }
+
+  &__btn-ghost { color: $ink; }
+}

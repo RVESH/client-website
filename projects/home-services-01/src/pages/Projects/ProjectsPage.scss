@@ -1,0 +1,43 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.projects-page-hero {
+  padding-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.projects-page {
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+  }
+
+  &__filter {
+    @include button-reset;
+    padding: 0.55rem 1rem;
+    border: 1.5px solid $line-on-paper;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $text-on-paper-mute;
+    transition: all $dur-fast $ease-out;
+
+    &:hover { border-color: $brass; color: $ink; }
+
+    &.is-active {
+      background: $ink;
+      border-color: $ink;
+      color: $paper;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+
+    @include mq(sm) { grid-template-columns: repeat(2, 1fr); }
+    @include mq(lg) { grid-template-columns: repeat(3, 1fr); }
+  }
+}

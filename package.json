@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    
-        "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "dev": "vite",
+    "start": "node src/server.js",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,17 @@
   "bugs": {
     "url": "https://github.com/RVESH/client-website/issues"
   },
-  "homepage": "https://github.com/RVESH/client-website#readme"
+  "homepage": "https://github.com/RVESH/client-website#readme",
+  "dependencies": {
+    "lucide-react": "^1.38.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.80.0",
+    "sass": "^1.103.1",
+    "vite": "^8.2.2"
+  }
 }

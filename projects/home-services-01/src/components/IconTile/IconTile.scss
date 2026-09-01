@@ -1,0 +1,26 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 1.5px solid $line-on-paper;
+  border-radius: $radius-sm;
+  background: $paper-raised;
+  color: $brass-deep;
+  flex-shrink: 0;
+
+  .section--ink & {
+    border-color: $line-on-ink;
+    background: $ink-soft;
+    color: $brass-pale;
+  }
+
+  &--sm { width: 2.5rem; height: 2.5rem; }
+  &--lg { width: 4rem; height: 4rem; }
+
+  &--slate { color: $slate; .section--ink & { color: #9cc0cf; } }
+}

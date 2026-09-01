@@ -1,0 +1,54 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.service-card {
+  display: block;
+  border: 1px solid $line-on-paper;
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $paper-raised;
+  transition: border-color $dur-fast $ease-out, transform $dur-fast $ease-out;
+
+  &:hover {
+    border-color: $brass;
+    transform: translateY(-3px);
+
+    .service-card__arrow { transform: translate(2px, -2px); color: $brass-deep; }
+  }
+
+  &__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: $ink;
+
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  &__index {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.85rem;
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    color: $brass-pale;
+  }
+
+  &__body {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.35rem;
+    position: relative;
+
+    h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    p { font-size: 0.9rem; color: $text-on-paper-mute; margin: 0; }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 1.35rem;
+    right: 1.35rem;
+    color: $text-on-paper-mute;
+    transition: transform $dur-fast $ease-out, color $dur-fast $ease-out;
+  }
+}

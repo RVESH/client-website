@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.stats-section {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: $line-on-ink;
+    border: 1px solid $line-on-ink;
+
+    @include mq(md) { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  &__item {
+    background: $ink;
+    padding: 1.6rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  &__value {
+    font-family: $font-display;
+    font-size: clamp(1.9rem, 2.4vw + 1rem, 2.6rem);
+    color: $brass-pale;
+  }
+
+  &__label {
+    font-size: 0.82rem;
+    color: $text-on-ink-mute;
+  }
+}

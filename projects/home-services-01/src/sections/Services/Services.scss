@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.services-section {
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0;
+
+    @include mq(md) {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+
+    .section-heading { margin-bottom: 0; }
+  }
+
+  &__grid {
+    margin-top: clamp(1.75rem, 3vw, 2.5rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+
+    @include mq(sm) { grid-template-columns: repeat(2, 1fr); }
+    @include mq(lg) { grid-template-columns: repeat(3, 1fr); }
+  }
+}

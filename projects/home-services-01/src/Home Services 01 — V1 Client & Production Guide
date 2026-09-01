@@ -1,0 +1,547 @@
+Home Services 01 — V1 Client & Production Guide
+
+Scope
+
+Exactly 5 pages:
+
+Home
+
+Services
+
+About
+
+Projects / Work
+
+Contact
+
+V1 actions:
+
+Call
+
+WhatsApp
+
+Request a Quote
+
+Service enquiry
+
+Project browsing
+
+Not included:
+
+Admin
+
+Database
+
+Login / Signup
+
+Payment
+
+Checkout
+
+Cart
+
+Customer dashboard
+
+CRM
+
+Online booking engine
+
+Complex backend
+
+Client-editable files
+
+For normal business/content changes, primarily edit:
+
+src/data/site.js
+src/data/services.js
+src/data/projects.js
+src/data/images.js
+public/images/
+
+Normally do not edit:
+
+src/app/
+src/components/
+src/sections/
+src/pages/
+src/styles/
+src/main.jsx
+vite.config.js
+package.json
+
+These are implementation files.
+
+Business information
+
+File:
+
+src/data/site.js
+
+Typical content:
+
+business name
+
+phone
+
+WhatsApp
+
+email
+
+address
+
+service areas
+
+opening hours
+
+social links
+
+founded year
+
+Phone example:
+
+phoneDisplay: "+1 (555) 014-2277",
+phoneHref: "tel:+15550142277"
+
+WhatsApp should use international digits without +, spaces or hyphens:
+
+whatsapp: "15550142277"
+
+Services
+
+File:
+
+src/data/services.js
+
+Typical fields:
+
+slug
+icon
+name
+short
+description
+image
+included
+
+The image field should reference a logical key from src/data/images.js.
+
+Example:
+
+{
+  slug: "electrical",
+  icon: "Zap",
+  name: "Electrical Services",
+  short: "Reliable electrical work for homes.",
+  description: "Clear scope, professional work and straightforward pricing.",
+  image: "serviceElectrical",
+  included: [
+    "Panel upgrades",
+    "Rewiring",
+    "Lighting",
+    "Safety inspections"
+  ]
+}
+
+Prices/quotes are content only. No payment system exists in V1.
+
+Projects
+
+File:
+
+src/data/projects.js
+
+Typical fields:
+
+slug
+title
+category
+location
+year
+summary
+image
+before
+after
+
+before and after are optional.
+
+Image architecture
+
+Physical image files live only in:
+
+public/images/
+
+Central logical image registry:
+
+src/data/images.js
+
+Flow:
+
+public/images/
+      ↓
+src/data/images.js
+      ↓
+services.js / projects.js / sections
+      ↓
+getImage(...)
+      ↓
+React component
+      ↓
+<img>
+      ↓
+Browser
+
+Important
+
+The physical images were NOT renamed to the logical names.
+
+images.js maps readable logical keys to the actual physical files.
+
+Example:
+
+serviceKitchen: "/images/interior01.jpg"
+projectKitchen1: "/images/project01.jpg"
+aboutShop: "/images/interior01.jpg"
+
+This lets one physical file be reused in multiple places.
+
+One image = one physical file
+
+Never duplicate the same photograph under multiple filenames.
+
+Bad:
+
+hero01.jpg
+about01.jpg
+contact01.jpg
+
+when all contain the same photograph.
+
+Good:
+
+hero01.jpg
+
+Reuse the same registry reference wherever needed.
+
+Replacing an image
+
+The simplest client workflow:
+
+Open public/images/.
+
+Find the existing filename.
+
+Replace the image while keeping the same filename.
+
+Example:
+
+public/images/project01.jpg
+
+Replace the photo but keep project01.jpg.
+
+No code change is required because the registry still points to the same path.
+
+Adding a new image
+
+Add one new physical file to public/images/.
+
+Add one logical key to src/data/images.js.
+
+Use the new key from the relevant data file.
+
+Do not create duplicates of existing photographs.
+
+Recommended image sizes
+
+Recommendations only; exact dimensions are not mandatory.
+
+Hero:
+1800 × 1200 px
+
+Project:
+1400 × 1000 px
+
+Before / After:
+1400 × 1000 px
+
+General content:
+1200 × 900 px
+
+Preferred:
+
+WebP
+JPG
+
+PNG only when transparency is required.
+
+Avoid very large original camera files.
+
+Current physical image set
+
+The project currently uses a centralized set similar to:
+
+public/images/
+├── hero01.jpg
+├── home01.jpg
+├── home02.jpg
+├── interior01.jpg
+├── interior02.jpg
+├── interior03.jpg
+├── project01.jpg
+├── project02.jpg
+├── project03.jpg
+├── work01.jpg
+├── work02.jpg
+└── work03.jpg
+
+Keep only files actually used by the project.
+
+Service-area architecture
+
+Service areas are normal content in V1.
+
+Examples:
+
+City
+Neighborhood
+Region
+Coverage area
+
+No interactive map is required for this V1.
+
+Do not publish guessed business locations.
+
+Header and mobile navigation
+
+Desktop:
+
+Logo
+Navigation
+Phone
+Request a Quote
+
+Small screens:
+
+Logo
+Hamburger
+
+The hamburger must open and close a dedicated mobile panel.
+
+It must:
+
+close after navigation
+
+close with Escape
+
+prevent unwanted background scrolling while open
+
+fit very small screens
+
+avoid horizontal overflow
+
+Quote flow
+
+V1 does not have an online quotation backend.
+
+Normal flow:
+
+Request a Quote
+      ↓
+Contact
+      ↓
+Call / WhatsApp
+
+Responsive requirements
+
+Test at:
+
+320px
+360px
+390px
+414px
+768px
+1024px
+1280px
+1440px+
+
+Check:
+
+header
+
+mobile menu
+
+hero
+
+service cards
+
+project cards
+
+before/after interaction
+
+buttons
+
+images
+
+footer
+
+No:
+
+horizontal scrolling
+
+clipped text
+
+overlapping buttons
+
+stretched images
+
+broken navigation
+
+Error checks
+
+Lint:
+
+npm run lint
+
+Production build:
+
+npm run build
+
+The build should have no:
+
+unresolved imports
+
+missing exports
+
+syntax errors
+
+Sass errors
+
+runtime-critical build errors
+
+Browser:
+
+F12 → Console
+
+Prioritize errors originating from the application's own source.
+
+Browser-extension messages such as contentscript.js, ObjectMultiplex or background-liveness are not automatically application errors.
+
+Image troubleshooting
+
+List physical files:
+
+find public/images -maxdepth 1 -type f | sort
+
+Find image references:
+
+grep -RInE 'getImage|image:' src --include='*.js' --include='*.jsx'
+
+Find direct paths:
+
+grep -RInE '/images/' src --include='*.js' --include='*.jsx'
+
+For every referenced physical image, confirm a matching file exists in public/images/.
+
+A successful Vite build does not guarantee every runtime image file exists.
+
+Development
+
+Install:
+
+npm install
+
+Run:
+
+npm run dev
+
+Typical local URL:
+
+http://localhost:5173
+
+For LAN/mobile testing:
+
+npm run dev -- --host 0.0.0.0
+
+Production
+
+Build:
+
+npm run build
+
+Vite generates:
+
+dist/
+
+Deploy the fresh dist/ output to the static host.
+
+Preview locally:
+
+npm run preview
+
+Do not use the Vite development server as the live production server.
+
+HTTPS
+
+Do not keep a local .pem certificate as normal V1 project architecture.
+
+Local development can use:
+
+http://localhost:5173
+
+Production uses:
+
+https://clientdomain.com
+
+Production HTTPS/TLS is configured by the hosting/CDN/domain setup.
+
+Client update workflow
+
+1. Edit data files
+2. Replace/add/reuse images
+3. npm run dev
+4. Check all 5 pages
+5. Check mobile
+6. Test Call
+7. Test WhatsApp
+8. Check project imagery
+9. npm run lint
+10. npm run build
+11. Deploy fresh dist/
+
+Final handover checklist
+
+[ ] Exactly 5 pages
+[ ] Home works
+[ ] Services works
+[ ] About works
+[ ] Projects works
+[ ] Contact works
+[ ] Desktop header works
+[ ] Mobile menu works
+[ ] Call works
+[ ] WhatsApp works
+[ ] Request Quote works
+[ ] All service images load
+[ ] All project images load
+[ ] Before/after works where configured
+[ ] Footer visible
+[ ] No horizontal overflow
+[ ] Mobile tested
+[ ] Desktop tested
+[ ] npm run lint passes
+[ ] npm run build passes
+[ ] Fresh dist/ generated
+[ ] Production HTTPS configured by host/CDN
+
+Freeze
+
+After final QA:
+
+git add .
+git commit -m "Finalize home-services-01 V1"
+git push origin main
+git status
+
+Expected:
+
+nothing to commit, working tree clean
+
+Future admin, database, CRM, payments, customer accounts, online booking and advanced scheduling belong to V2.

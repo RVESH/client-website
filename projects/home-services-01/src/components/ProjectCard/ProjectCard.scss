@@ -1,0 +1,72 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.project-card {
+  border: 1px solid $line-on-paper;
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $paper-raised;
+
+  &__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: $ink;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__before {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity $dur-med $ease-in-out;
+
+    &.is-visible { opacity: 1; }
+  }
+
+  &__toggle {
+    @include button-reset;
+    position: absolute;
+    bottom: 0.85rem;
+    right: 0.85rem;
+    background: rgba(23, 27, 31, 0.82);
+    color: $paper;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid rgba(237, 238, 231, 0.3);
+    border-radius: $radius-sm;
+  }
+
+  &__category {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    background: $brass;
+    color: $ink;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.3rem 0.6rem;
+    border-radius: $radius-sm;
+  }
+
+  &__body {
+    padding: 1.3rem;
+
+    h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    p { font-size: 0.9rem; color: $text-on-paper-mute; margin-bottom: 0.85rem; }
+  }
+
+  &__meta {
+    display: flex;
+    gap: 0.5rem;
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    color: $slate;
+  }
+}

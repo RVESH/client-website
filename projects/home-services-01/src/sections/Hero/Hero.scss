@@ -1,0 +1,98 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-bottom: 0;
+  overflow: hidden;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+
+    @include mq(lg) {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3rem;
+    }
+  }
+
+  &__copy {
+    .index-label { margin-bottom: 1.1rem; }
+  }
+
+  &__title {
+    font-size: $fs-display-xl;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    &-line {
+      display: inline-block;
+      animation: hero-line-in $dur-slow $ease-out both;
+    }
+
+    &-line--accent {
+      color: $brass-pale;
+      animation-delay: 90ms;
+    }
+  }
+
+  &__lead {
+    margin-top: 1.4rem;
+    font-size: $fs-body-lg;
+    color: $text-on-ink-mute;
+    max-width: 46ch;
+  }
+
+  .btn-row { margin-top: 2rem; }
+
+  &__whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: $text-on-ink-mute;
+
+    &:hover { color: $brass-pale; }
+  }
+
+  &__frame {
+    position: relative;
+    border: 1px solid $line-on-ink;
+    border-radius: $radius-md;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    animation: hero-frame-in $dur-slow $ease-out 120ms both;
+
+    img { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  &__ticker {
+    border-top: 1px solid $line-on-ink;
+  }
+
+  &__ticker-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 0.9rem;
+    padding-block: 1rem;
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    color: $text-on-ink-mute;
+  }
+}
+
+@keyframes hero-line-in {
+  from { opacity: 0; transform: translateY(0.6em); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-frame-in {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}

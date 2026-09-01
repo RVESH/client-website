@@ -1,0 +1,78 @@
+@use 'sass:math';
+@use 'variables' as *;
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $container-pad;
+}
+
+@mixin mq($bp) {
+  @if $bp == xs { @media (min-width: $bp-xs) { @content; } }
+  @else if $bp == sm { @media (min-width: $bp-sm) { @content; } }
+  @else if $bp == md { @media (min-width: $bp-md) { @content; } }
+  @else if $bp == lg { @media (min-width: $bp-lg) { @content; } }
+  @else if $bp == xl { @media (min-width: $bp-xl) { @content; } }
+  @else if $bp == xxl { @media (min-width: $bp-xxl) { @content; } }
+}
+
+// Blueprint-style corner registration marks — the recurring signature
+// device. Draws four short ticks at the corners of the element.
+@mixin corner-marks($color: $brass, $size: 16px, $thickness: 2px, $offset: -1px) {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: $size;
+    height: $size;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &::before {
+    top: $offset;
+    left: $offset;
+    border-top: $thickness solid $color;
+    border-left: $thickness solid $color;
+  }
+
+  &::after {
+    bottom: $offset;
+    right: $offset;
+    border-bottom: $thickness solid $color;
+    border-right: $thickness solid $color;
+  }
+}
+
+@mixin focus-ring {
+  outline: 2px solid $brass;
+  outline-offset: 3px;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin button-reset {
+  appearance: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+@mixin hairline($side: bottom, $color: $line-on-paper) {
+  border-#{$side}: 1px solid $color;
+}
