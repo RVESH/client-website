@@ -1,0 +1,114 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.features-hero {
+  padding-block: v.$space-9 v.$space-6;
+
+  @include m.from(v.$bp-md) {
+    padding-block: v.$space-10 v.$space-7;
+  }
+}
+
+.features-hero__inner {
+  max-width: 640px;
+}
+
+.features-hero__title {
+  font-size: v.$fs-2xl;
+  line-height: v.$line-tight;
+  font-weight: v.$fw-semibold;
+  letter-spacing: -0.01em;
+  color: v.$color-text;
+  margin-block: v.$space-3 v.$space-4;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-3xl;
+  }
+}
+
+.features-hero__desc {
+  font-size: v.$fs-sm;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+}
+
+.features-detail__list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-11;
+}
+
+.features-detail__row {
+  display: grid;
+  gap: v.$space-7;
+  align-items: center;
+  scroll-margin-top: 100px;
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: 0.85fr 1fr;
+    gap: v.$space-9;
+  }
+}
+
+.features-detail__row--reverse {
+  @include m.from(v.$bp-lg) {
+    .features-detail__copy {
+      order: 2;
+    }
+
+    .features-detail__visual {
+      order: 1;
+    }
+  }
+}
+
+.features-detail__icon {
+  @include m.flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: v.$radius-md;
+  background: v.$gradient-accent-soft;
+  color: v.$color-blue-soft;
+  margin-bottom: v.$space-4;
+}
+
+.features-detail__copy {
+  h2 {
+    font-size: v.$fs-lg;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text;
+    margin-bottom: v.$space-3;
+  }
+}
+
+.features-detail__desc {
+  font-size: v.$fs-sm;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+  max-width: 440px;
+  margin-bottom: v.$space-5;
+}
+
+.features-detail__points {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+
+  li {
+    position: relative;
+    padding-left: v.$space-5;
+    font-size: v.$fs-xs;
+    color: v.$color-text-dim;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: v.$gradient-accent;
+    }
+  }
+}

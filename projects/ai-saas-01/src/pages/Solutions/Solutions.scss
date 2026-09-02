@@ -1,0 +1,55 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.solutions-hero {
+  padding-block: v.$space-9 v.$space-6;
+
+  @include m.from(v.$bp-md) {
+    padding-block: v.$space-10 v.$space-7;
+  }
+}
+
+.solutions-hero__inner {
+  max-width: 640px;
+}
+
+.solutions-hero__title {
+  font-size: v.$fs-2xl;
+  line-height: v.$line-tight;
+  font-weight: v.$fw-semibold;
+  letter-spacing: -0.01em;
+  color: v.$color-text;
+  margin-block: v.$space-3 v.$space-4;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-3xl;
+  }
+}
+
+.solutions-hero__desc {
+  font-size: v.$fs-sm;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+  margin-bottom: v.$space-6;
+}
+
+.solutions-hero__jumplinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-3;
+
+  a {
+    padding: v.$space-2 v.$space-4;
+    border-radius: v.$radius-pill;
+    border: 1px solid v.$color-border;
+    background: v.$color-surface;
+    font-size: v.$fs-2xs;
+    color: v.$color-text-dim;
+    @include m.transition(border-color, color);
+
+    &:hover {
+      color: v.$color-text;
+      border-color: v.$color-blue-soft;
+    }
+  }
+}

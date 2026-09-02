@@ -1,0 +1,48 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.product-preview {
+  @include m.glass-surface;
+  padding: v.$space-2;
+  box-shadow: v.$shadow-lg;
+}
+
+.product-preview__chrome {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  padding: v.$space-2 v.$space-3;
+}
+
+.product-preview__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: v.$color-border;
+}
+
+.product-preview__label {
+  margin-left: auto;
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  color: v.$color-text-mute;
+}
+
+.product-preview__frame {
+  border-radius: v.$radius-md;
+  overflow: hidden;
+  border: 1px solid v.$color-border-soft;
+  background: v.$color-bg;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.product-preview--compact {
+  .product-preview__chrome {
+    padding: v.$space-1 v.$space-2;
+  }
+}

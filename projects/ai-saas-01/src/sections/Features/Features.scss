@@ -1,0 +1,73 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// ---- Core capabilities grid ----
+.features-grid__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-5;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// ---- Feature highlights (alternating rows) ----
+.feature-highlights__list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-9;
+}
+
+.feature-highlights__row {
+  display: grid;
+  gap: v.$space-6;
+  align-items: center;
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: 0.85fr 1fr;
+    gap: v.$space-9;
+  }
+}
+
+.feature-highlights__row--reverse {
+  @include m.from(v.$bp-lg) {
+    .feature-highlights__copy {
+      order: 2;
+    }
+
+    .feature-highlights__visual {
+      order: 1;
+    }
+  }
+}
+
+.feature-highlights__icon {
+  @include m.flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: v.$radius-md;
+  background: v.$gradient-accent-soft;
+  color: v.$color-blue-soft;
+  margin-bottom: v.$space-4;
+}
+
+.feature-highlights__copy {
+  h3 {
+    font-size: v.$fs-lg;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text;
+    margin-bottom: v.$space-3;
+  }
+
+  p {
+    font-size: v.$fs-sm;
+    color: v.$color-text-dim;
+    line-height: v.$line-normal;
+    max-width: 420px;
+  }
+}

@@ -1,0 +1,35 @@
+<svg viewBox="0 0 480 460" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F1119"/>
+      <stop offset="100%" stop-color="#151826"/>
+    </linearGradient></defs>
+      <rect width="480" height="460" rx="18" fill="url(#bg2)"/>
+      <rect x="1" y="1" width="478" height="458" rx="17" fill="none" stroke="#242938"/>
+      <text x="60" y="40" font-family="Arial" font-size="13" fill="#5B6272">Automation flow</text>
+      
+        <rect x="60" y="60" width="360" height="56" rx="12" fill="#171B24" stroke="#242938"/>
+        <circle cx="90" cy="88" r="10" fill="#4C7CFF" opacity="0.9"/>
+        <text x="90" y="92" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">1</text>
+        <text x="114" y="92" font-family="Arial" font-size="14" fill="#C7CCDA">Trigger</text>
+        <line x1="240" y1="116" x2="240" y2="138" stroke="#242938" stroke-width="2" stroke-dasharray="4 4"/>
+        <rect x="60" y="138" width="360" height="56" rx="12" fill="#171B24" stroke="#242938"/>
+        <circle cx="90" cy="166" r="10" fill="#8B5CF6" opacity="0.9"/>
+        <text x="90" y="170" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">2</text>
+        <text x="114" y="170" font-family="Arial" font-size="14" fill="#C7CCDA">Enrich data</text>
+        <line x1="240" y1="194" x2="240" y2="216" stroke="#242938" stroke-width="2" stroke-dasharray="4 4"/>
+        <rect x="60" y="216" width="360" height="56" rx="12" fill="#171B24" stroke="#242938"/>
+        <circle cx="90" cy="244" r="10" fill="#4C7CFF" opacity="0.9"/>
+        <text x="90" y="248" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">3</text>
+        <text x="114" y="248" font-family="Arial" font-size="14" fill="#C7CCDA">AI decision</text>
+        <line x1="240" y1="272" x2="240" y2="294" stroke="#242938" stroke-width="2" stroke-dasharray="4 4"/>
+        <rect x="60" y="294" width="360" height="56" rx="12" fill="#171B24" stroke="#242938"/>
+        <circle cx="90" cy="322" r="10" fill="#8B5CF6" opacity="0.9"/>
+        <text x="90" y="326" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">4</text>
+        <text x="114" y="326" font-family="Arial" font-size="14" fill="#C7CCDA">Route task</text>
+        <line x1="240" y1="350" x2="240" y2="372" stroke="#242938" stroke-width="2" stroke-dasharray="4 4"/>
+        <rect x="60" y="372" width="360" height="56" rx="12" fill="#171B24" stroke="#242938"/>
+        <circle cx="90" cy="400" r="10" fill="#4C7CFF" opacity="0.9"/>
+        <text x="90" y="404" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff">5</text>
+        <text x="114" y="404" font-family="Arial" font-size="14" fill="#C7CCDA">Notify team</text>
+        
+    </svg>

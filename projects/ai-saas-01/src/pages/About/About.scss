@@ -1,0 +1,172 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// ---- Story ----
+.about-story {
+  padding-block: v.$space-9 v.$space-8;
+
+  @include m.from(v.$bp-md) {
+    padding-block: v.$space-10 v.$space-9;
+  }
+}
+
+.about-story__inner {
+  display: grid;
+  gap: v.$space-7;
+  align-items: center;
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: 1fr 0.9fr;
+    gap: v.$space-9;
+  }
+}
+
+.about-story__title {
+  font-size: v.$fs-2xl;
+  line-height: v.$line-tight;
+  font-weight: v.$fw-semibold;
+  letter-spacing: -0.01em;
+  color: v.$color-text;
+  margin-block: v.$space-3 v.$space-5;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-3xl;
+  }
+}
+
+.about-story__desc {
+  font-size: v.$fs-sm;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+  max-width: 480px;
+  margin-bottom: v.$space-4;
+}
+
+.about-story__visual {
+  border-radius: v.$radius-xl;
+  overflow: hidden;
+  border: 1px solid v.$color-border;
+}
+
+// ---- Mission ----
+.about-mission__card {
+  @include m.card-surface;
+  display: flex;
+  gap: v.$space-4;
+  align-items: flex-start;
+  padding: v.$space-7 v.$space-6;
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: left;
+
+  @include m.from(v.$bp-md) {
+    padding: v.$space-8;
+  }
+}
+
+.about-mission__icon {
+  color: v.$color-blue-soft;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.about-mission__text {
+  font-size: v.$fs-md;
+  line-height: v.$line-snug;
+  color: v.$color-text;
+}
+
+// ---- Principles ----
+.about-principles__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-5;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.about-principles__item {
+  @include m.card-surface;
+  padding: v.$space-6;
+
+  h3 {
+    font-size: v.$fs-sm;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text;
+    margin-bottom: v.$space-2;
+  }
+
+  p {
+    font-size: v.$fs-xs;
+    color: v.$color-text-dim;
+    line-height: v.$line-normal;
+  }
+}
+
+.about-principles__icon {
+  @include m.flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: v.$radius-md;
+  background: v.$gradient-accent-soft;
+  color: v.$color-blue-soft;
+  margin-bottom: v.$space-4;
+}
+
+// ---- Team ----
+.section-head__eyebrow {
+  svg {
+    margin-right: 2px;
+  }
+}
+
+.about-team__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-6;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.about-team__card {
+  @include m.card-surface;
+  padding: v.$space-6;
+
+  img {
+    width: 64px;
+    height: 64px;
+    border-radius: v.$radius-md;
+    margin-bottom: v.$space-4;
+  }
+
+  h3 {
+    font-size: v.$fs-sm;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text;
+    margin-bottom: v.$space-1;
+  }
+}
+
+.about-team__role {
+  font-size: v.$fs-2xs;
+  color: v.$color-blue-soft;
+  margin-bottom: v.$space-3;
+}
+
+.about-team__bio {
+  font-size: v.$fs-xs;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+}

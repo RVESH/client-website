@@ -1,0 +1,127 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// ---- Use cases grid (Home) ----
+.use-cases__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-4;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// ---- Detailed solutions (Solutions page) ----
+.solutions-detailed__list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-11;
+}
+
+.solutions-detailed__row {
+  display: grid;
+  gap: v.$space-7;
+  align-items: start;
+  scroll-margin-top: 100px;
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: 0.9fr 1fr;
+    gap: v.$space-9;
+    align-items: center;
+  }
+}
+
+.solutions-detailed__row--reverse {
+  @include m.from(v.$bp-lg) {
+    .solutions-detailed__copy {
+      order: 2;
+    }
+
+    .solutions-detailed__visual {
+      order: 1;
+    }
+  }
+}
+
+.solutions-detailed__icon {
+  @include m.flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: v.$radius-md;
+  background: v.$gradient-accent-soft;
+  color: v.$color-blue-soft;
+  margin-bottom: v.$space-4;
+}
+
+.solutions-detailed__copy {
+  h3 {
+    font-size: v.$fs-xl;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text;
+    margin-bottom: v.$space-3;
+  }
+}
+
+.solutions-detailed__desc {
+  font-size: v.$fs-sm;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+  max-width: 460px;
+  margin-bottom: v.$space-6;
+}
+
+.solutions-detailed__workflow {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+  margin-bottom: v.$space-6;
+  counter-reset: step;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: v.$space-3;
+    font-size: v.$fs-xs;
+    color: v.$color-text-dim;
+    padding: v.$space-2 0;
+  }
+}
+
+.solutions-detailed__step-num {
+  @include m.flex-center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: v.$color-surface-alt;
+  border: 1px solid v.$color-border;
+  font-size: 0.6875rem;
+  font-weight: v.$fw-semibold;
+  color: v.$color-blue-soft;
+  flex-shrink: 0;
+}
+
+.solutions-detailed__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+  margin-bottom: v.$space-7;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: v.$space-3;
+    font-size: v.$fs-xs;
+    color: v.$color-text-dim;
+  }
+
+  svg {
+    color: v.$color-success;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+}

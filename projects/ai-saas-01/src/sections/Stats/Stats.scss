@@ -1,0 +1,40 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.stats__grid {
+  @include m.card-surface;
+  @include m.grid-overlay;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: v.$space-6;
+  padding: v.$space-7 v.$space-6;
+
+  @include m.from(v.$bp-md) {
+    grid-template-columns: repeat(4, 1fr);
+    padding: v.$space-8;
+  }
+}
+
+.stats__item {
+  text-align: center;
+}
+
+.stats__value {
+  font-size: v.$fs-xl;
+  font-weight: v.$fw-bold;
+  letter-spacing: -0.01em;
+  background: v.$gradient-accent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: v.$space-2;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-2xl;
+  }
+}
+
+.stats__label {
+  font-size: v.$fs-2xs;
+  color: v.$color-text-mute;
+}

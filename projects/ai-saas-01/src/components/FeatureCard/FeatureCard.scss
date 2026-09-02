@@ -1,0 +1,48 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.feature-card {
+  @include m.card-surface;
+  @include m.transition(border-color, transform, box-shadow);
+  padding: v.$space-6;
+  height: 100%;
+
+  &:hover {
+    border-color: rgba(76, 124, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: v.$shadow-md;
+  }
+}
+
+.feature-card__icon {
+  @include m.flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: v.$radius-md;
+  background: v.$gradient-accent-soft;
+  color: v.$color-blue-soft;
+  margin-bottom: v.$space-4;
+}
+
+.feature-card__title {
+  font-size: v.$fs-sm;
+  font-weight: v.$fw-semibold;
+  color: v.$color-text;
+  margin-bottom: v.$space-2;
+}
+
+.feature-card__desc {
+  font-size: v.$fs-xs;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+}
+
+.feature-card--sm {
+  padding: v.$space-5;
+
+  .feature-card__icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: v.$space-3;
+  }
+}

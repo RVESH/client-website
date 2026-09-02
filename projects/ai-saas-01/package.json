@@ -1,24 +1,35 @@
 {
-  "name": "ai-saas-01",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
+    "start": "node src/server.js",
     "build": "vite build",
-    "lint": "oxlint",
+    "lint": "oxlint .",
     "preview": "vite preview"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RVESH/client-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RVESH/client-website/issues"
+  },
+  "homepage": "https://github.com/RVESH/client-website#readme",
   "dependencies": {
+    "lucide-react": "^1.39.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.2"
+    "react-router-dom": "^7.18.3"
   },
   "devDependencies": {
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "@vitejs/plugin-react": "^6.1.0",
-    "oxlint": "^1.79.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.80.0",
     "sass": "^1.103.1",
     "vite": "^8.2.2"
   }

@@ -1,0 +1,39 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.integration-card {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  padding: v.$space-4;
+  border-radius: v.$radius-md;
+  border: 1px solid v.$color-border;
+  background: v.$color-surface;
+  @include m.transition(border-color, background);
+
+  &:hover {
+    border-color: v.$color-border-soft;
+    background: v.$color-surface-alt;
+  }
+}
+
+.integration-card__icon {
+  @include m.flex-center;
+  width: 36px;
+  height: 36px;
+  border-radius: v.$radius-sm;
+  background: v.$color-surface-raised;
+  color: v.$color-blue-soft;
+  flex-shrink: 0;
+}
+
+.integration-card__name {
+  font-size: v.$fs-xs;
+  font-weight: v.$fw-medium;
+  color: v.$color-text;
+}
+
+.integration-card__category {
+  font-size: 0.6875rem;
+  color: v.$color-text-mute;
+}

@@ -1,0 +1,61 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.cta__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: v.$radius-xl;
+  border: 1px solid v.$color-border;
+  background: v.$gradient-surface;
+  padding: v.$space-9 v.$space-6;
+  text-align: center;
+
+  @include m.from(v.$bp-md) {
+    padding: v.$space-10 v.$space-9;
+  }
+}
+
+.cta__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 100% at 50% 0%, rgba(76, 124, 255, 0.16) 0%, rgba(139, 92, 246, 0.08) 45%, transparent 75%);
+  pointer-events: none;
+}
+
+.cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.cta__eyebrow {
+  @include m.section-eyebrow;
+  justify-content: center;
+  margin-bottom: v.$space-3;
+}
+
+.cta__title {
+  font-size: v.$fs-xl;
+  font-weight: v.$fw-semibold;
+  color: v.$color-text;
+  letter-spacing: -0.01em;
+  margin-bottom: v.$space-3;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-2xl;
+  }
+}
+
+.cta__desc {
+  font-size: v.$fs-sm;
+  color: v.$color-text-dim;
+  margin-bottom: v.$space-7;
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: v.$space-3;
+}

@@ -1,0 +1,54 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.testimonial-card {
+  @include m.card-surface;
+  padding: v.$space-6;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card__mark {
+  color: v.$color-blue-soft;
+  opacity: 0.6;
+  margin-bottom: v.$space-3;
+}
+
+.testimonial-card__quote {
+  margin: 0 0 v.$space-5;
+  font-size: v.$fs-sm;
+  line-height: v.$line-normal;
+  color: v.$color-text;
+  flex-grow: 1;
+}
+
+.testimonial-card__meta {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+}
+
+.testimonial-card__avatar {
+  @include m.flex-center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: v.$gradient-accent;
+  color: #fff;
+  font-size: v.$fs-xs;
+  font-weight: v.$fw-semibold;
+  flex-shrink: 0;
+}
+
+.testimonial-card__name {
+  font-size: v.$fs-xs;
+  font-weight: v.$fw-semibold;
+  color: v.$color-text;
+}
+
+.testimonial-card__role {
+  font-size: v.$fs-2xs;
+  color: v.$color-text-mute;
+}

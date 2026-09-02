@@ -1,0 +1,415 @@
+AI SaaS 01 — V1 Client & Deployment Guide
+
+1. What this website is
+
+Nexora AI is a B2B AI SaaS marketing website for a fictional AI workflow-automation platform.
+
+The website explains a product that helps teams connect:
+
+AI-powered decisions
+
+multi-step workflow automation
+
+analytics and monitoring
+
+third-party integrations
+
+enterprise security and controls
+
+This V1 is a public marketing / lead-generation website. It is not the actual SaaS application.
+
+V1 pages
+
+Home
+
+Features
+
+Solutions
+
+About
+
+Contact
+
+The public website does not need login, billing, checkout, a customer dashboard, or a production AI backend.
+
+2. Contact page — final behaviour
+
+The Contact page intentionally uses three direct contact methods:
+
+Email
+
+The Open email draft / Send enquiry action uses a mailto: URL.
+
+The form collects:
+
+Full name
+
+Work email
+
+Company
+
+Message
+
+The website then creates a pre-filled email addressed to the sales email configured in src/data/site.js.
+
+Example draft:
+
+To
+sales@nexora.ai
+
+Subject
+Nexora enquiry — Acme
+
+Body
+
+Hello Nexora team,
+
+I would like to discuss my workflows and learn more about Nexora.
+
+Name: Rishabh Verma
+Work email: rishabh@example.com
+Company: Acme
+
+Message:
+We want to automate lead routing.
+
+Regards,
+Rishabh Verma
+
+Important
+
+A mailto: link does not send the email automatically.
+
+It asks the browser/operating system to open the user's configured email application or webmail handler with a new, pre-filled draft. The user must still press Send in that email application. This is the expected behaviour of the mailto: scheme. citehttps://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links
+
+If no email application is configured for mailto:, the browser may not open a compose window. Keep the visible sales email address on the page as a fallback.
+
+WhatsApp
+
+The WhatsApp cards and the WhatsApp instead action open the configured WhatsApp contact and start a direct conversation.
+
+Phone
+
+The phone action uses a tel: link. On compatible mobile devices it can open the dialer; behaviour on desktop depends on the installed call application.
+
+3. Recommended Contact wording
+
+Use language that is honest about what the static V1 site does.
+
+Preferred primary button:
+
+Open email draft
+
+Supporting text:
+
+Opens your email app with a pre-filled enquiry.
+
+Good success/status message:
+
+Your email draft should now be open.
+Review the details and press Send in your email app.
+
+Avoid:
+
+“Your enquiry has been received.”
+
+That wording would imply that the website has actually transmitted the enquiry to a backend when this V1 does not.
+
+4. Contact configuration
+
+Central business/contact values belong in:
+
+src/data/site.js
+
+Update these values when handing the website to a real client:
+
+company name
+
+sales email
+
+general email
+
+phone number
+
+WhatsApp number
+
+address
+
+office hours
+
+navigation labels
+
+primary CTA
+
+secondary CTA
+
+The Contact page should not contain hard-coded client contact details when the same values already exist in site.js.
+
+5. Image architecture
+
+The project uses a central image registry:
+
+src/data/images.js
+
+Physical image files belong in:
+
+public/images/
+
+Rule
+
+One physical image = one file.
+
+Components reference images through the registry instead of scattering file paths throughout the application.
+
+Example:
+
+export const images = {
+  heroProductUI: '/images/hero-product-ui.svg',
+  featureAutomationPreview: '/images/feature-automation-preview.svg',
+}
+
+Image roles
+
+Product preview images should represent the SaaS product itself:
+
+dashboard
+
+workflow automation
+
+analytics
+
+security controls
+
+solution-specific product views
+
+Real photography is most useful for:
+
+About/team
+
+company story
+
+selected human/workspace sections
+
+Trust/logo marks should remain logo assets rather than photography.
+
+6. Responsive header
+
+The final header uses a real responsive navigation model.
+
+Mobile / tablet
+
+brand stays visible
+
+hamburger button opens the mobile navigation
+
+hamburger changes to close state
+
+navigation links are clickable
+
+CTA buttons are available inside the mobile panel
+
+Escape closes the panel
+
+changing route closes the panel
+
+page scrolling is locked while the panel is open
+
+Desktop
+
+navigation links are visible
+
+active page is highlighted
+
+sales CTA and primary CTA are visible according to available width
+
+Always test the header at:
+
+360px
+390px
+430px
+768px
+900px
+1024px
+1280px
+1440px
+1920px
+
+7. Client editing rules
+
+Normal client edits should be limited to the data/configuration layer and image assets.
+
+Main editable files
+
+src/data/site.js
+src/data/images.js
+public/images/*
+
+Most copy changes should be made through the relevant data files where the project exposes them.
+
+Avoid directly editing component logic for ordinary content changes.
+
+8. Development commands
+
+From the project directory:
+
+npm install
+
+Start development:
+
+npm run dev
+
+Run lint:
+
+npm run lint
+
+Create production build:
+
+npm run build
+
+Preview the production build:
+
+npm run preview
+
+Recommended final check:
+
+npm run lint && npm run build
+
+A successful build only proves the project compiles. Always perform a browser/runtime check as well.
+
+9. Final QA checklist
+
+Before freezing the V1, verify:
+
+Navigation
+
+all 5 routes work
+
+active navigation state is correct
+
+mobile menu opens and closes
+
+mobile menu links work
+
+menu closes after navigation
+
+header works at very small widths
+
+Contact
+
+Email card opens the email handler
+
+form validation works
+
+enquiry opens a pre-filled email draft
+
+the recipient is correct
+
+subject is correct
+
+form details appear in the draft
+
+WhatsApp opens the intended contact
+
+phone action works on a compatible device
+
+no message claims that an email was already sent
+
+Visuals
+
+no broken images
+
+no broken links
+
+no horizontal scrolling on small phones
+
+headings wrap naturally
+
+buttons remain usable on narrow screens
+
+footer works on mobile
+
+Build
+
+npm run lint && npm run build
+
+10. Important limitation of the static contact form
+
+This V1 does not store enquiries in a database and does not send email from the server.
+
+For a later production application where leads must be captured automatically, add a real form backend/service such as:
+
+a server endpoint
+
+a transactional email provider
+
+a form service
+
+That should be treated as a future production enhancement rather than silently pretending the static site already has that capability.
+
+11. Freeze policy
+
+Freeze this V1 only after:
+
+Lint
+↓
+Production build
+↓
+Desktop QA
+↓
+Mobile QA
+↓
+Contact/email/WhatsApp QA
+↓
+Image/link QA
+↓
+Git commit
+
+Do not freeze immediately after a successful vite build.
+
+12. Git commit
+
+From the project root:
+
+git status
+
+Review the changed files, then:
+
+git add .
+git commit -m "fix(ai-saas-01): finalize header and contact flow"
+
+Verify:
+
+git status
+git log -1 --oneline
+
+The working tree should be clean after the commit.
+
+13. Client handoff summary
+
+Nexora AI V1 is a polished five-page B2B SaaS marketing site.
+
+The website's main job is to:
+
+explain the AI workflow automation product
+
+show product capabilities
+
+communicate use cases
+
+establish company trust
+
+generate contact/demo leads
+
+The Contact page is intentionally static and honest:
+
+form → pre-filled email draft → user presses Send
+
+with direct alternatives:
+
+WhatsApp and Call.
+
+No hidden backend behaviour is assumed.
+
+14. Recommended next step after freeze
+
+After this V1 is committed and frozen, move to the next website template rather than adding unnecessary V2 functionality to Nexora AI.

@@ -1,0 +1,106 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.hero {
+  position: relative;
+  padding-block: v.$space-9 v.$space-8;
+  overflow: hidden;
+
+  @include m.from(v.$bp-md) {
+    padding-block: v.$space-10 v.$space-9;
+  }
+}
+
+.hero__glow {
+  position: absolute;
+  inset: 0;
+  background: v.$gradient-bg-glow;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: v.$space-8;
+  align-items: center;
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: v.$space-9;
+  }
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-2;
+  padding: v.$space-1 v.$space-4;
+  border-radius: v.$radius-pill;
+  border: 1px solid v.$color-border;
+  background: v.$color-surface;
+  font-size: v.$fs-2xs;
+  color: v.$color-text-dim;
+  margin-bottom: v.$space-5;
+}
+
+.hero__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: v.$color-success;
+  box-shadow: 0 0 0 3px rgba(53, 211, 153, 0.18);
+}
+
+.hero__title {
+  font-size: v.$fs-2xl;
+  line-height: v.$line-tight;
+  font-weight: v.$fw-semibold;
+  letter-spacing: -0.02em;
+  color: v.$color-text;
+  margin-bottom: v.$space-5;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-3xl;
+  }
+
+  @include m.from(v.$bp-lg) {
+    font-size: v.$fs-4xl;
+  }
+}
+
+.hero__title-accent {
+  background: v.$gradient-accent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__desc {
+  font-size: v.$fs-sm;
+  line-height: v.$line-normal;
+  color: v.$color-text-dim;
+  max-width: 480px;
+  margin-bottom: v.$space-7;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-3;
+  margin-bottom: v.$space-6;
+}
+
+.hero__meta {
+  font-size: v.$fs-2xs;
+  color: v.$color-text-mute;
+}
+
+.hero__meta-sep {
+  margin-inline: v.$space-2;
+}
+
+.hero__visual {
+  position: relative;
+}

@@ -1,0 +1,27 @@
+<svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F1119"/>
+      <stop offset="100%" stop-color="#151826"/>
+    </linearGradient>
+        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4C7CFF"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+      </defs>
+      <rect width="480" height="340" rx="18" fill="url(#bg4)"/>
+      <rect x="1" y="1" width="478" height="338" rx="17" fill="none" stroke="#242938"/>
+      <text x="30" y="38" font-family="Arial" font-size="13" fill="#C7CCDA">Security posture</text>
+      <path d="M240 60 L300 82 V150 C300 195 270 225 240 238 C210 225 180 195 180 150 V82 Z"
+            fill="none" stroke="url(#shieldGrad)" stroke-width="3"/>
+      <path d="M212 148 L232 168 L272 122" fill="none" stroke="#4C7CFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="30" y="260" width="130" height="56" rx="10" fill="#171B24" stroke="#242938"/>
+      <text x="46" y="282" font-family="Arial" font-size="10" fill="#5B6272">Encryption</text>
+      <text x="46" y="300" font-family="Arial" font-size="12" fill="#C7CCDA">AES-256</text>
+      <rect x="175" y="260" width="130" height="56" rx="10" fill="#171B24" stroke="#242938"/>
+      <text x="191" y="282" font-family="Arial" font-size="10" fill="#5B6272">Access control</text>
+      <text x="191" y="300" font-family="Arial" font-size="12" fill="#C7CCDA">Role-based</text>
+      <rect x="320" y="260" width="130" height="56" rx="10" fill="#171B24" stroke="#242938"/>
+      <text x="336" y="282" font-family="Arial" font-size="10" fill="#5B6272">Monitoring</text>
+      <text x="336" y="300" font-family="Arial" font-size="12" fill="#C7CCDA">24/7 audit log</text>
+    </svg>

@@ -1,0 +1,26 @@
+<svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F1119"/>
+      <stop offset="100%" stop-color="#151826"/>
+    </linearGradient>
+        <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#4C7CFF" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#4C7CFF" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="480" height="340" rx="18" fill="url(#bg3)"/>
+      <rect x="1" y="1" width="478" height="338" rx="17" fill="none" stroke="#242938"/>
+      <text x="30" y="38" font-family="Arial" font-size="13" fill="#C7CCDA">Usage analytics</text>
+      <text x="30" y="56" font-family="Arial" font-size="10" fill="#5B6272">Requests per hour</text>
+      <path d="M 40,200 L 57,177 L 74,156 L 91,139 L 108,127 L 125,121 L 142,122 L 159,130 L 176,144 L 193,163 L 210,185 L 227,193 L 244,170 L 261,150 L 278,134 L 295,124 L 312,121 L 329,124 L 346,134 L 363,149 L 380,169 L 397,192 L 414,186 L 431,163 L 431,260 L 40,260 Z" fill="url(#areaGrad)"/>
+      <path d="M 40,200 L 57,177 L 74,156 L 91,139 L 108,127 L 125,121 L 142,122 L 159,130 L 176,144 L 193,163 L 210,185 L 227,193 L 244,170 L 261,150 L 278,134 L 295,124 L 312,121 L 329,124 L 346,134 L 363,149 L 380,169 L 397,192 L 414,186 L 431,163" fill="none" stroke="#4C7CFF" stroke-width="2.5"/>
+      <path d="M 40,200 L 57,177 L 74,156 L 91,139 L 108,127 L 125,121 L 142,122 L 159,130 L 176,144 L 193,163 L 210,185 L 227,193 L 244,170 L 261,150 L 278,134 L 295,124 L 312,121 L 329,124 L 346,134 L 363,149 L 380,169 L 397,192 L 414,186 L 431,163" fill="none" stroke="#8B5CF6" stroke-width="1" opacity="0.5" transform="translate(0,-6)"/>
+      <line x1="30" y1="260" x2="450" y2="260" stroke="#242938"/>
+      <rect x="30" y="284" width="120" height="34" rx="8" fill="#171B24" stroke="#242938"/>
+      <text x="42" y="305" font-family="Arial" font-size="11" fill="#5B6272">Peak 2.3k/hr</text>
+      <rect x="160" y="284" width="120" height="34" rx="8" fill="#171B24" stroke="#242938"/>
+      <text x="172" y="305" font-family="Arial" font-size="11" fill="#5B6272">Avg 940/hr</text>
+      <rect x="290" y="284" width="160" height="34" rx="8" fill="#171B24" stroke="#242938"/>
+      <text x="302" y="305" font-family="Arial" font-size="11" fill="#5B6272">Errors 0.02%</text>
+    </svg>
