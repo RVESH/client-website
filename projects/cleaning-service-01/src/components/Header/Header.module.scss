@@ -1,0 +1,303 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: v.$color-bg;
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color v.$dur-med v.$ease-standard,
+    box-shadow v.$dur-med v.$ease-standard,
+    background-color v.$dur-med v.$ease-standard;
+}
+
+.scrolled {
+  border-bottom-color: v.$color-border;
+  box-shadow: v.$shadow-sm;
+}
+
+.bar {
+  position: relative;
+  z-index: 1002;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-md;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+  color: v.$color-ink;
+  text-decoration: none;
+}
+
+.logoMark {
+  display: inline-flex;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: v.$font-display;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: v.$color-ink;
+}
+
+.desktopNav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: v.$space-lg;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @include m.respond(lg) {
+    display: none;
+  }
+}
+
+.navLink,
+.navActive {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-block: 0.45rem;
+  color: v.$color-ink-soft;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color v.$dur-fast v.$ease-standard;
+
+  &:hover {
+    color: v.$color-ink;
+  }
+}
+
+.navActive {
+  color: v.$color-ink;
+  font-weight: 600;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: v.$color-accent;
+    border-radius: v.$radius-pill;
+  }
+}
+
+.desktopCta {
+  flex-shrink: 0;
+
+  @include m.respond(lg) {
+    display: none;
+  }
+}
+
+/* =========================================
+   MOBILE TOGGLE
+========================================= */
+
+.menuToggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-md;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 1003;
+
+  @include m.respond(lg) {
+    display: inline-flex;
+  }
+
+  &:hover {
+    background: v.$color-surface;
+  }
+}
+
+.iconClosed,
+.iconOpen {
+  width: 21px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: v.$radius-pill;
+    background: v.$color-ink;
+    transition:
+      transform v.$dur-fast v.$ease-standard,
+      opacity v.$dur-fast v.$ease-standard;
+  }
+}
+
+.iconOpen {
+  justify-content: center;
+  gap: 0;
+
+  span:nth-child(1) {
+    transform: translateY(1px) rotate(45deg);
+  }
+
+  span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  span:nth-child(3) {
+    transform: translateY(-1px) rotate(-45deg);
+  }
+}
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+.mobileMenu {
+  display: none;
+
+  @include m.respond(lg) {
+    display: block;
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    max-height: calc(100dvh - 76px);
+    overflow-y: auto;
+    background: v.$color-bg;
+    border-top: 1px solid v.$color-border;
+    box-shadow: v.$shadow-md;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition:
+      opacity v.$dur-med v.$ease-standard,
+      transform v.$dur-med v.$ease-standard,
+      visibility v.$dur-med v.$ease-standard;
+  }
+}
+
+.mobileMenuOpen {
+  @include m.respond(lg) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+.mobileMenuInner {
+  width: min(100%, 42rem);
+  margin: 0 auto;
+  padding: 0 v.$container-pad v.$space-xl;
+}
+
+.mobileNav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid v.$color-border;
+  }
+}
+
+.mobileNavLink,
+.mobileNavActive {
+  width: 100%;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-md;
+  padding: 0.9rem 0;
+  color: v.$color-ink;
+  text-decoration: none;
+  font-family: v.$font-display;
+  font-size: clamp(1.35rem, 5vw, 1.8rem);
+  font-weight: 600;
+}
+
+.mobileNavActive {
+  color: v.$color-primary;
+}
+
+.mobileNavArrow {
+  font-family: v.$font-body;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+.mobileBottom {
+  display: grid;
+  gap: v.$space-sm;
+  margin-top: v.$space-lg;
+}
+
+.mobilePhone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding-inline: 1rem;
+  border: 1px solid v.$color-border;
+  color: v.$color-ink;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   MOBILE BACKDROP
+========================================= */
+
+.mobileBackdrop {
+  display: none;
+
+  @include m.respond(lg) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: rgba(12, 18, 15, 0.34);
+    cursor: default;
+  }
+}

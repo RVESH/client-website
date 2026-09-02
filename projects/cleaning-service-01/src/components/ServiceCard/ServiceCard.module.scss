@@ -1,0 +1,99 @@
+@use 'sass:math';
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: v.$color-surface;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+  border: 1px solid v.$color-border;
+  transition: transform v.$dur-med v.$ease-standard,
+    box-shadow v.$dur-med v.$ease-standard;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: v.$shadow-md;
+  }
+}
+
+.imageFrame {
+  position: relative;
+  @include m.image-frame(math.div(4, 3));
+  border-radius: 0;
+}
+
+.index {
+  position: absolute;
+  top: v.$space-sm;
+  left: v.$space-sm;
+  background: rgba(28, 37, 33, 0.72);
+  color: v.$color-white;
+  font-family: v.$font-display;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: v.$radius-pill;
+  backdrop-filter: blur(4px);
+}
+
+.body {
+  padding: v.$space-md v.$space-md v.$space-lg;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.summary {
+  color: v.$color-ink-soft;
+  font-size: v.$fs-small;
+  margin-top: v.$space-2xs;
+  margin-bottom: v.$space-sm;
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: v.$space-md;
+  flex: 1;
+
+  li {
+    position: relative;
+    padding-left: 1.15rem;
+    font-size: v.$fs-small;
+    color: v.$color-ink;
+    line-height: v.$lh-snug;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: v.$color-primary;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-sm;
+  padding-top: v.$space-sm;
+  border-top: 1px solid v.$color-border;
+}
+
+.coverage {
+  font-size: v.$fs-tiny;
+  color: v.$color-ink-faint;
+  font-weight: 500;
+}
+
+.cta {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.88rem;
+}

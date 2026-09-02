@@ -1,0 +1,179 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+@font-face {
+  font-family: 'Fraunces';
+  src: local('Fraunces');
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: v.$color-bg;
+  color: v.$color-ink;
+  font-family: v.$font-body;
+  font-size: v.$fs-body;
+  line-height: v.$lh-normal;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: v.$font-display;
+  color: v.$color-ink;
+  line-height: v.$lh-tight;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: v.$fs-h1;
+}
+
+h2 {
+  font-size: v.$fs-h2;
+}
+
+h3 {
+  font-size: v.$fs-h3;
+  line-height: v.$lh-snug;
+}
+
+h4 {
+  font-size: v.$fs-h4;
+  line-height: v.$lh-snug;
+}
+
+p {
+  margin: 0;
+  max-width: 62ch;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  display: block;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+::selection {
+  background: v.$color-primary-light;
+  color: v.$color-primary-dark;
+}
+
+// focus rings globally for interactive elements
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  @include m.focus-ring;
+}
+
+.container {
+  @include m.container;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// section rhythm helpers
+.section {
+  @include m.section-pad;
+}
+
+.section--tint {
+  background: v.$color-surface-tint;
+}
+
+.section--dark {
+  background: v.$color-primary-dark;
+  color: v.$color-white;
+
+  h2, h3, h4 {
+    color: v.$color-white;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-2xs;
+  font-family: v.$font-body;
+  font-size: v.$fs-small;
+  font-weight: 600;
+  color: v.$color-primary;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: v.$color-accent;
+  border-radius: v.$radius-pill;
+}

@@ -1,0 +1,54 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s6Title">
+  <title id="s6Title">Freshly cleaned room after post-renovation dust removal</title>
+  <rect width="800" height="600" fill="#F4F6F1"/>
+  <rect width="800" height="420" fill="#EAEFE7"/>
+
+  <!-- exposed vent / light being cleaned -->
+  <rect x="330" y="30" width="140" height="26" rx="6" fill="#DCE3D8"/>
+  <g stroke="#B9C4B4" stroke-width="3">
+    <line x1="345" y1="30" x2="345" y2="56"/>
+    <line x1="365" y1="30" x2="365" y2="56"/>
+    <line x1="385" y1="30" x2="385" y2="56"/>
+    <line x1="405" y1="30" x2="405" y2="56"/>
+    <line x1="425" y1="30" x2="425" y2="56"/>
+    <line x1="445" y1="30" x2="445" y2="56"/>
+  </g>
+
+  <!-- ladder -->
+  <g stroke="#204F45" stroke-width="8" stroke-linecap="round">
+    <line x1="560" y1="420" x2="600" y2="120"/>
+    <line x1="660" y1="420" x2="620" y2="120"/>
+    <line x1="572" y1="340" x2="648" y2="330"/>
+    <line x1="580" y1="260" x2="638" y2="252"/>
+    <line x1="588" y1="180" x2="628" y2="176"/>
+  </g>
+
+  <!-- floor with drop cloth -->
+  <rect x="0" y="420" width="800" height="180" fill="#E7DCC6"/>
+  <path d="M40 460 Q 200 430 400 460 T 780 450 L780 600 L40 600 Z" fill="#F4F6F1" opacity="0.85"/>
+
+  <!-- window, fresh light -->
+  <rect x="60" y="80" width="180" height="230" rx="8" fill="#FDF6E3"/>
+  <line x1="150" y1="80" x2="150" y2="310" stroke="#1C2521" stroke-opacity="0.12" stroke-width="4"/>
+  <line x1="60" y1="195" x2="240" y2="195" stroke="#1C2521" stroke-opacity="0.12" stroke-width="4"/>
+
+  <!-- figure dusting a shelf -->
+  <g>
+    <path d="M320 600 L320 470 C320 430 355 405 390 405 C425 405 458 430 458 470 L458 600 Z" fill="#2F7A6B"/>
+    <circle cx="388" cy="388" r="42" fill="#D9A876"/>
+    <path d="M347 375 a42 42 0 0 1 84 0 q-6 -20 -42 -20 t-42 20 z" fill="#1C2521"/>
+    <path d="M410 420 C 440 400, 460 340, 462 300" stroke="#2F7A6B" stroke-width="24" stroke-linecap="round" fill="none"/>
+    <circle cx="462" cy="292" r="14" fill="#D9A876"/>
+  </g>
+
+  <!-- duster -->
+  <path d="M450 270 q30 -14 46 6 q-6 20 -30 18 q-20 -2 -16 -24 z" fill="#7FC4B4"/>
+
+  <!-- floating dust catching light -->
+  <g fill="#DCE3D8">
+    <circle cx="260" cy="250" r="4"/>
+    <circle cx="300" cy="220" r="3"/>
+    <circle cx="230" cy="290" r="3"/>
+    <circle cx="330" cy="260" r="2.5"/>
+  </g>
+</svg>

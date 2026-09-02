@@ -1,0 +1,244 @@
+@use 'sass:math';
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.intro {
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: v.$space-lg;
+
+  :global(.eyebrow) {
+    margin-bottom: v.$space-sm;
+  }
+}
+
+// ============================================
+// QUICK CONTACT CARDS
+// ============================================
+.quickSection {
+  padding-bottom: v.$space-2xl;
+}
+
+.quickGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-md;
+
+  @include m.respond(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quickCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: v.$color-surface;
+  border: 1.5px solid v.$color-border;
+  border-radius: v.$radius-lg;
+  padding: v.$space-lg;
+  transition: border-color v.$dur-fast v.$ease-standard,
+    transform v.$dur-fast v.$ease-standard;
+
+  &:hover {
+    border-color: v.$color-primary;
+    transform: translateY(-2px);
+  }
+}
+
+.quickLabel {
+  font-size: v.$fs-tiny;
+  font-weight: 600;
+  color: v.$color-primary;
+}
+
+.quickValue {
+  font-family: v.$font-display;
+  font-size: 1.3rem;
+  color: v.$color-ink;
+}
+
+// ============================================
+// FORM + INFO GRID
+// ============================================
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+
+  @include m.respond(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  background: v.$color-surface;
+  border-radius: v.$radius-lg;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border: 1px solid v.$color-border;
+
+  h2 {
+    font-size: 1.7rem;
+    margin-bottom: v.$space-2xs;
+  }
+}
+
+.formHint {
+  color: v.$color-ink-faint;
+  font-size: v.$fs-small;
+  margin-bottom: v.$space-lg;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: v.$space-md;
+
+  label {
+    font-size: v.$fs-small;
+    font-weight: 600;
+    color: v.$color-ink;
+  }
+
+  input,
+  select,
+  textarea {
+    border: 1.5px solid v.$color-border-strong;
+    border-radius: v.$radius-sm;
+    padding: 0.75rem 0.9rem;
+    background: v.$color-bg;
+    color: v.$color-ink;
+    resize: vertical;
+
+    &:focus-visible {
+      outline: 2.5px solid v.$color-primary;
+      outline-offset: 1px;
+      border-color: v.$color-primary;
+    }
+  }
+}
+
+.submit {
+  position: relative;
+  width: 100%;
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  padding: 0.9rem 1.25rem;
+
+  border: 1px solid transparent;
+  border-radius: v.$radius-md;
+
+  background: v.$color-accent;
+  color: #fff;
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(239, 91, 58, 0.18);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+
+  &::after {
+    content: '↗';
+    font-size: 1.05rem;
+    line-height: 1;
+    transition: transform 180ms ease;
+  }
+
+  &:hover {
+    background: v.$color-primary;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(28, 37, 33, 0.16);
+
+    &::after {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 12px rgba(28, 37, 33, 0.12);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(127, 196, 180, 0.45);
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .submit {
+    min-height: 52px;
+    font-size: 0.95rem;
+  }
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-lg;
+}
+
+.infoImage {
+  @include m.image-frame(math.div(4, 3));
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-sm;
+}
+
+.infoBlock {
+  h3 {
+    font-size: 1.15rem;
+    margin-bottom: v.$space-xs;
+  }
+
+  p {
+    color: v.$color-ink-soft;
+    font-size: v.$fs-small;
+    line-height: v.$lh-snug;
+  }
+}
+
+.hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: v.$space-sm;
+    font-size: v.$fs-small;
+    color: v.$color-ink-soft;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid v.$color-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    span:first-child {
+      color: v.$color-ink;
+      font-weight: 500;
+    }
+  }
+}

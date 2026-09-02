@@ -1,0 +1,43 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s4Title">
+  <title id="s4Title">Office reception area kept spotless by a commercial cleaning team</title>
+  <rect width="800" height="600" fill="#F4F6F1"/>
+  <rect width="800" height="420" fill="#EAEFE7"/>
+
+  <!-- reception desk -->
+  <rect x="60" y="290" width="300" height="120" rx="12" fill="#204F45"/>
+  <rect x="60" y="278" width="300" height="16" rx="8" fill="#2F7A6B"/>
+  <rect x="150" y="320" width="90" height="50" rx="6" fill="#7FC4B4" opacity="0.5"/>
+
+  <!-- signage -->
+  <rect x="90" y="220" width="150" height="34" rx="8" fill="#FFFFFF"/>
+  <rect x="108" y="232" width="110" height="10" rx="5" fill="#DCE3D8"/>
+
+  <!-- glass wall -->
+  <rect x="420" y="70" width="330" height="340" rx="8" fill="#FDFEFC" opacity="0.6"/>
+  <line x1="530" y1="70" x2="530" y2="410" stroke="#1C2521" stroke-opacity="0.1" stroke-width="4"/>
+  <line x1="640" y1="70" x2="640" y2="410" stroke="#1C2521" stroke-opacity="0.1" stroke-width="4"/>
+
+  <!-- office chairs behind glass -->
+  <rect x="560" y="300" width="40" height="50" rx="10" fill="#E8623C" opacity="0.7"/>
+  <rect x="660" y="300" width="40" height="50" rx="10" fill="#7FC4B4" opacity="0.7"/>
+
+  <!-- floor -->
+  <rect x="0" y="420" width="800" height="180" fill="#DCE3D8"/>
+
+  <!-- figure cleaning glass -->
+  <g>
+    <path d="M330 600 L330 480 C330 440 365 415 400 415 C435 415 465 440 465 480 L465 600 Z" fill="#2F7A6B"/>
+    <path d="M355 445 L440 445 L432 560 L363 560 Z" fill="#E3EEE9"/>
+    <circle cx="400" cy="398" r="42" fill="#D9A876"/>
+    <path d="M358 385 a42 42 0 0 1 84 0 q-6 -20 -42 -20 t-42 20 z" fill="#1C2521"/>
+    <path d="M420 445 C 445 420, 460 370, 458 320" stroke="#2F7A6B" stroke-width="24" stroke-linecap="round" fill="none"/>
+    <circle cx="458" cy="312" r="14" fill="#D9A876"/>
+  </g>
+
+  <!-- glass squeegee streak -->
+  <path d="M430 260 C 450 300, 460 340, 458 380" stroke="#E8623C" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.7"/>
+  <rect x="446" y="298" width="26" height="14" rx="4" fill="#FFFFFF" transform="rotate(15 459 305)"/>
+
+  <!-- trash bin being emptied -->
+  <rect x="240" y="500" width="46" height="60" rx="6" fill="#1C2521"/>
+</svg>

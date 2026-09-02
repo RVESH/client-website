@@ -1,0 +1,31 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+  max-width: 640px;
+  margin-bottom: v.$space-xl;
+
+  @include m.respond(md) {
+    margin-bottom: v.$space-lg;
+  }
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.title {
+  margin: 0;
+}
+
+.description {
+  color: v.$color-ink-soft;
+  font-size: v.$fs-lead;
+  line-height: v.$lh-snug;
+  max-width: 54ch;
+}

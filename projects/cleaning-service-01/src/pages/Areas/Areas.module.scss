@@ -1,0 +1,86 @@
+@use 'sass:math';
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.intro {
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: v.$section-pad-y-sm;
+}
+
+.introGrid {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+
+  @include m.respond(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.title {
+  margin-bottom: v.$space-md;
+  max-width: 15ch;
+
+  @include m.respond(lg) {
+    max-width: none;
+  }
+}
+
+.lead {
+  font-size: v.$fs-lead;
+  color: v.$color-ink-soft;
+  max-width: 48ch;
+}
+
+.introImage {
+  @include m.image-frame(math.div(3, 2));
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-md;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-md;
+  margin-bottom: v.$space-xl;
+
+  @include m.respond(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.notListed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-lg;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-lg;
+  padding: v.$space-lg;
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    color: v.$color-ink-soft;
+    font-size: v.$fs-small;
+    max-width: 46ch;
+  }
+
+  @include m.respond(md) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    a, button {
+      width: 100%;
+    }
+  }
+}

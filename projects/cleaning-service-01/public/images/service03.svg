@@ -1,0 +1,47 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s3Title">
+  <title id="s3Title">Empty apartment being cleaned ahead of a move-in</title>
+  <rect width="800" height="600" fill="#F4F6F1"/>
+  <rect width="800" height="420" fill="#EAEFE7"/>
+
+  <!-- big window, empty room -->
+  <rect x="500" y="60" width="240" height="280" rx="8" fill="#FDF6E3"/>
+  <line x1="620" y1="60" x2="620" y2="340" stroke="#1C2521" stroke-opacity="0.12" stroke-width="4"/>
+  <line x1="500" y1="200" x2="740" y2="200" stroke="#1C2521" stroke-opacity="0.12" stroke-width="4"/>
+
+  <!-- floor -->
+  <rect x="0" y="420" width="800" height="180" fill="#E7DCC6"/>
+  <g stroke="#D8CBAE" stroke-width="2">
+    <line x1="0" y1="460" x2="800" y2="460"/>
+    <line x1="0" y1="500" x2="800" y2="500"/>
+    <line x1="0" y1="540" x2="800" y2="540"/>
+    <line x1="100" y1="420" x2="100" y2="600"/>
+    <line x1="300" y1="420" x2="300" y2="600"/>
+    <line x1="500" y1="420" x2="500" y2="600"/>
+    <line x1="700" y1="420" x2="700" y2="600"/>
+  </g>
+
+  <!-- moving boxes -->
+  <g>
+    <rect x="80" y="330" width="90" height="90" rx="6" fill="#2F7A6B"/>
+    <line x1="80" y1="375" x2="170" y2="375" stroke="#204F45" stroke-width="4"/>
+    <line x1="125" y1="330" x2="125" y2="420" stroke="#204F45" stroke-width="4"/>
+
+    <rect x="160" y="360" width="70" height="60" rx="6" fill="#E8623C"/>
+    <line x1="160" y1="390" x2="230" y2="390" stroke="#C74E2C" stroke-width="3"/>
+  </g>
+
+  <!-- figure mopping open floor -->
+  <g>
+    <path d="M420 600 L420 470 C420 430 455 405 490 405 C525 405 555 430 555 470 L555 600 Z" fill="#2F7A6B"/>
+    <circle cx="487" cy="388" r="42" fill="#D9A876"/>
+    <path d="M446 375 a42 42 0 0 1 84 0 q-6 -20 -42 -20 t-42 20 z" fill="#1C2521"/>
+    <path d="M440 440 C 400 460, 370 500, 360 560" stroke="#2F7A6B" stroke-width="24" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- mop -->
+  <line x1="330" y1="330" x2="365" y2="558" stroke="#204F45" stroke-width="10" stroke-linecap="round"/>
+  <path d="M310 320 q20 -18 40 0 q6 22 -20 26 q-26 -4 -20 -26 z" fill="#7FC4B4"/>
+
+  <!-- wet floor sheen streak -->
+  <path d="M250 560 C 320 540, 380 560, 460 545" stroke="#7FC4B4" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.5"/>
+</svg>

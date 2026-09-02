@@ -1,0 +1,35 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: v.$space-lg;
+
+  @include m.respond(md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-xl v.$space-lg;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-left: v.$space-md;
+  border-left: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.value {
+  font-family: v.$font-display;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: v.$color-primary-light;
+  line-height: 1;
+}
+
+.label {
+  font-size: v.$fs-small;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 20ch;
+}

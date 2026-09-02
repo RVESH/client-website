@@ -1,0 +1,44 @@
+@use '../../styles/variables' as v;
+
+.card {
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-md;
+  padding: v.$space-md;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2xs;
+  transition: border-color 160ms v.$ease-standard;
+
+  &:hover {
+    border-color: v.$color-primary-light;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+
+  p {
+    color: v.$color-ink-soft;
+    font-size: v.$fs-small;
+    line-height: v.$lh-normal;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: v.$space-xs;
+}
+
+.coverage {
+  flex-shrink: 0;
+  font-size: v.$fs-tiny;
+  font-weight: 600;
+  color: v.$color-primary;
+  background: v.$color-primary-wash;
+  padding: 0.25rem 0.6rem;
+  border-radius: v.$radius-pill;
+  white-space: nowrap;
+}
