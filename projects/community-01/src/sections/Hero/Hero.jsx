@@ -96,6 +96,7 @@ export default function Hero() {
                 {stat.value}
               </div>
 
+
               <div className="hero__stat-label">
                 {stat.label}
               </div>
