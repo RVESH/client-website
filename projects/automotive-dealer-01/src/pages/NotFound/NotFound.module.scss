@@ -1,0 +1,42 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.wrap {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  background: v.$color-graphite-900;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: v.$space-16;
+  padding-block: v.$space-96;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-64;
+  }
+}
+
+.code {
+  font-family: v.$font-mono;
+  font-size: v.$fs-14;
+  letter-spacing: v.$ls-wider;
+  color: v.$color-accent;
+}
+
+.title {
+  font-family: v.$font-display;
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+  font-weight: v.$fw-black;
+  color: v.$color-white;
+}
+
+.message {
+  font-size: v.$fs-16;
+  color: v.$color-text-inverse-muted;
+  max-width: 48ch;
+  margin-bottom: v.$space-16;
+}

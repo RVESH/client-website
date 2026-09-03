@@ -1,0 +1,181 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  padding-bottom: v.$space-32;
+}
+
+.hero {
+  background: v.$color-graphite-900;
+  padding-block: v.$space-64;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-48;
+  }
+}
+
+.sectionTitle {
+  font-family: v.$font-display;
+  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+  font-weight: v.$fw-bold;
+  color: v.$color-graphite-900;
+  margin-bottom: v.$space-20;
+}
+
+// ---- Story ----------------------------------------------------------
+.storySection {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: v.$space-48;
+  padding-block: v.$space-96;
+  align-items: center;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr;
+    gap: v.$space-32;
+    padding-block: v.$space-64;
+  }
+}
+
+.imageCol {
+  @include m.image-cover(4 / 3);
+}
+
+.paragraph {
+  font-size: v.$fs-16;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+  margin-bottom: v.$space-16;
+  max-width: 60ch;
+}
+
+// ---- Pillars ----------------------------------------------------------
+.pillarsSection {
+  background: v.$color-graphite-700;
+  padding-block: v.$space-80;
+
+  .sectionTitle {
+    color: v.$color-white;
+  }
+
+  @include m.mq(xs) {
+    padding-block: v.$space-56;
+  }
+}
+
+.pillarGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-24;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pillarCard {
+  background: v.$color-graphite-800;
+  border: 1px solid v.$color-border-inverse;
+  padding: v.$space-24;
+}
+
+.pillarTitle {
+  font-family: v.$font-display;
+  font-size: v.$fs-18;
+  font-weight: v.$fw-bold;
+  color: v.$color-white;
+  margin-bottom: v.$space-8;
+}
+
+.pillarBody {
+  font-size: v.$fs-14;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-inverse-muted;
+}
+
+// ---- Team ----------------------------------------------------------
+.teamSection {
+  padding-block: v.$space-96;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-64;
+  }
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-24;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.teamCard {
+  border: 1px solid v.$color-border;
+}
+
+.teamPhoto {
+  @include m.image-cover(3 / 4);
+}
+
+.teamName {
+  font-family: v.$font-display;
+  font-size: v.$fs-18;
+  font-weight: v.$fw-bold;
+  padding: v.$space-16 v.$space-16 0;
+  color: v.$color-graphite-900;
+}
+
+.teamRole {
+  font-family: v.$font-mono;
+  font-size: v.$fs-12;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+  padding: v.$space-4 v.$space-16 0;
+}
+
+.teamBio {
+  font-size: v.$fs-14;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+  padding: v.$space-12 v.$space-16 v.$space-20;
+}
+
+// ---- Stats ----------------------------------------------------------
+.statsSection {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: v.$space-24;
+  padding-block: v.$space-56;
+  border-top: 1px solid v.$color-border;
+  border-bottom: 1px solid v.$color-border;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-8;
+  text-align: center;
+}
+
+.statValue {
+  font-family: v.$font-display;
+  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+  font-weight: v.$fw-black;
+  color: v.$color-graphite-900;
+}
+
+.statLabel {
+  font-family: v.$font-mono;
+  font-size: v.$fs-12;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+}

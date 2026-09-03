@@ -1,0 +1,45 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  padding-block: v.$space-64;
+  border-top: 1px solid v.$color-border;
+  border-bottom: 1px solid v.$color-border;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: v.$space-24;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-32;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-8;
+  text-align: center;
+
+  @include m.mq(sm) {
+    text-align: left;
+  }
+}
+
+.value {
+  font-family: v.$font-display;
+  font-size: clamp(1.75rem, 2.4vw + 1rem, 2.5rem);
+  font-weight: v.$fw-black;
+  color: v.$color-graphite-900;
+}
+
+.label {
+  font-family: v.$font-mono;
+  font-size: v.$fs-12;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+}

@@ -1,0 +1,147 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  color: v.$color-text-inverse;
+  overflow: hidden;
+
+  @include m.mq(xs) {
+    min-height: 78vh;
+  }
+}
+
+.imageLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 11, 12, 0.55) 0%,
+    rgba(10, 11, 12, 0.35) 35%,
+    rgba(10, 11, 12, 0.92) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: v.$space-96;
+  padding-top: v.$space-128;
+  max-width: 780px;
+
+  @include m.mq(xs) {
+    padding-bottom: v.$space-48;
+    padding-top: v.$space-80;
+  }
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-8;
+  font-family: v.$font-mono;
+  font-size: v.$fs-12;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-metal-200;
+  padding-bottom: v.$space-24;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: v.$color-accent;
+  box-shadow: 0 0 0 4px rgba(198, 255, 61, 0.18);
+}
+
+.headline {
+  font-family: v.$font-display;
+  font-weight: v.$fw-black;
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: v.$ls-tight;
+  color: v.$color-white;
+  margin-bottom: v.$space-24;
+}
+
+.accentWord {
+  color: v.$color-accent;
+}
+
+.sub {
+  font-size: v.$fs-18;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-inverse-muted;
+  max-width: 52ch;
+  margin-bottom: v.$space-40;
+
+  @include m.mq(xs) {
+    font-size: v.$fs-16;
+    margin-bottom: v.$space-32;
+  }
+}
+
+.ctaRow {
+  display: flex;
+  gap: v.$space-16;
+  flex-wrap: wrap;
+  margin-bottom: v.$space-64;
+
+  @include m.mq(mobile) {
+    flex-direction: column;
+
+    a {
+      justify-content: center;
+    }
+  }
+}
+
+.quickFacts {
+  display: flex;
+  gap: v.$space-32;
+  padding-top: v.$space-32;
+  border-top: 1px solid v.$color-border-inverse;
+  margin: 0;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-4;
+  }
+
+  dt {
+    font-family: v.$font-mono;
+    font-size: v.$fs-10;
+    letter-spacing: v.$ls-wide;
+    text-transform: uppercase;
+    color: v.$color-metal-300;
+  }
+
+  dd {
+    margin: 0;
+    font-family: v.$font-display;
+    font-size: v.$fs-24;
+    font-weight: v.$fw-bold;
+    color: v.$color-white;
+  }
+
+  @include m.mq(mobile) {
+    gap: v.$space-24;
+  }
+}

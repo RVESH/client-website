@@ -1,0 +1,66 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  padding-block: v.$space-96;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: v.$space-64;
+  align-items: center;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr;
+    gap: v.$space-40;
+  }
+
+  @include m.mq(xs) {
+    padding-block: v.$space-64;
+  }
+}
+
+.imageCol {
+  position: relative;
+  @include m.image-cover(4 / 3);
+}
+
+.badge {
+  position: absolute;
+  bottom: v.$space-16;
+  left: v.$space-16;
+  background: v.$color-graphite-900;
+  color: v.$color-white;
+  padding: v.$space-16 v.$space-20;
+  display: flex;
+  flex-direction: column;
+  border-left: 3px solid v.$color-accent;
+}
+
+.badgeValue {
+  font-family: v.$font-display;
+  font-size: v.$fs-32;
+  font-weight: v.$fw-black;
+  line-height: 1;
+}
+
+.badgeLabel {
+  font-family: v.$font-mono;
+  font-size: v.$fs-10;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-metal-200;
+  margin-top: v.$space-4;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.paragraph {
+  font-size: v.$fs-16;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+  margin-bottom: v.$space-20;
+  max-width: 56ch;
+}

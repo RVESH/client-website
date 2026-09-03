@@ -1,0 +1,227 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  padding-bottom: v.$space-96;
+}
+
+.breadcrumbRow {
+  border-bottom: 1px solid v.$color-border;
+  padding-block: v.$space-16;
+}
+
+.breadcrumb {
+  font-size: v.$fs-13;
+  font-weight: v.$fw-medium;
+  color: v.$color-text-muted;
+  transition: color v.$dur-normal v.$ease-standard;
+
+  &:hover {
+    color: v.$color-graphite-900;
+  }
+}
+
+// ---- Top layout: image + info ----------------------------------------------------------
+.layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: v.$space-48;
+  padding-top: v.$space-48;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr;
+    gap: v.$space-32;
+    padding-top: v.$space-32;
+  }
+}
+
+.imageFrame {
+  @include m.image-cover(4 / 3);
+  border: 1px solid v.$color-border;
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-20;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: v.$space-16;
+}
+
+.brand {
+  font-family: v.$font-mono;
+  font-size: v.$fs-13;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+  margin-bottom: v.$space-4;
+}
+
+.model {
+  font-family: v.$font-display;
+  font-size: clamp(1.75rem, 2.4vw + 1rem, 2.5rem);
+  font-weight: v.$fw-black;
+  color: v.$color-graphite-900;
+}
+
+.summary {
+  font-size: v.$fs-16;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+  max-width: 52ch;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: v.$space-16;
+  padding-block: v.$space-16;
+  border-top: 1px solid v.$color-border;
+  border-bottom: 1px solid v.$color-border;
+}
+
+.price {
+  font-family: v.$font-display;
+  font-size: v.$fs-32;
+  font-weight: v.$fw-black;
+  color: v.$color-graphite-900;
+}
+
+.year {
+  font-family: v.$font-mono;
+  font-size: v.$fs-14;
+  color: v.$color-text-muted;
+}
+
+.quickMeta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: v.$space-16;
+
+  @include m.mq(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-4;
+  }
+}
+
+.quickLabel {
+  font-family: v.$font-mono;
+  font-size: v.$fs-10;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+}
+
+.quickValue {
+  font-size: v.$fs-14;
+  font-weight: v.$fw-semibold;
+  color: v.$color-graphite-900;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-12;
+  padding-top: v.$space-8;
+
+  a {
+    justify-content: center;
+  }
+}
+
+.secondaryActions {
+  display: flex;
+  gap: v.$space-12;
+
+  a {
+    flex: 1;
+  }
+}
+
+// ---- Detail section: description + specs ----------------------------------------------------------
+.detailSection {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: v.$space-48;
+  padding-top: v.$space-80;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr;
+    gap: v.$space-40;
+    padding-top: v.$space-56;
+  }
+}
+
+.sectionTitle {
+  font-family: v.$font-display;
+  font-size: v.$fs-24;
+  font-weight: v.$fw-bold;
+  margin-bottom: v.$space-20;
+  color: v.$color-graphite-900;
+}
+
+.description {
+  font-size: v.$fs-16;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+  max-width: 62ch;
+}
+
+.specGrid {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid v.$color-border;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  padding: v.$space-12 0;
+  border-bottom: 1px solid v.$color-border;
+
+  dt {
+    font-size: v.$fs-13;
+    color: v.$color-text-muted;
+  }
+
+  dd {
+    margin: 0;
+    font-size: v.$fs-13;
+    font-weight: v.$fw-semibold;
+    color: v.$color-graphite-900;
+    text-align: right;
+  }
+}
+
+// ---- Related ----------------------------------------------------------
+.relatedSection {
+  padding-top: v.$space-96;
+
+  @include m.mq(xs) {
+    padding-top: v.$space-64;
+  }
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-24;
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(xxs) {
+    grid-template-columns: 1fr;
+  }
+}

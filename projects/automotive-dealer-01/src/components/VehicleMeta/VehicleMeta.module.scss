@@ -1,0 +1,40 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-16;
+  padding: 0;
+}
+
+.dense {
+  gap: v.$space-12;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+  padding-right: v.$space-16;
+  border-right: 1px solid v.$color-border;
+
+  &:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
+.label {
+  font-family: v.$font-mono;
+  font-size: v.$fs-10;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+}
+
+.value {
+  font-size: v.$fs-14;
+  font-weight: v.$fw-semibold;
+  color: v.$color-text;
+}

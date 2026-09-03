@@ -1,0 +1,141 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  padding-bottom: v.$space-96;
+}
+
+.hero {
+  background: v.$color-graphite-900;
+  padding-block: v.$space-64;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-48;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: v.$space-48;
+  padding-top: v.$space-64;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr;
+    gap: v.$space-32;
+    padding-top: v.$space-48;
+  }
+}
+
+.imageCol {
+  @include m.image-cover(3 / 4);
+
+  @include m.mq(sm) {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.detailsCol {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-32;
+}
+
+.primaryAction {
+  padding: v.$space-24;
+  background: v.$color-graphite-900;
+  border-left: 3px solid v.$color-accent;
+
+  a {
+    justify-content: center;
+    width: 100%;
+
+    @include m.mq(xxs) {
+      width: auto;
+    }
+  }
+}
+
+.blockTitle {
+  font-family: v.$font-display;
+  font-size: v.$fs-20;
+  font-weight: v.$fw-bold;
+  color: v.$color-white;
+  margin-bottom: v.$space-8;
+}
+
+.blockText {
+  font-size: v.$fs-14;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-inverse-muted;
+  margin-bottom: v.$space-20;
+  max-width: 48ch;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: v.$space-24;
+
+  @include m.mq(xxs) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-8;
+  padding-bottom: v.$space-16;
+  border-bottom: 1px solid v.$color-border;
+}
+
+.infoLabel {
+  font-family: v.$font-mono;
+  font-size: v.$fs-10;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+}
+
+.infoValue {
+  font-size: v.$fs-14;
+  font-weight: v.$fw-semibold;
+  color: v.$color-graphite-900;
+  font-style: normal;
+  line-height: v.$lh-normal;
+}
+
+.hoursList {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  gap: v.$space-16;
+  font-size: v.$fs-14;
+  font-weight: v.$fw-semibold;
+  color: v.$color-graphite-900;
+
+  span:first-child {
+    font-weight: v.$fw-regular;
+    color: v.$color-text-muted;
+  }
+}
+
+.secondaryActions {
+  display: flex;
+  gap: v.$space-12;
+  flex-wrap: wrap;
+
+  @include m.mq(mobile) {
+    flex-direction: column;
+
+    a {
+      justify-content: center;
+    }
+  }
+}

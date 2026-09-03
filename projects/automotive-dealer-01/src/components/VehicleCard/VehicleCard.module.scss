@@ -1,0 +1,135 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.card {
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  transition: border-color v.$dur-normal v.$ease-standard,
+    transform v.$dur-normal v.$ease-standard, box-shadow v.$dur-normal v.$ease-standard;
+
+  &:hover {
+    border-color: v.$color-graphite-900;
+    transform: translateY(-4px);
+    box-shadow: v.$shadow-md;
+
+    .imageWrap img {
+      transform: scale(1.06);
+    }
+
+    .cta .arrow {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.imageLink {
+  display: block;
+}
+
+.imageWrap {
+  @include m.image-cover(4 / 3);
+
+  img {
+    transition: transform v.$dur-slow v.$ease-out-expo;
+  }
+}
+
+.category {
+  position: absolute;
+  top: v.$space-12;
+  left: v.$space-12;
+  background: rgba(10, 11, 12, 0.72);
+  color: v.$color-white;
+  font-family: v.$font-mono;
+  font-size: v.$fs-10;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  padding: v.$space-4 v.$space-8;
+}
+
+.body {
+  padding: v.$space-20 v.$space-20 v.$space-24;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-16;
+}
+
+.headRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: v.$space-12;
+}
+
+.brand {
+  font-family: v.$font-mono;
+  font-size: v.$fs-12;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+  margin: 0 0 v.$space-4;
+}
+
+.model {
+  font-family: v.$font-display;
+  font-size: v.$fs-20;
+  font-weight: v.$fw-bold;
+  letter-spacing: v.$ls-tight;
+  color: v.$color-text;
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-8 v.$space-12;
+  font-size: v.$fs-13;
+  color: v.$color-text-muted;
+
+  li {
+    position: relative;
+    padding-right: v.$space-12;
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 3px;
+      background: v.$color-metal-300;
+    }
+  }
+}
+
+.footRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: v.$space-16;
+  border-top: 1px solid v.$color-border;
+}
+
+.price {
+  font-family: v.$font-display;
+  font-weight: v.$fw-bold;
+  font-size: v.$fs-18;
+  color: v.$color-text;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-4;
+  font-size: v.$fs-13;
+  font-weight: v.$fw-semibold;
+  color: v.$color-text;
+
+  .arrow {
+    transition: transform v.$dur-normal v.$ease-out-expo;
+  }
+
+  &:hover {
+    color: v.$color-accent-dim;
+  }
+}

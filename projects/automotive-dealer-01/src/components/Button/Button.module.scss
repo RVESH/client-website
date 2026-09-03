@@ -1,0 +1,76 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.button {
+  @include m.tap-target;
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-8;
+  padding: v.$space-16 v.$space-24;
+  font-family: v.$font-body;
+  font-size: v.$fs-14;
+  font-weight: v.$fw-semibold;
+  letter-spacing: v.$ls-tight;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color v.$dur-normal v.$ease-standard,
+    color v.$dur-normal v.$ease-standard,
+    border-color v.$dur-normal v.$ease-standard,
+    transform v.$dur-fast v.$ease-standard;
+  white-space: nowrap;
+
+  .icon {
+    display: inline-flex;
+    transition: transform v.$dur-normal v.$ease-out-expo;
+  }
+
+  &:hover .icon {
+    transform: translateX(3px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.default {
+  background: v.$color-graphite-900;
+  color: v.$color-white;
+  border-color: v.$color-graphite-900;
+
+  &:hover {
+    background: v.$color-graphite-700;
+  }
+}
+
+.accent {
+  background: v.$color-accent;
+  color: v.$color-accent-ink;
+  border-color: v.$color-accent;
+
+  &:hover {
+    background: v.$color-accent-dim;
+    border-color: v.$color-accent-dim;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: currentColor;
+  border-color: currentColor;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.dark {
+  background: transparent;
+  color: v.$color-white;
+  border-color: v.$color-border-inverse;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: v.$color-white;
+  }
+}

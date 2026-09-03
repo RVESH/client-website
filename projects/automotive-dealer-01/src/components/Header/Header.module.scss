@@ -1,0 +1,227 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: v.$z-header;
+  background: rgba(246, 247, 245, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid v.$color-border;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-24;
+  height: 76px;
+
+  @include m.mq(xs) {
+    height: 64px;
+  }
+}
+
+// ---- Logo ----------------------------------------------------------
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-8;
+  flex-shrink: 0;
+}
+
+.logoMark {
+  width: 14px;
+  height: 14px;
+  background: v.$color-accent;
+  clip-path: polygon(0 100%, 0 0, 100% 100%);
+}
+
+.logoText {
+  font-family: v.$font-display;
+  font-weight: v.$fw-black;
+  font-size: v.$fs-20;
+  letter-spacing: v.$ls-tight;
+  text-transform: uppercase;
+  color: v.$color-graphite-900;
+}
+
+// ---- Desktop nav ----------------------------------------------------------
+.navDesktop {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  ul {
+    display: flex;
+    gap: v.$space-32;
+  }
+
+  @include m.mq(md) {
+    display: none;
+  }
+}
+
+.link,
+.activeLink {
+  position: relative;
+  font-size: v.$fs-14;
+  font-weight: v.$fw-medium;
+  padding: v.$space-8 0;
+  color: v.$color-metal-400;
+  transition: color v.$dur-normal v.$ease-standard;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: v.$color-accent;
+    transition: width v.$dur-normal v.$ease-out-expo;
+  }
+
+  &:hover {
+    color: v.$color-graphite-900;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.activeLink {
+  color: v.$color-graphite-900;
+
+  &::after {
+    width: 100%;
+  }
+}
+
+// ---- Actions ----------------------------------------------------------
+.actions {
+  display: flex;
+  align-items: center;
+  gap: v.$space-24;
+  flex-shrink: 0;
+}
+
+.phone {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.2;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+}
+
+.phoneLabel {
+  font-family: v.$font-mono;
+  font-size: v.$fs-10;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-muted;
+}
+
+.phoneNumber {
+  font-size: v.$fs-14;
+  font-weight: v.$fw-semibold;
+  color: v.$color-graphite-900;
+}
+
+.ctaDesktop {
+  @include m.mq(md) {
+    display: none;
+  }
+}
+
+// ---- Mobile toggle ----------------------------------------------------------
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+
+  @include m.mq(md) {
+    display: flex;
+  }
+}
+
+.bun {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: v.$color-graphite-900;
+  transition: transform v.$dur-normal v.$ease-standard, opacity v.$dur-fast v.$ease-standard;
+}
+
+.bunOpenTop {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.bunOpenMid {
+  opacity: 0;
+}
+
+.bunOpenBottom {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+// ---- Mobile panel ----------------------------------------------------------
+.mobilePanel {
+  display: none;
+  position: fixed;
+  inset: 64px 0 0 0;
+  background: v.$color-graphite-900;
+  z-index: v.$z-overlay;
+  padding: v.$space-32 v.$gutter v.$space-40;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform v.$dur-slow v.$ease-out-expo;
+
+  @include m.mq(md) {
+    display: flex;
+  }
+}
+
+.mobilePanelOpen {
+  transform: translateX(0);
+}
+
+.mobilePanel nav ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileLink,
+.mobileActiveLink {
+  display: block;
+  padding: v.$space-20 0;
+  border-bottom: 1px solid v.$color-border-inverse;
+  font-family: v.$font-display;
+  font-size: v.$fs-24;
+  font-weight: v.$fw-bold;
+  color: v.$color-white;
+}
+
+.mobileActiveLink {
+  color: v.$color-accent;
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-16;
+  margin-top: v.$space-32;
+
+  a {
+    justify-content: center;
+  }
+}

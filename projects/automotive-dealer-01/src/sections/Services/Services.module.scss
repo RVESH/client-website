@@ -1,0 +1,56 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  padding-block: v.$space-96;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-64;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-24;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(xxs) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  padding: v.$space-32 v.$space-24;
+  border: 1px solid v.$color-border;
+  border-top: 3px solid v.$color-graphite-900;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-12;
+  transition: border-color v.$dur-normal v.$ease-standard;
+
+  &:hover {
+    border-top-color: v.$color-accent;
+  }
+}
+
+.title {
+  font-family: v.$font-display;
+  font-size: v.$fs-20;
+  font-weight: v.$fw-bold;
+}
+
+.summary {
+  font-size: v.$fs-14;
+  font-weight: v.$fw-medium;
+  color: v.$color-text;
+}
+
+.detail {
+  font-size: v.$fs-14;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+}

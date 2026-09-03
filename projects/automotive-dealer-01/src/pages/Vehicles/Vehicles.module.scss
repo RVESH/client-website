@@ -1,0 +1,77 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  padding-bottom: v.$space-96;
+}
+
+.pageHeader {
+  background: v.$color-graphite-900;
+  padding-top: v.$space-64;
+  padding-bottom: v.$space-48;
+
+  :global(.eyebrow) {
+    color: v.$color-accent;
+  }
+
+  h2 {
+    color: v.$color-white;
+  }
+
+  p {
+    color: v.$color-text-inverse-muted;
+  }
+
+  @include m.mq(xs) {
+    padding-top: v.$space-48;
+    padding-bottom: v.$space-32;
+  }
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-8;
+  padding-block: v.$space-32;
+}
+
+.filterBtn {
+  @include m.tap-target;
+  padding: v.$space-8 v.$space-16;
+  border: 1px solid v.$color-border;
+  font-size: v.$fs-13;
+  font-weight: v.$fw-medium;
+  color: v.$color-text-muted;
+  transition: all v.$dur-normal v.$ease-standard;
+
+  &:hover {
+    border-color: v.$color-graphite-900;
+    color: v.$color-graphite-900;
+  }
+}
+
+.filterActive {
+  background: v.$color-graphite-900;
+  border-color: v.$color-graphite-900;
+  color: v.$color-white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-24;
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(xxs) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty {
+  padding: v.$space-64 0;
+  text-align: center;
+  color: v.$color-text-muted;
+}

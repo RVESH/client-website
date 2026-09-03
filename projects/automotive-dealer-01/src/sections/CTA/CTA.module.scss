@@ -1,0 +1,63 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  background: v.$color-graphite-900;
+  background-image: linear-gradient(
+    120deg,
+    v.$color-graphite-900 0%,
+    v.$color-graphite-800 60%,
+    v.$color-graphite-900 100%
+  );
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-40;
+  padding-block: v.$space-80;
+
+  @include m.mq(sm) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block: v.$space-56;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-16;
+  max-width: 560px;
+
+  .eyebrow,
+  :global(.eyebrow) {
+    color: v.$color-accent;
+  }
+}
+
+.title {
+  color: v.$color-white;
+}
+
+.description {
+  font-size: v.$fs-16;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-inverse-muted;
+}
+
+.actions {
+  display: flex;
+  gap: v.$space-16;
+  flex-shrink: 0;
+
+  @include m.mq(mobile) {
+    flex-direction: column;
+    width: 100%;
+
+    a {
+      justify-content: center;
+    }
+  }
+}

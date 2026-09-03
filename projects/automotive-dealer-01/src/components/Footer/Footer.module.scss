@@ -1,0 +1,107 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.footer {
+  background: v.$color-graphite-900;
+  color: v.$color-text-inverse;
+  padding-top: v.$space-64;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: v.$space-40;
+  padding-bottom: v.$space-48;
+  border-bottom: 1px solid v.$color-border-inverse;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr 1fr;
+    row-gap: v.$space-40;
+  }
+
+  @include m.mq(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-16;
+  max-width: 320px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-8;
+}
+
+.logoMark {
+  width: 12px;
+  height: 12px;
+  background: v.$color-accent;
+  clip-path: polygon(0 100%, 0 0, 100% 100%);
+}
+
+.logoText {
+  font-family: v.$font-display;
+  font-weight: v.$fw-black;
+  font-size: v.$fs-18;
+  text-transform: uppercase;
+  letter-spacing: v.$ls-tight;
+}
+
+.statement {
+  font-size: v.$fs-14;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-inverse-muted;
+}
+
+.colHeading {
+  font-family: v.$font-mono;
+  font-size: v.$fs-12;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-metal-300;
+  margin-bottom: v.$space-16;
+}
+
+.col ul {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-12;
+}
+
+.col a {
+  font-size: v.$fs-14;
+  color: v.$color-text-inverse-muted;
+  transition: color v.$dur-normal v.$ease-standard;
+
+  &:hover {
+    color: v.$color-accent;
+  }
+}
+
+.address {
+  font-style: normal;
+  font-size: v.$fs-14;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-inverse-muted;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: v.$space-24;
+  font-size: v.$fs-12;
+  color: v.$color-metal-300;
+  flex-wrap: wrap;
+  gap: v.$space-8;
+}
+
+.sample {
+  font-family: v.$font-mono;
+  letter-spacing: v.$ls-tight;
+}
