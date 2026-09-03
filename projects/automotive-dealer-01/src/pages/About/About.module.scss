@@ -38,7 +38,7 @@
 }
 
 .imageCol {
-  @include m.image-cover(4 / 3);
+  @include m.image-cover(1.333333);
 }
 
 .paragraph {
@@ -117,7 +117,7 @@
 }
 
 .teamPhoto {
-  @include m.image-cover(3 / 4);
+  @include m.image-cover(0.75);
 }
 
 .teamName {

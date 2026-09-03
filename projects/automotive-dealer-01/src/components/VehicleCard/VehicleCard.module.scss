@@ -27,7 +27,7 @@
 }
 
 .imageWrap {
-  @include m.image-cover(4 / 3);
+  @include m.image-cover(1.333333);
 
   img {
     transition: transform v.$dur-slow v.$ease-out-expo;

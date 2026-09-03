@@ -28,7 +28,7 @@
 }
 
 .imageCol {
-  @include m.image-cover(3 / 4);
+  @include m.image-cover(0.75);
 
   @include m.mq(sm) {
     aspect-ratio: 16 / 9;
@@ -104,6 +104,13 @@
   color: v.$color-graphite-900;
   font-style: normal;
   line-height: v.$lh-normal;
+
+  transition: color 160ms ease, opacity 160ms ease;
+
+  &:hover {
+    color: v.$color-accent;
+    opacity: 0.85;
+  }
 }
 
 .hoursList {
@@ -139,3 +146,44 @@
     }
   }
 }
+
+
+.emailButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  box-sizing: border-box;
+
+  padding-inline: v.$space-20;
+
+  border: 1px solid v.$color-graphite-900;
+  background: transparent;
+
+  color: v.$color-graphite-900;
+
+  font-size: v.$fs-14;
+  font-weight: v.$fw-semibold;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+
+  &:hover {
+    background: v.$color-graphite-900;
+    border-color: v.$color-graphite-900;
+    color: v.$color-white;
+  }
+
+  @include m.mq(mobile) {
+    width: 100%;
+  }
+}
+
+

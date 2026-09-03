@@ -20,7 +20,7 @@
 
 .imageCol {
   position: relative;
-  @include m.image-cover(4 / 3);
+  @include m.image-cover(1.333333);
 }
 
 .badge {

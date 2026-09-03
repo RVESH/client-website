@@ -36,7 +36,7 @@
 }
 
 .imageFrame {
-  @include m.image-cover(4 / 3);
+  @include m.image-cover(1.333333);
   border: 1px solid v.$color-border;
 }
 

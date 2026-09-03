@@ -1,251 +1,628 @@
-# Vantage Motor Co. — Client Guide
-### automotive-dealer-01
+Vantage Motor Co. — Client Guide
 
-This document explains how to update your dealership website's content
-without touching any code. It's written for a non-technical reader.
+automotive-dealer-01
 
----
+This guide explains how to update the dealership website's content without changing the layout or writing new code.
 
-## 1. What this website is
+The main day-to-day edits are kept inside src/data/.
 
-A five-page showroom website:
+1. What this website is
 
-| Page | Address (URL) | Purpose |
-|---|---|---|
-| Home | `/` | First impression, featured vehicles, trust signals |
-| Vehicles | `/vehicles` | Full inventory with category filtering |
-| Vehicle Detail | `/vehicles/:id` | One page per vehicle, generated automatically |
-| About | `/about` | Dealership story, team, credibility |
-| Contact | `/contact` | Phone, email, WhatsApp, address, hours |
+automotive-dealer-01 is a five-page premium vehicle showroom website for Vantage Motor Co.
 
-This is a **showcase and lead-generation** site — visitors browse, then
-reach out by phone, email, or WhatsApp. There is no shopping cart, no
-online checkout, and no customer login, by design.
+Page
 
----
+URL
 
-## 2. Folder structure (what's where)
+Purpose
 
-```
+Home
+
+/
+
+First impression, featured vehicles and trust signals
+
+Vehicles
+
+/vehicles
+
+Vehicle inventory and category filtering
+
+Vehicle Detail
+
+/vehicles/:id
+
+Individual vehicle details
+
+About
+
+/about
+
+Dealership story, team and credibility
+
+Contact
+
+/contact
+
+Phone, email, WhatsApp, address and hours
+
+This is a showcase and lead-generation website.
+
+Visitors can browse vehicles and contact the dealership. There is intentionally no shopping cart, online checkout, customer login, database, or real booking engine.
+
+2. Folder structure
+
 automotive-dealer-01/
 ├── public/
-│   └── images/          ← every real image file lives here
+│   └── images/
+│
 ├── src/
-│   ├── data/             ← ✅ YOU EDIT THESE FILES
-│   │   ├── site.js         (dealership name, contact info, hours)
-│   │   ├── images.js        (image registry — links files to pages)
-│   │   ├── vehicles.js      (your inventory)
-│   │   ├── services.js      (dealer services list)
-│   │   └── team.js          (staff bios)
-│   ├── components/       ← 🚫 developer-only
-│   ├── sections/         ← 🚫 developer-only
-│   ├── pages/            ← 🚫 developer-only
-│   └── styles/           ← 🚫 developer-only
-```
+│   ├── data/
+│   │   ├── site.js
+│   │   ├── images.js
+│   │   ├── vehicles.js
+│   │   ├── services.js
+│   │   └── team.js
+│   │
+│   ├── components/
+│   ├── sections/
+│   ├── pages/
+│   └── styles/
+│
+├── index.html
+├── package.json
+└── vite.config.js
 
-**You should mainly edit files inside `src/data/`.**
-Everything else (components, pages, sections, styles) controls layout and
-design — changing those requires a developer.
+For normal client updates, start with src/data/.
 
----
+Main editable files
 
-## 3. Common edits
+File
 
-### Change the dealership name, tagline, or description
-Open `src/data/site.js`, edit the `name`, `tagline`, and `description`
-fields near the top.
+Used for
 
-### Change the phone number
-In `src/data/site.js`, find:
-```js
+src/data/site.js
+
+Dealership name, contact details, address and hours
+
+src/data/images.js
+
+Central image registry
+
+src/data/vehicles.js
+
+Vehicle inventory
+
+src/data/services.js
+
+Dealer services
+
+src/data/team.js
+
+Team/staff information
+
+public/images/
+
+Physical image files
+
+3. Change dealership information
+
+Open:
+
+src/data/site.js
+
+Dealership name, tagline and description
+
+Update the existing name, tagline and description values.
+
+Phone
+
+Typical values:
+
 phone: '+1 (312) 555-0148',
 phoneDisplay: '+1 312 555 0148',
-```
-Update both — `phone` is used for the tappable "Call" links (keep the `+`
-and digits clean), `phoneDisplay` is what visitors read on screen.
 
-### Change the email address
-In `src/data/site.js`, edit:
-```js
+Update both.
+
+phone is used by clickable phone links.
+
+phoneDisplay is what visitors see.
+
+Email
+
+Update:
+
 email: 'sales@vantagemotorco.com',
-```
 
-### Change the WhatsApp number
-In `src/data/site.js`, edit:
-```js
+For example:
+
+email: 'owner@abcautos.com',
+
+The Contact page's visible email and Send an Email action use this centralized value.
+
+Email behavior
+
+The Contact page opens Gmail with:
+
+the dealership email already in the To field
+
+a prepared subject
+
+a prepared enquiry message
+
+The visitor reviews the email and presses Send in Gmail.
+
+The website itself does not send the email and does not store the enquiry.
+
+WhatsApp
+
+Update the WhatsApp number in site.js.
+
+Where the existing data structure expects a WhatsApp value, use the full international number without +, spaces or dashes.
+
+Example:
+
 whatsapp: '13125550148',
-```
-Use the full international number with no `+`, spaces, or dashes.
 
-### Change the address
-In `src/data/site.js`, edit the `address` block (`line1`, `line2`,
-`country`).
+Address
 
-### Change opening hours
-In `src/data/site.js`, edit the `hours` array. Add or remove rows as
-needed — each row is `{ days: '...', time: '...' }`.
+Update the existing:
 
-### Add, remove, or edit a vehicle
-Open `src/data/vehicles.js`. Each vehicle is one block starting with
-`{ id: '...'` and ending with `},`. Copy an existing block to add a new
-vehicle, or edit the fields (`brand`, `model`, `year`, `price`, `mileage`,
-`fuel`, `transmission`, `power`, `status`, `summary`, `description`,
-`specs`) to update one. The `status` field controls the badge shown —
-use exactly `Available`, `Reserved`, or `Sold`.
+address.line1
+address.line2
+address.country
 
-**Important:** the `cover` and `detail` fields point to images through
-the image registry (see Section 4) — don't type a file path directly
-here.
+Opening hours
 
-### Add or edit a service
-Open `src/data/services.js` and edit or copy a block the same way.
+Update the hours array.
 
-### Add or edit a team member
-Open `src/data/team.js` and edit or copy a block. Each member needs a
-`photo` — see Section 4 for how to connect a photo.
+Each row follows the existing pattern:
 
----
+{
+  days: 'Monday — Friday',
+  time: '09:00 — 19:00',
+}
 
-## 4. How images work (read this before replacing photos)
+4. Vehicle inventory
 
-All real image files live in one place:
+Open:
 
-```
+src/data/vehicles.js
+
+Each vehicle is a data object.
+
+Typical fields include:
+
+id
+brand
+model
+year
+price
+mileage
+fuel
+transmission
+power
+status
+summary
+description
+specs
+cover
+detail
+
+Add a vehicle
+
+Copy an existing vehicle object and update its values.
+
+Every vehicle must have a unique id.
+
+Edit a vehicle
+
+Update the fields in its existing object.
+
+Remove a vehicle
+
+Remove its complete object from vehicles.js.
+
+Vehicle status
+
+Use the status values supported by this project:
+
+Available
+Reserved
+Sold
+
+Important
+
+Keep image references consistent with src/data/images.js. Do not bypass the existing image registry by inventing a different path format.
+
+5. Vehicle detail pages
+
+Vehicle details use the vehicle ID:
+
+/vehicles/:id
+
+Example:
+
+/vehicles/vantage-gt
+
+The matching vehicle data drives the detail page.
+
+Every vehicle therefore needs a unique and stable id.
+
+An invalid vehicle ID should show the project's Vehicle not found state.
+
+6. Services and team
+
+Services
+
+Edit:
+
+src/data/services.js
+
+Add, remove or update service entries there.
+
+Team
+
+Edit:
+
+src/data/team.js
+
+Update team members and their profile information. Team photos should use the existing image registry.
+
+7. Images
+
+Physical image files live in:
+
 public/images/
-```
 
-Every page and component reads images through a single file:
+The central registry is:
 
-```
 src/data/images.js
-```
 
-The flow is:
+The normal flow is:
 
-```
-public/images/your-photo.jpg
-        ↓
-src/data/images.js   (gives it a name + alt text)
-        ↓
-src/data/vehicles.js / team.js / site references
-        ↓
-appears on the website
-```
+public/images/
+      ↓
+src/data/images.js
+      ↓
+vehicles.js / team.js / page data
+      ↓
+website
 
-### Replacing an existing photo (safest method)
-1. Find the current file in `public/images/` (e.g. `vehicle01.jpg`).
-2. Replace that file with your new photo, **keeping the exact same
-   filename**.
-3. Do nothing else — the website will pick up the new photo
-   automatically.
+Safest image replacement
 
-This is the easiest and safest way to swap a photo, because no code
-changes are needed.
+Find the existing image in public/images/.
 
-### Adding a brand-new image
-1. Add the new file to `public/images/` with a clear, descriptive name
-   (e.g. `vehicle09.jpg`) — lowercase, no spaces.
-2. Open `src/data/images.js` and add an entry following the existing
-   pattern:
-   ```js
-   vehicle09: {
-     cover: { src: path('vehicle09.jpg'), alt: 'Describe the vehicle here' },
-   },
-   ```
-3. Reference `images.vehicle09.cover` from `vehicles.js` the same way
-   existing vehicles do.
+Replace it with the new image.
 
-### Image naming rules
-- One physical photograph = one file. Never save the same photo under
-  two different filenames.
-- Use lowercase, descriptive names: `vehicle09.jpg`, `about02.jpg`.
-- Avoid spaces — use hyphens if needed.
+Keep the same filename.
 
-### Alt text
-Every image entry in `images.js` includes an `alt` field — a short,
-literal description of what's in the photo (for screen readers and
-accessibility). Update this whenever you replace a photo with a
-different subject.
+Update alt text in src/data/images.js when the subject changes.
 
----
+Adding an image
 
-## 5. What you should NOT edit
+Put the file in public/images/.
 
-Unless you have a developer helping you, avoid changing:
+Use a lowercase descriptive filename.
 
-- `src/components/` — reusable building blocks (buttons, cards, header, footer)
-- `src/sections/` — page sections (hero, featured vehicles, etc.)
-- `src/pages/` — page layouts
-- `src/styles/` — colors, fonts, spacing system
-- `main.jsx`, `vite.config.js`, `package.json`, `eslint.config.js`
+Add it to src/data/images.js.
 
-Editing these can break the layout or the build. All day-to-day content
-changes are possible through `src/data/` alone.
+Reference the registry entry from the relevant data file.
 
----
+Example naming:
 
-## 6. Running the site locally (for your developer)
+vehicle09.jpg
+showroom-front.jpg
+team-sales.jpg
 
-```bash
-npm install        # one-time setup, installs dependencies
-npm run dev        # starts local dev server at http://localhost:5173
-```
+Image rules
 
-### Testing on another device on the same WiFi (LAN testing)
-```bash
-npm run dev -- --host 0.0.0.0
-```
-Then open the "Network" URL shown in the terminal on a phone or tablet
-connected to the same WiFi network.
+One physical photograph = one file.
 
-### Checking for code errors
-```bash
+Do not duplicate the same photograph under different filenames.
+
+Avoid spaces.
+
+Use descriptive names.
+
+Keep filenames stable when replacing existing assets.
+
+Alt text
+
+Alt text should describe what is actually visible in the image.
+
+8. Contact actions
+
+The Contact page provides three direct contact paths:
+
+WhatsApp
+
+Opens a WhatsApp conversation using the configured WhatsApp number.
+
+Phone
+
+Uses the configured phone number and opens the device calling interface where supported.
+
+Email
+
+The visible email and Send an Email button open Gmail with the dealership email, subject and enquiry text prepared.
+
+The destination email is controlled from:
+
+src/data/site.js
+
+Example:
+
+email: 'owner@abcautos.com',
+
+No Contact page code change is required just to change the dealership email.
+
+9. What not to edit casually
+
+Avoid changing these files for normal content updates:
+
+src/components/
+src/sections/
+src/pages/
+src/styles/
+src/main.jsx
+vite.config.js
+package.json
+
+These control UI structure, styling, routing and build configuration.
+
+The project uses Oxlint:
+
 npm run lint
-```
 
-### Building for production (creates the deployable files)
-```bash
+Do not add an ESLint configuration simply for normal content editing.
+
+10. Local development
+
+From the project root:
+
+npm install
+npm run dev
+
+The configured development server uses:
+
+http://localhost:5173/
+
+Because Vite is configured for LAN access, the terminal may also show a Network URL such as:
+
+http://192.168.0.100:5173/
+
+A phone or tablet on the same Wi-Fi can use that Network URL for responsive testing.
+
+Port already in use
+
+Only one process can use port 5173 at a time.
+
+Stop the previous Vite server with:
+
+Ctrl + C
+
+or temporarily use another port:
+
+npm run dev -- --port 5174
+
+11. Lint and production build
+
+Check code quality:
+
+npm run lint
+
+A clean result should report:
+
+Found 0 warnings and 0 errors.
+
+Create the production build:
+
 npm run build
-```
-This produces a `dist/` folder — that folder is what gets uploaded to
-your web host.
 
----
+The output is generated in:
 
-## 7. Deployment basics
+dist/
 
-The `dist/` folder produced by `npm run build` is a set of static files
-(HTML, CSS, JS, images) that can be hosted on any static hosting
-provider (e.g. Netlify, Vercel, Cloudflare Pages, or a standard web
-host's `public_html` folder). There is no database or server-side code
-to configure — upload the contents of `dist/` and the site will run.
+Preview the production build locally:
 
-### A note on HTTPS
-Production hosting providers (Netlify, Vercel, Cloudflare Pages, etc.)
-issue HTTPS certificates automatically when you connect a domain — no
-manual certificate setup is required on your end. Local development
-(`npm run dev`) intentionally runs over plain HTTP; this is normal and
-does not affect the live, deployed site.
+npm run preview
 
----
+12. Production deployment
 
-## 8. Final QA checklist
+This V1 is a static frontend.
 
-Before publishing changes, confirm:
+After:
 
-- [ ] Home page loads and the hero image displays
-- [ ] Featured vehicles on the Home page link correctly
-- [ ] Vehicles page shows all vehicles and the category filter works
-- [ ] Every vehicle's "View details" link opens the correct detail page
-- [ ] Vehicle detail pages show the correct photo, price, and specs
-- [ ] An invalid vehicle link shows "Vehicle not found" instead of an error
-- [ ] WhatsApp, phone, and email buttons open correctly on both mobile and desktop
-- [ ] About page content and photos display correctly
-- [ ] Contact page shows the correct address, phone, email, and hours
-- [ ] Mobile menu opens, closes, and every link works
-- [ ] No layout breaks at narrow phone widths (test at 360px if possible)
+npm run build
 
----
+deploy the generated dist/ output to a compatible static host.
 
-*This guide covers day-to-day content editing. For layout, design, or
-structural changes, please contact your developer.*
+Examples:
+
+Netlify
+
+Vercel
+
+Cloudflare Pages
+
+Standard static web hosting
+
+No database or server-side application is required for this V1.
+
+HTTPS
+
+Local development intentionally uses HTTP.
+
+Production hosting normally provides HTTPS when the domain is connected.
+
+SPA routing
+
+Because the application uses client-side routing, production hosting must support SPA fallback/rewrites for routes such as:
+
+/vehicles
+/about
+/contact
+/vehicles/example-id
+
+so direct visits and browser refreshes resolve to the application.
+
+13. Responsive QA
+
+Test the site around:
+
+360px
+390px
+430px
+768px
+1024px
+1280px
+1440px
+1920px
+
+Pay particular attention to:
+
+Header and mobile menu
+
+Vehicle cards
+
+Vehicle filtering
+
+Vehicle detail page
+
+Long vehicle names
+
+Prices and mileage
+
+Contact buttons
+
+Email/phone/WhatsApp actions
+
+Images
+
+Text wrapping
+
+No horizontal scrolling
+
+No clipped controls
+
+14. Final QA checklist
+
+Before publishing:
+
+Home loads correctly
+
+Hero image displays
+
+Featured vehicle links work
+
+Vehicles page displays the inventory
+
+Vehicle category filter works
+
+Vehicle detail links open the correct vehicle
+
+Invalid vehicle IDs show the expected not-found state
+
+Vehicle photos and specifications are correct
+
+About page content displays correctly
+
+Team photos display correctly
+
+Contact address is correct
+
+Contact phone is correct
+
+Contact email is correct
+
+WhatsApp opens correctly
+
+Phone link works on supported devices
+
+Email opens Gmail with the intended recipient
+
+Email subject/body are populated correctly
+
+Mobile menu opens and closes correctly
+
+Escape closes the mobile menu
+
+Navigation works on mobile
+
+No horizontal overflow at narrow widths
+
+No broken images
+
+No browser console errors during normal use
+
+npm run lint passes
+
+npm run build passes
+
+15. V1 scope
+
+This is intentionally a showcase and lead-generation frontend.
+
+Not included in V1:
+
+Customer accounts
+
+Login
+
+Online checkout
+
+Shopping cart
+
+Database
+
+Real booking engine
+
+Payment processing
+
+Dealer admin dashboard
+
+CRM integration
+
+Inventory management backend
+
+Automated email server
+
+These can be added later without changing the core purpose of the V1 template.
+
+16. Freeze and Git
+
+After browser/runtime QA and successful lint/build:
+
+git status
+git add .
+git commit -m "feat(automotive-dealer-01): finalize V1 showroom website"
+git push origin main
+
+Review git status before committing and make sure only intentional changes are included.
+
+17. V1 completion standard
+
+The project is ready to freeze when:
+
+All five routes work.
+
+Vehicle inventory and detail pages work.
+
+Filtering works.
+
+Contact actions work.
+
+Gmail email flow works.
+
+Mobile navigation works.
+
+Responsive layouts are clean.
+
+No horizontal overflow or obvious UI defects remain.
+
+npm run lint passes with zero warnings/errors.
+
+npm run build completes successfully.
+
+After that, automotive-dealer-01 is ready to be committed, pushed and reused as the V1 automotive dealership template.

@@ -1,8 +1,33 @@
 import SectionHeading from '../../components/SectionHeading'
 import Button from '../../components/Button'
 import { images } from '../../data/images'
-import { site, whatsappLink, telLink, mailLink } from '../../data/site'
+import {
+  site,
+  whatsappLink,
+  telLink,
+} from '../../data/site'
 import styles from './Contact.module.scss'
+
+function buildGmailLink() {
+  const subject = 'General Enquiry — Vantage Motor Co.'
+
+  const body = [
+    'Hello Vantage Motor Co. team,',
+    '',
+    'I would like to enquire about one of your vehicles.',
+    '',
+    'Please share the available details, pricing, and next steps.',
+    '',
+    'Thank you.',
+  ].join('\n')
+
+  return (
+    'https://mail.google.com/mail/?view=cm&fs=1' +
+    `&to=${encodeURIComponent(site.contact.email)}` +
+    `&su=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(body)}`
+  )
+}
 
 export default function Contact() {
   return (
@@ -20,18 +45,28 @@ export default function Contact() {
 
       <section className={['container', styles.grid].join(' ')}>
         <div className={styles.imageCol}>
-          <img src={images.contact.src} alt={images.contact.alt} loading="lazy" />
+          <img
+            src={images.contact.src}
+            alt={images.contact.alt}
+            loading="lazy"
+          />
         </div>
 
         <div className={styles.detailsCol}>
           <div className={styles.primaryAction}>
-            <h2 className={styles.blockTitle}>Send an enquiry</h2>
+            <h2 className={styles.blockTitle}>
+              Send an enquiry
+            </h2>
+
             <p className={styles.blockText}>
-              The fastest way to reach us. Opens a WhatsApp conversation
-              directly with our sales team.
+              The fastest way to reach us. Opens a WhatsApp
+              conversation directly with our sales team.
             </p>
+
             <Button
-              href={whatsappLink('Hello, I have a question for Vantage Motor Co.')}
+              href={whatsappLink(
+                'Hello, I have a question for Vantage Motor Co.'
+              )}
               variant="accent"
             >
               Message Us on WhatsApp
@@ -40,21 +75,36 @@ export default function Contact() {
 
           <div className={styles.infoGrid}>
             <div className={styles.infoBlock}>
-              <span className={styles.infoLabel}>Phone</span>
-              <a href={telLink()} className={styles.infoValue}>
+              <span className={styles.infoLabel}>
+                Phone
+              </span>
+
+              <a
+                href={telLink()}
+                className={styles.infoValue}
+              >
                 {site.contact.phoneDisplay}
               </a>
             </div>
 
             <div className={styles.infoBlock}>
-              <span className={styles.infoLabel}>Email</span>
-              <a href={mailLink()} className={styles.infoValue}>
+              <span className={styles.infoLabel}>
+                Email
+              </span>
+
+              <a
+                href={buildGmailLink()}
+                className={styles.infoValue}
+              >
                 {site.contact.email}
               </a>
             </div>
 
             <div className={styles.infoBlock}>
-              <span className={styles.infoLabel}>Address</span>
+              <span className={styles.infoLabel}>
+                Address
+              </span>
+
               <address className={styles.infoValue}>
                 {site.contact.address.line1}
                 <br />
@@ -65,10 +115,16 @@ export default function Contact() {
             </div>
 
             <div className={styles.infoBlock}>
-              <span className={styles.infoLabel}>Hours</span>
+              <span className={styles.infoLabel}>
+                Hours
+              </span>
+
               <div className={styles.hoursList}>
                 {site.contact.hours.map((h) => (
-                  <div className={styles.hoursRow} key={h.days}>
+                  <div
+                    className={styles.hoursRow}
+                    key={h.days}
+                  >
                     <span>{h.days}</span>
                     <span>{h.time}</span>
                   </div>
@@ -78,12 +134,19 @@ export default function Contact() {
           </div>
 
           <div className={styles.secondaryActions}>
-            <Button href={telLink()} variant="ghost">
+            <Button
+              href={telLink()}
+              variant="ghost"
+            >
               Call the Showroom
             </Button>
-            <Button href={mailLink('General Enquiry')} variant="ghost">
+
+            <a
+              href={buildGmailLink()}
+              className={styles.emailButton}
+            >
               Send an Email
-            </Button>
+            </a>
           </div>
         </div>
       </section>
