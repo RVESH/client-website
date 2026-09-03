@@ -1,0 +1,48 @@
+<svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroTitle">
+  <title id="heroTitle">A bronze sedan on an open road at dusk</title>
+  <defs>
+    <linearGradient id="duskSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1D2333"/>
+      <stop offset="1" stop-color="#3A2E30"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#duskSky)"/>
+
+  <!-- sun -->
+  <circle cx="480" cy="200" r="70" fill="#E7C98C" opacity="0.5"/>
+  <circle cx="480" cy="200" r="46" fill="#E7C98C" opacity="0.7"/>
+
+  <!-- distant hills -->
+  <path d="M0 320 Q120 280 260 310 T640 300 V480 H0 Z" fill="#242A38" opacity="0.9"/>
+
+  <!-- road -->
+  <path d="M180 480 L280 300 L360 300 L500 480 Z" fill="#1C1F26"/>
+  <path d="M320 300 L316 480" stroke="#E7C98C" stroke-width="6" stroke-dasharray="26 22" opacity="0.85"/>
+
+  <!-- road shoulder highlight -->
+  <path d="M280 300 L200 480" stroke="#BD8A3D" stroke-width="3" opacity="0.4"/>
+  <path d="M360 300 L480 480" stroke="#BD8A3D" stroke-width="3" opacity="0.4"/>
+
+  <!-- car silhouette, three-quarter rear view driving away -->
+  <g>
+    <ellipse cx="320" cy="392" rx="70" ry="10" fill="#0A0B0E" opacity="0.4"/>
+    <path d="M264 392 L270 362 C274 350 286 342 300 342 L316 342 L326 328 C330 323 336 320 342 320 L360 320 C368 320 375 324 379 331 L388 342 L392 342 C404 342 413 350 415 362 L418 392 Z" fill="#BD8A3D"/>
+    <path d="M330 338 L338 326 C341 322 346 319 351 319 L358 319 C362 319 366 321 369 325 L378 338 Z" fill="#20262F"/>
+    <circle cx="292" cy="394" r="18" fill="#0A0B0E"/>
+    <circle cx="292" cy="394" r="8" fill="#8A93A6"/>
+    <circle cx="390" cy="394" r="18" fill="#0A0B0E"/>
+    <circle cx="390" cy="394" r="8" fill="#8A93A6"/>
+    <rect x="262" y="368" width="8" height="10" rx="2" fill="#E7C98C"/>
+  </g>
+
+  <!-- headlight beams cast forward -->
+  <path d="M264 372 L200 420 L264 400 Z" fill="#F5EBD9" opacity="0.25"/>
+
+  <!-- stars -->
+  <g fill="#F5EBD9">
+    <circle cx="90" cy="70" r="2"/>
+    <circle cx="140" cy="110" r="1.5"/>
+    <circle cx="60" cy="140" r="1.5"/>
+    <circle cx="200" cy="60" r="1.5"/>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v6Title">
+  <title id="v6Title">Summit 4x4 full-size SUV, deep bronze-brown</title>
+  <rect width="480" height="300" fill="#ECE9E3"/>
+  <rect y="218" width="480" height="82" fill="#E2DED4"/>
+  <ellipse cx="240" cy="238" rx="172" ry="14" fill="#14161B" opacity="0.13"/>
+
+  <path d="M60 218 L68 170 C73 153 88 141 106 141 L150 141 L168 116 C174 109 183 105 192 105 L304 105 C314 105 323 110 328 118 L342 141 L378 141 C398 141 415 156 419 176 L424 218 Z" fill="#5C4A32"/>
+  <path d="M60 218 L68 170 C73 153 88 141 106 141 L150 141 L168 116 C174 109 183 105 192 105 L304 105 C314 105 323 110 328 118 L342 141 L378 141 C398 141 415 156 419 176 L424 218 Z" fill="none" stroke="#3D3120" stroke-width="1.5"/>
+
+  <rect x="192" y="99" width="112" height="7" rx="3.5" fill="#3D3120"/>
+
+  <path d="M172 137 L188 116 C192 111 198 108 204 108 L280 108 C288 108 296 112 300 119 L314 137 Z" fill="#20262F"/>
+  <line x1="192" y1="108" x2="192" y2="137" stroke="#5C4A32" stroke-width="2"/>
+  <line x1="270" y1="110" x2="270" y2="137" stroke="#5C4A32" stroke-width="2"/>
+
+  <line x1="230" y1="141" x2="230" y2="215" stroke="#3D3120" stroke-width="1.5"/>
+
+  <rect x="416" y="190" width="11" height="15" rx="3" fill="#E7C98C"/>
+  <rect x="60" y="196" width="11" height="13" rx="3" fill="#C4462E"/>
+
+  <circle cx="156" cy="220" r="33" fill="#1C1F26"/>
+  <circle cx="156" cy="220" r="15" fill="#C7CBD1"/>
+  <circle cx="156" cy="220" r="5" fill="#5C4A32"/>
+  <circle cx="366" cy="220" r="33" fill="#1C1F26"/>
+  <circle cx="366" cy="220" r="15" fill="#C7CBD1"/>
+  <circle cx="366" cy="220" r="5" fill="#5C4A32"/>
+</svg>

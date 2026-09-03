@@ -1,0 +1,28 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v9Title">
+  <title id="v9Title">Volt Spark EV electric car, electric blue</title>
+  <rect width="480" height="300" fill="#ECE9E3"/>
+  <rect y="210" width="480" height="90" fill="#E2DED4"/>
+  <ellipse cx="240" cy="228" rx="160" ry="13" fill="#14161B" opacity="0.12"/>
+
+  <!-- smooth EV nose, no grille -->
+  <path d="M80 210 L90 178 C96 164 110 155 128 155 L172 155 L194 134 C200 128 208 124 217 124 L286 124 C296 124 305 129 311 138 L328 155 L364 155 C382 155 396 167 400 183 L406 210 Z" fill="#2B5C8A"/>
+  <path d="M80 210 L90 178 C96 164 110 155 128 155 L172 155 L194 134 C200 128 208 124 217 124 L286 124 C296 124 305 129 311 138 L328 155 L364 155 C382 155 396 167 400 183 L406 210 Z" fill="none" stroke="#1B3C5C" stroke-width="1.5"/>
+
+  <path d="M202 151 L214 136 C218 131 224 128 230 128 L280 128 C287 128 294 132 298 139 L310 151 Z" fill="#16222C"/>
+  <line x1="252" y1="128" x2="252" y2="151" stroke="#2B5C8A" stroke-width="2"/>
+
+  <line x1="252" y1="155" x2="252" y2="207" stroke="#1B3C5C" stroke-width="1.5"/>
+
+  <!-- charge bolt badge -->
+  <path d="M118 176 L128 176 L122 188 L132 188 L114 206 L120 190 L110 190 Z" fill="#8FD1E8"/>
+
+  <rect x="398" y="182" width="10" height="14" rx="3" fill="#8FD1E8"/>
+  <rect x="80" y="186" width="10" height="12" rx="3" fill="#8FD1E8"/>
+
+  <circle cx="160" cy="212" r="27" fill="#1C1F26"/>
+  <circle cx="160" cy="212" r="12" fill="#D8DADE"/>
+  <circle cx="160" cy="212" r="4" fill="#2B5C8A"/>
+  <circle cx="360" cy="212" r="27" fill="#1C1F26"/>
+  <circle cx="360" cy="212" r="12" fill="#D8DADE"/>
+  <circle cx="360" cy="212" r="4" fill="#2B5C8A"/>
+</svg>

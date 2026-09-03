@@ -1,0 +1,28 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v4Title">
+  <title id="v4Title">Meridian Sedan hybrid, slate green</title>
+  <rect width="480" height="300" fill="#ECE9E3"/>
+  <rect y="210" width="480" height="90" fill="#E2DED4"/>
+  <ellipse cx="240" cy="230" rx="168" ry="13" fill="#14161B" opacity="0.12"/>
+
+  <path d="M64 212 L74 184 C80 172 92 164 106 162 L168 158 L192 136 C198 130 207 126 216 126 L268 126 C277 126 286 130 292 137 L312 158 L372 162 C390 164 404 174 410 190 L416 212 Z" fill="#3E5C56"/>
+  <path d="M64 212 L74 184 C80 172 92 164 106 162 L168 158 L192 136 C198 130 207 126 216 126 L268 126 C277 126 286 130 292 137 L312 158 L372 162 C390 164 404 174 410 190 L416 212 Z" fill="none" stroke="#294038" stroke-width="1.5"/>
+
+  <path d="M198 154 L210 138 C214 133 220 130 226 130 L262 130 C269 130 275 133 280 139 L294 154 Z" fill="#20262F"/>
+  <line x1="248" y1="130" x2="248" y2="154" stroke="#3E5C56" stroke-width="2"/>
+
+  <line x1="248" y1="162" x2="248" y2="209" stroke="#294038" stroke-width="1.5"/>
+  <path d="M108 190 L400 190" stroke="#6E8C82" stroke-width="2" opacity="0.6"/>
+
+  <!-- hybrid leaf badge -->
+  <path d="M96 172 q8 -10 16 0 q-8 10 -16 0 z" fill="#8FBB9E"/>
+
+  <rect x="408" y="184" width="10" height="14" rx="3" fill="#E7C98C"/>
+  <rect x="64" y="190" width="10" height="12" rx="3" fill="#C4462E"/>
+
+  <circle cx="164" cy="214" r="28" fill="#1C1F26"/>
+  <circle cx="164" cy="214" r="13" fill="#C7CBD1"/>
+  <circle cx="164" cy="214" r="4.5" fill="#3E5C56"/>
+  <circle cx="366" cy="214" r="28" fill="#1C1F26"/>
+  <circle cx="366" cy="214" r="13" fill="#C7CBD1"/>
+  <circle cx="366" cy="214" r="4.5" fill="#3E5C56"/>
+</svg>

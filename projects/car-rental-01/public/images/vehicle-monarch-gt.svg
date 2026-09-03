@@ -1,0 +1,25 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v8Title">
+  <title id="v8Title">Monarch GT luxury coupe, deep burgundy</title>
+  <rect width="480" height="300" fill="#ECE9E3"/>
+  <rect y="212" width="480" height="88" fill="#E2DED4"/>
+  <ellipse cx="240" cy="230" rx="172" ry="13" fill="#14161B" opacity="0.14"/>
+
+  <!-- lower, longer, sportier roofline -->
+  <path d="M56 212 L70 186 C78 170 92 160 110 158 L188 152 L216 134 C222 129 230 126 238 126 L272 126 C280 126 288 130 292 137 L306 152 L372 158 C392 160 408 172 414 190 L422 212 Z" fill="#5C2A2E"/>
+  <path d="M56 212 L70 186 C78 170 92 160 110 158 L188 152 L216 134 C222 129 230 126 238 126 L272 126 C280 126 288 130 292 137 L306 152 L372 158 C392 160 408 172 414 190 L422 212 Z" fill="none" stroke="#3A1A1D" stroke-width="1.5"/>
+
+  <path d="M222 150 L232 136 C236 131 241 128 246 128 L264 128 C270 128 275 131 279 137 L288 150 Z" fill="#20262F"/>
+
+  <line x1="252" y1="158" x2="252" y2="209" stroke="#3A1A1D" stroke-width="1.5"/>
+  <path d="M110 196 L406 196" stroke="#8A4A4E" stroke-width="2" opacity="0.5"/>
+
+  <rect x="414" y="186" width="10" height="14" rx="3" fill="#E7C98C"/>
+  <rect x="56" y="190" width="10" height="12" rx="3" fill="#C4462E"/>
+
+  <circle cx="172" cy="214" r="28" fill="#1C1F26"/>
+  <circle cx="172" cy="214" r="13" fill="#D8D0C8"/>
+  <circle cx="172" cy="214" r="4.5" fill="#5C2A2E"/>
+  <circle cx="368" cy="214" r="28" fill="#1C1F26"/>
+  <circle cx="368" cy="214" r="13" fill="#D8D0C8"/>
+  <circle cx="368" cy="214" r="4.5" fill="#5C2A2E"/>
+</svg>

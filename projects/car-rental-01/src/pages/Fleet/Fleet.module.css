@@ -1,0 +1,74 @@
+.intro {
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: var(--space-lg);
+}
+
+.intro :global(.eyebrow) {
+  margin-bottom: var(--space-sm);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: var(--space-xl);
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    margin-bottom: var(--space-lg);
+  }
+}
+
+.tab,
+.tabActive {
+  border: 1.5px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-ink-soft);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+  min-height: 42px;
+}
+
+.tab:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.tabActive {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty {
+  color: var(--color-ink-faint);
+  font-size: var(--fs-lead);
+  padding-block: var(--space-2xl);
+  text-align: center;
+}

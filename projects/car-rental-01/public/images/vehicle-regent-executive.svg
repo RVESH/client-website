@@ -1,0 +1,27 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v7Title">
+  <title id="v7Title">Regent Executive luxury sedan, black with gold trim</title>
+  <rect width="480" height="300" fill="#ECE9E3"/>
+  <rect y="210" width="480" height="90" fill="#E2DED4"/>
+  <ellipse cx="240" cy="230" rx="175" ry="13" fill="#14161B" opacity="0.14"/>
+
+  <path d="M52 212 L64 182 C71 168 84 159 100 157 L172 152 L198 132 C204 126 213 122 222 122 L266 122 C275 122 284 126 289 133 L308 152 L378 157 C396 159 411 170 417 187 L426 212 Z" fill="#1C1F26"/>
+  <path d="M52 212 L64 182 C71 168 84 159 100 157 L172 152 L198 132 C204 126 213 122 222 122 L266 122 C275 122 284 126 289 133 L308 152 L378 157 C396 159 411 170 417 187 L426 212 Z" fill="none" stroke="#0A0B0E" stroke-width="1.5"/>
+
+  <!-- gold beltline accent -->
+  <path d="M96 188 L404 188" stroke="#BD8A3D" stroke-width="2.5" opacity="0.85"/>
+
+  <path d="M204 150 L216 134 C220 129 226 126 232 126 L256 126 C263 126 269 129 273 135 L286 150 Z" fill="#14161B"/>
+  <line x1="248" y1="126" x2="248" y2="150" stroke="#1C1F26" stroke-width="2"/>
+
+  <line x1="248" y1="157" x2="248" y2="209" stroke="#0A0B0E" stroke-width="1.5"/>
+
+  <rect x="418" y="184" width="10" height="14" rx="3" fill="#E7C98C"/>
+  <rect x="52" y="190" width="10" height="12" rx="3" fill="#C4462E"/>
+
+  <circle cx="170" cy="214" r="28" fill="#0A0B0E"/>
+  <circle cx="170" cy="214" r="13" fill="#B99A5C"/>
+  <circle cx="170" cy="214" r="4.5" fill="#1C1F26"/>
+  <circle cx="372" cy="214" r="28" fill="#0A0B0E"/>
+  <circle cx="372" cy="214" r="13" fill="#B99A5C"/>
+  <circle cx="372" cy="214" r="4.5" fill="#1C1F26"/>
+</svg>

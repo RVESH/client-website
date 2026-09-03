@@ -1,0 +1,48 @@
+<svg viewBox="0 0 640 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="aboutTitle">
+  <title id="aboutTitle">An Auric Motors advisor handing over car keys at the counter</title>
+  <rect width="640" height="800" fill="#F5F5F3"/>
+  <rect width="640" height="560" fill="#ECE9E3"/>
+
+  <!-- counter -->
+  <rect x="0" y="480" width="640" height="40" fill="#1C1F26"/>
+  <rect x="0" y="474" width="640" height="10" fill="#BD8A3D"/>
+  <rect x="0" y="520" width="640" height="280" fill="#E2DED4"/>
+
+  <!-- signage -->
+  <rect x="220" y="70" width="200" height="46" rx="8" fill="#FFFFFF"/>
+  <rect x="244" y="86" width="152" height="14" rx="6" fill="#DDD8CC"/>
+
+  <!-- advisor figure -->
+  <g>
+    <path d="M150 800 L150 640 C150 596 186 568 222 568 C258 568 292 596 292 640 L292 800 Z" fill="#1C1F26"/>
+    <path d="M176 606 L268 606 L260 730 L184 730 Z" fill="#F5F5F3"/>
+    <circle cx="221" cy="552" r="44" fill="#D9A876"/>
+    <path d="M178 538 a44 44 0 0 1 87 0 q-6 -21 -44 -21 t-43 21 z" fill="#1C1F26"/>
+    <!-- arm extending keys -->
+    <path d="M262 610 C 300 605, 335 595, 360 585" stroke="#1C1F26" stroke-width="24" stroke-linecap="round" fill="none"/>
+    <circle cx="366" cy="582" r="14" fill="#D9A876"/>
+  </g>
+
+  <!-- customer figure -->
+  <g>
+    <path d="M440 800 L440 650 C440 610 470 585 500 585 C530 585 558 610 558 650 L558 800 Z" fill="#BD8A3D"/>
+    <circle cx="499" cy="570" r="40" fill="#D9A876"/>
+    <path d="M460 558 a40 40 0 0 1 78 0 q-6 -19 -39 -19 t-39 19 z" fill="#1C1F26"/>
+    <path d="M462 620 C 435 615, 410 600, 396 588" stroke="#BD8A3D" stroke-width="22" stroke-linecap="round" fill="none"/>
+    <circle cx="390" cy="584" r="13" fill="#D9A876"/>
+  </g>
+
+  <!-- key fob between hands -->
+  <g>
+    <circle cx="378" cy="583" r="11" fill="none" stroke="#E7C98C" stroke-width="4"/>
+    <rect x="386" y="580" width="20" height="6" rx="3" fill="#E7C98C"/>
+    <rect x="402" y="576" width="5" height="4" rx="1.5" fill="#E7C98C"/>
+    <rect x="402" y="584" width="5" height="4" rx="1.5" fill="#E7C98C"/>
+  </g>
+
+  <!-- car keys fob shine sparkle -->
+  <g fill="#F5EBD9">
+    <circle cx="392" cy="560" r="3"/>
+    <circle cx="404" cy="552" r="2"/>
+  </g>
+</svg>

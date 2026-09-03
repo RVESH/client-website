@@ -1,0 +1,30 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v1Title">
+  <title id="v1Title">Aster Hatch economy hatchback, silver</title>
+  <rect width="480" height="300" fill="#ECE9E3"/>
+  <rect y="210" width="480" height="90" fill="#E2DED4"/>
+  <ellipse cx="240" cy="228" rx="150" ry="14" fill="#14161B" opacity="0.12"/>
+
+  <!-- body -->
+  <path d="M100 210 L108 178 C114 164 128 156 146 156 L182 156 L198 138 C204 131 213 127 222 127 L280 127 C290 127 299 132 305 141 L322 156 L360 156 C378 156 392 168 396 184 L400 210 Z" fill="#9CA3AF"/>
+  <path d="M100 210 L108 178 C114 164 128 156 146 156 L182 156 L198 138 C204 131 213 127 222 127 L280 127 C290 127 299 132 305 141 L322 156 L360 156 C378 156 392 168 396 184 L400 210 Z" fill="none" stroke="#6B7280" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- windows -->
+  <path d="M204 152 L216 138 C220 133 226 130 232 130 L276 130 C284 130 291 134 296 141 L308 152 Z" fill="#3A4250"/>
+  <line x1="252" y1="130" x2="252" y2="152" stroke="#9CA3AF" stroke-width="2"/>
+
+  <!-- door line + handle -->
+  <line x1="252" y1="156" x2="252" y2="205" stroke="#6B7280" stroke-width="1.5" opacity="0.5"/>
+  <rect x="270" y="172" width="16" height="4" rx="2" fill="#5B6472"/>
+
+  <!-- lights -->
+  <rect x="392" y="182" width="10" height="14" rx="3" fill="#E7C98C"/>
+  <rect x="100" y="186" width="10" height="12" rx="3" fill="#C4462E"/>
+
+  <!-- wheels -->
+  <circle cx="152" cy="212" r="27" fill="#1C1F26"/>
+  <circle cx="152" cy="212" r="12" fill="#D8DADE"/>
+  <circle cx="152" cy="212" r="4" fill="#8A93A6"/>
+  <circle cx="352" cy="212" r="27" fill="#1C1F26"/>
+  <circle cx="352" cy="212" r="12" fill="#D8DADE"/>
+  <circle cx="352" cy="212" r="4" fill="#8A93A6"/>
+</svg>

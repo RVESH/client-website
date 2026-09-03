@@ -1,0 +1,68 @@
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: border-color var(--dur-fast) var(--ease-standard);
+}
+
+.card:hover {
+  border-color: var(--color-primary);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.top h3 {
+  font-size: 1.25rem;
+}
+
+.state {
+  font-size: var(--fs-small);
+  color: var(--color-ink-faint);
+}
+
+.code {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-tiny);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-primary-dark);
+  background: var(--color-primary-wash);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+
+.description {
+  color: var(--color-ink-soft);
+  font-size: var(--fs-small);
+  line-height: var(--lh-normal);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+}
+
+.details a {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.details a:hover {
+  text-decoration: underline;
+}

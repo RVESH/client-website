@@ -1,0 +1,64 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="locTitle">
+  <title id="locTitle">A city skyline with a highway leading toward it</title>
+  <defs>
+    <linearGradient id="locSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EAD9A8"/>
+      <stop offset="1" stop-color="#F5F5F3"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" fill="url(#locSky)"/>
+
+  <!-- skyline -->
+  <g fill="#4A505C">
+    <rect x="80" y="260" width="70" height="220"/>
+    <rect x="160" y="220" width="55" height="260"/>
+    <rect x="225" y="290" width="50" height="190"/>
+  </g>
+  <g fill="#1C1F26">
+    <rect x="290" y="180" width="80" height="300"/>
+    <rect x="385" y="240" width="60" height="240"/>
+  </g>
+  <g fill="#4A505C">
+    <rect x="460" y="270" width="55" height="210"/>
+    <rect x="530" y="210" width="70" height="270"/>
+    <rect x="615" y="260" width="50" height="220"/>
+  </g>
+
+  <!-- windows -->
+  <g fill="#E7C98C" opacity="0.7">
+    <rect x="300" y="200" width="8" height="10"/>
+    <rect x="320" y="200" width="8" height="10"/>
+    <rect x="340" y="200" width="8" height="10"/>
+    <rect x="300" y="230" width="8" height="10"/>
+    <rect x="320" y="230" width="8" height="10"/>
+    <rect x="340" y="230" width="8" height="10"/>
+    <rect x="545" y="235" width="8" height="10"/>
+    <rect x="565" y="235" width="8" height="10"/>
+    <rect x="545" y="265" width="8" height="10"/>
+    <rect x="565" y="265" width="8" height="10"/>
+  </g>
+
+  <!-- highway curving toward the city -->
+  <path d="M0 560 C 200 500, 380 500, 460 480 C 560 456, 700 470, 900 500 L900 600 L0 600 Z" fill="#1C1F26"/>
+  <path d="M40 545 C 220 495, 380 494, 460 476" stroke="#E7C98C" stroke-width="5" stroke-dasharray="24 20" opacity="0.8" fill="none"/>
+
+  <!-- three cars along the highway heading toward the city -->
+  <g>
+    <rect x="110" y="518" width="46" height="16" rx="7" fill="#BD8A3D"/>
+    <circle cx="122" cy="536" r="6" fill="#0A0B0E"/>
+    <circle cx="146" cy="536" r="6" fill="#0A0B0E"/>
+  </g>
+  <g>
+    <rect x="240" y="500" width="40" height="14" rx="6" fill="#2B3A55"/>
+    <circle cx="250" cy="516" r="5.5" fill="#0A0B0E"/>
+    <circle cx="272" cy="516" r="5.5" fill="#0A0B0E"/>
+  </g>
+  <g>
+    <rect x="360" y="490" width="36" height="13" rx="5" fill="#4A505C"/>
+    <circle cx="369" cy="505" r="5" fill="#0A0B0E"/>
+    <circle cx="389" cy="505" r="5" fill="#0A0B0E"/>
+  </g>
+
+  <!-- sun -->
+  <circle cx="760" cy="150" r="46" fill="#F5EBD9" opacity="0.6"/>
+</svg>

@@ -1,0 +1,134 @@
+.hero {
+  position: relative;
+  background: var(--color-dark);
+  color: var(--color-white);
+  padding-top: clamp(2.75rem, 6vw, 4.5rem);
+  padding-bottom: clamp(4.5rem, 9vw, 7rem);
+  overflow: hidden;
+}
+
+/* Decorative angled edge, kept as its own empty, non-interactive layer
+   behind all real content (lower z-index) so the diagonal clip can
+   never cut into the headline, image, or the booking form above it. */
+.angleEdge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 64px;
+  background: var(--color-bg);
+  clip-path: polygon(0 100%, 100% 40%, 100% 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.top {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+@media (max-width: 1024px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  max-width: 560px;
+}
+
+@media (max-width: 1024px) {
+  .copy {
+    max-width: none;
+  }
+}
+
+.headline {
+  font-size: var(--fs-h1);
+  color: var(--color-white);
+  max-width: 11ch;
+}
+
+@media (max-width: 1024px) {
+  .headline {
+    max-width: none;
+  }
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--color-dark-text-soft);
+  max-width: 46ch;
+}
+
+.ctaRow {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-2xs);
+}
+
+@media (max-width: 480px) {
+  .ctaRow {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.visual {
+  position: relative;
+}
+
+.speedLines {
+  position: absolute;
+  top: -18px;
+  left: -10px;
+  width: 55%;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .speedLines {
+    display: none;
+  }
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 52vh;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-dark-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.imageFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .imageFrame {
+    aspect-ratio: 4 / 3;
+    max-height: 42vh;
+  }
+}
+
+.widgetWrap {
+  position: relative;
+  z-index: 2;
+}

@@ -1,0 +1,27 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v5Title">
+  <title id="v5Title">Terrain SUV, graphite</title>
+  <rect width="480" height="300" fill="#ECE9E3"/>
+  <rect y="216" width="480" height="84" fill="#E2DED4"/>
+  <ellipse cx="240" cy="236" rx="165" ry="14" fill="#14161B" opacity="0.13"/>
+
+  <path d="M74 216 L82 172 C87 156 101 145 118 145 L158 145 L176 122 C182 115 191 111 200 111 L296 111 C306 111 315 116 320 124 L332 145 L364 145 C384 145 401 159 405 178 L410 216 Z" fill="#4A505C"/>
+  <path d="M74 216 L82 172 C87 156 101 145 118 145 L158 145 L176 122 C182 115 191 111 200 111 L296 111 C306 111 315 116 320 124 L332 145 L364 145 C384 145 401 159 405 178 L410 216 Z" fill="none" stroke="#31363F" stroke-width="1.5"/>
+
+  <!-- roof rail -->
+  <rect x="200" y="105" width="96" height="7" rx="3.5" fill="#31363F"/>
+
+  <path d="M182 141 L196 122 C200 117 206 114 212 114 L282 114 C289 114 296 118 300 124 L312 141 Z" fill="#20262F"/>
+  <line x1="246" y1="114" x2="246" y2="141" stroke="#4A505C" stroke-width="2"/>
+
+  <line x1="246" y1="145" x2="246" y2="213" stroke="#31363F" stroke-width="1.5"/>
+
+  <rect x="402" y="188" width="11" height="15" rx="3" fill="#E7C98C"/>
+  <rect x="74" y="194" width="11" height="13" rx="3" fill="#C4462E"/>
+
+  <circle cx="166" cy="218" r="31" fill="#1C1F26"/>
+  <circle cx="166" cy="218" r="14" fill="#C7CBD1"/>
+  <circle cx="166" cy="218" r="5" fill="#4A505C"/>
+  <circle cx="352" cy="218" r="31" fill="#1C1F26"/>
+  <circle cx="352" cy="218" r="14" fill="#C7CBD1"/>
+  <circle cx="352" cy="218" r="5" fill="#4A505C"/>
+</svg>

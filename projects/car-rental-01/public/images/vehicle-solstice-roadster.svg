@@ -1,0 +1,28 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v10Title">
+  <title id="v10Title">Solstice Roadster convertible, open top, warm red</title>
+  <rect width="480" height="300" fill="#ECE9E3"/>
+  <rect y="212" width="480" height="88" fill="#E2DED4"/>
+  <ellipse cx="240" cy="230" rx="165" ry="13" fill="#14161B" opacity="0.13"/>
+
+  <!-- low body, open top: no roof, just windshield -->
+  <path d="M70 212 L82 190 C90 176 104 168 120 166 L176 162 L196 148 C200 145 205 143 210 143 L228 143 L228 160 L300 160 C322 160 340 172 348 191 L358 212 Z" fill="#A13A2E"/>
+  <path d="M70 212 L82 190 C90 176 104 168 120 166 L176 162 L196 148 C200 145 205 143 210 143 L228 143 L228 160 L300 160 C322 160 340 172 348 191 L358 212 Z" fill="none" stroke="#6E2019" stroke-width="1.5"/>
+
+  <!-- windshield -->
+  <path d="M204 158 L216 145 C219 142 223 140 227 140 L227 160 L204 160 Z" fill="#16222C" opacity="0.85"/>
+
+  <!-- interior seat hint -->
+  <rect x="238" y="150" width="46" height="10" rx="4" fill="#6E2019"/>
+
+  <line x1="228" y1="166" x2="228" y2="209" stroke="#6E2019" stroke-width="1.5"/>
+
+  <rect x="350" y="184" width="10" height="14" rx="3" fill="#E7C98C"/>
+  <rect x="70" y="192" width="10" height="12" rx="3" fill="#3A0F0B"/>
+
+  <circle cx="146" cy="214" r="26" fill="#1C1F26"/>
+  <circle cx="146" cy="214" r="12" fill="#D8DADE"/>
+  <circle cx="146" cy="214" r="4" fill="#A13A2E"/>
+  <circle cx="322" cy="214" r="26" fill="#1C1F26"/>
+  <circle cx="322" cy="214" r="12" fill="#D8DADE"/>
+  <circle cx="322" cy="214" r="4" fill="#A13A2E"/>
+</svg>
