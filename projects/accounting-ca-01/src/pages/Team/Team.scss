@@ -1,28 +1,67 @@
-@use "../../styles/variables" as v;
-@use "../../styles/mixins" as m;
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
 
 .team-page-hero {
-  padding-block: v.$sp-6;
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+
+  @include m.mq(xs) {
+    padding-block: 3rem 3.5rem;
+  }
 }
 
 .team-page-hero__heading {
-  font-size: v.$fs-h1;
-  max-width: 22ch;
+  max-width: 18ch;
+
   margin-block: v.$sp-3 v.$sp-4;
+
+  font-size: clamp(2rem, 6vw, v.$fs-h1);
+  line-height: 1.03;
+  letter-spacing: -0.025em;
 }
 
 .team-page-hero__desc {
+  max-width: 58ch;
+
   color: v.$color-sage-light;
-  font-size: v.$fs-lead;
-  max-width: 52ch;
+
+  font-size: clamp(0.95rem, 2vw, v.$fs-lead);
+  line-height: 1.7;
+}
+
+.team-page-list {
+  width: 100%;
+  overflow: hidden;
 }
 
 .team-page__grid {
   display: grid;
-  gap: v.$sp-5 v.$sp-4;
-  grid-template-columns: repeat(2, 1fr);
+
+  width: 100%;
+  min-width: 0;
+
+  grid-template-columns: minmax(0, 1fr);
+
+  gap: 3rem;
 
   @include m.mq(md) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.5rem 1.25rem;
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4rem 1.5rem;
+  }
+}
+
+/*
+  Keep one card per row on narrow screens.
+  This prevents card content from colliding at
+  widths such as 540px, 600px and 640px.
+*/
+@media (max-width: 699px) {
+  .team-page__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 }
