@@ -1,0 +1,67 @@
+.cta__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background: var(--gradient-surface);
+  padding: var(--space-9) var(--space-6);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .cta__card {
+    padding: var(--space-11) var(--space-9);
+  }
+}
+
+.cta__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(65% 100% at 50% 0%, rgba(240, 86, 140, 0.18) 0%, rgba(139, 92, 246, 0.1) 45%, transparent 75%);
+  pointer-events: none;
+}
+
+.cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 580px;
+  margin-inline: auto;
+}
+
+.cta__eyebrow {
+  justify-content: center;
+}
+
+.cta__title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .cta__title {
+    font-size: var(--fs-3xl);
+  }
+}
+
+.cta__desc {
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+  line-height: var(--line-normal);
+  margin-bottom: var(--space-7);
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.cta__note {
+  font-size: var(--fs-2xs);
+  color: var(--text-mute);
+}

@@ -1,0 +1,103 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.footer {
+  background: v.$color-ink;
+  color: rgba(255, 255, 255, 0.72);
+  padding-top: v.$space-2xl;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  gap: v.$space-lg;
+  padding-bottom: v.$space-xl;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  @include m.respond(lg) {
+    grid-template-columns: 1fr 1fr;
+    row-gap: v.$space-xl;
+  }
+
+  @include m.respond(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+
+  @include m.respond(lg) {
+    grid-column: 1 / -1;
+    max-width: 440px;
+  }
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: v.$font-display;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: v.$color-white;
+}
+
+.desc {
+  font-size: v.$fs-small;
+  line-height: v.$lh-normal;
+  color: rgba(255, 255, 255, 0.62);
+  max-width: 40ch;
+}
+
+.col {
+  h4 {
+    color: v.$color-white;
+    font-size: 1rem;
+    margin-bottom: v.$space-sm;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  li,
+  a {
+    font-size: v.$fs-small;
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  a:hover {
+    color: v.$color-primary-light;
+  }
+}
+
+.address {
+  max-width: 22ch;
+  line-height: v.$lh-snug;
+}
+
+.areaList {
+  li {
+    color: rgba(255, 255, 255, 0.68);
+  }
+}
+
+.hourRow {
+  display: flex;
+  justify-content: space-between;
+  gap: v.$space-sm;
+}
+
+.bottom {
+  padding-block: v.$space-md;
+
+  p {
+    font-size: v.$fs-tiny;
+    color: rgba(255, 255, 255, 0.45);
+  }
+}

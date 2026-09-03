@@ -1,0 +1,205 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: v.$z-header;
+  background: rgba(247, 243, 234, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: v.$border-w solid v.$color-line;
+}
+
+.header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$sp-4;
+  height: 72px;
+}
+
+.header__brand {
+  display: flex;
+  align-items: baseline;
+  gap: v.$sp-2;
+  text-decoration: none;
+  color: v.$color-ink;
+  flex-shrink: 0;
+}
+
+.header__brand-mark {
+  font-family: v.$font-display;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+.header__brand-name {
+  display: none;
+  font-size: v.$fs-micro;
+  color: v.$color-sage;
+  letter-spacing: 0.02em;
+
+  @include m.mq(sm) {
+    display: inline;
+  }
+}
+
+.header__nav {
+  display: none;
+
+  @include m.mq(lg) {
+    display: block;
+  }
+
+  ul {
+    display: flex;
+    gap: v.$sp-5;
+  }
+
+  a {
+    text-decoration: none;
+    color: v.$color-ink;
+    font-size: v.$fs-small;
+    font-weight: 500;
+    position: relative;
+    padding-block: 0.3rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 0;
+      height: 1px;
+      background: v.$color-brass;
+      transition: right v.$dur-fast v.$ease-editorial;
+    }
+
+    &:hover::after,
+    &.is-active::after {
+      right: 0;
+    }
+
+    &.is-active {
+      color: v.$color-brass;
+    }
+  }
+}
+
+.header__actions {
+  display: none;
+  align-items: center;
+  gap: v.$sp-4;
+
+  @include m.mq(lg) {
+    display: flex;
+  }
+}
+
+.header__phone {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: v.$color-sage;
+  font-size: v.$fs-small;
+  white-space: nowrap;
+
+  &:hover {
+    color: v.$color-brass;
+  }
+}
+
+.header__toggle {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: v.$color-ink;
+  flex-shrink: 0;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+}
+
+.header__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 29, 24, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity v.$dur-med v.$ease-editorial;
+  z-index: v.$z-overlay;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.header__drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: min(84vw, 360px);
+  background: v.$color-ink;
+  color: v.$color-ivory;
+  z-index: v.$z-drawer;
+  transform: translateX(100%);
+  transition: transform v.$dur-med v.$ease-editorial;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6rem v.$sp-5 v.$sp-5;
+  overflow-y: auto;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: v.$sp-1;
+  }
+
+  a {
+    display: block;
+    padding: v.$sp-3 0;
+    text-decoration: none;
+    color: v.$color-ivory;
+    font-family: v.$font-display;
+    font-size: 1.5rem;
+    border-bottom: v.$border-w solid v.$color-line-dark;
+
+    &.is-active {
+      color: v.$color-brass;
+    }
+  }
+}
+
+.header__drawer-footer {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+  padding-top: v.$sp-5;
+}
+
+.header__phone--drawer {
+  color: v.$color-sage-light;
+}

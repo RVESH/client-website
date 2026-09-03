@@ -1,0 +1,380 @@
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+
+  z-index: 9999;
+  isolation: isolate;
+
+  background: rgba(13, 11, 26, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid transparent;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.header--scrolled {
+  border-bottom-color: var(--border-soft);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================================
+   INNER
+   ========================================================= */
+
+.header__inner {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 68px;
+
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .header__inner {
+    height: 76px;
+  }
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.header__brand {
+  position: relative;
+  z-index: 10002;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--space-2);
+
+  flex-shrink: 0;
+
+  color: var(--text);
+
+  font-size: var(--fs-md);
+  font-weight: var(--fw-extrabold);
+  letter-spacing: -0.01em;
+
+  text-decoration: none;
+}
+
+.header__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: var(--gradient-primary);
+  color: #fff;
+}
+
+/* =========================================================
+   DESKTOP NAV
+   ========================================================= */
+
+.header__nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .header__nav {
+    display: flex;
+    align-items: center;
+
+    gap: var(--space-6);
+  }
+}
+
+.header__link {
+  position: relative;
+
+  padding-block: var(--space-2);
+
+  color: var(--text-dim);
+
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.header__link:hover {
+  color: var(--text);
+}
+
+/* =========================================================
+   DESKTOP ACTIONS
+   ========================================================= */
+
+.header__actions {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .header__actions {
+    display: flex;
+    align-items: center;
+
+    gap: var(--space-3);
+
+    flex-shrink: 0;
+  }
+}
+
+/* =========================================================
+   MOBILE TOGGLE
+   ========================================================= */
+
+.header__toggle {
+  position: relative;
+  z-index: 10003;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.header__toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(124, 145, 210, 0.45);
+}
+
+.header__toggle:active {
+  transform: scale(0.96);
+}
+
+@media (min-width: 1024px) {
+  .header__toggle {
+    display: none;
+  }
+}
+
+/* =========================================================
+   MOBILE MENU
+   IMPORTANT:
+   This is absolute relative to the fixed header.
+   It therefore stays above page content.
+   ========================================================= */
+
+.header__mobile {
+  position: absolute;
+
+  top: 100%;
+  left: 0;
+
+  width: 100%;
+
+  z-index: 10001;
+
+  box-sizing: border-box;
+
+  background: #0d0b1a;
+
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.45),
+    0 8px 24px rgba(0, 0, 0, 0.25);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(-8px);
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms ease;
+}
+
+.header__mobile--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateY(0);
+}
+
+/* =========================================================
+   MOBILE MENU INNER
+   ========================================================= */
+
+.header__mobile-inner {
+  width: min(100%, 720px);
+
+  margin-inline: auto;
+
+  box-sizing: border-box;
+
+  padding: 22px var(--container-pad) 28px;
+}
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+
+.header__mobile-nav {
+  display: flex;
+  flex-direction: column;
+
+  border-top: 1px solid var(--border-soft);
+}
+
+.header__mobile-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 58px;
+
+  padding: 0 4px;
+
+  border-bottom: 1px solid var(--border-soft);
+
+  color: var(--text-dim);
+
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+
+  text-decoration: none;
+
+  transition:
+    color 160ms ease,
+    padding 160ms ease;
+}
+
+.header__mobile-link:hover {
+  color: var(--text);
+  padding-left: 8px;
+}
+
+.header__mobile-arrow {
+  color: var(--text-mute);
+
+  font-size: 18px;
+
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.header__mobile-link:hover .header__mobile-arrow {
+  color: var(--text);
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   MOBILE ACTIONS
+   ========================================================= */
+
+.header__mobile-actions {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-top: 24px;
+}
+
+.header__mobile-actions .btn {
+  width: 100%;
+  min-height: 48px;
+}
+
+/* =========================================================
+   MOBILE / TABLET
+   ========================================================= */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header__mobile-inner {
+    padding-top: 26px;
+    padding-bottom: 34px;
+  }
+
+  .header__mobile-link {
+    min-height: 62px;
+  }
+}
+
+/* =========================================================
+   DESKTOP - NEVER SHOW MOBILE MENU
+   ========================================================= */
+
+@media (min-width: 1024px) {
+  .header__mobile {
+    display: none !important;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 420px) {
+  .header__inner {
+    height: 64px;
+  }
+
+  .header__mobile-inner {
+    padding: 18px 18px 24px;
+  }
+
+  .header__mobile-link {
+    min-height: 54px;
+    font-size: 16px;
+  }
+
+  .header__mobile-actions {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,44 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s1Title">
+  <title id="s1Title">Living room being vacuumed</title>
+  <rect width="800" height="600" fill="#F4F6F1"/>
+  <rect width="800" height="420" fill="#EAEFE7"/>
+
+  <!-- rug -->
+  <rect x="140" y="330" width="520" height="220" rx="16" fill="#DCE3D8"/>
+  <rect x="170" y="360" width="460" height="160" rx="10" fill="none" stroke="#7FC4B4" stroke-width="4" stroke-opacity="0.6"/>
+
+  <!-- sofa -->
+  <rect x="480" y="230" width="230" height="130" rx="24" fill="#204F45"/>
+  <rect x="480" y="210" width="230" height="50" rx="20" fill="#2F7A6B"/>
+  <rect x="500" y="250" width="60" height="55" rx="14" fill="#7FC4B4"/>
+
+  <!-- window -->
+  <rect x="60" y="80" width="150" height="200" rx="8" fill="#FDF6E3"/>
+  <line x1="135" y1="80" x2="135" y2="280" stroke="#1C2521" stroke-opacity="0.15" stroke-width="4"/>
+  <line x1="60" y1="180" x2="210" y2="180" stroke="#1C2521" stroke-opacity="0.15" stroke-width="4"/>
+
+  <!-- figure vacuuming -->
+  <g>
+    <path d="M330 550 L330 430 C330 390 365 365 400 365 C435 365 465 390 465 430 L465 550 Z" fill="#2F7A6B"/>
+    <path d="M355 400 L440 400 L432 520 L363 520 Z" fill="#E3EEE9"/>
+    <circle cx="402" cy="345" r="42" fill="#D9A876"/>
+    <path d="M360 332 a42 42 0 0 1 84 0 q-6 -20 -42 -20 t-42 20 z" fill="#1C2521"/>
+    <!-- arm to vacuum handle -->
+    <path d="M355 420 C 320 440, 300 470, 300 510" stroke="#2F7A6B" stroke-width="26" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- vacuum -->
+  <rect x="280" y="500" width="26" height="90" rx="10" fill="#1C2521"/>
+  <rect x="255" y="580" width="90" height="26" rx="10" fill="#E8623C"/>
+  <circle cx="270" cy="606" r="10" fill="#1C2521"/>
+  <circle cx="330" cy="606" r="10" fill="#1C2521"/>
+
+  <!-- dust motes swept away -->
+  <g fill="#7FC4B4">
+    <circle cx="210" cy="560" r="4"/>
+    <circle cx="190" cy="575" r="3"/>
+    <circle cx="230" cy="580" r="3"/>
+  </g>
+
+  <rect x="0" y="560" width="800" height="40" fill="#DCE3D8"/>
+</svg>

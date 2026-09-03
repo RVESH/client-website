@@ -1,0 +1,59 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-2xs;
+  padding: 0.9rem 1.6rem;
+  border-radius: v.$radius-pill;
+  font-family: v.$font-body;
+  font-weight: 600;
+  font-size: 0.98rem;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: transform v.$dur-fast v.$ease-standard,
+    background-color v.$dur-fast v.$ease-standard,
+    border-color v.$dur-fast v.$ease-standard,
+    color v.$dur-fast v.$ease-standard;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  @include m.respond(sm) {
+    width: 100%;
+  }
+}
+
+.default {
+  background: v.$color-ink;
+  color: v.$color-white;
+
+  &:hover {
+    background: v.$color-primary-dark;
+  }
+}
+
+.accent {
+  background: v.$color-accent;
+  color: v.$color-white;
+
+  &:hover {
+    background: v.$color-accent-dark;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: v.$color-ink;
+  border-color: v.$color-border-strong;
+
+  &:hover {
+    border-color: v.$color-ink;
+    background: v.$color-surface;
+  }
+}

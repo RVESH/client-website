@@ -1,0 +1,155 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+@include m.reduced-motion {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: v.$font-body;
+  font-size: v.$fs-body;
+  line-height: 1.55;
+  color: v.$color-ink;
+  background: v.$color-ivory;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: v.$font-display;
+  font-weight: 500;
+  line-height: 1.12;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.container {
+  @include m.container;
+}
+
+.section {
+  padding-block: v.$sp-7;
+
+  @include m.mq(md) {
+    padding-block: v.$sp-8;
+  }
+}
+
+.section--tight {
+  padding-block: v.$sp-6;
+}
+
+.section--dark {
+  background: v.$color-ink;
+  color: v.$color-ivory;
+
+  h1, h2, h3, h4 {
+    color: v.$color-ivory;
+  }
+}
+
+.eyebrow {
+  @include m.eyebrow;
+  display: block;
+  margin-bottom: v.$sp-2;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: v.$sp-3;
+  margin-bottom: v.$sp-5;
+}
+
+.section-head__title {
+  font-size: v.$fs-h2;
+  max-width: 34ch;
+}
+
+.section-head__desc {
+  max-width: 42ch;
+  color: v.$color-sage;
+  font-size: v.$fs-lead;
+}
+
+.hairline {
+  @include m.hairline;
+  margin-block: v.$sp-5;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: v.$sp-2;
+  top: -60px;
+  background: v.$color-ink;
+  color: v.$color-ivory;
+  padding: v.$sp-2 v.$sp-3;
+  z-index: 999;
+  border-radius: v.$radius-sm;
+  transition: top v.$dur-fast v.$ease-editorial;
+
+  &:focus {
+    top: v.$sp-2;
+  }
+}

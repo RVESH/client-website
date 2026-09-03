@@ -1,0 +1,63 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$sp-2;
+  padding: 0.8rem 1.4rem;
+  font-family: v.$font-body;
+  font-size: v.$fs-small;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: v.$radius-sm;
+  border: v.$border-w solid transparent;
+  cursor: pointer;
+  transition: background-color v.$dur-fast v.$ease-editorial,
+    color v.$dur-fast v.$ease-editorial,
+    border-color v.$dur-fast v.$ease-editorial,
+    transform v.$dur-fast v.$ease-editorial;
+  white-space: nowrap;
+
+  @include m.focus-ring;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.btn--primary {
+  background: v.$color-brass;
+  color: v.$color-ink;
+  border-color: v.$color-brass;
+
+  &:hover {
+    background: v.$color-brass-soft;
+    border-color: v.$color-brass-soft;
+  }
+}
+
+.btn--secondary {
+  background: transparent;
+  color: v.$color-ivory;
+  border-color: v.$color-line-dark;
+
+  &:hover {
+    border-color: v.$color-brass;
+    color: v.$color-brass;
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: v.$color-ink;
+  border-color: v.$color-line;
+
+  &:hover {
+    border-color: v.$color-ink;
+  }
+}

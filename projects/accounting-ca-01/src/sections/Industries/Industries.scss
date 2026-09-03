@@ -1,0 +1,113 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.industries {
+  padding-bottom: v.$sp-6;
+}
+
+.industries__slider {
+  position: relative;
+}
+
+.industries__slider-head {
+  display: flex;
+  justify-content: flex-end;
+  gap: v.$sp-2;
+  margin-bottom: v.$sp-3;
+}
+
+.industries__arrow {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: v.$border-w solid v.$color-line;
+  border-radius: v.$radius-sm;
+  color: v.$color-ink;
+  transition: border-color v.$dur-fast v.$ease-editorial, color v.$dur-fast v.$ease-editorial;
+
+  &:hover {
+    border-color: v.$color-brass;
+    color: v.$color-brass;
+  }
+}
+
+.industries__track {
+  display: flex;
+  gap: v.$sp-3;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-inline: v.$container-pad;
+  padding-bottom: v.$sp-2;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include m.focus-ring;
+}
+
+.industries__card {
+  flex: 0 0 auto;
+  width: clamp(180px, 42vw, 240px);
+  scroll-snap-align: start;
+  background: v.$color-ivory-dim;
+  border: v.$border-w solid v.$color-line;
+  border-radius: v.$radius-sm;
+  padding: v.$sp-4;
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+  min-height: 140px;
+  justify-content: space-between;
+  transition: border-color v.$dur-fast v.$ease-editorial, background-color v.$dur-fast v.$ease-editorial;
+
+  &.is-active {
+    border-color: v.$color-brass;
+    background: v.$color-ink;
+
+    .industries__card-number {
+      color: v.$color-brass;
+    }
+
+    .industries__card-name {
+      color: v.$color-ivory;
+    }
+  }
+}
+
+.industries__card-number {
+  font-family: v.$font-display;
+  font-size: 1.4rem;
+  color: v.$color-sage;
+}
+
+.industries__card-name {
+  font-size: v.$fs-small;
+  font-weight: 600;
+  color: v.$color-ink;
+}
+
+.industries__dots {
+  display: flex;
+  gap: v.$sp-2;
+  margin-top: v.$sp-3;
+}
+
+.industries__dot {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  width: 20px;
+  height: 2px;
+  background: v.$color-line;
+  transition: background-color v.$dur-fast v.$ease-editorial, width v.$dur-fast v.$ease-editorial;
+
+  &.is-active {
+    background: v.$color-brass;
+    width: 32px;
+  }
+}

@@ -1,0 +1,56 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s5Title">
+  <title id="s5Title">Kitchen stovetop and countertop being sanitized</title>
+  <rect width="800" height="600" fill="#F4F6F1"/>
+  <rect width="800" height="360" fill="#EAEFE7"/>
+
+  <!-- backsplash tile -->
+  <g stroke="#FFFFFF" stroke-width="3">
+    <rect x="0" y="0" width="800" height="240" fill="#DCE3D8"/>
+    <line x1="0" y1="60" x2="800" y2="60"/>
+    <line x1="0" y1="120" x2="800" y2="120"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+  </g>
+
+  <!-- range hood -->
+  <path d="M300 0 L500 0 L470 90 L330 90 Z" fill="#204F45"/>
+
+  <!-- counter -->
+  <rect x="0" y="360" width="800" height="40" fill="#1C2521"/>
+  <rect x="0" y="352" width="800" height="10" fill="#2F7A6B"/>
+
+  <!-- stovetop -->
+  <rect x="260" y="240" width="280" height="112" rx="10" fill="#1C2521"/>
+  <circle cx="330" cy="280" r="26" fill="none" stroke="#4B5850" stroke-width="5"/>
+  <circle cx="470" cy="280" r="26" fill="none" stroke="#4B5850" stroke-width="5"/>
+  <circle cx="330" cy="322" r="18" fill="none" stroke="#4B5850" stroke-width="5"/>
+  <circle cx="470" cy="322" r="18" fill="none" stroke="#4B5850" stroke-width="5"/>
+
+  <!-- shine highlight on stove -->
+  <path d="M300 250 C 340 245, 400 245, 460 252" stroke="#7FC4B4" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+  <!-- lower cabinets -->
+  <rect x="0" y="400" width="800" height="200" fill="#F4F6F1"/>
+  <g fill="none" stroke="#DCE3D8" stroke-width="4">
+    <rect x="30" y="430" width="220" height="150" rx="10"/>
+    <rect x="560" y="430" width="220" height="150" rx="10"/>
+  </g>
+
+  <!-- figure wiping counter to the side -->
+  <g>
+    <path d="M120 600 L120 480 C120 440 150 415 180 415 C210 415 240 440 240 480 L240 600 Z" fill="#2F7A6B"/>
+    <circle cx="180" cy="398" r="40" fill="#D9A876"/>
+    <path d="M141 386 a40 40 0 0 1 79 0 q-6 -19 -40 -19 t-39 19 z" fill="#1C2521"/>
+    <path d="M215 430 C 250 415, 280 395, 300 375" stroke="#2F7A6B" stroke-width="22" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- spray bottle -->
+  <rect x="600" y="300" width="30" height="52" rx="6" fill="#E8623C"/>
+  <rect x="608" y="285" width="14" height="18" rx="3" fill="#1C2521"/>
+
+  <!-- sanitizing spray dots -->
+  <g fill="#7FC4B4">
+    <circle cx="350" cy="230" r="3"/>
+    <circle cx="380" cy="222" r="2.5"/>
+    <circle cx="410" cy="232" r="3"/>
+  </g>
+</svg>

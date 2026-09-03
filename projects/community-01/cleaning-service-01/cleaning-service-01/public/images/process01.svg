@@ -1,0 +1,45 @@
+<svg viewBox="0 0 640 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="processTitle">
+  <title id="processTitle">Cleaner reviewing a checklist with a homeowner at the front door</title>
+  <rect width="640" height="800" fill="#F4F6F1"/>
+  <rect width="640" height="560" fill="#EAEFE7"/>
+
+  <!-- doorway -->
+  <rect x="180" y="60" width="280" height="420" rx="10" fill="#FFFFFF"/>
+  <rect x="180" y="60" width="280" height="420" rx="10" fill="none" stroke="#DCE3D8" stroke-width="6"/>
+  <circle cx="410" cy="270" r="6" fill="#DCE3D8"/>
+
+  <!-- porch light -->
+  <line x1="220" y1="20" x2="220" y2="60" stroke="#1C2521" stroke-opacity="0.4" stroke-width="3"/>
+  <circle cx="220" cy="66" r="10" fill="#E8623C" opacity="0.85"/>
+
+  <!-- ground/porch -->
+  <rect x="0" y="560" width="640" height="240" fill="#DCE3D8"/>
+  <rect x="140" y="540" width="360" height="30" fill="#B9C4B4"/>
+
+  <!-- homeowner figure (left) -->
+  <g>
+    <path d="M170 800 L170 640 C170 600 200 575 230 575 C260 575 290 600 290 640 L290 800 Z" fill="#7FC4B4"/>
+    <circle cx="230" cy="558" r="40" fill="#D9A876"/>
+    <path d="M191 546 a40 40 0 0 1 78 0 q-6 -19 -39 -19 t-39 19 z" fill="#1C2521"/>
+    <path d="M260 610 C 285 605, 305 590, 315 570" stroke="#7FC4B4" stroke-width="22" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- cleaner figure (right) with clipboard -->
+  <g>
+    <path d="M360 800 L360 630 C360 585 395 558 432 558 C469 558 502 585 502 630 L502 800 Z" fill="#2F7A6B"/>
+    <path d="M388 595 L478 595 L470 730 L396 730 Z" fill="#E3EEE9"/>
+    <circle cx="431" cy="545" r="44" fill="#D9A876"/>
+    <path d="M388 532 a44 44 0 0 1 87 0 q-6 -21 -44 -21 t-43 21 z" fill="#1C2521"/>
+    <path d="M395 605 C 370 610, 350 615, 335 610" stroke="#2F7A6B" stroke-width="24" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- clipboard between them -->
+  <rect x="300" y="590" width="56" height="72" rx="6" fill="#FFFFFF" stroke="#DCE3D8" stroke-width="3"/>
+  <rect x="318" y="580" width="20" height="14" rx="3" fill="#E8623C"/>
+  <g stroke="#DCE3D8" stroke-width="3">
+    <line x1="312" y1="610" x2="344" y2="610"/>
+    <line x1="312" y1="622" x2="344" y2="622"/>
+    <line x1="312" y1="634" x2="336" y2="634"/>
+  </g>
+  <path d="M314 611 l4 4 l8 -8" stroke="#7FC4B4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

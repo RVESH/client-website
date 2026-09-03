@@ -1,0 +1,8 @@
+<svg viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="eg14" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0568C"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient></defs>
+      <rect width="420" height="180" fill="url(#eg14)"/>
+      <line x1="210" y1="90" x2="280" y2="90" stroke="white" stroke-width="1.5" opacity="0.15"/><line x1="210" y1="90" x2="267" y2="131" stroke="white" stroke-width="1.5" opacity="0.15"/><line x1="210" y1="90" x2="232" y2="157" stroke="white" stroke-width="1.5" opacity="0.15"/><line x1="210" y1="90" x2="188" y2="157" stroke="white" stroke-width="1.5" opacity="0.15"/><line x1="210" y1="90" x2="153" y2="131" stroke="white" stroke-width="1.5" opacity="0.15"/><line x1="210" y1="90" x2="140" y2="90" stroke="white" stroke-width="1.5" opacity="0.15"/><line x1="210" y1="90" x2="153" y2="49" stroke="white" stroke-width="1.5" opacity="0.15"/><line x1="210" y1="90" x2="188" y2="23" stroke="white" stroke-width="1.5" opacity="0.15"/><line x1="210" y1="90" x2="232" y2="23" stroke="white" stroke-width="1.5" opacity="0.15"/><line x1="210" y1="90" x2="267" y2="49" stroke="white" stroke-width="1.5" opacity="0.15"/>
+    </svg>

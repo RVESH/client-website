@@ -1,0 +1,19 @@
+<svg viewBox="0 0 680 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bgHero" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#151129"/>
+      <stop offset="100%" stop-color="#0D0B1A"/>
+    </linearGradient>
+        <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#F0568C"/>
+    </linearGradient>
+      </defs>
+      <rect width="680" height="600" fill="url(#bgHero)"/>
+      <ellipse cx="340" cy="300" rx="90" ry="56" fill="none" stroke="#2E2854" stroke-width="1"/><ellipse cx="340" cy="300" rx="150" ry="93" fill="none" stroke="#2E2854" stroke-width="1"/><ellipse cx="340" cy="300" rx="210" ry="130" fill="none" stroke="#2E2854" stroke-width="1"/>
+      <circle cx="430" cy="300" r="9" fill="#FF9F5A" opacity="0.9"/><circle cx="368" cy="353" r="7" fill="#45E6C7" opacity="0.9"/><circle cx="267" cy="333" r="7" fill="#8B5CF6" opacity="0.9"/><circle cx="267" cy="267" r="7" fill="#FF9F5A" opacity="0.9"/><circle cx="368" cy="247" r="9" fill="#FFD166" opacity="0.9"/><circle cx="478" cy="336" r="7" fill="#8B5CF6" opacity="0.9"/><circle cx="380" cy="390" r="13" fill="#45E6C7" opacity="0.9"/><circle cx="252" cy="375" r="9" fill="#8B5CF6" opacity="0.9"/><circle cx="190" cy="305" r="13" fill="#8B5CF6" opacity="0.9"/><circle cx="241" cy="230" r="7" fill="#8B5CF6" opacity="0.9"/><circle cx="366" cy="208" r="7" fill="#F0568C" opacity="0.9"/><circle cx="472" cy="256" r="13" fill="#FFD166" opacity="0.9"/><circle cx="486" cy="393" r="9" fill="#8B5CF6" opacity="0.9"/><circle cx="355" cy="430" r="9" fill="#8B5CF6" opacity="0.9"/><circle cx="217" cy="406" r="13" fill="#FF9F5A" opacity="0.9"/><circle cx="136" cy="332" r="7" fill="#F0568C" opacity="0.9"/><circle cx="151" cy="243" r="11" fill="#FFD166" opacity="0.9"/><circle cx="254" cy="181" r="9" fill="#FFD166" opacity="0.9"/><circle cx="397" cy="175" r="9" fill="#8B5CF6" opacity="0.9"/><circle cx="514" cy="227" r="7" fill="#FF9F5A" opacity="0.9"/><circle cx="549" cy="313" r="7" fill="#FFD166" opacity="0.9"/>
+      
+    <circle cx="340" cy="300" r="46" fill="url(#coreGrad)"/>
+    <circle cx="340" cy="300" r="46" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+    
+    </svg>

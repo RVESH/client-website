@@ -1,0 +1,209 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(244, 246, 241, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color v.$dur-med v.$ease-standard,
+    box-shadow v.$dur-med v.$ease-standard;
+}
+
+.scrolled {
+  border-bottom-color: v.$color-border;
+  box-shadow: v.$shadow-sm;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-md;
+  padding-block: 1.05rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.logoMark {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.logoText {
+  font-family: v.$font-display;
+  font-size: 1.28rem;
+  font-weight: 600;
+  color: v.$color-ink;
+  letter-spacing: -0.01em;
+}
+
+.desktopNav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  ul {
+    display: flex;
+    gap: v.$space-lg;
+  }
+
+  @include m.respond(lg) {
+    display: none;
+  }
+}
+
+.navLink,
+.navActive {
+  position: relative;
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: v.$color-ink-soft;
+  padding-block: 0.3rem;
+  transition: color v.$dur-fast v.$ease-standard;
+
+  &:hover {
+    color: v.$color-ink;
+  }
+}
+
+.navActive {
+  color: v.$color-ink;
+  font-weight: 600;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: v.$color-accent;
+    border-radius: v.$radius-pill;
+  }
+}
+
+.desktopCta {
+  flex-shrink: 0;
+
+  @include m.respond(lg) {
+    display: none;
+  }
+}
+
+// ============================================
+// MOBILE MENU TOGGLE
+// ============================================
+.menuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: v.$radius-md;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  @include m.respond(lg) {
+    display: inline-flex;
+  }
+}
+
+.iconClosed,
+.iconOpen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 22px;
+
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: v.$color-ink;
+    border-radius: v.$radius-pill;
+    transition: transform v.$dur-fast v.$ease-standard,
+      opacity v.$dur-fast v.$ease-standard;
+  }
+}
+
+.iconOpen {
+  span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  span:nth-child(2) {
+    opacity: 0;
+  }
+  span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+// ============================================
+// MOBILE MENU PANEL
+// ============================================
+.mobileMenu {
+  display: none;
+
+  @include m.respond(lg) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    top: 72px;
+    background: v.$color-bg;
+    padding: v.$space-lg v.$container-pad v.$space-xl;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity v.$dur-med v.$ease-standard,
+      transform v.$dur-med v.$ease-standard;
+    overflow-y: auto;
+  }
+}
+
+.mobileMenuOpen {
+  @include m.respond(lg) {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.mobileMenu nav ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileNavLink,
+.mobileNavActive {
+  display: block;
+  padding-block: 1rem;
+  border-bottom: 1px solid v.$color-border;
+  font-family: v.$font-display;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: v.$color-ink;
+}
+
+.mobileNavActive {
+  color: v.$color-primary;
+  font-weight: 600;
+}
+
+.mobileCtas {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+  margin-top: v.$space-lg;
+}

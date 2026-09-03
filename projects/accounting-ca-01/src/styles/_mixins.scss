@@ -1,0 +1,66 @@
+@use "sass:map";
+@use "variables" as v;
+
+@mixin container {
+  width: 100%;
+  max-width: v.$container-max;
+  margin-inline: auto;
+  padding-inline: v.$container-pad;
+}
+
+@mixin mq($bp) {
+  @if $bp == xs {
+    @media (min-width: v.$bp-xs) { @content; }
+  } @else if $bp == sm {
+    @media (min-width: v.$bp-sm) { @content; }
+  } @else if $bp == md {
+    @media (min-width: v.$bp-md) { @content; }
+  } @else if $bp == lg {
+    @media (min-width: v.$bp-lg) { @content; }
+  } @else if $bp == xl {
+    @media (min-width: v.$bp-xl) { @content; }
+  } @else if $bp == xxl {
+    @media (min-width: v.$bp-xxl) { @content; }
+  }
+}
+
+@mixin eyebrow {
+  font-family: v.$font-body;
+  font-size: v.$fs-micro;
+  letter-spacing: 0.02em;
+  color: v.$color-brass;
+  font-weight: 600;
+}
+
+@mixin hairline($color: v.$color-line) {
+  border: none;
+  border-top: v.$border-w solid $color;
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid v.$color-brass;
+    outline-offset: 3px;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin card-surface {
+  background: v.$color-ivory-dim;
+  border: v.$border-w solid v.$color-line;
+  border-radius: v.$radius-sm;
+}
+
+@mixin btn-reset {
+  appearance: none;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+}

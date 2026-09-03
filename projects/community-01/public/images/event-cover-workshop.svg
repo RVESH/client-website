@@ -1,0 +1,8 @@
+<svg viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="eg12" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#45E6C7"/>
+      <stop offset="100%" stop-color="#1F7A66"/>
+    </linearGradient></defs>
+      <rect width="420" height="180" fill="url(#eg12)"/>
+      <rect x="30" y="20" width="90" height="35" rx="8" fill="white" opacity="0.06"/><rect x="160" y="20" width="90" height="35" rx="8" fill="white" opacity="0.06"/><rect x="290" y="20" width="90" height="35" rx="8" fill="white" opacity="0.06"/><rect x="30" y="75" width="90" height="35" rx="8" fill="white" opacity="0.06"/><rect x="160" y="75" width="90" height="35" rx="8" fill="white" opacity="0.06"/><rect x="290" y="75" width="90" height="35" rx="8" fill="white" opacity="0.06"/><rect x="30" y="130" width="90" height="35" rx="8" fill="white" opacity="0.06"/><rect x="160" y="130" width="90" height="35" rx="8" fill="white" opacity="0.06"/><rect x="290" y="130" width="90" height="35" rx="8" fill="white" opacity="0.06"/>
+    </svg>

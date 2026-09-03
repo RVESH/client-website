@@ -1,0 +1,231 @@
+Community 01 — V1 Client & Deployment Guide
+
+Project
+
+community-01 is a single-page premium community-platform marketing/showcase website for the fictional brand Orbit.
+
+Orbit represents a place where people can discover interest-based communities, conversations, events, and other members.
+
+This V1 is frontend-only. It does not include real authentication, database, community backend, chat engine, payments, or account creation.
+
+Main V1 experience
+
+The page communicates:
+
+Discover communities
+
+Browse interests/categories
+
+See active discussions
+
+Discover events
+
+View member activity
+
+Join Orbit through an interactive join modal
+
+Use the main CTA to explore communities or start the join flow
+
+Join Orbit flow
+
+Join Orbit buttons open the reusable JoinModal component.
+
+The modal lets a visitor choose:
+
+Member / Creator / Organizer
+
+Full name
+
+Email address
+
+Interests
+
+The V1 submission is a frontend demo state only. It does not create or save a real account.
+
+A future production version can connect the same UI to authentication, a database, or a membership API.
+
+Header and navigation
+
+The header is responsive across desktop, tablet, and mobile.
+
+Desktop:
+
+Orbit brand
+
+Primary navigation
+
+CTA buttons
+
+Mobile/tablet:
+
+Hamburger menu
+
+Full navigation panel
+
+CTA buttons
+
+Escape closes the menu
+
+Navigation closes the menu
+
+Background scrolling is disabled while the menu is open
+
+Always test the header at small widths such as 360px and 390px.
+
+Visual design
+
+Orbit uses a dark modern visual system with:
+
+Strong typography
+
+Purple/pink gradient accents
+
+Soft borders
+
+Rounded cards
+
+Subtle glow effects
+
+Responsive spacing
+
+Interactive hover/focus states
+
+The design is intended as a community-platform template, not a local-business website.
+
+Categories and communities
+
+Category cards such as Design & Art, Gaming, Fitness & Health, Music, Photography, and other interests are demo content.
+
+Sample community names such as Golden Hour, Build Loop, Pixel Collective, and Nightfall Grid are also demo content.
+
+For a real client, replace these with the client's actual community topics and names.
+
+Client customization
+
+Prefer centralized project data for client changes.
+
+Review:
+
+src/data/site.js
+
+src/data/categories.js
+
+src/data/images.js
+
+public/images/
+
+Update fictional Orbit branding and demo content when adapting the template.
+
+Folder structure
+
+Keep the project organized around reusable:
+
+src/
+├── components/
+├── data/
+├── pages/
+├── sections/
+├── styles/
+└── main.jsx
+
+public/
+└── images/
+
+Do not add unnecessary backend or application complexity to V1.
+
+Local development
+
+Install:
+
+npm install
+
+Run:
+
+npm run dev
+
+Expected:
+
+http://localhost:5173/
+
+Production preview:
+
+npm run build
+npm run preview
+
+Expected:
+
+http://localhost:4173/
+
+Quality checklist
+
+Before freezing, verify:
+
+Responsive header works
+
+Hamburger opens and closes correctly
+
+Escape closes the menu
+
+Navigation closes the menu
+
+No horizontal overflow
+
+Categories stay inside the viewport
+
+Join Orbit opens the modal
+
+Modal closes using X, backdrop, and Escape
+
+Join form interaction works
+
+Hero Join CTA opens the modal
+
+Bottom Join CTA opens the modal
+
+Images load correctly
+
+No console errors during normal navigation
+
+Test 360px, 390px, 430px, 768px, 1024px, 1280px, and large desktop widths
+
+Then run:
+
+npm run lint && npm run build
+
+V1 boundary
+
+The Join Orbit modal is a frontend demonstration, not real membership/authentication.
+
+Future production functionality may include:
+
+Authentication
+
+Account creation
+
+Database
+
+Community membership
+
+Discussions
+
+Events
+
+Notifications
+
+Payments
+
+Admin tools
+
+These are outside this V1.
+
+Freeze and Git
+
+After runtime/mobile QA and a successful lint/build:
+
+git add .
+git commit -m "feat(community-01): finalize V1 community platform"
+git push origin main
+
+V1 status
+
+The frontend is ready to freeze after final browser/runtime verification.

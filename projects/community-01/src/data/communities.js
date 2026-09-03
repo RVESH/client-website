@@ -1,0 +1,66 @@
+// ============================================================
+// communities.js — featured communities shown in the discovery grid.
+// ============================================================
+
+export const communities = [
+  {
+    id: 'pixel-collective',
+    name: 'Pixel Collective',
+    category: 'Design & Art',
+    cover: 'communityCoverDesign',
+    members: '184K',
+    online: '3.2K',
+    description: 'Illustrators, product designers and motion artists sharing critique, process and opportunities.',
+    tags: ['UI/UX', 'Illustration', 'Portfolio review'],
+  },
+  {
+    id: 'nightfall-guild',
+    name: 'Nightfall Guild',
+    category: 'Gaming',
+    cover: 'communityCoverGaming',
+    members: '312K',
+    online: '8.9K',
+    description: 'Co-op raids, indie game showcases and strategy talk for players who take their fun seriously.',
+    tags: ['Co-op', 'Indie games', 'Esports'],
+  },
+  {
+    id: 'ironclad',
+    name: 'Ironclad Training',
+    category: 'Fitness & Health',
+    cover: 'communityCoverFitness',
+    members: '96K',
+    online: '1.7K',
+    description: 'Strength training logs, form checks and accountability for people who show up consistently.',
+    tags: ['Strength', 'Accountability', 'Nutrition'],
+  },
+  {
+    id: 'lower-frequency',
+    name: 'Lower Frequency',
+    category: 'Music & Audio',
+    cover: 'communityCoverMusic',
+    members: '141K',
+    online: '2.4K',
+    description: 'Bedroom producers and DJs trading stems, mix feedback and gear recommendations.',
+    tags: ['Production', 'Mix feedback', 'Gear talk'],
+  },
+  {
+    id: 'build-loop',
+    name: 'Build Loop',
+    category: 'Tech & Startups',
+    cover: 'communityCoverTech',
+    members: '227K',
+    online: '5.1K',
+    description: 'Founders and indie hackers shipping in public — launches, feedback and honest post-mortems.',
+    tags: ['Indie hackers', 'Launches', 'Feedback'],
+  },
+  {
+    id: 'golden-hour',
+    name: 'Golden Hour',
+    category: 'Photography',
+    cover: 'communityCoverPhotography',
+    members: '78K',
+    online: '1.1K',
+    description: 'Street, portrait and landscape photographers sharing shoots, edits and gear breakdowns.',
+    tags: ['Street photo', 'Editing', 'Gear'],
+  },
+]

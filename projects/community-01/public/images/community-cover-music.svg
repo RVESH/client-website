@@ -1,0 +1,8 @@
+<svg viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="cg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0568C"/>
+      <stop offset="100%" stop-color="#B33D6E"/>
+    </linearGradient></defs>
+      <rect width="420" height="180" fill="url(#cg4)"/>
+      <path d="M0,90 C60,60 120,120 180,90 C240,60 300,120 360,90 C390,75 410,80 420,85 L420,180 L0,180 Z" fill="white" opacity="0.06"/>
+    </svg>

@@ -1,0 +1,49 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.trust {
+  border-bottom: v.$border-w solid v.$color-line;
+}
+
+.trust__inner {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+
+  @include m.mq(md) {
+    flex-direction: row;
+    align-items: center;
+    gap: v.$sp-6;
+  }
+}
+
+.trust__heading {
+  font-size: v.$fs-micro;
+  color: v.$color-sage;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.trust__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-2 v.$sp-5;
+
+  li {
+    font-size: v.$fs-small;
+    font-weight: 500;
+    color: v.$color-ink;
+    position: relative;
+    padding-left: v.$sp-3;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 6px;
+      height: 1px;
+      background: v.$color-brass;
+    }
+  }
+}

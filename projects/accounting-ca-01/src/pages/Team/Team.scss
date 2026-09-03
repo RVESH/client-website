@@ -1,0 +1,28 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.team-page-hero {
+  padding-block: v.$sp-6;
+}
+
+.team-page-hero__heading {
+  font-size: v.$fs-h1;
+  max-width: 22ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.team-page-hero__desc {
+  color: v.$color-sage-light;
+  font-size: v.$fs-lead;
+  max-width: 52ch;
+}
+
+.team-page__grid {
+  display: grid;
+  gap: v.$sp-5 v.$sp-4;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

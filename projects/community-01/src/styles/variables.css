@@ -1,0 +1,116 @@
+/* ============================================================
+   Orbit — Design tokens
+   Energetic, premium community palette: deep indigo base with
+   violet → pink → orange accents and a cyan highlight.
+   ============================================================ */
+
+:root {
+  /* ---- Color: base ---- */
+  --bg: #0d0b1a;
+  --bg-alt: #131025;
+  --surface: #17142b;
+  --surface-alt: #1d1836;
+  --surface-raised: #241d47;
+  --border: #2e2854;
+  --border-soft: #221c40;
+
+  /* ---- Color: text ---- */
+  --text: #f5f3ff;
+  --text-dim: #b4add1;
+  --text-mute: #7a7398;
+  --text-inverse: #0d0b1a;
+
+  /* ---- Color: accent ---- */
+  --violet: #8b5cf6;
+  --violet-soft: #b39bfb;
+  --pink: #f0568c;
+  --pink-soft: #f593b3;
+  --orange: #ff9f5a;
+  --cyan: #45e6c7;
+  --yellow: #ffd166;
+  --success: #45e6c7;
+  --danger: #f2596b;
+
+  --gradient-primary: linear-gradient(135deg, var(--violet) 0%, var(--pink) 100%);
+  --gradient-warm: linear-gradient(135deg, var(--pink) 0%, var(--orange) 100%);
+  --gradient-cool: linear-gradient(135deg, var(--violet) 0%, var(--cyan) 100%);
+  --gradient-surface: linear-gradient(180deg, var(--surface-alt) 0%, var(--surface) 100%);
+  --gradient-bg-glow: radial-gradient(60% 55% at 50% 0%, rgba(139, 92, 246, 0.18) 0%, rgba(13, 11, 26, 0) 70%);
+
+  /* ---- Typography ---- */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 2.75rem;
+  --fs-4xl: 3.5rem;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  --line-tight: 1.12;
+  --line-snug: 1.35;
+  --line-normal: 1.6;
+
+  /* ---- Spacing scale ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* ---- Layout ---- */
+  --container-max: 1280px;
+  --container-pad: 20px;
+
+  /* ---- Radius ---- */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+  --radius-pill: 999px;
+
+  /* ---- Shadow ---- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 56px rgba(0, 0, 0, 0.5);
+  --shadow-glow-violet: 0 0 0 1px rgba(139, 92, 246, 0.4), 0 10px 32px rgba(139, 92, 246, 0.22);
+  --shadow-glow-pink: 0 0 0 1px rgba(240, 86, 140, 0.35), 0 10px 32px rgba(240, 86, 140, 0.2);
+
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 380ms;
+
+  /* ---- Breakpoints (reference only — used in media queries directly) ---- */
+  --bp-xs: 360px;
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1440px;
+
+  /* ---- Z-index ---- */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+}

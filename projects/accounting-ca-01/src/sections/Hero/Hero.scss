@@ -1,0 +1,103 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.hero {
+  background: v.$color-ink;
+  color: v.$color-ivory;
+  padding-block: v.$sp-6 v.$sp-7;
+  overflow: hidden;
+
+  @include m.mq(md) {
+    padding-block: v.$sp-7 v.$sp-8;
+  }
+}
+
+.hero__grid {
+  display: grid;
+  gap: v.$sp-6;
+  align-items: center;
+
+  @include m.mq(lg) {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: v.$sp-7;
+  }
+}
+
+.hero__content {
+  animation: hero-rise v.$dur-slow v.$ease-editorial both;
+
+  @include m.reduced-motion {
+    animation: none;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__headline {
+  font-size: v.$fs-h1;
+  max-width: 16ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.hero__sub {
+  color: v.$color-sage-light;
+  font-size: v.$fs-lead;
+  max-width: 46ch;
+  margin-bottom: v.$sp-5;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-3;
+}
+
+.hero__figure {
+  position: relative;
+  animation: hero-rise v.$dur-slow v.$ease-editorial 120ms both;
+
+  @include m.reduced-motion {
+    animation: none;
+  }
+}
+
+.hero__figure img {
+  width: 100%;
+  aspect-ratio: 4 / 3.1;
+  object-fit: cover;
+  border: v.$border-w solid v.$color-line-dark;
+}
+
+.hero__figure-caption {
+  position: absolute;
+  left: v.$sp-4;
+  bottom: v.$sp-4;
+  background: v.$color-ivory;
+  color: v.$color-ink;
+  padding: v.$sp-3 v.$sp-4;
+  max-width: 240px;
+  border-left: 3px solid v.$color-brass;
+}
+
+.hero__figure-value {
+  display: block;
+  font-family: v.$font-display;
+  font-size: 1.8rem;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.hero__figure-label {
+  display: block;
+  font-size: v.$fs-micro;
+  color: v.$color-sage;
+}

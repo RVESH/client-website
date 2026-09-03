@@ -1,0 +1,77 @@
+<svg viewBox="0 0 640 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroTitle">
+  <title id="heroTitle">Cleaner wiping down a sunlit kitchen counter</title>
+  <defs>
+    <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FCEFC7"/>
+      <stop offset="1" stop-color="#F4F6F1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="800" fill="#F4F6F1"/>
+
+  <!-- wall -->
+  <rect width="640" height="520" fill="#EAEFE7"/>
+
+  <!-- window with soft light -->
+  <rect x="360" y="60" width="220" height="300" rx="10" fill="url(#skyFade)"/>
+  <rect x="360" y="60" width="220" height="300" rx="10" fill="none" stroke="#1C2521" stroke-opacity="0.12" stroke-width="4"/>
+  <line x1="470" y1="60" x2="470" y2="360" stroke="#1C2521" stroke-opacity="0.12" stroke-width="4"/>
+  <line x1="360" y1="210" x2="580" y2="210" stroke="#1C2521" stroke-opacity="0.12" stroke-width="4"/>
+  <!-- sun rays -->
+  <g stroke="#E8623C" stroke-opacity="0.35" stroke-width="6" stroke-linecap="round">
+    <line x1="330" y1="130" x2="250" y2="150"/>
+    <line x1="330" y1="180" x2="240" y2="205"/>
+    <line x1="330" y1="230" x2="250" y2="265"/>
+  </g>
+
+  <!-- hanging lamp -->
+  <line x1="150" y1="0" x2="150" y2="110" stroke="#1C2521" stroke-opacity="0.5" stroke-width="3"/>
+  <path d="M130 110 h40 l-8 34 h-24 z" fill="#2F7A6B"/>
+
+  <!-- plant -->
+  <rect x="520" y="330" width="60" height="46" rx="8" fill="#204F45"/>
+  <g fill="#7FC4B4">
+    <ellipse cx="540" cy="300" rx="20" ry="34" transform="rotate(-18 540 300)"/>
+    <ellipse cx="565" cy="295" rx="18" ry="32" transform="rotate(10 565 295)"/>
+    <ellipse cx="552" cy="280" rx="16" ry="30"/>
+  </g>
+
+  <!-- cabinets -->
+  <rect x="0" y="560" width="640" height="240" fill="#F4F6F1"/>
+  <rect x="0" y="520" width="640" height="70" fill="#204F45"/>
+  <g fill="none" stroke="#F4F6F1" stroke-opacity="0.5" stroke-width="3">
+    <rect x="30" y="600" width="150" height="150" rx="10"/>
+    <rect x="200" y="600" width="150" height="150" rx="10"/>
+    <circle cx="160" cy="675" r="4" fill="#F4F6F1" stroke="none"/>
+    <circle cx="220" cy="675" r="4" fill="#F4F6F1" stroke="none"/>
+  </g>
+
+  <!-- counter surface -->
+  <rect x="0" y="500" width="640" height="34" fill="#1C2521"/>
+  <rect x="0" y="494" width="640" height="10" fill="#2F7A6B"/>
+
+  <!-- items on counter -->
+  <rect x="420" y="455" width="34" height="45" rx="6" fill="#FFFFFF"/>
+  <rect x="426" y="440" width="22" height="18" rx="4" fill="#E8623C"/>
+
+  <!-- figure -->
+  <g>
+    <!-- body -->
+    <path d="M250 800 L250 640 C250 590 290 560 330 560 C370 560 405 590 405 640 L405 800 Z" fill="#2F7A6B"/>
+    <!-- apron -->
+    <path d="M285 620 L375 620 L365 760 L295 760 Z" fill="#E3EEE9"/>
+    <!-- arm reaching to counter -->
+    <path d="M330 590 C 300 570, 280 540, 300 510" stroke="#2F7A6B" stroke-width="30" stroke-linecap="round" fill="none"/>
+    <circle cx="303" cy="503" r="16" fill="#D9A876"/>
+    <!-- head -->
+    <circle cx="330" cy="520" r="48" fill="#D9A876"/>
+    <path d="M282 505 a48 48 0 0 1 96 0 q-6 -22 -48 -22 t-48 22 z" fill="#1C2521"/>
+  </g>
+
+  <!-- cloth + wipe streak -->
+  <rect x="270" y="493" width="30" height="18" rx="4" fill="#FFFFFF"/>
+  <path d="M150 505 C 200 480, 240 500, 285 500" stroke="#E8623C" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.75"/>
+
+  <!-- floor -->
+  <rect x="0" y="760" width="640" height="40" fill="#DCE3D8"/>
+</svg>
