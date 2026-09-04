@@ -1,0 +1,97 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-20;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: v.$space-20;
+
+  @include m.mq(xxs) {
+    grid-template-columns: 1fr;
+    gap: v.$space-20;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-8;
+
+  label {
+    font-size: v.$fs-12;
+    font-weight: v.$fw-medium;
+    letter-spacing: v.$ls-normal;
+    text-transform: uppercase;
+    color: v.$color-text-muted;
+  }
+
+  input,
+  select,
+  textarea {
+    @include m.tap-target;
+    padding: v.$space-12 v.$space-16;
+    background: v.$color-surface;
+    border: 1px solid v.$color-line-strong;
+    border-radius: v.$radius-none;
+    font-size: v.$fs-15;
+    color: v.$color-text;
+    transition: border-color v.$dur-normal v.$ease-standard;
+
+    &::placeholder {
+      color: v.$color-text-muted;
+    }
+
+    &:hover {
+      border-color: v.$color-gold;
+    }
+
+    &:focus-visible {
+      border-color: v.$color-gold-deep;
+    }
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%232B2622' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right v.$space-16 center;
+    padding-right: v.$space-32;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: v.$font-body;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: v.$space-16;
+  flex-wrap: wrap;
+  padding-top: v.$space-8;
+}
+
+.note {
+  font-size: v.$fs-12;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+  max-width: 60ch;
+}
+
+.inlineLink {
+  color: v.$color-gold-deep;
+  font-weight: v.$fw-medium;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover {
+    color: v.$color-ink;
+  }
+}

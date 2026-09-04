@@ -1,0 +1,29 @@
+@use '../../styles/variables' as v;
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-8;
+}
+
+.value {
+  font-family: v.$font-display;
+  font-size: clamp(2rem, 2.4vw + 1rem, 3rem);
+  font-weight: v.$fw-medium;
+  color: v.$color-text;
+  line-height: 1;
+}
+
+.inverse .value {
+  color: v.$color-text-inverse;
+}
+
+.label {
+  font-size: v.$fs-13;
+  letter-spacing: v.$ls-normal;
+  color: v.$color-text-muted;
+}
+
+.inverse .label {
+  color: v.$color-text-inverse-muted;
+}

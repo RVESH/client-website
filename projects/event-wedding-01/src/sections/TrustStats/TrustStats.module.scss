@@ -1,0 +1,18 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  padding-block: v.$space-64;
+  border-bottom: 1px solid v.$color-line;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: v.$space-32;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-40;
+  }
+}

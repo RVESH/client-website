@@ -1,0 +1,97 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: v.$space-64;
+  align-items: center;
+  padding-block: v.$space-64;
+  border-bottom: 1px solid v.$color-line;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr;
+    gap: v.$space-32;
+    padding-block: v.$space-48;
+  }
+}
+
+.reverse {
+  .imageCol {
+    order: 2;
+  }
+  .textCol {
+    order: 1;
+  }
+
+  @include m.mq(sm) {
+    .imageCol {
+      order: 1;
+    }
+    .textCol {
+      order: 2;
+    }
+  }
+}
+
+.imageCol {
+  @include m.image-cover(4 / 3);
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: v.$space-8;
+}
+
+.style {
+  @include m.eyebrow;
+}
+
+.title {
+  margin-top: v.$space-4;
+}
+
+.guestRange {
+  font-family: v.$font-body;
+  font-size: v.$fs-13;
+  color: v.$color-text-muted;
+  letter-spacing: v.$ls-normal;
+  padding-bottom: v.$space-12;
+}
+
+.description {
+  font-size: v.$fs-15;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-soft;
+  max-width: 52ch;
+}
+
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-8;
+  padding: v.$space-8 0 v.$space-8;
+
+  li {
+    position: relative;
+    padding-left: v.$space-20;
+    font-size: v.$fs-13;
+    color: v.$color-text-soft;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 1px;
+      background: v.$color-gold;
+    }
+  }
+}

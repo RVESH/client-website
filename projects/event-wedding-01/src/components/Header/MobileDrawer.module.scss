@@ -1,0 +1,163 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// ---- Backdrop ----------------------------------------------------------
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: v.$z-drawer;
+  background: rgba(20, 17, 15, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity v.$dur-normal v.$ease-standard,
+    visibility 0s linear v.$dur-normal;
+}
+
+.backdropVisible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity v.$dur-normal v.$ease-standard, visibility 0s linear 0s;
+}
+
+// ---- Drawer panel ----------------------------------------------------------
+// Fixed + transform, so it never affects document flow/width — the page
+// itself can never gain horizontal scroll from this element.
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: calc(#{v.$z-drawer} + 1);
+  width: min(380px, 86vw);
+  background: v.$color-bg-inverse;
+  color: v.$color-text-inverse;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform v.$dur-slow v.$ease-out-expo;
+  will-change: transform;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+// ---- Header row ----------------------------------------------------------
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88px;
+  padding: 0 v.$space-24 0 v.$space-32;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(250, 246, 240, 0.12);
+
+  @include m.mq(xs) {
+    height: 72px;
+    padding: 0 v.$space-16 0 v.$space-24;
+  }
+}
+
+.brand {
+  font-family: v.$font-display;
+  font-weight: v.$fw-semibold;
+  font-size: v.$fs-20;
+}
+
+.closeBtn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.closeBtn .bun {
+  position: absolute;
+  width: 20px;
+  height: 1.5px;
+  background: v.$color-ivory;
+}
+
+.closeBtn .bun:nth-child(1) {
+  transform: rotate(45deg);
+}
+.closeBtn .bun:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+// ---- Nav ----------------------------------------------------------
+nav {
+  flex: 1;
+  padding: v.$space-32;
+  overflow-y: auto;
+
+  @include m.mq(xs) {
+    padding: v.$space-24;
+  }
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.item,
+.itemVisible {
+  opacity: 0;
+  transform: translateX(16px);
+  transition: opacity v.$dur-normal v.$ease-out-expo,
+    transform v.$dur-normal v.$ease-out-expo;
+}
+
+.itemVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobileLink,
+.mobileActiveLink {
+  display: block;
+  padding: v.$space-16 0;
+  border-bottom: 1px solid rgba(250, 246, 240, 0.12);
+  font-family: v.$font-display;
+  font-size: v.$fs-28;
+  font-weight: v.$fw-medium;
+  color: v.$color-ivory;
+}
+
+.mobileActiveLink {
+  color: v.$color-gold-pale;
+}
+
+// ---- Footer ----------------------------------------------------------
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$space-16;
+  padding: v.$space-24 v.$space-32 v.$space-32;
+  border-top: 1px solid rgba(250, 246, 240, 0.12);
+  flex-shrink: 0;
+
+  @include m.mq(xs) {
+    padding: v.$space-20 v.$space-24 v.$space-24;
+  }
+}
+
+.cta {
+  width: 100%;
+  text-align: center;
+}
+
+.phone {
+  font-size: v.$fs-14;
+  color: v.$color-text-inverse-muted;
+  letter-spacing: v.$ls-normal;
+}
+
+.phone:hover {
+  color: v.$color-ivory;
+}

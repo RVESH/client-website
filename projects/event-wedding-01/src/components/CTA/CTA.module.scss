@@ -1,0 +1,39 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  background: v.$color-bg-inverse;
+  padding-block: v.$space-96;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-64;
+  }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: v.$space-20;
+  max-width: v.$container-narrow;
+}
+
+.eyebrow {
+  color: v.$color-gold-pale;
+}
+
+.title {
+  color: v.$color-text-inverse;
+}
+
+.description {
+  font-size: v.$fs-16;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-inverse-muted;
+  max-width: 48ch;
+}
+
+.button {
+  margin-top: v.$space-16;
+}

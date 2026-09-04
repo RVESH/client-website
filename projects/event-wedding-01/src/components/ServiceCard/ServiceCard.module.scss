@@ -1,0 +1,85 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-16;
+  padding: v.$space-40 v.$space-32;
+  background: v.$color-surface;
+  border: 1px solid v.$color-line;
+  transition: border-color v.$dur-normal v.$ease-standard,
+    box-shadow v.$dur-normal v.$ease-standard;
+
+  &:hover {
+    border-color: v.$color-gold;
+    box-shadow: v.$shadow-sm;
+  }
+
+  @include m.mq(xs) {
+    padding: v.$space-32 v.$space-24;
+  }
+}
+
+.compact {
+  padding: v.$space-32 v.$space-24;
+}
+
+.title {
+  font-size: v.$fs-24;
+}
+
+.summary {
+  font-size: v.$fs-15;
+  font-weight: v.$fw-medium;
+  color: v.$color-text-soft;
+}
+
+.description {
+  font-size: v.$fs-14;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+}
+
+.deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-8;
+  padding-top: v.$space-8;
+  border-top: 1px solid v.$color-line;
+
+  li {
+    position: relative;
+    padding-left: v.$space-20;
+    font-size: v.$fs-13;
+    color: v.$color-text-soft;
+    line-height: v.$lh-normal;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 1px;
+      background: v.$color-gold;
+    }
+  }
+}
+
+.idealFor {
+  font-size: v.$fs-13;
+  color: v.$color-text-muted;
+  font-style: italic;
+
+  span {
+    font-weight: v.$fw-medium;
+    font-style: normal;
+    color: v.$color-text-soft;
+  }
+}
+
+.cta {
+  align-self: flex-start;
+  margin-top: v.$space-8;
+}

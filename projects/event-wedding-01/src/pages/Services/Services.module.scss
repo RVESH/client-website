@@ -1,0 +1,34 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.page {
+  padding-bottom: 0;
+}
+
+.hero {
+  background: v.$color-bg-inverse;
+  padding-block: v.$space-64;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-48;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-24;
+  padding-block: v.$space-80;
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(xxs) {
+    grid-template-columns: 1fr;
+  }
+
+  @include m.mq(xs) {
+    padding-block: v.$space-56;
+  }
+}

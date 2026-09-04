@@ -1,0 +1,71 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.button {
+  @include m.tap-target;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: v.$space-16 v.$space-32;
+  font-family: v.$font-body;
+  font-size: v.$fs-13;
+  font-weight: v.$fw-medium;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: v.$radius-none;
+  cursor: pointer;
+  transition: background-color v.$dur-normal v.$ease-standard,
+    color v.$dur-normal v.$ease-standard,
+    border-color v.$dur-normal v.$ease-standard;
+  white-space: nowrap;
+
+  span {
+    position: relative;
+  }
+}
+
+.primary {
+  background: v.$color-ink;
+  color: v.$color-ivory;
+  border-color: v.$color-ink;
+
+  &:hover {
+    background: v.$color-gold-deep;
+    border-color: v.$color-gold-deep;
+  }
+}
+
+.accent {
+  background: v.$color-gold-deep;
+  color: v.$color-ivory;
+  border-color: v.$color-gold-deep;
+
+  &:hover {
+    background: v.$color-ink;
+    border-color: v.$color-ink;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: v.$color-ink;
+  border-color: v.$color-ink;
+
+  &:hover {
+    background: v.$color-ink;
+    color: v.$color-ivory;
+  }
+}
+
+.light {
+  background: transparent;
+  color: v.$color-ivory;
+  border-color: rgba(250, 246, 240, 0.5);
+
+  &:hover {
+    background: v.$color-ivory;
+    color: v.$color-ink;
+    border-color: v.$color-ivory;
+  }
+}

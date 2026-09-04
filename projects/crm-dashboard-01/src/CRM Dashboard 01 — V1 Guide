@@ -1,0 +1,635 @@
+1. Purpose
+
+crm-dashboard-01 is a frontend-only CRM dashboard V1 designed as a polished portfolio/demo product interface.
+
+The project focuses on realistic CRM workflows and dashboard presentation without requiring a backend, database, real authentication, payments, or external APIs.
+
+The V1 is considered frozen after the final lint and production build checks pass.
+
+2. Project Scope
+
+Core screens
+
+Dashboard
+
+Leads
+
+Contacts
+
+Deals / Pipeline
+
+Activities / Tasks
+
+Supporting UI
+
+Desktop sidebar
+
+Responsive mobile navigation drawer
+
+Topbar
+
+Notifications panel
+
+User profile menu
+
+My Profile modal
+
+Settings modal
+
+Logout confirmation modal
+
+Sign In modal
+
+Reusable buttons, cards, avatars, tables, tabs, dropdowns, pagination, skeletons, status badges, search inputs, empty states, charts
+
+3. V1 Boundaries
+
+This project is intentionally frontend-only.
+
+Included
+
+Responsive CRM dashboard UI
+
+Centralized demo data
+
+Client-side filtering/search/pagination where implemented
+
+Interactive dropdowns and modal forms
+
+Frontend-only sign-in state
+
+Frontend-only profile editing
+
+Frontend-only settings
+
+Frontend-only logout flow
+
+Responsive mobile navigation
+
+SVG-based charts
+
+Empty/loading/demo states
+
+Not included
+
+Real authentication
+
+Database
+
+API integration
+
+Persistent user accounts
+
+Server-side sessions
+
+Real permissions/roles
+
+Payment systems
+
+External CRM integrations
+
+Production security/authentication infrastructure
+
+4. Routes / Main Areas
+
+The application is organized around the following CRM areas:
+
+Area
+
+Purpose
+
+Dashboard
+
+KPIs, revenue trend, lead sources, open deals, recent activity
+
+Leads
+
+Lead management and status information
+
+Contacts
+
+Contact directory and contact data
+
+Deals
+
+Deal/pipeline management
+
+Activities
+
+Tasks and activity tracking
+
+5. Project Structure
+
+src/
+├── app/
+│   ├── App.module.scss
+│   └── index.jsx
+│
+├── components/
+│   ├── Avatar/
+│   ├── Button/
+│   ├── Card/
+│   ├── Charts/
+│   ├── DataTable/
+│   ├── Drawer/
+│   ├── Dropdown/
+│   ├── EmptyState/
+│   ├── Icon/
+│   ├── KpiCard/
+│   ├── LoginModal/
+│   ├── LogoutModal/
+│   ├── MobileDrawer/
+│   ├── Pagination/
+│   ├── ProfileModal/
+│   ├── SearchInput/
+│   ├── SettingsModal/
+│   ├── Sidebar/
+│   ├── Skeleton/
+│   ├── StatusBadge/
+│   ├── Tabs/
+│   └── Topbar/
+│
+├── data/
+│   ├── activities.js
+│   ├── companies.js
+│   ├── contacts.js
+│   ├── deals.js
+│   ├── leads.js
+│   ├── metrics.js
+│   ├── pipeline.js
+│   └── team.js
+│
+├── hooks/
+│   ├── useClickOutside.js
+│   ├── useDemoLoading.js
+│   ├── useMediaQuery.js
+│   └── usePagination.js
+│
+├── pages/
+│   ├── Activities/
+│   ├── Contacts/
+│   ├── Dashboard/
+│   ├── Deals/
+│   └── Leads/
+│
+├── styles/
+│   ├── global.scss
+│   └── variables.scss
+│
+├── utils/
+│   └── format.js
+│
+├── index.scss
+└── main.jsx
+
+All component/page styles use .scss or .module.scss.
+
+6. Styling Standard
+
+The project was converted from CSS to SCSS.
+
+Examples:
+
+import styles from './Topbar.module.scss'
+
+import './index.scss'
+
+The project should not introduce random .css files after freeze.
+
+Sass @use is preferred for new shared SCSS imports instead of deprecated @import rules.
+
+7. Centralized Demo Data
+
+The primary editable CRM content lives under:
+
+src/data/
+
+Important data sources include:
+
+team.js — team/current user data
+
+leads.js — lead records
+
+contacts.js — contact records
+
+deals.js — deal records
+
+activities.js — activities/tasks
+
+pipeline.js — pipeline stages
+
+companies.js — company data
+
+metrics.js — dashboard metrics
+
+This keeps demo content separate from presentation components.
+
+8. Dashboard
+
+The dashboard includes:
+
+KPI cards
+
+Revenue Won (MTD)
+
+Open Deal Value
+
+New Leads (30d)
+
+Lead → Deal Rate
+
+Charts
+
+Revenue trend bar chart
+
+Leads by source donut chart
+
+Secondary sections
+
+Top open deals
+
+Recent activity
+
+The revenue trend chart uses an SVG-based BarChart with a compact fixed rendering height so it does not stretch vertically with the dashboard card.
+
+9. Responsive Navigation
+
+Desktop uses the sidebar navigation.
+
+Tablet/mobile uses the responsive mobile navigation drawer.
+
+The mobile navigation is intended to:
+
+open from the menu button
+
+close through the close control
+
+close on outside/backdrop interaction where supported
+
+avoid shifting the underlying page layout unnecessarily
+
+remain usable on small screens
+
+10. Topbar
+
+The Topbar provides:
+
+page title
+
+responsive menu trigger
+
+notifications
+
+user identity
+
+profile dropdown
+
+Logged-in state
+
+The user menu exposes:
+
+My Profile
+
+Settings
+
+Log Out
+
+Logged-out state
+
+The avatar/profile menu is hidden and a Sign In control is shown instead.
+
+11. Sign In Flow
+
+The sign-in interface is frontend-only.
+
+The detailed sign-in/profile form collects:
+
+Full name
+
+Job title
+
+Email address
+
+Phone number
+
+Company
+
+Department
+
+Password
+
+Confirm password
+
+Remember me
+
+Terms acceptance
+
+Validation includes:
+
+required fields
+
+minimum password length
+
+password confirmation match
+
+terms acceptance
+
+On successful submission, the entered profile data is passed into the current frontend user state.
+
+No real credentials are stored or authenticated.
+
+12. User Profile Flow
+
+My Profile is a separate modal component.
+
+It displays/edit fields based on the currently logged-in frontend user:
+
+Full name
+
+Job title
+
+Email
+
+Phone
+
+Company
+
+Department
+
+Saving profile changes updates the current frontend user state so the Topbar identity and Profile modal stay synchronized during the active session.
+
+13. Settings Flow
+
+Settings is a separate modal component.
+
+Demo preferences include:
+
+Email notifications
+
+Activity updates
+
+Compact mode
+
+These are frontend-only UI preferences in V1.
+
+14. Logout Flow
+
+Log Out opens a separate confirmation modal.
+
+After confirmation:
+
+loggedIn = false
+
+The avatar/profile menu disappears and the Sign In control becomes visible.
+
+No real authentication session is terminated because V1 has no backend authentication.
+
+15. Modal Component Organization
+
+Modal components are kept separate for maintainability:
+
+src/components/
+├── LoginModal/
+│   ├── LoginModal.jsx
+│   └── LoginModal.module.scss
+│
+├── ProfileModal/
+│   ├── ProfileModal.jsx
+│   └── ProfileModal.module.scss
+│
+├── SettingsModal/
+│   ├── SettingsModal.jsx
+│   └── SettingsModal.module.scss
+│
+└── LogoutModal/
+    ├── LogoutModal.jsx
+    └── LogoutModal.module.scss
+
+This keeps each modal's behavior and styling isolated.
+
+16. Charts
+
+Bar chart
+
+BarChart.jsx renders an SVG chart from:
+
+[{ label, value }]
+
+It supports hover interaction and a formatted tooltip.
+
+The chart uses a controlled pixel height so the chart remains visually proportional inside the dashboard card.
+
+Donut chart
+
+DonutChart.jsx renders SVG stroke-dasharray segments and supports hover interaction between chart segments and legend items.
+
+17. Reusable UI Components
+
+The project includes reusable building blocks for:
+
+Buttons
+
+Avatars
+
+Cards
+
+Data tables
+
+Drawers
+
+Dropdowns
+
+Empty states
+
+KPI cards
+
+Pagination
+
+Search inputs
+
+Skeleton loading
+
+Status badges
+
+Tabs
+
+Topbar
+
+Charts
+
+Avoid adding redundant generic abstractions unless a real repeated use case exists.
+
+18. Icon System
+
+The project currently retains its CRM Icon component because several dashboard components use it.
+
+Before removing or replacing it, first check all references:
+
+grep -RIn "Icon" src --include="*.jsx" --include="*.js"
+
+Do not blindly delete the icon system from this project while existing components still depend on it.
+
+19. Client Editing
+
+For normal portfolio/client-demo customization, prioritize editing:
+
+src/data/
+src/styles/variables.scss
+public/
+
+Use the data files for names, metrics, leads, contacts, deals, teams, and activities rather than hardcoding repeated business content across components.
+
+20. Development
+
+Install dependencies:
+
+npm install
+
+Run development server:
+
+npm run dev
+
+The expected Vite URLs are typically:
+
+http://localhost:5173/
+http://<local-network-ip>:5173/
+
+21. Quality Checks
+
+Before freeze, run:
+
+npm run lint
+npm run build
+
+Expected lint result:
+
+Found 0 warnings and 0 errors.
+
+Expected build result ends with:
+
+✓ built in ...
+
+Informational build timing output such as [PLUGIN_TIMINGS] is not itself an error when the build succeeds.
+
+22. Manual QA Checklist
+
+Desktop
+
+Dashboard loads correctly
+
+All dashboard cards render
+
+Bar chart stays compact
+
+Donut chart and legend render correctly
+
+Sidebar navigation works
+
+Topbar notifications open/close
+
+Profile menu opens/closes
+
+My Profile modal opens
+
+Profile form edits and saves
+
+Settings modal opens
+
+Settings toggles work
+
+Logout confirmation opens
+
+Logout changes to logged-out UI
+
+Sign In becomes visible after logout
+
+Sign In form validates
+
+Successful Sign In restores logged-in UI
+
+Responsive
+
+Tablet layout remains usable
+
+Mobile drawer opens correctly
+
+Mobile drawer does not break page layout
+
+Tables remain usable on narrow screens
+
+Modals fit within the viewport
+
+Forms stack correctly on small screens
+
+No horizontal overflow at small phone widths
+
+23. V1 Freeze Criteria
+
+The project is considered frozen when:
+
+npm run lint passes with 0 warnings and 0 errors.
+
+npm run build completes successfully.
+
+Dashboard visual layout is approved.
+
+Chart sizing is approved.
+
+Sign In works as a frontend demo.
+
+Profile, Settings, and Logout modals work.
+
+Logged-in and logged-out UI states work.
+
+Mobile navigation works.
+
+No unintended .css imports remain.
+
+No known blocker remains in the current V1 scope.
+
+Once frozen, do not redesign the project while moving to the next portfolio project unless a real blocker is discovered.
+
+24. Final Verified State
+
+At freeze time, the project passed:
+
+npm run lint
+→ Found 0 warnings and 0 errors.
+
+npm run build
+→ ✓ built successfully
+
+The final build reported approximately:
+
+CSS: 54.49 kB
+JS: 301.46 kB
+
+These values are informational and may change after future dependency/build-tool updates.
+
+25. Git Freeze
+
+Recommended final commands:
+
+git add .
+git commit -m "feat(crm-dashboard-01): finalize V1 CRM dashboard"
+git push origin main
+
+After pushing the final commit, treat crm-dashboard-01 as frozen and move to the next portfolio project.
+
+26. Maintenance Rule
+
+Future changes should preserve:
+
+existing dashboard visual identity
+
+current responsive behavior
+
+centralized data organization
+
+reusable component structure
+
+SCSS-based styling
+
+frontend-only V1 scope
+
+Do not introduce backend/auth/database infrastructure unless a future project version explicitly requires it.

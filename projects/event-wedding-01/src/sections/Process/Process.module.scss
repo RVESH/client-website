@@ -1,0 +1,51 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  padding-block: v.$space-96;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-64;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: v.$space-24;
+  counter-reset: none;
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: v.$space-40;
+  }
+
+  @include m.mq(xxs) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-12;
+  padding-top: v.$space-24;
+  border-top: 1px solid v.$color-line-strong;
+}
+
+.number {
+  font-family: v.$font-display;
+  font-size: v.$fs-32;
+  font-weight: v.$fw-medium;
+  color: v.$color-gold;
+}
+
+.title {
+  font-size: v.$fs-18;
+}
+
+.description {
+  font-size: v.$fs-13;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+}

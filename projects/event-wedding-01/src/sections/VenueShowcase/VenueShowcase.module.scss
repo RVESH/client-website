@@ -1,0 +1,46 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  padding-block: v.$space-96;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-64;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: v.$space-16;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-12;
+}
+
+.imageWrap {
+  @include m.image-cover(3 / 4);
+
+  img {
+    transition: transform v.$dur-slow v.$ease-out-expo;
+  }
+}
+
+.item:hover .imageWrap img {
+  transform: scale(1.05);
+}
+
+.label {
+  font-size: v.$fs-13;
+  font-weight: v.$fw-medium;
+  letter-spacing: v.$ls-normal;
+  color: v.$color-text-soft;
+  text-align: center;
+}

@@ -1,0 +1,47 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-16;
+  max-width: 620px;
+  margin-bottom: v.$space-48;
+
+  @include m.mq(xs) {
+    margin-bottom: v.$space-32;
+  }
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.eyebrow {
+  margin-bottom: v.$space-4;
+}
+
+.title {
+  color: v.$color-text;
+}
+
+.inverse .title {
+  color: v.$color-text-inverse;
+}
+
+.inverse .eyebrow {
+  color: v.$color-gold-pale;
+}
+
+.description {
+  font-size: v.$fs-16;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-muted;
+  max-width: 54ch;
+}
+
+.inverse .description {
+  color: v.$color-text-inverse-muted;
+}

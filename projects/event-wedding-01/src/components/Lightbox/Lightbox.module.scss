@@ -1,0 +1,112 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: v.$z-lightbox;
+  background: rgba(20, 17, 15, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: v.$space-24;
+  animation: fadeIn v.$dur-normal v.$ease-standard;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$space-16;
+  max-width: min(90vw, 900px);
+  max-height: 88vh;
+  margin: 0;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 76vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: v.$shadow-lg;
+}
+
+.caption {
+  font-family: v.$font-body;
+  font-size: v.$fs-12;
+  letter-spacing: v.$ls-wide;
+  text-transform: uppercase;
+  color: v.$color-text-inverse-muted;
+}
+
+.closeBtn {
+  position: absolute;
+  top: v.$space-24;
+  right: v.$space-24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: v.$color-ivory;
+  font-size: v.$fs-18;
+  border: 1px solid rgba(250, 246, 240, 0.3);
+  border-radius: 50%;
+  transition: background-color v.$dur-normal v.$ease-standard,
+    border-color v.$dur-normal v.$ease-standard;
+
+  &:hover {
+    background: rgba(250, 246, 240, 0.1);
+    border-color: v.$color-ivory;
+  }
+
+  @include m.mq(xxs) {
+    top: v.$space-12;
+    right: v.$space-12;
+  }
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  color: v.$color-ivory;
+  font-size: v.$fs-32;
+  border: 1px solid rgba(250, 246, 240, 0.3);
+  border-radius: 50%;
+  transition: background-color v.$dur-normal v.$ease-standard,
+    border-color v.$dur-normal v.$ease-standard;
+
+  &:hover {
+    background: rgba(250, 246, 240, 0.1);
+    border-color: v.$color-ivory;
+  }
+
+  @include m.mq(xxs) {
+    width: 40px;
+    height: 40px;
+    font-size: v.$fs-24;
+  }
+}
+
+.navPrev {
+  left: v.$space-24;
+
+  @include m.mq(xxs) {
+    left: v.$space-8;
+  }
+}
+
+.navNext {
+  right: v.$space-24;
+
+  @include m.mq(xxs) {
+    right: v.$space-8;
+  }
+}

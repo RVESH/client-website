@@ -1,0 +1,47 @@
+@use '../../styles/variables' as v;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-20;
+  padding: v.$space-40 v.$space-32;
+  background: v.$color-surface;
+  border: 1px solid v.$color-line;
+  height: 100%;
+}
+
+.mark {
+  font-family: v.$font-display;
+  font-size: v.$fs-56;
+  line-height: 0.6;
+  color: v.$color-gold;
+}
+
+.quote {
+  margin: 0;
+  font-family: v.$font-display;
+  font-size: v.$fs-20;
+  font-weight: v.$fw-medium;
+  line-height: v.$lh-snug;
+  color: v.$color-text;
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+  padding-top: v.$space-16;
+  border-top: 1px solid v.$color-line;
+}
+
+.name {
+  font-size: v.$fs-14;
+  font-weight: v.$fw-medium;
+  color: v.$color-text;
+}
+
+.event {
+  font-size: v.$fs-12;
+  letter-spacing: v.$ls-normal;
+  color: v.$color-text-muted;
+}

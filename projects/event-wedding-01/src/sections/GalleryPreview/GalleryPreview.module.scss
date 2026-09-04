@@ -1,0 +1,61 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.section {
+  padding-block: v.$space-96;
+
+  @include m.mq(xs) {
+    padding-block: v.$space-64;
+  }
+}
+
+.headRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: v.$space-24;
+
+  @include m.mq(sm) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.viewAll {
+  margin-bottom: v.$space-48;
+
+  @include m.mq(sm) {
+    margin-bottom: v.$space-32;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: v.$space-12;
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include m.mq(xxs) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.item {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: v.$color-ivory-deep;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform v.$dur-slow v.$ease-out-expo;
+  }
+
+  &:hover img {
+    transform: scale(1.06);
+  }
+}

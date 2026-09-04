@@ -1,0 +1,90 @@
+@use 'variables' as v;
+
+// ---- Responsive helpers ----------------------------------------------------------
+@mixin mq($bp) {
+  @if $bp == xl {
+    @media (max-width: v.$bp-xl) { @content; }
+  } @else if $bp == lg {
+    @media (max-width: v.$bp-lg) { @content; }
+  } @else if $bp == md {
+    @media (max-width: v.$bp-md) { @content; }
+  } @else if $bp == sm {
+    @media (max-width: v.$bp-sm) { @content; }
+  } @else if $bp == xs {
+    @media (max-width: v.$bp-xs) { @content; }
+  } @else if $bp == xxs {
+    @media (max-width: v.$bp-xxs) { @content; }
+  } @else if $bp == mobile {
+    @media (max-width: v.$bp-mobile) { @content; }
+  } @else if $bp == mobile-sm {
+    @media (max-width: v.$bp-mobile-sm) { @content; }
+  } @else if $bp == mobile-xs {
+    @media (max-width: v.$bp-mobile-xs) { @content; }
+  } @else {
+    @warn 'Unknown breakpoint: #{$bp}';
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: v.$container-max;
+  margin-inline: auto;
+  padding-inline: v.$gutter;
+}
+
+// ---- Typography ----------------------------------------------------------
+@mixin eyebrow {
+  font-family: v.$font-body;
+  font-size: v.$fs-13;
+  font-weight: v.$fw-medium;
+  letter-spacing: v.$ls-wider;
+  text-transform: uppercase;
+  color: v.$color-gold-deep;
+}
+
+@mixin display-font {
+  font-family: v.$font-display;
+  font-weight: v.$fw-medium;
+  letter-spacing: v.$ls-tight;
+  line-height: v.$lh-tight;
+}
+
+// ---- Focus ----------------------------------------------------------
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid v.$color-gold-deep;
+    outline-offset: 3px;
+  }
+}
+
+@mixin tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+// ---- Hairline rule ----------------------------------------------------------
+@mixin hairline($color: v.$color-line) {
+  border: 1px solid $color;
+}
+
+// ---- Image cover box ----------------------------------------------------------
+@mixin image-cover($ratio: 4 / 3) {
+  position: relative;
+  width: 100%;
+  aspect-ratio: $ratio;
+  overflow: hidden;
+  background-color: v.$color-ivory-deep;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+// ---- Fade/rise entrance (used sparingly) ----------------------------------------------------------
+@mixin rise-in($delay: 0ms) {
+  animation: riseIn v.$dur-slow v.$ease-out-expo both;
+  animation-delay: $delay;
+}

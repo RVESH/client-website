@@ -1,0 +1,153 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: v.$z-header;
+  background: rgba(250, 246, 240, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid v.$color-line;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-24;
+  height: 88px;
+
+  @include m.mq(xs) {
+    height: 72px;
+  }
+}
+
+// ---- Logo ----------------------------------------------------------
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-8;
+  flex-shrink: 0;
+  color: v.$color-ink;
+}
+
+.logoMark {
+  display: inline-flex;
+  color: v.$color-gold-deep;
+}
+
+.logoText {
+  font-family: v.$font-display;
+  font-weight: v.$fw-semibold;
+  font-size: v.$fs-20;
+  letter-spacing: v.$ls-normal;
+
+  @include m.mq(mobile) {
+    font-size: v.$fs-18;
+  }
+}
+
+// ---- Desktop nav ----------------------------------------------------------
+.navDesktop {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  ul {
+    display: flex;
+    gap: v.$space-40;
+  }
+
+  @include m.mq(md) {
+    display: none;
+  }
+}
+
+.link,
+.activeLink {
+  position: relative;
+  font-size: v.$fs-13;
+  font-weight: v.$fw-medium;
+  letter-spacing: v.$ls-normal;
+  text-transform: uppercase;
+  padding: v.$space-8 0;
+  color: v.$color-text-soft;
+  transition: color v.$dur-normal v.$ease-standard;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: v.$color-gold-deep;
+    transition: width v.$dur-normal v.$ease-out-expo;
+  }
+
+  &:hover {
+    color: v.$color-ink;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.activeLink {
+  color: v.$color-ink;
+
+  &::after {
+    width: 100%;
+  }
+}
+
+// ---- Actions ----------------------------------------------------------
+.actions {
+  display: flex;
+  align-items: center;
+  gap: v.$space-20;
+  flex-shrink: 0;
+}
+
+.ctaDesktop {
+  @include m.mq(md) {
+    display: none;
+  }
+}
+
+// ---- Hamburger ----------------------------------------------------------
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+
+  @include m.mq(md) {
+    display: flex;
+  }
+}
+
+.bun {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: v.$color-ink;
+  transition: transform v.$dur-normal v.$ease-standard, opacity v.$dur-fast v.$ease-standard;
+}
+
+.hamburgerOpen {
+  .bun:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+  .bun:nth-child(2) {
+    opacity: 0;
+  }
+  .bun:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+}
