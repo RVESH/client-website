@@ -14,7 +14,7 @@ import { pipelineStages } from '../../data/pipeline'
 import { getCompanyById } from '../../data/companies'
 import { getUserById } from '../../data/team'
 import { formatCurrency, formatDate } from '../../utils/format'
-import styles from './Deals.module.css'
+import styles from './Deals.module.scss'
 
 export default function Deals() {
   const loading = useDemoLoading()

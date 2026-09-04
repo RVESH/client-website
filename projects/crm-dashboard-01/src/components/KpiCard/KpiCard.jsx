@@ -1,6 +1,6 @@
 import Icon from '../Icon'
 import { formatCurrency, formatNumber, formatPercent } from '../../utils/format'
-import styles from './KpiCard.module.css'
+import styles from './KpiCard.module.scss'
 
 function formatValue(value, format) {
   if (format === 'currency') return formatCurrency(value, { compact: value >= 100000 })

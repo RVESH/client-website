@@ -1,4 +1,4 @@
-import styles from './Card.module.css'
+import styles from './Card.module.scss'
 
 export default function Card({ children, className = '', padding = true, as: Tag = 'div', ...rest }) {
   return (

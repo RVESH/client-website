@@ -1,6 +1,6 @@
 import Icon from '../Icon'
 import Button from '../Button'
-import styles from './EmptyState.module.css'
+import styles from './EmptyState.module.scss'
 
 export default function EmptyState({
   icon = 'inbox',

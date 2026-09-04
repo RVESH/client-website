@@ -13,7 +13,7 @@ import { contacts } from '../../data/contacts'
 import { getCompanyById } from '../../data/companies'
 import { getUserById } from '../../data/team'
 import { relativeDay } from '../../utils/format'
-import styles from './Contacts.module.css'
+import styles from './Contacts.module.scss'
 
 export default function Contacts() {
   const loading = useDemoLoading()

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { formatCurrency } from '../../utils/format'
-import styles from './Charts.module.css'
+import styles from './Charts.module.scss'
 
 /**
  * Simple responsive bar chart rendered as SVG.
@@ -13,8 +13,13 @@ export default function BarChart({ data, height = 220 }) {
 
   return (
     <div className={styles.chartWrap}>
-      <svg viewBox={`0 0 100 ${height}`} preserveAspectRatio="none" className={styles.svg}>
-        {[0.25, 0.5, 0.75, 1].map((f) => (
+<svg
+  viewBox={`0 0 100 ${height}`}
+  preserveAspectRatio="none"
+  className={styles.svg}
+  style={{ height: `${height}px` }}
+>
+          {[0.25, 0.5, 0.75, 1].map((f) => (
           <line
             key={f}
             x1="0"

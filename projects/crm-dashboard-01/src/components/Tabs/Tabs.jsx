@@ -1,4 +1,4 @@
-import styles from './Tabs.module.css'
+import styles from './Tabs.module.scss'
 
 export default function Tabs({ options, value, onChange }) {
   return (

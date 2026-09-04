@@ -1,4 +1,4 @@
-import styles from './StatusBadge.module.css'
+import styles from './StatusBadge.module.scss'
 
 // Maps known status strings to a semantic tone. Anything unrecognized
 // falls back to "neutral" so new statuses never render unstyled.

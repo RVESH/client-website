@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Icon from '../Icon'
-import styles from './Drawer.module.css'
+import styles from './Drawer.module.scss'
 
 export default function Drawer({ open, onClose, title, subtitle, children, footer }) {
   useEffect(() => {

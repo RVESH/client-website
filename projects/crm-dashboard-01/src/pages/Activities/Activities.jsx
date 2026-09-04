@@ -12,7 +12,7 @@ import { getUserById } from '../../data/team'
 import { getContactById } from '../../data/contacts'
 import { getDealById } from '../../data/deals'
 import { formatDate, relativeDay } from '../../utils/format'
-import styles from './Activities.module.css'
+import styles from './Activities.module.scss'
 
 const ACTIVITY_ICON = {
   Call: 'phone',

@@ -13,7 +13,7 @@ import { getCompanyById } from '../../data/companies'
 import { getUserById } from '../../data/team'
 import { getContactById } from '../../data/contacts'
 import { formatCurrency, relativeDay, formatDate } from '../../utils/format'
-import styles from './Dashboard.module.css'
+import styles from './Dashboard.module.scss'
 
 const ACTIVITY_ICON = { Call: 'phone', Email: 'mail', Meeting: 'calendar', Task: 'checkCircle', Note: 'note' }
 

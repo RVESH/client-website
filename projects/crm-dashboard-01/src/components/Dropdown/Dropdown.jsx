@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import Icon from '../Icon'
 import useClickOutside from '../../hooks/useClickOutside'
-import styles from './Dropdown.module.css'
+import styles from './Dropdown.module.scss'
 
 /**
  * Simple filter dropdown: a trigger button + option list.

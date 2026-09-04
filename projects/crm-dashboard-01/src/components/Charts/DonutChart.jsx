@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from './Charts.module.css'
+import styles from './Charts.module.scss'
 
 /**
  * Donut chart rendered as stacked SVG stroke-dasharray arcs.

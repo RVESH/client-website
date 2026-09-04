@@ -8,7 +8,7 @@ import Leads from '../pages/Leads'
 import Contacts from '../pages/Contacts'
 import Deals from '../pages/Deals'
 import Activities from '../pages/Activities'
-import styles from './App.module.css'
+import styles from './App.module.scss'
 
 const PAGE_TITLES = {
   '/': 'Dashboard',

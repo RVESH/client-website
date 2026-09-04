@@ -1,5 +1,5 @@
 import Icon from '../Icon'
-import styles from './Pagination.module.css'
+import styles from './Pagination.module.scss'
 
 export default function Pagination({ page, totalPages, onChange, total, pageSize }) {
   if (totalPages <= 1) return null

@@ -15,7 +15,7 @@ import { leads, leadStatuses, leadSources } from '../../data/leads'
 import { getCompanyById } from '../../data/companies'
 import { getUserById } from '../../data/team'
 import { formatCurrency, formatDate } from '../../utils/format'
-import styles from './Leads.module.css'
+import styles from './Leads.module.scss'
 
 export default function Leads() {
   const loading = useDemoLoading()

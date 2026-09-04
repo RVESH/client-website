@@ -1,5 +1,5 @@
 import Icon from '../Icon'
-import styles from './SearchInput.module.css'
+import styles from './SearchInput.module.scss'
 
 export default function SearchInput({ value, onChange, placeholder = 'Search…', className = '' }) {
   return (

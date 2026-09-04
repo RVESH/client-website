@@ -1,4 +1,4 @@
-import styles from './Skeleton.module.css'
+import styles from './Skeleton.module.scss'
 
 export function SkeletonBlock({ width = '100%', height = 16, radius, className = '' }) {
   return (

@@ -1,5 +1,5 @@
 import { getInitials } from '../../utils/format'
-import styles from './Avatar.module.css'
+import styles from './Avatar.module.scss'
 
 const FALLBACK_COLORS = ['#6366f1', '#10b981', '#f59e0b', '#ef4444', '#3b82f6', '#8b5cf6']
 

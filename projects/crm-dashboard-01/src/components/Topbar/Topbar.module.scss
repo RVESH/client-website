@@ -112,7 +112,6 @@
   color: var(--text-muted);
 }
 
-/* ---- Dropdown panels ---- */
 .panel {
   position: absolute;
   top: calc(100% + var(--space-10));
@@ -217,4 +216,26 @@
 
 .menuItemDanger:hover {
   background: var(--color-danger-50);
+}
+
+.signInBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+}
+
+.signInBtn:hover {
+  background: var(--color-gray-50);
+  color: var(--text-primary);
+  border-color: var(--color-gray-300);
 }

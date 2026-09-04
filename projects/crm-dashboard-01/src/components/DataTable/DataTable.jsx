@@ -1,7 +1,7 @@
 import { SkeletonTableRow } from '../Skeleton'
 import EmptyState from '../EmptyState'
 import Icon from '../Icon'
-import styles from './DataTable.module.css'
+import styles from './DataTable.module.scss'
 
 /**
  * Generic responsive data table.
@@ -12,7 +12,7 @@ import styles from './DataTable.module.css'
  *     shown in the stacked mobile card view via data-label)
  *
  * On narrow screens the table collapses into a stacked card layout via CSS
- * (see DataTable.module.css) — each row becomes a card, each cell becomes
+ * (see DataTable.module.scss) — each row becomes a card, each cell becomes
  * a labeled row using the `data-label` attribute.
  */
 export default function DataTable({

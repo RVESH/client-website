@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import Icon from '../Icon'
 import Avatar from '../Avatar'
 import { currentUser } from '../../data/team'
-import styles from './Sidebar.module.css'
+import styles from './Sidebar.module.scss'
 
 const NAV_ITEMS = [
   { to: '/', label: 'Dashboard', icon: 'dashboard', end: true },
