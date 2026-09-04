@@ -1,0 +1,220 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-topbar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--topbar-height);
+  padding: 0 var(--space-24);
+  background: rgba(251, 251, 253, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-width: 0;
+}
+
+.menuBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.menuBtn:hover {
+  background: var(--color-gray-100);
+}
+
+@media (max-width: 1024px) {
+  .menuBtn {
+    display: flex;
+  }
+}
+
+.title {
+  font-size: var(--fs-20);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: var(--fs-18);
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-shrink: 0;
+}
+
+.iconBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  transition: background-color var(--dur-fast) var(--ease-standard);
+}
+
+.iconBtn:hover {
+  background: var(--color-gray-100);
+  color: var(--text-primary);
+}
+
+.dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-danger-500);
+  border: 1.5px solid var(--bg-surface);
+}
+
+.notifWrap,
+.userWrap {
+  position: relative;
+}
+
+.userBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-4);
+  border-radius: var(--radius-full);
+  transition: background-color var(--dur-fast) var(--ease-standard);
+}
+
+.userBtn:hover {
+  background: var(--color-gray-100);
+}
+
+.userChevron {
+  color: var(--text-muted);
+}
+
+/* ---- Dropdown panels ---- */
+.panel {
+  position: absolute;
+  top: calc(100% + var(--space-10));
+  right: 0;
+  z-index: var(--z-dropdown);
+  min-width: 220px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-8);
+  animation: fadeIn var(--dur-fast) var(--ease-out-expo);
+}
+
+.panelHeader {
+  padding: var(--space-8) var(--space-10);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+}
+
+.notifList {
+  display: flex;
+  flex-direction: column;
+  min-width: 260px;
+}
+
+.notifItem {
+  display: flex;
+  gap: var(--space-10);
+  padding: var(--space-10);
+  border-radius: var(--radius-sm);
+}
+
+.notifItem:hover {
+  background: var(--color-gray-50);
+}
+
+.notifItem p {
+  font-size: var(--fs-13);
+  line-height: var(--lh-normal);
+  color: var(--text-primary);
+}
+
+.notifTime {
+  font-size: var(--fs-11);
+  color: var(--text-muted);
+}
+
+.notifDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary-500);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.notifDotMuted {
+  background: var(--color-gray-300);
+}
+
+.userMeta {
+  padding: var(--space-8) var(--space-10) var(--space-10);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.userMetaName {
+  font-size: var(--fs-14);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+}
+
+.userMetaRole {
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  width: 100%;
+  height: 36px;
+  padding: 0 var(--space-10);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-13);
+  color: var(--text-primary);
+  transition: background-color var(--dur-fast) var(--ease-standard);
+}
+
+.menuItem:hover {
+  background: var(--color-gray-50);
+}
+
+.menuItemDanger {
+  color: var(--color-danger-600);
+}
+
+.menuItemDanger:hover {
+  background: var(--color-danger-50);
+}

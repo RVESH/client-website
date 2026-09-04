@@ -1,6 +1,6 @@
 import CategoryChip from '../../components/CategoryChip/CategoryChip.jsx'
 import { categories } from '../../data/categories.js'
-import './Categories.css'
+import './Categories.scss'
 
 export default function Categories() {
   return (

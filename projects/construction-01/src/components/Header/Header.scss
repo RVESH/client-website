@@ -1,0 +1,231 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: v.$z-header;
+  border-bottom: v.$border-w solid v.$color-line-dark;
+}
+
+.header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$sp-4;
+  height: 76px;
+  background: rgba(20, 24, 27, 0.96);
+  backdrop-filter: blur(8px);
+  margin-inline: calc(-1 * v.$container-pad);
+  padding-inline: v.$container-pad;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+  text-decoration: none;
+  color: v.$color-concrete;
+  flex-shrink: 0;
+}
+
+.header__brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: v.$color-amber;
+  color: v.$color-ink;
+  font-family: v.$font-display;
+  font-weight: 800;
+  font-size: 1rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.header__brand-name {
+  display: none;
+  font-family: v.$font-display;
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+
+  em {
+    font-style: normal;
+    color: v.$color-amber;
+  }
+
+  @include m.mq(sm) {
+    display: inline;
+  }
+}
+
+.header__nav {
+  display: none;
+
+  @include m.mq(lg) {
+    display: block;
+  }
+
+  ul {
+    display: flex;
+    gap: v.$sp-5;
+  }
+
+  a {
+    text-decoration: none;
+    color: v.$color-concrete;
+    font-size: v.$fs-small;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    position: relative;
+    padding-block: 0.3rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 0;
+      height: 2px;
+      background: v.$color-amber;
+      transition: right v.$dur-fast v.$ease-industrial;
+    }
+
+    &:hover::after,
+    &.is-active::after {
+      right: 0;
+    }
+
+    &.is-active {
+      color: v.$color-amber;
+    }
+  }
+}
+
+.header__actions {
+  display: none;
+  align-items: center;
+  gap: v.$sp-4;
+
+  @include m.mq(lg) {
+    display: flex;
+  }
+}
+
+.header__phone {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: v.$color-steel-light;
+  font-size: v.$fs-small;
+  white-space: nowrap;
+
+  &:hover {
+    color: v.$color-amber;
+  }
+}
+
+.header__toggle {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: v.$color-concrete;
+  flex-shrink: 0;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+}
+
+// Backdrop — a real <button> for accessible outside-click/tap-to-close.
+.header__overlay {
+  @include m.btn-reset;
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 24, 27, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity v.$dur-med v.$ease-industrial;
+  z-index: v.$z-overlay;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.header__drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  // Explicit height rather than relying on top+bottom auto-fill, which does
+  // not reliably stretch a fixed-position flex container in all engines.
+  height: 100vh;
+  height: 100dvh;
+  width: min(86vw, 380px);
+  background: v.$color-ink;
+  color: v.$color-concrete;
+  z-index: v.$z-drawer;
+  transform: translateX(100%);
+  transition: transform v.$dur-med v.$ease-industrial;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6rem v.$sp-5 v.$sp-5;
+  overflow-y: auto;
+  border-left: v.$border-w solid v.$color-line-dark;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: v.$sp-1;
+  }
+
+  a {
+    display: block;
+    padding: v.$sp-3 0;
+    text-decoration: none;
+    color: v.$color-concrete;
+    font-family: v.$font-display;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    border-bottom: v.$border-w solid v.$color-line-dark;
+
+    &.is-active {
+      color: v.$color-amber;
+    }
+  }
+}
+
+.header__drawer-footer {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+  padding-top: v.$sp-5;
+}
+
+.header__phone--drawer {
+  color: v.$color-steel-light;
+}

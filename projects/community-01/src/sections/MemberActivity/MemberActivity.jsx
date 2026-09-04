@@ -1,7 +1,7 @@
 import { Activity } from 'lucide-react'
 import { images } from '../../data/images.js'
 import { activityFeed } from '../../data/posts.js'
-import './MemberActivity.css'
+import './MemberActivity.scss'
 
 export default function MemberActivity() {
   return (

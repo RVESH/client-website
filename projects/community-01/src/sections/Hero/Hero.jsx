@@ -2,7 +2,7 @@ import { Search } from 'lucide-react'
 import Button from '../../components/Button/Button.jsx'
 import { images } from '../../data/images.js'
 import { platformStats } from '../../data/site.js'
-import './Hero.css'
+import './Hero.scss'
 
 export default function Hero() {
   return (

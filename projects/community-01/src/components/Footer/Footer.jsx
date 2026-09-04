@@ -1,6 +1,6 @@
 import { Orbit } from 'lucide-react'
 import { site, nav, footerLinks, social } from '../../data/site.js'
-import './Footer.css'
+import './Footer.scss'
 
 export default function Footer() {
   const year = new Date().getFullYear()

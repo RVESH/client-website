@@ -1,5 +1,5 @@
 import Button from '../../components/Button/Button.jsx'
-import './CTA.css'
+import './CTA.scss'
 
 export default function CTA() {
   return (

@@ -1,6 +1,6 @@
 import PostCard from '../../components/PostCard/PostCard.jsx'
 import { posts } from '../../data/posts.js'
-import './Discussions.css'
+import './Discussions.scss'
 
 export default function Discussions() {
   return (

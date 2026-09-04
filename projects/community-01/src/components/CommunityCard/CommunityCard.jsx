@@ -1,6 +1,6 @@
 import { Users, Circle } from 'lucide-react'
 import { images } from '../../data/images.js'
-import './CommunityCard.css'
+import './CommunityCard.scss'
 
 export default function CommunityCard({ name, category, cover, members, online, description, tags }) {
   return (

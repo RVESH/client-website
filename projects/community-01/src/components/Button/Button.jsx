@@ -1,18 +1,12 @@
-import Icon from '../Icon/Icon.jsx'
-import './Button.css'
+import './Button.scss'
 
-/**
- * Universal button used across the site.
- * - `href` renders an <a> (in-page anchor / external)
- * - otherwise renders a <button>
- */
 export default function Button({
   children,
   href,
   onClick,
   type = 'button',
-  variant = 'primary', // primary | secondary | ghost
-  size = 'md', // sm | md | lg
+  variant = 'primary',
+  size = 'md',
   icon,
   iconPosition = 'right',
   target,
@@ -22,24 +16,47 @@ export default function Button({
 }) {
   const classes = `btn btn--${variant} btn--${size} ${className}`.trim()
 
+  const renderIcon = () => {
+    if (icon === 'ArrowRight') {
+      return <span className="btn__icon btn__icon--arrow" aria-hidden="true" />
+    }
+
+    if (icon === 'Users') {
+      return <span className="btn__icon btn__icon--users" aria-hidden="true" />
+    }
+
+    return null
+  }
+
   const content = (
     <>
-      {icon && iconPosition === 'left' && <Icon name={icon} size={16} className="btn__icon btn__icon--left" />}
-      <span>{children}</span>
-      {icon && iconPosition === 'right' && <Icon name={icon} size={16} className="btn__icon btn__icon--right" />}
+      {iconPosition === 'left' && renderIcon()}
+      <span className="btn__label">{children}</span>
+      {iconPosition === 'right' && renderIcon()}
     </>
   )
 
   if (href) {
     return (
-      <a href={href} className={classes} target={target} rel={rel} {...rest}>
+      <a
+        href={href}
+        className={classes}
+        target={target}
+        rel={rel}
+        {...rest}
+      >
         {content}
       </a>
     )
   }
 
   return (
-    <button type={type} className={classes} onClick={onClick} {...rest}>
+    <button
+      type={type}
+      className={classes}
+      onClick={onClick}
+      {...rest}
+    >
       {content}
     </button>
   )

@@ -1,0 +1,23 @@
+@use "../../styles/variables" as v;
+
+.stat-card {
+  padding-block: v.$sp-3;
+  border-top: 2px solid v.$color-amber;
+}
+
+.stat-card__value {
+  font-family: v.$font-display;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 2rem + 1.4vw, 3.4rem);
+  color: v.$color-concrete;
+  line-height: 1;
+  margin-bottom: v.$sp-2;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-card__label {
+  font-size: v.$fs-small;
+  color: v.$color-steel-light;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}

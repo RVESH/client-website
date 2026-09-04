@@ -1,0 +1,75 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.projects-hero {
+  padding-block: v.$sp-6;
+}
+
+.projects-hero__heading {
+  font-size: v.$fs-h1;
+  max-width: 20ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.projects-hero__desc {
+  color: v.$color-steel-light;
+  font-size: v.$fs-lead;
+  max-width: 52ch;
+}
+
+.projects-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-2;
+  margin-bottom: v.$sp-5;
+}
+
+.projects-filter__btn {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  padding: 0.6rem 1.1rem;
+  font-size: v.$fs-small;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: v.$color-ink;
+  border: v.$border-w solid v.$color-line;
+  transition: background-color v.$dur-fast v.$ease-industrial,
+    color v.$dur-fast v.$ease-industrial, border-color v.$dur-fast v.$ease-industrial;
+
+  &:hover {
+    border-color: v.$color-amber;
+  }
+
+  &.is-active {
+    background: v.$color-ink;
+    color: v.$color-amber;
+    border-color: v.$color-ink;
+  }
+}
+
+.projects-body__count {
+  font-size: v.$fs-small;
+  color: v.$color-steel;
+  margin-bottom: v.$sp-4;
+}
+
+.projects-body__grid {
+  display: grid;
+  gap: v.$sp-4;
+  grid-template-columns: 1fr;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.projects-body__empty {
+  color: v.$color-steel;
+  padding-block: v.$sp-6;
+  text-align: center;
+}

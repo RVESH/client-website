@@ -1,7 +1,7 @@
 import EventCard from '../../components/EventCard/EventCard.jsx'
 import Button from '../../components/Button/Button.jsx'
 import { events } from '../../data/events.js'
-import './Events.css'
+import './Events.scss'
 
 export default function Events() {
   return (

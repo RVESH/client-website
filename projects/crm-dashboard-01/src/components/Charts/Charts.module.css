@@ -1,0 +1,137 @@
+/* ---- Bar chart ---- */
+.chartWrap {
+  position: relative;
+  width: 100%;
+}
+
+.svg {
+  width: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.gridLine {
+  stroke: var(--color-gray-100);
+  stroke-width: 1;
+}
+
+.bar {
+  fill: var(--color-primary-200);
+  transition: fill var(--dur-normal) var(--ease-standard);
+}
+
+.barHover {
+  fill: var(--color-primary-600);
+}
+
+.xLabels {
+  display: flex;
+  margin-top: var(--space-8);
+}
+
+.xLabel {
+  flex: 1;
+  text-align: center;
+  font-size: var(--fs-11);
+  color: var(--text-muted);
+  font-weight: var(--fw-medium);
+}
+
+.xLabelActive {
+  color: var(--text-primary);
+  font-weight: var(--fw-semibold);
+}
+
+.tooltip {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-6) var(--space-10);
+  background: var(--color-gray-900);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-11);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+}
+
+.tooltipLabel {
+  color: var(--text-inverse-muted);
+}
+
+.tooltipValue {
+  font-weight: var(--fw-bold);
+}
+
+/* ---- Donut chart ---- */
+.donutWrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  flex-wrap: wrap;
+}
+
+.donutSegment {
+  cursor: pointer;
+  transition: stroke-width var(--dur-fast) var(--ease-standard);
+}
+
+.donutCenterValue {
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+.donutCenterLabel {
+  font-size: 9px;
+  fill: var(--text-muted);
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  flex: 1;
+  min-width: 140px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-standard);
+}
+
+.legendItemActive {
+  background: var(--color-gray-50);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  flex: 1;
+  font-size: var(--fs-13);
+  color: var(--text-secondary);
+}
+
+.legendValue {
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+}

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Menu, X, Orbit } from 'lucide-react'
 import Button from '../Button/Button.jsx'
 import { site, nav, ctaLinks } from '../../data/site.js'
-import './Header.css'
+import './Header.scss'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -33,6 +34,8 @@ export default function Header() {
   }, [open])
 
   useEffect(() => {
+    if (!open) return undefined
+
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setOpen(false)
@@ -42,87 +45,33 @@ export default function Header() {
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener(
+        'keydown',
+        handleKeyDown,
+      )
     }
-  }, [])
+  }, [open])
 
   const closeMenu = () => {
     setOpen(false)
   }
 
-  return (
-    <header
-      className={`header ${scrolled ? 'header--scrolled' : ''}`}
-    >
-      <div className="container header__inner">
-        <a
-          href="#top"
-          className="header__brand"
-          aria-label={`${site.name} — home`}
-          onClick={closeMenu}
-        >
-          <span className="header__brand-mark">
-            <Orbit size={17} strokeWidth={2.25} />
-          </span>
+  const toggleMenu = () => {
+    setOpen((current) => !current)
+  }
 
-          <span>{site.name}</span>
-        </a>
+  const mobileMenu = (
+    <>
+      <button
+        type="button"
+        className={`header__backdrop ${
+          open ? 'header__backdrop--open' : ''
+        }`}
+        aria-label="Close menu"
+        onClick={closeMenu}
+      />
 
-        {/* Desktop navigation */}
-        <nav
-          className="header__nav"
-          aria-label="Primary navigation"
-        >
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="header__link"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Desktop actions */}
-        <div className="header__actions">
-          <Button
-            href={ctaLinks.secondary.href}
-            variant="ghost"
-            size="sm"
-          >
-            {ctaLinks.secondary.label}
-          </Button>
-
-          <Button
-            href={ctaLinks.primary.href}
-            variant="primary"
-            size="sm"
-            data-join-orbit
-          >
-            {ctaLinks.primary.label}
-          </Button>
-        </div>
-
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          className="header__toggle"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen((current) => !current)}
-        >
-          {open ? (
-            <X size={23} strokeWidth={1.8} />
-          ) : (
-            <Menu size={23} strokeWidth={1.8} />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      <div
+      <aside
         id="mobile-menu"
         className={`header__mobile ${
           open ? 'header__mobile--open' : ''
@@ -130,6 +79,19 @@ export default function Header() {
         aria-hidden={!open}
       >
         <div className="header__mobile-inner">
+          <div className="header__mobile-brand">
+            <span className="header__mobile-brand-mark">
+              <Orbit
+                size={18}
+                strokeWidth={2.2}
+              />
+            </span>
+
+            <span className="header__mobile-brand-name">
+              {site.name}
+            </span>
+          </div>
+
           <nav
             className="header__mobile-nav"
             aria-label="Mobile navigation"
@@ -173,7 +135,104 @@ export default function Header() {
             </Button>
           </div>
         </div>
-      </div>
-    </header>
+      </aside>
+    </>
+  )
+
+  return (
+    <>
+      <header
+        className={`header ${
+          scrolled ? 'header--scrolled' : ''
+        }`}
+      >
+        <div className="container header__inner">
+          <a
+            href="#top"
+            className="header__brand"
+            aria-label={`${site.name} — home`}
+            onClick={closeMenu}
+          >
+            <span className="header__brand-mark">
+              <Orbit
+                size={18}
+                strokeWidth={2.25}
+              />
+            </span>
+
+            <span className="header__brand-name">
+              {site.name}
+            </span>
+          </a>
+
+          <nav
+            className="header__nav"
+            aria-label="Primary navigation"
+          >
+            {nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="header__link"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="header__actions">
+            <Button
+              href={ctaLinks.secondary.href}
+              variant="ghost"
+              size="sm"
+            >
+              {ctaLinks.secondary.label}
+            </Button>
+
+            <Button
+              href={ctaLinks.primary.href}
+              variant="primary"
+              size="sm"
+              data-join-orbit
+            >
+              {ctaLinks.primary.label}
+            </Button>
+          </div>
+
+          {/* Mobile button stays in the header row, always on the right */}
+          <button
+            type="button"
+            className={`header__toggle ${
+              open ? 'header__toggle--open' : ''
+            }`}
+            aria-label={
+              open ? 'Close menu' : 'Open menu'
+            }
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={toggleMenu}
+          >
+            {open ? (
+              <X
+                size={24}
+                strokeWidth={1.8}
+              />
+            ) : (
+              <Menu
+                size={24}
+                strokeWidth={1.8}
+              />
+            )}
+          </button>
+        </div>
+      </header>
+
+      {typeof document !== 'undefined'
+        ? createPortal(
+            mobileMenu,
+            document.body,
+          )
+        : null}
+    </>
   )
 }

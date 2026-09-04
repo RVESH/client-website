@@ -1,0 +1,604 @@
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  height: 72px;
+
+  z-index: 9000;
+
+  box-sizing: border-box;
+
+  background: #101417;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.header--scrolled {
+  background: #101417;
+
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.24);
+}
+
+/* =========================================================
+   HEADER INNER
+   ========================================================= */
+
+.header__inner {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 72px;
+
+  box-sizing: border-box;
+
+  min-width: 0;
+
+  position: relative;
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.header__brand {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+  max-width: calc(100% - 70px);
+
+  flex: 0 1 auto;
+
+  color: #f4f5f5;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  line-height: 1;
+
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  flex: 0 0 36px;
+
+  background: #e28a25;
+  color: #101417;
+}
+
+.header__brand-name {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   DESKTOP NAV
+   ========================================================= */
+
+.header__nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .header__nav {
+    display: flex;
+    align-items: center;
+
+    gap: 32px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header__link {
+    display: inline-flex;
+    align-items: center;
+
+    padding-block: 8px;
+
+    color: #aeb5b9;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: color 160ms ease;
+  }
+
+  .header__link:hover {
+    color: #ffffff;
+  }
+}
+
+/* =========================================================
+   DESKTOP ACTIONS
+   ========================================================= */
+
+.header__actions {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .header__actions {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-left: auto;
+
+    flex: 0 0 auto;
+  }
+}
+
+/* =========================================================
+   MOBILE TOGGLE
+   FINAL POSITION:
+   FAR RIGHT OF HEADER
+   SAME ROW AS LOGO
+   ========================================================= */
+
+.header__toggle {
+  position: absolute;
+
+  top: 50%;
+  right: 0;
+
+  left: auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+
+  transform: translateY(-50%);
+
+  z-index: 10005;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.header__toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.header__toggle:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.header__toggle--open {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   FULL SCREEN BACKDROP
+   ========================================================= */
+
+.header__backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100dvh;
+
+  z-index: 9997;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background: rgba(0, 0, 0, 0.62);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  cursor: default;
+
+  transition:
+    opacity 300ms ease,
+    visibility 0s linear 300ms;
+}
+
+.header__backdrop--open {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transition:
+    opacity 300ms ease,
+    visibility 0s linear 0s;
+}
+
+/* =========================================================
+   RIGHT SIDE OFF-CANVAS MENU
+   ========================================================= */
+
+.header__mobile {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  left: auto;
+
+  width: min(88vw, 430px);
+  max-width: 430px;
+
+  height: 100dvh;
+  min-height: 100vh;
+
+  z-index: 10001;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  background: #101417;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    -24px 0 64px rgba(0, 0, 0, 0.42);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  /* CLOSED */
+  transform: translate3d(100%, 0, 0);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease,
+    visibility 0s linear 380ms;
+
+  will-change: transform;
+}
+
+/* OPEN */
+.header__mobile--open {
+  transform: translate3d(0, 0, 0);
+
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transition:
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease,
+    visibility 0s linear 0s;
+}
+
+/* =========================================================
+   DRAWER INNER
+   ========================================================= */
+
+.header__mobile-inner {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100%;
+
+  box-sizing: border-box;
+
+  padding: 22px 24px 28px;
+}
+
+/* =========================================================
+   DRAWER BRAND
+   ========================================================= */
+
+.header__mobile-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.header__mobile-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  background: #e28a25;
+  color: #101417;
+}
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+
+.header__mobile-nav {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  margin-top: 16px;
+}
+
+.header__mobile-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 58px;
+
+  box-sizing: border-box;
+
+  padding: 0 4px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: #aeb5b9;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    color 160ms ease,
+    padding-right 160ms ease;
+}
+
+.header__mobile-link:hover {
+  padding-right: 10px;
+
+  color: #ffffff;
+}
+
+.header__mobile-arrow {
+  color: #727b80;
+
+  font-size: 18px;
+
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.header__mobile-link:hover
+  .header__mobile-arrow {
+  color: #ffffff;
+
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   MOBILE ACTIONS
+   ========================================================= */
+
+.header__mobile-actions {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  gap: 10px;
+
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+.header__mobile-actions .btn {
+  width: 100%;
+  min-height: 50px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header,
+  .header__inner {
+    height: 76px;
+  }
+
+  .header__toggle {
+    top: 50%;
+    right: 0;
+  }
+
+  .header__mobile {
+    width: min(78vw, 460px);
+  }
+
+  .header__mobile-inner {
+    padding: 26px 30px 34px;
+  }
+
+  .header__mobile-link {
+    min-height: 62px;
+    font-size: 18px;
+  }
+}
+
+/* =========================================================
+   SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .header,
+  .header__inner {
+    height: 64px;
+  }
+
+  .header__brand {
+    max-width: calc(100% - 54px);
+
+    gap: 8px;
+
+    font-size: 16px;
+  }
+
+  .header__brand-mark {
+    width: 30px;
+    height: 30px;
+
+    flex-basis: 30px;
+  }
+
+  .header__toggle {
+    top: 50%;
+    right: 0;
+
+    width: 40px;
+    height: 40px;
+
+    transform: translateY(-50%);
+  }
+
+  .header__toggle:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .header__mobile {
+    width: min(88vw, 380px);
+  }
+
+  .header__mobile-inner {
+    padding: 18px 18px 24px;
+  }
+
+  .header__mobile-link {
+    min-height: 54px;
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .header__brand {
+    max-width: calc(100% - 52px);
+  }
+
+  .header__toggle {
+    right: 0;
+  }
+
+  .header__mobile {
+    width: 90vw;
+  }
+
+  .header__mobile-inner {
+    padding-inline: 16px;
+  }
+}
+
+/* =========================================================
+   SCROLL LOCK
+   ========================================================= */
+
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 1024px) {
+  .header__toggle,
+  .header__backdrop,
+  .header__mobile {
+    display: none !important;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .header__toggle,
+  .header__backdrop,
+  .header__mobile,
+  .header__mobile-link,
+  .header__mobile-arrow {
+    transition: none;
+  }
+}

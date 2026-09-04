@@ -1,7 +1,7 @@
 import CommunityCard from '../../components/CommunityCard/CommunityCard.jsx'
 import Button from '../../components/Button/Button.jsx'
 import { communities } from '../../data/communities.js'
-import './FeaturedCommunities.css'
+import './FeaturedCommunities.scss'
 
 export default function FeaturedCommunities() {
   return (

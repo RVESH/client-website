@@ -1,0 +1,37 @@
+.shell {
+  min-height: 100vh;
+  background: var(--bg-app);
+}
+
+.main {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left var(--dur-normal) var(--ease-standard);
+}
+
+.mainCollapsed {
+  margin-left: var(--sidebar-width-collapsed);
+}
+
+@media (max-width: 1024px) {
+  .main,
+  .mainCollapsed {
+    margin-left: 0;
+  }
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-24);
+}
+
+@media (max-width: 640px) {
+  .content {
+    padding: var(--space-16);
+  }
+}

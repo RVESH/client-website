@@ -1,6 +1,6 @@
 import { Quote } from 'lucide-react'
 import { images } from '../../data/images.js'
-import './MemberCard.css'
+import './MemberCard.scss'
 
 export default function MemberCard({ name, role, community, avatar, quote }) {
   return (

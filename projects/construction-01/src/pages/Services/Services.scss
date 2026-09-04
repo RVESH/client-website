@@ -1,0 +1,61 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.services-page-hero {
+  padding-block: v.$sp-6;
+}
+
+.services-page-hero__heading {
+  font-size: v.$fs-h1;
+  max-width: 24ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.services-page-hero__desc {
+  color: v.$color-steel-light;
+  font-size: v.$fs-lead;
+  max-width: 54ch;
+}
+
+.services-page__list {
+  display: grid;
+  gap: v.$sp-4;
+  grid-template-columns: 1fr;
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.services-page__enquire {
+  margin-top: v.$sp-6;
+  padding: v.$sp-5;
+  background: v.$color-concrete-dim;
+  border: v.$border-w solid v.$color-line;
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: v.$sp-2;
+  }
+
+  p {
+    color: v.$color-steel;
+    max-width: 48ch;
+  }
+
+  @include m.mq(md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.services-page__enquire-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-3;
+  flex-shrink: 0;
+}

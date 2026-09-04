@@ -1,0 +1,22 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.featured-projects__grid {
+  display: grid;
+  gap: v.$sp-4;
+  grid-template-columns: 1fr;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.featured-projects__more {
+  display: flex;
+  justify-content: center;
+  margin-top: v.$sp-6;
+}

@@ -1,0 +1,24 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.services-section__desc {
+  max-width: 60ch;
+  color: v.$color-steel-light;
+  font-size: v.$fs-lead;
+  margin-top: -#{v.$sp-3};
+  margin-bottom: v.$sp-5;
+}
+
+.services-section__grid {
+  display: grid;
+  gap: v.$sp-4;
+  grid-template-columns: 1fr;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

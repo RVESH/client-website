@@ -1,6 +1,6 @@
 import MemberCard from '../../components/MemberCard/MemberCard.jsx'
 import { memberSpotlights } from '../../data/members.js'
-import './Spotlights.css'
+import './Spotlights.scss'
 
 export default function Spotlights() {
   return (

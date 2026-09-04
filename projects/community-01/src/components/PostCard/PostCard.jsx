@@ -1,6 +1,6 @@
 import { Heart, MessageCircle } from 'lucide-react'
 import { images } from '../../data/images.js'
-import './PostCard.css'
+import './PostCard.scss'
 
 export default function PostCard({ author, avatar, community, title, excerpt, tag, likes, comments, time }) {
   return (

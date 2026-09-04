@@ -1,0 +1,24 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.stats-section {
+  background-color: v.$color-ink;
+  background-size: cover;
+  background-position: center;
+  color: v.$color-concrete;
+  padding-block: v.$sp-7;
+
+  @include m.mq(md) {
+    padding-block: v.$sp-8;
+  }
+}
+
+.stats-section__grid {
+  display: grid;
+  gap: v.$sp-4;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,32 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.strengths__grid {
+  display: grid;
+  gap: v.$sp-5;
+  grid-template-columns: 1fr;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.strengths__item {
+  padding-top: v.$sp-3;
+  border-top: 2px solid v.$color-amber;
+
+  h3 {
+    font-size: 1.05rem;
+    margin-bottom: v.$sp-2;
+  }
+
+  p {
+    font-size: v.$fs-small;
+    color: v.$color-steel;
+    line-height: 1.6;
+  }
+}

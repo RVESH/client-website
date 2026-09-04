@@ -1,0 +1,34 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.cta-section {
+  background: v.$color-ink;
+  color: v.$color-concrete;
+  padding-block: v.$sp-7;
+  border-top: 3px solid v.$color-amber;
+
+  @include m.mq(md) {
+    padding-block: v.$sp-8;
+  }
+}
+
+.cta-section__inner {
+  max-width: 58ch;
+}
+
+.cta-section__heading {
+  font-size: v.$fs-h2;
+  margin-bottom: v.$sp-3;
+}
+
+.cta-section__desc {
+  color: v.$color-steel-light;
+  font-size: v.$fs-lead;
+  margin-bottom: v.$sp-5;
+}
+
+.cta-section__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-3;
+}
