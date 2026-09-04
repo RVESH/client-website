@@ -19,6 +19,7 @@ export default function BarChart({ data, height = 220 }) {
   className={styles.svg}
   style={{ height: `${height}px` }}
 >
+  
           {[0.25, 0.5, 0.75, 1].map((f) => (
           <line
             key={f}
