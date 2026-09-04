@@ -1,34 +1,79 @@
-@use '../../styles/variables' as v;
-@use '../../styles/mixins' as m;
-
 .page {
   padding-bottom: 0;
+  width: 100%;
+  min-width: 0;
 }
 
 .hero {
-  background: v.$color-bg-inverse;
-  padding-block: v.$space-64;
-
-  @include m.mq(xs) {
-    padding-block: v.$space-48;
-  }
+  background: #171313;
+  padding: 64px 0;
 }
 
 .grid {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: v.$space-24;
-  padding-block: v.$space-80;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
 
-  @include m.mq(md) {
-    grid-template-columns: repeat(2, 1fr);
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 56px 0;
   }
 
-  @include m.mq(xxs) {
-    grid-template-columns: 1fr;
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 0;
   }
 
-  @include m.mq(xs) {
-    padding-block: v.$space-56;
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 0;
+  }
+
+  .grid {
+    gap: 14px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero {
+    padding: 32px 0;
+  }
+
+  .grid {
+    gap: 12px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

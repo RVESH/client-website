@@ -1,0 +1,138 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.footer {
+  border-top: 2px solid v.$ink;
+  background: v.$paper-alt;
+  padding-block: v.$space-8 v.$space-6;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-7;
+  padding-bottom: v.$space-7;
+  border-bottom: 1px solid v.$line-soft;
+
+  @include m.from(v.$bp-md) {
+    grid-template-columns: 1.8fr repeat(3, 1fr);
+    gap: v.$space-6;
+  }
+}
+
+.footer__brand-col {
+  max-width: 360px;
+}
+
+.footer__brand {
+  display: inline-block;
+  font-family: v.$font-display;
+  font-size: v.$fs-lg;
+  font-weight: v.$fw-bold;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: v.$ink;
+  margin-bottom: v.$space-4;
+}
+
+.footer__tagline {
+  color: v.$ink-soft;
+  font-size: v.$fs-xs;
+  line-height: v.$line-normal;
+  margin-bottom: v.$space-5;
+}
+
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+
+  li {
+    display: flex;
+  }
+
+  a,
+  span {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: v.$space-2;
+    font-size: v.$fs-xs;
+    color: v.$ink-soft;
+    line-height: v.$line-snug;
+  }
+
+  a {
+    @include m.transition(color);
+
+    &:hover {
+      color: v.$cobalt;
+    }
+  }
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: v.$cobalt;
+  }
+}
+
+.footer__col-title {
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: v.$ink-mute;
+  font-weight: v.$fw-bold;
+  margin-bottom: v.$space-4;
+}
+
+.footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+}
+
+.footer__col a {
+  font-size: v.$fs-xs;
+  color: v.$ink-soft;
+  @include m.transition(color);
+
+  &:hover {
+    color: v.$cobalt;
+  }
+}
+
+.footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+  padding-top: v.$space-6;
+
+  @include m.from(v.$bp-md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.footer__copyright {
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  color: v.$ink-mute;
+}
+
+.footer__social {
+  display: flex;
+  gap: v.$space-5;
+
+  a {
+    font-family: v.$font-mono;
+    font-size: v.$fs-2xs;
+    color: v.$ink-mute;
+    @include m.transition(color);
+
+    &:hover {
+      color: v.$cobalt;
+    }
+  }
+}

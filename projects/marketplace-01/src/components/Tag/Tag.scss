@@ -1,0 +1,47 @@
+@use '../../styles/variables' as v;
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px v.$space-3;
+  border-radius: v.$radius-pill;
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  font-weight: v.$fw-bold;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.tag--lime {
+  background: v.$lime;
+  color: v.$ink;
+}
+
+.tag--ink {
+  background: v.$ink;
+  color: v.$paper;
+}
+
+.tag--coral {
+  background: v.$coral;
+  color: v.$paper;
+}
+
+.tag--cobalt {
+  background: v.$cobalt;
+  color: v.$paper;
+}
+
+.tag--success {
+  background: transparent;
+  color: v.$success;
+  border-color: v.$success;
+}
+
+.tag--mute {
+  background: transparent;
+  color: v.$ink-mute;
+  border-color: v.$line-soft;
+}

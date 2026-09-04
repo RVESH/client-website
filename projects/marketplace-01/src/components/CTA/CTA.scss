@@ -1,0 +1,50 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.cta__panel {
+  position: relative;
+  background: v.$ink;
+  color: v.$paper;
+  border: 2px solid v.$ink;
+  box-shadow: v.$shadow-offset-lime;
+  padding: v.$space-8 v.$space-5;
+  text-align: center;
+
+  @include m.from(v.$bp-md) {
+    padding: v.$space-9 v.$space-8;
+  }
+
+  .section-head__kicker {
+    color: v.$lime;
+    justify-content: center;
+  }
+}
+
+.cta__title {
+  font-family: v.$font-display;
+  font-size: v.$fs-xl;
+  font-weight: v.$fw-bold;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: v.$paper;
+  margin-block: v.$space-3 v.$space-4;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-2xl;
+  }
+}
+
+.cta__desc {
+  font-size: v.$fs-sm;
+  color: rgba(247, 245, 239, 0.75);
+  max-width: 52ch;
+  margin-inline: auto;
+  margin-bottom: v.$space-7;
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: v.$space-3;
+}

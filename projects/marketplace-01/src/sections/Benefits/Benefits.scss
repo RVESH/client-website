@@ -1,0 +1,55 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.benefits__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-6;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.benefits__item {
+  position: relative;
+  padding: v.$space-6 v.$space-5;
+  border: 2px solid v.$ink;
+
+  h3 {
+    font-family: v.$font-display;
+    font-size: v.$fs-sm;
+    font-weight: v.$fw-bold;
+    text-transform: uppercase;
+    color: v.$ink;
+    margin-bottom: v.$space-2;
+  }
+
+  p {
+    font-size: v.$fs-xs;
+    color: v.$ink-soft;
+    line-height: v.$line-normal;
+  }
+}
+
+.benefits__index {
+  position: absolute;
+  top: v.$space-3;
+  right: v.$space-4;
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  color: v.$ink-mute;
+}
+
+.benefits__icon {
+  @include m.flex-center;
+  width: 42px;
+  height: 42px;
+  background: v.$lime;
+  color: v.$ink;
+  margin-bottom: v.$space-4;
+}

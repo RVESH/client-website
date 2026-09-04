@@ -1,0 +1,41 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-6;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include m.from(v.$bp-xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.product-grid__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$space-4;
+  padding: v.$space-9 v.$space-5;
+  text-align: center;
+  border: 2px dashed v.$line-soft;
+  color: v.$ink-mute;
+
+  svg {
+    color: v.$ink-mute;
+  }
+
+  p {
+    font-family: v.$font-mono;
+    font-size: v.$fs-sm;
+    max-width: 40ch;
+  }
+}

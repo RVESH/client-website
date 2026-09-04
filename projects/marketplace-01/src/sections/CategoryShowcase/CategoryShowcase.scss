@@ -1,0 +1,25 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.category-showcase__cta {
+  flex-shrink: 0;
+  display: none;
+
+  @include m.from(v.$bp-sm) {
+    display: inline-flex;
+  }
+}
+
+.category-showcase__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-6;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

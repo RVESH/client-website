@@ -1,0 +1,551 @@
+1. Purpose
+
+Event-Wedding-01 is a polished five-page wedding and event planning website for Amaranth & Oak.
+
+It is a frontend-only V1 showcase and lead-generation website.
+
+The site is designed to communicate:
+
+wedding and event planning services
+
+signature event experiences
+
+venue/style capabilities
+
+visual portfolio work
+
+testimonials
+
+direct contact and enquiry options
+
+This V1 intentionally does not require a backend, database, authentication system, online payments, or an admin panel.
+
+2. Brand Direction
+
+Brand
+
+Amaranth & Oak
+
+Positioning
+
+Luxury wedding and event planning with an editorial, romantic, refined visual direction.
+
+Visual personality
+
+elegant
+
+intimate
+
+premium
+
+editorial
+
+romantic
+
+understated
+
+image-led
+
+The site should remain visually distinct from the other SouthBridge V1 projects.
+
+Do not redesign it into a generic wedding template during maintenance.
+
+3. Routes
+
+The project contains exactly five primary routes:
+
+Route
+
+Purpose
+
+/
+
+Home
+
+/services
+
+Planning services
+
+/weddings
+
+Signature wedding/event experiences
+
+/gallery
+
+Filterable visual gallery
+
+/contact
+
+Contact and enquiry page
+
+All routes should work on desktop, tablet, small phones, and narrow phone widths.
+
+4. Visitor Flow
+
+Home
+  ↓
+Services / Weddings
+  ↓
+Gallery
+  ↓
+Contact
+  ↓
+Call / Email / WhatsApp / Enquire
+
+Internal CTAs should use the application's existing router/navigation rather than hard-coded localhost URLs.
+
+5. Image Architecture
+
+All physical images live in:
+
+public/images/
+
+The centralized image registry is:
+
+src/data/images.js
+
+The project uses the rule:
+
+Physical image
+      ↓
+public/images/
+      ↓
+src/data/images.js
+      ↓
+data / sections / pages
+      ↓
+components
+      ↓
+browser
+
+Single-source image rule
+
+Do not create multiple physical copies of the same photograph merely because the photo is used in different sections.
+
+One physical image can be referenced by hero, event cards, venue presentation, gallery, homepage preview, and other appropriate sections.
+
+6. Current Gallery System
+
+The gallery registry contains 16 images.
+
+The category mapping is generated automatically in src/data/images.js:
+
+gallery01.jpg - gallery04.jpg → Ceremony
+gallery05.jpg - gallery08.jpg → Reception
+gallery09.jpg - gallery12.jpg → Details
+gallery13.jpg - gallery16.jpg → Portraits
+
+src/data/gallery.js exposes:
+
+All
+Ceremony
+Reception
+Details
+Portraits
+
+The Gallery page filters the centralized registry rather than maintaining a second image list.
+
+7. Current Image Set
+
+The active gallery files are:
+
+gallery01.jpg
+gallery02.jpg
+gallery03.jpg
+gallery04.jpg
+gallery05.jpg
+gallery06.jpg
+gallery07.jpg
+gallery08.jpg
+gallery09.jpg
+gallery10.jpg
+gallery11.jpg
+gallery12.jpg
+gallery13.jpg
+gallery14.jpg
+gallery15.jpg
+gallery16.jpg
+
+During final cleanup, obsolete image files that are no longer referenced by source should be removed. Do not delete an image until source references have been checked.
+
+8. Image Replacement Rule
+
+For a normal image replacement:
+
+Prefer keeping the existing filename.
+
+Replace the physical file inside public/images/.
+
+Keep the corresponding registry entry.
+
+Keep meaningful alt text.
+
+Verify the image on all affected pages.
+
+Avoid unstable names such as final.jpg, new-final.jpg, copy.jpg, or test.jpg.
+
+9. Client-Editable Data
+
+Normal client-facing content should live in src/data/.
+
+File
+
+Responsibility
+
+src/data/site.js
+
+Brand, navigation, contact information, hours and site-level content
+
+src/data/services.js
+
+Service offerings and descriptions
+
+src/data/events.js
+
+Signature event/wedding experiences
+
+src/data/gallery.js
+
+Gallery categories and gallery export
+
+src/data/images.js
+
+Central image registry
+
+src/data/testimonials.js
+
+Client testimonials
+
+Prefer editing the data layer instead of duplicating normal content inside JSX.
+
+10. Testimonials
+
+Testimonials are realistic fictional demo content.
+
+The testimonial design intentionally uses initials/avatar treatment rather than client photographs.
+
+Do not introduce testimonial photography unless the project specification is intentionally changed later.
+
+11. Core Pages
+
+Home
+
+Introduces Amaranth & Oak and its planning philosophy, with image-led storytelling and a gallery preview.
+
+Services
+
+Explains planning/support levels using the established editorial and premium visual language.
+
+Weddings
+
+Presents signature wedding/event experiences using centralized event and image data.
+
+Gallery
+
+Provides a 16-image visual portfolio with category filtering and the existing lightbox interaction.
+
+Contact
+
+Provides phone, email, WhatsApp, enquiry form, address, hours, and map/directions where configured.
+
+The contact form is a V1 frontend interaction and must not falsely claim server-side submission.
+
+12. Frontend-Only V1 Scope
+
+This version intentionally does not include:
+
+Database
+Backend API
+Admin panel
+CMS
+User authentication
+Online payment
+Booking engine
+Calendar synchronization
+Server-side enquiry storage
+
+These belong to a future production/V2 implementation if required.
+
+13. Responsive Requirements
+
+The website must remain usable at approximately:
+
+290px
+320px
+360px
+390px
+430px
+768px
+1024px
+1280px
+1440px
+
+Maintain:
+
+no unintended horizontal scrolling
+
+images inside their containers
+
+appropriate grid collapse
+
+usable buttons/touch targets
+
+natural heading wrapping
+
+clean mobile forms
+
+usable navigation/drawer
+
+viewport-safe modal/lightbox content
+
+no clipped text
+
+When using CSS Grid, prefer safe structures such as:
+
+grid-template-columns: repeat(3, minmax(0, 1fr));
+
+and use min-width: 0, max-width: 100%, and box-sizing: border-box where appropriate.
+
+Do not use overflow-x: hidden as the only fix for structural overflow.
+
+14. Accessibility
+
+Maintain meaningful image alt text, keyboard-usable controls, focus states where appropriate, semantic headings, buttons for actions, links for navigation, adequate contrast, usable touch targets, and reduced-motion consideration where appropriate.
+
+15. Styling and Maintenance
+
+The project uses SCSS.
+
+Preserve the existing design system, responsive behavior, reusable components, and visual identity.
+
+Avoid unnecessary dependency additions or broad styling rewrites.
+
+16. Development Commands
+
+From the project root:
+
+npm install
+npm run dev
+npm run lint
+npm run build
+npm run preview
+
+Recommended final verification:
+
+npm run lint && npm run build
+
+17. Image QA
+
+List physical image files:
+
+find public/images -maxdepth 1 -type f -printf '%f\n' | sort
+
+Check source references:
+
+grep -RInE '(/images/|images\.)' src \\
+  --include='*.js' \\
+  --include='*.jsx'
+
+For every referenced physical image, confirm the matching file exists in public/images/.
+
+A successful Vite build does not by itself prove that every runtime image reference is visually correct, so perform a browser check too.
+
+18. Runtime QA Checklist
+
+Navigation
+
+Home works
+
+Services works
+
+Weddings works
+
+Gallery works
+
+Contact works
+
+Desktop navigation works
+
+Mobile navigation/drawer works
+
+Active navigation state is correct
+
+Home / Services / Weddings
+
+Intended real images load
+
+Cards and grids do not overflow
+
+CTAs navigate correctly
+
+Mobile layouts remain usable
+
+Gallery
+
+All 16 images load
+
+All filter works
+
+Ceremony filter works
+
+Reception filter works
+
+Details filter works
+
+Portraits filter works
+
+Lightbox opens and closes correctly
+
+No broken-image icon
+
+No horizontal overflow
+
+Contact
+
+Phone action works
+
+Email action works
+
+WhatsApp action works where configured
+
+Directions/map action works where configured
+
+Form validation works
+
+No fake server-side success state
+
+Narrow phones
+
+Check approximately:
+
+290px
+320px
+360px
+390px
+
+Verify there is no horizontal scrolling, clipping, or unusable control sizing.
+
+19. Build and Lint Freeze Gate
+
+Do not freeze until:
+
+npm run lint
+
+passes with zero warnings/errors and:
+
+npm run build
+
+completes successfully.
+
+Also complete browser/runtime QA.
+
+20. Final V1 Freeze Criteria
+
+✓ Five routes work
+✓ Gallery contains 16 intended images
+✓ Gallery filtering works
+✓ Real images appear across all intended sections
+✓ No stale/broken image references remain
+✓ No unnecessary duplicate image files remain
+✓ Contact actions work
+✓ Mobile navigation works
+✓ Narrow-phone layout works
+✓ No horizontal overflow
+✓ npm run lint passes
+✓ npm run build passes
+✓ Browser/runtime QA is complete
+
+After freeze, avoid redesigning the site while moving to the next portfolio project unless a genuine blocker is discovered.
+
+21. Maintenance Rules
+
+Preserve:
+
+Amaranth & Oak visual identity
+
+existing page architecture
+
+SCSS styling system
+
+centralized data
+
+centralized image registry
+
+reusable components
+
+frontend-only V1 scope
+
+responsive behavior
+
+For normal content changes, prefer src/data/ and public/images/.
+
+Do not introduce backend/database/auth/payment infrastructure unless a future version explicitly requires it.
+
+22. Safe Image Replacement Workflow
+
+1. Identify current registry key
+2. Identify current physical filename
+3. Replace physical image
+4. Keep filename when practical
+5. Verify all pages using that image
+6. Run lint
+7. Run build
+8. Perform browser QA
+
+23. Recommended Git Freeze
+
+Before committing:
+
+git status
+
+Review the changed files, then:
+
+git add .
+git commit -m "feat(event-wedding-01): finalize V1 wedding website"
+git push origin main
+
+Finally:
+
+git status
+git log -1 --oneline
+
+Expected final state:
+
+working tree clean
+
+24. Handoff Summary
+
+Amaranth & Oak — Event-Wedding-01 V1 is a five-page premium wedding/event planning website.
+
+Its core job is to:
+
+present the brand
+
+explain planning services
+
+showcase signature weddings/events
+
+present a curated 16-image gallery
+
+generate enquiries through direct contact actions
+
+The project is intentionally lightweight and frontend-only.
+
+The maintenance model is:
+
+Content
+→ src/data/
+
+Images
+→ public/images/
+→ src/data/images.js
+
+UI
+→ components / sections / pages
+
+Validation
+→ npm run lint
+→ npm run build
+→ browser QA
+
+Once these checks pass, commit the project and move to the next SouthBridge V1 project.

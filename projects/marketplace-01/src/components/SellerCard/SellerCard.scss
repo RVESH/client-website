@@ -1,0 +1,86 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.seller-card {
+  background: v.$surface;
+  border: 2px solid v.$ink;
+  box-shadow: v.$shadow-offset-sm;
+  padding: v.$space-5;
+  height: 100%;
+  @include m.transition(transform, box-shadow);
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: v.$shadow-offset-md;
+  }
+}
+
+.seller-card__head {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  margin-bottom: v.$space-4;
+}
+
+.seller-card__avatar {
+  width: 48px;
+  height: 48px;
+  border: 2px solid v.$ink;
+  flex-shrink: 0;
+}
+
+.seller-card__head-text {
+  min-width: 0;
+}
+
+.seller-card__name {
+  font-family: v.$font-display;
+  font-size: v.$fs-sm;
+  font-weight: v.$fw-bold;
+  color: v.$ink;
+  overflow-wrap: anywhere;
+  margin-bottom: 2px;
+}
+
+.seller-card__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: v.$font-mono;
+  font-size: 0.6875rem;
+  color: v.$ink-mute;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.seller-card__tagline {
+  font-size: v.$fs-xs;
+  color: v.$ink-soft;
+  line-height: v.$line-normal;
+  margin-bottom: v.$space-4;
+}
+
+.seller-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-3;
+  padding-top: v.$space-3;
+  border-top: 1px solid v.$line-soft;
+  font-family: v.$font-mono;
+  font-size: 0.6875rem;
+  color: v.$ink-mute;
+}
+
+.seller-card__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: v.$ink;
+  font-weight: v.$fw-bold;
+
+  svg {
+    color: v.$coral;
+  }
+}

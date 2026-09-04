@@ -12,8 +12,27 @@
   @include m.mq(xs) {
     padding-block: v.$space-48;
   }
+
+  @include m.mq(xxs) {
+    padding-block: v.$space-40;
+  }
 }
 
 .list {
   padding-top: v.$space-24;
+  min-width: 0;
+
+  @include m.mq(sm) {
+    padding-top: v.$space-16;
+  }
+
+  @include m.mq(xs) {
+    padding-top: v.$space-12;
+    padding-inline: 16px;
+  }
+
+  @include m.mq(xxs) {
+    padding-top: v.$space-8;
+    padding-inline: 12px;
+  }
 }

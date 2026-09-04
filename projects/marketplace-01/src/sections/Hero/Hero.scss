@@ -1,0 +1,85 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.hero {
+  padding-block: v.$space-8 v.$space-7;
+  border-bottom: 2px solid v.$ink;
+
+  @include m.from(v.$bp-md) {
+    padding-block: v.$space-9 v.$space-8;
+  }
+}
+
+.hero__inner {
+  display: grid;
+  gap: v.$space-7;
+  align-items: center;
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: 1.05fr 1fr;
+    gap: v.$space-9;
+  }
+}
+
+.hero__kicker {
+  display: inline-block;
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  font-weight: v.$fw-bold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: v.$paper;
+  background: v.$cobalt;
+  padding: v.$space-2 v.$space-3;
+  margin-bottom: v.$space-5;
+}
+
+.hero__title {
+  font-family: v.$font-display;
+  font-size: 2.75rem;
+  line-height: v.$line-tight;
+  font-weight: v.$fw-bold;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: v.$ink;
+  margin-bottom: v.$space-5;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-3xl;
+  }
+
+  @include m.from(v.$bp-lg) {
+    font-size: v.$fs-4xl;
+  }
+}
+
+.hero__title-mark {
+  background: v.$lime;
+  padding-inline: 0.15em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.hero__desc {
+  font-size: v.$fs-sm;
+  line-height: v.$line-normal;
+  color: v.$ink-soft;
+  max-width: 48ch;
+  margin-bottom: v.$space-6;
+}
+
+.hero__search {
+  max-width: 460px;
+  margin-bottom: v.$space-6;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-3;
+}
+
+.hero__visual {
+  border: 2px solid v.$ink;
+  box-shadow: v.$shadow-offset-lg;
+}

@@ -174,3 +174,61 @@ body.scroll-locked {
     opacity: 1;
   }
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-inline: 20px;
+  }
+
+  .infoValue,
+  .mapText,
+  .hoursRow,
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    overflow-wrap: anywhere;
+  }
+
+  .hoursRow {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,92 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-5;
+}
+
+.contact-form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-5;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+  min-width: 0;
+
+  label {
+    font-family: v.$font-mono;
+    font-size: v.$fs-2xs;
+    font-weight: v.$fw-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: v.$ink-soft;
+  }
+
+  input,
+  textarea,
+  select {
+    @include m.transition(border-color, background);
+    background: v.$surface;
+    border: 2px solid v.$ink;
+    padding: 12px v.$space-4;
+    font-family: v.$font-body;
+    font-size: v.$fs-sm;
+    color: v.$ink;
+    resize: vertical;
+    width: 100%;
+
+    &:focus-visible {
+      outline: none;
+      background: v.$paper-alt;
+    }
+
+    &::placeholder {
+      color: v.$ink-mute;
+    }
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23141414'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.293l3.71-4.06a.75.75 0 111.08 1.04l-4.25 4.65a.75.75 0 01-1.08 0l-4.25-4.65a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 40px;
+  }
+}
+
+.contact-form__error {
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  color: v.$danger;
+}
+
+.contact-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-3;
+  padding-top: v.$space-2;
+}
+
+.contact-form__btn-icon {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+.contact-form__note {
+  font-size: v.$fs-2xs;
+  color: v.$ink-mute;
+  line-height: v.$line-normal;
+}

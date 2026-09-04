@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.imageLayer}>
-        <img src={images.hero.src} alt={images.hero.alt} loading="eager" fetchpriority="high" />
+        <img src={images.hero.src} alt={images.hero.alt} loading="eager" fetchPriority="high" />
         <div className={styles.scrim} />
       </div>
 

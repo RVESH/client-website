@@ -1,0 +1,11 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.featured-products__cta {
+  flex-shrink: 0;
+  display: none;
+
+  @include m.from(v.$bp-sm) {
+    display: inline-flex;
+  }
+}

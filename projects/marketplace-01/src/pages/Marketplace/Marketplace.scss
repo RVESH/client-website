@@ -1,0 +1,44 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.marketplace-hero {
+  border-bottom: 2px solid v.$ink;
+  background: v.$paper-alt;
+}
+
+.marketplace-hero__inner {
+  max-width: 680px;
+}
+
+.marketplace-hero__title {
+  font-family: v.$font-display;
+  font-size: v.$fs-2xl;
+  font-weight: v.$fw-bold;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: v.$ink;
+  margin-block: v.$space-3 v.$space-4;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-3xl;
+  }
+}
+
+.marketplace-hero__desc {
+  font-size: v.$fs-sm;
+  color: v.$ink-soft;
+  margin-bottom: v.$space-6;
+}
+
+.marketplace-hero__search {
+  max-width: 480px;
+}
+
+.marketplace-results__count {
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  font-weight: v.$fw-bold;
+  text-transform: uppercase;
+  color: v.$ink-mute;
+  margin-bottom: v.$space-5;
+}

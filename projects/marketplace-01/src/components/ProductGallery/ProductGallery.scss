@@ -1,0 +1,47 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.product-gallery__main {
+  aspect-ratio: 4 / 3.4;
+  overflow: hidden;
+  border: 2px solid v.$ink;
+  box-shadow: v.$shadow-offset-md;
+  margin-bottom: v.$space-4;
+  background: v.$paper-alt;
+}
+
+.product-gallery__main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-gallery__thumbs {
+  display: flex;
+  gap: v.$space-3;
+}
+
+.product-gallery__thumb {
+  @include m.reset-button;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border: 2px solid v.$line-soft;
+  overflow: hidden;
+  @include m.transition(border-color);
+
+  &:hover {
+    border-color: v.$ink-soft;
+  }
+
+  &--active {
+    border-color: v.$ink;
+    box-shadow: v.$shadow-offset-sm;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

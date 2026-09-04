@@ -1,0 +1,66 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-5;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.testimonial {
+  background: v.$surface;
+  border: 2px solid v.$ink;
+  padding: v.$space-6;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial__mark {
+  color: v.$coral;
+  margin-bottom: v.$space-3;
+}
+
+.testimonial blockquote {
+  margin: 0 0 v.$space-5;
+  font-size: v.$fs-sm;
+  line-height: v.$line-normal;
+  color: v.$ink;
+  flex-grow: 1;
+  overflow-wrap: anywhere;
+}
+
+.testimonial figcaption {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+
+  img {
+    width: 38px;
+    height: 38px;
+    border: 2px solid v.$ink;
+    flex-shrink: 0;
+  }
+}
+
+.testimonial__name {
+  font-family: v.$font-display;
+  font-size: v.$fs-xs;
+  font-weight: v.$fw-bold;
+  color: v.$ink;
+}
+
+.testimonial__role {
+  font-family: v.$font-mono;
+  font-size: 0.6875rem;
+  color: v.$ink-mute;
+}

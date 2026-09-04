@@ -1,0 +1,272 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// ============================================================
+// Fixed header — flat, solid, no blur/glass (deliberately unlike
+// the frosted headers used on prior projects)
+// ============================================================
+.header {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: v.$z-header;
+  background: v.$paper;
+  border-bottom: 2px solid v.$ink;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: v.$space-4;
+
+  @include m.from(v.$bp-md) {
+    height: 76px;
+  }
+}
+
+.header__brand {
+  font-family: v.$font-display;
+  font-size: v.$fs-lg;
+  font-weight: v.$fw-bold;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: v.$ink;
+  flex-shrink: 0;
+
+  @include m.from(v.$bp-md) {
+    font-size: 1.75rem;
+  }
+}
+
+// ---- Desktop nav ----
+.header__nav {
+  display: none;
+
+  @include m.from(v.$bp-lg) {
+    display: flex;
+    align-items: center;
+    gap: v.$space-6;
+  }
+}
+
+.header__link {
+  font-family: v.$font-mono;
+  font-size: v.$fs-xs;
+  font-weight: v.$fw-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: v.$ink-soft;
+  padding-block: v.$space-2;
+  position: relative;
+  @include m.transition(color);
+
+  &:hover {
+    color: v.$ink;
+  }
+
+  &--active {
+    color: v.$ink;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 3px;
+      background: v.$lime;
+    }
+  }
+}
+
+// ---- Desktop actions ----
+.header__actions {
+  display: none;
+
+  @include m.from(v.$bp-lg) {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+}
+
+// ============================================================
+// Mobile toggle — two-line mark that morphs into an X
+// ============================================================
+.header__toggle {
+  @include m.reset-button;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 2px solid v.$ink;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: v.$paper;
+
+  @include m.from(v.$bp-lg) {
+    display: none;
+  }
+}
+
+.header__toggle-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: v.$ink;
+  transition: transform v.$dur-base v.$ease-standard, opacity v.$dur-fast v.$ease-standard;
+}
+
+.header__toggle--open {
+  background: v.$ink;
+
+  .header__toggle-bar:nth-child(1) {
+    background: v.$lime;
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .header__toggle-bar:nth-child(2) {
+    background: v.$lime;
+    transform: translateY(-4px) rotate(-45deg);
+  }
+}
+
+// ============================================================
+// Backdrop — full viewport
+// ============================================================
+.drawer-backdrop {
+  @include m.reset-button;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  z-index: v.$z-backdrop;
+  transition: opacity v.$dur-base v.$ease-standard, visibility v.$dur-base v.$ease-standard;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include m.from(v.$bp-lg) {
+    display: none;
+  }
+}
+
+// ============================================================
+// Off-canvas drawer — ink-black panel, slides from the right
+// ============================================================
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(88vw, 380px);
+  max-width: 100vw;
+  background: v.$ink;
+  color: v.$paper;
+  border-left: 2px solid v.$ink;
+  z-index: v.$z-drawer;
+  display: flex;
+  flex-direction: column;
+  padding: v.$space-6 v.$space-5 v.$space-7;
+  transform: translateX(100%);
+  transition: transform v.$dur-slow v.$ease-standard;
+  overflow-y: auto;
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  @include m.from(v.$bp-lg) {
+    display: none;
+  }
+}
+
+.drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: v.$space-8;
+}
+
+.drawer__index {
+  font-family: v.$font-mono;
+  font-size: v.$fs-md;
+  font-weight: v.$fw-bold;
+  color: v.$lime;
+}
+
+.drawer__close {
+  @include m.reset-button;
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border: 2px solid v.$lime;
+  flex-shrink: 0;
+}
+
+.drawer__close-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: v.$lime;
+
+  &:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.drawer__nav {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: v.$space-8;
+}
+
+.drawer__link {
+  display: flex;
+  align-items: baseline;
+  gap: v.$space-3;
+  padding: v.$space-4 v.$space-1;
+  font-family: v.$font-display;
+  font-size: v.$fs-lg;
+  font-weight: v.$fw-bold;
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.6);
+  border-bottom: 1px solid rgba(247, 245, 239, 0.16);
+
+  &--active {
+    color: v.$lime;
+  }
+}
+
+.drawer__link-index {
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  font-weight: v.$fw-regular;
+  color: rgba(247, 245, 239, 0.4);
+}
+
+.drawer__footer {
+  margin-top: auto;
+  padding-top: v.$space-6;
+  border-top: 1px solid rgba(247, 245, 239, 0.16);
+}
+
+.drawer__cta {
+  width: 100%;
+}

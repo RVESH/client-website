@@ -1,0 +1,46 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  background: v.$surface;
+  border: 2px solid v.$ink;
+  padding: v.$space-3 v.$space-4;
+}
+
+.search-bar__icon {
+  color: v.$ink-mute;
+  flex-shrink: 0;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: v.$font-body;
+  font-size: v.$fs-sm;
+  color: v.$ink;
+}
+
+.search-bar input::placeholder {
+  color: v.$ink-mute;
+}
+
+.search-bar__clear {
+  @include m.reset-button;
+  flex-shrink: 0;
+  font-family: v.$font-mono;
+  font-size: v.$fs-2xs;
+  font-weight: v.$fw-bold;
+  text-transform: uppercase;
+  color: v.$cobalt;
+  padding: 4px v.$space-2;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

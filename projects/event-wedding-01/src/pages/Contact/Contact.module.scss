@@ -3,39 +3,71 @@
 
 .page {
   padding-bottom: v.$space-96;
+  min-width: 0;
 }
 
 .hero {
   background: v.$color-bg-inverse;
   padding-block: v.$space-64;
 
-  @include m.mq(xs) {
+  @include m.mq(sm) {
     padding-block: v.$space-48;
+  }
+
+  @include m.mq(xs) {
+    padding-block: v.$space-40;
   }
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: v.$space-64;
   padding-top: v.$space-64;
+  min-width: 0;
+
+  @include m.mq(md) {
+    gap: v.$space-40;
+    padding-top: v.$space-48;
+  }
 
   @include m.mq(sm) {
-    grid-template-columns: 1fr;
-    gap: v.$space-48;
-    padding-top: v.$space-48;
+    grid-template-columns: minmax(0, 1fr);
+    gap: v.$space-32;
+    padding-top: v.$space-40;
+  }
+
+  @include m.mq(xs) {
+    gap: v.$space-24;
+    padding-top: v.$space-32;
+    padding-inline: v.$space-12;
   }
 }
 
+.formCol,
+.infoCol {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .formTitle {
-  font-size: v.$fs-28;
   margin-bottom: v.$space-24;
+  font-size: v.$fs-28;
+
+  @include m.mq(xs) {
+    margin-bottom: v.$space-16;
+    font-size: v.$fs-24;
+  }
 }
 
 .infoCol {
   display: flex;
   flex-direction: column;
   gap: v.$space-24;
+
+  @include m.mq(xs) {
+    gap: v.$space-16;
+  }
 }
 
 .infoBlock {
@@ -44,6 +76,11 @@
   gap: v.$space-8;
   padding-bottom: v.$space-20;
   border-bottom: 1px solid v.$color-line;
+  min-width: 0;
+
+  @include m.mq(xs) {
+    padding-bottom: v.$space-16;
+  }
 }
 
 .infoLabel {
@@ -55,11 +92,17 @@
 }
 
 .infoValue {
+  max-width: 100%;
   font-size: v.$fs-16;
   font-weight: v.$fw-medium;
   color: v.$color-text;
   font-style: normal;
   line-height: v.$lh-normal;
+  overflow-wrap: anywhere;
+
+  @include m.mq(xs) {
+    font-size: v.$fs-14;
+  }
 }
 
 a.infoValue:hover {
@@ -70,6 +113,7 @@ a.infoValue:hover {
   display: flex;
   flex-direction: column;
   gap: v.$space-4;
+  min-width: 0;
 }
 
 .hoursRow {
@@ -77,6 +121,11 @@ a.infoValue:hover {
   justify-content: space-between;
   gap: v.$space-16;
   font-size: v.$fs-14;
+  min-width: 0;
+
+  span {
+    min-width: 0;
+  }
 
   span:first-child {
     color: v.$color-text-muted;
@@ -85,6 +134,13 @@ a.infoValue:hover {
   span:last-child {
     font-weight: v.$fw-medium;
     color: v.$color-text;
+    text-align: right;
+  }
+
+  @include m.mq(xs) {
+    align-items: flex-start;
+    gap: v.$space-8;
+    font-size: v.$fs-13;
   }
 }
 
@@ -94,8 +150,15 @@ a.infoValue:hover {
   align-items: flex-start;
   gap: v.$space-12;
   padding: v.$space-24;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   background: v.$color-bg-alt;
   border: 1px solid v.$color-line;
+
+  @include m.mq(xs) {
+    padding: v.$space-16;
+  }
 }
 
 .mapPin {
@@ -103,9 +166,12 @@ a.infoValue:hover {
 }
 
 .mapText {
+  max-width: 100%;
+  margin: 0;
   font-size: v.$fs-14;
   color: v.$color-text-soft;
   line-height: v.$lh-normal;
+  overflow-wrap: anywhere;
 }
 
 .mapLink {

@@ -1,0 +1,5 @@
+<svg viewBox="0 0 600 460" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="460" fill="#FF5B3C"/>
+      <rect x="195.5" y="165.0" width="209.00000000000003" height="190" fill="#141414" opacity="0.12"/><line x1="195.5" y1="165.0" x2="404.5" y2="165.0" stroke="#141414" stroke-width="6.65" opacity="0.5"/><line x1="195.5" y1="199.2" x2="404.5" y2="199.2" stroke="#141414" stroke-width="6.65" opacity="0.58"/><line x1="195.5" y1="233.39999999999998" x2="404.5" y2="233.39999999999998" stroke="#141414" stroke-width="6.65" opacity="0.5"/><line x1="195.5" y1="267.6" x2="404.5" y2="267.6" stroke="#141414" stroke-width="6.65" opacity="0.58"/><line x1="195.5" y1="301.79999999999995" x2="404.5" y2="301.79999999999995" stroke="#141414" stroke-width="6.65" opacity="0.5"/><line x1="195.5" y1="336.0" x2="404.5" y2="336.0" stroke="#141414" stroke-width="6.65" opacity="0.58"/>
+      <rect x="14" y="14" width="572" height="432" fill="none" stroke="#141414" stroke-width="1" opacity="0.18"/>
+    </svg>
