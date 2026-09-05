@@ -1,0 +1,45 @@
+<svg viewBox="0 0 640 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroTitle">
+  <title id="heroTitle">A mentor and learner reviewing a growth plan together</title>
+  <rect width="640" height="720" fill="#F1EDE3"/>
+  <rect width="640" height="480" fill="#E9E3D3"/>
+
+  <!-- window light -->
+  <rect x="420" y="50" width="170" height="230" rx="8" fill="#FCEFC7" opacity="0.6"/>
+  <line x1="505" y1="50" x2="505" y2="280" stroke="#1B2140" stroke-opacity="0.1" stroke-width="4"/>
+
+  <!-- desk -->
+  <rect x="0" y="420" width="640" height="40" fill="#1B2140"/>
+  <rect x="0" y="414" width="640" height="8" fill="#2E9E6C"/>
+  <rect x="0" y="460" width="640" height="260" fill="#E4DECD"/>
+
+  <!-- growth chart on the desk -->
+  <rect x="240" y="380" width="150" height="34" rx="6" fill="#FFFFFF" stroke="#DBD3BC" stroke-width="2"/>
+  <polyline points="248,408 268,398 288,402 308,388 328,392 348,378 368,382" fill="none" stroke="#2E9E6C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- mentor figure (left, seated) -->
+  <g>
+    <path d="M120 720 L120 590 C120 550 152 524 184 524 C216 524 246 550 246 590 L246 720 Z" fill="#1B2140"/>
+    <path d="M144 556 L226 556 L218 660 L152 660 Z" fill="#F1EDE3"/>
+    <circle cx="183" cy="508" r="42" fill="#D9A876"/>
+    <path d="M141 495 a42 42 0 0 1 84 0 q-6 -20 -42 -20 t-42 20 z" fill="#1B2140"/>
+    <path d="M220 566 C 250 560, 275 550, 290 536" stroke="#1B2140" stroke-width="22" stroke-linecap="round" fill="none"/>
+    <circle cx="296" cy="532" r="13" fill="#D9A876"/>
+  </g>
+
+  <!-- learner figure (right, seated) -->
+  <g>
+    <path d="M400 720 L400 600 C400 562 430 538 460 538 C490 538 518 562 518 600 L518 720 Z" fill="#2E9E6C"/>
+    <circle cx="459" cy="524" r="38" fill="#D9A876"/>
+    <path d="M420 512 a38 38 0 0 1 76 0 q-6 -18 -38 -18 t-38 18 z" fill="#1B2140"/>
+    <path d="M423 570 C 396 566, 372 555, 358 540" stroke="#2E9E6C" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <circle cx="352" cy="536" r="12" fill="#D9A876"/>
+  </g>
+
+  <!-- highlighter underline accent -->
+  <path d="M60 100 Q 120 80 190 96" stroke="#E8A33D" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.7"/>
+
+  <!-- stack of books, bottom left -->
+  <rect x="40" y="640" width="90" height="18" rx="3" fill="#1B2140"/>
+  <rect x="46" y="622" width="78" height="18" rx="3" fill="#2E9E6C"/>
+  <rect x="52" y="604" width="66" height="18" rx="3" fill="#E8A33D"/>
+</svg>

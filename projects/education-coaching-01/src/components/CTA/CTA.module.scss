@@ -1,0 +1,53 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  background: v.$color-primary-wash;
+  border-radius: v.$radius-lg;
+  padding: clamp(2.5rem, 6vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: v.$space-lg;
+}
+
+.underline {
+  position: absolute;
+  top: 8px;
+  right: -10px;
+  width: 55%;
+  height: auto;
+  pointer-events: none;
+
+  @include m.respond(md) {
+    display: none;
+  }
+}
+
+.content {
+  position: relative;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+
+  p {
+    color: v.$color-ink-soft;
+    font-size: v.$fs-lead;
+    margin-inline: auto;
+  }
+}
+
+.ctaRow {
+  position: relative;
+  display: flex;
+  gap: v.$space-sm;
+
+  @include m.respond(xs) {
+    flex-direction: column;
+    width: 100%;
+  }
+}

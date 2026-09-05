@@ -1,0 +1,119 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.card {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  @include m.card-base;
+  overflow: hidden;
+
+  @include m.respond(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imageFrame {
+  @include m.image-frame(4 / 3);
+
+  @include m.respond(md) {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.body {
+  padding: v.$space-lg;
+  display: flex;
+  flex-direction: column;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: v.$space-sm;
+}
+
+.format,
+.duration {
+  font-size: v.$fs-tiny;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: v.$radius-pill;
+}
+
+.format {
+  color: v.$color-primary-dark;
+  background: v.$color-primary-wash;
+}
+
+.duration {
+  color: v.$color-ink-soft;
+  background: v.$color-surface-tint;
+}
+
+.body h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.tagline {
+  font-family: v.$font-display;
+  font-style: italic;
+  color: v.$color-ink-soft;
+  font-size: 1.02rem;
+  margin-bottom: v.$space-sm;
+}
+
+.description {
+  color: v.$color-ink-soft;
+  font-size: v.$fs-small;
+  line-height: v.$lh-normal;
+  margin-bottom: v.$space-md;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: v.$space-lg;
+  flex: 1;
+
+  li {
+    position: relative;
+    padding-left: 1.3rem;
+    font-size: v.$fs-small;
+    color: v.$color-ink;
+    line-height: v.$lh-snug;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.15em;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: v.$color-primary-wash;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 0.55em;
+      width: 6px;
+      height: 3px;
+      border-left: 2px solid v.$color-primary;
+      border-bottom: 2px solid v.$color-primary;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.cta {
+  align-self: flex-start;
+
+  @include m.respond(sm) {
+    align-self: stretch;
+  }
+}

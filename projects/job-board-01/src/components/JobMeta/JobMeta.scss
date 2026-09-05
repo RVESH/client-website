@@ -1,0 +1,24 @@
+@use "../../styles/variables" as v;
+
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-1 v.$sp-3;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: v.$fs-micro;
+    color: v.$color-steel;
+  }
+
+  svg {
+    color: v.$color-teal;
+    flex-shrink: 0;
+  }
+}
+
+.job-meta--lg li {
+  font-size: v.$fs-small;
+}

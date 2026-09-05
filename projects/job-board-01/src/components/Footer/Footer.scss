@@ -1,0 +1,102 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.footer {
+  background: v.$color-ink;
+  color: v.$color-steel-light;
+  padding-block: v.$sp-7 v.$sp-4;
+}
+
+.footer__grid {
+  display: grid;
+  gap: v.$sp-6;
+  grid-template-columns: 1fr;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: 1.4fr 0.8fr 1fr 1fr;
+  }
+}
+
+.footer__col--brand {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-2;
+}
+
+.footer__brand {
+  font-family: v.$font-display;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: v.$color-surface;
+
+  em {
+    font-style: normal;
+    color: v.$color-teal-soft;
+  }
+}
+
+.footer__tagline {
+  max-width: 32ch;
+  font-size: v.$fs-small;
+}
+
+.footer__heading {
+  font-family: v.$font-body;
+  font-size: v.$fs-micro;
+  color: v.$color-surface;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: v.$sp-3;
+}
+
+.footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-2;
+}
+
+.footer__col a {
+  color: v.$color-steel-light;
+  text-decoration: none;
+  font-size: v.$fs-small;
+
+  &:hover {
+    color: v.$color-teal-soft;
+  }
+}
+
+.footer__contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: v.$sp-2;
+  font-size: v.$fs-small;
+
+  svg {
+    margin-top: 0.2rem;
+    color: v.$color-teal-soft;
+    flex-shrink: 0;
+  }
+}
+
+.footer__hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: v.$sp-2;
+  font-size: v.$fs-small;
+}
+
+.footer__bottom {
+  margin-top: v.$sp-7;
+  padding-top: v.$sp-4;
+  border-top: v.$border-w solid v.$color-line-dark;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: v.$sp-2;
+  font-size: v.$fs-micro;
+}

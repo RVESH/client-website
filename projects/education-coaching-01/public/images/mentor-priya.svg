@@ -1,0 +1,18 @@
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="m3Title">
+  <title id="m3Title">Portrait illustration of Priya Nandakumar</title>
+  <rect width="320" height="320" fill="#EFE6F2"/>
+  <circle cx="160" cy="300" r="150" fill="#1B2140" opacity="0.08"/>
+
+  <path d="M68 320 L68 260 C68 219 106 191 160 191 C214 191 252 219 252 260 L252 320 Z" fill="#2E9E6C"/>
+  <path d="M112 212 L208 212 L198 320 L122 320 Z" fill="#F1EDE3"/>
+
+  <rect x="142" y="178" width="36" height="38" fill="#C68A5C"/>
+  <circle cx="160" cy="144" r="58" fill="#C68A5C"/>
+  <path d="M104 128 a56 56 0 0 1 112 0 q-2 -20 -16 -30 q-8 24 -40 24 q-32 0 -40 -24 q-14 10 -16 30 z" fill="#241A14"/>
+  <path d="M104 126 q-6 34 6 50" stroke="#241A14" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M216 126 q6 34 -6 50" stroke="#241A14" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- earrings, small detail -->
+  <circle cx="104" cy="168" r="4" fill="#E8A33D"/>
+  <circle cx="216" cy="168" r="4" fill="#E8A33D"/>
+</svg>

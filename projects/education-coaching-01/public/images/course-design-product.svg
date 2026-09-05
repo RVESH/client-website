@@ -1,0 +1,22 @@
+<svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="catDesignTitle">
+  <title id="catDesignTitle">Design and product course illustration with wireframe and tools</title>
+  <rect width="480" height="320" fill="#F1EDE3"/>
+  <rect y="240" width="480" height="80" fill="#E4DECD"/>
+
+  <!-- screen mockup -->
+  <rect x="130" y="60" width="230" height="170" rx="12" fill="#FFFFFF" stroke="#DBD3BC" stroke-width="2"/>
+  <rect x="150" y="80" width="120" height="14" rx="4" fill="#1B2140"/>
+  <rect x="150" y="106" width="190" height="8" rx="4" fill="#DBD3BC"/>
+  <rect x="150" y="122" width="150" height="8" rx="4" fill="#DBD3BC"/>
+  <rect x="150" y="150" width="80" height="50" rx="8" fill="#2E9E6C"/>
+  <rect x="242" y="150" width="80" height="50" rx="8" fill="#E8A33D"/>
+
+  <!-- pen tool cursor -->
+  <path d="M370 190 L400 160 L414 174 L384 204 Z" fill="#1B2140"/>
+  <path d="M378 198 L370 190 L376 210 Z" fill="#4D5270"/>
+
+  <!-- color swatches -->
+  <circle cx="90" cy="110" r="16" fill="#2E9E6C"/>
+  <circle cx="90" cy="146" r="16" fill="#E8A33D"/>
+  <circle cx="90" cy="182" r="16" fill="#1B2140"/>
+</svg>

@@ -1,0 +1,134 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.application-form {
+  background: v.$color-surface-dim;
+  border: v.$border-w solid v.$color-line;
+  border-radius: v.$radius-lg;
+  padding: v.$sp-5;
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: v.$sp-2;
+  }
+}
+
+.application-form__desc {
+  color: v.$color-steel;
+  font-size: v.$fs-small;
+  line-height: 1.6;
+  max-width: 60ch;
+  margin-bottom: v.$sp-4;
+}
+
+.application-form__row {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-2;
+  margin-bottom: v.$sp-4;
+
+  label {
+    font-size: v.$fs-micro;
+    font-weight: 700;
+    color: v.$color-ink;
+  }
+
+  input,
+  textarea {
+    font-family: v.$font-body;
+    font-size: v.$fs-small;
+    padding: 0.75rem 0.9rem;
+    border: v.$border-w solid v.$color-line;
+    border-radius: v.$radius-sm;
+    background: v.$color-white;
+    color: v.$color-ink;
+    transition: border-color v.$dur-fast v.$ease-standard;
+
+    &:focus-visible {
+      outline: none;
+      border-color: v.$color-teal;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+}
+
+.application-form__row--split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$sp-4;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: v.$sp-2;
+  }
+}
+
+.application-form__warning {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: v.$color-coral;
+  font-size: v.$fs-small;
+  margin-bottom: v.$sp-3;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.application-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-3;
+  margin-bottom: v.$sp-4;
+}
+
+.application-form__btn {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  display: inline-flex;
+  align-items: center;
+  gap: v.$sp-2;
+  padding: 0.85rem 1.5rem;
+  border-radius: v.$radius-pill;
+  font-size: v.$fs-small;
+  font-weight: 700;
+  transition: background-color v.$dur-fast v.$ease-standard, transform v.$dur-fast v.$ease-standard;
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.application-form__btn--email {
+  background: v.$color-ink;
+  color: v.$color-surface;
+
+  &:hover {
+    background: v.$color-ink-soft;
+  }
+}
+
+.application-form__btn--whatsapp {
+  background: #25d366;
+  color: v.$color-ink;
+
+  &:hover {
+    background: #3ddb79;
+  }
+}
+
+.application-form__note {
+  font-size: v.$fs-micro;
+  color: v.$color-steel;
+  line-height: 1.6;
+}

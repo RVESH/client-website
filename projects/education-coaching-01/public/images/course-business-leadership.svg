@@ -1,0 +1,27 @@
+<svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="catBizTitle">
+  <title id="catBizTitle">Business and leadership course illustration with a team meeting table</title>
+  <rect width="480" height="320" fill="#EAE7F2"/>
+  <rect y="250" width="480" height="70" fill="#DCD7E9"/>
+
+  <!-- table -->
+  <ellipse cx="240" cy="230" rx="160" ry="34" fill="#1B2140"/>
+  <ellipse cx="240" cy="222" rx="160" ry="30" fill="#2A3160"/>
+
+  <!-- simple seated figures around table -->
+  <g>
+    <circle cx="120" cy="160" r="26" fill="#D9A876"/>
+    <path d="M90 200 q30 -22 60 0 v20 h-60 z" fill="#2E9E6C"/>
+  </g>
+  <g>
+    <circle cx="240" cy="150" r="26" fill="#C68A5C"/>
+    <path d="M210 190 q30 -22 60 0 v20 h-60 z" fill="#E8A33D"/>
+  </g>
+  <g>
+    <circle cx="360" cy="160" r="26" fill="#8A5A3A"/>
+    <path d="M330 200 q30 -22 60 0 v20 h-60 z" fill="#4D5270"/>
+  </g>
+
+  <!-- growth arrow above the table -->
+  <path d="M150 110 L210 80 L270 96 L330 60" stroke="#2E9E6C" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M312 56 L330 60 L326 78" stroke="#2E9E6C" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

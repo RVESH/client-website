@@ -1,0 +1,47 @@
+@use "../../styles/variables" as v;
+
+.testimonial-card {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: v.$sp-5;
+  background: v.$color-white;
+  color: v.$color-ink;
+  border: v.$border-w solid v.$color-line;
+  border-radius: v.$radius-md;
+}
+
+.testimonial-card__mark {
+  color: v.$color-teal;
+  margin-bottom: v.$sp-3;
+}
+
+.testimonial-card blockquote {
+  margin: 0;
+  flex: 1;
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: v.$color-ink;
+  }
+}
+
+.testimonial-card figcaption {
+  display: flex;
+  flex-direction: column;
+  margin-top: v.$sp-4;
+  padding-top: v.$sp-3;
+  border-top: v.$border-w solid v.$color-line;
+}
+
+.testimonial-card__name {
+  font-size: v.$fs-small;
+  font-weight: 700;
+}
+
+.testimonial-card__role {
+  font-size: v.$fs-micro;
+  color: v.$color-steel;
+}

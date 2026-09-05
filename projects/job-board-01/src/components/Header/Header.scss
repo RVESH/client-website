@@ -1,0 +1,262 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: v.$z-header;
+  border-bottom: v.$border-w solid v.$color-line;
+}
+
+.header__bar {
+  background: rgba(246, 247, 251, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.header__bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$sp-4;
+  height: 74px;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+  text-decoration: none;
+  color: v.$color-ink;
+  flex-shrink: 0;
+}
+
+.header__brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: v.$color-ink;
+  color: v.$color-teal-soft;
+  font-family: v.$font-display;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: v.$radius-sm;
+}
+
+.header__brand-name {
+  font-family: v.$font-display;
+  font-weight: 700;
+  font-size: 1.15rem;
+
+  em {
+    font-style: normal;
+    color: v.$color-teal;
+  }
+}
+
+.header__nav {
+  display: none;
+
+  @include m.mq(lg) {
+    display: block;
+  }
+
+  ul {
+    display: flex;
+    gap: v.$sp-5;
+  }
+
+  a {
+    text-decoration: none;
+    color: v.$color-steel;
+    font-size: v.$fs-small;
+    font-weight: 600;
+    position: relative;
+    padding-block: 0.3rem;
+
+    &:hover,
+    &.is-active {
+      color: v.$color-ink;
+    }
+
+    &.is-active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      height: 2px;
+      background: v.$color-teal;
+      border-radius: v.$radius-pill;
+    }
+  }
+}
+
+.header__actions {
+  display: none;
+  align-items: center;
+  gap: v.$sp-3;
+
+  @include m.mq(lg) {
+    display: flex;
+  }
+}
+
+.header__toggle {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: v.$color-ink;
+  flex-shrink: 0;
+  border-radius: v.$radius-sm;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+}
+
+// ---- Portal-rendered mobile drawer + overlay (mounted on document.body) ----
+// Rendered via a portal specifically so nothing about the header's own
+// stacking context (sticky, backdrop-filter, etc.) can ever affect these.
+
+.mobile-drawer__overlay {
+  @include m.btn-reset;
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 22, 59, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity v.$dur-med v.$ease-standard;
+  z-index: v.$z-overlay;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: min(88vw, 380px);
+  background: v.$color-ink;
+  color: v.$color-surface;
+  z-index: v.$z-drawer;
+  // OPEN = right → left (slides into view from the right edge)
+  // CLOSE = left → right (slides back out to the right edge)
+  transform: translateX(100%);
+  transition: transform v.$dur-med v.$ease-standard;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: v.$sp-5;
+  overflow-y: auto;
+
+  @include m.mq(lg) {
+    display: none;
+  }
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: v.$sp-1;
+  }
+
+  a {
+    display: block;
+    padding: v.$sp-3 0;
+    text-decoration: none;
+    color: v.$color-surface;
+    font-family: v.$font-display;
+    font-weight: 700;
+    font-size: 1.35rem;
+    border-bottom: v.$border-w solid v.$color-line-dark;
+
+    &.is-active {
+      color: v.$color-teal-soft;
+    }
+  }
+}
+
+.mobile-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: v.$sp-5;
+}
+
+.mobile-drawer__brand {
+  font-family: v.$font-display;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: v.$color-surface;
+
+  em {
+    font-style: normal;
+    color: v.$color-teal-soft;
+  }
+}
+
+.mobile-drawer__close {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: v.$color-surface;
+  border-radius: v.$radius-sm;
+}
+
+.mobile-drawer__footer {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+  padding-top: v.$sp-5;
+
+  // Button component renders a React Router <Link> when `to` is used.
+  // Override the drawer's generic `a` styles so the CTA keeps its
+  // actual button styling instead of looking like a navigation link.
+  a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 52px;
+    padding: 0.85rem 1.25rem;
+    border: 0;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 700;
+    border-radius: v.$radius-pill;
+  }
+}
+
+.mobile-drawer__phone {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: v.$color-steel-light;
+  font-size: v.$fs-small;
+}

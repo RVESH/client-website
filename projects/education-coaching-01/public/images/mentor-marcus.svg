@@ -1,0 +1,17 @@
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="m2Title">
+  <title id="m2Title">Portrait illustration of Marcus Whitfield</title>
+  <rect width="320" height="320" fill="#FCEFD8"/>
+  <circle cx="160" cy="300" r="150" fill="#E8A33D" opacity="0.16"/>
+
+  <path d="M64 320 L64 258 C64 216 104 188 160 188 C216 188 256 216 256 258 L256 320 Z" fill="#1B2140"/>
+  <path d="M108 208 L212 208 L202 320 L118 320 Z" fill="#F1EDE3"/>
+  <rect x="146" y="200" width="28" height="8" fill="#E8A33D"/>
+
+  <rect x="140" y="172" width="40" height="42" fill="#8A5A3A"/>
+  <circle cx="160" cy="140" r="60" fill="#8A5A3A"/>
+  <path d="M100 122 a60 60 0 0 1 120 0 q-4 -36 -60 -36 t-60 36 z" fill="#1C1B18"/>
+  <path d="M100 120 q-4 26 4 40" stroke="#1C1B18" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M220 120 q4 26 -4 40" stroke="#1C1B18" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <path d="M132 172 q28 14 56 0" stroke="#1C1B18" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
+</svg>

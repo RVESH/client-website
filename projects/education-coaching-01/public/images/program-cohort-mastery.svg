@@ -1,0 +1,29 @@
+<svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="progCohortTitle">
+  <title id="progCohortTitle">Cohort Mastery Track illustration with a group around a shared screen</title>
+  <rect width="560" height="420" fill="#E3F0E9"/>
+  <rect y="330" width="560" height="90" fill="#D6E7DC"/>
+
+  <!-- shared screen -->
+  <rect x="190" y="90" width="180" height="120" rx="10" fill="#1B2140"/>
+  <polyline points="212,180 236,160 260,168 284,140 308,150 332,110" fill="none" stroke="#E8A33D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="270" y="210" width="20" height="24" fill="#4D5270"/>
+  <rect x="248" y="234" width="64" height="8" rx="4" fill="#4D5270"/>
+
+  <!-- cohort figures around the screen -->
+  <g>
+    <circle cx="120" cy="250" r="24" fill="#D9A876"/>
+    <path d="M92 296 q28 -22 56 0 v40 h-56 z" fill="#2E9E6C"/>
+  </g>
+  <g>
+    <circle cx="440" cy="250" r="24" fill="#C68A5C"/>
+    <path d="M412 296 q28 -22 56 0 v40 h-56 z" fill="#E8A33D"/>
+  </g>
+  <g>
+    <circle cx="280" cy="290" r="22" fill="#8A5A3A"/>
+    <path d="M254 332 q26 -20 52 0 v30 h-52 z" fill="#4D5270"/>
+  </g>
+
+  <!-- connecting dotted lines suggesting collaboration -->
+  <path d="M144 260 L200 220" stroke="#2E9E6C" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+  <path d="M416 260 L360 220" stroke="#2E9E6C" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+</svg>

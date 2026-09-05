@@ -1,0 +1,26 @@
+<svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="catDataTitle">
+  <title id="catDataTitle">Data and analytics course illustration with bar chart and dashboard</title>
+  <rect width="480" height="320" fill="#E3F0E9"/>
+  <rect y="240" width="480" height="80" fill="#D6E7DC"/>
+
+  <!-- dashboard panel -->
+  <rect x="120" y="70" width="240" height="170" rx="14" fill="#1B2140"/>
+
+  <!-- bar chart -->
+  <g>
+    <rect x="150" y="180" width="24" height="40" rx="3" fill="#2E9E6C"/>
+    <rect x="184" y="150" width="24" height="70" rx="3" fill="#6FBF9A"/>
+    <rect x="218" y="130" width="24" height="90" rx="3" fill="#E8A33D"/>
+    <rect x="252" y="160" width="24" height="60" rx="3" fill="#6FBF9A"/>
+    <rect x="286" y="110" width="24" height="110" rx="3" fill="#2E9E6C"/>
+  </g>
+
+  <!-- trend line overlay -->
+  <polyline points="150,190 184,160 218,140 252,168 286,120" fill="none" stroke="#F1EDE3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+
+  <!-- floating data point badges -->
+  <circle cx="400" cy="110" r="26" fill="#FFFFFF" stroke="#DBD3BC" stroke-width="2"/>
+  <text x="400" y="117" font-family="Karla, sans-serif" font-size="16" font-weight="700" fill="#1B2140" text-anchor="middle">%</text>
+
+  <circle cx="80" cy="150" r="20" fill="#E8A33D" opacity="0.9"/>
+</svg>

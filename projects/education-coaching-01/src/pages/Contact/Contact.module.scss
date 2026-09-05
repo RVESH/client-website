@@ -1,0 +1,130 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.intro {
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: v.$space-lg;
+
+  :global(.eyebrow) {
+    margin-bottom: v.$space-sm;
+  }
+}
+
+.quickSection {
+  padding-bottom: v.$space-2xl;
+}
+
+.quickGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-md;
+
+  @include m.respond(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quickCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: v.$color-surface;
+  border: 1.5px solid v.$color-border;
+  border-radius: v.$radius-lg;
+  padding: v.$space-lg;
+  transition:
+    border-color v.$dur-fast v.$ease-standard,
+    transform v.$dur-fast v.$ease-standard;
+
+  &:hover {
+    border-color: v.$color-primary;
+    transform: translateY(-2px);
+  }
+}
+
+.quickLabel {
+  font-size: v.$fs-tiny;
+  font-weight: 700;
+  color: v.$color-primary-dark;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.quickValue {
+  font-family: v.$font-display;
+  font-size: 1.22rem;
+  color: v.$color-ink;
+  overflow-wrap: break-word;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+
+  @include m.respond(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-lg;
+}
+
+.mapFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+  background: v.$color-surface-tint;
+  box-shadow: v.$shadow-sm;
+  border: 1px solid v.$color-border;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.infoBlock h3 {
+  font-size: 1.15rem;
+  margin-bottom: v.$space-xs;
+}
+
+.infoBlock p {
+  color: v.$color-ink-soft;
+  font-size: v.$fs-small;
+  line-height: v.$lh-snug;
+}
+
+.hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: v.$space-sm;
+  font-size: v.$fs-small;
+  color: v.$color-ink-soft;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid v.$color-border;
+}
+
+.hours li:last-child {
+  border-bottom: none;
+}
+
+.hours li span:first-child {
+  color: v.$color-ink;
+  font-weight: 600;
+}

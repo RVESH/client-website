@@ -1,0 +1,31 @@
+<svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="progManagerTitle">
+  <title id="progManagerTitle">New Manager Mentorship Program illustration with a mentor guiding a new manager</title>
+  <rect width="560" height="420" fill="#FCEFD8"/>
+  <rect y="330" width="560" height="90" fill="#F3E2BC"/>
+
+  <!-- mentor figure -->
+  <g>
+    <path d="M150 420 L150 300 C150 262 182 236 214 236 C246 236 278 262 278 300 L278 420 Z" fill="#1B2140"/>
+    <circle cx="213" cy="220" r="36" fill="#D9A876"/>
+    <path d="M178 208 a35 35 0 0 1 70 0 q-4 -18 -35 -18 t-35 18 z" fill="#1B2140"/>
+    <path d="M250 264 C 278 258, 300 244, 312 226" stroke="#1B2140" stroke-width="18" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- new manager figure receiving a toolkit -->
+  <g>
+    <path d="M320 420 L320 320 C320 288 346 266 374 266 C402 266 428 288 428 320 L428 420 Z" fill="#E8A33D"/>
+    <circle cx="374" cy="252" r="32" fill="#C68A5C"/>
+    <path d="M342 240 a32 32 0 0 1 64 0 q-4 -16 -32 -16 t-32 16 z" fill="#1B2140"/>
+    <path d="M342 292 C 320 288, 302 278, 292 264" stroke="#E8A33D" stroke-width="16" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- toolkit box passed between them -->
+  <rect x="278" y="248" width="46" height="34" rx="4" fill="#2E9E6C"/>
+  <path d="M290 248 q11 -12 22 0" stroke="#2E9E6C" stroke-width="5" fill="none"/>
+
+  <!-- checklist floating -->
+  <rect x="70" y="140" width="70" height="88" rx="6" fill="#FFFFFF" stroke="#DBD3BC" stroke-width="2"/>
+  <line x1="84" y1="160" x2="126" y2="160" stroke="#2E9E6C" stroke-width="3"/>
+  <line x1="84" y1="176" x2="126" y2="176" stroke="#DBD3BC" stroke-width="3"/>
+  <line x1="84" y1="192" x2="112" y2="192" stroke="#DBD3BC" stroke-width="3"/>
+</svg>

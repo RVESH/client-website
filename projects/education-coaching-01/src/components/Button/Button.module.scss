@@ -1,0 +1,71 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-2xs;
+  padding: 0.9rem 1.7rem;
+  border-radius: v.$radius-pill;
+  font-family: v.$font-body;
+  font-weight: 700;
+  font-size: 0.96rem;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition:
+    transform v.$dur-fast v.$ease-standard,
+    background-color v.$dur-fast v.$ease-standard,
+    border-color v.$dur-fast v.$ease-standard,
+    color v.$dur-fast v.$ease-standard;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  @include m.respond(sm) {
+    width: 100%;
+  }
+}
+
+.default {
+  background: v.$color-ink;
+  color: v.$color-white;
+
+  &:hover {
+    background: v.$color-dark-surface;
+  }
+}
+
+.accent {
+  background: v.$color-primary;
+  color: v.$color-white;
+
+  &:hover {
+    background: v.$color-primary-dark;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: v.$color-ink;
+  border-color: v.$color-border-strong;
+
+  &:hover {
+    border-color: v.$color-ink;
+    background: v.$color-surface;
+  }
+}
+
+.dark {
+  background: rgba(255, 255, 255, 0.1);
+  color: v.$color-white;
+  border-color: rgba(255, 255, 255, 0.28);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}

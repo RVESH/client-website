@@ -1,0 +1,24 @@
+<svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="catMktTitle">
+  <title id="catMktTitle">Marketing and growth course illustration with a target and funnel</title>
+  <rect width="480" height="320" fill="#FCEFD8"/>
+  <rect y="250" width="480" height="70" fill="#F3E2BC"/>
+
+  <!-- target -->
+  <circle cx="160" cy="150" r="70" fill="#FFFFFF" stroke="#E8A33D" stroke-width="6"/>
+  <circle cx="160" cy="150" r="46" fill="none" stroke="#E8A33D" stroke-width="6"/>
+  <circle cx="160" cy="150" r="22" fill="#2E9E6C"/>
+
+  <!-- arrow hitting target -->
+  <line x1="280" y1="80" x2="172" y2="140" stroke="#1B2140" stroke-width="5" stroke-linecap="round"/>
+  <path d="M280 80 L262 84 L276 98 Z" fill="#1B2140"/>
+
+  <!-- funnel -->
+  <path d="M330 90 L420 90 L390 150 L360 150 Z" fill="#1B2140"/>
+  <rect x="362" y="150" width="26" height="50" fill="#4D5270"/>
+
+  <!-- growth sparkle dots -->
+  <g fill="#E8A33D">
+    <circle cx="70" cy="90" r="5"/>
+    <circle cx="100" cy="60" r="4"/>
+  </g>
+</svg>

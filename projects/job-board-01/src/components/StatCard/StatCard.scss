@@ -1,0 +1,21 @@
+@use "../../styles/variables" as v;
+
+.stat-card {
+  padding-block: v.$sp-3;
+  border-top: 2px solid v.$color-teal;
+}
+
+.stat-card__value {
+  font-family: v.$font-display;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 1.9rem + 1.2vw, 3.2rem);
+  color: v.$color-surface;
+  line-height: 1;
+  margin-bottom: v.$sp-2;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-card__label {
+  font-size: v.$fs-small;
+  color: v.$color-steel-light;
+}

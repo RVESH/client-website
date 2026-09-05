@@ -1,0 +1,82 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.jobs-hero {
+  padding-block: v.$sp-6 v.$sp-7;
+}
+
+.jobs-hero__heading {
+  font-size: v.$fs-h1;
+  color: v.$color-surface;
+  max-width: 20ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.jobs-hero__desc {
+  color: v.$color-steel-light;
+  font-size: v.$fs-lead;
+  max-width: 52ch;
+  margin-bottom: v.$sp-5;
+}
+
+.jobs-body__scoped {
+  font-size: v.$fs-small;
+  color: v.$color-steel;
+  margin-bottom: v.$sp-4;
+
+  strong {
+    color: v.$color-ink;
+  }
+
+  button {
+    @include m.btn-reset;
+    color: v.$color-teal;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}
+
+.jobs-body__count {
+  font-size: v.$fs-small;
+  color: v.$color-steel;
+  margin-bottom: v.$sp-4;
+}
+
+.jobs-body__grid {
+  display: grid;
+  gap: v.$sp-4;
+  grid-template-columns: 1fr;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.jobs-body__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: v.$sp-2;
+  padding-block: v.$sp-7;
+  color: v.$color-steel;
+
+  svg {
+    color: v.$color-steel;
+    margin-bottom: v.$sp-2;
+  }
+
+  h3 {
+    color: v.$color-ink;
+    font-size: 1.2rem;
+  }
+
+  p {
+    max-width: 44ch;
+    margin-bottom: v.$sp-3;
+  }
+}

@@ -1,0 +1,44 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  @include m.card-base;
+  overflow: hidden;
+}
+
+.imageFrame {
+  @include m.image-frame(1 / 1);
+}
+
+.body {
+  padding: v.$space-md v.$space-md v.$space-lg;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.body h3 {
+  font-size: 1.18rem;
+}
+
+.role {
+  font-size: v.$fs-small;
+  font-weight: 700;
+  color: v.$color-primary-dark;
+}
+
+.bio {
+  color: v.$color-ink-soft;
+  font-size: v.$fs-small;
+  line-height: v.$lh-normal;
+  margin-block: v.$space-xs;
+}
+
+.credentials {
+  font-size: v.$fs-tiny;
+  color: v.$color-ink-faint;
+  padding-top: v.$space-xs;
+  border-top: 1px solid v.$color-border;
+}

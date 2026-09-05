@@ -1,0 +1,46 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.headRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: v.$space-lg;
+
+  @include m.respond(md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.headRow > :first-child {
+  margin-bottom: v.$space-lg;
+  flex: 1;
+}
+
+.viewAll {
+  flex-shrink: 0;
+  margin-bottom: v.$space-xl;
+
+  @include m.respond(md) {
+    margin-bottom: v.$space-lg;
+  }
+
+  @include m.respond(sm) {
+    width: auto;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-lg;
+
+  @include m.respond(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond(sm) {
+    grid-template-columns: 1fr;
+  }
+}

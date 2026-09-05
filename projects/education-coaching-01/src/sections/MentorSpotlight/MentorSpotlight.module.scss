@@ -1,0 +1,71 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.layout {
+  display: grid;
+  grid-template-columns: 0.75fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+
+  @include m.respond(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-width: 420px;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+  background: v.$color-surface;
+  box-shadow: v.$shadow-md;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include m.respond(lg) {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+
+  @include m.respond(lg) {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.copy h2 {
+  margin-top: 0.2rem;
+}
+
+.role {
+  font-size: v.$fs-small;
+  font-weight: 700;
+  color: v.$color-primary-dark;
+}
+
+.bio {
+  color: v.$color-ink-soft;
+  font-size: v.$fs-lead;
+  line-height: v.$lh-snug;
+  margin-block: v.$space-sm;
+  max-width: 56ch;
+}
+
+.credentials {
+  font-size: v.$fs-small;
+  color: v.$color-ink-faint;
+  margin-bottom: v.$space-md;
+}

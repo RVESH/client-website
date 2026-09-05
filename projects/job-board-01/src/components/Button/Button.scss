@@ -1,0 +1,88 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$sp-2;
+  padding: 0.8rem 1.5rem;
+  font-family: v.$font-body;
+  font-size: v.$fs-small;
+  font-weight: 600;
+  text-decoration: none;
+  border: v.$border-w solid transparent;
+  border-radius: v.$radius-pill;
+  cursor: pointer;
+  transition: background-color v.$dur-fast v.$ease-standard,
+    color v.$dur-fast v.$ease-standard,
+    border-color v.$dur-fast v.$ease-standard,
+    transform v.$dur-fast v.$ease-standard,
+    box-shadow v.$dur-fast v.$ease-standard;
+  white-space: nowrap;
+
+  @include m.focus-ring;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.btn--primary {
+  background: v.$color-teal;
+  color: v.$color-ink;
+  box-shadow: 0 8px 20px -8px rgba(20, 184, 166, 0.55);
+
+  &:hover:not(:disabled) {
+    background: v.$color-teal-soft;
+  }
+}
+
+.btn--secondary {
+  background: transparent;
+  color: v.$color-surface;
+  border-color: v.$color-line-dark;
+
+  &:hover:not(:disabled) {
+    border-color: v.$color-teal;
+    color: v.$color-teal-soft;
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: v.$color-ink;
+  border-color: v.$color-line;
+
+  &:hover:not(:disabled) {
+    border-color: v.$color-ink;
+  }
+}
+
+.btn--outline {
+  background: v.$color-white;
+  color: v.$color-ink;
+  border-color: v.$color-line;
+
+  &:hover:not(:disabled) {
+    border-color: v.$color-teal;
+    color: v.$color-teal;
+  }
+}
+
+.btn--coral {
+  background: v.$color-coral;
+  color: v.$color-white;
+
+  &:hover:not(:disabled) {
+    background: #ff8266;
+  }
+}

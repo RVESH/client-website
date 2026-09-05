@@ -1,0 +1,73 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.companies-hero {
+  padding-block: v.$sp-6;
+}
+
+.companies-hero__heading {
+  font-size: v.$fs-h1;
+  color: v.$color-surface;
+  max-width: 22ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.companies-hero__desc {
+  color: v.$color-steel-light;
+  font-size: v.$fs-lead;
+  max-width: 52ch;
+}
+
+.companies-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-2;
+  margin-bottom: v.$sp-4;
+}
+
+.companies-filter__btn {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  padding: 0.55rem 1.1rem;
+  font-size: v.$fs-small;
+  font-weight: 600;
+  color: v.$color-ink;
+  border: v.$border-w solid v.$color-line;
+  border-radius: v.$radius-pill;
+  transition: background-color v.$dur-fast v.$ease-standard, color v.$dur-fast v.$ease-standard,
+    border-color v.$dur-fast v.$ease-standard;
+
+  &:hover {
+    border-color: v.$color-teal;
+  }
+
+  &.is-active {
+    background: v.$color-ink;
+    color: v.$color-teal-soft;
+    border-color: v.$color-ink;
+  }
+}
+
+.companies-count {
+  font-size: v.$fs-small;
+  color: v.$color-steel;
+  margin-bottom: v.$sp-4;
+}
+
+.companies-grid {
+  display: grid;
+  gap: v.$sp-4;
+  grid-template-columns: 1fr;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include m.mq(xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

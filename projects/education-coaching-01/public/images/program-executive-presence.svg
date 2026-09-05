@@ -1,0 +1,30 @@
+<svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="progExecTitle">
+  <title id="progExecTitle">Executive Presence Coaching illustration with a speaker at a podium</title>
+  <rect width="560" height="420" fill="#EAE7F2"/>
+  <rect y="330" width="560" height="90" fill="#DCD7E9"/>
+
+  <!-- podium -->
+  <path d="M240 420 L240 300 L320 300 L340 420 Z" fill="#1B2140"/>
+  <rect x="236" y="290" width="88" height="16" rx="4" fill="#2A3160"/>
+
+  <!-- speaker figure -->
+  <g>
+    <path d="M232 300 L232 240 C232 210 254 192 280 192 C306 192 328 210 328 240 L328 300 Z" fill="#2E9E6C"/>
+    <circle cx="280" cy="176" r="34" fill="#D9A876"/>
+    <path d="M247 166 a33 33 0 0 1 66 0 q-4 -18 -33 -18 t-33 18 z" fill="#1B2140"/>
+    <path d="M300 220 C 320 214, 336 202, 344 188" stroke="#2E9E6C" stroke-width="16" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- audience silhouettes -->
+  <g fill="#4D5270" opacity="0.5">
+    <circle cx="120" cy="330" r="16"/>
+    <path d="M96 380 q24 -20 48 0 v20 h-48 z"/>
+    <circle cx="440" cy="330" r="16"/>
+    <path d="M416 380 q24 -20 48 0 v20 h-48 z"/>
+    <circle cx="480" cy="340" r="14"/>
+    <path d="M460 385 q20 -16 40 0 v15 h-40 z"/>
+  </g>
+
+  <!-- spotlight -->
+  <path d="M280 40 L220 190 L340 190 Z" fill="#E8A33D" opacity="0.14"/>
+</svg>

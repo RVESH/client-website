@@ -1,0 +1,90 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.job-card {
+  @include m.card-surface;
+  padding: v.$sp-4;
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+  height: 100%;
+  transition: border-color v.$dur-fast v.$ease-standard, box-shadow v.$dur-fast v.$ease-standard,
+    transform v.$dur-fast v.$ease-standard;
+
+  &:hover {
+    border-color: v.$color-teal;
+    box-shadow: 0 16px 32px -20px rgba(18, 22, 59, 0.25);
+    transform: translateY(-2px);
+  }
+}
+
+.job-card__top {
+  display: flex;
+  gap: v.$sp-3;
+}
+
+.job-card__logo {
+  width: 52px;
+  height: 52px;
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: v.$color-surface-dim;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.job-card__heading {
+  min-width: 0;
+}
+
+.job-card__workmode {
+  display: inline-block;
+  font-size: v.$fs-micro;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: v.$color-teal;
+  background: rgba(20, 184, 166, 0.12);
+  padding: 0.2rem 0.55rem;
+  border-radius: v.$radius-pill;
+  margin-bottom: 0.4rem;
+}
+
+.job-card__title {
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+  overflow-wrap: break-word;
+}
+
+.job-card__company {
+  color: v.$color-steel;
+  font-size: v.$fs-small;
+  font-weight: 500;
+}
+
+.job-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: v.$sp-3;
+  border-top: v.$border-w solid v.$color-line;
+  text-decoration: none;
+  color: v.$color-ink;
+  font-size: v.$fs-small;
+  font-weight: 700;
+
+  svg {
+    color: v.$color-teal;
+    transition: transform v.$dur-fast v.$ease-standard;
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+}

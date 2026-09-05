@@ -1,0 +1,90 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-2;
+  background: v.$color-white;
+  border-radius: v.$radius-lg;
+  padding: v.$sp-2;
+  box-shadow: 0 24px 48px -24px rgba(18, 22, 59, 0.35);
+
+  @include m.mq(md) {
+    flex-direction: row;
+    align-items: center;
+    padding: v.$sp-2;
+  }
+}
+
+.search-bar__field {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+  padding: v.$sp-2 v.$sp-3;
+  flex: 1;
+  min-width: 0;
+
+  svg {
+    color: v.$color-teal;
+    flex-shrink: 0;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: v.$fs-small;
+    color: v.$color-ink;
+    width: 100%;
+    min-width: 0;
+
+    &::placeholder {
+      color: v.$color-steel;
+    }
+  }
+}
+
+.search-bar__divider {
+  display: none;
+  width: 1px;
+  align-self: stretch;
+  background: v.$color-line;
+  margin-block: v.$sp-1;
+
+  @include m.mq(md) {
+    display: block;
+  }
+}
+
+.search-bar__submit {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  background: v.$color-teal;
+  color: v.$color-ink;
+  font-weight: 700;
+  font-size: v.$fs-small;
+  padding: 0.9rem 1.5rem;
+  border-radius: v.$radius-pill;
+  white-space: nowrap;
+  transition: background-color v.$dur-fast v.$ease-standard;
+  width: 100%;
+
+  &:hover {
+    background: v.$color-teal-soft;
+  }
+
+  @include m.mq(md) {
+    width: auto;
+  }
+}
+
+.search-bar--sm {
+  .search-bar__field {
+    padding: v.$sp-1 v.$sp-2;
+  }
+
+  .search-bar__submit {
+    padding: 0.75rem 1.2rem;
+  }
+}

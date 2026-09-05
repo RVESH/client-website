@@ -1,0 +1,222 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.contact-hero {
+  padding-block: v.$sp-6;
+}
+
+.contact-hero__heading {
+  font-size: v.$fs-h1;
+  color: v.$color-surface;
+  max-width: 20ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.contact-hero__desc {
+  color: v.$color-steel-light;
+  font-size: v.$fs-lead;
+  max-width: 50ch;
+}
+
+.contact-body__grid {
+  display: grid;
+  gap: v.$sp-6;
+
+  @include m.mq(lg) {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: v.$sp-7;
+  }
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+}
+
+.contact-info__block {
+  display: flex;
+  gap: v.$sp-3;
+  padding-bottom: v.$sp-4;
+  border-bottom: v.$border-w solid v.$color-line;
+
+  svg {
+    color: v.$color-teal;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  h3 {
+    font-size: v.$fs-small;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  p {
+    color: v.$color-steel;
+    font-size: v.$fs-small;
+    line-height: 1.6;
+  }
+
+  a {
+    color: v.$color-steel;
+    text-decoration: none;
+
+    &:hover {
+      color: v.$color-teal;
+    }
+  }
+}
+
+.contact-info__hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: v.$sp-3;
+    font-size: v.$fs-small;
+  }
+
+  dt {
+    color: v.$color-steel;
+  }
+
+  dd {
+    margin: 0;
+    color: v.$color-ink;
+    font-weight: 600;
+  }
+}
+
+.contact-info__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-3;
+  padding-top: v.$sp-1;
+}
+
+.contact-form-wrap {
+  background: v.$color-surface-dim;
+  border: v.$border-w solid v.$color-line;
+  border-radius: v.$radius-lg;
+  padding: v.$sp-5;
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: v.$sp-2;
+  }
+}
+
+.contact-form-wrap__desc {
+  color: v.$color-steel;
+  font-size: v.$fs-small;
+  max-width: 48ch;
+  margin-bottom: v.$sp-5;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+}
+
+.contact-form__row {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-2;
+
+  label {
+    font-size: v.$fs-micro;
+    font-weight: 700;
+    color: v.$color-ink;
+  }
+
+  input,
+  textarea {
+    font-family: v.$font-body;
+    font-size: v.$fs-small;
+    padding: 0.75rem 0.9rem;
+    border: v.$border-w solid v.$color-line;
+    border-radius: v.$radius-sm;
+    background: v.$color-white;
+    color: v.$color-ink;
+    transition: border-color v.$dur-fast v.$ease-standard;
+
+    &:focus-visible {
+      outline: none;
+      border-color: v.$color-teal;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+}
+
+.contact-form__row--split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$sp-4;
+
+  @include m.mq(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: v.$sp-2;
+  }
+}
+
+.contact-form__warning {
+  color: v.$color-coral;
+  font-size: v.$fs-small;
+}
+
+.contact-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-3;
+}
+
+.contact-form__note {
+  font-size: v.$fs-micro;
+  color: v.$color-steel;
+}
+
+.contact-location {
+  border-top: v.$border-w solid v.$color-line;
+  background: v.$color-ink;
+  padding-block: v.$sp-6;
+}
+
+.contact-location__panel {
+  @include m.container;
+  display: flex;
+  align-items: flex-start;
+  gap: v.$sp-4;
+  color: v.$color-surface;
+
+  svg {
+    color: v.$color-teal;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: v.$sp-2;
+    color: v.$color-surface;
+  }
+
+  p {
+    color: v.$color-steel-light;
+    font-size: v.$fs-small;
+    line-height: 1.6;
+  }
+}

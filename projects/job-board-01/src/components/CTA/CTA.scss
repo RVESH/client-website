@@ -1,0 +1,49 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.cta {
+  background-color: v.$color-ink;
+  background-size: cover;
+  background-position: center;
+  color: v.$color-surface;
+  padding-block: v.$sp-7;
+
+  @include m.mq(md) {
+    padding-block: v.$sp-8;
+  }
+}
+
+.cta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-5;
+  align-items: flex-start;
+
+  @include m.mq(md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.cta__copy {
+  max-width: 56ch;
+}
+
+.cta__heading {
+  font-size: v.$fs-h2;
+  color: v.$color-surface;
+  margin-bottom: v.$sp-2;
+}
+
+.cta__desc {
+  color: v.$color-steel-light;
+  font-size: v.$fs-lead;
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-3;
+  flex-shrink: 0;
+}

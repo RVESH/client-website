@@ -1,0 +1,15 @@
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="m4Title">
+  <title id="m4Title">Portrait illustration of Sam Okonkwo</title>
+  <rect width="320" height="320" fill="#E3ECF2"/>
+  <circle cx="160" cy="300" r="150" fill="#4D5270" opacity="0.14"/>
+
+  <path d="M66 320 L66 259 C66 217 105 189 160 189 C215 189 254 217 254 259 L254 320 Z" fill="#E8A33D"/>
+  <path d="M110 210 L210 210 L200 320 L120 320 Z" fill="#F1EDE3"/>
+
+  <rect x="142" y="176" width="36" height="40" fill="#3E2A1E"/>
+  <circle cx="160" cy="142" r="58" fill="#3E2A1E"/>
+  <path d="M104 126 a56 56 0 0 1 112 0 q-4 -30 -56 -30 t-56 30 z" fill="#0F0B08"/>
+
+  <!-- short beard detail -->
+  <path d="M118 158 q42 34 84 0 q-4 26 -42 30 q-38 -4 -42 -30 z" fill="#0F0B08" opacity="0.85"/>
+</svg>

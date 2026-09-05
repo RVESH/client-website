@@ -1,0 +1,23 @@
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="m1Title">
+  <title id="m1Title">Portrait illustration of Dr. Elena Marsh</title>
+  <rect width="320" height="320" fill="#E3F0E9"/>
+  <circle cx="160" cy="300" r="150" fill="#2E9E6C" opacity="0.14"/>
+
+  <!-- shoulders/body -->
+  <path d="M70 320 L70 260 C70 220 108 192 160 192 C212 192 250 220 250 260 L250 320 Z" fill="#1B2140"/>
+  <path d="M110 214 L210 214 L200 320 L120 320 Z" fill="#F1EDE3"/>
+
+  <!-- neck -->
+  <rect x="142" y="176" width="36" height="40" fill="#D9A876"/>
+
+  <!-- head -->
+  <circle cx="160" cy="146" r="58" fill="#D9A876"/>
+  <path d="M104 130 a56 56 0 0 1 112 0 q-4 -34 -56 -34 t-56 34 z" fill="#2A2F1F"/>
+  <path d="M104 128 q-6 30 8 46" stroke="#2A2F1F" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M216 128 q6 30 -8 46" stroke="#2A2F1F" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- glasses, a small credibility detail -->
+  <circle cx="138" cy="150" r="14" fill="none" stroke="#1B2140" stroke-width="3"/>
+  <circle cx="182" cy="150" r="14" fill="none" stroke="#1B2140" stroke-width="3"/>
+  <line x1="152" y1="150" x2="168" y2="150" stroke="#1B2140" stroke-width="3"/>
+</svg>

@@ -1,0 +1,76 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.intro {
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: v.$space-lg;
+
+  :global(.eyebrow) {
+    margin-bottom: v.$space-sm;
+  }
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: v.$space-xl;
+
+  @include m.respond(md) {
+    margin-bottom: v.$space-lg;
+  }
+}
+
+.tab,
+.tabActive {
+  border: 1.5px solid v.$color-border-strong;
+  background: v.$color-surface;
+  color: v.$color-ink-soft;
+  font-size: v.$fs-small;
+  font-weight: 700;
+  padding: 0.6rem 1.15rem;
+  border-radius: v.$radius-pill;
+  cursor: pointer;
+  transition:
+    background-color v.$dur-fast v.$ease-standard,
+    border-color v.$dur-fast v.$ease-standard,
+    color v.$dur-fast v.$ease-standard;
+  min-height: 42px;
+
+  &:hover {
+    border-color: v.$color-ink;
+    color: v.$color-ink;
+  }
+}
+
+.tabActive {
+  background: v.$color-ink;
+  border-color: v.$color-ink;
+  color: v.$color-white;
+
+  &:hover {
+    border-color: v.$color-ink;
+    color: v.$color-white;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-lg;
+
+  @include m.respond(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty {
+  color: v.$color-ink-faint;
+  font-size: v.$fs-lead;
+  padding-block: v.$space-2xl;
+  text-align: center;
+}

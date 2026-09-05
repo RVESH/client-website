@@ -1,0 +1,25 @@
+<svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="progCareerTitle">
+  <title id="progCareerTitle">Career Accelerator Program illustration with an upward path</title>
+  <rect width="560" height="420" fill="#E3F0E9"/>
+  <rect y="330" width="560" height="90" fill="#D6E7DC"/>
+
+  <!-- ascending steps -->
+  <g fill="#1B2140">
+    <rect x="80" y="330" width="70" height="30"/>
+    <rect x="160" y="290" width="70" height="70"/>
+    <rect x="240" y="240" width="70" height="120"/>
+    <rect x="320" y="180" width="70" height="180"/>
+  </g>
+
+  <!-- figure on top step, arms raised -->
+  <g>
+    <circle cx="355" cy="140" r="24" fill="#D9A876"/>
+    <path d="M355 164 L355 210" stroke="#2E9E6C" stroke-width="18" stroke-linecap="round"/>
+    <path d="M355 176 L330 148" stroke="#2E9E6C" stroke-width="10" stroke-linecap="round"/>
+    <path d="M355 176 L380 148" stroke="#2E9E6C" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <!-- rising arrow -->
+  <path d="M70 300 L150 240 L230 200 L400 100" stroke="#E8A33D" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="2 14"/>
+  <path d="M382 88 L400 100 L392 120" stroke="#E8A33D" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

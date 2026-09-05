@@ -1,0 +1,249 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.job-detail-hero {
+  padding-block: v.$sp-6;
+}
+
+.job-detail-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: v.$color-steel-light;
+  font-size: v.$fs-small;
+  font-weight: 600;
+  margin-bottom: v.$sp-5;
+
+  &:hover {
+    color: v.$color-teal-soft;
+  }
+}
+
+.job-detail-hero__top {
+  display: flex;
+  gap: v.$sp-4;
+  margin-bottom: v.$sp-4;
+}
+
+.job-detail-hero__logo {
+  width: 64px;
+  height: 64px;
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.job-detail-hero__workmode {
+  display: inline-block;
+  font-size: v.$fs-micro;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: v.$color-teal-soft;
+  background: rgba(20, 184, 166, 0.16);
+  padding: 0.2rem 0.6rem;
+  border-radius: v.$radius-pill;
+  margin-bottom: v.$sp-2;
+}
+
+.job-detail-hero__title {
+  font-size: v.$fs-h2;
+  color: v.$color-surface;
+  max-width: 30ch;
+  margin-bottom: v.$sp-2;
+}
+
+.job-detail-hero__company {
+  color: v.$color-steel-light;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: v.$fs-lead;
+
+  &:hover {
+    color: v.$color-teal-soft;
+  }
+}
+
+.job-detail-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-3;
+  margin-top: v.$sp-5;
+}
+
+.job-detail-body__grid {
+  display: grid;
+  gap: v.$sp-6;
+
+  @include m.mq(lg) {
+    grid-template-columns: 1fr 0.55fr;
+    gap: v.$sp-7;
+    align-items: start;
+  }
+}
+
+.job-detail-block {
+  margin-bottom: v.$sp-6;
+
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: v.$sp-3;
+  }
+
+  p {
+    color: v.$color-steel;
+    line-height: 1.7;
+    max-width: 68ch;
+  }
+
+  &--apply {
+    margin-bottom: 0;
+  }
+}
+
+.job-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-2;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: v.$sp-2;
+    color: v.$color-steel;
+    line-height: 1.6;
+
+    svg {
+      color: v.$color-teal;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+  }
+}
+
+.job-detail-body__side {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+
+  @include m.mq(lg) {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+.job-detail-summary,
+.job-detail-company {
+  background: v.$color-surface-dim;
+  border: v.$border-w solid v.$color-line;
+  border-radius: v.$radius-lg;
+  padding: v.$sp-4;
+}
+
+.job-detail-summary h3,
+.job-detail-company h3 {
+  font-size: 1.1rem;
+  margin-bottom: v.$sp-3;
+}
+
+.job-detail-summary dl {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-2;
+  margin-bottom: v.$sp-4;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: v.$sp-2;
+    padding-bottom: v.$sp-2;
+    border-bottom: v.$border-w solid v.$color-line;
+    font-size: v.$fs-small;
+  }
+
+  dt {
+    color: v.$color-steel;
+  }
+
+  dd {
+    margin: 0;
+    font-weight: 600;
+    color: v.$color-ink;
+    text-align: right;
+  }
+}
+
+.job-detail-summary__cta {
+  width: 100%;
+  justify-content: center;
+}
+
+.job-detail-company__logo {
+  width: 52px;
+  height: 52px;
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  margin-bottom: v.$sp-3;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.job-detail-company__industry {
+  color: v.$color-teal;
+  font-size: v.$fs-micro;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: v.$sp-2;
+}
+
+.job-detail-company p {
+  color: v.$color-steel;
+  font-size: v.$fs-small;
+  line-height: 1.6;
+  margin-bottom: v.$sp-3;
+}
+
+.job-detail-company__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: v.$color-ink;
+  font-size: v.$fs-small;
+  font-weight: 700;
+
+  svg {
+    color: v.$color-teal;
+  }
+}
+
+.job-detail-related__heading {
+  font-size: v.$fs-h2;
+  margin-bottom: v.$sp-5;
+}
+
+.job-detail-related__grid {
+  display: grid;
+  gap: v.$sp-4;
+  grid-template-columns: 1fr;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

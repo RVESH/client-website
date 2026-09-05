@@ -1,0 +1,66 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.filter-panel {
+  background: v.$color-white;
+  border: v.$border-w solid v.$color-line;
+  border-radius: v.$radius-lg;
+  padding: v.$sp-4;
+  margin-bottom: v.$sp-5;
+}
+
+.filter-panel__grid {
+  display: grid;
+  gap: v.$sp-3;
+  grid-template-columns: 1fr;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.filter-panel__field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-1;
+
+  label {
+    font-size: v.$fs-micro;
+    font-weight: 700;
+    color: v.$color-steel;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  select {
+    font-family: v.$font-body;
+    font-size: v.$fs-small;
+    padding: 0.7rem 0.85rem;
+    border: v.$border-w solid v.$color-line;
+    border-radius: v.$radius-sm;
+    background: v.$color-white;
+    color: v.$color-ink;
+    transition: border-color v.$dur-fast v.$ease-standard;
+
+    &:focus-visible {
+      outline: none;
+      border-color: v.$color-teal;
+    }
+  }
+}
+
+.filter-panel__clear {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: v.$sp-3;
+  color: v.$color-coral;
+  font-size: v.$fs-small;
+  font-weight: 700;
+}

@@ -1,0 +1,105 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  @include m.card-base;
+  overflow: hidden;
+}
+
+.imageFrame {
+  position: relative;
+  @include m.image-frame(3 / 2);
+}
+
+.levelBadge {
+  position: absolute;
+  top: v.$space-sm;
+  left: v.$space-sm;
+  background: rgba(27, 33, 64, 0.78);
+  color: v.$color-white;
+  font-size: v.$fs-tiny;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.3rem 0.7rem;
+  border-radius: v.$radius-pill;
+  backdrop-filter: blur(4px);
+}
+
+.body {
+  padding: v.$space-md v.$space-md v.$space-lg;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.category {
+  font-size: v.$fs-tiny;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: v.$color-primary-dark;
+  margin-bottom: 0.35rem;
+}
+
+.body h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.description {
+  color: v.$color-ink-soft;
+  font-size: v.$fs-small;
+  line-height: v.$lh-normal;
+  margin-bottom: v.$space-sm;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: v.$fs-tiny;
+  color: v.$color-ink-faint;
+  font-weight: 600;
+  padding-bottom: v.$space-sm;
+  margin-bottom: v.$space-sm;
+  border-bottom: 1px solid v.$color-border;
+}
+
+.dot {
+  color: v.$color-border-strong;
+}
+
+.outcomes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: v.$space-md;
+  flex: 1;
+
+  li {
+    position: relative;
+    padding-left: 1.15rem;
+    font-size: v.$fs-small;
+    color: v.$color-ink;
+    line-height: v.$lh-snug;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: v.$color-primary;
+    }
+  }
+}
+
+.cta {
+  width: 100%;
+  padding-block: 0.75rem;
+  font-size: 0.92rem;
+}

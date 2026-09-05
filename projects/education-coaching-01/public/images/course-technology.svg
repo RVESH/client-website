@@ -1,0 +1,21 @@
+<svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="catTechTitle">
+  <title id="catTechTitle">Technology course illustration with a code editor screen</title>
+  <rect width="480" height="320" fill="#E3E7F2"/>
+  <rect y="250" width="480" height="70" fill="#D5DBEC"/>
+
+  <!-- laptop / code editor -->
+  <rect x="110" y="60" width="260" height="170" rx="12" fill="#1B2140"/>
+  <rect x="126" y="76" width="228" height="138" rx="4" fill="#141833"/>
+
+  <!-- code lines -->
+  <g font-family="monospace" font-size="12" fill="#6FBF9A">
+    <text x="138" y="98">const learn = () =&gt; {</text>
+    <text x="150" y="116" fill="#E8A33D">build();</text>
+    <text x="150" y="134" fill="#F1EDE3">mentor.review();</text>
+    <text x="150" y="152" fill="#E8A33D">ship();</text>
+    <text x="138" y="170">}</text>
+  </g>
+
+  <!-- angle brackets floating -->
+  <text x="392" y="130" font-family="monospace" font-size="46" fill="#E8A33D" opacity="0.85">&lt;/&gt;</text>
+</svg>
