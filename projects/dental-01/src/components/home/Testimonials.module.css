@@ -1,0 +1,51 @@
+.section {
+  background: var(--color-surface-alt);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 780px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: var(--shadow-soft);
+}
+
+.quoteIcon {
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+.quote {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  line-height: 1.55;
+  color: var(--color-ink);
+  margin-bottom: 24px;
+}
+
+.attribution {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.detail {
+  font-size: 0.8125rem;
+  color: var(--color-ink-soft);
+}

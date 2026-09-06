@@ -1,0 +1,87 @@
+.grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.copy {
+  max-width: 460px;
+}
+
+.text {
+  color: var(--color-ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+}
+
+.listItem svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.roster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 620px) {
+  .roster {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.doctorCard {
+  text-align: center;
+}
+
+.doctorPhoto {
+  aspect-ratio: 3 / 3.4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-soft);
+}
+
+.doctorPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doctorName {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  margin-bottom: 4px;
+}
+
+.doctorRole {
+  font-size: 0.8125rem;
+  color: var(--color-ink-soft);
+  line-height: 1.4;
+}

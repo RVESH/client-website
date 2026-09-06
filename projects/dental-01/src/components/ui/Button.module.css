@@ -1,0 +1,92 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover .icon {
+  transform: translateX(2px);
+}
+
+/* Variants */
+.primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+.primary:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-border-strong);
+}
+.secondary:hover {
+  border-color: var(--color-ink);
+  background: var(--color-surface);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-primary-dark);
+  border-color: transparent;
+  padding-inline: 4px;
+}
+.ghost:hover {
+  color: var(--color-primary);
+}
+
+.onDark {
+  background: var(--color-gold);
+  color: var(--color-primary-dark);
+  border-color: var(--color-gold);
+}
+.onDark:hover {
+  background: var(--color-gold-soft);
+  border-color: var(--color-gold-soft);
+}
+
+.outlineLight {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.outlineLight:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Sizes */
+.md {
+  padding: 14px 26px;
+}
+.sm {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+}
+
+.fullWidth {
+  width: 100%;
+}

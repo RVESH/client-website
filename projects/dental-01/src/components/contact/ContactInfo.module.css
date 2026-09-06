@@ -1,0 +1,112 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.rowIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rowLabel {
+  font-size: 0.75rem;
+  color: var(--color-ink-faint);
+  margin-bottom: 3px;
+}
+
+.rowValue {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.rowValue a:hover {
+  color: var(--color-primary);
+}
+
+.hoursList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hoursItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9375rem;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hoursItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hoursDay {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+.hoursTime {
+  color: var(--color-ink-soft);
+}
+
+.mapCard {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  aspect-ratio: 16 / 11;
+}
+
+.mapCard iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.whatsappRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: #e7f2ee;
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}

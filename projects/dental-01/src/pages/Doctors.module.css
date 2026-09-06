@@ -1,0 +1,64 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+.approach {
+  background: var(--color-surface-alt);
+}
+
+.approachGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 780px) {
+  .approachGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.approachItem {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.approachIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.approachTitle {
+  font-size: 1.0625rem;
+  font-family: var(--font-display);
+}
+
+.approachText {
+  color: var(--color-ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}

@@ -1,0 +1,53 @@
+.band {
+  background: var(--color-primary-dark);
+  border-radius: var(--radius-lg);
+  padding: 64px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.band::before {
+  content: '';
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(176, 141, 87, 0.22), transparent 70%);
+  top: -140px;
+  right: -80px;
+}
+
+.copy {
+  max-width: 480px;
+  position: relative;
+}
+
+.title {
+  color: #fff;
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.4rem);
+  margin-bottom: 14px;
+}
+
+.text {
+  color: #c4d4cf;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+@media (max-width: 700px) {
+  .band {
+    padding: 44px 28px;
+  }
+}

@@ -1,0 +1,70 @@
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.photo {
+  aspect-ratio: 4 / 4.2;
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body {
+  padding: 26px 26px 28px;
+}
+
+.name {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.role {
+  color: var(--color-primary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.credentials {
+  font-size: 0.8125rem;
+  color: var(--color-ink-faint);
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bio {
+  color: var(--color-ink-soft);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.focusLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-ink-faint);
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.focusTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.focusTag {
+  font-size: 0.8125rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary-dark);
+}
