@@ -14,6 +14,7 @@ export const site = {
   phone: '+1 617 555 0142',
   phoneDisplay: '(617) 555-0142',
   email: 'hello@keystonelearning.co',
+  emailLink: 'mailto:hello@keystonelearning.co',
   whatsapp: '+1 617 555 0142',
   whatsappLink: 'https://wa.me/16175550142',
 

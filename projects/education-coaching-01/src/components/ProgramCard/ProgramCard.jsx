@@ -2,10 +2,18 @@ import Button from '../Button/Button.jsx'
 import styles from './ProgramCard.module.scss'
 
 function ProgramCard({ program }) {
+  const contactUrl = `/contact?interest=${encodeURIComponent(program.title)}`
+
   return (
     <article className={styles.card}>
       <div className={styles.imageFrame}>
-        <img src={program.image.src} alt={program.image.alt} loading="lazy" width="560" height="360" />
+        <img
+          src={program.image.src}
+          alt={program.image.alt}
+          loading="lazy"
+          width="560"
+          height="360"
+        />
       </div>
 
       <div className={styles.body}>
@@ -24,7 +32,11 @@ function ProgramCard({ program }) {
           ))}
         </ul>
 
-        <Button to="/contact" variant="accent" className={styles.cta}>
+        <Button
+          to={contactUrl}
+          variant="accent"
+          className={styles.cta}
+        >
           Enquire about this program
         </Button>
       </div>

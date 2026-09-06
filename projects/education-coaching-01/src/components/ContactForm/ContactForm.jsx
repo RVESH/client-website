@@ -12,6 +12,33 @@ const timingOptions = [
   { value: 'Flexible', label: 'Flexible / no preference' },
 ]
 
+const interestOptions = [
+  ...courses.map((course) => ({
+    type: 'course',
+    value: course.title,
+    label: course.title,
+  })),
+  ...programs.map((program) => ({
+    type: 'program',
+    value: program.title,
+    label: program.title,
+  })),
+]
+
+function getInitialInterest() {
+  const requestedInterest = new URLSearchParams(window.location.search).get(
+    'interest',
+  )
+
+  if (!requestedInterest) return ''
+
+  const isValidInterest = interestOptions.some(
+    (option) => option.value === requestedInterest,
+  )
+
+  return isValidInterest ? requestedInterest : ''
+}
+
 function buildMessageBody(form) {
   const lines = [
     `Name: ${form.name}`,
@@ -22,6 +49,7 @@ function buildMessageBody(form) {
     '',
     form.message,
   ]
+
   return lines.join('\n')
 }
 
@@ -32,19 +60,18 @@ function ContactForm() {
     name: '',
     email: '',
     phone: '',
-    interest: '',
+    interest: getInitialInterest(),
     timing: '',
     message: '',
   })
 
   const handleChange = (field) => (e) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }))
+    setForm((prev) => ({
+      ...prev,
+      [field]: e.target.value,
+    }))
   }
 
-  // Both send paths reuse the browser's native constraint validation
-  // (reportValidity) even though only the Gmail button is a true
-  // type="submit" — this keeps the same built-in validation UI for
-  // whichever channel the visitor picks, without a fake success state.
   const isValid = () => {
     if (!formRef.current) return true
     return formRef.current.reportValidity()
@@ -52,25 +79,51 @@ function ContactForm() {
 
   const sendViaGmail = (e) => {
     e.preventDefault()
+
     if (!isValid()) return
+
     const subject = `Enquiry — ${form.interest || 'General'}`
     const body = buildMessageBody(form)
-    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-      site.email,
+    const to = site.email
+
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      )
+
+    if (isMobile) {
+      const mailtoUrl = `${site.emailLink}?subject=${encodeURIComponent(
+        subject,
+      )}&body=${encodeURIComponent(body)}`
+
+      window.location.assign(mailtoUrl)
+      return
+    }
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      to,
     )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    window.open(url, '_blank', 'noopener,noreferrer')
+
+    window.location.assign(gmailUrl)
   }
 
   const sendViaWhatsApp = () => {
     if (!isValid()) return
+
     const text = `Hi Keystone, I'd like to ask about:\n\n${buildMessageBody(form)}`
     const url = `${site.whatsappLink}?text=${encodeURIComponent(text)}`
+
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   return (
-    <form ref={formRef} className={styles.form} onSubmit={sendViaGmail}>
+    <form
+      ref={formRef}
+      className={styles.form}
+      onSubmit={sendViaGmail}
+    >
       <h2>Send an enquiry</h2>
+
       <p className={styles.hint}>
         Choose how you'd like to reach us — either option opens with your
         details pre-filled. You review and send it yourself; nothing is
@@ -121,10 +174,14 @@ function ContactForm() {
 
         <div className={styles.field}>
           <label htmlFor="timing">Preferred timing</label>
-          <select id="timing" value={form.timing} onChange={handleChange('timing')}>
-            {timingOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
+          <select
+            id="timing"
+            value={form.timing}
+            onChange={handleChange('timing')}
+          >
+            {timingOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
               </option>
             ))}
           </select>
@@ -132,20 +189,29 @@ function ContactForm() {
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="interest">Course or program you're interested in</label>
-        <select id="interest" value={form.interest} onChange={handleChange('interest')}>
+        <label htmlFor="interest">
+          Course or program you're interested in
+        </label>
+
+        <select
+          id="interest"
+          value={form.interest}
+          onChange={handleChange('interest')}
+        >
           <option value="">Not sure yet / general enquiry</option>
+
           <optgroup label="Courses">
-            {courses.map((c) => (
-              <option key={c.id} value={c.title}>
-                {c.title}
+            {courses.map((course) => (
+              <option key={course.id} value={course.title}>
+                {course.title}
               </option>
             ))}
           </optgroup>
+
           <optgroup label="Programs">
-            {programs.map((p) => (
-              <option key={p.id} value={p.title}>
-                {p.title}
+            {programs.map((program) => (
+              <option key={program.id} value={program.title}>
+                {program.title}
               </option>
             ))}
           </optgroup>
@@ -154,6 +220,7 @@ function ContactForm() {
 
       <div className={styles.field}>
         <label htmlFor="message">Message</label>
+
         <textarea
           id="message"
           rows="5"
@@ -165,10 +232,18 @@ function ContactForm() {
       </div>
 
       <div className={styles.actions}>
-        <button type="submit" className={styles.gmailButton}>
-          Send via Gmail
+        <button
+          type="submit"
+          className={styles.gmailButton}
+        >
+          Send via Email
         </button>
-        <button type="button" className={styles.whatsappButton} onClick={sendViaWhatsApp}>
+
+        <button
+          type="button"
+          className={styles.whatsappButton}
+          onClick={sendViaWhatsApp}
+        >
           Send via WhatsApp
         </button>
       </div>

@@ -10,7 +10,7 @@
 
 .imageFrame {
   position: relative;
-  @include m.image-frame(3 / 2);
+  @include m.image-frame(1.5);
 }
 
 .levelBadge {

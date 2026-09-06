@@ -18,7 +18,7 @@ const quickContacts = [
     id: 'email',
     label: 'Email',
     value: site.email,
-    href: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(site.email)}`,
+    href: site.emailLink,
   },
 ]
 
@@ -47,8 +47,8 @@ function Contact() {
                 key={c.id}
                 href={c.href}
                 className={styles.quickCard}
-                target={c.id === 'call' ? undefined : '_blank'}
-                rel={c.id === 'call' ? undefined : 'noopener noreferrer'}
+                target={c.id === 'call' || c.id === 'email' ? undefined : '_blank'}
+                rel={c.id === 'call' || c.id === 'email' ? undefined : 'noopener noreferrer'}
               >
                 <span className={styles.quickLabel}>{c.label}</span>
                 <span className={styles.quickValue}>{c.value}</span>

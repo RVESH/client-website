@@ -9,7 +9,7 @@
 }
 
 .imageFrame {
-  @include m.image-frame(1 / 1);
+  @include m.image-frame(1);
 }
 
 .body {
