@@ -1,0 +1,46 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.why-choose__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-6;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.why-choose__item {
+  padding: v.$space-6;
+  border-radius: v.$radius-lg;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+
+  h3 {
+    font-size: v.$fs-sm;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text;
+    margin-bottom: v.$space-2;
+  }
+
+  p {
+    font-size: v.$fs-xs;
+    color: v.$color-text-dim;
+    line-height: v.$line-normal;
+  }
+}
+
+.why-choose__icon {
+  @include m.flex-center;
+  width: 42px;
+  height: 42px;
+  border-radius: v.$radius-md;
+  background: v.$color-teal-pale;
+  color: v.$color-teal;
+  margin-bottom: v.$space-4;
+}

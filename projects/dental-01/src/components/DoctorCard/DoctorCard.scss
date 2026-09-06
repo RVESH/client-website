@@ -1,0 +1,151 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.doctor-card {
+  @include m.card-surface;
+  @include m.transition(border-color, transform, box-shadow);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover,
+  &:focus-within {
+    border-color: v.$color-teal-soft;
+    box-shadow: v.$shadow-md;
+    transform: translateY(-3px);
+  }
+}
+
+.doctor-card__photo {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: v.$color-teal-pale;
+}
+
+.doctor-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doctor-card__body {
+  padding: v.$space-6;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0; // allow long words/text to wrap instead of overflowing
+}
+
+.doctor-card__name {
+  font-size: v.$fs-lg;
+  font-weight: v.$fw-semibold;
+  color: v.$color-text;
+  margin-bottom: v.$space-1;
+  overflow-wrap: anywhere;
+}
+
+.doctor-card__title {
+  font-size: v.$fs-xs;
+  font-weight: v.$fw-medium;
+  color: v.$color-teal;
+  margin-bottom: 2px;
+  overflow-wrap: anywhere;
+}
+
+.doctor-card__specialty {
+  font-size: v.$fs-2xs;
+  color: v.$color-text-mute;
+  margin-bottom: v.$space-4;
+  overflow-wrap: anywhere;
+}
+
+.doctor-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-4;
+  padding-bottom: v.$space-5;
+  margin-bottom: v.$space-5;
+  border-bottom: 1px solid v.$color-border-soft;
+}
+
+.doctor-card__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: v.$fs-2xs;
+  color: v.$color-text-dim;
+
+  svg {
+    color: v.$color-gold;
+    flex-shrink: 0;
+  }
+}
+
+.doctor-card__bio {
+  font-size: v.$fs-xs;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+  margin-bottom: v.$space-5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.doctor-card__education {
+  margin-top: auto;
+}
+
+.doctor-card__education-label {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-2;
+  font-size: v.$fs-2xs;
+  font-weight: v.$fw-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: v.$color-text-mute;
+  margin-bottom: v.$space-3;
+
+  svg {
+    color: v.$color-teal;
+  }
+}
+
+.doctor-card__education ul {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+}
+
+.doctor-card__education li {
+  font-size: v.$fs-2xs;
+  color: v.$color-text-dim;
+  line-height: v.$line-snug;
+  overflow-wrap: anywhere;
+  padding-left: v.$space-4;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: v.$color-gold;
+  }
+}
+
+// ---- Compact variant used on Home doctor intro ----
+.doctor-card--compact {
+  .doctor-card__body {
+    padding: v.$space-5;
+  }
+
+  .doctor-card__meta {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}

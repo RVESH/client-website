@@ -1,0 +1,101 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.treatment-card {
+  @include m.card-surface;
+  @include m.transition(border-color, transform, box-shadow);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover,
+  &:focus-within {
+    border-color: v.$color-teal-soft;
+    box-shadow: v.$shadow-md;
+    transform: translateY(-3px);
+  }
+}
+
+.treatment-card__cover {
+  aspect-ratio: 420 / 180;
+  overflow: hidden;
+}
+
+.treatment-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.treatment-card__body {
+  padding: v.$space-6;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.treatment-card__icon {
+  @include m.flex-center;
+  width: 42px;
+  height: 42px;
+  border-radius: v.$radius-md;
+  background: v.$color-teal-pale;
+  color: v.$color-teal;
+  margin-bottom: v.$space-4;
+  flex-shrink: 0;
+}
+
+.treatment-card__title {
+  font-size: v.$fs-md;
+  font-weight: v.$fw-semibold;
+  color: v.$color-text;
+  margin-bottom: v.$space-2;
+  overflow-wrap: anywhere;
+}
+
+.treatment-card__summary {
+  font-size: v.$fs-xs;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+  margin-bottom: v.$space-5;
+}
+
+.treatment-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+  margin-bottom: v.$space-6;
+  flex-grow: 1;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: v.$space-2;
+    font-size: v.$fs-xs;
+    color: v.$color-text-dim;
+    line-height: v.$line-snug;
+  }
+
+  svg {
+    color: v.$color-teal;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+}
+
+.treatment-card__cta {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+// ---- Compact variant used on Home ----
+.treatment-card--compact {
+  .treatment-card__body {
+    padding: v.$space-5;
+  }
+
+  .treatment-card__summary {
+    margin-bottom: v.$space-5;
+  }
+}

@@ -1,0 +1,83 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.btn {
+  @include m.reset-button;
+  @include m.transition(transform, background, border-color, box-shadow, color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-2;
+  border-radius: v.$radius-pill;
+  font-weight: v.$fw-semibold;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  line-height: 1;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &__icon {
+    flex-shrink: 0;
+  }
+}
+
+// ---- sizes ----
+.btn--sm {
+  padding: v.$space-2 v.$space-4;
+  font-size: v.$fs-2xs;
+}
+
+.btn--md {
+  padding: 12px v.$space-6;
+  font-size: v.$fs-xs;
+}
+
+.btn--lg {
+  padding: 15px v.$space-7;
+  font-size: v.$fs-sm;
+}
+
+// ---- variants ----
+.btn--primary {
+  background: v.$color-teal;
+  color: #fff;
+  box-shadow: v.$shadow-sm;
+
+  &:hover {
+    background: #184b43;
+    box-shadow: v.$shadow-md;
+  }
+}
+
+.btn--secondary {
+  background: v.$color-surface;
+  color: v.$color-text;
+  border-color: v.$color-border;
+
+  &:hover {
+    border-color: v.$color-teal-soft;
+    background: v.$color-surface-alt;
+  }
+}
+
+.btn--outline {
+  background: transparent;
+  color: v.$color-teal;
+  border-color: v.$color-teal;
+
+  &:hover {
+    background: rgba(31, 92, 82, 0.06);
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: v.$color-text-dim;
+
+  &:hover {
+    color: v.$color-text;
+    background: rgba(35, 40, 43, 0.04);
+  }
+}

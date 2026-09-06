@@ -1,0 +1,34 @@
+<svg viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="techBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3EEE4"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient></defs>
+      <rect width="560" height="400" rx="22" fill="url(#techBg)"/>
+      <rect x="1" y="1" width="558" height="398" rx="21" fill="none" stroke="#E6DFD0"/>
+      <!-- scanner / screen -->
+      <rect x="70" y="70" width="260" height="170" rx="14" fill="#FFFFFF" stroke="#E6DFD0"/>
+      <rect x="90" y="92" width="220" height="120" rx="8" fill="#CFE1DC" opacity="0.55"/>
+      <path d="M177.0 110.6
+      C 174.7 101.4 193.1 99.1 200 103.69999999999999
+      C 206.9 99.1 225.3 101.4 223.0 110.6
+      C 225.3 138.2 216.1 179.6 207.36 198.0
+      C 204.6 204.9 195.4 204.9 192.64 198.0
+      C 183.9 179.6 174.7 138.2 177.0 110.6 Z"
+      fill="#1F5C52" opacity="0.85"/>
+      <rect x="150" y="250" width="100" height="10" rx="5" fill="#E6DFD0"/>
+      <!-- floating data chips -->
+      <rect x="360" y="90" width="130" height="46" rx="12" fill="#FFFFFF" stroke="#E6DFD0"/>
+      <circle cx="384" cy="113" r="7" fill="#B8935A"/>
+      <rect x="400" y="106" width="70" height="7" rx="3.5" fill="#E6DFD0"/>
+      <rect x="400" y="118" width="50" height="6" rx="3" fill="#E6DFD0"/>
+
+      <rect x="360" y="150" width="130" height="46" rx="12" fill="#FFFFFF" stroke="#E6DFD0"/>
+      <circle cx="384" cy="173" r="7" fill="#1F5C52"/>
+      <rect x="400" y="166" width="70" height="7" rx="3.5" fill="#E6DFD0"/>
+      <rect x="400" y="178" width="50" height="6" rx="3" fill="#E6DFD0"/>
+
+      <rect x="360" y="210" width="130" height="46" rx="12" fill="#FFFFFF" stroke="#E6DFD0"/>
+      <circle cx="384" cy="233" r="7" fill="#C97B4A"/>
+      <rect x="400" y="226" width="70" height="7" rx="3.5" fill="#E6DFD0"/>
+      <rect x="400" y="238" width="50" height="6" rx="3" fill="#E6DFD0"/>
+    </svg>

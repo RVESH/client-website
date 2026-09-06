@@ -1,0 +1,28 @@
+<svg viewBox="0 0 600 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="aboutBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F3EEE4"/>
+    </linearGradient>
+        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B8935A"/>
+      <stop offset="100%" stop-color="#1F5C52"/>
+    </linearGradient>
+      </defs>
+      <rect width="600" height="460" rx="24" fill="url(#aboutBg)"/>
+      <rect x="1" y="1" width="598" height="458" rx="23" fill="none" stroke="#E6DFD0"/>
+      <circle cx="300" cy="230" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="1.4" opacity="0.55"/>
+      <circle cx="300" cy="230" r="88" fill="none" stroke="#E6DFD0" stroke-width="1"/>
+      <path d="M265.0 167.0
+      C 261.5 153.0 289.5 149.5 300 156.5
+      C 310.5 149.5 338.5 153.0 335.0 167.0
+      C 338.5 209.0 324.5 272.0 311.2 300.0
+      C 307.0 310.5 293.0 310.5 288.8 300.0
+      C 275.5 272.0 261.5 209.0 265.0 167.0 Z"
+      fill="#1F5C52" opacity="0.9"/>
+      <circle cx="300" cy="100" r="6" fill="#B8935A"/>
+      <circle cx="430" cy="230" r="6" fill="#1F5C52"/>
+      <circle cx="300" cy="360" r="6" fill="#B8935A"/>
+      <circle cx="170" cy="230" r="6" fill="#1F5C52"/>
+      <text x="300" y="236" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#fff">since 2011</text>
+    </svg>

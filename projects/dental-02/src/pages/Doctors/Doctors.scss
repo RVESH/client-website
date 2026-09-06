@@ -1,0 +1,47 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.doctors-hero {
+  padding-block: v.$space-9 v.$space-6;
+
+  @include m.from(v.$bp-md) {
+    padding-block: v.$space-10 v.$space-7;
+  }
+}
+
+.doctors-hero__inner {
+  max-width: 660px;
+}
+
+.doctors-hero__title {
+  font-size: v.$fs-2xl;
+  line-height: v.$line-tight;
+  font-weight: v.$fw-semibold;
+  letter-spacing: -0.01em;
+  color: v.$color-text;
+  margin-block: v.$space-3 v.$space-4;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-3xl;
+  }
+}
+
+.doctors-hero__desc {
+  font-size: v.$fs-sm;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+}
+
+.doctors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-7;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

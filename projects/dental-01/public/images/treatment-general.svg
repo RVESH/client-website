@@ -1,0 +1,14 @@
+<svg viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="tg21" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F5C52"/>
+      <stop offset="100%" stop-color="#3F7C70"/>
+    </linearGradient></defs>
+      <rect width="420" height="180" fill="url(#tg21)"/>
+      <path d="M180.0 36.0
+      C 177.0 24.0 201.0 21.0 210 27.0
+      C 219.0 21.0 243.0 24.0 240.0 36.0
+      C 243.0 72.0 231.0 126.0 219.6 150.0
+      C 216.0 159.0 204.0 159.0 200.4 150.0
+      C 189.0 126.0 177.0 72.0 180.0 36.0 Z"
+      fill="#FFFFFF" opacity="0.9"/>
+    </svg>

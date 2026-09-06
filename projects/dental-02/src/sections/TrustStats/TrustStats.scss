@@ -1,0 +1,38 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.trust-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: v.$space-6;
+  padding: v.$space-7 v.$space-6;
+  border-radius: v.$radius-lg;
+  border: 1px solid v.$color-border;
+  background: v.$color-surface;
+
+  @include m.from(v.$bp-md) {
+    grid-template-columns: repeat(4, 1fr);
+    padding: v.$space-8;
+  }
+}
+
+.trust-stats__item {
+  text-align: center;
+}
+
+.trust-stats__value {
+  font-family: v.$font-display;
+  font-size: v.$fs-xl;
+  font-weight: v.$fw-semibold;
+  color: v.$color-teal;
+  margin-bottom: v.$space-2;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-2xl;
+  }
+}
+
+.trust-stats__label {
+  font-size: v.$fs-2xs;
+  color: v.$color-text-mute;
+}

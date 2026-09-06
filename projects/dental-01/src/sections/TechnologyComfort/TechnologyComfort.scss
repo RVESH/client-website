@@ -1,0 +1,41 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.technology-comfort__inner {
+  display: grid;
+  gap: v.$space-8;
+  align-items: center;
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: 0.95fr 1fr;
+    gap: v.$space-10;
+  }
+}
+
+.technology-comfort__visual {
+  border-radius: v.$radius-xl;
+  overflow: hidden;
+  border: 1px solid v.$color-border;
+}
+
+.technology-comfort__points {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+  margin-top: v.$space-6;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: v.$space-3;
+    font-size: v.$fs-sm;
+    color: v.$color-text-dim;
+    line-height: v.$line-snug;
+  }
+
+  svg {
+    color: v.$color-teal;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+}

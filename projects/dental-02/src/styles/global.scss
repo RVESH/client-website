@@ -1,0 +1,168 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: v.$color-bg;
+  color: v.$color-text;
+  font-family: v.$font-body;
+  font-size: v.$fs-base;
+  line-height: v.$line-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: v.$font-display;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  @include m.focus-ring;
+}
+
+a {
+  @include m.focus-ring;
+}
+
+::selection {
+  background: rgba(184, 147, 90, 0.28);
+  color: v.$color-text;
+}
+
+.container {
+  @include m.container;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page {
+  padding-top: 76px; // offset for fixed header
+
+  @include m.from(v.$bp-md) {
+    padding-top: 88px;
+  }
+}
+
+.section {
+  padding-block: v.$space-9;
+
+  @include m.from(v.$bp-md) {
+    padding-block: v.$space-11;
+  }
+}
+
+.section--tight {
+  padding-block: v.$space-8;
+
+  @include m.from(v.$bp-md) {
+    padding-block: v.$space-9;
+  }
+}
+
+.section--alt {
+  background: v.$color-surface-alt;
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: v.$space-7;
+
+  @include m.from(v.$bp-md) {
+    margin-bottom: v.$space-8;
+  }
+}
+
+.section-head__eyebrow {
+  @include m.section-eyebrow;
+  margin-bottom: v.$space-3;
+}
+
+.section-head__title {
+  @include m.section-heading;
+  margin-bottom: v.$space-3;
+}
+
+.section-head__desc {
+  color: v.$color-text-dim;
+  font-size: v.$fs-sm;
+  line-height: v.$line-normal;
+}
+
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+
+  .section-head__eyebrow {
+    justify-content: center;
+  }
+}
+
+.section-head--between {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: v.$space-5;
+  max-width: none;
+  flex-wrap: wrap;
+}

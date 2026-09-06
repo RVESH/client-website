@@ -1,0 +1,106 @@
+// ============================================================
+// Meridian Dental Studio — Design tokens
+// Calm, warm, sophisticated private-clinic palette.
+// ============================================================
+
+// ---- Color: base ----
+$color-bg: #faf7f2;
+$color-bg-alt: #f3eee4;
+$color-surface: #ffffff;
+$color-surface-alt: #f6f1e8;
+$color-border: #e6dfd0;
+$color-border-soft: #ede7da;
+
+// ---- Color: text ----
+$color-text: #23282b;
+$color-text-dim: #5b6360;
+$color-text-mute: #8b9390;
+$color-text-inverse: #faf7f2;
+
+// ---- Color: accent ----
+$color-teal: #1f5c52;
+$color-teal-soft: #3f7c70;
+$color-teal-pale: #cfe1dc;
+$color-gold: #b8935a;
+$color-gold-soft: #d4b383;
+$color-terracotta: #c97b4a;
+$color-success: #3f7c70;
+$color-danger: #b4463f;
+
+$gradient-accent: linear-gradient(135deg, $color-teal 0%, $color-teal-soft 100%);
+$gradient-warm: linear-gradient(135deg, $color-gold 0%, $color-terracotta 100%);
+$gradient-surface: linear-gradient(180deg, $color-surface 0%, $color-surface-alt 100%);
+$gradient-bg-glow: radial-gradient(55% 50% at 50% 0%, rgba(31, 92, 82, 0.08) 0%, rgba(250, 247, 242, 0) 70%);
+
+// ---- Typography ----
+$font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+$font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+$fs-2xs: 0.75rem;
+$fs-xs: 0.8125rem;
+$fs-sm: 0.9375rem;
+$fs-base: 1rem;
+$fs-md: 1.125rem;
+$fs-lg: 1.375rem;
+$fs-xl: 1.75rem;
+$fs-2xl: 2.25rem;
+$fs-3xl: 2.75rem;
+$fs-4xl: 3.25rem;
+
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+$line-tight: 1.15;
+$line-snug: 1.4;
+$line-normal: 1.65;
+
+// ---- Spacing scale ----
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-7: 32px;
+$space-8: 40px;
+$space-9: 48px;
+$space-10: 64px;
+$space-11: 80px;
+$space-12: 96px;
+
+// ---- Layout ----
+$container-max: 1240px;
+$container-pad: 20px;
+
+// ---- Radius ----
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 18px;
+$radius-xl: 24px;
+$radius-pill: 999px;
+
+// ---- Shadow ----
+$shadow-sm: 0 1px 3px rgba(35, 40, 43, 0.06);
+$shadow-md: 0 10px 28px rgba(35, 40, 43, 0.08);
+$shadow-lg: 0 24px 56px rgba(35, 40, 43, 0.12);
+
+// ---- Motion ----
+$ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+$dur-fast: 160ms;
+$dur-base: 260ms;
+$dur-slow: 380ms;
+
+// ---- Breakpoints ----
+$bp-xs: 360px;
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1440px;
+
+// ---- Z-index ----
+$z-header: 100;
+$z-drawer: 500;
+$z-backdrop: 490;

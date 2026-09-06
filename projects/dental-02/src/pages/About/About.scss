@@ -1,0 +1,165 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+// ---- Story ----
+.about-story {
+  padding-block: v.$space-9 v.$space-8;
+
+  @include m.from(v.$bp-md) {
+    padding-block: v.$space-10 v.$space-9;
+  }
+}
+
+.about-story__inner {
+  display: grid;
+  gap: v.$space-7;
+  align-items: center;
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: 1fr 0.9fr;
+    gap: v.$space-9;
+  }
+}
+
+.about-story__title {
+  font-size: v.$fs-2xl;
+  line-height: v.$line-tight;
+  font-weight: v.$fw-semibold;
+  letter-spacing: -0.01em;
+  color: v.$color-text;
+  margin-block: v.$space-3 v.$space-5;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-3xl;
+  }
+}
+
+.about-story__desc {
+  font-size: v.$fs-sm;
+  color: v.$color-text-dim;
+  line-height: v.$line-normal;
+  max-width: 480px;
+  margin-bottom: v.$space-4;
+}
+
+.about-story__visual {
+  border-radius: v.$radius-xl;
+  overflow: hidden;
+  border: 1px solid v.$color-border;
+}
+
+// ---- Philosophy quote ----
+.about-philosophy__card {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+  padding: v.$space-8 v.$space-6;
+  border-radius: v.$radius-lg;
+  border: 1px solid v.$color-border;
+  background: v.$color-surface;
+
+  @include m.from(v.$bp-md) {
+    padding: v.$space-9 v.$space-8;
+  }
+}
+
+.about-philosophy__text {
+  font-family: v.$font-display;
+  font-size: v.$fs-lg;
+  line-height: v.$line-snug;
+  color: v.$color-text;
+  font-style: italic;
+  margin-bottom: v.$space-5;
+  overflow-wrap: anywhere;
+
+  @include m.from(v.$bp-md) {
+    font-size: v.$fs-xl;
+  }
+}
+
+.about-philosophy__attribution {
+  font-size: v.$fs-xs;
+  color: v.$color-text-mute;
+}
+
+// ---- Pillars ----
+.about-pillars__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-6;
+
+  @include m.from(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.about-pillars__item {
+  padding: v.$space-6;
+  border-radius: v.$radius-lg;
+  border: 1px solid v.$color-border;
+  background: v.$color-surface;
+
+  h3 {
+    font-size: v.$fs-sm;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text;
+    margin-bottom: v.$space-2;
+  }
+
+  p {
+    font-size: v.$fs-xs;
+    color: v.$color-text-dim;
+    line-height: v.$line-normal;
+  }
+}
+
+.about-pillars__icon {
+  @include m.flex-center;
+  width: 42px;
+  height: 42px;
+  border-radius: v.$radius-md;
+  background: v.$color-teal-pale;
+  color: v.$color-teal;
+  margin-bottom: v.$space-4;
+}
+
+// ---- Clinical standards ----
+.about-standards__inner {
+  display: grid;
+  gap: v.$space-7;
+
+  @include m.from(v.$bp-lg) {
+    grid-template-columns: 0.8fr 1fr;
+    gap: v.$space-9;
+    align-items: start;
+  }
+}
+
+.about-standards__list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+
+  li {
+    position: relative;
+    padding-left: v.$space-6;
+    font-size: v.$fs-sm;
+    color: v.$color-text-dim;
+    line-height: v.$line-normal;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: v.$color-gold;
+    }
+  }
+}
