@@ -1,5 +1,5 @@
 import Icon from '../ui/Icon.jsx'
-import styles from './TreatmentCard.module.css'
+import styles from './TreatmentCard.module.scss'
 
 export default function TreatmentCard({ treatment }) {
   return (

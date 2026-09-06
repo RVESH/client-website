@@ -1,7 +1,7 @@
 import Container from '../ui/Container.jsx'
 import Button from '../ui/Button.jsx'
 import { clinicInfo } from '../../data/clinicInfo.js'
-import styles from './CTABand.module.css'
+import styles from './CTABand.module.scss'
 
 export default function CTABand({
   title = 'Ready to see what a calmer dental visit feels like?',

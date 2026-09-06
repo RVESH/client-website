@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Button from '../ui/Button.jsx'
 import Icon from '../ui/Icon.jsx'
 import { treatments } from '../../data/treatments.js'
-import styles from './ContactForm.module.css'
+import styles from './ContactForm.module.scss'
 
 const initialValues = {
   name: '',

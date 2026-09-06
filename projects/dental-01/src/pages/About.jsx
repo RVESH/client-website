@@ -4,7 +4,7 @@ import SectionHeading from '../components/ui/SectionHeading.jsx'
 import Icon from '../components/ui/Icon.jsx'
 import CTABand from '../components/home/CTABand.jsx'
 import { clinicInfo } from '../data/clinicInfo.js'
-import styles from './About.module.css'
+import styles from './About.module.scss'
 
 const STORY_IMAGE =
   'https://images.unsplash.com/photo-1704455306251-b4634215d98f?auto=format&fit=crop&w=1200&q=80'

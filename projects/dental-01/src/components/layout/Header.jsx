@@ -4,7 +4,7 @@ import { navLinks } from '../../data/nav.js'
 import { clinicInfo } from '../../data/clinicInfo.js'
 import Button from '../ui/Button.jsx'
 import Icon from '../ui/Icon.jsx'
-import styles from './Header.module.css'
+import styles from './Header.module.scss'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)

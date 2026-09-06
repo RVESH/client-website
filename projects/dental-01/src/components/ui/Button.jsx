@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
-import styles from './Button.module.css'
+import styles from './Button.module.scss'
 
 export default function Button({
   children,

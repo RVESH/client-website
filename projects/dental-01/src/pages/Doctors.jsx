@@ -5,7 +5,7 @@ import Icon from '../components/ui/Icon.jsx'
 import DoctorCard from '../components/doctors/DoctorCard.jsx'
 import CTABand from '../components/home/CTABand.jsx'
 import { doctors } from '../data/doctors.js'
-import styles from './Doctors.module.css'
+import styles from './Doctors.module.scss'
 
 const approach = [
   {

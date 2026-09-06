@@ -2,7 +2,7 @@ import Container from '../ui/Container.jsx'
 import SectionHeading from '../ui/SectionHeading.jsx'
 import Icon from '../ui/Icon.jsx'
 import { testimonials } from '../../data/testimonials.js'
-import styles from './Testimonials.module.css'
+import styles from './Testimonials.module.scss'
 
 export default function Testimonials() {
   return (

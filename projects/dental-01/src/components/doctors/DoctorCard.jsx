@@ -1,4 +1,4 @@
-import styles from './DoctorCard.module.css'
+import styles from './DoctorCard.module.scss'
 
 export default function DoctorCard({ doctor }) {
   return (

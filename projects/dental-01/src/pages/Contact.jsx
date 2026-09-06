@@ -5,7 +5,7 @@ import Button from '../components/ui/Button.jsx'
 import ContactForm from '../components/contact/ContactForm.jsx'
 import ContactInfo from '../components/contact/ContactInfo.jsx'
 import { clinicInfo } from '../data/clinicInfo.js'
-import styles from './Contact.module.css'
+import styles from './Contact.module.scss'
 
 export default function Contact() {
   return (

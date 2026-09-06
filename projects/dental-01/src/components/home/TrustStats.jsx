@@ -1,6 +1,6 @@
 import Container from '../ui/Container.jsx'
 import { stats } from '../../data/stats.js'
-import styles from './TrustStats.module.css'
+import styles from './TrustStats.module.scss'
 
 export default function TrustStats() {
   return (

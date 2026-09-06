@@ -3,7 +3,7 @@ import { navLinks } from '../../data/nav.js'
 import { clinicInfo } from '../../data/clinicInfo.js'
 import { treatments } from '../../data/treatments.js'
 import Icon from '../ui/Icon.jsx'
-import styles from './Footer.module.css'
+import styles from './Footer.module.scss'
 
 const featuredTreatments = treatments.slice(0, 5)
 

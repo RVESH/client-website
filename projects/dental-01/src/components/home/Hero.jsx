@@ -2,7 +2,7 @@ import Container from '../ui/Container.jsx'
 import Button from '../ui/Button.jsx'
 import Icon from '../ui/Icon.jsx'
 import { doctors } from '../../data/doctors.js'
-import styles from './Hero.module.css'
+import styles from './Hero.module.scss'
 
 const HERO_IMAGE =
   'https://images.unsplash.com/photo-1704455306251-b4634215d98f?auto=format&fit=crop&w=1400&q=80'

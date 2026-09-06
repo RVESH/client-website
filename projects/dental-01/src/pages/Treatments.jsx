@@ -4,7 +4,7 @@ import Icon from '../components/ui/Icon.jsx'
 import TreatmentCard from '../components/treatments/TreatmentCard.jsx'
 import CTABand from '../components/home/CTABand.jsx'
 import { treatments } from '../data/treatments.js'
-import styles from './Treatments.module.css'
+import styles from './Treatments.module.scss'
 
 export default function Treatments() {
   return (

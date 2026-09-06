@@ -1,6 +1,6 @@
 import Icon from '../ui/Icon.jsx'
 import { clinicInfo } from '../../data/clinicInfo.js'
-import styles from './ContactInfo.module.css'
+import styles from './ContactInfo.module.scss'
 
 export default function ContactInfo() {
   const telHref = `tel:${clinicInfo.phone.replace(/[^+\d]/g, '')}`

@@ -1,4 +1,4 @@
-import styles from './SectionHeading.module.css'
+import styles from './SectionHeading.module.scss'
 
 export default function SectionHeading({ eyebrow, title, description, center = false, className = '' }) {
   return (

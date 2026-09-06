@@ -4,7 +4,7 @@ import SectionHeading from '../ui/SectionHeading.jsx'
 import Button from '../ui/Button.jsx'
 import Icon from '../ui/Icon.jsx'
 import { treatments } from '../../data/treatments.js'
-import styles from './TreatmentHighlights.module.css'
+import styles from './TreatmentHighlights.module.scss'
 
 const featured = treatments.slice(0, 6)
 

@@ -3,7 +3,7 @@ import SectionHeading from '../ui/SectionHeading.jsx'
 import Button from '../ui/Button.jsx'
 import Icon from '../ui/Icon.jsx'
 import { doctors } from '../../data/doctors.js'
-import styles from './DoctorIntro.module.css'
+import styles from './DoctorIntro.module.scss'
 
 const points = [
   'Every dentist trains and practices within a single specialty, not a broad general caseload',

@@ -2,7 +2,7 @@ import Container from '../ui/Container.jsx'
 import SectionHeading from '../ui/SectionHeading.jsx'
 import Icon from '../ui/Icon.jsx'
 import { comfortFeatures } from '../../data/stats.js'
-import styles from './ComfortTech.module.css'
+import styles from './ComfortTech.module.scss'
 
 const TECH_IMAGE =
   'https://images.unsplash.com/photo-1522849696084-818b29dfe210?auto=format&fit=crop&w=1200&q=80'

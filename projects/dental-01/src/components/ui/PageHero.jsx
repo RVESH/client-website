@@ -1,5 +1,5 @@
 import Container from './Container.jsx'
-import styles from './PageHero.module.css'
+import styles from './PageHero.module.scss'
 
 export default function PageHero({ eyebrow, title, description }) {
   return (
