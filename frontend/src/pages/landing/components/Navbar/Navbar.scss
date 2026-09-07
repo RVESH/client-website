@@ -1,190 +1,400 @@
-// ─── Tokens ────────────────────────────────────────────────────
-$nav-height       : 68px;
-$nav-bg           : rgba(8, 8, 12, 0);
-$nav-bg-scrolled  : rgba(8, 8, 12, 0.88);
-$nav-border       : rgba(255, 255, 255, 0.07);
-$accent           : #7c5cfc;
-$accent-glow      : rgba(124, 92, 252, 0.35);
-$text             : #f0f0f5;
-$text-muted       : rgba(240, 240, 245, 0.5);
-$drawer-bg        : #0d0d14;
-$transition       : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-$z-nav            : 100;
-$z-drawer         : 101;   // ← higher than navbar
-$z-overlay        : 99;    // ← below drawer, covers page content
+/* ================================================================
+   NAVBAR TOKENS
+   ================================================================ */
 
-// ─── Navbar shell ────────────────────────────────────────────────
+$nav-height: 68px;
+
+$nav-bg: rgba(7, 7, 11, 0);
+$nav-bg-scrolled: rgba(8, 8, 13, 0.86);
+
+$nav-border: rgba(255, 255, 255, 0.075);
+
+$accent: #7c5cfc;
+$accent-bright: #9a7dff;
+$accent-glow: rgba(124, 92, 252, 0.35);
+
+$text: #f4f2fa;
+$text-muted: rgba(240, 238, 248, 0.55);
+
+$drawer-bg: #0c0b12;
+
+$transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+$z-overlay: 99;
+$z-nav: 100;
+$z-drawer: 101;
+
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+
 .navbar {
-  position        : fixed;
-  inset-block-start: 0;
-  inset-inline    : 0;
-  z-index         : $z-nav;
-  height          : $nav-height;
-  background      : $nav-bg;
-  border-bottom   : 1px solid transparent;
-  backdrop-filter : blur(0px);
-  transition      : background $transition,
-                    border-color $transition,
-                    backdrop-filter $transition;
+  position: fixed;
+  inset: 0 0 auto 0;
+
+  z-index: $z-nav;
+
+  height: $nav-height;
+
+  background: $nav-bg;
+
+  border-bottom: 1px solid transparent;
+
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+
+  transition:
+    background $transition,
+    border-color $transition,
+    backdrop-filter $transition,
+    box-shadow $transition;
 
   &--scrolled {
-    background      : $nav-bg-scrolled;
-    border-color    : $nav-border;
-    backdrop-filter : blur(18px) saturate(160%);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(9, 8, 14, 0.92),
+        rgba(8, 8, 13, 0.82)
+      );
+
+    border-color: $nav-border;
+
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.08);
   }
 }
 
-// ─── Inner layout ────────────────────────────────────────────────
+
+/* ================================================================
+   INNER
+   ================================================================ */
+
 .navbar__inner {
-  max-width       : 1200px;
-  margin          : 0 auto;
-  height          : 100%;
-  padding         : 0 24px;
-  display         : flex;
-  align-items     : center;
-  justify-content : space-between;
-  gap             : 24px;
+  width: min(100%, 1240px);
+
+  height: 100%;
+
+  margin: 0 auto;
+
+  padding:
+    0
+    22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
 }
 
-// ─── Logo ────────────────────────────────────────────────────────
+
+/* ================================================================
+   LOGO
+   ================================================================ */
+
 .navbar__logo {
-  display     : flex;
-  align-items : center;
-  background  : none;
-  border      : none;
-  padding     : 0;
-  cursor      : pointer;
-  flex-shrink : 0;
-  margin-right: 24px;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 188px;
+  height: 100%;
+
+  padding: 0;
+
+  flex-shrink: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  cursor: pointer;
 
   img {
-    width      : 200px;
-    height     : 152px;
-    display    : block;
-    transition : opacity $transition, transform $transition;
+    display: block;
+
+    width: 180px;
+    height: auto;
+    max-height: 58px;
+
+    object-fit: contain;
+    object-position: left center;
+
+    transition:
+      opacity $transition,
+      transform $transition,
+      filter $transition;
   }
 
-  &:hover img {
-    opacity   : 0.85;
-    transform : scale(1.04);
+  &:hover {
+    img {
+      opacity: 0.94;
+      transform: translateY(-1px) scale(1.015);
+
+      filter:
+        drop-shadow(
+          0 0 14px rgba(124, 92, 252, 0.12)
+        );
+    }
   }
 
   &:focus-visible {
-    outline        : 2px solid $accent;
-    outline-offset : 4px;
-    border-radius  : 4px;
+    outline: 2px solid $accent;
+    outline-offset: 4px;
+    border-radius: 5px;
   }
 }
 
-// ─── Desktop links ─────────────────────────────────────────────────
-.navbar__links {
-  display    : flex;
-  align-items: center;
-  gap        : 4px;
-  list-style : none;
-  margin     : 0;
-  padding    : 0;
 
-  @media (max-width: 767px) {
+/* ================================================================
+   DESKTOP NAV
+   ================================================================ */
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+
+  gap: 2px;
+
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: 900px) {
     display: none;
   }
 }
 
+
+/* ================================================================
+   DESKTOP LINK
+   ================================================================ */
+
 .navbar__link {
-  position      : relative;
-  display       : flex;
-  align-items   : center;
-  gap           : 5px;
-  padding       : 7px 14px;
-  background    : none;
-  border        : none;
-  font-size     : 0.875rem;
-  font-weight   : 500;
-  color         : $text-muted;
-  cursor        : pointer;
-  border-radius : 8px;
-  transition    : color $transition, background $transition;
-  white-space   : nowrap;
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  min-height: 38px;
+
+  padding: 7px 13px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: $text-muted;
+
+  cursor: pointer;
+
+  font-size: 0.77rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+
+  white-space: nowrap;
+
+  transition:
+    color $transition,
+    background $transition,
+    transform $transition;
 
   &:hover {
-    color      : $text;
-    background : rgba(255, 255, 255, 0.05);
+    color: $text;
+
+    background:
+      rgba(255, 255, 255, 0.045);
+
+    transform: translateY(-1px);
+
+    .navbar__link-dot {
+      opacity: 0.75;
+      transform: scale(1);
+    }
   }
 
   &:focus-visible {
-    outline        : 2px solid $accent;
-    outline-offset : 2px;
+    outline: 2px solid $accent;
+    outline-offset: 2px;
   }
 
   &--active {
-    color : $text;
+    color: #fff;
 
     .navbar__link-dot {
-      opacity    : 1;
-      transform  : scale(1);
-      background : $accent;
-      box-shadow : 0 0 6px $accent-glow;
+      opacity: 1;
+      transform: scale(1);
+
+      background: $accent-bright;
+
+      box-shadow:
+        0 0 8px $accent-glow;
     }
   }
 }
 
+
+/* ================================================================
+   ACTIVE DOT
+   ================================================================ */
+
 .navbar__link-dot {
-  width         : 5px;
-  height        : 5px;
-  border-radius : 50%;
-  background    : $accent;
-  opacity       : 0;
-  transform     : scale(0.4);
-  transition    : opacity $transition, transform $transition;
+  width: 5px;
+  height: 5px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: $accent;
+
+  opacity: 0;
+
+  transform: scale(0.35);
+
+  transition:
+    opacity $transition,
+    transform $transition,
+    box-shadow $transition;
 }
 
-// ─── Right cluster ───────────────────────────────────────────────
+
+/* ================================================================
+   RIGHT AREA
+   ================================================================ */
+
 .navbar__right {
-  display     : flex;
-  align-items : center;
-  gap         : 12px;
-  flex-shrink : 0;
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  flex-shrink: 0;
 }
 
-// ─── CTA button ──────────────────────────────────────────────────
+
+/* ================================================================
+   LET'S TALK CTA
+   ================================================================ */
+
 .navbar__cta {
-  display       : flex;
-  align-items   : center;
-  gap           : 7px;
-  padding       : 9px 20px;
-  background    : $accent;
-  border        : none;
-  border-radius : 10px;
-  font-size     : 0.85rem;
-  font-weight   : 600;
-  color         : #fff;
-  cursor        : pointer;
-  box-shadow    : 0 0 0 0 $accent-glow;
-  transition    : background $transition,
-                  transform $transition,
-                  box-shadow $transition;
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 40px;
+
+  padding:
+    0
+    15px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(160, 133, 255, 0.34);
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      $accent,
+      #6948e9
+    );
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+
+  box-shadow:
+    0 8px 22px rgba(86, 55, 202, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  transition:
+    transform $transition,
+    box-shadow $transition,
+    filter $transition;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -80%;
+
+    pointer-events: none;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.18),
+        transparent 45%
+      );
+
+    opacity: 0;
+
+    transition: opacity 250ms ease;
+  }
+
+  span,
+  svg {
+    position: relative;
+    z-index: 1;
+  }
 
   svg {
-    transition : transform $transition;
-    flex-shrink: 0;
+    transition: transform $transition;
   }
 
   &:hover {
-    background : lighten($accent, 6%);
-    transform  : translateY(-1px);
-    box-shadow : 0 6px 22px $accent-glow;
+    transform: translateY(-2px);
 
-    svg { transform: translateX(3px); }
+    box-shadow:
+      0 12px 30px rgba(86, 55, 202, 0.3),
+      0 0 22px rgba(124, 92, 252, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    filter: brightness(1.05);
+
+    &::before {
+      opacity: 1;
+    }
+
+    svg {
+      transform: translateX(3px);
+    }
   }
 
   &:active {
-    transform  : translateY(0);
-    box-shadow : 0 2px 8px $accent-glow;
+    transform: translateY(0);
   }
 
   &:focus-visible {
-    outline        : 2px solid #fff;
-    outline-offset : 2px;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 1100px) {
+    padding: 0 12px;
+
+    span {
+      display: none;
+    }
   }
 
   @media (max-width: 399px) {
@@ -192,223 +402,648 @@ $z-overlay        : 99;    // ← below drawer, covers page content
   }
 }
 
-// ─── Hamburger ───────────────────────────────────────────────────
-.navbar__ham {
-  display         : none;
-  flex-direction  : column;
-  justify-content : center;
-  gap             : 5px;
-  width           : 40px;
-  height          : 40px;
-  padding         : 8px;
-  background      : rgba(255, 255, 255, 0.05);
-  border          : 1px solid $nav-border;
-  border-radius   : 9px;
-  cursor          : pointer;
-  transition      : background $transition;
 
-  @media (max-width: 767px) {
-    display: flex;
-  }
+/* ================================================================
+   HAMBURGER
+   ================================================================ */
+
+.navbar__ham {
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 5px;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 8px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.045);
+
+  cursor: pointer;
+
+  transition:
+    background $transition,
+    border-color $transition,
+    box-shadow $transition;
 
   span {
-    display         : block;
-    height          : 2px;
-    border-radius   : 2px;
-    background      : $text;
-    transform-origin: center;
-    transition      : transform $transition,
-                      opacity $transition,
-                      width $transition;
+    display: block;
 
-    &:nth-child(1) { width: 20px; }
-    &:nth-child(2) { width: 14px; }
-    &:nth-child(3) { width: 20px; }
+    height: 2px;
+
+    border-radius: 99px;
+
+    background: $text;
+
+    transform-origin: center;
+
+    transition:
+      width $transition,
+      transform $transition,
+      opacity $transition;
+
+    &:nth-child(1) {
+      width: 20px;
+    }
+
+    &:nth-child(2) {
+      width: 14px;
+    }
+
+    &:nth-child(3) {
+      width: 20px;
+    }
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    span:nth-child(2) { width: 20px; }
+    background:
+      rgba(124, 92, 252, 0.1);
+
+    border-color:
+      rgba(124, 92, 252, 0.25);
+
+    box-shadow:
+      0 0 18px rgba(124, 92, 252, 0.08);
+
+    span:nth-child(2) {
+      width: 20px;
+    }
   }
 
   &:focus-visible {
-    outline        : 2px solid $accent;
-    outline-offset : 2px;
+    outline: 2px solid $accent;
+    outline-offset: 2px;
   }
 
   &--open {
-    background   : rgba(124, 92, 252, 0.15);
-    border-color : rgba(124, 92, 252, 0.4);
+    background:
+      rgba(124, 92, 252, 0.13);
+
+    border-color:
+      rgba(124, 92, 252, 0.35);
 
     span {
       &:nth-child(1) {
-        width     : 20px;
-        transform : translateY(7px) rotate(45deg);
+        width: 20px;
+        transform:
+          translateY(7px)
+          rotate(45deg);
       }
+
       &:nth-child(2) {
-        opacity   : 0;
-        transform : scaleX(0);
+        opacity: 0;
+        transform: scaleX(0);
       }
+
       &:nth-child(3) {
-        width     : 20px;
-        transform : translateY(-7px) rotate(-45deg);
+        width: 20px;
+        transform:
+          translateY(-7px)
+          rotate(-45deg);
       }
     }
   }
+
+  @media (max-width: 900px) {
+    display: flex;
+  }
 }
 
-// ─── Mobile drawer ───────────────────────────────────────────────
-// NOW OUTSIDE header — uses fixed positioning on its own
+
+/* ================================================================
+   MOBILE DRAWER
+   ================================================================ */
+
 .navbar__drawer {
-  position        : fixed;
-  top             : $nav-height;
-  right           : 0;
-  bottom          : 0;
-  width           : min(320px, 85vw);
-  background      : $drawer-bg;
-  border-left     : 1px solid $nav-border;
-  padding         : 32px 24px;
-  transform       : translateX(100%);
-  transition      : transform $transition;
-  z-index         : $z-drawer;  // ← 101, above navbar
-  overflow-y      : auto;
+  position: fixed;
+
+  top: $nav-height;
+  right: 0;
+  bottom: 0;
+
+  width: min(360px, 88vw);
+
+  z-index: $z-drawer;
+
+  overflow-y: auto;
+
+  padding: 24px 20px 22px;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(124, 92, 252, 0.13),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(15, 13, 22, 0.99),
+      rgba(8, 8, 13, 0.99)
+    );
+
+  border-left:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  box-shadow:
+    -25px 0 70px rgba(0, 0, 0, 0.35);
+
+  transform: translateX(100%);
+
+  transition:
+    transform $transition;
+
+  overscroll-behavior: contain;
 
   &--open {
     transform: translateX(0);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 901px) {
     display: none;
   }
 }
 
-.navbar__drawer-links {
-  display        : flex;
-  flex-direction : column;
-  gap            : 4px;
+
+/* ================================================================
+   DRAWER INNER
+   ================================================================ */
+
+.navbar__drawer-inner {
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
+
+/* ================================================================
+   DRAWER HEADING
+   ================================================================ */
+
+.navbar__drawer-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+
+  padding:
+    0
+    4px
+    17px;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  span {
+    color: #fff;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  small {
+    color: rgba(240, 238, 248, 0.34);
+
+    font-size: 0.63rem;
+    font-weight: 700;
+  }
+}
+
+
+/* ================================================================
+   DRAWER LINKS
+   ================================================================ */
+
+.navbar__drawer-links {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  width: 100%;
+}
+
+
+/* ================================================================
+   DRAWER LINK
+   ================================================================ */
+
 .navbar__drawer-link {
-  display       : flex;
-  align-items   : center;
-  gap           : 14px;
-  padding       : 14px 16px;
-  background    : none;
-  border        : none;
-  border-radius : 12px;
-  font-size     : 1.05rem;
-  font-weight   : 500;
-  color         : $text-muted;
-  cursor        : pointer;
-  text-align    : left;
-  width         : 100%;
-  opacity       : 0;
-  transform     : translateX(16px);
-  transition    : color $transition, background $transition;
-  animation     : drawerSlideIn 0.35s $transition forwards;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  width: 100%;
+  min-height: 53px;
+
+  padding:
+    0
+    15px;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius: 13px;
+
+  color: $text-muted;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  opacity: 0;
+  transform: translateX(16px);
+
+  animation:
+    drawerSlideIn
+    0.35s
+    $transition
+    forwards;
+
+  transition:
+    color $transition,
+    background $transition,
+    border-color $transition,
+    transform $transition;
 
   &:hover {
-    color      : $text;
-    background : rgba(255, 255, 255, 0.05);
+    color: $text;
+
+    background:
+      rgba(255, 255, 255, 0.045);
+
+    border-color:
+      rgba(255, 255, 255, 0.055);
+
+    .navbar__drawer-arrow {
+      transform: translateX(4px);
+      color: #fff;
+    }
   }
 
   &:focus-visible {
-    outline        : 2px solid $accent;
-    outline-offset : -2px;
+    outline: 2px solid $accent;
+    outline-offset: -2px;
   }
 
   &.active {
-    color      : $text;
-    background : rgba(124, 92, 252, 0.12);
+    color: #fff;
 
-    .navbar__drawer-num { color: $accent; }
+    background:
+      linear-gradient(
+        135deg,
+        rgba(124, 92, 252, 0.12),
+        rgba(124, 92, 252, 0.04)
+      );
+
+    border-color:
+      rgba(124, 92, 252, 0.14);
+
+    .navbar__drawer-num {
+      color: $accent-bright;
+    }
+
+    .navbar__drawer-arrow {
+      color: $accent-bright;
+    }
   }
 }
 
+
+/* ================================================================
+   DRAWER NUMBER
+   ================================================================ */
+
 .navbar__drawer-num {
-  font-size      : 0.72rem;
-  font-weight    : 700;
-  color          : $text-muted;
-  letter-spacing : 0.04em;
-  transition     : color $transition;
-  min-width      : 20px;
+  min-width: 22px;
+
+  color:
+    rgba(240, 238, 248, 0.3);
+
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+
+  transition: color $transition;
 }
 
+
+/* ================================================================
+   DRAWER ARROW
+   ================================================================ */
+
+.navbar__drawer-arrow {
+  margin-left: auto;
+
+  color:
+    rgba(240, 238, 248, 0.25);
+
+  font-size: 0.83rem;
+
+  transition:
+    transform $transition,
+    color $transition;
+}
+
+
+/* ================================================================
+   DRAWER ROUTE BUTTONS
+   ================================================================ */
+
+.navbar__drawer-route-buttons {
+  width: 100%;
+
+  margin-top: 12px;
+  padding-top: 14px;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+}
+
+
+/*
+   NavigationButtons already handles the mobile
+   vertical layout. This makes sure it fits the drawer.
+*/
+
+.navbar__drawer-route-buttons
+  .navigation-buttons {
+  width: 100%;
+}
+
+
+/* ================================================================
+   DRAWER CTA
+   ================================================================ */
+
 .navbar__drawer-cta {
-  margin-top    : 20px;
-  padding       : 14px 20px;
-  background    : $accent;
-  border        : none;
-  border-radius : 12px;
-  font-size     : 1rem;
-  font-weight   : 600;
-  color         : #fff;
-  cursor        : pointer;
-  width         : 100%;
-  text-align    : center;
-  opacity       : 0;
-  animation     : drawerSlideIn 0.35s $transition forwards;
-  transition    : background $transition, transform $transition;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 52px;
+
+  margin-top: 12px;
+
+  padding:
+    0
+    17px;
+
+  border:
+    1px solid
+    rgba(166, 120, 255, 0.32);
+
+  border-radius: 13px;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 92, 252, 0.88),
+      rgba(100, 68, 222, 0.82)
+    );
+
+  box-shadow:
+    0 12px 30px rgba(90, 57, 200, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  cursor: pointer;
+
+  font-size: 0.79rem;
+  font-weight: 800;
+
+  opacity: 0;
+
+  animation:
+    drawerSlideIn
+    0.35s
+    $transition
+    forwards;
+
+  transition:
+    transform $transition,
+    box-shadow $transition,
+    filter $transition;
 
   &:hover {
-    background : lighten($accent, 6%);
-    transform  : translateY(-1px);
+    transform: translateY(-2px);
+
+    filter: brightness(1.05);
+
+    box-shadow:
+      0 17px 38px rgba(90, 57, 200, 0.22),
+      0 0 25px rgba(124, 92, 252, 0.1);
   }
 
   &:focus-visible {
-    outline        : 2px solid #fff;
-    outline-offset : -2px;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
   }
 }
 
-// ─── Overlay ─────────────────────────────────────────────────────
-// NOW OUTSIDE header — covers full viewport including navbar
+
+/* ================================================================
+   DRAWER FOOTER
+   ================================================================ */
+
+.navbar__drawer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-top: auto;
+  padding:
+    24px
+    4px
+    3px;
+
+  color:
+    rgba(240, 238, 248, 0.28);
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+}
+
+
+/* ================================================================
+   OVERLAY
+   ================================================================ */
+
 .navbar__overlay {
-  position        : fixed;
-  inset           : 0;
-  background      : rgba(0, 0, 0, 0.55);
-  backdrop-filter : blur(2px);
-  z-index         : $z-overlay;  // ← 99, below drawer but above page
-  opacity         : 0;
-  pointer-events  : none;
-  transition      : opacity $transition;
+  position: fixed;
+  inset: 0;
+
+  z-index: $z-overlay;
+
+  background:
+    rgba(0, 0, 0, 0.58);
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity $transition;
 
   &--visible {
-    opacity        : 1;
-    pointer-events : auto;
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 901px) {
     display: none;
   }
 }
 
-// ─── Keyframes ───────────────────────────────────────────────────
+
+/* ================================================================
+   DRAWER ANIMATION
+   ================================================================ */
+
 @keyframes drawerSlideIn {
   to {
-    opacity   : 1;
-    transform : translateX(0);
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-// ─── Reduced motion ──────────────────────────────────────────────
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+
+@media (max-width: 1050px) {
+  .navbar__inner {
+    padding:
+      0
+      16px;
+  }
+
+  .navbar__logo {
+    width: 165px;
+
+    img {
+      width: 155px;
+    }
+  }
+}
+
+
+@media (max-width: 900px) {
+  .navbar {
+    height: 64px;
+  }
+
+  .navbar__inner {
+    padding:
+      0
+      15px;
+  }
+
+  .navbar__logo {
+    width: 160px;
+
+    img {
+      width: 150px;
+      max-height: 51px;
+    }
+  }
+
+  .navbar__right {
+    gap: 7px;
+  }
+}
+
+
+@media (max-width: 520px) {
+  .navbar__logo {
+    width: 140px;
+
+    img {
+      width: 136px;
+    }
+  }
+
+  .navbar__drawer {
+    width: min(340px, 91vw);
+  }
+}
+
+
+@media (max-width: 380px) {
+  .navbar__logo {
+    width: 125px;
+
+    img {
+      width: 120px;
+    }
+  }
+}
+
+
+/* ================================================================
+   REDUCED MOTION
+   ================================================================ */
+
 @media (prefers-reduced-motion: reduce) {
+  .navbar,
   .navbar__link,
-  .navbar__cta,
-  .navbar__ham,
-  .navbar__drawer,
-  .navbar__overlay,
   .navbar__link-dot,
   .navbar__logo img,
-  .navbar__cta svg {
-    transition : none !important;
-    animation  : none !important;
+  .navbar__cta,
+  .navbar__cta svg,
+  .navbar__ham,
+  .navbar__ham span,
+  .navbar__drawer,
+  .navbar__drawer-link,
+  .navbar__drawer-arrow,
+  .navbar__drawer-cta,
+  .navbar__overlay {
+    transition: none !important;
+    animation: none !important;
   }
 
   .navbar__drawer-link,
   .navbar__drawer-cta {
-    animation : none !important;
-    opacity   : 1;
-    transform : none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .navbar__cta:hover,
+  .navbar__drawer-cta:hover {
+    transform: none;
   }
 }

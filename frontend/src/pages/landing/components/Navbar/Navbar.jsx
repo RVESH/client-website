@@ -1,127 +1,352 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+} from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+
 import "./Navbar.scss";
 import logo from "../../../../images/sbra.png";
+import NavigationButtons from "./NavigationButtons";
 
 const NAV_LINKS = [
-  { label: "Services",  id: "services"  },
-  { label: "Skills",    id: "skills"    },
+  { label: "Services", id: "services" },
+  { label: "Skills", id: "skills" },
   { label: "Portfolio", id: "portfolio" },
-  { label: "Process",   id: "process"   },
+  { label: "Process", id: "process" },
 ];
 
 const SCROLL_OFFSET = 68;
 const SCROLL_THRESHOLD = 50;
-const ACTIVE_ZONE = 100;
+const ACTIVE_ZONE = 110;
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeId, setActiveId] = useState("");
+  const [activeId, setActiveId] = useState("hero");
+
   const navRef = useRef(null);
 
-  // ─── Scroll spy ─────────────────────────────────────────────────
+  const isHomePage =
+    location.pathname === "/" ||
+    location.pathname === "";
+
+  /* ================================================================
+     SCROLL SPY
+     ================================================================ */
+
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > SCROLL_THRESHOLD);
 
-    const ids = ["hero", ...NAV_LINKS.map((l) => l.id), "contact"];
-    for (const id of ids) {
-      const el = document.getElementById(id);
-      if (!el) continue;
-      const { top, bottom } = el.getBoundingClientRect();
-      if (top <= ACTIVE_ZONE && bottom >= ACTIVE_ZONE) {
-        setActiveId(id);
+    if (!isHomePage) {
+      return;
+    }
+
+    const sectionIds = [
+      "hero",
+      ...NAV_LINKS.map((link) => link.id),
+    ];
+
+    let currentSection = "hero";
+
+    for (const id of sectionIds) {
+      const element = document.getElementById(id);
+
+      if (!element) {
+        continue;
+      }
+
+      const rect = element.getBoundingClientRect();
+
+      if (
+        rect.top <= ACTIVE_ZONE &&
+        rect.bottom >= ACTIVE_ZONE
+      ) {
+        currentSection = id;
         break;
       }
     }
-  }, []);
+
+    setActiveId(currentSection);
+  }, [isHomePage]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      { passive: true }
+    );
+
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+    };
   }, [handleScroll]);
 
-  // ─── Smooth scroll ──────────────────────────────────────────────
-  const scrollTo = useCallback((id) => {
-    const el = document.getElementById(id);
-    if (el) {
+  /* ================================================================
+     CLOSE MENU ON ROUTE CHANGE
+     ================================================================ */
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  /* ================================================================
+     SECTION SCROLL
+     ================================================================ */
+
+  const scrollToSection = useCallback(
+    (id) => {
+      if (!isHomePage) {
+        navigate(`/#${id}`);
+        return;
+      }
+
+      const element =
+        document.getElementById(id);
+
+      if (!element) {
+        if (id === "hero") {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }
+
+        setMenuOpen(false);
+        return;
+      }
+
+      const top =
+        element.getBoundingClientRect().top +
+        window.scrollY -
+        SCROLL_OFFSET;
+
       window.scrollTo({
-        top: el.offsetTop - SCROLL_OFFSET,
+        top,
         behavior: "smooth",
       });
+
+      setActiveId(id);
+      setMenuOpen(false);
+    },
+    [
+      isHomePage,
+      navigate,
+    ]
+  );
+
+  /* ================================================================
+     ROUTE
+     ================================================================ */
+
+  const openRoute = useCallback(
+    (path) => {
+      setMenuOpen(false);
+      navigate(path);
+    },
+    [navigate]
+  );
+
+  /* ================================================================
+     LOGO
+     ================================================================ */
+
+  const handleLogoClick = useCallback(() => {
+    if (isHomePage) {
+      scrollToSection("hero");
+      return;
     }
-    setMenuOpen(false);
-  }, []);
 
-  // ─── Close drawer on outside click ──────────────────────────────
+    navigate("/");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [
+    isHomePage,
+    navigate,
+    scrollToSection,
+  ]);
+
+  /* ================================================================
+     OUTSIDE CLICK
+     ================================================================ */
+
   useEffect(() => {
-    if (!menuOpen) return;
-    const handler = (e) => {
-      if (!navRef.current?.contains(e.target)) setMenuOpen(false);
+    if (!menuOpen) {
+      return undefined;
+    }
+
+    const handleOutsideClick = (event) => {
+      if (
+        !navRef.current?.contains(
+          event.target
+        )
+      ) {
+        setMenuOpen(false);
+      }
     };
-    document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
+
+    document.addEventListener(
+      "click",
+      handleOutsideClick
+    );
+
+    return () => {
+      document.removeEventListener(
+        "click",
+        handleOutsideClick
+      );
+    };
   }, [menuOpen]);
 
-  // ─── Lock body scroll when drawer open ──────────────────────────
+  /* ================================================================
+     BODY SCROLL LOCK
+     ================================================================ */
+
   useEffect(() => {
-    const original = document.body.style.overflow;
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = original; };
+    const previousOverflow =
+      document.body.style.overflow;
+
+    document.body.style.overflow =
+      menuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow =
+        previousOverflow;
+    };
   }, [menuOpen]);
 
-  // ─── Close drawer on Escape key ─────────────────────────────────
+  /* ================================================================
+     ESCAPE
+     ================================================================ */
+
   useEffect(() => {
-    if (!menuOpen) return;
-    const handler = (e) => { if (e.key === "Escape") setMenuOpen(false); };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
+    if (!menuOpen) {
+      return undefined;
+    }
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener(
+      "keydown",
+      handleEscape
+    );
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleEscape
+      );
+    };
   }, [menuOpen]);
 
   return (
     <>
-      {/* ═══ NAVBAR HEADER ═══ */}
+      {/* ============================================================
+          HEADER
+         ============================================================ */}
+
       <header
         ref={navRef}
-        className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}
+        className={`navbar ${
+          scrolled
+            ? "navbar--scrolled"
+            : ""
+        }`}
       >
         <div className="navbar__inner">
-          {/* Logo */}
+
+          {/* LOGO */}
+
           <button
+            type="button"
             className="navbar__logo"
-            onClick={() => scrollTo("hero")}
-            aria-label="Go to top"
+            onClick={handleLogoClick}
+            aria-label="Go to SouthBridge home"
           >
-            <img src={logo} alt="sbra" width="80px" height="122px" />
+            <img
+              src={logo}
+              alt="SouthBridge Research Analytics"
+            />
           </button>
 
-          {/* Desktop Nav */}
-          <nav className="navbar__links" aria-label="Main navigation">
+          {/* DESKTOP NAV */}
+
+          <nav
+            className="navbar__links"
+            aria-label="Main navigation"
+          >
             {NAV_LINKS.map((link) => (
               <button
                 key={link.id}
+                type="button"
                 className={`navbar__link ${
-                  activeId === link.id ? "navbar__link--active" : ""
+                  activeId === link.id
+                    ? "navbar__link--active"
+                    : ""
                 }`}
-                onClick={() => scrollTo(link.id)}
-                aria-current={activeId === link.id ? "true" : undefined}
+                onClick={() =>
+                  scrollToSection(link.id)
+                }
+                aria-current={
+                  activeId === link.id
+                    ? "page"
+                    : undefined
+                }
               >
                 {link.label}
-                <span className="navbar__link-dot" aria-hidden="true" />
+
+                <span
+                  className="navbar__link-dot"
+                  aria-hidden="true"
+                />
               </button>
             ))}
           </nav>
 
-          {/* Right: CTA + Hamburger */}
+          {/* ========================================================
+              RIGHT SIDE
+              DESKTOP:
+              Websites + Let's Talk
+              Contact intentionally removed
+             ======================================================== */}
+
           <div className="navbar__right">
+
+            <div className="navbar__desktop-websites">
+              <NavigationButtons
+                showContact={false}
+              />
+            </div>
+
             <button
+              type="button"
               className="navbar__cta"
-              onClick={() => scrollTo("contact")}
+              onClick={() =>
+                openRoute("/contact")
+              }
+              aria-label="Open contact page"
             >
               <span>Let's Talk</span>
+
               <svg
-                width="13"
-                height="13"
+                width="14"
+                height="14"
                 viewBox="0 0 14 14"
                 fill="none"
                 aria-hidden="true"
@@ -136,10 +361,25 @@ const Navbar = () => {
               </svg>
             </button>
 
+            {/* HAMBURGER */}
+
             <button
-              className={`navbar__ham ${menuOpen ? "navbar__ham--open" : ""}`}
-              onClick={() => setMenuOpen((p) => !p)}
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              type="button"
+              className={`navbar__ham ${
+                menuOpen
+                  ? "navbar__ham--open"
+                  : ""
+              }`}
+              onClick={() =>
+                setMenuOpen(
+                  (previous) => !previous
+                )
+              }
+              aria-label={
+                menuOpen
+                  ? "Close menu"
+                  : "Open menu"
+              }
               aria-expanded={menuOpen}
               aria-controls="mobile-drawer"
             >
@@ -151,45 +391,125 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* ═══ MOBILE DRAWER — OUTSIDE header ═══ */}
-      <div
+      {/* ============================================================
+          MOBILE DRAWER
+
+          Contact stays HERE.
+         ============================================================ */}
+
+      <aside
         id="mobile-drawer"
         className={`navbar__drawer ${
-          menuOpen ? "navbar__drawer--open" : ""
+          menuOpen
+            ? "navbar__drawer--open"
+            : ""
         }`}
         aria-hidden={!menuOpen}
       >
-        <nav className="navbar__drawer-links" aria-label="Mobile navigation">
-          {NAV_LINKS.map((link, i) => (
-            <button
-              key={link.id}
-              className={`navbar__drawer-link ${
-                activeId === link.id ? "active" : ""
-              }`}
-              style={{ animationDelay: `${i * 55}ms` }}
-              onClick={() => scrollTo(link.id)}
-              aria-current={activeId === link.id ? "true" : undefined}
-            >
-              <span className="navbar__drawer-num">0{i + 1}</span>
-              {link.label}
-            </button>
-          ))}
-          <button
-            className="navbar__drawer-cta"
-            onClick={() => scrollTo("contact")}
-            style={{ animationDelay: `${NAV_LINKS.length * 55}ms` }}
-          >
-            Let's Talk →
-          </button>
-        </nav>
-      </div>
+        <div className="navbar__drawer-inner">
 
-      {/* ═══ OVERLAY — OUTSIDE header ═══ */}
+          <div className="navbar__drawer-heading">
+            <span>Navigation</span>
+            <small>SouthBridge</small>
+          </div>
+
+          <nav
+            className="navbar__drawer-links"
+            aria-label="Mobile navigation"
+          >
+            {NAV_LINKS.map(
+              (link, index) => (
+                <button
+                  key={link.id}
+                  type="button"
+                  className={`navbar__drawer-link ${
+                    activeId === link.id
+                      ? "active"
+                      : ""
+                  }`}
+                  style={{
+                    animationDelay:
+                      `${index * 55}ms`,
+                  }}
+                  onClick={() =>
+                    scrollToSection(
+                      link.id
+                    )
+                  }
+                >
+                  <span className="navbar__drawer-num">
+                    {String(
+                      index + 1
+                    ).padStart(2, "0")}
+                  </span>
+
+                  <span>
+                    {link.label}
+                  </span>
+
+                  <span
+                    className="navbar__drawer-arrow"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </button>
+              )
+            )}
+
+            {/* ======================================================
+                WEBSITES
+               ====================================================== */}
+
+            <div className="navbar__drawer-websites">
+              <NavigationButtons
+                showContact={true}
+              />
+            </div>
+
+            {/* ======================================================
+                LET'S TALK
+               ====================================================== */}
+
+            <button
+              type="button"
+              className="navbar__drawer-cta"
+              onClick={() =>
+                openRoute("/contact")
+              }
+            >
+              <span>Let's Talk</span>
+              <span aria-hidden="true">
+                →
+              </span>
+            </button>
+          </nav>
+
+          <div className="navbar__drawer-footer">
+            <span>
+              SouthBridge Research Analytics
+            </span>
+
+            <span>
+              {new Date().getFullYear()}
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      {/* ============================================================
+          OVERLAY
+         ============================================================ */}
+
       <div
         className={`navbar__overlay ${
-          menuOpen ? "navbar__overlay--visible" : ""
+          menuOpen
+            ? "navbar__overlay--visible"
+            : ""
         }`}
-        onClick={() => setMenuOpen(false)}
+        onClick={() =>
+          setMenuOpen(false)
+        }
         aria-hidden="true"
       />
     </>
