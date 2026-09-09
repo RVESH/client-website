@@ -1,8 +1,28 @@
 import { useLocation } from 'react-router-dom'
 import { Phone, Mail, MessageCircle, MapPin, Clock } from 'lucide-react'
 import ContactForm from '../../components/ContactForm/ContactForm.jsx'
-import { contact, buildTelLink, buildMailtoLink, buildWhatsappLink } from '../../data/site.js'
+import {
+  contact,
+  buildTelLink,
+  buildMailtoLink,
+  buildGmailLink,
+  buildWhatsappLink,
+} from '../../data/site.js'
 import './Contact.scss'
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent)
+}
+
+function buildEmailHref() {
+  const subject = 'Enquiry from INDEX Market'
+
+  if (isMobileDevice()) {
+    return buildMailtoLink({ subject })
+  }
+
+  return buildGmailLink({ subject })
+}
 
 const contactMethods = [
   {
@@ -15,7 +35,7 @@ const contactMethods = [
     icon: Mail,
     title: 'Email us',
     value: contact.email,
-    href: buildMailtoLink({ subject: 'Enquiry from INDEX Market' }),
+    href: buildEmailHref(),
   },
   {
     icon: MessageCircle,
@@ -28,7 +48,8 @@ const contactMethods = [
 
 export default function Contact() {
   const location = useLocation()
-  const productContext = location.state?.productTitle || location.state?.category || ''
+  const productContext =
+    location.state?.productTitle || location.state?.category || ''
 
   return (
     <div className="page contact-page">
@@ -48,6 +69,7 @@ export default function Contact() {
         <div className="container contact-methods__grid">
           {contactMethods.map((method) => {
             const IconEl = method.icon
+
             return (
               <a
                 key={method.title}
@@ -59,8 +81,14 @@ export default function Contact() {
                 <span className="contact-methods__icon">
                   <IconEl size={20} strokeWidth={1.75} />
                 </span>
-                <span className="contact-methods__title">{method.title}</span>
-                <span className="contact-methods__value">{method.value}</span>
+
+                <span className="contact-methods__title">
+                  {method.title}
+                </span>
+
+                <span className="contact-methods__value">
+                  {method.value}
+                </span>
               </a>
             )
           })}

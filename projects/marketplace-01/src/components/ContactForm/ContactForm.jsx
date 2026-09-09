@@ -2,7 +2,11 @@ import { useState } from 'react'
 import { Mail, MessageCircle } from 'lucide-react'
 import Button from '../Button/Button.jsx'
 import { categories } from '../../data/categories.js'
-import { buildGmailLink, buildWhatsappLink } from '../../data/site.js'
+import {
+  buildGmailLink,
+  buildMailtoLink,
+  buildWhatsappLink,
+} from '../../data/site.js'
 import './ContactForm.scss'
 
 function buildEnquiryText(form) {
@@ -15,7 +19,14 @@ function buildEnquiryText(form) {
     'Message:',
     form.message || '—',
   ]
+
   return lines.join('\n')
+}
+
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod|Windows Phone/i.test(
+    navigator.userAgent
+  )
 }
 
 export default function ContactForm({ initialProduct = '' }) {
@@ -26,44 +37,87 @@ export default function ContactForm({ initialProduct = '' }) {
     productOrCategory: initialProduct,
     message: '',
   })
+
   const [errors, setErrors] = useState({})
 
   function handleChange(e) {
     const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
   function validate() {
     const next = {}
-    if (!form.name.trim()) next.name = 'Please enter your name.'
+
+    if (!form.name.trim()) {
+      next.name = 'Please enter your name.'
+    }
+
     if (!form.email.trim() && !form.phone.trim()) {
       next.email = 'Add an email or phone number so we can reach you.'
     }
-    if (!form.message.trim()) next.message = 'Let us know what you need help with.'
+
+    if (!form.message.trim()) {
+      next.message = 'Let us know what you need help with.'
+    }
+
     return next
   }
 
-  function openLink(url) {
+  function openDesktopLink(url) {
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   function handleSend(channel) {
     const validation = validate()
+
     setErrors(validation)
-    if (Object.keys(validation).length > 0) return
+
+    if (Object.keys(validation).length > 0) {
+      return
+    }
 
     const body = buildEnquiryText(form)
-    const subject = `INDEX Market enquiry — ${form.productOrCategory || 'General'}`
+
+    const subject = `INDEX Market enquiry — ${
+      form.productOrCategory || 'General'
+    }`
 
     if (channel === 'gmail') {
-      openLink(buildGmailLink({ subject, body }))
-    } else if (channel === 'whatsapp') {
-      openLink(buildWhatsappLink(`${subject}\n\n${body}`))
+      if (isMobileDevice()) {
+        const mailtoUrl = buildMailtoLink({
+          subject,
+          body,
+        })
+
+        window.location.href = mailtoUrl
+        return
+      }
+
+      openDesktopLink(
+        buildGmailLink({
+          subject,
+          body,
+        })
+      )
+
+      return
+    }
+
+    if (channel === 'whatsapp') {
+      openDesktopLink(buildWhatsappLink(`${subject}\n\n${body}`))
     }
   }
 
   return (
-    <form className="contact-form" onSubmit={(e) => e.preventDefault()} noValidate>
+    <form
+      className="contact-form"
+      onSubmit={(e) => e.preventDefault()}
+      noValidate
+    >
       <div className="contact-form__row">
         <div className="contact-form__field">
           <label htmlFor="cf-name">Full name</label>
@@ -74,7 +128,9 @@ export default function ContactForm({ initialProduct = '' }) {
             value={form.name}
             onChange={handleChange}
             aria-invalid={Boolean(errors.name)}
-            aria-describedby={errors.name ? 'cf-name-error' : undefined}
+            aria-describedby={
+              errors.name ? 'cf-name-error' : undefined
+            }
             autoComplete="name"
           />
           {errors.name && (
@@ -86,7 +142,14 @@ export default function ContactForm({ initialProduct = '' }) {
 
         <div className="contact-form__field">
           <label htmlFor="cf-phone">Phone</label>
-          <input id="cf-phone" name="phone" type="tel" value={form.phone} onChange={handleChange} autoComplete="tel" />
+          <input
+            id="cf-phone"
+            name="phone"
+            type="tel"
+            value={form.phone}
+            onChange={handleChange}
+            autoComplete="tel"
+          />
         </div>
       </div>
 
@@ -100,7 +163,9 @@ export default function ContactForm({ initialProduct = '' }) {
             value={form.email}
             onChange={handleChange}
             aria-invalid={Boolean(errors.email)}
-            aria-describedby={errors.email ? 'cf-email-error' : undefined}
+            aria-describedby={
+              errors.email ? 'cf-email-error' : undefined
+            }
             autoComplete="email"
           />
           {errors.email && (
@@ -138,7 +203,9 @@ export default function ContactForm({ initialProduct = '' }) {
           value={form.message}
           onChange={handleChange}
           aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? 'cf-message-error' : undefined}
+          aria-describedby={
+            errors.message ? 'cf-message-error' : undefined
+          }
           placeholder="Tell us what you're looking for..."
         />
         {errors.message && (
@@ -149,17 +216,26 @@ export default function ContactForm({ initialProduct = '' }) {
       </div>
 
       <div className="contact-form__actions">
-        <Button type="button" variant="primary" size="lg" onClick={() => handleSend('gmail')}>
+        <Button
+          type="button"
+          variant="primary"
+          size="lg"
+          onClick={() => handleSend('gmail')}
+        >
           <Mail size={16} className="contact-form__btn-icon" /> Send via Gmail
         </Button>
-        <Button type="button" variant="secondary" size="lg" onClick={() => handleSend('whatsapp')}>
+        <Button
+          type="button"
+          variant="secondary"
+          size="lg"
+          onClick={() => handleSend('whatsapp')}
+        >
           <MessageCircle size={16} className="contact-form__btn-icon" /> Send via WhatsApp
         </Button>
       </div>
 
       <p className="contact-form__note">
-        Both options open a pre-filled message for you to review — nothing is sent automatically, and no order or
-        enquiry is confirmed until our team replies.
+        Both options open a pre-filled message for you to review — nothing is sent automatically, and no order or enquiry is confirmed until our team replies.
       </p>
     </form>
   )
