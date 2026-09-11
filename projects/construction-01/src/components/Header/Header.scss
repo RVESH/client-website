@@ -1,97 +1,156 @@
-@use "../../styles/variables" as v;
-@use "../../styles/mixins" as m;
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
 
 .header {
   position: sticky;
   top: 0;
   z-index: v.$z-header;
+  width: 100%;
   border-bottom: v.$border-w solid v.$color-line-dark;
+  background: rgba(20, 24, 27, 0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
+
+// ============================================================
+// Main bar
+// ============================================================
 
 .header__bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: v.$sp-4;
-  height: 76px;
-  background: rgba(20, 24, 27, 0.96);
-  backdrop-filter: blur(8px);
-  margin-inline: calc(-1 * v.$container-pad);
-  padding-inline: v.$container-pad;
+  width: 100%;
+  background: transparent;
 }
 
-.header__brand {
+.header__bar-inner {
   display: flex;
   align-items: center;
-  gap: v.$sp-2;
+  width: 100%;
+  min-width: 0;
+  min-height: 76px;
+  gap: clamp(14px, 2vw, 30px);
+}
+
+// ============================================================
+// Brand
+// ============================================================
+
+.header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  min-width: 0;
   text-decoration: none;
   color: v.$color-concrete;
-  flex-shrink: 0;
 }
 
 .header__brand-mark {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 38px;
   height: 38px;
+  flex: 0 0 38px;
+
   background: v.$color-amber;
   color: v.$color-ink;
+
   font-family: v.$font-display;
-  font-weight: 800;
   font-size: 1rem;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  font-weight: 800;
+  line-height: 1;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
 }
 
 .header__brand-name {
-  display: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+
   font-family: v.$font-display;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
   font-weight: 800;
-  font-size: 1.05rem;
-  text-transform: uppercase;
+  line-height: 1;
   letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
 
   em {
     font-style: normal;
     color: v.$color-amber;
   }
-
-  @include m.mq(sm) {
-    display: inline;
-  }
 }
 
-.header__nav {
-  display: none;
+// ============================================================
+// Desktop navigation
+// ============================================================
 
-  @include m.mq(lg) {
-    display: block;
-  }
+.header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
 
   ul {
     display: flex;
-    gap: v.$sp-5;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 1.7vw, 26px);
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-width: 0;
+  }
+
+  li {
+    flex: 0 0 auto;
   }
 
   a {
-    text-decoration: none;
-    color: v.$color-concrete;
-    font-size: v.$fs-small;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
     position: relative;
-    padding-block: 0.3rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 2px;
+
+    color: v.$color-concrete;
+    text-decoration: none;
+
+    font-size: clamp(0.68rem, 0.78vw, 0.8rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    transition:
+      color v.$dur-fast v.$ease-industrial,
+      transform v.$dur-fast v.$ease-industrial;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       right: 100%;
       bottom: 0;
+
       height: 2px;
       background: v.$color-amber;
+
       transition: right v.$dur-fast v.$ease-industrial;
+    }
+
+    &:hover {
+      color: v.$color-amber;
+      transform: translateY(-1px);
     }
 
     &:hover::after,
@@ -102,63 +161,110 @@
     &.is-active {
       color: v.$color-amber;
     }
+
+    &:focus-visible {
+      @include m.focus-ring;
+    }
   }
 }
 
-.header__actions {
-  display: none;
-  align-items: center;
-  gap: v.$sp-4;
+// ============================================================
+// Desktop actions
+// ============================================================
 
-  @include m.mq(lg) {
-    display: flex;
-  }
+.header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.5vw, 22px);
+  flex: 0 0 auto;
+  min-width: 0;
 }
 
 .header__phone {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  text-decoration: none;
+  gap: 6px;
+
   color: v.$color-steel-light;
-  font-size: v.$fs-small;
+  text-decoration: none;
+
+  font-size: 0.76rem;
+  line-height: 1;
   white-space: nowrap;
+
+  transition: color v.$dur-fast v.$ease-industrial;
 
   &:hover {
     color: v.$color-amber;
   }
+
+  &:focus-visible {
+    @include m.focus-ring;
+  }
 }
+
+.header__cta {
+  flex: 0 0 auto;
+  min-height: 48px;
+  padding-inline: 18px;
+
+  white-space: nowrap;
+}
+
+// ============================================================
+// Hamburger
+// ============================================================
 
 .header__toggle {
   @include m.btn-reset;
   @include m.focus-ring;
-  display: flex;
+
+  display: none;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  color: v.$color-concrete;
-  flex-shrink: 0;
 
-  @include m.mq(lg) {
-    display: none;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+
+  color: v.$color-concrete;
+  border: v.$border-w solid v.$color-line-dark;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition:
+    color v.$dur-fast v.$ease-industrial,
+    border-color v.$dur-fast v.$ease-industrial,
+    background v.$dur-fast v.$ease-industrial;
+
+  &:hover {
+    color: v.$color-amber;
+    border-color: v.$color-amber;
+    background: rgba(215, 143, 41, 0.08);
   }
 }
 
-// Backdrop — a real <button> for accessible outside-click/tap-to-close.
+// ============================================================
+// Overlay
+// ============================================================
+
 .header__overlay {
   @include m.btn-reset;
+
   position: fixed;
   inset: 0;
-  background: rgba(20, 24, 27, 0.6);
+
+  background: rgba(20, 24, 27, 0.72);
+
   opacity: 0;
   pointer-events: none;
-  transition: opacity v.$dur-med v.$ease-industrial;
+
   z-index: v.$z-overlay;
 
-  @include m.mq(lg) {
-    display: none;
-  }
+  transition: opacity v.$dur-med v.$ease-industrial;
 
   &.is-open {
     opacity: 1;
@@ -166,66 +272,318 @@
   }
 }
 
+// ============================================================
+// Mobile drawer
+// ============================================================
+
 .header__drawer {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 0;
-  // Explicit height rather than relying on top+bottom auto-fill, which does
-  // not reliably stretch a fixed-position flex container in all engines.
+
+  width: min(390px, 88vw);
   height: 100vh;
   height: 100dvh;
-  width: min(86vw, 380px);
-  background: v.$color-ink;
-  color: v.$color-concrete;
-  z-index: v.$z-drawer;
-  transform: translateX(100%);
-  transition: transform v.$dur-med v.$ease-industrial;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 6rem v.$sp-5 v.$sp-5;
-  overflow-y: auto;
+
+  padding: 0;
+
+  background: v.$color-ink;
+  color: v.$color-concrete;
+
   border-left: v.$border-w solid v.$color-line-dark;
 
-  @include m.mq(lg) {
-    display: none;
-  }
+  z-index: v.$z-drawer;
+
+  transform: translateX(100%);
+  transition: transform v.$dur-med v.$ease-industrial;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
 
   &.is-open {
     transform: translateX(0);
   }
+}
+
+.header__drawer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 76px;
+  padding: 0 v.$sp-5;
+
+  border-bottom: v.$border-w solid v.$color-line-dark;
+  flex: 0 0 auto;
+}
+
+.header__drawer-title {
+  font-family: v.$font-display;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-transform: uppercase;
+
+  em {
+    font-style: normal;
+    color: v.$color-amber;
+  }
+}
+
+.header__drawer-close {
+  @include m.btn-reset;
+  @include m.focus-ring;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  color: v.$color-concrete;
+
+  border: v.$border-w solid v.$color-line-dark;
+
+  cursor: pointer;
+
+  &:hover {
+    color: v.$color-amber;
+    border-color: v.$color-amber;
+  }
+}
+
+// ============================================================
+// Mobile navigation
+// ============================================================
+
+.header__drawer-nav {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  padding: v.$sp-5;
+
+  overflow-y: auto;
 
   ul {
     display: flex;
     flex-direction: column;
-    gap: v.$sp-1;
+    gap: 0;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
   }
 
   a {
-    display: block;
-    padding: v.$sp-3 0;
-    text-decoration: none;
-    color: v.$color-concrete;
-    font-family: v.$font-display;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+
+    min-height: 58px;
+
+    padding: 12px 0;
+
     border-bottom: v.$border-w solid v.$color-line-dark;
+
+    color: v.$color-concrete;
+    text-decoration: none;
+
+    font-family: v.$font-display;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+
+    transition:
+      color v.$dur-fast v.$ease-industrial,
+      padding-left v.$dur-fast v.$ease-industrial;
+
+    &:hover {
+      color: v.$color-amber;
+      padding-left: 6px;
+    }
 
     &.is-active {
       color: v.$color-amber;
     }
+
+    &:focus-visible {
+      @include m.focus-ring;
+    }
   }
 }
+
+// ============================================================
+// Mobile footer
+// ============================================================
 
 .header__drawer-footer {
   display: flex;
   flex-direction: column;
   gap: v.$sp-3;
-  padding-top: v.$sp-5;
+
+  padding: v.$sp-5;
+
+  border-top: v.$border-w solid v.$color-line-dark;
+
+  flex: 0 0 auto;
 }
 
 .header__phone--drawer {
-  color: v.$color-steel-light;
+  justify-content: center;
+
+  min-height: 44px;
+
+  border: v.$border-w solid v.$color-line-dark;
+}
+
+.header__drawer-cta {
+  width: 100%;
+}
+
+// ============================================================
+// Large desktop tightening
+// ============================================================
+
+@media (max-width: 1200px) {
+  .header__bar-inner {
+    gap: 16px;
+  }
+
+  .header__nav ul {
+    gap: 12px;
+  }
+
+  .header__actions {
+    gap: 12px;
+  }
+
+  .header__phone span {
+    font-size: 0.7rem;
+  }
+
+  .header__cta {
+    padding-inline: 14px;
+  }
+}
+
+// ============================================================
+// Tablet / compact screens
+// ============================================================
+
+@media (max-width: 1020px) {
+  .header__brand-name {
+    font-size: 0.98rem;
+  }
+
+  .header__phone {
+    display: none;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__cta {
+    display: none;
+  }
+
+  .header__toggle {
+    display: inline-flex;
+  }
+}
+
+// ============================================================
+// Mobile
+// ============================================================
+
+@media (max-width: 640px) {
+  .header__bar-inner {
+    min-height: 70px;
+    gap: 12px;
+  }
+
+  .header__brand {
+    gap: 8px;
+  }
+
+  .header__brand-mark {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .header__brand-name {
+    font-size: 0.92rem;
+  }
+
+  .header__toggle {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+}
+
+// ============================================================
+// Small phones
+// ============================================================
+
+@media (max-width: 420px) {
+  .header__bar-inner {
+    min-height: 66px;
+  }
+
+  .header__brand-mark {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .header__brand-name {
+    font-size: 0.82rem;
+  }
+
+  .header__drawer {
+    width: 92vw;
+  }
+
+  .header__drawer-top {
+    min-height: 68px;
+    padding-inline: 16px;
+  }
+
+  .header__drawer-nav {
+    padding: 20px 16px;
+  }
+
+  .header__drawer-footer {
+    padding: 16px;
+  }
+}
+
+// ============================================================
+// Extra-small phones
+// ============================================================
+
+@media (max-width: 340px) {
+  .header__brand-name {
+    display: none;
+  }
+}
+
+// ============================================================
+// Reduced motion
+// ============================================================
+
+@media (prefers-reduced-motion: reduce) {
+  .header__drawer,
+  .header__overlay,
+  .header__nav a,
+  .header__phone,
+  .header__toggle {
+    transition: none;
+  }
 }

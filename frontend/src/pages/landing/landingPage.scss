@@ -14,31 +14,45 @@ $transition    : 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 *::before,
 *::after {
   box-sizing: border-box;
-  margin    : 0;
-  padding   : 0;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
-  font-size      : 16px;
+  font-size: 16px;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background : $bg;
-  color      : $text;
+  background: $bg;
+  color: $text;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  -webkit-font-smoothing : antialiased;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x : hidden;
+  overflow-x: hidden;
 }
-.landing__body{
-  background-color: #1D1E40;
+
+/* =========================================================
+   LANDING PAGE ROOT
+   ========================================================= */
+
+.landing__body {
+  width: 100%;
+  min-height: 100dvh;
+
+  background: $bg;
+  color: $text;
+
+  overflow-x: hidden;
 }
-img, svg {
-  display   : block;
-  max-width : 100%;
+
+// ─── Images ────────────────────────────────────────────────────────────────
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
 button {
@@ -46,16 +60,16 @@ button {
 }
 
 a {
-  color          : inherit;
+  color: inherit;
   text-decoration: none;
 }
 
 // ─── Shared utility: .container ────────────────────────────────────────────
 .container {
-  width    : 100%;
+  width: 100%;
   max-width: 1200px;
-  margin   : 0 auto;
-  padding  : 0 24px;
+  margin: 0 auto;
+  padding: 0 24px;
 
   @media (max-width: 500px) {
     padding: 0 16px;
@@ -77,7 +91,7 @@ a {
 
 // ─── Shared section header: .sh ────────────────────────────────────────────
 .sh {
-  text-align   : center;
+  text-align: center;
   margin-bottom: 64px;
 
   @media (max-width: 768px) {
@@ -86,66 +100,65 @@ a {
 }
 
 .sh__pill {
-  display       : inline-flex;
-  align-items   : center;
-  padding       : 6px 16px;
-  background    : rgba(124, 92, 252, 0.1);
-  border        : 1px solid rgba(124, 92, 252, 0.3);
-  border-radius : 100px;
-  font-size     : 0.78rem;
-  font-weight   : 700;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: rgba(124, 92, 252, 0.1);
+  border: 1px solid rgba(124, 92, 252, 0.3);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color         : rgba(200, 180, 255, 0.9);
-  margin-bottom : 20px;
+  color: rgba(200, 180, 255, 0.9);
+  margin-bottom: 20px;
 }
 
 .sh__title {
-  margin        : 0 0 14px;
-  font-size     : clamp(1.75rem, 3.5vw, 2.75rem);
-  font-weight   : 800;
+  margin: 0 0 14px;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
   letter-spacing: -0.025em;
-  line-height   : 1.15;
-  color         : $text;
+  line-height: 1.15;
+  color: $text;
 }
 
 .sh__sub {
-  margin     : 0 auto;
-  max-width  : 480px;
-  font-size  : 1rem;
+  margin: 0 auto;
+  max-width: 480px;
+  font-size: 1rem;
   line-height: 1.7;
-  color      : $text-muted;
+  color: $text-muted;
 }
 
 // ─── Main wrapper ──────────────────────────────────────────────────────────
 .landing__main {
-  // Sections butt up directly — no extra spacing needed
-  // Individual sections own their padding-block via .section
+  width: 100%;
+  min-height: 0;
 }
 
-// ─── Alternating section backgrounds ──────────────────────────────────────
-// Gives a subtle depth rhythm without colour variation
+// ─── Alternating section backgrounds ───────────────────────────────────────
 .landing__main > section:nth-child(even) {
   background: rgba(255, 255, 255, 0.015);
 }
 
 // ─── Footer ────────────────────────────────────────────────────────────────
 .landing__footer {
-  position    : relative;
-  background  : rgba(8, 8, 14, 0.95);
-  border-top  : 1px solid $border;
+  position: relative;
+  width: 100%;
+  background: rgba(8, 8, 14, 0.95);
+  border-top: 1px solid $border;
   padding-block: 36px;
-  overflow    : hidden;
+  overflow: hidden;
 
-  // Subtle top glow
   &::before {
-    content  : "";
-    position : absolute;
-    top      : 0;
-    left     : 50%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
     transform: translateX(-50%);
-    width    : 600px;
-    height   : 1px;
+    width: 600px;
+    height: 1px;
     background: linear-gradient(
       90deg,
       transparent,
@@ -158,39 +171,45 @@ a {
 }
 
 .landing__footer-inner {
-  display        : flex;
-  align-items    : center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap            : 20px;
-  flex-wrap      : wrap;
+  gap: 20px;
+  flex-wrap: wrap;
 
   @media (max-width: 640px) {
     flex-direction: column;
-    text-align    : center;
-    gap           : 16px;
+    text-align: center;
+    gap: 16px;
   }
 }
 
 // ─── Brand wordmark ────────────────────────────────────────────────────────
 .landing__footer-brand {
-  font-size     : 1.15rem;
-  font-weight   : 800;
+  font-size: 1.15rem;
+  font-weight: 800;
   letter-spacing: -0.02em;
-  color         : $text;
+  color: $text;
 
   span {
-    background            : linear-gradient(120deg, $accent 0%, $accent-2 100%);
+    background:
+      linear-gradient(
+        120deg,
+        $accent 0%,
+        $accent-2 100%
+      );
+
     -webkit-background-clip: text;
-    background-clip       : text;
-    color                 : transparent;
+    background-clip: text;
+    color: transparent;
   }
 }
 
 // ─── Copyright ─────────────────────────────────────────────────────────────
 .landing__footer-copy {
-  font-size : 0.8rem;
-  color     : $text-muted;
-  order     : 1;           // centred on all layouts
+  font-size: 0.8rem;
+  color: $text-muted;
+  order: 1;
 
   @media (max-width: 640px) {
     order: 2;
@@ -200,25 +219,26 @@ a {
 // ─── Footer nav ────────────────────────────────────────────────────────────
 .landing__footer-links {
   display: flex;
-  gap    : 24px;
+  gap: 24px;
 
   @media (max-width: 640px) {
     order: 3;
   }
 
   a {
-    font-size  : 0.82rem;
+    font-size: 0.82rem;
     font-weight: 500;
-    color      : $text-muted;
-    transition : color $transition;
+    color: $text-muted;
+    transition: color $transition;
     white-space: nowrap;
 
-    &:hover { color: $text; }
+    &:hover {
+      color: $text;
+    }
   }
 }
 
 // ─── Scroll-to-top anchor offset fix ───────────────────────────────────────
-// Compensates for the fixed navbar across all section targets
 [id] {
   scroll-margin-top: $nav-height;
 }

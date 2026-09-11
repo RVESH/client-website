@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import websitesData from "../../../data/websites.json";
 
@@ -178,6 +178,7 @@ const WEBSITE_DATA = Object.freeze(
 
 const Websites = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedWebsite, setSelectedWebsite] = useState(null);
@@ -299,6 +300,36 @@ const Websites = () => {
     setSelectedWebsite(website);
     setViewMode("popup");
   }, []);
+useEffect(() => {
+  const websiteId = location.state?.websiteId;
+  const shouldOpenPopup = location.state?.openPopup;
+
+  if (!websiteId || !shouldOpenPopup) {
+    return;
+  }
+
+  const website = websitesWithImages.find(
+    (item) => item.id === websiteId
+  );
+
+  if (!website) {
+    navigate("/websites", {
+      replace: true,
+      state: null,
+    });
+    return;
+  }
+
+  setSelectedWebsite(website);
+  setViewMode("popup");
+
+  navigate("/websites", {
+    replace: true,
+    state: null,
+  });
+}, [location.state, navigate, websitesWithImages]);
+
+
 
   const handleCloseWebsite = useCallback(() => {
     setSelectedWebsite(null);

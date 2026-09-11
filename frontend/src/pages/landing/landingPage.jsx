@@ -1,18 +1,18 @@
 import React from "react";
 import "./landingPage.scss";
 
-import Navbar    from "./components/Navbar/Navbar";
-import Hero      from "./components/Hero/Hero";
-import Service   from "./components/service/service";
-// import Skills    from "./components/skills/skills";
+import Navbar from "./components/Navbar/Navbar";
+import Hero from "./components/Hero/Hero";
+import Service from "./components/service/service";
+// import Skills from "./components/skills/skills";
 import WhyChoose from "./components/WhyChoose/WhyChoose";
-import Process   from "./components/Process/Process";
+import Process from "./components/Process/Process";
 import Portfolio from "./components/Portfolio/Portfolio";
-import Contact   from "./components/Contact/Contact";
+import Contact from "./components/Contact/Contact";
 
 const LandingPage = () => {
   return (
-    <body className="landing__body">
+    <div className="landing__body">
       <Navbar />
 
       <main className="landing__main">
@@ -30,9 +30,12 @@ const LandingPage = () => {
           <p className="landing__footer-brand">
             SouthBridge <span>Research Analytics</span>
           </p>
+
           <p className="landing__footer-copy">
-            © {new Date().getFullYear()} SouthBridge Research Analytics. Crafted with care.
+            © {new Date().getFullYear()} SouthBridge Research Analytics.
+            Crafted with care.
           </p>
+
           <nav className="landing__footer-links">
             <a href="#services">Services</a>
             <a href="#portfolio">Portfolio</a>
@@ -40,7 +43,7 @@ const LandingPage = () => {
           </nav>
         </div>
       </footer>
-    </body>
+    </div>
   );
 };
 

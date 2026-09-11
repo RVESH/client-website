@@ -9,39 +9,69 @@ import LandingPage from "../landingPage";
 
 import Websites from "../components/Websites/Websites";
 import Contact from "../components/Contact/Contact";
+import Navbar from "../components/Navbar/Navbar";
+
+const LandingPageWithNavbar = () => {
+  return (
+    <>
+      <Navbar />
+      <LandingPage />
+    </>
+  );
+};
+
+const LandingPageLayout = ({ children }) => {
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
+};
 
 const LandingApp = () => {
   return (
     <Routes>
       {/* ============================================================
-          LANDING / HOME
+          HOME
+          LandingPage already uses the landing design.
          ============================================================ */}
 
       <Route
         path="/"
-        element={<LandingPage />}
+        element={<LandingPageWithNavbar />}
       />
 
       {/* ============================================================
           WEBSITES STORE
+          Shared main navbar
          ============================================================ */}
 
       <Route
         path="/websites"
-        element={<Websites />}
+        element={
+          <LandingPageLayout>
+            <Websites />
+          </LandingPageLayout>
+        }
       />
 
       {/* ============================================================
           CONTACT
+          Shared main navbar
          ============================================================ */}
 
       <Route
         path="/contact"
-        element={<Contact />}
+        element={
+          <LandingPageLayout>
+            <Contact />
+          </LandingPageLayout>
+        }
       />
 
       {/* ============================================================
-          LANDING FALLBACK
+          FALLBACK
          ============================================================ */}
 
       <Route

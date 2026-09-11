@@ -440,17 +440,25 @@ const Portfolio = () => {
     setCurrentImage(0);
   }, []);
 
-  /* ================================================================
-     VIEW WEBSITE
-     ================================================================ */
+/* ================================================================
+   VIEW WEBSITE
+   ================================================================ */
 
-  const handleViewWebsite = useCallback(
-    () => {
-      setShowModal(false);
-      navigate("/websites");
-    },
-    [navigate]
-  );
+const handleViewWebsite = useCallback(
+  (project) => {
+    if (!project?.id) {
+      return;
+    }
+
+    navigate("/websites", {
+      state: {
+        websiteId: project.id,
+        openPopup: true,
+      },
+    });
+  },
+  [navigate]
+);
 
   /* ================================================================
      MODAL KEYBOARD CONTROLS

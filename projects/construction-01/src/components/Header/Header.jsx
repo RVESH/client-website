@@ -1,60 +1,76 @@
-import { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
-import { site } from "../../data/site";
-import Button from "../Button/Button.jsx";
-import "./Header.scss";
+import { useEffect, useRef, useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Menu, X, Phone } from 'lucide-react'
+import { site } from '../../data/site'
+import Button from '../Button/Button.jsx'
+import './Header.scss'
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const drawerRef = useRef(null);
-  const toggleRef = useRef(null);
+  const [open, setOpen] = useState(false)
+  const drawerRef = useRef(null)
+  const toggleRef = useRef(null)
 
-  // Close on Escape, lock background scroll while open, focus first link.
   useEffect(() => {
-    if (!open) return undefined;
+    if (!open) return undefined
 
-    const onKeyDown = (e) => {
-      if (e.key === "Escape") {
-        setOpen(false);
-        toggleRef.current?.focus();
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        toggleRef.current?.focus()
       }
-    };
+    }
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKeyDown);
+    const firstFocusable = drawerRef.current?.querySelector(
+      'a, button, input, select, textarea'
+    )
 
-    const firstLink = drawerRef.current?.querySelector("a, button");
-    firstLink?.focus();
+    firstFocusable?.focus()
+    document.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open])
 
-  const handleNavigate = () => setOpen(false);
+  const closeMenu = () => setOpen(false)
 
   return (
     <header className="header">
       <div className="header__bar">
         <div className="header__bar-inner container">
-          <NavLink to="/" className="header__brand" onClick={handleNavigate}>
-            <span className="header__brand-mark">SB</span>
+          <NavLink
+            to="/"
+            className="header__brand"
+            onClick={closeMenu}
+            aria-label={`${site.brand?.name || 'StrataBuild'} home`}
+          >
+            <span className="header__brand-mark" aria-hidden="true">
+              SB
+            </span>
+
             <span className="header__brand-name">
-              Strata<em>Build</em>
+              {site.brand?.name || 'Strata'}
+              <em>{site.brand?.accent || 'Build'}</em>
             </span>
           </NavLink>
 
-          <nav className="header__nav" aria-label="Primary">
+          <nav
+            className="header__nav"
+            aria-label="Primary navigation"
+          >
             <ul>
               {site.nav.map((item) => (
                 <li key={item.path}>
                   <NavLink
                     to={item.path}
-                    end={item.path === "/"}
-                    className={({ isActive }) => (isActive ? "is-active" : undefined)}
+                    end={item.path === '/'}
+                    className={({ isActive }) =>
+                      isActive ? 'is-active' : undefined
+                    }
                   >
                     {item.label}
                   </NavLink>
@@ -64,14 +80,26 @@ export default function Header() {
           </nav>
 
           <div className="header__actions">
-            <a className="header__phone" href={site.contact.phoneHref}>
-              <Phone size={15} strokeWidth={2} aria-hidden="true" />
+            <a
+              className="header__phone"
+              href={site.contact.phoneHref}
+              aria-label={`Call ${site.contact.phoneDisplay}`}
+            >
+              <Phone
+                size={15}
+                strokeWidth={2}
+                aria-hidden="true"
+              />
               <span>{site.contact.phoneDisplay}</span>
             </a>
-            <Button to="/contact" variant="primary" className="header__cta">
+
+            <Button
+              to="/contact"
+              variant="primary"
+              className="header__cta"
+            >
               {site.cta.primary}
             </Button>
-          </div>
 
             <button
               ref={toggleRef}
@@ -79,56 +107,100 @@ export default function Header() {
               className="header__toggle"
               aria-expanded={open}
               aria-controls="mobile-drawer"
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              onClick={() => setOpen((value) => !value)}
             >
-              {open ? <X size={24} strokeWidth={2} /> : <Menu size={24} strokeWidth={2} />}
+              {open ? (
+                <X size={23} strokeWidth={2} />
+              ) : (
+                <Menu size={23} strokeWidth={2} />
+              )}
             </button>
           </div>
-      </div>
-
-      <button
-        type="button"
-        className={`header__overlay ${open ? "is-open" : ""}`}
-        onClick={() => setOpen(false)}
-        aria-hidden="true"
-        tabIndex={-1}
-      />
-
-      <div
-        id="mobile-drawer"
-        ref={drawerRef}
-        className={`header__drawer ${open ? "is-open" : ""}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobile menu"
-      >
-        <nav aria-label="Mobile">
-          <ul>
-            {site.nav.map((item) => (
-              <li key={item.path}>
-                <NavLink
-                  to={item.path}
-                  end={item.path === "/"}
-                  onClick={handleNavigate}
-                  className={({ isActive }) => (isActive ? "is-active" : undefined)}
-                >
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="header__drawer-footer">
-          <a className="header__phone header__phone--drawer" href={site.contact.phoneHref}>
-            <Phone size={15} strokeWidth={2} aria-hidden="true" />
-            <span>{site.contact.phoneDisplay}</span>
-          </a>
-          <Button to="/contact" variant="primary" onClick={handleNavigate}>
-            {site.cta.primary}
-          </Button>
         </div>
       </div>
+
+      {open && (
+        <>
+          <button
+            type="button"
+            className="header__overlay is-open"
+            onClick={closeMenu}
+            aria-label="Close navigation"
+            tabIndex={-1}
+          />
+
+          <aside
+            id="mobile-drawer"
+            ref={drawerRef}
+            className="header__drawer is-open"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+          >
+            <div className="header__drawer-top">
+              <span className="header__drawer-title">
+                {site.brand?.name || 'Strata'}
+                <em>{site.brand?.accent || 'Build'}</em>
+              </span>
+
+              <button
+                type="button"
+                className="header__drawer-close"
+                onClick={closeMenu}
+                aria-label="Close menu"
+              >
+                <X size={23} strokeWidth={2} />
+              </button>
+            </div>
+
+            <nav
+              className="header__drawer-nav"
+              aria-label="Mobile navigation"
+            >
+              <ul>
+                {site.nav.map((item) => (
+                  <li key={item.path}>
+                    <NavLink
+                      to={item.path}
+                      end={item.path === '/'}
+                      onClick={closeMenu}
+                      className={({ isActive }) =>
+                        isActive ? 'is-active' : undefined
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className="header__drawer-footer">
+              <a
+                className="header__phone header__phone--drawer"
+                href={site.contact.phoneHref}
+              >
+                <Phone
+                  size={15}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                <span>{site.contact.phoneDisplay}</span>
+              </a>
+
+              <Button
+                to="/contact"
+                variant="primary"
+                onClick={closeMenu}
+                className="header__drawer-cta"
+              >
+                {site.cta.primary}
+              </Button>
+            </div>
+          </aside>
+        </>
+      )}
     </header>
-  );
+  )
 }

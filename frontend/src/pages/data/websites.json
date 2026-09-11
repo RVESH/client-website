@@ -1,345 +1,36 @@
 {
-  "version": 1,
-  "updatedAt": "2026-09-08",
-
-
-  
   "websites": [
-    {
-      "id": "medical-clinic-01",
-      "name": "Modern Medical Clinic",
-      "category": "Healthcare",
-      "type": "Clinic",
-      "description": "A premium healthcare website designed around trust, clarity, services and patient enquiries.",
-      "imageKey": "medical-clinic/clinic-01.png",
-      "galleryKeys": [
-        "medical-clinic/clinic-01.png",
-        "medical-clinic/clinic-02.png",
-        "medical-clinic/clinic-03.png",
-        "medical-clinic/clinic-04.png",
-        "medical-clinic/clinic-05.png",
-        "medical-clinic/clinic-06.png",
-        "medical-clinic/clinic-07.png"
-      ],
-      "stack": [
-        "React",
-        "Vite",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹5,499",
-      "featured": true,
-      "status": "Available",
-      "bestFor": "Clinics, doctors & healthcare practices",
-      "features": [
-        "Responsive design",
-        "Service presentation",
-        "Doctor / clinic sections",
-        "Appointment CTA",
-        "WhatsApp enquiry flow"
-      ]
-    },
-    {
-      "id": "medical-clinic-02",
-      "name": "Healthcare Practice",
-      "category": "Healthcare",
-      "type": "Clinic",
-      "description": "A clean and modern healthcare concept focused on credibility and simple patient navigation.",
-      "imageKey": "medical-clinic/clinic-02.png",
-      "galleryKeys": [
-        "medical-clinic/clinic-02.png"
-      ],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹5,499",
-      "featured": true,
-      "status": "Available",
-      "bestFor": "Healthcare providers & specialists",
-      "features": [
-        "Responsive layout",
-        "Service sections",
-        "Contact CTA",
-        "Mobile-first experience"
-      ]
-    },
-    {
-      "id": "medical-clinic-03",
-      "name": "Care & Wellness",
-      "category": "Healthcare",
-      "type": "Clinic",
-      "description": "A polished healthcare direction built to present services and brand credibility with confidence.",
-      "imageKey": "medical-clinic/clinic-03.png",
-      "galleryKeys": [
-        "medical-clinic/clinic-03.png"
-      ],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹5,499",
-      "featured": true,
-      "status": "Available",
-      "bestFor": "Clinics & wellness brands",
-      "features": [
-        "Responsive design",
-        "Modern visual hierarchy",
-        "Service presentation",
-        "Contact experience"
-      ]
-    },
-    {
-      "id": "medical-clinic-04",
-      "name": "Specialist Clinic",
-      "category": "Healthcare",
-      "type": "Clinic",
-      "description": "A professional specialist website concept with a strong balance between information and conversion.",
-      "imageKey": "medical-clinic/clinic-04.png",
-      "galleryKeys": [
-        "medical-clinic/clinic-04.png"
-      ],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹5,499",
-      "featured": false,
-      "status": "Available",
-      "bestFor": "Specialists & private practices",
-      "features": [
-        "Responsive pages",
-        "Service sections",
-        "Strong CTAs",
-        "Mobile-friendly layout"
-      ]
-    },
-    {
-      "id": "medical-clinic-05",
-      "name": "Medical Center",
-      "category": "Healthcare",
-      "type": "Clinic",
-      "description": "A modern medical website concept built to communicate trust and make important information easy to find.",
-      "imageKey": "medical-clinic/clinic-05.png",
-      "galleryKeys": [
-        "medical-clinic/clinic-05.png"
-      ],
-      "stack": [
-        "React",
-        "Vite"
-      ],
-      "pages": 5,
-      "price": "₹5,499",
-      "featured": false,
-      "status": "Available",
-      "bestFor": "Medical centers & healthcare businesses",
-      "features": [
-        "Responsive design",
-        "Service overview",
-        "Contact flow",
-        "Modern UI"
-      ]
-    },
-    {
-      "id": "medical-clinic-06",
-      "name": "Private Healthcare",
-      "category": "Healthcare",
-      "type": "Clinic",
-      "description": "A premium healthcare presentation designed for private clinics and established medical brands.",
-      "imageKey": "medical-clinic/clinic-06.png",
-      "galleryKeys": [
-        "medical-clinic/clinic-06.png"
-      ],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹5,999",
-      "featured": false,
-      "status": "Available",
-      "bestFor": "Private healthcare practices",
-      "features": [
-        "Premium presentation",
-        "Responsive layout",
-        "Service sections",
-        "Lead-focused CTA"
-      ]
-    },
-    {
-      "id": "medical-clinic-07",
-      "name": "Modern Care",
-      "category": "Healthcare",
-      "type": "Clinic",
-      "description": "A contemporary clinic concept with a calm interface and clear content hierarchy.",
-      "imageKey": "medical-clinic/clinic-07.png",
-      "galleryKeys": [
-        "medical-clinic/clinic-07.png"
-      ],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹5,499",
-      "featured": false,
-      "status": "Available",
-      "bestFor": "Clinics & health services",
-      "features": [
-        "Responsive interface",
-        "Clean information architecture",
-        "Service presentation",
-        "Contact CTA"
-      ]
-    },
-    {
-      "id": "business-01",
-      "name": "Business Website",
-      "category": "Business",
-      "type": "Professional",
-      "description": "A polished business website concept designed to establish credibility and generate enquiries.",
-      "imageKey": "business/business-01.png",
-      "galleryKeys": [
-        "business/business-01.png",
-        "business/business-02.png",
-        "business/business-03.png",
-        "business/business-04.png"
-      ],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹4,999",
-      "featured": true,
-      "status": "Available",
-      "bestFor": "Small businesses & startups",
-      "features": [
-        "Responsive design",
-        "Lead generation",
-        "Modern hero",
-        "Service presentation",
-        "Contact CTA"
-      ]
-    },
-    {
-      "id": "business-02",
-      "name": "Corporate Starter",
-      "category": "Business",
-      "type": "Professional",
-      "description": "A clean corporate direction for companies that need a modern and trustworthy online presence.",
-      "imageKey": "business/business-02.png",
-      "galleryKeys": [
-        "business/business-02.png"
-      ],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹5,499",
-      "featured": true,
-      "status": "Available",
-      "bestFor": "Professional companies",
-      "features": [
-        "Responsive layout",
-        "Corporate sections",
-        "Modern typography",
-        "Conversion-focused CTA"
-      ]
-    },
-    {
-      "id": "business-03",
-      "name": "Startup Launch",
-      "category": "Business",
-      "type": "Startup",
-      "description": "A modern startup-oriented website designed to communicate a product, service or new venture.",
-      "imageKey": "business/business-03.png",
-      "galleryKeys": [
-        "business/business-03.png"
-      ],
-      "stack": [
-        "React",
-        "Vite"
-      ],
-      "pages": 5,
-      "price": "₹5,999",
-      "featured": true,
-      "status": "Available",
-      "bestFor": "Startups & new ventures",
-      "features": [
-        "Strong hero section",
-        "Product / service blocks",
-        "Responsive design",
-        "Conversion CTA"
-      ]
-    },
-    {
-      "id": "business-04",
-      "name": "Service Company",
-      "category": "Services",
-      "type": "Local Business",
-      "description": "A straightforward and modern service-business website designed to turn visitors into enquiries.",
-      "imageKey": "business/business-04.png",
-      "galleryKeys": [
-        "business/business-04.png"
-      ],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹4,999",
-      "featured": false,
-      "status": "Available",
-      "bestFor": "Local service businesses",
-      "features": [
-        "Responsive layout",
-        "Services presentation",
-        "Contact actions",
-        "Mobile-first design"
-      ]
-    },
-    {
-      "id": "creative-studio-01",
-      "name": "Creative Studio",
-      "category": "Creative",
-      "type": "Portfolio",
-      "description": "A visual-first concept for designers, creators, photographers and modern creative studios.",
-      "imageKey": "creative/creative-01.png",
-      "galleryKeys": [
-        "creative/creative-01.png"
-      ],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 4,
-      "price": "₹4,999",
-      "featured": false,
-      "status": "Available",
-      "bestFor": "Designers & creative professionals",
-      "features": [
-        "Visual portfolio",
-        "Responsive layout",
-        "Project showcase",
-        "Strong visual hierarchy"
-      ]
-    },
     {
       "id": "car-rental-01",
       "name": "Car Rental",
       "category": "Automotive",
       "type": "Business",
       "description": "A conversion-focused car rental website for rental businesses and vehicle service providers.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "car-rental/car-rental-01.png",
+      "galleryKeys": [
+        "car-rental/car-rental-01.png",
+        "car-rental/car-rental-02.png",
+        "car-rental/car-rental-03.png",
+        "car-rental/car-rental-04.png",
+        "car-rental/car-rental-05.png",
+        "car-rental/car-rental-06.png",
+        "car-rental/car-rental-07.png",
+        "car-rental/car-rental-08.png",
+        "car-rental/car-rental-09.png",
+        "car-rental/car-rental-10.png",
+        "car-rental/car-rental-11.png",
+        "car-rental/car-rental-12.png",
+        "car-rental/car-rental-13.png",
+        "car-rental/car-rental-14.png",
+        "car-rental/car-rental-15.png",
+        "car-rental/car-rental-16.png",
+        "car-rental/car-rental-17.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹4,999",
@@ -350,7 +41,10 @@
         "Vehicle presentation",
         "Rental CTA",
         "Responsive design",
-        "Contact flow"
+        "Contact flow",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -359,13 +53,36 @@
       "category": "SaaS",
       "type": "Dashboard",
       "description": "A modern CRM dashboard interface for managing business activity, leads and customer relationships.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "crm-dashboard/crm-dashboard-01.png",
+      "galleryKeys": [
+        "crm-dashboard/crm-dashboard-01.png",
+        "crm-dashboard/crm-dashboard-02.png",
+        "crm-dashboard/crm-dashboard-03.png",
+        "crm-dashboard/crm-dashboard-04.png",
+        "crm-dashboard/crm-dashboard-05.png",
+        "crm-dashboard/crm-dashboard-06.png",
+        "crm-dashboard/crm-dashboard-07.png",
+        "crm-dashboard/crm-dashboard-08.png",
+        "crm-dashboard/crm-dashboard-09.png",
+        "crm-dashboard/crm-dashboard-10.png",
+        "crm-dashboard/crm-dashboard-11.png",
+        "crm-dashboard/crm-dashboard-12.png",
+        "crm-dashboard/crm-dashboard-13.png",
+        "crm-dashboard/crm-dashboard-14.png",
+        "crm-dashboard/crm-dashboard-15.png",
+        "crm-dashboard/crm-dashboard-16.png",
+        "crm-dashboard/crm-dashboard-17.png",
+        "crm-dashboard/crm-dashboard-18.png",
+        "crm-dashboard/crm-dashboard-19.png",
+        "crm-dashboard/crm-dashboard-20.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
-      "pages": 1,
+      "pages": 5,
       "price": "₹7,999",
       "featured": false,
       "status": "Available",
@@ -374,7 +91,10 @@
         "Dashboard UI",
         "Data-focused layout",
         "Responsive interface",
-        "Modern components"
+        "Modern components",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -383,22 +103,50 @@
       "category": "Construction",
       "type": "Business",
       "description": "A strong professional website for builders, contractors and construction businesses.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "construction/construction-01.png",
+      "galleryKeys": [
+        "construction/construction-01.png",
+        "construction/construction-02.png",
+        "construction/construction-03.png",
+        "construction/construction-04.png",
+        "construction/construction-05.png",
+        "construction/construction-06.png",
+        "construction/construction-07.png",
+        "construction/construction-08.png",
+        "construction/construction-09.png",
+        "construction/construction-10.png",
+        "construction/construction-11.png",
+        "construction/construction-12.png",
+        "construction/construction-13.png",
+        "construction/construction-14.png",
+        "construction/construction-15.png",
+        "construction/construction-16.png",
+        "construction/construction-17.png",
+        "construction/construction-18.png",
+        "construction/construction-19.png",
+        "construction/construction-20.png",
+        "construction/construction-21.png",
+        "construction/construction-22.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹4,999",
-      "featured": false,
+      "featured": true,
       "status": "Available",
       "bestFor": "Builders & contractors",
       "features": [
         "Project showcase",
         "Service sections",
         "Responsive design",
-        "Lead-focused CTA"
+        "Lead-focused CTA",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -407,11 +155,32 @@
       "category": "Healthcare",
       "type": "Dental",
       "description": "A modern dental website built around trust, treatment presentation and appointment enquiries.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "dental/dental-01.png",
+      "galleryKeys": [
+        "dental/dental-01.png",
+        "dental/dental-02.png",
+        "dental/dental-03.png",
+        "dental/dental-04.png",
+        "dental/dental-05.png",
+        "dental/dental-06.png",
+        "dental/dental-07.png",
+        "dental/dental-08.png",
+        "dental/dental-09.png",
+        "dental/dental-10.png",
+        "dental/dental-11.png",
+        "dental/dental-12.png",
+        "dental/dental-13.png",
+        "dental/dental-14.png",
+        "dental/dental-15.png",
+        "dental/dental-16.png",
+        "dental/dental-17.png",
+        "dental/dental-18.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹4,999",
@@ -422,7 +191,10 @@
         "Treatment sections",
         "Appointment CTA",
         "Responsive design",
-        "Trust-focused UI"
+        "Trust-focused UI",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -431,10 +203,39 @@
       "category": "Education",
       "type": "Business",
       "description": "A modern lead-generation website for educators, mentors and coaching businesses.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "education-coaching/education-coaching-01.png",
+      "galleryKeys": [
+        "education-coaching/education-coaching-01.png",
+        "education-coaching/education-coaching-02.png",
+        "education-coaching/education-coaching-03.png",
+        "education-coaching/education-coaching-04.png",
+        "education-coaching/education-coaching-05.png",
+        "education-coaching/education-coaching-06.png",
+        "education-coaching/education-coaching-07.png",
+        "education-coaching/education-coaching-08.png",
+        "education-coaching/education-coaching-09.png",
+        "education-coaching/education-coaching-10.png",
+        "education-coaching/education-coaching-11.png",
+        "education-coaching/education-coaching-12.png",
+        "education-coaching/education-coaching-13.png",
+        "education-coaching/education-coaching-14.png",
+        "education-coaching/education-coaching-15.png",
+        "education-coaching/education-coaching-16.png",
+        "education-coaching/education-coaching-17.png",
+        "education-coaching/education-coaching-18.png",
+        "education-coaching/education-coaching-19.png",
+        "education-coaching/education-coaching-20.png",
+        "education-coaching/education-coaching-21.png",
+        "education-coaching/education-coaching-22.png",
+        "education-coaching/education-coaching-23.png",
+        "education-coaching/education-coaching-24.png",
+        "education-coaching/education-coaching-25.png",
+        "education-coaching/education-coaching-26.png"
+      ],
       "stack": [
         "React",
+        "Vite",
+        "SCSS",
         "Responsive"
       ],
       "pages": 5,
@@ -446,7 +247,10 @@
         "Course presentation",
         "Lead generation",
         "Responsive layout",
-        "Contact CTA"
+        "Contact CTA",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -455,11 +259,29 @@
       "category": "Jobs",
       "type": "Platform",
       "description": "A professional job marketplace interface for candidates, recruiters and companies.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "job-board/job-board-01.png",
+      "galleryKeys": [
+        "job-board/job-board-01.png",
+        "job-board/job-board-02.png",
+        "job-board/job-board-03.png",
+        "job-board/job-board-04.png",
+        "job-board/job-board-05.png",
+        "job-board/job-board-06.png",
+        "job-board/job-board-07.png",
+        "job-board/job-board-08.png",
+        "job-board/job-board-09.png",
+        "job-board/job-board-10.png",
+        "job-board/job-board-11.png",
+        "job-board/job-board-12.png",
+        "job-board/job-board-13.png",
+        "job-board/job-board-14.png",
+        "job-board/job-board-15.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹6,999",
@@ -470,7 +292,10 @@
         "Job discovery",
         "Company presentation",
         "Candidate-focused UI",
-        "Responsive design"
+        "Responsive design",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -479,22 +304,48 @@
       "category": "Events",
       "type": "Business",
       "description": "An elegant website concept for wedding planners, decorators and event professionals.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "event-wedding/event-wedding-01.png",
+      "galleryKeys": [
+        "event-wedding/event-wedding-01.png",
+        "event-wedding/event-wedding-02.png",
+        "event-wedding/event-wedding-03.png",
+        "event-wedding/event-wedding-04.png",
+        "event-wedding/event-wedding-05.png",
+        "event-wedding/event-wedding-06.png",
+        "event-wedding/event-wedding-07.png",
+        "event-wedding/event-wedding-08.png",
+        "event-wedding/event-wedding-09.png",
+        "event-wedding/event-wedding-10.png",
+        "event-wedding/event-wedding-11.png",
+        "event-wedding/event-wedding-12.png",
+        "event-wedding/event-wedding-13.png",
+        "event-wedding/event-wedding-14.png",
+        "event-wedding/event-wedding-15.png",
+        "event-wedding/event-wedding-16.png",
+        "event-wedding/event-wedding-17.png",
+        "event-wedding/event-wedding-18.png",
+        "event-wedding/event-wedding-19.png",
+        "event-wedding/event-wedding-20.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹4,999",
-      "featured": false,
+      "featured": true,
       "status": "Available",
       "bestFor": "Wedding & event businesses",
       "features": [
         "Gallery presentation",
         "Event services",
         "Responsive design",
-        "Enquiry CTA"
+        "Enquiry CTA",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -503,22 +354,41 @@
       "category": "Marketplace",
       "type": "Platform",
       "description": "A modern marketplace experience designed around discovery, product presentation and conversion.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "marketplace/marketplace-01.png",
+      "galleryKeys": [
+        "marketplace/marketplace-01.png",
+        "marketplace/marketplace-02.png",
+        "marketplace/marketplace-03.png",
+        "marketplace/marketplace-04.png",
+        "marketplace/marketplace-05.png",
+        "marketplace/marketplace-06.png",
+        "marketplace/marketplace-07.png",
+        "marketplace/marketplace-08.png",
+        "marketplace/marketplace-09.png",
+        "marketplace/marketplace-10.png",
+        "marketplace/marketplace-11.png",
+        "marketplace/marketplace-12.png",
+        "marketplace/marketplace-13.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹6,999",
-      "featured": false,
+      "featured": true,
       "status": "Available",
       "bestFor": "Marketplace businesses",
       "features": [
         "Product discovery",
         "Modern cards",
         "Responsive layout",
-        "Conversion-focused UX"
+        "Conversion-focused UX",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -527,11 +397,25 @@
       "category": "Finance",
       "type": "Professional",
       "description": "A refined professional website for accountants, consultants and financial advisory firms.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "accounting-ca/accounting-ca-01.png",
+      "galleryKeys": [
+        "accounting-ca/accounting-ca-01.png",
+        "accounting-ca/accounting-ca-02.png",
+        "accounting-ca/accounting-ca-03.png",
+        "accounting-ca/accounting-ca-04.png",
+        "accounting-ca/accounting-ca-05.png",
+        "accounting-ca/accounting-ca-06.png",
+        "accounting-ca/accounting-ca-07.png",
+        "accounting-ca/accounting-ca-08.png",
+        "accounting-ca/accounting-ca-09.png",
+        "accounting-ca/accounting-ca-10.png",
+        "accounting-ca/accounting-ca-11.png"
+      ],
       "stack": [
         "React",
-        "Vite"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹5,999",
@@ -540,9 +424,12 @@
       "bestFor": "CA firms & financial advisors",
       "features": [
         "Professional presentation",
-        "Services",
+        "Services showcase",
         "Trust sections",
-        "Lead generation"
+        "Lead generation",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -551,22 +438,38 @@
       "category": "SaaS",
       "type": "Startup",
       "description": "A modern AI SaaS marketing website built around product storytelling and conversion.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "ai-saas/ai-saas-01.png",
+      "galleryKeys": [
+        "ai-saas/ai-saas-01.png",
+        "ai-saas/ai-saas-02.png",
+        "ai-saas/ai-saas-03.png",
+        "ai-saas/ai-saas-04.png",
+        "ai-saas/ai-saas-05.png",
+        "ai-saas/ai-saas-06.png",
+        "ai-saas/ai-saas-07.png",
+        "ai-saas/ai-saas-08.png",
+        "ai-saas/ai-saas-09.png",
+        "ai-saas/ai-saas-10.png"
+      ],
       "stack": [
         "React",
-        "Vite"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹6,999",
-      "featured": false,
+      "featured": true,
       "status": "Available",
       "bestFor": "AI startups & SaaS products",
       "features": [
         "Product storytelling",
         "Modern hero",
         "Feature sections",
-        "Conversion CTA"
+        "Conversion CTA",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -575,22 +478,45 @@
       "category": "Architecture",
       "type": "Professional",
       "description": "A visual-first architecture website designed to showcase projects and studio identity.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "architecture-studio/architecture-studio-01.png",
+      "galleryKeys": [
+        "architecture-studio/architecture-studio-01.png",
+        "architecture-studio/architecture-studio-02.png",
+        "architecture-studio/architecture-studio-03.png",
+        "architecture-studio/architecture-studio-04.png",
+        "architecture-studio/architecture-studio-05.png",
+        "architecture-studio/architecture-studio-06.png",
+        "architecture-studio/architecture-studio-07.png",
+        "architecture-studio/architecture-studio-08.png",
+        "architecture-studio/architecture-studio-09.png",
+        "architecture-studio/architecture-studio-10.png",
+        "architecture-studio/architecture-studio-11.png",
+        "architecture-studio/architecture-studio-12.png",
+        "architecture-studio/architecture-studio-13.png",
+        "architecture-studio/architecture-studio-14.png",
+        "architecture-studio/architecture-studio-15.png",
+        "architecture-studio/architecture-studio-16.png",
+        "architecture-studio/architecture-studio-17.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹5,999",
-      "featured": false,
+      "featured": true,
       "status": "Available",
       "bestFor": "Architects & design studios",
       "features": [
         "Project showcase",
         "Editorial layout",
         "Responsive design",
-        "Studio presentation"
+        "Studio presentation",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -599,10 +525,29 @@
       "category": "Automotive",
       "type": "Business",
       "description": "A dealership website designed around vehicle discovery, trust and customer enquiries.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "automotive-dealer/automotive-dealer-01.png",
+      "galleryKeys": [
+        "automotive-dealer/automotive-dealer-01.png",
+        "automotive-dealer/automotive-dealer-02.png",
+        "automotive-dealer/automotive-dealer-03.png",
+        "automotive-dealer/automotive-dealer-04.png",
+        "automotive-dealer/automotive-dealer-05.png",
+        "automotive-dealer/automotive-dealer-06.png",
+        "automotive-dealer/automotive-dealer-07.png",
+        "automotive-dealer/automotive-dealer-08.png",
+        "automotive-dealer/automotive-dealer-09.png",
+        "automotive-dealer/automotive-dealer-10.png",
+        "automotive-dealer/automotive-dealer-11.png",
+        "automotive-dealer/automotive-dealer-12.png",
+        "automotive-dealer/automotive-dealer-13.png",
+        "automotive-dealer/automotive-dealer-14.png",
+        "automotive-dealer/automotive-dealer-15.png",
+        "automotive-dealer/automotive-dealer-16.png"
+      ],
       "stack": [
         "React",
+        "Vite",
+        "SCSS",
         "Responsive"
       ],
       "pages": 5,
@@ -614,7 +559,10 @@
         "Vehicle showcase",
         "Dealer information",
         "Responsive layout",
-        "Enquiry CTA"
+        "Enquiry CTA",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -623,11 +571,33 @@
       "category": "Services",
       "type": "Local Business",
       "description": "A clean, trustworthy website for residential and commercial cleaning services.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "cleaning-service/cleaning-service-01.png",
+      "galleryKeys": [
+        "cleaning-service/cleaning-service-01.png",
+        "cleaning-service/cleaning-service-02.png",
+        "cleaning-service/cleaning-service-03.png",
+        "cleaning-service/cleaning-service-04.png",
+        "cleaning-service/cleaning-service-05.png",
+        "cleaning-service/cleaning-service-06.png",
+        "cleaning-service/cleaning-service-07.png",
+        "cleaning-service/cleaning-service-08.png",
+        "cleaning-service/cleaning-service-09.png",
+        "cleaning-service/cleaning-service-10.png",
+        "cleaning-service/cleaning-service-11.png",
+        "cleaning-service/cleaning-service-12.png",
+        "cleaning-service/cleaning-service-13.png",
+        "cleaning-service/cleaning-service-14.png",
+        "cleaning-service/cleaning-service-15.png",
+        "cleaning-service/cleaning-service-16.png",
+        "cleaning-service/cleaning-service-17.png",
+        "cleaning-service/cleaning-service-18.png",
+        "cleaning-service/cleaning-service-19.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹4,499",
@@ -638,7 +608,52 @@
         "Service presentation",
         "Trust signals",
         "Responsive design",
-        "Lead generation"
+        "Lead generation",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
+      ]
+    },
+    {
+      "id": "community-01",
+      "name": "Community Platform",
+      "category": "Community",
+      "type": "Platform",
+      "description": "A modern community platform concept designed around member discovery, engagement and participation.",
+      "imageKey": "community/community-01.png",
+      "galleryKeys": [
+        "community/community-01.png",
+        "community/community-02.png",
+        "community/community-03.png",
+        "community/community-04.png",
+        "community/community-05.png",
+        "community/community-06.png",
+        "community/community-07.png",
+        "community/community-08.png",
+        "community/community-09.png",
+        "community/community-10.png",
+        "community/community-11.png",
+        "community/community-12.png"
+      ],
+      "stack": [
+        "React",
+        "Vite",
+        "SCSS",
+        "Responsive"
+      ],
+      "pages": 5,
+      "price": "₹6,499",
+      "featured": false,
+      "status": "Available",
+      "bestFor": "Communities, clubs & member platforms",
+      "features": [
+        "Community discovery",
+        "Member-focused UI",
+        "Responsive design",
+        "Engagement CTA",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -647,10 +662,33 @@
       "category": "Services",
       "type": "Local Business",
       "description": "A lead-focused home service website designed for calls, enquiries and local customers.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "home-service/home-service-01.png",
+      "galleryKeys": [
+        "home-service/home-service-01.png",
+        "home-service/home-service-02.png",
+        "home-service/home-service-03.png",
+        "home-service/home-service-04.png",
+        "home-service/home-service-05.png",
+        "home-service/home-service-06.png",
+        "home-service/home-service-07.png",
+        "home-service/home-service-08.png",
+        "home-service/home-service-09.png",
+        "home-service/home-service-10.png",
+        "home-service/home-service-11.png",
+        "home-service/home-service-12.png",
+        "home-service/home-service-13.png",
+        "home-service/home-service-14.png",
+        "home-service/home-service-15.png",
+        "home-service/home-service-16.png",
+        "home-service/home-service-17.png",
+        "home-service/home-service-18.png",
+        "home-service/home-service-19.png",
+        "home-service/home-service-20.png"
+      ],
       "stack": [
         "React",
+        "Vite",
+        "SCSS",
         "Responsive"
       ],
       "pages": 5,
@@ -662,7 +700,49 @@
         "Service cards",
         "Local business CTA",
         "Responsive layout",
-        "Contact flow"
+        "Contact flow",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
+      ]
+    },
+    {
+      "id": "medical-clinic-01",
+      "name": "Modern Medical Clinic",
+      "category": "Healthcare",
+      "type": "Clinic",
+      "description": "A premium healthcare website designed around trust, clarity, services and patient enquiries.",
+      "imageKey": "medical-clinic/medical-clinic-01.png",
+      "galleryKeys": [
+        "medical-clinic/medical-clinic-01.png",
+        "medical-clinic/medical-clinic-02.png",
+        "medical-clinic/medical-clinic-03.png",
+        "medical-clinic/medical-clinic-04.png",
+        "medical-clinic/medical-clinic-05.png",
+        "medical-clinic/medical-clinic-06.png",
+        "medical-clinic/medical-clinic-07.png",
+        "medical-clinic/medical-clinic-08.png",
+        "medical-clinic/medical-clinic-09.png"
+      ],
+      "stack": [
+        "React",
+        "Vite",
+        "SCSS",
+        "Responsive"
+      ],
+      "pages": 5,
+      "price": "₹5,499",
+      "featured": true,
+      "status": "Available",
+      "bestFor": "Clinics, doctors & healthcare practices",
+      "features": [
+        "Responsive design",
+        "Service presentation",
+        "Doctor / clinic sections",
+        "Appointment CTA",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -671,22 +751,42 @@
       "category": "Real Estate",
       "type": "Business",
       "description": "A premium real estate website focused on properties, trust and lead generation.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "real-estate/real-estate-01.png",
+      "galleryKeys": [
+        "real-estate/real-estate-01.png",
+        "real-estate/real-estate-02.png",
+        "real-estate/real-estate-03.png",
+        "real-estate/real-estate-04.png",
+        "real-estate/real-estate-05.png",
+        "real-estate/real-estate-06.png",
+        "real-estate/real-estate-07.png",
+        "real-estate/real-estate-08.png",
+        "real-estate/real-estate-09.png",
+        "real-estate/real-estate-10.png",
+        "real-estate/real-estate-11.png",
+        "real-estate/real-estate-12.png",
+        "real-estate/real-estate-13.png",
+        "real-estate/real-estate-14.png"
+      ],
       "stack": [
         "React",
-        "SCSS"
+        "Vite",
+        "SCSS",
+        "Responsive"
       ],
       "pages": 5,
       "price": "₹5,999",
-      "featured": false,
+      "featured": true,
       "status": "Available",
       "bestFor": "Real estate businesses & agents",
       "features": [
         "Property presentation",
         "Lead generation",
         "Responsive design",
-        "Modern visual system"
+        "Modern visual system",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     },
     {
@@ -695,10 +795,23 @@
       "category": "Beauty",
       "type": "Business",
       "description": "A stylish modern website for salons, spas and beauty brands.",
-      "imageKey": null,
-      "galleryKeys": [],
+      "imageKey": "salon-spa/salon-spa-01.png",
+      "galleryKeys": [
+        "salon-spa/salon-spa-01.png",
+        "salon-spa/salon-spa-02.png",
+        "salon-spa/salon-spa-03.png",
+        "salon-spa/salon-spa-04.png",
+        "salon-spa/salon-spa-05.png",
+        "salon-spa/salon-spa-06.png",
+        "salon-spa/salon-spa-07.png",
+        "salon-spa/salon-spa-08.png",
+        "salon-spa/salon-spa-09.png",
+        "salon-spa/salon-spa-10.png"
+      ],
       "stack": [
         "React",
+        "Vite",
+        "SCSS",
         "Responsive"
       ],
       "pages": 5,
@@ -710,31 +823,10 @@
         "Service showcase",
         "Gallery",
         "Appointment CTA",
-        "Responsive design"
-      ]
-    },
-    {
-      "id": "restaurant-01",
-      "name": "Restaurant",
-      "category": "Food",
-      "type": "Business",
-      "description": "An elegant restaurant website focused on menu discovery, brand story and reservations.",
-      "imageKey": null,
-      "galleryKeys": [],
-      "stack": [
-        "React",
-        "SCSS"
-      ],
-      "pages": 5,
-      "price": "₹4,999",
-      "featured": false,
-      "status": "Available",
-      "bestFor": "Restaurants & cafés",
-      "features": [
-        "Menu showcase",
-        "Brand story",
-        "Reservation CTA",
-        "Responsive design"
+        "Responsive design",
+        "WhatsApp contact",
+        "Call contact",
+        "Email contact"
       ]
     }
   ]
