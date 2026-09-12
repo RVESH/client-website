@@ -16,7 +16,6 @@ export default function Button({
 }) {
   const classes = `btn btn--${variant} btn--${size} ${className}`.trim()
 
-
   
   const renderIcon = () => {
     if (icon === 'ArrowRight') {
