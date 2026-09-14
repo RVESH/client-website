@@ -17,7 +17,6 @@ export default function Button({
   const classes = `btn btn--${variant} btn--${size} ${className}`.trim()
 
   
-  
   const renderIcon = () => {
     if (icon === 'ArrowRight') {
       return <span className="btn__icon btn__icon--arrow" aria-hidden="true" />
