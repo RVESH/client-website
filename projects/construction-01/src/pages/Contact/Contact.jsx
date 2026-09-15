@@ -13,6 +13,8 @@ export default function Contact() {
     setSubmitted(true);
   };
 
+
+  
   return (
     <>
       <section className="section section--dark contact-hero">
