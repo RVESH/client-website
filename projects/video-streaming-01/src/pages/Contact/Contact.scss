@@ -1,0 +1,214 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.contact-hero {
+  padding-block: v.$sp-6;
+}
+
+.contact-hero__heading {
+  font-size: v.$fs-h1;
+  max-width: 20ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.contact-hero__desc {
+  color: v.$color-text-dim;
+  font-size: v.$fs-lead;
+  max-width: 50ch;
+}
+
+.contact-body__grid {
+  display: grid;
+  gap: v.$sp-6;
+
+  @include m.mq(lg) {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: v.$sp-7;
+  }
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+}
+
+.contact-info__block {
+  display: flex;
+  gap: v.$sp-3;
+  padding-bottom: v.$sp-4;
+  border-bottom: 1px solid v.$color-ink-line;
+
+  svg {
+    color: v.$color-gold;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  h3 {
+    font-size: v.$fs-small;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  p {
+    color: v.$color-text-dim;
+    font-size: v.$fs-small;
+    line-height: 1.6;
+  }
+
+  a {
+    color: v.$color-text-dim;
+    text-decoration: none;
+
+    &:hover {
+      color: v.$color-gold-soft;
+    }
+  }
+}
+
+.contact-info__hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: v.$sp-3;
+    font-size: v.$fs-small;
+  }
+
+  dt {
+    color: v.$color-text-dim;
+  }
+
+  dd {
+    margin: 0;
+    color: v.$color-text;
+    font-weight: 600;
+  }
+}
+
+.contact-form-wrap {
+  background: v.$color-ink;
+  border: 1px solid v.$color-ink-line;
+  border-radius: v.$radius-lg;
+  padding: v.$sp-5;
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: v.$sp-2;
+  }
+}
+
+.contact-form-wrap__desc {
+  color: v.$color-text-dim;
+  font-size: v.$fs-small;
+  max-width: 48ch;
+  margin-bottom: v.$sp-5;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+}
+
+.contact-form__row {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-2;
+
+  label {
+    font-size: v.$fs-micro;
+    font-weight: 700;
+    color: v.$color-text;
+  }
+
+  input,
+  textarea {
+    font-family: v.$font-body;
+    font-size: v.$fs-small;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid v.$color-ink-line;
+    border-radius: v.$radius-sm;
+    background: v.$color-ink-soft;
+    color: v.$color-text;
+    transition: border-color v.$dur-fast v.$ease-standard;
+
+    &:focus-visible {
+      outline: none;
+      border-color: v.$color-gold;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+}
+
+.contact-form__row--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: v.$sp-4;
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: v.$sp-2;
+    min-width: 0;
+  }
+}
+
+.contact-form__warning {
+  color: v.$color-danger;
+  font-size: v.$fs-small;
+}
+
+.contact-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-3;
+}
+
+.contact-form__note {
+  font-size: v.$fs-micro;
+  color: v.$color-text-faint;
+}
+
+.contact-location {
+  border-top: 1px solid v.$color-ink-line;
+  background: v.$color-ink;
+  padding-block: v.$sp-6;
+}
+
+.contact-location__panel {
+  @include m.container;
+  display: flex;
+  align-items: flex-start;
+  gap: v.$sp-4;
+  color: v.$color-text;
+
+  svg {
+    color: v.$color-gold;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: v.$sp-2;
+  }
+
+  p {
+    color: v.$color-text-dim;
+    font-size: v.$fs-small;
+    line-height: 1.6;
+  }
+}

@@ -1,0 +1,104 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.journal-page__heading {
+  font-size: v.$fs-h1;
+  max-width: 20ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.journal-page__desc {
+  color: v.$color-text-dim;
+  font-size: v.$fs-lead;
+  max-width: 52ch;
+  margin-bottom: v.$sp-6;
+}
+
+.journal-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-3;
+}
+
+.journal-post {
+  border: 1px solid v.$color-ink-line;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+  background: v.$color-ink;
+  transition: border-color v.$dur-fast v.$ease-standard;
+
+  &.is-open,
+  &:hover {
+    border-color: v.$color-gold;
+  }
+}
+
+.journal-post__toggle {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+
+  @include m.mq(sm) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    flex-shrink: 0;
+
+    @include m.mq(sm) {
+      width: 240px;
+      aspect-ratio: auto;
+    }
+  }
+}
+
+.journal-post__summary {
+  padding: v.$sp-4;
+  min-width: 0;
+
+  h2 {
+    font-size: 1.2rem;
+    margin-block: 0.3rem 0.4rem;
+  }
+
+  p {
+    color: v.$color-text-dim;
+    font-size: v.$fs-small;
+    line-height: 1.55;
+  }
+}
+
+.journal-post__date {
+  font-size: v.$fs-micro;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: v.$color-gold-soft;
+}
+
+.journal-post__body {
+  padding: 0 v.$sp-4 v.$sp-4;
+  border-top: 1px solid v.$color-ink-line;
+  margin-top: 0;
+
+  p {
+    color: v.$color-text-dim;
+    line-height: 1.7;
+    padding-top: v.$sp-4;
+    max-width: 70ch;
+  }
+}
+
+.journal-post__author {
+  display: block;
+  margin-top: v.$sp-3;
+  font-size: v.$fs-small;
+  color: v.$color-text-faint;
+}

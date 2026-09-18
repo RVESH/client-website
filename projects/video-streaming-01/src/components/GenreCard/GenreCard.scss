@@ -1,0 +1,61 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.genre-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  padding: v.$sp-4;
+  min-height: 180px;
+  border-radius: v.$radius-lg;
+  text-decoration: none;
+  color: v.$color-text;
+  overflow: hidden;
+  transition: transform v.$dur-fast v.$ease-standard;
+
+  @include m.focus-ring;
+
+  // Dark scrim ensures text contrast holds regardless of how bright the
+  // gradient's accent color is at any given point.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 11, 16, 0.1) 0%, rgba(10, 11, 16, 0.82) 100%);
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.genre-card__label,
+.genre-card__desc,
+.genre-card__count {
+  position: relative;
+  z-index: 1;
+}
+
+.genre-card__label {
+  font-family: v.$font-display;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: v.$color-text;
+}
+
+.genre-card__desc {
+  font-size: v.$fs-small;
+  color: rgba(242, 241, 236, 0.88);
+  line-height: 1.4;
+}
+
+.genre-card__count {
+  font-size: v.$fs-micro;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(242, 241, 236, 0.7);
+  margin-top: 0.2rem;
+}

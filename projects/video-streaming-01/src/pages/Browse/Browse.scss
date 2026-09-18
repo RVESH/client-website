@@ -1,0 +1,111 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.browse-hero {
+  padding-block: v.$sp-6;
+}
+
+.browse-hero__heading {
+  font-size: v.$fs-h1;
+  max-width: 22ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.browse-hero__desc {
+  color: v.$color-text-dim;
+  font-size: v.$fs-lead;
+  max-width: 52ch;
+  margin-bottom: v.$sp-5;
+}
+
+.browse-hero .search-bar {
+  max-width: 560px;
+}
+
+.browse-body__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$sp-2;
+  margin-bottom: v.$sp-4;
+  min-width: 0;
+
+  button {
+    @include m.btn-reset;
+    @include m.focus-ring;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.1rem;
+    font-size: v.$fs-small;
+    font-weight: 600;
+    color: v.$color-text-dim;
+    border: 1px solid v.$color-ink-line;
+    border-radius: v.$radius-pill;
+    transition: background-color v.$dur-fast v.$ease-standard, color v.$dur-fast v.$ease-standard,
+      border-color v.$dur-fast v.$ease-standard;
+    min-height: 44px;
+
+    &:hover {
+      border-color: v.$color-gold;
+      color: v.$color-text;
+    }
+
+    &.is-active {
+      background: v.$color-text;
+      color: v.$color-void;
+      border-color: v.$color-text;
+    }
+  }
+}
+
+.browse-body__count {
+  font-size: v.$fs-small;
+  color: v.$color-text-faint;
+  margin-bottom: v.$sp-4;
+}
+
+.browse-body__grid {
+  display: grid;
+  gap: v.$sp-4 v.$sp-3;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  @include m.mq(xl) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.browse-body__more {
+  display: flex;
+  justify-content: center;
+  margin-top: v.$sp-6;
+}
+
+.browse-body__empty {
+  text-align: center;
+  padding-block: v.$sp-7;
+  color: v.$color-text-dim;
+
+  h3 {
+    color: v.$color-text;
+    font-size: 1.2rem;
+    margin-bottom: v.$sp-2;
+  }
+
+  p {
+    max-width: 44ch;
+    margin-inline: auto;
+    margin-bottom: v.$sp-4;
+  }
+}

@@ -1,0 +1,27 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.section-head__viewall {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  color: v.$color-text-dim;
+  font-size: v.$fs-small;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: color v.$dur-fast v.$ease-standard;
+
+  svg {
+    color: v.$color-gold;
+    transition: transform v.$dur-fast v.$ease-standard;
+  }
+
+  &:hover {
+    color: v.$color-text;
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+}

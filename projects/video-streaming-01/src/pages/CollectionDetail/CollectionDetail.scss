@@ -1,0 +1,59 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.collection-detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: v.$color-text-dim;
+  font-size: v.$fs-small;
+  font-weight: 600;
+  margin-bottom: v.$sp-4;
+
+  &:hover {
+    color: v.$color-gold-soft;
+  }
+}
+
+.collection-detail__heading {
+  font-size: v.$fs-h1;
+  max-width: 24ch;
+  margin-block: v.$sp-2 v.$sp-3;
+}
+
+.collection-detail__desc {
+  color: v.$color-text-dim;
+  font-size: v.$fs-lead;
+  max-width: 54ch;
+  margin-bottom: v.$sp-2;
+}
+
+.collection-detail__count {
+  font-size: v.$fs-small;
+  color: v.$color-text-faint;
+  margin-bottom: v.$sp-5;
+}
+
+.collection-detail__grid {
+  display: grid;
+  gap: v.$sp-4 v.$sp-3;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include m.mq(md) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.collection-detail__empty {
+  color: v.$color-text-dim;
+  padding-block: v.$sp-6;
+}

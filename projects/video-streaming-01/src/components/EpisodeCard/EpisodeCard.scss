@@ -1,0 +1,90 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.episode-card {
+  display: flex;
+  gap: v.$sp-3;
+  padding: v.$sp-2;
+  border-radius: v.$radius-md;
+  text-decoration: none;
+  color: v.$color-text;
+  border: 1px solid transparent;
+  transition: background-color v.$dur-fast v.$ease-standard, border-color v.$dur-fast v.$ease-standard;
+
+  @include m.focus-ring;
+
+  &:hover {
+    background: v.$color-ink-soft;
+  }
+
+  &.is-active {
+    border-color: v.$color-gold;
+    background: v.$color-ink-soft;
+  }
+}
+
+.episode-card__media {
+  position: relative;
+  flex: 0 0 auto;
+  width: 140px;
+  aspect-ratio: 16 / 9;
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  background: v.$color-ink;
+
+  @include m.mq(sm) {
+    width: 172px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.episode-card__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: v.$color-text;
+  background: rgba(10, 11, 16, 0.25);
+  opacity: 0;
+  transition: opacity v.$dur-fast v.$ease-standard;
+}
+
+.episode-card:hover .episode-card__play,
+.episode-card:focus-visible .episode-card__play {
+  opacity: 1;
+}
+
+.episode-card__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.episode-card__head {
+  display: flex;
+  justify-content: space-between;
+  gap: v.$sp-2;
+  font-size: v.$fs-micro;
+  color: v.$color-text-faint;
+  margin-bottom: 0.3rem;
+}
+
+.episode-card__body h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.episode-card__body p {
+  font-size: v.$fs-small;
+  color: v.$color-text-dim;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

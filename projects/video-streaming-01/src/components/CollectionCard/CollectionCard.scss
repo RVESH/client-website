@@ -1,0 +1,83 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.collection-card {
+  display: block;
+  text-decoration: none;
+  color: v.$color-text;
+  border: v.$border-w solid v.$color-ink-line;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+  background: v.$color-ink;
+  transition: border-color v.$dur-fast v.$ease-standard, transform v.$dur-fast v.$ease-standard;
+
+  @include m.focus-ring;
+
+  &:hover {
+    border-color: v.$color-gold;
+    transform: translateY(-3px);
+  }
+}
+
+.collection-card__stack {
+  position: relative;
+  aspect-ratio: 16 / 8;
+  background: v.$color-ink-soft;
+
+  img {
+    position: absolute;
+    top: 8%;
+    width: 46%;
+    height: 84%;
+    object-fit: cover;
+    border-radius: v.$radius-sm;
+    border: 2px solid v.$color-ink;
+    box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.6);
+
+    &:nth-child(1) {
+      left: 4%;
+      transform: rotate(-4deg);
+    }
+    &:nth-child(2) {
+      left: 27%;
+      transform: translateY(-4%);
+    }
+    &:nth-child(3) {
+      left: 50%;
+      transform: rotate(4deg);
+    }
+  }
+}
+
+.collection-card__body {
+  padding: v.$sp-4;
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: v.$sp-1;
+  }
+
+  p {
+    color: v.$color-text-dim;
+    font-size: v.$fs-small;
+    line-height: 1.5;
+    margin-bottom: v.$sp-3;
+  }
+}
+
+.collection-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: v.$fs-small;
+  font-weight: 700;
+  color: v.$color-gold-soft;
+
+  svg {
+    transition: transform v.$dur-fast v.$ease-standard;
+  }
+}
+
+.collection-card:hover .collection-card__cta svg {
+  transform: translateX(3px);
+}

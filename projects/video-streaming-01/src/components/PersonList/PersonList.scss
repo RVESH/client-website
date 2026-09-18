@@ -1,0 +1,22 @@
+@use "../../styles/variables" as v;
+
+.person-list {
+  padding-block: v.$sp-2;
+  border-top: 1px solid v.$color-ink-line;
+}
+
+.person-list__label {
+  display: block;
+  font-size: v.$fs-micro;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: v.$color-text-faint;
+  margin-bottom: 0.3rem;
+}
+
+.person-list__names {
+  color: v.$color-text-dim;
+  font-size: v.$fs-small;
+  line-height: 1.6;
+}

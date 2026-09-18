@@ -1,0 +1,18 @@
+@use "../../styles/variables" as v;
+
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: v.$color-gold-soft;
+  font-weight: 700;
+  font-size: v.$fs-small;
+
+  svg {
+    color: v.$color-gold;
+  }
+}
+
+.rating-badge--sm {
+  font-size: v.$fs-micro;
+}

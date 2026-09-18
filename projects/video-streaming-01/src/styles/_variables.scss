@@ -1,0 +1,74 @@
+// =====================================================
+// Design tokens — Aperture: original cinematic streaming identity
+// =====================================================
+
+// Color
+$color-void: #0a0b10; // near-black, primary background
+$color-ink: #14161f; // panel/surface dark
+$color-ink-soft: #1c1f2b; // elevated surface
+$color-ink-line: rgba(242, 241, 236, 0.1);
+$color-text: #f2f1ec; // warm off-white, primary text on dark
+$color-text-dim: #9a9cae; // secondary text on dark
+$color-text-faint: #6b6d80;
+$color-gold: #c9a24b; // primary accent — warm cinematic gold
+$color-gold-soft: #ddbd74;
+$color-violet: #6e5bff; // secondary accent — glow/gradient partner
+$color-violet-soft: #8f7fff;
+$color-success: #3ed598;
+$color-danger: #e5654a;
+$color-white: #ffffff;
+
+// On-light (rare — used only for a couple of light UI chips if needed)
+$color-cream: #f2f1ec;
+
+// Type
+$font-display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+$font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+// Type scale
+$fs-h1: clamp(2.4rem, 1.8rem + 2.6vw, 4.2rem);
+$fs-h2: clamp(1.7rem, 1.5rem + 1vw, 2.5rem);
+$fs-h3: clamp(1.2rem, 1.1rem + 0.4vw, 1.5rem);
+$fs-lead: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
+$fs-body: 1rem;
+$fs-small: 0.875rem;
+$fs-micro: 0.75rem;
+
+// Spacing
+$sp-1: 0.4rem;
+$sp-2: 0.8rem;
+$sp-3: 1.2rem;
+$sp-4: 1.6rem;
+$sp-5: 2.4rem;
+$sp-6: 3.2rem;
+$sp-7: 4.8rem;
+$sp-8: 6.4rem;
+
+// Layout
+$container-max: 1360px;
+$container-pad: clamp(1.25rem, 4vw, 3rem);
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-pill: 999px;
+$border-w: 1px;
+
+// Motion
+$ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+$dur-fast: 160ms;
+$dur-med: 380ms;
+$dur-slow: 620ms;
+
+// Breakpoints
+$bp-xs: 360px;
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-xxl: 1440px;
+
+// Z-index
+$z-header: 100;
+$z-drawer: 200;
+$z-overlay: 190;
+$z-modal: 300;

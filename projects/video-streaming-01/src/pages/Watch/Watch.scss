@@ -1,0 +1,222 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.watch {
+  position: relative;
+  background: v.$color-void;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  color: v.$color-text;
+}
+
+.watch__top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$sp-3;
+  padding: v.$sp-3 v.$sp-3;
+  background: linear-gradient(180deg, rgba(6, 7, 11, 0.85), rgba(6, 7, 11, 0));
+
+  @include m.mq(md) {
+    padding: v.$sp-4 v.$sp-5;
+  }
+}
+
+.watch__back {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+  text-decoration: none;
+  color: v.$color-text;
+  font-weight: 600;
+  font-size: v.$fs-small;
+  min-width: 0;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    color: v.$color-gold-soft;
+  }
+}
+
+.watch__top-actions {
+  display: flex;
+  gap: v.$sp-2;
+  flex-shrink: 0;
+}
+
+.watch__stage {
+  position: relative;
+  flex: 1;
+  min-height: 56vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.watch__video {
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  display: block;
+  object-fit: contain;
+  background: black;
+}
+
+.watch__play-overlay {
+  @include m.btn-reset;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(242, 241, 236, 0.92);
+    color: v.$color-void;
+    font-size: 1.4rem;
+    padding-left: 4px;
+  }
+}
+
+.watch__state {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: v.$sp-2;
+  text-align: center;
+  padding: v.$sp-4;
+  color: v.$color-text-dim;
+  background: v.$color-void;
+
+  svg {
+    color: v.$color-gold;
+    margin-bottom: v.$sp-2;
+  }
+
+  h2 {
+    color: v.$color-text;
+    font-size: 1.2rem;
+  }
+
+  p {
+    max-width: 40ch;
+    margin-bottom: v.$sp-3;
+  }
+}
+
+.watch__spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid rgba(242, 241, 236, 0.2);
+  border-top-color: v.$color-gold;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@include m.reduced-motion {
+  .watch__spinner {
+    animation: none;
+  }
+}
+
+.watch__captions {
+  position: absolute;
+  left: 50%;
+  bottom: 90px;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: rgba(6, 7, 11, 0.75);
+  color: v.$color-text;
+  padding: 0.5rem 1rem;
+  border-radius: v.$radius-sm;
+  font-size: v.$fs-small;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.watch__resume-note {
+  text-align: center;
+  font-size: v.$fs-small;
+  color: v.$color-text-faint;
+  padding: v.$sp-2;
+}
+
+.watch__autoplay {
+  display: flex;
+  justify-content: center;
+  padding: v.$sp-2 v.$sp-3 v.$sp-4;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: v.$sp-2;
+    font-size: v.$fs-small;
+    color: v.$color-text-dim;
+  }
+
+  input {
+    accent-color: v.$color-gold;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.watch__queue {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(92vw, 400px);
+  background: v.$color-ink;
+  border-left: 1px solid v.$color-ink-line;
+  z-index: 4;
+  padding: v.$sp-4;
+  overflow-y: auto;
+}
+
+.watch__queue-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: v.$sp-4;
+
+  h2 {
+    font-size: 1.15rem;
+  }
+}
+
+.watch__queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-1;
+}

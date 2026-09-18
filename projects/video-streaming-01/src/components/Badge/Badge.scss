@@ -1,0 +1,39 @@
+@use "../../styles/variables" as v;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  font-size: v.$fs-micro;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: v.$radius-pill;
+  white-space: nowrap;
+}
+
+.badge--default {
+  background: rgba(242, 241, 236, 0.12);
+  color: v.$color-text;
+}
+
+.badge--gold {
+  background: rgba(201, 162, 75, 0.16);
+  color: v.$color-gold-soft;
+}
+
+.badge--violet {
+  background: rgba(110, 91, 255, 0.18);
+  color: v.$color-violet-soft;
+}
+
+.badge--outline {
+  background: transparent;
+  color: v.$color-text-dim;
+  border: 1px solid v.$color-ink-line;
+}
+
+.badge--new {
+  background: v.$color-success;
+  color: v.$color-void;
+}

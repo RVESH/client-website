@@ -1,0 +1,82 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$sp-2;
+  padding: 0.85rem 1.6rem;
+  font-family: v.$font-body;
+  font-size: v.$fs-small;
+  font-weight: 700;
+  text-decoration: none;
+  border: v.$border-w solid transparent;
+  border-radius: v.$radius-pill;
+  cursor: pointer;
+  transition: background-color v.$dur-fast v.$ease-standard,
+    color v.$dur-fast v.$ease-standard,
+    border-color v.$dur-fast v.$ease-standard,
+    transform v.$dur-fast v.$ease-standard;
+  white-space: nowrap;
+  min-height: 44px;
+
+  @include m.focus-ring;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn--primary {
+  background: v.$color-text;
+  color: v.$color-void;
+
+  &:hover:not(:disabled) {
+    background: v.$color-gold-soft;
+  }
+}
+
+.btn--secondary {
+  background: rgba(242, 241, 236, 0.1);
+  color: v.$color-text;
+  border-color: v.$color-ink-line;
+
+  &:hover:not(:disabled) {
+    background: rgba(242, 241, 236, 0.16);
+    border-color: v.$color-gold;
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: v.$color-text-dim;
+  border-color: v.$color-ink-line;
+
+  &:hover:not(:disabled) {
+    color: v.$color-text;
+    border-color: v.$color-text-dim;
+  }
+}
+
+.btn--icon {
+  background: rgba(242, 241, 236, 0.1);
+  color: v.$color-text;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+
+  &:hover:not(:disabled) {
+    background: rgba(242, 241, 236, 0.2);
+  }
+}

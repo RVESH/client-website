@@ -1,0 +1,93 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.newsletter {
+  background: v.$color-ink;
+  border-top: 1px solid v.$color-ink-line;
+  border-bottom: 1px solid v.$color-ink-line;
+}
+
+.newsletter__inner {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-4;
+  align-items: flex-start;
+
+  @include m.mq(md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.newsletter__heading {
+  font-size: v.$fs-h3;
+  margin-block: v.$sp-2;
+  max-width: 26ch;
+}
+
+.newsletter__desc {
+  color: v.$color-text-dim;
+  font-size: v.$fs-small;
+  max-width: 40ch;
+}
+
+.newsletter__form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$sp-2;
+  width: 100%;
+
+  @include m.mq(sm) {
+    flex-direction: row;
+  }
+
+  @include m.mq(md) {
+    width: auto;
+    min-width: 380px;
+  }
+}
+
+.newsletter__field {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+  background: v.$color-ink-soft;
+  border: 1px solid v.$color-ink-line;
+  border-radius: v.$radius-pill;
+  padding: 0.7rem 1.1rem;
+  flex: 1;
+  min-width: 0;
+
+  &:focus-within {
+    border-color: v.$color-gold;
+  }
+
+  svg {
+    color: v.$color-text-faint;
+    flex-shrink: 0;
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: v.$color-text;
+    font-size: v.$fs-small;
+
+    &::placeholder {
+      color: v.$color-text-faint;
+    }
+  }
+}
+
+.newsletter__success {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+  color: v.$color-success;
+  font-size: v.$fs-small;
+  font-weight: 600;
+}

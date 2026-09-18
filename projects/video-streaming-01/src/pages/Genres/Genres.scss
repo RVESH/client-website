@@ -1,0 +1,28 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.genres-hero__heading {
+  font-size: v.$fs-h1;
+  max-width: 20ch;
+  margin-block: v.$sp-3 v.$sp-4;
+}
+
+.genres-hero__desc {
+  color: v.$color-text-dim;
+  font-size: v.$fs-lead;
+  max-width: 52ch;
+}
+
+.genres-grid {
+  display: grid;
+  gap: v.$sp-3;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @include m.mq(sm) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include m.mq(lg) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

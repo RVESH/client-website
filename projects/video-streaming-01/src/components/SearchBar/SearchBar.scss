@@ -1,0 +1,48 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: v.$sp-2;
+  background: v.$color-ink;
+  border: 1px solid v.$color-ink-line;
+  border-radius: v.$radius-pill;
+  padding: 0.85rem 1.2rem;
+  min-width: 0;
+
+  &:focus-within {
+    border-color: v.$color-gold;
+  }
+
+  svg:first-child {
+    color: v.$color-text-faint;
+    flex-shrink: 0;
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: v.$color-text;
+    font-size: v.$fs-small;
+
+    &::placeholder {
+      color: v.$color-text-faint;
+    }
+  }
+}
+
+.search-bar__clear {
+  @include m.btn-reset;
+  @include m.focus-ring;
+  display: flex;
+  color: v.$color-text-faint;
+  flex-shrink: 0;
+
+  &:hover {
+    color: v.$color-text;
+  }
+}
