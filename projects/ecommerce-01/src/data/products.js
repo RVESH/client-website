@@ -134,6 +134,8 @@ export const products = [
     ],
   },
 
+
+
   {
     id: "slim-leather-wallet",
     name: "Slim Leather Wallet",
