@@ -110,6 +110,7 @@ export default function Slider({
                 {slide.title}
               </h3>
 
+
               <p>
                 {slide.text}
               </p>
