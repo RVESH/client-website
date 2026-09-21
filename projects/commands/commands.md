@@ -14,6 +14,8 @@ node_modules
 dist
 .git
 
+
+
 ko ignore karega.
 
 Sirf src ka structure
