@@ -10,6 +10,7 @@ function Slider() {
   }, [])
 
   
+
   // Get vehicles for the slider (all vehicles, or we could filter to featured)
   const sliderVehicles = vehicles
 
