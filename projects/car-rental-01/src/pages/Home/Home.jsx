@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Hero from '../../sections/Hero/Hero.jsx'
+import Slider from '../../components/Slider/Slider.jsx'
 import FeaturedFleet from '../../sections/FeaturedFleet/FeaturedFleet.jsx'
 import WhyChooseUs from '../../sections/WhyChooseUs/WhyChooseUs.jsx'
 import HowItWorks from '../../sections/HowItWorks/HowItWorks.jsx'
@@ -15,6 +16,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <Slider />
       <FeaturedFleet />
       <WhyChooseUs />
       <HowItWorks />
