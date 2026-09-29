@@ -101,9 +101,6 @@ export default function Slider({
               />
             </div>
 
-
-
-
             
             <div className="store-slider__body">
               <span>
