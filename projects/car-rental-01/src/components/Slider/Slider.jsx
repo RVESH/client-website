@@ -7,11 +7,7 @@ import styles from './Slider.module.css'
 function Slider() {
   useEffect(() => {
     document.title = 'Auric Motors | Premium Car Rental'
-  }, [])
-
-
-  
-  
+  }, [])  
   
   // Get vehicles for the slider (all vehicles, or we could filter to featured)
   const sliderVehicles = vehicles
