@@ -12,8 +12,6 @@ function Slider() {
   // Get vehicles for the slider (all vehicles, or we could filter to featured)
   const sliderVehicles = vehicles
 
-
-  
   return (
     <section className={styles.slider} aria-label="Vehicle slider">
       <div className={styles.sliderContainer}>
